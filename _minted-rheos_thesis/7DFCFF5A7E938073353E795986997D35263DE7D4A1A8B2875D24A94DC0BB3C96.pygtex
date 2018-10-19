@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p+pIndicator}{[}\PYG{n+nv}{collectd}\PYG{p+pIndicator}{]}
+  \PYG{l+lScalar+lScalarPlain}{enabled = true}
+  \PYG{l+lScalar+lScalarPlain}{bind\PYGZhy{}address = \PYGZdq{}:8096\PYGZdq{}}
+  \PYG{l+lScalar+lScalarPlain}{database = \PYGZdq{}metrics\PYGZdq{}}
+  \PYG{l+lScalar+lScalarPlain}{retention\PYGZhy{}policy = \PYGZdq{}\PYGZdq{}}
+  \PYG{l+lScalar+lScalarPlain}{batch\PYGZhy{}size = 5000}
+  \PYG{l+lScalar+lScalarPlain}{batch\PYGZhy{}pending = 10}
+  \PYG{l+lScalar+lScalarPlain}{batch\PYGZhy{}timeout = \PYGZdq{}10s\PYGZdq{}}
+  \PYG{l+lScalar+lScalarPlain}{read\PYGZhy{}buffer = 0}
+  \PYG{l+lScalar+lScalarPlain}{typesdb = \PYGZdq{}/usr/share/collectd/types.db\PYGZdq{}}
+\end{Verbatim}

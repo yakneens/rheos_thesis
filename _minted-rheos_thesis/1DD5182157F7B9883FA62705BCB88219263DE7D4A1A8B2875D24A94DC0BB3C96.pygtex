@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+lScalar+lScalarPlain}{base}\PYG{p+pIndicator}{:}
+  \PYG{l+s}{\PYGZsq{}*\PYGZsq{}}\PYG{p+pIndicator}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{consul}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{dnsmasq}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{collectd}
+  \PYG{l+s}{\PYGZsq{}G@roles:monitoring\PYGZhy{}server\PYGZsq{}}\PYG{p+pIndicator}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{influxdb}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{grafana}
+  \PYG{l+s}{\PYGZsq{}G@roles:job\PYGZhy{}queue\PYGZsq{}}\PYG{p+pIndicator}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{rabbitmq}
+\end{Verbatim}

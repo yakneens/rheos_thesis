@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+consul\PYGZhy{}client:
+  service.running:
+    \PYGZhy{} enable: True
+    \PYGZhy{} watch:
+      \PYGZhy{} file: /etc/opt/consul.d/*
+\PYGZob{}\PYGZpc{}\PYGZhy{} set servers = salt[\PYGZsq{}mine.get\PYGZsq{}](\PYGZsq{}roles:(consul\PYGZhy{}server|consul\PYGZhy{}bootstrap)\PYGZsq{}, \PYGZsq{}network.ip\PYGZus{}addrs\PYGZsq{}, \PYGZsq{}grain\PYGZus{}pcre\PYGZsq{}).values() \PYGZpc{}\PYGZcb{}
+\PYGZob{}\PYGZpc{}\PYGZhy{} set node\PYGZus{}ip = salt[\PYGZsq{}grains.get\PYGZsq{}](\PYGZsq{}ip4\PYGZus{}interfaces\PYGZsq{})[\PYGZsq{}eth0\PYGZsq{}] \PYGZpc{}\PYGZcb{}
+\PYGZsh{} Create a list of servers that can be used to join the cluster
+\PYGZob{}\PYGZpc{}\PYGZhy{} set join\PYGZus{}server = [] \PYGZpc{}\PYGZcb{}
+\PYGZob{}\PYGZpc{}\PYGZhy{} for server in servers if server[0] != node\PYGZus{}ip \PYGZpc{}\PYGZcb{}
+\PYGZob{}\PYGZpc{} do join\PYGZus{}server.append(server[0]) \PYGZpc{}\PYGZcb{}
+\PYGZob{}\PYGZpc{}\PYGZhy{} endfor \PYGZpc{}\PYGZcb{}
+join\PYGZhy{}cluster:
+  cmd.run:
+    \PYGZhy{} name: consul join \PYGZob{}\PYGZob{} join\PYGZus{}server[0] \PYGZcb{}\PYGZcb{}
+    \PYGZhy{} watch:
+      \PYGZhy{} service: consul\PYGZhy{}client
+\end{Verbatim}

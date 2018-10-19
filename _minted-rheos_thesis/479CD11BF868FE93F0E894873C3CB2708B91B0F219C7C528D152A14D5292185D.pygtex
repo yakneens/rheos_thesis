@@ -1,0 +1,41 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+provider \PYGZdq{}openstack\PYGZdq{} \PYGZob{}
+	user\PYGZus{}name = \PYGZdq{}\PYGZdl{}\PYGZob{}var.user\PYGZus{}name\PYGZcb{}\PYGZdq{}
+	password = \PYGZdq{}\PYGZdl{}\PYGZob{}var.password\PYGZcb{}\PYGZdq{}
+	tenant\PYGZus{}name = \PYGZdq{}\PYGZdl{}\PYGZob{}var.tenant\PYGZus{}name\PYGZcb{}\PYGZdq{}
+	auth\PYGZus{}url = \PYGZdq{}\PYGZdl{}\PYGZob{}var.auth\PYGZus{}url\PYGZcb{}\PYGZdq{}
+\PYGZcb{}
+
+resource \PYGZdq{}openstack\PYGZus{}compute\PYGZus{}instance\PYGZus{}v2\PYGZdq{} \PYGZdq{}worker\PYGZdq{} \PYGZob{}
+  	image\PYGZus{}id = \PYGZdq{}\PYGZdl{}\PYGZob{}var.image\PYGZus{}id\PYGZcb{}\PYGZdq{}
+	flavor\PYGZus{}name = \PYGZdq{}s1.massive\PYGZdq{}
+	security\PYGZus{}groups = [\PYGZdq{}internal\PYGZdq{}]
+	name = \PYGZdq{}\PYGZdl{}\PYGZob{}concat(\PYGZdq{}worker\PYGZhy{}\PYGZdq{}, count.index)\PYGZcb{}\PYGZdq{}
+	network = \PYGZob{}
+		uuid = \PYGZdq{}\PYGZdl{}\PYGZob{}var.main\PYGZus{}network\PYGZus{}id\PYGZcb{}\PYGZdq{}
+	\PYGZcb{}
+	connection \PYGZob{}
+		user = \PYGZdq{}\PYGZdl{}\PYGZob{}var.user\PYGZcb{}\PYGZdq{}
+	 	key\PYGZus{}file = \PYGZdq{}\PYGZdl{}\PYGZob{}var.key\PYGZus{}file\PYGZcb{}\PYGZdq{}
+	 	bastion\PYGZus{}key\PYGZus{}file = \PYGZdq{}\PYGZdl{}\PYGZob{}var.bastion\PYGZus{}key\PYGZus{}file\PYGZcb{}\PYGZdq{}
+	 	bastion\PYGZus{}host = \PYGZdq{}\PYGZdl{}\PYGZob{}var.bastion\PYGZus{}host\PYGZcb{}\PYGZdq{}
+	 	bastion\PYGZus{}user = \PYGZdq{}\PYGZdl{}\PYGZob{}var.bastion\PYGZus{}user\PYGZcb{}\PYGZdq{}
+	 	agent = \PYGZdq{}true\PYGZdq{}
+	 	
+	\PYGZcb{}
+	count = \PYGZdq{}175\PYGZdq{}
+	key\PYGZus{}pair = \PYGZdq{}\PYGZdl{}\PYGZob{}var.key\PYGZus{}pair\PYGZcb{}\PYGZdq{}
+	provisioner \PYGZdq{}remote\PYGZhy{}exec\PYGZdq{} \PYGZob{}
+		inline = [
+			\PYGZdq{}sudo mv /home/centos/saltstack.repo /etc/yum.repos.d/saltstack.repo\PYGZdq{},
+			\PYGZdq{}sudo yum install salt\PYGZhy{}minion \PYGZhy{}y\PYGZdq{},
+			\PYGZdq{}sudo service salt\PYGZhy{}minion stop\PYGZdq{},
+			\PYGZdq{}echo \PYGZsq{}master: \PYGZdl{}\PYGZob{}var.salt\PYGZus{}master\PYGZus{}ip\PYGZcb{}\PYGZsq{} | sudo tee  \PYGZhy{}a /etc/salt/minion\PYGZdq{},
+			\PYGZdq{}echo \PYGZsq{}id: \PYGZdl{}\PYGZob{}concat(\PYGZdq{}worker\PYGZhy{}\PYGZdq{}, count.index)\PYGZcb{}\PYGZsq{} | sudo tee \PYGZhy{}a /etc/salt/minion\PYGZdq{},
+			\PYGZdq{}echo \PYGZsq{}roles: [worker, germline, consul\PYGZhy{}client]\PYGZsq{} | sudo tee \PYGZhy{}a /etc/salt/grains\PYGZdq{},
+			\PYGZdq{}sudo hostname \PYGZdl{}\PYGZob{}concat(\PYGZdq{}worker\PYGZhy{}\PYGZdq{}, count.index)\PYGZcb{}\PYGZdq{},
+			\PYGZdq{}sudo service salt\PYGZhy{}minion start\PYGZdq{}
+		]
+	\PYGZcb{}
+\PYGZcb{}
+\end{Verbatim}

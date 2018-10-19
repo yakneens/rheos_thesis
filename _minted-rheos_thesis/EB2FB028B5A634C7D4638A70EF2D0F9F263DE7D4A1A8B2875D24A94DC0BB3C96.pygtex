@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+lScalar+lScalarPlain}{current\PYGZus{}runs = run\PYGZus{}session.query(Configuration.config[(\PYGZdq{}sample\PYGZdq{},\PYGZdq{} sample\PYGZus{}id\PYGZdq{})].astext).\PYGZbs{}}
+        \PYG{l+lScalar+lScalarPlain}{join(AnalysisRun, AnalysisRun.config\PYGZus{}id == Configuration.config\PYGZus{}id).\PYGZbs{}}
+        \PYG{l+lScalar+lScalarPlain}{join(Analysis, Analysis.analysis\PYGZus{}id == AnalysisRun.analysis\PYGZus{}id).\PYGZbs{}}
+        \PYG{l+lScalar+lScalarPlain}{filter(and\PYGZus{}(Analysis.analysis\PYGZus{}id == analysis\PYGZus{}id, AnalysisRun.run\PYGZus{}status != tracker.model.analysis\PYGZus{}run.RUN\PYGZus{}STATUS\PYGZus{}ERROR)).all()}
+
+\PYG{l+lScalar+lScalarPlain}{available\PYGZus{}samples = sample\PYGZus{}session.query(PCAWGSample.index.label(\PYGZdq{}index\PYGZdq{}), sample\PYGZus{}id.label(\PYGZdq{}sample\PYGZus{}id\PYGZdq{}), sample\PYGZus{}location.label(\PYGZdq{}sample\PYGZus{}location\PYGZdq{})).\PYGZbs{}}
+        \PYG{l+lScalar+lScalarPlain}{join(SampleLocation, PCAWGSample.index == SampleLocation.donor\PYGZus{}index).\PYGZbs{}}
+        \PYG{l+lScalar+lScalarPlain}{filter(and\PYGZus{}(sample\PYGZus{}location != None, sample\PYGZus{}id.notin\PYGZus{}(current\PYGZus{}runs))).\PYGZbs{}}
+        \PYG{l+lScalar+lScalarPlain}{limit(num\PYGZus{}runs).all()}
+\end{Verbatim}

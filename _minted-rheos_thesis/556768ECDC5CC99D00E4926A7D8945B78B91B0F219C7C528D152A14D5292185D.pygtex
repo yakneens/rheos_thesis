@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYGZsq{}*\PYGZsq{}:
+    \PYGZhy{} consul
+    \PYGZhy{} dnsmasq
+    \PYGZhy{} collectd
+    \PYGZhy{} elastic.filebeat
+    \PYGZhy{} elastic.packetbeat
+\end{Verbatim}

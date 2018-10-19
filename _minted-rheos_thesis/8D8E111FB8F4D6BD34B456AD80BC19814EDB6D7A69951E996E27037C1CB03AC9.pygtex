@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+	\PYG{l+s+s2}{\PYGZdq{}gnos\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{l+s+s2}{\PYGZdq{}ebi\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+			\PYG{l+s+s2}{\PYGZdq{}key\PYGZus{}location\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/home/airflow/.ssh/sergei\PYGZus{}pcawg\PYGZus{}gnos\PYGZus{}icgc.pem\PYGZdq{}}
+		\PYG{p}{\PYGZcb{},}
+		\PYG{l+s+s2}{\PYGZdq{}osdc\PYGZus{}icgc\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+			\PYG{l+s+s2}{\PYGZdq{}key\PYGZus{}location\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/home/airflow/.ssh/sergei\PYGZus{}pcawg\PYGZus{}gnos\PYGZus{}icgc.pem\PYGZdq{}}
+		\PYG{p}{\PYGZcb{},}
+		\PYG{l+s+s2}{\PYGZdq{}osdc\PYGZus{}tcga\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+			\PYG{l+s+s2}{\PYGZdq{}key\PYGZus{}location\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/home/airflow/.ssh/sergei\PYGZus{}bionimbus\PYGZus{}gnos\PYGZus{}may.pem\PYGZdq{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{},}
+	\PYG{l+s+s2}{\PYGZdq{}metadata\PYGZus{}template\PYGZus{}location\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/opt/pcawg\PYGZhy{}germline/workflows/gtupload\PYGZhy{}workflow/analysis\PYGZus{}template.xml\PYGZdq{}}\PYG{p}{,}
+	\PYG{l+s+s2}{\PYGZdq{}submission\PYGZus{}base\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/shared/data/results/freebayes\PYGZus{}discovery\PYGZus{}gnos\PYGZus{}submission/\PYGZdq{}}\PYG{p}{,}
+	\PYG{l+s+s2}{\PYGZdq{}destination\PYGZus{}repo\PYGZus{}mapping\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{l+s+s2}{\PYGZdq{}ICGC\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}ebi\PYGZdq{}}\PYG{p}{,}
+		\PYG{l+s+s2}{\PYGZdq{}TCGA\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}osdc\PYGZus{}tcga\PYGZdq{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

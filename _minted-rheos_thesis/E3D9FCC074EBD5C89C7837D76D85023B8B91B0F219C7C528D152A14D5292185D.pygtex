@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+LoadPlugin cpu
+LoadPlugin disk
+LoadPlugin memory
+LoadPlugin postgresql
+LoadPlugin network
+\PYGZlt{}Plugin cpu\PYGZgt{}
+  ValuesPercentage true
+\PYGZlt{}/Plugin\PYGZgt{}
+\PYGZlt{}Plugin disk\PYGZgt{}
+  Disk \PYGZdq{}hda\PYGZdq{}
+  Disk \PYGZdq{}/\PYGZca{}vd/\PYGZdq{}
+  IgnoreSelected false
+\PYGZlt{}/Plugin\PYGZgt{}
+\PYGZlt{}Plugin postgresql\PYGZgt{}
+  \PYGZlt{}Database run\PYGZus{}tracking\PYGZgt{}
+    Host \PYGZdq{}postgresql.service.consul\PYGZdq{}
+    Port 5432
+    Query backends
+    Query transactions
+    Query queries
+    Query query\PYGZus{}plans
+    Query table\PYGZus{}states
+    Query disk\PYGZus{}io
+    Query disk\PYGZus{}usage
+  \PYGZlt{}/Database\PYGZgt{}
+\PYGZlt{}/Plugin\PYGZgt{}
+\PYGZlt{}Plugin network\PYGZgt{}
+  Server \PYGZdq{}influxdb.service.consul\PYGZdq{} \PYGZdq{}8096\PYGZdq{}
+\PYGZlt{}/Plugin\PYGZgt{}
+\end{Verbatim}

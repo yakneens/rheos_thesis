@@ -1,0 +1,36 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZob{}}
+	\PYG{l+s+s2}{\PYGZdq{}variants\PYGZus{}location\PYGZdq{}}: \PYG{o}{\PYGZob{}}
+	    \PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}1.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}2\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}2.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}3\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}3.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}4\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}4.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}5\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}5.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}6\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}6.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}7\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}7.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}8\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}8.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}9\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}8.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}10\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}10.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}11\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}11.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}12\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}12.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}13\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}13.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}14\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}14.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}15\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}15.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}16\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}16.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}17\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}17.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}18\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}18.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}19\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}19.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}20\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}20.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}21\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}21.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}22\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}22.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}X\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}X.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}},
+	    \PYG{l+s+s2}{\PYGZdq{}Y\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}Y.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}
+	\PYG{o}{\PYGZcb{}},
+	\PYG{l+s+s2}{\PYGZdq{}results\PYGZus{}base\PYGZus{}path\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/shared/data/results/regenotype\PYGZus{}freebayes\PYGZus{}discovery/\PYGZdq{}},
+	\PYG{l+s+s2}{\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}/tmp/regenotype\PYGZus{}freebayes\PYGZus{}discovery/\PYGZdq{}},
+	\PYG{l+s+s2}{\PYGZdq{}freebayes\PYGZdq{}}: \PYG{o}{\PYGZob{}}
+		\PYG{l+s+s2}{\PYGZdq{}mode\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}regenotyping\PYGZdq{}},
+		\PYG{l+s+s2}{\PYGZdq{}flags\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}l\PYGZdq{}}
+	\PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

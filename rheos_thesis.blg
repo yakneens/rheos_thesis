@@ -1,0 +1,17 @@
+[0] Config.pm:302> INFO - This is Biber 2.11
+[1] Config.pm:305> INFO - Logfile is 'rheos_thesis.blg'
+[54] biber-darwin:313> INFO - === Fri Oct 19, 2018, 11:41:48
+[83] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
+[206] Biber.pm:857> INFO - Found 129 citekeys in bib section 0
+[224] Biber.pm:3976> INFO - Processing section 0
+[236] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
+[244] bibtex.pm:1500> INFO - LaTeX decoding ...
+[602] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
+[1892] Utils.pm:193> WARN - I didn't find a database entry for 'needcitation' (section 0)
+[2056] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2056] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2056] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[2056] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[2222] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
+[2289] bbl.pm:720> INFO - Output to rheos_thesis.bbl
+[2289] Biber.pm:110> INFO - WARNINGS: 1

@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+base:
+  \PYGZsq{}*\PYGZsq{}:
+    \PYGZhy{} consul
+    \PYGZhy{} dnsmasq
+    \PYGZhy{} collectd
+  \PYGZsq{}G@roles:monitoring\PYGZhy{}server\PYGZsq{}:
+    \PYGZhy{} influxdb
+    \PYGZhy{} grafana
+  \PYGZsq{}G@roles:job\PYGZhy{}queue\PYGZsq{}:
+    \PYGZhy{} rabbitmq
+\end{Verbatim}

@@ -1,0 +1,42 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{run\PYGZus{}delly}\PYG{p}{(}\PYG{o}{**}\PYG{n}{kwargs}\PYG{p}{):}
+
+    \PYG{n}{config} \PYG{o}{=} \PYG{n}{get\PYGZus{}config}\PYG{p}{(}\PYG{n}{kwargs}\PYG{p}{)}
+    \PYG{n}{sample} \PYG{o}{=} \PYG{n}{get\PYGZus{}sample}\PYG{p}{(}\PYG{n}{kwargs}\PYG{p}{)}
+
+    \PYG{n}{sample\PYGZus{}id} \PYG{o}{=} \PYG{n}{sample}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}sample\PYGZus{}id\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{sample\PYGZus{}location} \PYG{o}{=} \PYG{n}{sample}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}sample\PYGZus{}location\PYGZdq{}}\PYG{p}{]}
+
+    \PYG{n}{result\PYGZus{}path\PYGZus{}prefix} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}}\PYG{p}{]} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}/\PYGZdq{}} \PYG{o}{+} \PYG{n}{sample\PYGZus{}id}
+
+    \PYG{k}{if} \PYG{p}{(}\PYG{o+ow}{not} \PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{isdir}\PYG{p}{(}\PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{)):}
+        \PYG{n}{logger}\PYG{o}{.}\PYG{n}{info}\PYG{p}{(}
+            \PYG{l+s+s2}{\PYGZdq{}Results directory \PYGZob{}\PYGZcb{} not present, creating.\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{))}
+        \PYG{n}{os}\PYG{o}{.}\PYG{n}{makedirs}\PYG{p}{(}\PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{)}
+
+    \PYG{n}{delly\PYGZus{}path} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}delly\PYGZdq{}}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}path\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{reference\PYGZus{}location} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}reference\PYGZus{}location\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{variants\PYGZus{}location} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}variants\PYGZus{}location\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{variants\PYGZus{}type} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}variants\PYGZus{}type\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{exclude\PYGZus{}template\PYGZus{}path} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}delly\PYGZdq{}}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}exclude\PYGZus{}template\PYGZus{}path\PYGZdq{}}\PYG{p}{]}
+
+    \PYG{n}{result\PYGZus{}filename} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZob{}\PYGZcb{}/\PYGZob{}\PYGZcb{}\PYGZus{}\PYGZob{}\PYGZcb{}.bcf\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}
+        \PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{,} \PYG{n}{sample\PYGZus{}id}\PYG{p}{,} \PYG{n}{variants\PYGZus{}type}\PYG{p}{)}
+
+    \PYG{n}{log\PYGZus{}filename} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZob{}\PYGZcb{}/\PYGZob{}\PYGZcb{}\PYGZus{}\PYGZob{}\PYGZcb{}.log\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}
+        \PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{,} \PYG{n}{sample\PYGZus{}id}\PYG{p}{,} \PYG{n}{variants\PYGZus{}type}\PYG{p}{)}
+
+    \PYG{n}{delly\PYGZus{}command} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZob{}\PYGZcb{} call \PYGZhy{}t \PYGZob{}\PYGZcb{} \PYGZhy{}g \PYGZob{}\PYGZcb{} \PYGZhy{}v \PYGZob{}\PYGZcb{} \PYGZhy{}o \PYGZob{}\PYGZcb{} \PYGZhy{}x \PYGZob{}\PYGZcb{} \PYGZob{}\PYGZcb{} \PYGZgt{} \PYGZob{}\PYGZcb{}\PYGZdq{}}\PYG{o}{.}\PYGZbs{}
+        \PYG{n}{format}\PYG{p}{(}\PYG{n}{delly\PYGZus{}path}\PYG{p}{,}
+               \PYG{n}{variants\PYGZus{}type}\PYG{p}{,}
+               \PYG{n}{reference\PYGZus{}location}\PYG{p}{,}
+               \PYG{n}{variants\PYGZus{}location}\PYG{p}{,}
+               \PYG{n}{result\PYGZus{}filename}\PYG{p}{,}
+               \PYG{n}{exclude\PYGZus{}template\PYGZus{}path}\PYG{p}{,}
+               \PYG{n}{sample\PYGZus{}location}\PYG{p}{,}
+               \PYG{n}{log\PYGZus{}filename}\PYG{p}{)}
+
+    \PYG{n}{call\PYGZus{}command}\PYG{p}{(}\PYG{n}{delly\PYGZus{}command}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}delly\PYGZdq{}}\PYG{p}{)}
+
+    \PYG{n}{copy\PYGZus{}result}\PYG{p}{(}\PYG{n}{result\PYGZus{}filename}\PYG{p}{,} \PYG{n}{sample\PYGZus{}id}\PYG{p}{,} \PYG{n}{config}\PYG{p}{)}
+\end{Verbatim}

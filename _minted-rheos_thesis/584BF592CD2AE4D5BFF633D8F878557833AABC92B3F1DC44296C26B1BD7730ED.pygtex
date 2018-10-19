@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+pcawg\PYGZhy{}germline\PYGZhy{}clone:
+  git.latest:
+    \PYGZhy{} rev: master
+    \PYGZhy{} force\PYGZus{}reset: True
+    \PYGZhy{} name: https://github.com/llevar/pcawg\PYGZhy{}germline.git
+    \PYGZhy{} target: /opt/pcawg\PYGZhy{}germline
+    \PYGZhy{} submodules: True
+
+/opt/airflow/dags:
+  file.symlink:
+    \PYGZhy{} target: /opt/pcawg\PYGZhy{}germline/workflows/
+    \PYGZhy{} user: airflow
+    \PYGZhy{} group: airflow
+    \PYGZhy{} mode: \PYG{l+m}{755}
+    \PYGZhy{} force: True
+    \PYGZhy{} makedirs: True
+
+/tmp/pcawg\PYGZhy{}germline/scripts:
+  file.symlink:
+    \PYGZhy{} target: /opt/pcawg\PYGZhy{}germline/scripts/
+    \PYGZhy{} user: root
+    \PYGZhy{} group: root
+    \PYGZhy{} mode: \PYG{l+m}{755}
+    \PYGZhy{} force: True
+    \PYGZhy{} makedirs: True
+\end{Verbatim}

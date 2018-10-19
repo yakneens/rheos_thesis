@@ -1,0 +1,70 @@
+\documentclass[12pt, twoside]{report}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage[a4paper,width=150mm, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry}
+\usepackage[english]{babel}
+\usepackage{fontspec}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{caption}
+\usepackage[backend=biber,style=numeric,hyperref=true]{biblatex}
+\usepackage{hyperref}
+\addbibresource{rheos_references.bib}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{1em}
+\graphicspath{ {images/} }
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{Rheos}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{\ifnum\value{chapter}>0 Chapter \thechapter\fi}
+\fancyfoot[CO,RE]{Sergei Yakneen}
+\usepackage{color}
+\usepackage{tabu}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[toc]{appendix}
+\renewcommand{\appendixname}{Appendix}
+\renewcommand{\appendixtocname}{Appendix}
+
+\title{
+	{Modern systems for large-scale genomics data processing in the cloud}\\
+}
+\author{Sergei Yakneen\\ EMBL\\ Meyerhofstrasowse 1,\\ 69117 Heidelberg, Germany}
+\date{19/07/2016}
+
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\chapter{Introduction} \label{ch:introduction}
+\input{chapters/introduction}
+
+\chapter{Background and Related Work} \label{ch:background}
+\input{chapters/background}
+	 
+\chapter{The Butler Framework - Requirements and Architecture} \label{ch:butler_architecture}
+\input{chapters/butler_architecture}
+
+\chapter{The Butler Framework - Implementation and Experimental Validation} \label{ch:butler_implementation}
+\input{chapters/butler_implementation}
+
+\chapter{The Rheos Framework} \label{ch:rheos_framework}
+\input{chapters/rheos_framework}
+
+\chapter{Discussion and Conclusion} \label{ch:conclusion}
+\input{chapters/conclusion}
+
+\label{ch:appendices}
+\input{chapters/appendices}
+
+\printbibliography
+
+\end{document}

@@ -1,0 +1,36 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+	\PYG{n+nt}{\PYGZdq{}variants\PYGZus{}location\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+	    \PYG{n+nt}{\PYGZdq{}1\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}1.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}2.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}3\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}3.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}4\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}4.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}5\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}5.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}6\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}6.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}7\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}7.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}8\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}8.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}9\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}8.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}10\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}10.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}11\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}11.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}12\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}12.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}13\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}13.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}14\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}14.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}15\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}15.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}16\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}16.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}17\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}17.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}18\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}18.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}19\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}19.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}20\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}20.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}21\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}21.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}22\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}22.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}X\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}X.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	    \PYG{n+nt}{\PYGZdq{}Y\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/freebayes.chr\PYGZus{}Y.sites.snv\PYGZus{}indel.annot.final.vcf.gz\PYGZdq{}}
+	\PYG{p}{\PYGZcb{},}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}base\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/shared/data/results/regenotype\PYGZus{}freebayes\PYGZus{}discovery/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/tmp/regenotype\PYGZus{}freebayes\PYGZus{}discovery/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}freebayes\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}mode\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}regenotyping\PYGZdq{}}\PYG{p}{,}
+		\PYG{n+nt}{\PYGZdq{}flags\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}l\PYGZdq{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

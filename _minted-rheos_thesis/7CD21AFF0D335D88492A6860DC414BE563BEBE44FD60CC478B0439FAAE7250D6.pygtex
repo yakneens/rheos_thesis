@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+	\PYG{n+nt}{\PYGZdq{}gnos\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}ebi\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+			\PYG{n+nt}{\PYGZdq{}url\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}https://gtrepo\PYGZhy{}ebi.annailabs.com\PYGZdq{}}
+		\PYG{p}{\PYGZcb{},}
+		\PYG{n+nt}{\PYGZdq{}osdc\PYGZus{}icgc\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+			\PYG{n+nt}{\PYGZdq{}url\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}https://gtrepo\PYGZhy{}osdc\PYGZhy{}icgc.annailabs.com\PYGZdq{}}
+		\PYG{p}{\PYGZcb{},}
+		\PYG{n+nt}{\PYGZdq{}osdc\PYGZus{}tcga\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+			\PYG{n+nt}{\PYGZdq{}url\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}https://gtrepo\PYGZhy{}osdc\PYGZhy{}tcga.annailabs.com\PYGZdq{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{},}
+	\PYG{n+nt}{\PYGZdq{}rsync\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}flags\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}a \PYGZhy{}v \PYGZhy{}\PYGZhy{}remove\PYGZhy{}source\PYGZhy{}files\PYGZdq{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

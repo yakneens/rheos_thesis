@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+	\PYG{n+nt}{\PYGZdq{}variants\PYGZus{}location\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/delly\PYGZus{}deletion\PYGZus{}sites/del.sites.bcf\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}base\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/shared/data/results/delly\PYGZus{}germline\PYGZus{}deletions\PYGZus{}14\PYGZus{}07\PYGZus{}2016/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/tmp/delly\PYGZus{}germline\PYGZus{}deletions/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}variants\PYGZus{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}DEL\PYGZdq{}}
+	
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

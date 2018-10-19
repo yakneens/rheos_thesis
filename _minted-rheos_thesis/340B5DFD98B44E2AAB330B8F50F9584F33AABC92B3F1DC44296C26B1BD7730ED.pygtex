@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{[}collectd\PYG{o}{]}
+  \PYG{n+nv}{enabled} \PYG{o}{=} \PYG{n+nb}{true}
+  bind\PYGZhy{}address \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}:8096\PYGZdq{}}
+  \PYG{n+nv}{database} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}metrics\PYGZdq{}}
+  retention\PYGZhy{}policy \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}
+  batch\PYGZhy{}size \PYG{o}{=} \PYG{l+m}{5000}
+  batch\PYGZhy{}pending \PYG{o}{=} \PYG{l+m}{10}
+  batch\PYGZhy{}timeout \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}10s\PYGZdq{}}
+  read\PYGZhy{}buffer \PYG{o}{=} \PYG{l+m}{0}
+  \PYG{n+nv}{typesdb} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}/usr/share/collectd/types.db\PYGZdq{}}
+\end{Verbatim}

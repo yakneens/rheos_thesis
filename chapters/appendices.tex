@@ -1,0 +1,623 @@
+\begin{appendices}
+\chapter{Code Listings}
+\captionof{listing} {Terraform configuration of a worker VM \label{lst:terraform_worker}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{text}
+provider "openstack" {
+	user_name = "${var.user_name}"
+	password = "${var.password}"
+	tenant_name = "${var.tenant_name}"
+	auth_url = "${var.auth_url}"
+}
+
+resource "openstack_compute_instance_v2" "worker" {
+  	image_id = "${var.image_id}"
+	flavor_name = "s1.massive"
+	security_groups = ["internal"]
+	name = "${concat("worker-", count.index)}"
+	network = {
+		uuid = "${var.main_network_id}"
+	}
+	connection {
+		user = "${var.user}"
+	 	key_file = "${var.key_file}"
+	 	bastion_key_file = "${var.bastion_key_file}"
+	 	bastion_host = "${var.bastion_host}"
+	 	bastion_user = "${var.bastion_user}"
+	 	agent = "true"
+	 	
+	}
+	count = "175"
+	key_pair = "${var.key_pair}"
+	provisioner "remote-exec" {
+		inline = [
+			"sudo mv /home/centos/saltstack.repo /etc/yum.repos.d/saltstack.repo",
+			"sudo yum install salt-minion -y",
+			"sudo service salt-minion stop",
+			"echo 'master: ${var.salt_master_ip}' | sudo tee  -a /etc/salt/minion",
+			"echo 'id: ${concat("worker-", count.index)}' | sudo tee -a /etc/salt/minion",
+			"echo 'roles: [worker, germline, consul-client]' | sudo tee -a /etc/salt/grains",
+			"sudo hostname ${concat("worker-", count.index)}",
+			"sudo service salt-minion start"
+		]
+	}
+}
+\end{minted}
+
+\captionof{listing} {Terraform configuration of a security group \label{lst:terraform_security_group}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{text}
+resource "openstack_compute_secgroup_v2" "internal" {
+	name = "internal"
+	description = "Allows communication between instances"
+	#SSH
+	rule {
+		from_port = 22
+		to_port = 22
+		ip_protocol = "tcp"
+		self = "true"
+	}
+	#Saltstack
+	rule {
+		from_port = 4505
+		to_port = 4506
+		ip_protocol = "tcp"
+		self = "true"
+	}
+}
+\end{minted}
+
+\captionof{listing} {Salt Pillar for specifying test data location. \label{lst:salt_pillar_test_data}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{yaml}
+test_data_sample_path: /shared/data/samples
+
+test_data_base_url: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/
+
+test_samples:
+  NA12874:
+    -
+      - NA12874.chrom11.ILLUMINA.bwa.CEU.low_coverage.20130415.bam
+      - 88a7a346f0db1d3c14e0a300523d0243
+    -
+      - NA12874.chrom11.ILLUMINA.bwa.CEU.low_coverage.20130415.bam.bai
+      - e61c0668bbaacdea2c66833f9e312bbb
+\end{minted}
+
+\captionof{listing} {Using Salt Mine to look up a server's IP Address. \label{lst:salt_mine}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{text}
+consul-client:
+  service.running:
+    - enable: True
+    - watch:
+      - file: /etc/opt/consul.d/*    
+{%- set servers = salt['mine.get']('roles:(consul-server|consul-bootstrap)', 'network.ip_addrs', 'grain_pcre').values() %}
+{%- set node_ip = salt['grains.get']('ip4_interfaces')['eth0'] %}
+# Create a list of servers that can be used to join the cluster
+{%- set join_server = [] %}
+{%- for server in servers if server[0] != node_ip %}
+{% do join_server.append(server[0]) %}
+{%- endfor %}
+join-cluster:
+  cmd.run:
+    - name: consul join {{ join_server[0] }}
+    - watch:
+      - service: consul-client
+\end{minted}
+
+\captionof{listing} {Using Top File to map States to Roles. \label{lst:salt_top_file}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{yaml}
+base:
+  '*':
+    - consul
+    - dnsmasq
+    - collectd
+  'G@roles:monitoring-server':
+    - influxdb
+    - grafana 
+  'G@roles:job-queue':
+    - rabbitmq
+\end{minted}
+
+\captionof{listing} {Collectd configuration for metrics collection. \label{lst:collectd_config}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{text} 
+LoadPlugin cpu
+LoadPlugin disk
+LoadPlugin memory
+LoadPlugin postgresql
+LoadPlugin network
+<Plugin cpu>
+  ValuesPercentage true
+</Plugin>
+<Plugin disk>
+  Disk "hda"
+  Disk "/^vd/"
+  IgnoreSelected false
+</Plugin>
+<Plugin postgresql>
+  <Database run_tracking>
+    Host "postgresql.service.consul"
+    Port 5432
+    Query backends
+    Query transactions
+    Query queries
+    Query query_plans
+    Query table_states
+    Query disk_io
+    Query disk_usage
+  </Database>
+</Plugin>
+<Plugin network>
+  Server "influxdb.service.consul" "8096"
+</Plugin>
+\end{minted}
+
+\captionof{listing} {Filebeat Prospector configuration. \label{lst:filebeat_prospectors}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{yaml}
+filebeat:
+  # List of prospectors to fetch data.
+  prospectors:
+    -
+      paths:
+        - /var/log/airflow/*/*
+      document_type: airflow
+    - 
+      paths:
+        - /var/log/messages
+      document_type: syslog
+    -
+      paths:
+        - /var/lib/pgsql/9.4/data/pg_log/*.log
+      document_type: postgres  
+   -
+      paths:
+        - /var/log/*.log
+\end{minted}
+
+\captionof{listing} {Consul service definition for PostgreSQL. \label{lst:consul_postgres_service}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{json}
+{
+	"service": {
+		"name": "Postgresql", 
+		"tags": ["postgresql"], 
+		"port": 5432}
+}
+\end{minted}
+\captionof{listing}{Source code for the freebayes workflow.\label{lst:freebayes_workflow}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{python}
+from airflow import DAG
+from airflow.operators import BashOperator, PythonOperator
+from datetime import datetime, timedelta
+
+import os
+import logging
+from subprocess import call
+
+import tracker.model
+from tracker.model.analysis_run import *
+from tracker.util.workflow_common import *
+
+
+def run_freebayes(**kwargs):
+
+    config = get_config(kwargs)
+    logger.debug("Config - {}".format(config))
+    
+    sample = get_sample(kwargs)
+
+    contig_name = kwargs["contig_name"]
+    contig_whitelist = config.get("contig_whitelist")
+    
+    
+    if not contig_whitelist or contig_name in contig_whitelist:
+
+        sample_id = sample["sample_id"]
+        sample_location = sample["sample_location"]
+
+        result_path_prefix = config["results_local_path"] + "/" + sample_id
+
+        if (not os.path.isdir(result_path_prefix)):
+            logger.info(
+                "Results directory {} not present, creating.".format(result_path_prefix))
+            os.makedirs(result_path_prefix)
+
+        result_filename = "{}/{}_{}.vcf".format(
+            result_path_prefix, sample_id, contig_name)
+
+        freebayes_path = config["freebayes"]["path"]
+        freebayes_mode = config["freebayes"]["mode"]
+        freebayes_flags = config["freebayes"]["flags"]
+        
+        reference_location = config["reference_location"]
+        
+        if freebayes_flags == None:
+            freebayes_flags = ""
+        
+        if freebayes_mode == "discovery":
+            freebayes_command = "{} -r {} -f {} {} {} > {}".\
+                format(freebayes_path,
+                       contig_name,
+                       reference_location,
+                       freebayes_flags,
+                       sample_location,
+                       result_filename)
+        elif freebayes_mode == "regenotyping":
+            variants_location = config["variants_location"]
+
+            freebayes_command = "{} -r {} -f {} -@ {} {} {} > {}".\
+                format(freebayes_path,
+                       contig_name,
+                       reference_location,
+                       variants_location[contig_name],
+                       freebayes_flags,
+                       sample_location,
+                       result_filename)
+        else:
+             raise ValueError("Unknown or missing freebayes_mode - {}".format(freebayes_mode))   
+
+        call_command(freebayes_command, "freebayes")
+
+        compressed_sample_filename = compress_sample(result_filename, config)
+        generate_tabix(compressed_sample_filename, config)
+        copy_result(compressed_sample_filename, sample_id, config)
+    else:
+        logger.info(
+            "Contig {} is not in the contig whitelist, skipping.".format(contig_name))
+
+
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime.datetime(2020, 01, 01),
+    'email': ['airflow@airflow.com'],
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
+
+dag = DAG("freebayes", default_args=default_args,
+          schedule_interval=None, concurrency=10000, max_active_runs=2000)
+
+
+start_analysis_run_task = PythonOperator(
+    task_id="start_analysis_run",
+    python_callable=start_analysis_run,
+    provide_context=True,
+    dag=dag)
+
+
+validate_sample_task = PythonOperator(
+    task_id="validate_sample",
+    python_callable=validate_sample,
+    provide_context=True,
+    dag=dag)
+
+validate_sample_task.set_upstream(start_analysis_run_task)
+
+complete_analysis_run_task = PythonOperator(
+    task_id="complete_analysis_run",
+    python_callable=complete_analysis_run,
+    provide_context=True,
+    dag=dag)
+
+for contig_name in tracker.util.workflow_common.CONTIG_NAMES:
+    freebayes_task = PythonOperator(
+        task_id="freebayes_" + contig_name,
+        python_callable=run_freebayes,
+        op_kwargs={"contig_name": contig_name},
+        provide_context=True,
+        dag=dag)
+
+    freebayes_task.set_upstream(validate_sample_task)
+
+    complete_analysis_run_task.set_upstream(freebayes_task)
+\end{minted}
+
+\captionof{listing}{Saltstack state for workflow deployment.\label{lst:workflow_deployment}}
+\begin{minted}
+[
+breaklines=true,
+fontsize=\footnotesize,
+linenos,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{yaml}
+pcawg-germline-clone:
+  git.latest:
+    - rev: master
+    - force_reset: True
+    - name: https://github.com/llevar/pcawg-germline.git
+    - target: /opt/pcawg-germline
+    - submodules: True
+    
+/opt/airflow/dags:
+  file.symlink:
+    - target: /opt/pcawg-germline/workflows/
+    - user: airflow
+    - group: airflow
+    - mode: 755
+    - force: True
+    - makedirs: True
+ 
+/tmp/pcawg-germline/scripts:
+  file.symlink:
+    - target: /opt/pcawg-germline/scripts/
+    - user: root
+    - group: root
+    - mode: 755
+    - force: True
+    - makedirs: True
+\end{minted}
+
+\captionof{listing}{Butler Analysis configuration for SNP genotyping.\label{lst:genotyping_analysis}}
+\begin{minted}
+[
+breaklines=true,
+breakanywhere=true,
+fontsize=\footnotesize,
+linenos,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{json}
+{
+	"variants_location": {
+	    "1": "/freebayes.chr_1.sites.snv_indel.annot.final.vcf.gz",
+	    "2": "/freebayes.chr_2.sites.snv_indel.annot.final.vcf.gz",
+	    "3": "/freebayes.chr_3.sites.snv_indel.annot.final.vcf.gz",
+	    "4": "/freebayes.chr_4.sites.snv_indel.annot.final.vcf.gz",
+	    "5": "/freebayes.chr_5.sites.snv_indel.annot.final.vcf.gz",
+	    "6": "/freebayes.chr_6.sites.snv_indel.annot.final.vcf.gz",
+	    "7": "/freebayes.chr_7.sites.snv_indel.annot.final.vcf.gz",
+	    "8": "/freebayes.chr_8.sites.snv_indel.annot.final.vcf.gz",
+	    "9": "/freebayes.chr_8.sites.snv_indel.annot.final.vcf.gz",
+	    "10": "/freebayes.chr_10.sites.snv_indel.annot.final.vcf.gz",
+	    "11": "/freebayes.chr_11.sites.snv_indel.annot.final.vcf.gz",
+	    "12": "/freebayes.chr_12.sites.snv_indel.annot.final.vcf.gz",
+	    "13": "/freebayes.chr_13.sites.snv_indel.annot.final.vcf.gz",
+	    "14": "/freebayes.chr_14.sites.snv_indel.annot.final.vcf.gz",
+	    "15": "/freebayes.chr_15.sites.snv_indel.annot.final.vcf.gz",
+	    "16": "/freebayes.chr_16.sites.snv_indel.annot.final.vcf.gz",
+	    "17": "/freebayes.chr_17.sites.snv_indel.annot.final.vcf.gz",
+	    "18": "/freebayes.chr_18.sites.snv_indel.annot.final.vcf.gz",
+	    "19": "/freebayes.chr_19.sites.snv_indel.annot.final.vcf.gz",
+	    "20": "/freebayes.chr_20.sites.snv_indel.annot.final.vcf.gz",
+	    "21": "/freebayes.chr_21.sites.snv_indel.annot.final.vcf.gz",
+	    "22": "/freebayes.chr_22.sites.snv_indel.annot.final.vcf.gz",
+	    "X": "/freebayes.chr_X.sites.snv_indel.annot.final.vcf.gz",
+	    "Y": "/freebayes.chr_Y.sites.snv_indel.annot.final.vcf.gz"
+	},
+	"results_base_path": "/shared/data/results/regenotype_freebayes_discovery/",
+	"results_local_path": "/tmp/regenotype_freebayes_discovery/",
+	"freebayes": {
+		"mode": "regenotyping",
+		"flags": "-l"
+	}
+}
+\end{minted}
+
+
+\captionof{listing}{Butler Workflow configuration for Data Submission.\label{lst:gtupload_workflow}}
+\begin{minted}
+[
+breaklines=true,
+breakanywhere=true,
+fontsize=\footnotesize,
+linenos,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{json}
+{
+	"gnos": {
+		"ebi": {
+			"url": "https://gtrepo-ebi.annailabs.com"
+		},
+		"osdc_icgc": {
+			"url": "https://gtrepo-osdc-icgc.annailabs.com"
+		},
+		"osdc_tcga": {
+			"url": "https://gtrepo-osdc-tcga.annailabs.com"
+		}
+	},
+	"rsync": {
+		"flags": "-a -v --remove-source-files"
+	}
+}
+
+\end{minted}
+
+\captionof{listing}{Butler Analysis configuration for Data Submission.\label{lst:gtupload_analysis}}
+\begin{minted}
+[
+breaklines=true,
+breakanywhere=true,
+fontsize=\footnotesize,
+linenos,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{json}
+{
+	"gnos": {
+		"ebi": {
+			"key_location": "/home/airflow/.ssh/sergei_pcawg_gnos_icgc.pem"
+		},
+		"osdc_icgc": {
+			"key_location": "/home/airflow/.ssh/sergei_pcawg_gnos_icgc.pem"
+		},
+		"osdc_tcga": {
+			"key_location": "/home/airflow/.ssh/sergei_bionimbus_gnos_may.pem"
+		}
+	},
+	"metadata_template_location": "/opt/pcawg-germline/workflows/gtupload-workflow/analysis_template.xml",
+	"submission_base_path": "/shared/data/results/freebayes_discovery_gnos_submission/",
+	"destination_repo_mapping": {
+		"ICGC": "ebi",
+		"TCGA": "osdc_tcga"
+	}
+}
+\end{minted}
+
+\captionof{listing}{Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\label{lst:run_delly}}
+\begin{minted}
+[
+breaklines=true,
+breakanywhere=true,
+fontsize=\footnotesize,
+linenos,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{python}
+def run_delly(**kwargs):
+
+    config = get_config(kwargs)
+    sample = get_sample(kwargs)
+
+    sample_id = sample["sample_id"]
+    sample_location = sample["sample_location"]
+
+    result_path_prefix = config["results_local_path"] + "/" + sample_id
+
+    if (not os.path.isdir(result_path_prefix)):
+        logger.info(
+            "Results directory {} not present, creating.".format(result_path_prefix))
+        os.makedirs(result_path_prefix)
+
+    delly_path = config["delly"]["path"]
+    reference_location = config["reference_location"]
+    variants_location = config["variants_location"]
+    variants_type = config["variants_type"]
+    exclude_template_path = config["delly"]["exclude_template_path"]
+
+    result_filename = "{}/{}_{}.bcf".format(
+        result_path_prefix, sample_id, variants_type)
+    
+    log_filename = "{}/{}_{}.log".format(
+        result_path_prefix, sample_id, variants_type)
+
+    delly_command = "{} call -t {} -g {} -v {} -o {} -x {} {} > {}".\
+        format(delly_path,
+               variants_type,
+               reference_location,
+               variants_location,
+               result_filename,
+               exclude_template_path,
+               sample_location,
+               log_filename)
+
+    call_command(delly_command, "delly")
+
+    copy_result(result_filename, sample_id, config)
+\end{minted}
+
+\captionof{listing}{Butler Delly Workflow analysis configuration to genotype deletions.\label{lst:run_delly}}
+\begin{minted}
+[
+breaklines=true,
+breakanywhere=true,
+fontsize=\footnotesize,
+linenos,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{json}
+{
+	"variants_location": "/delly_deletion_sites/del.sites.bcf",
+	"results_base_path": "/shared/data/results/delly_germline_deletions_14_07_2016/",
+	"results_local_path": "/tmp/delly_germline_deletions/",
+	"variants_type": "DEL"
+	
+}
+\end{minted}
+
+
+
+\end{appendices}

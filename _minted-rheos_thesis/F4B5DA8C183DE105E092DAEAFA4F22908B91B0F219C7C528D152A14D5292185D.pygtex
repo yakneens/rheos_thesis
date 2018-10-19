@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+resource \PYGZdq{}openstack\PYGZus{}compute\PYGZus{}secgroup\PYGZus{}v2\PYGZdq{} \PYGZdq{}internal\PYGZdq{} \PYGZob{}
+	name = \PYGZdq{}internal\PYGZdq{}
+	description = \PYGZdq{}Allows communication between instances\PYGZdq{}
+	\PYGZsh{}SSH
+	rule \PYGZob{}
+		from\PYGZus{}port = 22
+		to\PYGZus{}port = 22
+		ip\PYGZus{}protocol = \PYGZdq{}tcp\PYGZdq{}
+		self = \PYGZdq{}true\PYGZdq{}
+	\PYGZcb{}
+	\PYGZsh{}Saltstack
+	rule \PYGZob{}
+		from\PYGZus{}port = 4505
+		to\PYGZus{}port = 4506
+		ip\PYGZus{}protocol = \PYGZdq{}tcp\PYGZdq{}
+		self = \PYGZdq{}true\PYGZdq{}
+	\PYGZcb{}
+\PYGZcb{}
+\end{Verbatim}

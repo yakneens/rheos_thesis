@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZob{}}
+	\PYG{l+s+s2}{\PYGZdq{}service\PYGZdq{}}: \PYG{o}{\PYGZob{}}
+		\PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}: \PYG{l+s+s2}{\PYGZdq{}Postgresql\PYGZdq{}},
+		\PYG{l+s+s2}{\PYGZdq{}tags\PYGZdq{}}: \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}postgresql\PYGZdq{}}\PYG{o}{]},
+		\PYG{l+s+s2}{\PYGZdq{}port\PYGZdq{}}: \PYG{l+m}{5432}\PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}
