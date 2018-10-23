@@ -299,6 +299,7 @@ Based on examining the typical sources of errors at various layers of the system
 \item System Monitoring
 \item Management Interfaces
 \item Log Files
+\item Self-Healing
 \end{itemize}
 
 \subsubsection {System Monitoring}
@@ -356,6 +357,20 @@ As is evident from previous sections that describe possible sources of errors in
 In order to make the log data usable to the system operator it is required to harvest and aggregate all relevant logs from each VM that is part of the compute cluster. Since a VM may become unresponsive due to an error condition and the information on this condition may reside in a log file, it is necessary to run an agent on all VMs that will periodically ship the logs to another location for aggregation. The storage location for logs should have substantial capacity, as a large scale cloud computing cluster can generate many TB of logs per day.
 
 The logs need to be parsed according to their format and information relevant to any conditions of interest should be extracted, along with necessary metadata, such as the host IP address and timestamp. The parsed output should then be aggregated by error condition to produce summary, as well as detailed, reports to present to the user in the form of dashboards. Parsed log information should be indexed and retained for further querying when a user decides to investigate a particular issue they discovered via the dashboard.
+
+\subsubsection{Self-Healing}
+\label{sec:self_healing_req}
+Although comprehensive monitoring capabilities make it easier for humans to identify when and where error conditions occur, the cost of the human intervention required to interpret and act upon the monitoring data scales with the number of VMs employed on a project and can thus constitute a large component of a project's operating costs. In order to mitigate these costs and allow the efficient operation of large virtual clusters with minimal human intervention it is desirable to have a level of automation within the error detection and remediation systems such that adverse conditions that affect the cluster can be automatically detected and resolved by the system only alerting the human operator when automated action is impossible or fruitless.
+
+The self-healing capabilities of the system should thus include the ability for the user to define a set of rules that specify normal and exceptional operating conditions of the system with respect to a predefined set of metrics such that issues can be identified in an automated fashion. This functionality should exist at multiple levels of granularity to facilitate the detection of a variety of issues, such as:
+
+\begin{description}
+    \item [Infrastructure issues] - Issues that affect the underlying VMs and can be detected via low level metrics related to high CPU utilization, memory, network bandwidth consumption, etc.
+    \item [Supporting Services issues] - Issues that affect the services of the framework itself, such as databases, queues, etc., detected via metrics on the individual services.
+    \item [Payload issues] - Issues that affect actual scientific payloads that are being executed and signal defects within the algorithms that are being executed. These require instrumentation of specific metrics for each type of algorithm that is being run in order to capture the requisite performance details.    
+\end{description}
+
+A mechanism should exist that can perform corrective actions in an automated fashion when monitoring rule conditions are breached. This mechanism should be capable of facilitating a variety of repair tasks, such as rebalancing work onto different hosts, restarting failed services, adding hard-drive space, or destroying and rebuilding entire VMs. When automated remedial action is not possible or does not succeed the system should be able to notify human operators in a proactive manner.
 
 \section{Non-functional Requirements} \label{sec:non_functional_requirements}
 
@@ -735,7 +750,7 @@ The provider definition shows the procedure for setting up an OpenStack provider
 The resource section shows definition of an OpenStack specific VM type \mintinline{text}{openstack_compute_instance_v2}, which has attributes like 
 \mintinline{text}{image_id, flavor_name, security_groups, network}, etc. The  \mintinline{text}{connection} definition within the resource specifies how users will be able to connect to the newly created VMs. In this case it is accomplished via SSH using passwordless key-based authentication via a pass-through bastion host on the cloud.
 
-Of further interest is the mechanism by which the creation of multiple instances of the same type is accomplished. The resource definition admits a \mintinline{text}{count} attribute which specifies how many instances need to be created. Furthermore, a \mintinline{text}{count.index} property keeps track of which instance is being created at run-time and can be used to provide unique hostnames to each instance as follows -   \mintinline{text}{name = "${concat("worker-", count.index)}"}.
+Of further interest is the mechanism by which the creation of multiple instances of the same type is accomplished. The resource definition admits a \mintinline{text}{count} attribute which specifies how many instances need to be created. Furthermore, a \mintinline{text}{count.index} property keeps track of which instance is being created at run-time and can be used to provide unique hostnames to each instance as follows -   \mintinline{text}{name = "\${concat("worker-", count.index)}"}.
 
 Lastly, the \mintinline{text}{provisioner} section runs a set of commands that provide initial configuration for the new host upon first bootup. These include installing and running the Saltstack service which is used for configuration management, setting up machine roles  that determine what capabilities this VM will have in the cluster, and telling the VM what the IP address of the cluster manager is.
 
@@ -1432,7 +1447,7 @@ When the user clicks on a particular task instance within the workflow execution
 
 Managing large fleets of Virtual Machines as they perform data analysis at scale across multiple cloud computing environments is a major challenge due to the sheer number of possible scenarios that could lead to the system crashing, stalling, or otherwise falling out of control, with the negative impact on the end user in terms of project costs and timeline increasing with the scale of the computation being undertaken. The tools available to the user to detect and deal with these issues thus form a key component of a comprehensive analysis framework and set Butler apart from other frameworks in this space.
 
-In general, the Operational Management tools fall into two categories, those that collect observations about the state of each component in the system at runtime, and those that aggregate this data and present it to the user in the form of queryable databases and management reports. Furthermore, as specified in the requirements of Section \ref{sec:troubleshooting} we delineate two major sources of data that is indicative of system state - System Metrics, and Server Logs. While metrics provide more of a coarse-grained view of the overall health of a particular Virtual Machine, server logs can give much more of a fine-grained view of the underlying system at an application level, and down to individual lines of code that are running at any given time. Butler has dedicated components for the collection and management of these data sets and we describe these next.
+In general, the Operational Management tools fall into three categories, those that collect observations about the state of each component in the system at runtime, those that aggregate this data and present it to the user in the form of queryable databases and management reports, and those that take automated remedial steps to resolve identified issues. Furthermore, as specified in the requirements of Section \ref{sec:troubleshooting} we delineate two major sources of data that is indicative of system state - System Metrics, and Server Logs. While metrics provide more of a coarse-grained view of the overall health of a particular Virtual Machine, server logs can give much more of a fine-grained view of the underlying system at an application level, and down to individual lines of code that are running at any given time. Butler has dedicated components for the collection and management of these data sets and we describe these next.
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{monitoring_server}
@@ -1445,9 +1460,9 @@ In general, the Operational Management tools fall into two categories, those tha
 
 The overall health of any VM in a cloud computing cluster can be evaluated and ascertained with respect to a set of key metrics that are observable at runtime. Some metrics are general enough that they apply to all Virtual Machines, these include measurements of CPU utilization, RAM, Disk, and Network usage. Other metrics are more specific to the role that the VM is playing within the cluster. A Database Server will benefit from having the number of open DB connections, transaction rate, rollback rate, and average query runtime monitored. Other entities such as Web Servers and Queues have their own unique metrics of interest.
 
-Each VM runs a metric collection daemon called \mintinline{shell}{collectd} which is an Open Source package that is able to make periodic measurements of a large number of system metrics and ship them off to a centralized Metrics Store. The definition for which metrics are collected is specified in a special configuration file. An example of such configuration is demonstrated in Listing \ref{lst:collectd_config}. This listing provides examples of the setup for generic metrics like CPU, and memory, as well as for more special metrics, like those collected for PostgreSQL databases.
+Each VM runs a metric collection daemon called \mintinline{shell}{telegraf}\autocite{telegraf} which is an Open Source package that is able to make periodic measurements of a large number of system metrics and ship them off to a centralized Metrics Store. The definition for which metrics are collected is specified in a special configuration file. An example of such configuration is demonstrated in Listing \ref{lst:telegraf_config}. This listing provides examples of the setup for generic metrics like CPU, and memory, as well as for more special metrics, like those collected for PostgreSQL databases.
 
-Because we are interested in observing not only the metrics as they are measured in the present, but also the dynamics of how metric values change over time, we need a mechanism for persisting the metrics values. For this purpose the Monitoring Server component of Butler ships with an instance of a database product called InfluxDB\autocite{InfluxDB} which is an Open Source database system that is optimized for recording time series data. The configuration for the \mintinline{shell}{network} plugin in Listing \ref{lst:collectd_config} demonstrates how InfluxDB server URL is provided to CollectD to enable metrics persistence in this centralized data store.
+Because we are interested in observing not only the metrics as they are measured in the present, but also the dynamics of how metric values change over time, we need a mechanism for persisting the metrics values. For this purpose the Monitoring Server component of Butler ships with an instance of a database product called InfluxDB\autocite{InfluxDB} which is an Open Source database system that is optimized for recording time series data. The configuration for the \mintinline{shell}{influxdb} output plugin in Listing \ref{lst:telegraf_config} demonstrates how InfluxDB server URL is provided to Telegraf to enable metrics persistence in this centralized data store.
 
 InfluxDB is a scalable database system that can operate in a distributed manner as a Raft\autocite{ongaro2014search} cluster. Data is written into shards based on a data retention policy. The underlying engine stores the data as a Time-Structured Merge Tree (TSM) which is a customization of the Log-Structured Merge-Tree\autocite{o1996log} data structure. To the end user the data is organized as a collection of \mintinline{shell}{points}. Each point has a \mintinline{shell}{timestamp}, belongs to a \mintinline{shell}{measurement}, and records a set of \mintinline{shell}{tag_values} that correspond to a set of \mintinline{shell}{tag_keys}. A particular \mintinline{shell}{measurement} coupled with a retention policy then forms a \mintinline{shell}{series}.
 
@@ -1477,31 +1492,6 @@ The actual \mintinline{shell}{points} corresponding to this combination of \mint
 \end{figure}
 
 As can be seen in Figure \ref{fig:influxdb_example_query}, data is queried via an SQL-like dialect which is accessible via a Web UI or via a REST\autocite[Chapter~5]{fielding2000architectural} API.
-
-InfluxDB supports direct ingestion of collectd metrics data via a collectd connector which is configured in the InfluxDB configuration file.
-
-\captionof{listing} {InfluxDB collectd connector configiuration. \label{lst:influxdb_config}}
-\begin{minted}
-[
-breaklines=true,
-linenos,
-fontsize=\footnotesize,
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2
-]
-{yaml} 
-[collectd]
-  enabled = true
-  bind-address = ":8096"
-  database = "metrics"
-  retention-policy = ""
-  batch-size = 5000
-  batch-pending = 10
-  batch-timeout = "10s"
-  read-buffer = 0
-  typesdb = "/usr/share/collectd/types.db"
-\end{minted}
 
 \subsection{Monitoring Visualization}
 
@@ -1601,6 +1591,20 @@ Just as it is difficult to grasp and analyze performance metrics due to the numb
 \label{fig:kibana_pgsql_dashboard}
 \end{figure}
  
+\subsection{Self-Healing}
+\label{sec:self_healing}
+
+The self-healing system within Butler builds on top of the metrics collection system to fulfill requirements specified in Section \ref{sec:self_healing_req} of the requirements. Specifically, it aims to provide a comprehensive set of tools for detecting operational anomalies at multiple levels of the system and taking automated remedial steps to fix these anomalies in order to minimize their effects. Figure \ref{fig:butler_self_healing} demonstrates the components of this system.
+
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{butler_self_healing}
+    \centering
+    \caption {The Butler self-healing system.}
+    \label{fig:butler_self_healing}
+\end{figure}
+
+
+
 \subsection{Service Discovery} 
 \label{sec:design_consul}
 

@@ -78,7 +78,7 @@ Figure \ref{fig:embassy_butler_deployment_architecture} provides a diagrammatic 
 
 The cluster is bootstrapped via the salt-master VM. This VM is started first whenever the cluster needs to be recreated from scratch. The salt-master is started with a minimal OS image for speed and all of the other configurations are delivered via Saltstack itself. The IP of the salt-master machine is retained so that it can be passed on to the other VMs upon creation so that they know how to connect to the master when they boot up. The salt-master VM plays two other roles (Table \ref{tab:embassy_deployment}) in this deployment in order to maximize resource utilization (since Saltstack is a light resource consumer) - consul-bootstrap, and monitoring-server. The consul-bootstrap role conveys the responsibility for starting up the Consul Service Discovery mechanism to the salt-master. When set up in bootstrap mode, consul waits for one more consul server to join the cluster, before quorum is reached and the cluster becomes fully operational. The monitoring-server role is responsible for installing and configuring InfluxDB and other monitoring components  as well as registering them with Consul so that metrics can start being recorded. We also attach a 1TB block storage volume for the metrics database so that it can survive cluster crashes and tear-downs. If the monitoring server needs to be recreated, the block storage volume simply needs to be reattached to the new Monitoring Server VM.
 
-The tracker VM is responsible for running various Airflow components such as the - Scheduler, Webserver, and Flower (Section \ref{sec:design_workflow_system}). Additionally we deploy the Butler tracker module (Section \ref{sec:analysis_tracker})to this VM, thus the tracker VM acts as the main control point of the system from which analyses are launched and monitored. This VM additionally has the elasticsearch role which designates it as the location of the Logstash and Elasticsearch components (Section \label{sec:design_log_collection}). To persist the search index we attach an additional 1TB block storage volume. The consul-server role allows the cluster, once the tracker VM is brought up, to reach quorum necessary for full Consul functionality. 
+The tracker VM is responsible for running various Airflow components such as the - Scheduler, Webserver, and Flower (Section \ref{sec:design_workflow_system}). Additionally we deploy the Butler tracker module (Section \ref{sec:analysis_tracker})to this VM, thus the tracker VM acts as the main control point of the system from which analyses are launched and monitored. This VM additionally has the elasticsearch role which designates it as the location of the Logstash and Elasticsearch components (Section \ref{sec:design_log_collection}). To persist the search index we attach an additional 1TB block storage volume. The consul-server role allows the cluster, once the tracker VM is brought up, to reach quorum necessary for full Consul functionality. 
 
 The job-queue VM is responsible for hosting the RabbitMQ server which holds all of the in-flight workflow tasks. Because the resources of the job-queue are heavily taxed by communication with all of the worker VMs in the cluster we do not assign any additional roles to this host.
 
@@ -148,7 +148,7 @@ Y & 59,373,566\\
 \caption{Human chromosome size distribution}
 \end{table}
 
-Overall, most Butler workflows that carry out an analysis follow a similar structure - an Analysis Run is started, access to the sample is validated, the analysis steps are carried out (possibly with branching), and the Analysis Run is completed (see Figure \ref{fig_butler_freebayes_workflow}).
+Overall, most Butler workflows that carry out an analysis follow a similar structure - an Analysis Run is started, access to the sample is validated, the analysis steps are carried out (possibly with branching), and the Analysis Run is completed (see Figure \ref{fig:butler_freebayes_workflow}).
 
 \begin{figure}[H]
 \includegraphics[scale=0.7]{butler_freebayes_workflow}
@@ -250,7 +250,7 @@ baselinestretch=1.2
 
 Listing \ref{lst:freebayes_discovery_run_config} provides an example of what an AnaysisRun-level configuration looks like. This configuration is concerned with supplying sample level configuration values, such as the sample\_id and sample\_location.
 
-After all of the necessary parameters are extracted from the configuration and command invocation is set up lines 71-75 of Listing \label{lst:freebayes_workflow} actually invoke a series of commands that perform the bulk of the analysis - calling \mintinline{shell}{freebayes} to generate the discovery call-set, followed by converting the call-set into a binary compressed format (with \mintinline{shell}{bgzip}), followed by generating an index file for record-based random access into the binary file (with \mintinline{shell}{tabix}), and followed by an \mintinline{shell}{rsync} to the shared results storage indicated in the configuration.
+After all of the necessary parameters are extracted from the configuration and command invocation is set up lines 71-75 of Listing \ref{lst:freebayes_workflow} actually invoke a series of commands that perform the bulk of the analysis - calling \mintinline{shell}{freebayes} to generate the discovery call-set, followed by converting the call-set into a binary compressed format (with \mintinline{shell}{bgzip}), followed by generating an index file for record-based random access into the binary file (with \mintinline{shell}{tabix}), and followed by an \mintinline{shell}{rsync} to the shared results storage indicated in the configuration.
 
 The workflow is distributed to all worker nodes in the cluster via a Saltstack state as shown in Listing \ref{lst:workflow_deployment}.
 
@@ -503,7 +503,7 @@ The analysis of Delly Structural Variant Calling has been split into two parts -
 \subsubsection{Deletions Genotyping}
 The deletions analysis used the following analysis configuration:
 
-\captionof{listing}{Butler Delly Workflow analysis configuration for deletions genotyping.\label{lst:analysis_1_percent_maf}}
+\captionof{listing}{Butler Delly Workflow analysis configuration for deletions genotyping.\label{lst:delly_analysis_dels}}
 \begin{minted}
 [
 breaklines=true,
@@ -561,7 +561,7 @@ Figure \ref{fig:delly_deletion_genotyping} shows the overall cluster load during
 
 The duplications analysis used the following configuration:
 
-\captionof{listing}{Butler Delly Workflow analysis configuration for duplications genotyping.\label{lst:analysis_1_percent_maf}}
+\captionof{listing}{Butler Delly Workflow analysis configuration for duplications genotyping.\label{lst:analysis_delly_dups}}
 \begin{minted}
 [
 breaklines=true,
@@ -584,7 +584,7 @@ baselinestretch=1.2
 
 Overall 217,433 duplications were genotyped for each sample, across 5668 samples for a total of 1,232,410,244 genomic variants genotyped. The wall-time for this analysis was only 4.5 days, utilizing 151,200 CPU hours during this time, with a management overhead of 2160 hours, for a total overhead of 1.4\%. The comparatively lower cluster management overhead has been accomplished by scaling up the cluster to 1400 cores without the need for more management resources.
 
-Figure \ref{fig:delly_dup_durations} shows a histogram of genotyping job durations.
+Figure \ref{fig:delly_duplication_durations} shows a histogram of genotyping job durations.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{delly_duplication_durations}

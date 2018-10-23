@@ -55,284 +55,294 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.14}de-novo Assembly}{25}{subsection.2.2.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Service Oriented Architectures}{25}{section.2.3}
+\contentsline {section}{\numberline {2.3}High Performance and High Throughput Computing}{25}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Stream-based Systems}{25}{section.2.4}
+\contentsline {section}{\numberline {2.4}Cloud Computing}{26}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}The Butler Framework - Requirements and Architecture}{26}{chapter.3}
+\contentsline {section}{\numberline {2.5}Workflow Systems}{28}{section.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Functional Requirements}{26}{section.3.1}
+\contentsline {section}{\numberline {2.6}Service Oriented Architectures}{30}{section.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}Access to Data}{27}{subsection.3.1.1}
+\contentsline {section}{\numberline {2.7}Stream-based Systems}{30}{section.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{3rd Party Repository Data}{27}{section*.4}
+\contentsline {chapter}{\numberline {3}The Butler Framework - Requirements and Architecture}{31}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Network Accessible Shared Storage}{27}{section*.5}
+\contentsline {section}{\numberline {3.1}Functional Requirements}{31}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Block-level storage}{28}{section*.6}
+\contentsline {subsection}{\numberline {3.1.1}Access to Data}{32}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Object Storage}{29}{section*.7}
+\contentsline {subsubsection}{3rd Party Repository Data}{32}{section*.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Access to Compute Capacity}{29}{subsection.3.1.2}
+\contentsline {subsubsection}{Network Accessible Shared Storage}{32}{section*.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Interact With Multiple Cloud-Provider APIs}{30}{section*.8}
+\contentsline {subsubsection}{Block-level storage}{33}{section*.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Define Hardware Configurations for VMs}{30}{section*.9}
+\contentsline {subsubsection}{Object Storage}{34}{section*.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Create and Destroy Virtual Machines}{31}{section*.10}
+\contentsline {subsection}{\numberline {3.1.2}Access to Compute Capacity}{34}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Define Network Topology and Security Rules}{31}{section*.11}
+\contentsline {subsubsection}{Interact With Multiple Cloud-Provider APIs}{35}{section*.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.3}Implementations of Scientific Algorithms}{31}{subsection.3.1.3}
+\contentsline {subsubsection}{Define Hardware Configurations for VMs}{35}{section*.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Installation of a Binary File}{32}{section*.12}
+\contentsline {subsubsection}{Create and Destroy Virtual Machines}{36}{section*.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Compiling From Source Code}{32}{section*.13}
+\contentsline {subsubsection}{Define Network Topology and Security Rules}{36}{section*.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Installation of a VM Image}{32}{section*.14}
+\contentsline {subsection}{\numberline {3.1.3}Implementations of Scientific Algorithms}{36}{subsection.3.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Installation of a Lightweight Container}{33}{section*.15}
+\contentsline {subsubsection}{Installation of a Binary File}{37}{section*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.4}Workflow Definitions}{33}{subsection.3.1.4}
+\contentsline {subsubsection}{Compiling From Source Code}{37}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Workflow Structure Definition}{34}{section*.17}
+\contentsline {subsubsection}{Installation of a VM Image}{37}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Deterministic Behaviour}{35}{section*.18}
+\contentsline {subsubsection}{Installation of a Lightweight Container}{38}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Finite Run-Time}{35}{section*.19}
+\contentsline {subsection}{\numberline {3.1.4}Workflow Definitions}{38}{subsection.3.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Analysis Configuration}{35}{section*.20}
+\contentsline {subsubsection}{Workflow Structure Definition}{39}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.5}Workflow Engine}{36}{subsection.3.1.5}
+\contentsline {subsubsection}{Deterministic Behaviour}{40}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Workflow Parsing and Translation}{36}{section*.21}
+\contentsline {subsubsection}{Finite Run-Time}{40}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Workflow State Management}{37}{section*.22}
+\contentsline {subsubsection}{Analysis Configuration}{40}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Workflow Scheduling}{37}{section*.23}
+\contentsline {subsection}{\numberline {3.1.5}Workflow Engine}{41}{subsection.3.1.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Workflow Execution}{38}{section*.24}
+\contentsline {subsubsection}{Workflow Parsing and Translation}{41}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.6}System of Record}{39}{subsection.3.1.6}
+\contentsline {subsubsection}{Workflow State Management}{42}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.7}Troubleshooting Errors}{39}{subsection.3.1.7}
+\contentsline {subsubsection}{Workflow Scheduling}{42}{section*.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Errors Within Algorithms or Data}{40}{section*.25}
+\contentsline {subsubsection}{Workflow Execution}{43}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Errors Within the Workflow Definition}{41}{section*.26}
+\contentsline {subsection}{\numberline {3.1.6}System of Record}{44}{subsection.3.1.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Errors Within Workflow Engine}{41}{section*.27}
+\contentsline {subsection}{\numberline {3.1.7}Troubleshooting Errors}{44}{subsection.3.1.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Errors Within Virtualized Infrastructure}{41}{section*.28}
+\contentsline {subsubsection}{Errors Within Algorithms or Data}{45}{section*.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Errors Within Bare Metal Hardware/Software}{42}{section*.29}
+\contentsline {subsubsection}{Errors Within the Workflow Definition}{46}{section*.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{System Monitoring}{42}{section*.30}
+\contentsline {subsubsection}{Errors Within Workflow Engine}{46}{section*.27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Monitoring Alarms}{43}{section*.31}
+\contentsline {subsubsection}{Errors Within Virtualized Infrastructure}{46}{section*.28}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Management Interfaces}{44}{section*.32}
+\contentsline {subsubsection}{Errors Within Bare Metal Hardware/Software}{47}{section*.29}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Log Files}{44}{section*.33}
+\contentsline {subsubsection}{System Monitoring}{47}{section*.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Non-functional Requirements}{45}{section.3.2}
+\contentsline {subsubsection}{Monitoring Alarms}{48}{section*.31}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Scalability}{45}{subsection.3.2.1}
+\contentsline {subsubsection}{Management Interfaces}{49}{section*.32}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Bootstrap New Installation}{46}{section*.34}
+\contentsline {subsubsection}{Log Files}{49}{section*.33}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Scale Up Worker Fleet}{47}{section*.35}
+\contentsline {subsubsection}{Self-Healing}{50}{section*.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Scale Down Worker Fleet}{47}{section*.36}
+\contentsline {section}{\numberline {3.2}Non-functional Requirements}{51}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Scale Up Control VMs}{47}{section*.37}
+\contentsline {subsection}{\numberline {3.2.1}Scalability}{51}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Scale Down Control VMs}{47}{section*.38}
+\contentsline {subsubsection}{Bootstrap New Installation}{52}{section*.35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Destroy Cluster}{47}{section*.39}
+\contentsline {subsubsection}{Scale Up Worker Fleet}{52}{section*.36}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Availability}{48}{subsection.3.2.2}
+\contentsline {subsubsection}{Scale Down Worker Fleet}{52}{section*.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Service Redundancy}{48}{section*.40}
+\contentsline {subsubsection}{Scale Up Control VMs}{53}{section*.38}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Service Upgrades}{49}{section*.41}
+\contentsline {subsubsection}{Scale Down Control VMs}{53}{section*.39}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Backup and Disaster Recovery}{49}{section*.42}
+\contentsline {subsubsection}{Destroy Cluster}{53}{section*.40}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Ease-of-use}{49}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.2}Availability}{53}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.4}Interoperability}{50}{subsection.3.2.4}
+\contentsline {subsubsection}{Service Redundancy}{54}{section*.41}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}General Design Principles}{50}{section.3.3}
+\contentsline {subsubsection}{Service Upgrades}{54}{section*.42}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Existing Open-Source Software}{51}{subsection.3.3.1}
+\contentsline {subsubsection}{Backup and Disaster Recovery}{55}{section*.43}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Service Orientation}{52}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.2.3}Ease-of-use}{55}{subsection.3.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.3}Cloud Agnostic}{53}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.2.4}Interoperability}{55}{subsection.3.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.4}Open Source License}{54}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.3}General Design Principles}{56}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.5}Overall System Design}{54}{subsection.3.3.5}
+\contentsline {subsection}{\numberline {3.3.1}Existing Open-Source Software}{56}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Cluster Lifecycle Management}{55}{section.3.4}
+\contentsline {subsection}{\numberline {3.3.2}Service Orientation}{57}{subsection.3.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.1}Terraform}{55}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.3.3}Cloud Agnostic}{58}{subsection.3.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Terraform Providers}{55}{section*.45}
+\contentsline {subsection}{\numberline {3.3.4}Open Source License}{60}{subsection.3.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Terraform Resources}{56}{section*.47}
+\contentsline {subsection}{\numberline {3.3.5}Overall System Design}{60}{subsection.3.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Terraform Variables}{57}{section*.49}
+\contentsline {section}{\numberline {3.4}Cluster Lifecycle Management}{60}{section.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Terraform Provisioners}{57}{section*.51}
+\contentsline {subsection}{\numberline {3.4.1}Terraform}{61}{subsection.3.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Terraform Installation}{57}{section*.53}
+\contentsline {subsubsection}{Terraform Providers}{61}{section*.46}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Terraform Cluster Lifecycle}{58}{section*.54}
+\contentsline {subsubsection}{Terraform Resources}{62}{section*.48}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.2}Terraform Use in Butler}{59}{subsection.3.4.2}
+\contentsline {subsubsection}{Terraform Variables}{62}{section*.50}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Example Configurations}{59}{section*.55}
+\contentsline {subsubsection}{Terraform Provisioners}{63}{section*.52}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Cluster Configuration Management}{60}{section.3.5}
+\contentsline {subsubsection}{Terraform Installation}{63}{section*.54}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.1}Saltstack}{61}{subsection.3.5.1}
+\contentsline {subsubsection}{Terraform Cluster Lifecycle}{64}{section*.55}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Saltstack Architecture}{62}{section*.57}
+\contentsline {subsection}{\numberline {3.4.2}Terraform Use in Butler}{64}{subsection.3.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Saltstack Data Model}{62}{section*.58}
+\contentsline {subsubsection}{Example Configurations}{64}{section*.56}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{A Salt State}{62}{section*.59}
+\contentsline {section}{\numberline {3.5}Cluster Configuration Management}{65}{section.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{A Salt Pillar}{64}{section*.61}
+\contentsline {subsection}{\numberline {3.5.1}Saltstack}{66}{subsection.3.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Salt Grains}{64}{section*.63}
+\contentsline {subsubsection}{Saltstack Architecture}{67}{section*.58}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{The Salt Mine}{65}{section*.64}
+\contentsline {subsubsection}{Saltstack Data Model}{68}{section*.59}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{The Top File}{65}{section*.65}
+\contentsline {paragraph}{A Salt State}{68}{section*.60}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Controlling Saltstack}{65}{section*.66}
+\contentsline {paragraph}{A Salt Pillar}{69}{section*.62}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.2}Saltstack Use in Butler}{66}{subsection.3.5.2}
+\contentsline {paragraph}{Salt Grains}{70}{section*.64}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Setting up the Salt Master}{68}{section*.68}
+\contentsline {paragraph}{The Salt Mine}{70}{section*.65}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Setting up Other Butler Control VMs}{68}{section*.69}
+\contentsline {paragraph}{The Top File}{71}{section*.66}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Setting up Butler Workers}{69}{section*.70}
+\contentsline {subsubsection}{Controlling Saltstack}{71}{section*.67}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Customizing Butler Configuration}{70}{section*.71}
+\contentsline {subsection}{\numberline {3.5.2}Saltstack Use in Butler}{72}{subsection.3.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.6}Workflow System}{70}{section.3.6}
+\contentsline {subsubsection}{Setting up the Salt Master}{74}{section*.69}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.1}Workflow System Overview}{70}{subsection.3.6.1}
+\contentsline {subsubsection}{Setting up Other Butler Control VMs}{74}{section*.70}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Airflow Architecture}{70}{section*.72}
+\contentsline {subsubsection}{Setting up Butler Workers}{75}{section*.71}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.2}Workflow Definition}{71}{subsection.3.6.2}
+\contentsline {subsubsection}{Customizing Butler Configuration}{76}{section*.72}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.3}Analysis Tracker}{73}{subsection.3.6.3}
+\contentsline {section}{\numberline {3.6}Workflow System}{76}{section.3.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{tracker Python Module}{73}{section*.73}
+\contentsline {subsection}{\numberline {3.6.1}Workflow System Overview}{76}{subsection.3.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{The Workflow}{75}{section*.76}
+\contentsline {subsubsection}{Airflow Architecture}{76}{section*.73}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{The Analysis}{76}{section*.77}
+\contentsline {subsection}{\numberline {3.6.2}Workflow Definition}{77}{subsection.3.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{The AnalysisRun}{76}{section*.78}
+\contentsline {subsection}{\numberline {3.6.3}Analysis Tracker}{79}{subsection.3.6.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{The workflow\_common.py}{78}{section*.80}
+\contentsline {subsubsection}{tracker Python Module}{79}{section*.74}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{The connection.py}{79}{section*.81}
+\contentsline {paragraph}{The Workflow}{81}{section*.77}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.4}Workflow Configuration}{80}{subsection.3.6.4}
+\contentsline {paragraph}{The Analysis}{82}{section*.78}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Configuration Mechanism}{81}{section*.86}
+\contentsline {paragraph}{The AnalysisRun}{82}{section*.79}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.5}Workflow Runtime Management}{82}{subsection.3.6.5}
+\contentsline {paragraph}{The workflow\_common.py}{84}{section*.81}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Butler CLI}{82}{section*.87}
+\contentsline {paragraph}{The connection.py}{85}{section*.82}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\mintinline {shell}{create-workflow}}{82}{section*.88}
+\contentsline {subsection}{\numberline {3.6.4}Workflow Configuration}{86}{subsection.3.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\mintinline {shell}{create-analysis}}{82}{section*.89}
+\contentsline {subsubsection}{Configuration Mechanism}{87}{section*.87}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\mintinline {shell}{launch-workflow}}{82}{section*.90}
+\contentsline {subsection}{\numberline {3.6.5}Workflow Runtime Management}{88}{subsection.3.6.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\mintinline {shell}{update-config}}{82}{section*.91}
+\contentsline {subsubsection}{Butler CLI}{88}{section*.88}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\mintinline {shell}{get-run-count}}{83}{section*.92}
+\contentsline {paragraph}{\mintinline {shell}{create-workflow}}{88}{section*.89}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Airflow CLI}{83}{section*.93}
+\contentsline {paragraph}{\mintinline {shell}{create-analysis}}{88}{section*.90}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\mintinline {shell}{airflow}}{83}{section*.94}
+\contentsline {paragraph}{\mintinline {shell}{launch-workflow}}{88}{section*.91}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Airflow Web UI}{83}{section*.95}
+\contentsline {paragraph}{\mintinline {shell}{update-config}}{88}{section*.92}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.7}Operational Management}{84}{section.3.7}
+\contentsline {paragraph}{\mintinline {shell}{get-run-count}}{89}{section*.93}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.1}Monitoring Metric Collection}{85}{subsection.3.7.1}
+\contentsline {subsubsection}{Airflow CLI}{89}{section*.94}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.2}Monitoring Visualization}{88}{subsection.3.7.2}
+\contentsline {paragraph}{\mintinline {shell}{airflow}}{89}{section*.95}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.3}Server Log Collection and Visualization}{91}{subsection.3.7.3}
+\contentsline {subsubsection}{Airflow Web UI}{89}{section*.96}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.4}Service Discovery}{93}{subsection.3.7.4}
+\contentsline {section}{\numberline {3.7}Operational Management}{90}{section.3.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{96}{chapter.4}
+\contentsline {subsection}{\numberline {3.7.1}Monitoring Metric Collection}{91}{subsection.3.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Deployment on EMBL/EBI Embassy Cloud}{96}{section.4.1}
+\contentsline {subsection}{\numberline {3.7.2}Monitoring Visualization}{93}{subsection.3.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Embassy Cloud Architecture}{97}{section*.111}
+\contentsline {subsection}{\numberline {3.7.3}Server Log Collection and Visualization}{96}{subsection.3.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Access to PCAWG Data}{98}{section*.113}
+\contentsline {subsection}{\numberline {3.7.4}Self-Healing}{99}{subsection.3.7.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Butler deployment}{98}{section*.114}
+\contentsline {subsection}{\numberline {3.7.5}Service Discovery}{99}{subsection.3.7.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}PCAWG Germline Analyses}{100}{section.4.2}
+\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{101}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Variant Discovery}{101}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.1}Deployment on EMBL/EBI Embassy Cloud}{101}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{The freebayes Butler workflow}{101}{section*.117}
+\contentsline {subsubsection}{Embassy Cloud Architecture}{102}{section*.113}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{AnalysisRun configurations for freebayes workflow}{105}{section*.120}
+\contentsline {subsubsection}{Access to PCAWG Data}{103}{section*.115}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Variant Genotyping}{107}{subsection.4.2.2}
+\contentsline {subsubsection}{Butler deployment}{103}{section*.116}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Variant Filtration}{108}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.2}PCAWG Germline Analyses}{105}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.4}Genotype Phasing}{109}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.1}Variant Discovery}{106}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Data Submission}{109}{subsection.4.2.5}
+\contentsline {subsubsection}{The freebayes Butler workflow}{106}{section*.119}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Structural Variant Calling}{111}{subsection.4.2.6}
+\contentsline {subsubsection}{AnalysisRun configurations for freebayes workflow}{110}{section*.122}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Experimental Runs}{112}{section.4.3}
+\contentsline {subsection}{\numberline {4.2.2}Variant Genotyping}{112}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Freebayes Common Variant Genotyping}{112}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.2.3}Variant Filtration}{113}{subsection.4.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}Freebayes Variant Discovery}{114}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.2.4}Genotype Phasing}{114}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.3}Freebayes Variant Genotyping}{114}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.2.5}Data Submission}{114}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.4}Delly Full Variant Genotyping}{116}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.2.6}Structural Variant Calling}{116}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Deletions Genotyping}{116}{section*.128}
+\contentsline {section}{\numberline {4.3}Experimental Runs}{117}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Duplications Genotyping}{118}{section*.132}
+\contentsline {subsection}{\numberline {4.3.1}Freebayes Common Variant Genotyping}{117}{subsection.4.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}System Design Recap}{120}{section.4.4}
+\contentsline {subsection}{\numberline {4.3.2}Freebayes Variant Discovery}{119}{subsection.4.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.5}Validation and Conclusion}{122}{section.4.5}
+\contentsline {subsection}{\numberline {4.3.3}Freebayes Variant Genotyping}{119}{subsection.4.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.6}Future Direction}{122}{section.4.6}
+\contentsline {subsection}{\numberline {4.3.4}Delly Full Variant Genotyping}{121}{subsection.4.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}The Rheos Framework}{124}{chapter.5}
+\contentsline {subsubsection}{Deletions Genotyping}{121}{section*.130}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{125}{chapter.6}
+\contentsline {subsubsection}{Duplications Genotyping}{123}{section*.134}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendix}{126}{section*.136}
+\contentsline {section}{\numberline {4.4}System Design Recap}{125}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Code Listings}{126}{Appendix.1.A}
+\contentsline {section}{\numberline {4.5}Validation and Conclusion}{127}{section.4.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.6}Future Direction}{127}{section.4.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}The Rheos Framework}{129}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{130}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendix}{131}{section*.138}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Code Listings}{131}{Appendix.1.A}

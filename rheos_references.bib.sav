@@ -1526,16 +1526,17 @@
   year={2013},
   publisher={Medknow Publications}
 }
-@Book{,
-  doi = {10.5962/bhl.title.28875},
-}
 
-@Book{o,
+@Book{originofspecies,
   author    = {Charles Darwin},
   title     = {On the origin of species},
   year      = {1871},
   publisher = {D. Appleton and Co.,},
   doi       = {10.5962/bhl.title.28875},
+}
+
+@Online{t,
+  url = {https://www.influxdata.com/time-series-platform/telegraf/},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

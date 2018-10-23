@@ -161,7 +161,7 @@ base:
     - rabbitmq
 \end{minted}
 
-\captionof{listing} {Collectd configuration for metrics collection. \label{lst:collectd_config}}
+\captionof{listing} {Collectd configuration for metrics collection. \label{lst:telegraf_config}}
 \begin{minted}
 [
 breaklines=true,
@@ -172,35 +172,79 @@ framesep=2mm,
 baselinestretch=1.2
 ]
 {text} 
-LoadPlugin cpu
-LoadPlugin disk
-LoadPlugin memory
-LoadPlugin postgresql
-LoadPlugin network
-<Plugin cpu>
-  ValuesPercentage true
-</Plugin>
-<Plugin disk>
-  Disk "hda"
-  Disk "/^vd/"
-  IgnoreSelected false
-</Plugin>
-<Plugin postgresql>
-  <Database run_tracking>
-    Host "postgresql.service.consul"
-    Port 5432
-    Query backends
-    Query transactions
-    Query queries
-    Query query_plans
-    Query table_states
-    Query disk_io
-    Query disk_usage
-  </Database>
-</Plugin>
-<Plugin network>
-  Server "influxdb.service.consul" "8096"
-</Plugin>
+# Read metrics about cpu usage
+[[inputs.cpu]]
+  ## Whether to report per-cpu stats or not
+  percpu = true
+  ## Whether to report total system cpu stats or not
+  totalcpu = true
+  ## If true, collect raw CPU time metrics.
+  collect_cpu_time = false
+  ## If true, compute and report the sum of all non-idle CPU states.
+  report_active = false
+
+
+# Read metrics about disk usage by mount point
+[[inputs.disk]]
+  ## By default, telegraf gather stats for all mountpoints.
+  ## Setting mountpoints will restrict the stats to the specified mountpoints.
+  # mount_points = ["/"]
+
+  ## Ignore some mountpoints by filesystem type. For example (dev)tmpfs (usually
+  ## present on /run, /var/run, /dev/shm or /dev).
+  ignore_fs = ["tmpfs", "devtmpfs", "devfs"]
+
+
+# Read metrics about disk IO by device
+[[inputs.diskio]]
+  ## By default, telegraf will gather stats for all devices including
+  ## disk partitions.
+  ## Setting devices will restrict the stats to the specified devices.
+  # devices = ["sda", "sdb"]
+  ## Uncomment the following line if you need disk serial numbers.
+  # skip_serial_number = false
+  #
+  ## On systems which support it, device metadata can be added in the form of
+  ## tags.
+  ## Currently only Linux is supported via udev properties. You can view
+  ## available properties for a device by running:
+  ## 'udevadm info -q property -n /dev/sda'
+  # device_tags = ["ID_FS_TYPE", "ID_FS_USAGE"]
+  #
+  ## Using the same metadata source as device_tags, you can also customize the
+  ## name of the device via templates.
+  ## The 'name_templates' parameter is a list of templates to try and apply to
+  ## the device. The template may contain variables in the form of '$PROPERTY' or
+  ## '${PROPERTY}'. The first template which does not contain any variables not
+  ## present for the device is used as the device name tag.
+  ## The typical use case is for LVM volumes, to get the VG/LV name instead of
+  ## the near-meaningless DM-0 name.
+  # name_templates = ["$ID_FS_LABEL","$DM_VG_NAME/$DM_LV_NAME"]
+
+
+# Get kernel statistics from /proc/stat
+[[inputs.kernel]]
+  # no configuration
+
+
+# Read metrics about memory usage
+[[inputs.mem]]
+  # no configuration
+
+
+# Get the number of processes and group them by status
+[[inputs.processes]]
+  # no configuration
+
+
+# Read metrics about swap memory usage
+[[inputs.swap]]
+  # no configuration
+
+
+# Read metrics about system load & uptime
+[[inputs.system]]
+  # no configuration
 \end{minted}
 
 \captionof{listing} {Filebeat Prospector configuration. \label{lst:filebeat_prospectors}}
@@ -597,7 +641,7 @@ def run_delly(**kwargs):
     copy_result(result_filename, sample_id, config)
 \end{minted}
 
-\captionof{listing}{Butler Delly Workflow analysis configuration to genotype deletions.\label{lst:run_delly}}
+\captionof{listing}{Butler Delly Workflow analysis configuration to genotype deletions.\label{lst:delly_analysis}}
 \begin{minted}
 [
 breaklines=true,

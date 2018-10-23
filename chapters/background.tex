@@ -124,6 +124,115 @@ Variant Effect Predictor -
 Velvet -
 Abyss - 
 
+\section{High Performance and High Throughput Computing}
+
+The practice of performing large scale scientific computation on supercomputers or clusters of commodity hardware can be split into two notions - High Performance Computing (HPC) and High Throughput Computing (HTC).
+
+The European Grid Infrastructure defines these as follows\autocite{Glossary_V1_-_EGIWiki_2016-10-28}:
+
+\fbox{\parbox[c]{0.9\textwidth}{HPC - A computing paradigm that focuses on the efficient execution of compute intensive, tightly-coupled tasks. Given the high parallel communication requirements, the tasks are typically executed on low latency interconnects which makes it possible to share data very rapidly between a large numbers of processors working on the same problem. HPC systems are delivered through low latency clusters and supercomputers and are typically optimised to maximise the number of operations per seconds. The typical metrics are FLOPS, tasks/s, I/O rates.}}
+
+\fbox{\parbox[c]{0.9\textwidth}{HTC - A computing paradigm that focuses on the efficient execution of a large number of loosely-coupled tasks. Given the minimal parallel communication requirements, the tasks can be executed on clusters or physically distributed resources using grid technologies. HTC systems are typically optimised to maximise the throughput over a long period of time and a typical metric is jobs per month or year.}}
+
+Although early High Performance Computing efforts (1960's - 1980's) relied on supercomputers with a shared memory model\autocite{russell1978cray}, where all of the memory was shared between multiple processors, by the late 1980's machines with a distributed memory model\autocite{nitzberg1991distributed}, where each processor has its own memory, started gaining ground, forming the basis for the modern HPC cluster.
+
+The software interface that the user has to a HPC/HTC cluster typically takes the shape of a queueing system such as PBS\autocite{henderson1995job} or LSF\autocite{zhou1992lsf}  where the user writes a script that submits a series of jobs to the queueing system. The jobs can invoke software that is installed by the IT department that manages the cluster. The user is not able to install any software and has limited visibility into the runtime performance characteristics of the jobs they submit. 
+
+\section{Cloud Computing}
+
+Cloud computing has emerged in the early 2000's enabled by improvements in hardware virtualization which was driven by the adoption of Virtual Private Networks, and the desire to commercialize access to compute capacity as a utility\autocite{buyya2009cloud}.
+
+The National Institute of Standards and Technology provides a standard definition of cloud computing that encompasses several areas of this domain - Essential Characteristics, Service Models, and Deployment Models\autocite{mell2011nist}.
+
+The Essential Characteristics of a cloud are as follows:
+
+\begin{description}
+\item [On-demand self-service] - End-user can independently manage infrastructure without involving the service provider.
+\item [Broad network access] - Cloud resources are available on the network via a set of standard protocols.
+\item [Resource pooling] - Service providers dynamically assign virtual infrastructure in a multi-tenant environment based on consumer demand.
+\item [Rapid elasticity] - Resources can be elastically provisioned and discarded according to customer requirements.
+\item [Measured service] - Resource usage by end users is measured and transparently provided back to the user by the service provider.
+\end{description}
+
+It is the self-service and broad network access characteristics that set cloud computing apart from traditional HPC computing the most.
+
+Service Models include:
+
+\begin{description}
+\item [Infrastructure as a Service (IaaS)] - This service allows the the user to provision and control virtualized infrastructure such as VMs and networks.
+\item [Platform as a Service (PaaS)] - This service allows the user to deploy their application onto virtualized hardware but not to control the management of the infrastructure.
+\item [Software as a Service (SaaS)] - This service allows the user to make use of applications that are deployed on virtualized hardware but not to manage the applications or the infrastructure itself.
+\end{description}
+
+The Deployment Models covered by the NIST definition are as follows:
+
+\begin{description}
+\item [Private Cloud] - Operated privately by a single organization and not accessible on a public network.
+\item [Community Cloud] - Established for use by a particular community of users with a common interest.
+\item [Public Cloud] - Established for general use by the public.
+\item [Hybrid Cloud] - A collection of cloud entities that use one of the other deployment models but allow application portability.
+\end{description}
+
+The first publicly available commercial cloud computing platform has been developed by Amazon.com and launched in August, 2006 in the form of two services - Elastic Compute Cloud (EC2), and Simple Storage Service (S3). Cloud offerings by Microsoft and Google followed in 2010, and 2012. This early lead has allowed Amazon to capture the majority of the public cloud computing market, earning \$2.57 billion USD in Q1 2016 revenue.
+
+One of the main drawbacks, however, of using Amazon's or another proprietary cloud solution is the issue of "vendor lock-in" i.e. inability to easily switch infrastructure providers should the customer wish to do so, because of the amount of software relying on the proprietary cloud provider protocols. Another key reason for avoiding public clouds is the necessity to store sensitive data. This issue applies both to the commercial enterprise (with industries such as banking, and payments) and scientific domains (especially genomics and medicine) where handling of sensitive patient data is restricted based on both technical security, as well as ethical considerations\autocite{knoppers2005human}.
+
+To help alleviate these concerns an open-source cloud platform called Openstack was launched in 2010 jointly by Rackspace Hosting and NASA\autocite{sefraoui2012openstack}. Openstack provides most of the same features that are provided by Amazon Web Services and other commercial cloud providers as free open-source tools. These include:
+
+\begin{itemize}
+\item Infrastructure
+\item Networking
+\item Identity Management
+\item Block Storage
+\item Object Storage
+\item Managed Databases
+\item Queues
+\item Monitoring
+\end{itemize}
+
+Openstack deployments for the basis for most academic private and community clouds such as EBI Embassy Cloud\autocite{cook2016european}, University of Chicago Open Science Data Cloud\autocite{grossman2010overview}, Cancer Genome Collaboratory\autocite{yung2016icgc}, and Helix Nebula\autocite{marx2013biology}. Because these clouds implement the security measures necessary when handling patient data they are a system of choice for large scale bioinformatics analyses.
+
+\section{Workflow Systems}
+
+The focus on workflow stems the work of Frederick Taylor (1856-1915) and Henry Gantt (1861-1919) on the improvement and automation of industrial processes, also known as "scientific management"\autocite{taylor2004scientific}. One of the key techniques that were devised at the time and served as the prototype for future workflows were "time and motion studies"\autocite{barnes1949motion} where employees were observed as they performed repetitive cycles of work in order to determine standard execution times and sequences of steps. As this field evolved over the course of the 20th century it gave rise to several other related fields such as Operations Management, Business Process Management, and Lean Manufacturing.
+
+In 1993 an international consortium was formed with the purpose of defining the standards related to workflows and workflow management systems. This consortium is called the Workflow Management Coalition (WfMC). One of the key specifications produced by the WMC in 1995 is The Workflow Reference Model\autocite{hollingsworth1995workflow}. This document provides two basic definitions that illuminate the scope and purpose of  workflow systems:
+
+\fbox{\parbox[c]{0.9\textwidth}{Workflow - The computerised facilitation or automation of a business process, in whole or part.}}
+
+\fbox{\parbox[c]{0.9\textwidth}{Workflow Management System - A system that completely defines, manages and executes "workflows" through the execution of software whose order of execution is driven by a computer representation of the workflow logic.}}
+
+A number of standards have been produced for workflow definition, many of them are XML-based\autocite{shapiro2002technical}. Notable examples include:
+
+\begin{description}
+\item[XPDL] - Was developed by the WfMC, currently at version 2.2, as of 2012. Uses an XML dialect to express process definitions
+\item[BPML] - Developed by the Object Management Group (OMG) using XML. Deprecated as of 2008 in favour of BPEL.
+\item[BPEL/BPEL4WS] -  Developed by Organization for the Advancement of Structure Information Standard (OASIS). Uses XML format. Adopted by Microsoft and IBM for their workflow products - 
+\end{description} 
+
+Graphically, workflow definitions are typically expressed using a Petri-Net\autocite{peterson1981petri} or Business Process Model and Notation (BPMN), the latter borrowing its structure from UML activity diagrams. A set of workflow definition design patterns exists to guide workflow creation\autocite{van2003workflow}. A workflow engine is responsible for ingesting workflow definitions, generating their graphical representation, and allowing the user to execute the workflow definitions on suitable hardware.
+
+As initially the focus of workflow systems research and development has been on process improvement within commercial enterprises there exists a large pool of workflow engine implementations targeted at that sector. Some of these are:
+
+\begin{description}
+\item[jBPM] - An open-source workflow engine that is based on the Java platform and is currently owned by Red Hat.
+\item[Activiti] - An open-source workflow engine that has been developed by previous jBPM developers.
+\item[Oracle BPEL Process Manager] - A commercial workflow engine acquired by Oracle from Collaxa in 2004, now integrated into the rest of the Oracle portfolio.
+\item[Websphere Process Server] - Commercial workflow engine that is part of IBM's Business Process Manager suite.
+\end{description}
+
+Although these tools have gained wide adoption in the enterprise community they have had limited success within scientific circles. Instead, several open-source workflow management systems exist that have been purpose-built for the scientific domain, and especially bioinformatics. These include:
+
+\begin{description}
+\item[Kepler\autocite{ludascher2006scientific}] - A Java-based WfMS built on top of the Ptolemy II\autocite{davis1999overview} execution engine.
+\item[Taverna\autocite{oinn2004taverna}] - A Java-based WfMS originally built by myGrid, currently under incubation at Apache Software Foundation. 
+\item[Galaxy\autocite{goecks2010galaxy}] - A Python-based WfMS developed specifically for bioinformatics applications with a focus on GUI-driven development of workflows.
+\end{description}
+
+Curcin et al\autocite{curcin2008scientific} provide a head-to-head comparison of six scientific workflow systems including Taverna and Kepler, whereby Taverna is described as primarily being aimed at researchers who wish to build scientific workflows from web services utilizing a proprietary XML dialect called SCUFL which implements a DAG model of workflows. The primary execution environment for a Taverna workflow is on a grid or an HPC cluster. Kepler implemented a different methodology, whereby workflow modelling, which is taken on by Actors, is separated from workflow execution, taken on by Directors. An Actor knows only about its inputs, the computation that it needs to perform, and the output that it needs to produce, while Directors provide different models of execution, such as Synchronous Data Flow, Process Network, Continuous Time, and Discrete Event.
+
+The Galaxy workflow framework has a specific focus on bioinformatics analyses and comes with a large library of community-developed bioinformatics workflows. The user creates and executes workflows via a web-based GUI where pre-installed tools and scripts can be laid out into a pipeline. The primary deployment environment for Galaxy is on an institutional HPC cluster although a separate component allows the deployment of a Galaxy instance on Amazon Web Services\autocite{afgan2010galaxy}.
+
 \section{Service Oriented Architectures}
 
 \section{Stream-based Systems}
