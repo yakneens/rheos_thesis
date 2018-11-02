@@ -1,8 +1,10 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{p}{\PYGZob{}}
-	\PYG{n+nt}{\PYGZdq{}service\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-		\PYG{n+nt}{\PYGZdq{}name\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Postgresql\PYGZdq{}}\PYG{p}{,}
-		\PYG{n+nt}{\PYGZdq{}tags\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}postgresql\PYGZdq{}}\PYG{p}{],}
-		\PYG{n+nt}{\PYGZdq{}port\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{5432}\PYG{p}{\PYGZcb{}}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}base\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/shared/data/results/discovery/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/tmp/discovery/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}freebayes\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}mode\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}discovery\PYGZdq{}}\PYG{p}{,}
+		\PYG{n+nt}{\PYGZdq{}flags\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}min\PYGZhy{}repeat\PYGZhy{}entropy 1 \PYGZhy{}\PYGZhy{}report\PYGZhy{}genotype\PYGZhy{}likelihood\PYGZhy{}max\PYGZdq{}}
+	\PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}

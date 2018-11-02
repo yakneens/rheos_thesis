@@ -1,0 +1,129 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{airflow} \PYG{k+kn}{import} \PYG{n}{DAG}
+\PYG{k+kn}{from} \PYG{n+nn}{airflow.operators} \PYG{k+kn}{import} \PYG{n}{BashOperator}\PYG{p}{,} \PYG{n}{PythonOperator}
+\PYG{k+kn}{from} \PYG{n+nn}{datetime} \PYG{k+kn}{import} \PYG{n}{datetime}\PYG{p}{,} \PYG{n}{timedelta}
+
+\PYG{k+kn}{import} \PYG{n+nn}{os}
+\PYG{k+kn}{import} \PYG{n+nn}{logging}
+\PYG{k+kn}{from} \PYG{n+nn}{subprocess} \PYG{k+kn}{import} \PYG{n}{call}
+
+\PYG{k+kn}{import} \PYG{n+nn}{tracker.model}
+\PYG{k+kn}{from} \PYG{n+nn}{tracker.model.analysis\PYGZus{}run} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{tracker.util.workflow\PYGZus{}common} \PYG{k+kn}{import} \PYG{o}{*}
+
+
+\PYG{k}{def} \PYG{n+nf}{run\PYGZus{}freebayes}\PYG{p}{(}\PYG{o}{**}\PYG{n}{kwargs}\PYG{p}{):}
+
+    \PYG{n}{config} \PYG{o}{=} \PYG{n}{get\PYGZus{}config}\PYG{p}{(}\PYG{n}{kwargs}\PYG{p}{)}
+    \PYG{n}{logger}\PYG{o}{.}\PYG{n}{debug}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Config \PYGZhy{} \PYGZob{}\PYGZcb{}\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{config}\PYG{p}{))}
+
+    \PYG{n}{sample} \PYG{o}{=} \PYG{n}{get\PYGZus{}sample}\PYG{p}{(}\PYG{n}{kwargs}\PYG{p}{)}
+
+    \PYG{n}{contig\PYGZus{}name} \PYG{o}{=} \PYG{n}{kwargs}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}contig\PYGZus{}name\PYGZdq{}}\PYG{p}{]}
+    \PYG{n}{contig\PYGZus{}whitelist} \PYG{o}{=} \PYG{n}{config}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}contig\PYGZus{}whitelist\PYGZdq{}}\PYG{p}{)}
+
+
+    \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{contig\PYGZus{}whitelist} \PYG{o+ow}{or} \PYG{n}{contig\PYGZus{}name} \PYG{o+ow}{in} \PYG{n}{contig\PYGZus{}whitelist}\PYG{p}{:}
+
+        \PYG{n}{sample\PYGZus{}id} \PYG{o}{=} \PYG{n}{sample}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}sample\PYGZus{}id\PYGZdq{}}\PYG{p}{]}
+        \PYG{n}{sample\PYGZus{}location} \PYG{o}{=} \PYG{n}{sample}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}sample\PYGZus{}location\PYGZdq{}}\PYG{p}{]}
+
+        \PYG{n}{result\PYGZus{}path\PYGZus{}prefix} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}}\PYG{p}{]} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}/\PYGZdq{}} \PYG{o}{+} \PYG{n}{sample\PYGZus{}id}
+
+        \PYG{k}{if} \PYG{p}{(}\PYG{o+ow}{not} \PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{isdir}\PYG{p}{(}\PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{)):}
+            \PYG{n}{logger}\PYG{o}{.}\PYG{n}{info}\PYG{p}{(}
+                \PYG{l+s+s2}{\PYGZdq{}Results directory \PYGZob{}\PYGZcb{} not present, creating.\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{))}
+            \PYG{n}{os}\PYG{o}{.}\PYG{n}{makedirs}\PYG{p}{(}\PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{)}
+
+        \PYG{n}{result\PYGZus{}filename} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZob{}\PYGZcb{}/\PYGZob{}\PYGZcb{}\PYGZus{}\PYGZob{}\PYGZcb{}.vcf\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}
+            \PYG{n}{result\PYGZus{}path\PYGZus{}prefix}\PYG{p}{,} \PYG{n}{sample\PYGZus{}id}\PYG{p}{,} \PYG{n}{contig\PYGZus{}name}\PYG{p}{)}
+
+        \PYG{n}{freebayes\PYGZus{}path} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}freebayes\PYGZdq{}}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}path\PYGZdq{}}\PYG{p}{]}
+        \PYG{n}{freebayes\PYGZus{}mode} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}freebayes\PYGZdq{}}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}mode\PYGZdq{}}\PYG{p}{]}
+        \PYG{n}{freebayes\PYGZus{}flags} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}freebayes\PYGZdq{}}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}flags\PYGZdq{}}\PYG{p}{]}
+
+        \PYG{n}{reference\PYGZus{}location} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}reference\PYGZus{}location\PYGZdq{}}\PYG{p}{]}
+
+        \PYG{k}{if} \PYG{n}{freebayes\PYGZus{}flags} \PYG{o}{==} \PYG{n+nb+bp}{None}\PYG{p}{:}
+            \PYG{n}{freebayes\PYGZus{}flags} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}
+
+        \PYG{k}{if} \PYG{n}{freebayes\PYGZus{}mode} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}discovery\PYGZdq{}}\PYG{p}{:}
+            \PYG{n}{freebayes\PYGZus{}command} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZob{}\PYGZcb{} \PYGZhy{}r \PYGZob{}\PYGZcb{} \PYGZhy{}f \PYGZob{}\PYGZcb{} \PYGZob{}\PYGZcb{} \PYGZob{}\PYGZcb{} \PYGZgt{} \PYGZob{}\PYGZcb{}\PYGZdq{}}\PYG{o}{.}\PYGZbs{}
+                \PYG{n}{format}\PYG{p}{(}\PYG{n}{freebayes\PYGZus{}path}\PYG{p}{,}
+                       \PYG{n}{contig\PYGZus{}name}\PYG{p}{,}
+                       \PYG{n}{reference\PYGZus{}location}\PYG{p}{,}
+                       \PYG{n}{freebayes\PYGZus{}flags}\PYG{p}{,}
+                       \PYG{n}{sample\PYGZus{}location}\PYG{p}{,}
+                       \PYG{n}{result\PYGZus{}filename}\PYG{p}{)}
+        \PYG{k}{elif} \PYG{n}{freebayes\PYGZus{}mode} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}regenotyping\PYGZdq{}}\PYG{p}{:}
+            \PYG{n}{variants\PYGZus{}location} \PYG{o}{=} \PYG{n}{config}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}variants\PYGZus{}location\PYGZdq{}}\PYG{p}{]}
+
+            \PYG{n}{freebayes\PYGZus{}command} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZob{}\PYGZcb{} \PYGZhy{}r \PYGZob{}\PYGZcb{} \PYGZhy{}f \PYGZob{}\PYGZcb{} \PYGZhy{}@ \PYGZob{}\PYGZcb{} \PYGZob{}\PYGZcb{} \PYGZob{}\PYGZcb{} \PYGZgt{} \PYGZob{}\PYGZcb{}\PYGZdq{}}\PYG{o}{.}\PYGZbs{}
+                \PYG{n}{format}\PYG{p}{(}\PYG{n}{freebayes\PYGZus{}path}\PYG{p}{,}
+                       \PYG{n}{contig\PYGZus{}name}\PYG{p}{,}
+                       \PYG{n}{reference\PYGZus{}location}\PYG{p}{,}
+                       \PYG{n}{variants\PYGZus{}location}\PYG{p}{[}\PYG{n}{contig\PYGZus{}name}\PYG{p}{],}
+                       \PYG{n}{freebayes\PYGZus{}flags}\PYG{p}{,}
+                       \PYG{n}{sample\PYGZus{}location}\PYG{p}{,}
+                       \PYG{n}{result\PYGZus{}filename}\PYG{p}{)}
+        \PYG{k}{else}\PYG{p}{:}
+             \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Unknown or missing freebayes\PYGZus{}mode \PYGZhy{} \PYGZob{}\PYGZcb{}\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{freebayes\PYGZus{}mode}\PYG{p}{))}
+
+        \PYG{n}{call\PYGZus{}command}\PYG{p}{(}\PYG{n}{freebayes\PYGZus{}command}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}freebayes\PYGZdq{}}\PYG{p}{)}
+
+        \PYG{n}{compressed\PYGZus{}sample\PYGZus{}filename} \PYG{o}{=} \PYG{n}{compress\PYGZus{}sample}\PYG{p}{(}\PYG{n}{result\PYGZus{}filename}\PYG{p}{,} \PYG{n}{config}\PYG{p}{)}
+        \PYG{n}{generate\PYGZus{}tabix}\PYG{p}{(}\PYG{n}{compressed\PYGZus{}sample\PYGZus{}filename}\PYG{p}{,} \PYG{n}{config}\PYG{p}{)}
+        \PYG{n}{copy\PYGZus{}result}\PYG{p}{(}\PYG{n}{compressed\PYGZus{}sample\PYGZus{}filename}\PYG{p}{,} \PYG{n}{sample\PYGZus{}id}\PYG{p}{,} \PYG{n}{config}\PYG{p}{)}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n}{logger}\PYG{o}{.}\PYG{n}{info}\PYG{p}{(}
+            \PYG{l+s+s2}{\PYGZdq{}Contig \PYGZob{}\PYGZcb{} is not in the contig whitelist, skipping.\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{contig\PYGZus{}name}\PYG{p}{))}
+
+
+\PYG{n}{default\PYGZus{}args} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s1}{\PYGZsq{}owner\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}airflow\PYGZsq{}}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}depends\PYGZus{}on\PYGZus{}past\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{False}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}start\PYGZus{}date\PYGZsq{}}\PYG{p}{:} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2020}\PYG{p}{,} \PYG{l+m+mo}{01}\PYG{p}{,} \PYG{l+m+mo}{01}\PYG{p}{),}
+    \PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}airflow@airflow.com\PYGZsq{}}\PYG{p}{],}
+    \PYG{l+s+s1}{\PYGZsq{}email\PYGZus{}on\PYGZus{}failure\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{False}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}email\PYGZus{}on\PYGZus{}retry\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{False}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}retries\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}retry\PYGZus{}delay\PYGZsq{}}\PYG{p}{:} \PYG{n}{timedelta}\PYG{p}{(}\PYG{n}{minutes}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{),}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{dag} \PYG{o}{=} \PYG{n}{DAG}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}freebayes\PYGZdq{}}\PYG{p}{,} \PYG{n}{default\PYGZus{}args}\PYG{o}{=}\PYG{n}{default\PYGZus{}args}\PYG{p}{,}
+          \PYG{n}{schedule\PYGZus{}interval}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{,} \PYG{n}{concurrency}\PYG{o}{=}\PYG{l+m+mi}{10000}\PYG{p}{,} \PYG{n}{max\PYGZus{}active\PYGZus{}runs}\PYG{o}{=}\PYG{l+m+mi}{2000}\PYG{p}{)}
+
+
+\PYG{n}{start\PYGZus{}analysis\PYGZus{}run\PYGZus{}task} \PYG{o}{=} \PYG{n}{PythonOperator}\PYG{p}{(}
+    \PYG{n}{task\PYGZus{}id}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}start\PYGZus{}analysis\PYGZus{}run\PYGZdq{}}\PYG{p}{,}
+    \PYG{n}{python\PYGZus{}callable}\PYG{o}{=}\PYG{n}{start\PYGZus{}analysis\PYGZus{}run}\PYG{p}{,}
+    \PYG{n}{provide\PYGZus{}context}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{,}
+    \PYG{n}{dag}\PYG{o}{=}\PYG{n}{dag}\PYG{p}{)}
+
+
+\PYG{n}{validate\PYGZus{}sample\PYGZus{}task} \PYG{o}{=} \PYG{n}{PythonOperator}\PYG{p}{(}
+    \PYG{n}{task\PYGZus{}id}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}validate\PYGZus{}sample\PYGZdq{}}\PYG{p}{,}
+    \PYG{n}{python\PYGZus{}callable}\PYG{o}{=}\PYG{n}{validate\PYGZus{}sample}\PYG{p}{,}
+    \PYG{n}{provide\PYGZus{}context}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{,}
+    \PYG{n}{dag}\PYG{o}{=}\PYG{n}{dag}\PYG{p}{)}
+
+\PYG{n}{validate\PYGZus{}sample\PYGZus{}task}\PYG{o}{.}\PYG{n}{set\PYGZus{}upstream}\PYG{p}{(}\PYG{n}{start\PYGZus{}analysis\PYGZus{}run\PYGZus{}task}\PYG{p}{)}
+
+\PYG{n}{complete\PYGZus{}analysis\PYGZus{}run\PYGZus{}task} \PYG{o}{=} \PYG{n}{PythonOperatortor}\PYG{p}{(}
+    \PYG{n}{task\PYGZus{}id}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}complete\PYGZus{}analysis\PYGZus{}run\PYGZdq{}}\PYG{p}{,}
+    \PYG{n}{python\PYGZus{}callable}\PYG{o}{=}\PYG{n}{complete\PYGZus{}analysis\PYGZus{}run}\PYG{p}{,}
+    \PYG{n}{provide\PYGZus{}context}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{,}
+    \PYG{n}{dag}\PYG{o}{=}\PYG{n}{dag}\PYG{p}{)}
+
+\PYG{k}{for} \PYG{n}{contig\PYGZus{}name} \PYG{o+ow}{in} \PYG{n}{tracker}\PYG{o}{.}\PYG{n}{util}\PYG{o}{.}\PYG{n}{workflow\PYGZus{}common}\PYG{o}{.}\PYG{n}{CONTIG\PYGZus{}NAMES}\PYG{p}{:}
+    \PYG{n}{freebayes\PYGZus{}task} \PYG{o}{=} \PYG{n}{PythonOperator}\PYG{p}{(}
+        \PYG{n}{task\PYGZus{}id}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}freebayes\PYGZus{}\PYGZdq{}} \PYG{o}{+} \PYG{n}{contig\PYGZus{}name}\PYG{p}{,}
+        \PYG{n}{python\PYGZus{}callable}\PYG{o}{=}\PYG{n}{run\PYGZus{}freebayes}\PYG{p}{,}
+        \PYG{n}{op\PYGZus{}kwargs}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}contig\PYGZus{}name\PYGZdq{}}\PYG{p}{:} \PYG{n}{contig\PYGZus{}name}\PYG{p}{\PYGZcb{},}
+        \PYG{n}{provide\PYGZus{}context}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{,}
+        \PYG{n}{dag}\PYG{o}{=}\PYG{n}{dag}\PYG{p}{)}
+
+    \PYG{n}{freebayes\PYGZus{}task}\PYG{o}{.}\PYG{n}{set\PYGZus{}upstream}\PYG{p}{(}\PYG{n}{validate\PYGZus{}sample\PYGZus{}task}\PYG{p}{)}
+
+    \PYG{n}{complete\PYGZus{}analysis\PYGZus{}run\PYGZus{}task}\PYG{o}{.}\PYG{n}{set\PYGZus{}upstream}\PYG{p}{(}\PYG{n}{freebayes\PYGZus{}task}\PYG{p}{)}
+\end{Verbatim}

@@ -1594,7 +1594,7 @@ Just as it is difficult to grasp and analyze performance metrics due to the numb
 \subsection{Self-Healing}
 \label{sec:self_healing}
 
-The self-healing system within Butler builds on top of the metrics collection system to fulfill requirements specified in Section \ref{sec:self_healing_req} of the requirements. Specifically, it aims to provide a comprehensive set of tools for detecting operational anomalies at multiple levels of the system and taking automated remedial steps to fix these anomalies in order to minimize their effects. Figure \ref{fig:butler_self_healing} demonstrates the components of this system.
+The self-healing system within Butler builds on top of the metrics collection system to deliver features specified in Section \ref{sec:self_healing_req} of the requirements. Specifically, it aims to provide a comprehensive set of tools for detecting operational anomalies at multiple levels of the system and taking automated remedial steps to fix these anomalies in order to minimize their effects. Figure \ref{fig:butler_self_healing} demonstrates the components of this system.
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{butler_self_healing}
@@ -1602,6 +1602,119 @@ The self-healing system within Butler builds on top of the metrics collection sy
     \caption {The Butler self-healing system.}
     \label{fig:butler_self_healing}
 \end{figure}
+
+\subsubsection{Capturing Metrics}
+
+The input to the self-healing system is the set of metrics that is collected from all hosts into InfluxDB via telegraf. In order to facilitate the detection of anomalies at infrastructure, service, and payload levels it is necessary to collect several types of metrics. 
+
+Infrastructure-level issues are a wide class off issues that can represent the failure or entering into a bad state of individual components of the VM or the entire VM. Detecting these relies on capturing of a variety of basic metrics such as CPU, memory, disk, network, and others. Failure of the entire VM can be detected by the complete absence of a metrics signal from the affected machine. In practice, Butler uses the lack of updates to the \mintinline{shell}{uptime} metrics as a signal that the machine has gone offline.
+
+Tracking of individual services is facilitated by monitoring their respective processes. There are several possibilities for doing this offered by telegraf with its \mintinline{shell}{procstat} input plugin and these are used to capture the necessary processes in Butler. See listing \ref{lst:procstat_plugin} for the variety of ways to capture a process employed within Butler. Here, a process can be targeted by capturing the name of its executable, its PID file, a grep pattern on the process name, or the user that owns the process. Capturing the process in this way will generate a set of process-specific metrics that record the process's CPU usage, memory, context switches, and others that can be used in detecting and diagnosing issues.  
+
+\captionof{listing}{Butler Analysis configuration for VCF filtering.\label{lst:procstat_plugin}}
+\begin{minted}
+[
+breaklines=true,
+breakanywhere=true,
+fontsize=\footnotesize,
+linenos,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{shell}
+[inputs.procstat]]
+exe = "grafana-server"
+
+[[inputs.procstat]]
+pid_file = "/var/run/salt-api.pid"
+
+[[inputs.procstat]]
+pattern = ".*airflow scheduler.*"
+
+[[inputs.procstat]]
+user = "airflow"
+\end{minted}
+
+Tracking detailed metrics at the payload level beyond what is offered by procstat is, by definition, not possible to do in a completely generic fashion because every user of the framework will potentially run their own custom payloads that need to be individually instrumented with metrics. In usage scenarios where the payload is of a particularly experimental nature (such as scientific algorithms that are in early stages of development), or the analysis is performed at a large scale where the runtime is expected to be in months, and there is access to the underlying tools' source code, it may be desirable to add metrics emitting code within the individual tools that are run by the Butler framework. This is supported in Butler via the popular \mintinline{shell}{statsd}\autocite{statsd} package which has client libraries in every major programming language and allows any software to capture and emit several kinds of custom metrics in a format that is understood by a wider variety of metrics collection back-ends, including InfluxDB. The metric types that can be captured are:
+
+\begin{description}
+    \item [Counter] - A simple counter that allows arbitrarily incrementing and decrementing a value.
+    \item [Timer] - A metric that measures passage of time.
+    \item [Gauge] - A metric that emits a measurement of an arbitrary value.
+    \item [Set] - A metric that counts unique occurrences of an event.
+\end{description}
+
+Using the basic metric types above one can construct metrics capturing schemes of arbitrary complexity that subsequently feed into the self-healing capabilities of the framework.
+
+\subsubsection{Defining Anomalous Operating Conditions}
+
+In order to perform self-healing the Butler framework needs to be able to detect when anomalous conditions occur. This is most easily accomplished via a rules-based system over the universe of metrics where each rule is a predicate of the form:
+
+\begin{equation}\label{eq:1}
+    f(\vec{\mathbf{M_n}})\quad op \quad C
+\end{equation}
+
+given: 
+
+$M = \{M_t; t \in T\}$ - a metric time series\\
+$\vec{\mathbf{M_n}} = [M_{t-n+1} \quad M_{t-n+2} \quad ... \quad M_t]$ - a vector of n most recent observations of $M$\\
+$f\colon \mathbb{R^{n}} \mapsto \mathbb{R}$ - a function of $\vec{\mathbf{M_n}}$ that typically computes a summary statistic over a moving window of the most recent n data points, such as mean, min, max, etc.\\
+$op \in \{>,<, >=, <=, ==, !=\}$ - is a comparison operator\\
+$C \in R$ - is an arbitrary constant\\
+
+Thus, each rule continuously (discretized by metric sampling frequency) computes a summary statistic over a sample of $n$ most recent observations of metric of interest $M$, and compares it to a threshold value $C$, firing off an event when the comparison specified in $op$ succeeds. The full collection of rules then constitutes a full specification of the set of anomalous conditions for which automated action can be taken.
+
+We implement this rule-based system in Butler by leveraging an open-source product called Kapacitor\autocite{kapacitor} which provides a rule definition and execution environment that integrates well with our metrics data store InfluxDB and provides a wide range of options for event handling, including completely custom event handlers, which we make use of to implement the automated healing functionality in Butler. Kapacitor rule definitions make use of a Domain Specific Language (DSL) called TICKscript to implement the specification of rule predicates described in \ref{eq:1}.
+
+TICKscript makes use of the concept of nodes and pipelines to organize rules as Directed Acyclic Graphs (DAGs) where processing flows forwards in a single direction, and never backwards. Each node describes a particular data processing stage, and the pipeline is a chain of nodes. Each invocation of a rule represents a particular path through the graph.
+
+In listing \ref{lst:cpu_value_tick} we see an example of a TICKscript used in Butler to keep track of the CPU allocation on each host and send results to a log file. Key threshold levels are specified at the top of the script as well as the look-back period and evaluation frequency. A query for fetching appropriate data is specified and stored in the \mintinline{shell}{data} variable as a stream. Here we access the \mintinline{shell}{metrics} database (of our centralized InfluxDB data store), and we are interested in the \mintinline{shell}{cpu_value} measurement, expressed as a percentage. The actual metric measures the idle CPU percentage, and we are interested in the used CPU percentage, so we subtract the metric value from 100, and compute the mean value over our selection window giving it an alias name of \mintinline{shell}{stat} that we can refer to later. 
+
+With the data appropriately selected we can turn our attention to specifying appropriate comparisons to the thresholds that had earlier been established, and defining event triggers and handling logic. In addition to the already existing mean value we use the built-in \mintinline{shell}{sigma} function to calculate the distance, in standard deviations, from the mean of the current \mintinline{shell}{stat} value, giving it an alias \mintinline{shell}{sigma} as we are interested in capturing and alerting not only on high absolute CPU utilization levels but also high variance within the metric of interest. Each rule can trigger at three levels of severity - info, warning, and critical and we specify a separate threshold for each level. Thus, the CPU rule is triggered at a critical level when average CPU utilization over the last 10 seconds is greater than 90\%, or when the observed CPU utilization is greater than 3.5 standard deviations away from the mean CPU utilization. Other thresholds are set similarly. In this particular example we are interested in collecting the instances when rules are triggered into a simple log file, thus we specify a path to such a log file as part of the alert definition.
+
+A key mode of failure for the system is when a critical service fails or an entire virtual machine becomes unresponsive and unreachable. In order to capture these conditions we make use of a special type of rule within \mintinline{shell}{kapacitor} called a \emph{deadman}. This type of rule is triggered when no signal is received for a specific metric for a predefined period of time. In Listing \ref{lst:host_deadman_tick} we provide an example of a TICKscript that detects the deadman condition for an entire VM. This script uses a higher level of parametrization than the CPU utilization script of Listing \ref{lst:cpu_value_tick} where most of the parameters are specified as variables at the top of the script and the script structure is encoded below. The metric measurement that we base the rule on is called \mintinline{shell}{system} and it tracks low-level stats such as uptime for a VM. The data selection section of the script selects values from the \mintinline{shell}{system} measurement grouped by individual host that they originate from.
+
+The rule is triggered when no data is received for the given metric via the \mintinline{shell}{deadman(threshold, period)} node. In this case, when the rule is triggered there are several handlers that are registered to handle the resulting event. The first handler uses Slack API\autocite{slack} to post a notification message to the \emph{\#embassyalerts} Slack channel using a predefined message template with key information about the outage, such as in Figure \ref{fig:self_healing_slack}. The type of message changes depending on whether the rule condition has triggered or returned back to normal.
+
+\begin{figure}[h]
+    \includegraphics[scale=0.7]{self_healing_slack}
+    \centering
+    \caption {Self-healing alerts sent to a Slack channel.}
+    \label{fig:self_healing_slack}
+\end{figure} 
+
+The second handler invokes the actual Butler Self-Healing Agent to destroy the host that has become defunct and to launch a new VM to replace it. The details of the agent are provided in the next section. The third handler for this event actually generates a new metric that keeps track of rules that have been triggered and stores the metric in a separate measurement in InfluxDB. Since we want to have comprehensive information about when error conditions occur the \mintinline{shell}{alerts} measurement gives us a system of record for these events.
+
+\begin{figure}[h]
+    \includegraphics[scale=0.35]{butler_chronograf_tick_list}
+    \centering
+    \caption {List of rule definitions within chronograf.}
+    \label{fig:butler_chronograf_tick_list}
+\end{figure} 
+
+Butler defines a variety of rules using TICKscript that capture anomalies that are actionable out of the box, such as those that detect when a variety of services go offline, including - PostgreSQL service, Airflow Scheduler, Airflow Webserver, Airflow Worker, RabbitMQ, Nginx, Grafana, as well as when an entire worker VM goes offline. Each rule needs to be registered with kapacitor and Butler uses the standard Saltstack configuration mechanism to register these rules within the \mintinline{shell}{deploy_ticks} Salt state. There exists an open source Graphical User Interface called chronograf\autocite{chronograf} that allows for visualization and manual inspection and editing of kapacitor rules and the underlying InfluxDB metrics, and Butler makes use of this GUI, see Figures \ref{fig:butler_chronograf_tick_list}, \ref{fig:butler_chronograf_alert_history}.
+
+\begin{figure}[h]
+    \includegraphics[scale=0.35]{butler_chronograf_alert_history}
+    \centering
+    \caption {Butler alert history.}
+    \label{fig:butler_chronograf_alert_history}
+\end{figure} 
+
+\subsubsection{Executing Self-Healing}
+
+Metrics are comprehensively collected within Butler and anomaly detection signals are generated via a set of rules as previously described, but the actual automated self-healing capabilities require a separate component and no generic open source components exist that accomplish this. We thus implement a custom Self-Healing Agent within Butler. The functionality is exposed as a Python package with a CLI interface that is able to accomplish a number of healing tasks on various machines in the Butler cluster.
+
+The self-healing agent relies on the configuration management capabilities available in Butler via Saltstack in order to communicate healing instructions to other hosts. Specifically, Saltstack provides a programmatic interface through which a salt-master can be controlled. This interface is called salt-api. In addition, there exists a module called \mintinline{shell}{pepper} that allows for the salt-api to be communicated with by a remote program via openssl. Butler uses this mechanism to communicate with, and restart various failed services in an automated fashion. For instance, in the case of a failed Airflow Scheduler service (see Listing \ref{lst:self_healing_airflow_scheduler_restart}), the local telegraf metrics collector monitors the \mintinline{shell}{airflow-scheduler} service, and sends updated metrics to the monitoring-server every 10 seconds, where the data is stored in InfluxDB. A kapacitor rule runs on the monitoring-server every 10 seconds and evaluates whether the \mintinline{shell}{airflow-scheduler} is still sending data. If there is no data for longer than 3 minutes, the rule is triggered. As a result the Self-Healing Agent is requested to restart the \mintinline{shell}{airflow-scheduler} service. The agent itself does not know how to communicate with other machines in the cluster, but knows how to communicate with the salt-master. It establishes a salt-api connection to the salt-master and asks for the VM that has the tracker role to restart its \mintinline{shell}{airflow-scheduler} service. The salt-master knows about all of the VMs in the Butler cluster and issues the restart service command, placing the service back in a functioning state. A Slack notification is sent to alert a human operator that an outage has occurred and has been resolved. The total time of the outage is slightly longer than 3 minutes.
+
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{butler_chronograf_alert_barchart}
+    \centering
+    \caption {Butler timeline of alerts for high CPU utilization.}
+    \label{fig:butler_chronograf_alert_barchart}
+\end{figure} 
+
 
 
 

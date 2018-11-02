@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{call\PYGZus{}command}\PYG{p}{(}\PYG{n}{command}\PYG{p}{,} \PYG{n}{cwd}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{):}
+  \PYG{k}{try}\PYG{p}{:}
+      \PYG{n}{logging}\PYG{o}{.}\PYG{n}{debug}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}About to invoke command: \PYGZdq{}} \PYG{o}{+} \PYG{n}{command}\PYG{p}{)}
+      \PYG{n}{my\PYGZus{}output} \PYG{o}{=} \PYG{n}{check\PYGZus{}output}\PYG{p}{(}\PYG{n}{command}\PYG{p}{,} \PYG{n}{shell}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{,} \PYG{n}{cwd}\PYG{o}{=}\PYG{n}{cwd}\PYG{p}{,} \PYG{n}{stderr}\PYG{o}{=}\PYG{n}{STDOUT}\PYG{p}{)}
+      \PYG{n}{logging}\PYG{o}{.}\PYG{n}{debug}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Command output is: \PYGZdq{}} \PYG{o}{+} \PYG{n}{my\PYGZus{}output}\PYG{p}{)}
+      \PYG{k}{return} \PYG{n}{my\PYGZus{}output}
+  \PYG{k}{except} \PYG{n}{CalledProcessError} \PYG{k}{as} \PYG{n}{e}\PYG{p}{:}
+      \PYG{n}{logging}\PYG{o}{.}\PYG{n}{error}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}An error occurred! Command output is: \PYGZdq{}} \PYG{o}{+} \PYG{n}{e}\PYG{o}{.}\PYG{n}{output}\PYG{o}{.}\PYG{n}{decode}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}utf\PYGZhy{}8\PYGZdq{}}\PYG{p}{)} \PYG{p}{)}
+      \PYG{k}{raise}
+
+\PYG{k}{def} \PYG{n+nf}{is\PYGZus{}critical}\PYG{p}{(}\PYG{n}{level}\PYG{p}{):}
+  \PYG{k}{return} \PYG{n}{level} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}CRITICAL\PYGZdq{}}
+
+\PYG{k}{def} \PYG{n+nf}{parse\PYGZus{}alert\PYGZus{}data}\PYG{p}{():}
+  \PYG{k}{return} \PYG{n}{json}\PYG{o}{.}\PYG{n}{loads}\PYG{p}{(}\PYG{n}{sys}\PYG{o}{.}\PYG{n}{stdin}\PYG{o}{.}\PYG{n}{read}\PYG{p}{())}
+
+\PYG{k}{def} \PYG{n+nf}{get\PYGZus{}host\PYGZus{}name}\PYG{p}{(}\PYG{n}{alert\PYGZus{}data}\PYG{p}{):}
+  \PYG{k}{return} \PYG{n}{alert\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}data\PYGZdq{}}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}series\PYGZdq{}}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}tags\PYGZdq{}}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}host\PYGZdq{}}\PYG{p}{]}
+
+\PYG{k}{def} \PYG{n+nf}{restart\PYGZus{}service}\PYG{p}{(}\PYG{n}{host}\PYG{p}{,} \PYG{n}{service\PYGZus{}name}\PYG{p}{):}
+  \PYG{n}{call\PYGZus{}command}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}pepper \PYGZob{}\PYGZcb{} service.restart \PYGZob{}\PYGZcb{}\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{host}\PYG{p}{,} \PYG{n}{service\PYGZus{}name}\PYG{p}{),} \PYG{n+nb+bp}{None}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{parse\PYGZus{}args}\PYG{p}{():}
+  \PYG{n}{my\PYGZus{}parser} \PYG{o}{=} \PYG{n}{argparse}\PYG{o}{.}\PYG{n}{ArgumentParser}\PYG{p}{()}
+
+  \PYG{n}{sub\PYGZus{}parsers} \PYG{o}{=} \PYG{n}{my\PYGZus{}parser}\PYG{o}{.}\PYG{n}{add\PYGZus{}subparsers}\PYG{p}{()}
+
+  \PYG{n}{common\PYGZus{}args\PYGZus{}parser} \PYG{o}{=} \PYG{n}{argparse}\PYG{o}{.}\PYG{n}{ArgumentParser}\PYG{p}{(}
+      \PYG{n}{add\PYGZus{}help}\PYG{o}{=}\PYG{n+nb+bp}{False}\PYG{p}{,} \PYG{n}{conflict\PYGZus{}handler}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}resolve\PYGZsq{}}\PYG{p}{)}
+
+  \PYG{n}{restart\PYGZus{}airflow\PYGZus{}scheduler\PYGZus{}parser} \PYG{o}{=} \PYG{n}{sub\PYGZus{}parsers}\PYG{o}{.}\PYG{n}{add\PYGZus{}parser}\PYG{p}{(}
+      \PYG{l+s+s2}{\PYGZdq{}restart\PYGZhy{}airflow\PYGZhy{}scheduler\PYGZdq{}}\PYG{p}{,} \PYG{n}{parents}\PYG{o}{=}\PYG{p}{[}\PYG{n}{common\PYGZus{}args\PYGZus{}parser}\PYG{p}{],} \PYG{n}{conflict\PYGZus{}handler}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}resolve\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{restart\PYGZus{}airflow\PYGZus{}scheduler\PYGZus{}parser}\PYG{o}{.}\PYG{n}{set\PYGZus{}defaults}\PYG{p}{(}\PYG{n}{func}\PYG{o}{=}\PYG{n}{restart\PYGZus{}airflow\PYGZus{}scheduler\PYGZus{}command}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{restart\PYGZus{}airflow\PYGZus{}scheduler\PYGZus{}command}\PYG{p}{(}\PYG{n}{args}\PYG{p}{,} \PYG{n}{alert\PYGZus{}data}\PYG{p}{):}
+  \PYG{k}{if} \PYG{n}{is\PYGZus{}critical}\PYG{p}{(}\PYG{n}{alert\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}level\PYGZdq{}}\PYG{p}{]):}
+      \PYG{n}{restart\PYGZus{}service}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}G \PYGZsq{}roles:tracker\PYGZsq{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}airflow\PYGZhy{}scheduler\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

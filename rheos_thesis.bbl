@@ -29,6 +29,46 @@
       \verb https://www.influxdata.com/time-series-platform/telegraf/
       \endverb
     \endentry
+    \entry{statsd}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \verb{urlraw}
+      \verb https://github.com/etsy/statsd
+      \endverb
+      \verb{url}
+      \verb https://github.com/etsy/statsd
+      \endverb
+    \endentry
+    \entry{kapacitor}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \verb{urlraw}
+      \verb https://github.com/influxdata/kapacitor
+      \endverb
+      \verb{url}
+      \verb https://github.com/influxdata/kapacitor
+      \endverb
+    \endentry
+    \entry{slack}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \verb{urlraw}
+      \verb https://slack.com
+      \endverb
+      \verb{url}
+      \verb https://slack.com
+      \endverb
+    \endentry
+    \entry{chronograf}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \verb{urlraw}
+      \verb https://github.com/influxdata/chronograf
+      \endverb
+      \verb{url}
+      \verb https://github.com/influxdata/chronograf
+      \endverb
+    \endentry
     \entry{afgan2010galaxy}{article}{}
       \name{author}{6}{}{%
         {{hash=a90c63c8486067c2d25efd0be132b0f6}{%

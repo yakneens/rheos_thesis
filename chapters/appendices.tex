@@ -278,6 +278,180 @@ filebeat:
         - /var/log/*.log
 \end{minted}
 
+\captionof{listing} {TICKscript for alerting on CPU value. \label{lst:cpu_value_tick}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{shell}
+// Parameters
+var info = 70
+var warn = 80
+var crit = 90
+var infoSig = 2.5
+var warnSig = 3
+var critSig = 3.5
+var period = 10s
+var every = 10s
+
+// Dataframe
+var data = stream
+  |from()
+    .database('metrics')
+    .retentionPolicy('default')
+    .measurement('cpu_value')
+    .where(lambda: "type" == 'percent' AND "type_instance" == 'idle')
+  |eval(lambda: 100 - "value")
+    .as('used')
+  |window()
+    .period(period)
+    .every(every)
+  |mean('used')
+    .as('stat')
+
+// Thresholds
+var alert = data
+  |eval(lambda: sigma("stat"))
+    .as('sigma')
+    .keep()
+  |alert()
+    .id('{{ index .Tags "host"}}/cpu_value')
+    .message('{{ .ID }}:{{ index .Fields "stat" }}')
+    .info(lambda: "stat" > info OR "sigma" > infoSig)
+    .warn(lambda: "stat" > warn OR "sigma" > warnSig)
+    .crit(lambda: "stat" > crit OR "sigma" > critSig)
+
+// Alert
+alert
+  .log('/tmp/cpu_alert_log_2.txt')
+\end{minted}
+
+\captionof{listing} {TICKscript for handling dead VMs. \label{lst:host_deadman_tick}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{shell}
+{% raw %}
+var db = 'telegraf'
+var rp = 'autogen'
+var measurement = 'system'
+var groupBy = ['host']
+var whereFilter = lambda: TRUE
+var period = 30s
+var name = 'Host Deadman'
+var idVar = name + ':{{.Group}}'
+var blah = '{{index .Tags "host"}}'
+var message = 'The host {{index .Tags "host"}} is offline as of {{.Time}}.'
+var messageN = 'The host {{index .Tags "host"}} is back online at {{.Time}}.'
+var idTag = 'alertID'
+var levelTag = 'level'
+var messageField = 'message'
+var durationField = 'duration'
+var outputDB = 'chronograf'
+var outputRP = 'autogen'
+var outputMeasurement = 'alerts'
+var triggerType = 'deadman'
+var threshold = 0.0
+var data = stream
+    |from()
+        .database(db)
+        .retentionPolicy(rp)
+        .measurement(measurement)
+        .groupBy(groupBy)
+        .where(whereFilter)
+
+var trigger = data
+    |deadman(threshold, period)
+        .stateChangesOnly()
+        .message('{{ if eq .Level "CRITICAL" }}' + message + '{{else}}' + messageN + '{{end}}')
+        .id(idVar)
+        .idTag(idTag)
+        .levelTag(levelTag)
+        .messageField(messageField)
+        .durationField(durationField)
+        .slack()
+        .channel('#embassyalerts')
+{% endraw %}
+        .exec('butler_healing_agent', 'relaunch-worker', '-t', '{{ pillar['terraform_files'] }}', '-s', '{{ pillar['terraform_state'] }}', '-v', '{{ pillar['terraform_vars'] }}', '-p', '{{ pillar['terraform_provider'] }}')
+{% raw %}
+trigger
+    |eval(lambda: "emitted")
+        .as('value')
+        .keep('value', messageField, durationField)
+    |influxDBOut()
+        .create()
+        .database(outputDB)
+        .retentionPolicy(outputRP)
+        .measurement(outputMeasurement)
+        .tag('alertName', name)
+        .tag('triggerType', triggerType)
+
+trigger
+    |httpOut('output')
+{% endraw %}
+\end{minted}
+
+\captionof{listing} {Butler healing agent code for restarting the Airflow Scheduler. \label{lst:self_healing_airflow_scheduler_restart}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{python}
+def call_command(command, cwd=None):
+  try:
+      logging.debug("About to invoke command: " + command)
+      my_output = check_output(command, shell=True, cwd=cwd, stderr=STDOUT)
+      logging.debug("Command output is: " + my_output)
+      return my_output
+  except CalledProcessError as e:
+      logging.error("An error occurred! Command output is: " + e.output.decode("utf-8") )
+      raise
+    
+def is_critical(level):
+  return level == "CRITICAL"
+
+def parse_alert_data():
+  return json.loads(sys.stdin.read())
+
+def get_host_name(alert_data):
+  return alert_data["data"]["series"][0]["tags"]["host"]
+
+def restart_service(host, service_name):
+  call_command("pepper {} service.restart {}".format(host, service_name), None)
+
+def parse_args():
+  my_parser = argparse.ArgumentParser()
+
+  sub_parsers = my_parser.add_subparsers()
+
+  common_args_parser = argparse.ArgumentParser(
+      add_help=False, conflict_handler='resolve')
+  
+  restart_airflow_scheduler_parser = sub_parsers.add_parser(
+      "restart-airflow-scheduler", parents=[common_args_parser], conflict_handler='resolve')
+  restart_airflow_scheduler_parser.set_defaults(func=restart_airflow_scheduler_command)
+
+def restart_airflow_scheduler_command(args, alert_data):
+  if is_critical(alert_data["level"]):
+      restart_service("-G 'roles:tracker'", "airflow-scheduler")
+\end{minted}
+
 \captionof{listing} {Consul service definition for PostgreSQL. \label{lst:consul_postgres_service}}
 \begin{minted}
 [

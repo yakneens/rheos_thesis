@@ -1,0 +1,42 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+// Parameters
+var \PYG{n+nv}{info} \PYG{o}{=} \PYG{l+m}{70}
+var \PYG{n+nv}{warn} \PYG{o}{=} \PYG{l+m}{80}
+var \PYG{n+nv}{crit} \PYG{o}{=} \PYG{l+m}{90}
+var \PYG{n+nv}{infoSig} \PYG{o}{=} \PYG{l+m}{2}.5
+var \PYG{n+nv}{warnSig} \PYG{o}{=} \PYG{l+m}{3}
+var \PYG{n+nv}{critSig} \PYG{o}{=} \PYG{l+m}{3}.5
+var \PYG{n+nv}{period} \PYG{o}{=} 10s
+var \PYG{n+nv}{every} \PYG{o}{=} 10s
+
+// Dataframe
+var \PYG{n+nv}{data} \PYG{o}{=} stream
+  \PYG{p}{|}from\PYG{o}{()}
+    .database\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}metrics\PYGZsq{}}\PYG{o}{)}
+    .retentionPolicy\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}default\PYGZsq{}}\PYG{o}{)}
+    .measurement\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}cpu\PYGZus{}value\PYGZsq{}}\PYG{o}{)}
+    .where\PYG{o}{(}lambda: \PYG{l+s+s2}{\PYGZdq{}type\PYGZdq{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}percent\PYGZsq{}} AND \PYG{l+s+s2}{\PYGZdq{}type\PYGZus{}instance\PYGZdq{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}idle\PYGZsq{}}\PYG{o}{)}
+  \PYG{p}{|}eval\PYG{o}{(}lambda: \PYG{l+m}{100} \PYGZhy{} \PYG{l+s+s2}{\PYGZdq{}value\PYGZdq{}}\PYG{o}{)}
+    .as\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}used\PYGZsq{}}\PYG{o}{)}
+  \PYG{p}{|}window\PYG{o}{()}
+    .period\PYG{o}{(}period\PYG{o}{)}
+    .every\PYG{o}{(}every\PYG{o}{)}
+  \PYG{p}{|}mean\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}used\PYGZsq{}}\PYG{o}{)}
+    .as\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}stat\PYGZsq{}}\PYG{o}{)}
+
+// Thresholds
+var \PYG{n+nv}{alert} \PYG{o}{=} data
+  \PYG{p}{|}eval\PYG{o}{(}lambda: sigma\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}stat\PYGZdq{}}\PYG{o}{))}
+    .as\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}sigma\PYGZsq{}}\PYG{o}{)}
+    .keep\PYG{o}{()}
+  \PYG{p}{|}alert\PYG{o}{()}
+    .id\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{} index .Tags \PYGZdq{}host\PYGZdq{}\PYGZcb{}\PYGZcb{}/cpu\PYGZus{}value\PYGZsq{}}\PYG{o}{)}
+    .message\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{} .ID \PYGZcb{}\PYGZcb{}:\PYGZob{}\PYGZob{} index .Fields \PYGZdq{}stat\PYGZdq{} \PYGZcb{}\PYGZcb{}\PYGZsq{}}\PYG{o}{)}
+    .info\PYG{o}{(}lambda: \PYG{l+s+s2}{\PYGZdq{}stat\PYGZdq{}} \PYGZgt{} info OR \PYG{l+s+s2}{\PYGZdq{}sigma\PYGZdq{}} \PYGZgt{} infoSig\PYG{o}{)}
+    .warn\PYG{o}{(}lambda: \PYG{l+s+s2}{\PYGZdq{}stat\PYGZdq{}} \PYGZgt{} warn OR \PYG{l+s+s2}{\PYGZdq{}sigma\PYGZdq{}} \PYGZgt{} warnSig\PYG{o}{)}
+    .crit\PYG{o}{(}lambda: \PYG{l+s+s2}{\PYGZdq{}stat\PYGZdq{}} \PYGZgt{} crit OR \PYG{l+s+s2}{\PYGZdq{}sigma\PYGZdq{}} \PYGZgt{} critSig\PYG{o}{)}
+
+// Alert
+alert
+  .log\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}/tmp/cpu\PYGZus{}alert\PYGZus{}log\PYGZus{}2.txt\PYGZsq{}}\PYG{o}{)}
+\end{Verbatim}

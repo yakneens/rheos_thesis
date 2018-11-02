@@ -1535,4 +1535,24 @@
   doi       = {10.5962/bhl.title.28875},
 }
 
+@Online{telegraf,
+  url = {https://www.influxdata.com/time-series-platform/telegraf/},
+}
+
+@Online{statsd,
+  url = {https://github.com/etsy/statsd},
+}
+
+@Online{kapacitor,
+  url = {https://github.com/influxdata/kapacitor},
+}
+
+@Online{slack,
+  url = {https://slack.com},
+}
+
+@Online{chronograf,
+  url = {https://github.com/influxdata/chronograf},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -1,0 +1,60 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZob{}}\PYGZpc{} raw \PYGZpc{}\PYG{o}{\PYGZcb{}}
+var \PYG{n+nv}{db} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}telegraf\PYGZsq{}}
+var \PYG{n+nv}{rp} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}autogen\PYGZsq{}}
+var \PYG{n+nv}{measurement} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}system\PYGZsq{}}
+var \PYG{n+nv}{groupBy} \PYG{o}{=} \PYG{o}{[}\PYG{l+s+s1}{\PYGZsq{}host\PYGZsq{}}\PYG{o}{]}
+var \PYG{n+nv}{whereFilter} \PYG{o}{=} lambda: TRUE
+var \PYG{n+nv}{period} \PYG{o}{=} 30s
+var \PYG{n+nv}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Host Deadman\PYGZsq{}}
+var \PYG{n+nv}{idVar} \PYG{o}{=} name + \PYG{l+s+s1}{\PYGZsq{}:\PYGZob{}\PYGZob{}.Group\PYGZcb{}\PYGZcb{}\PYGZsq{}}
+var \PYG{n+nv}{blah} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{}index .Tags \PYGZdq{}host\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZsq{}}
+var \PYG{n+nv}{message} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}The host \PYGZob{}\PYGZob{}index .Tags \PYGZdq{}host\PYGZdq{}\PYGZcb{}\PYGZcb{} is offline as of \PYGZob{}\PYGZob{}.Time\PYGZcb{}\PYGZcb{}.\PYGZsq{}}
+var \PYG{n+nv}{messageN} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}The host \PYGZob{}\PYGZob{}index .Tags \PYGZdq{}host\PYGZdq{}\PYGZcb{}\PYGZcb{} is back online at \PYGZob{}\PYGZob{}.Time\PYGZcb{}\PYGZcb{}.\PYGZsq{}}
+var \PYG{n+nv}{idTag} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}alertID\PYGZsq{}}
+var \PYG{n+nv}{levelTag} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}level\PYGZsq{}}
+var \PYG{n+nv}{messageField} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}
+var \PYG{n+nv}{durationField} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}duration\PYGZsq{}}
+var \PYG{n+nv}{outputDB} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}chronograf\PYGZsq{}}
+var \PYG{n+nv}{outputRP} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}autogen\PYGZsq{}}
+var \PYG{n+nv}{outputMeasurement} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}alerts\PYGZsq{}}
+var \PYG{n+nv}{triggerType} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}deadman\PYGZsq{}}
+var \PYG{n+nv}{threshold} \PYG{o}{=} \PYG{l+m}{0}.0
+var \PYG{n+nv}{data} \PYG{o}{=} stream
+    \PYG{p}{|}from\PYG{o}{()}
+        .database\PYG{o}{(}db\PYG{o}{)}
+        .retentionPolicy\PYG{o}{(}rp\PYG{o}{)}
+        .measurement\PYG{o}{(}measurement\PYG{o}{)}
+        .groupBy\PYG{o}{(}groupBy\PYG{o}{)}
+        .where\PYG{o}{(}whereFilter\PYG{o}{)}
+
+var \PYG{n+nv}{trigger} \PYG{o}{=} data
+    \PYG{p}{|}deadman\PYG{o}{(}threshold, period\PYG{o}{)}
+        .stateChangesOnly\PYG{o}{()}
+        .message\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{} if eq .Level \PYGZdq{}CRITICAL\PYGZdq{} \PYGZcb{}\PYGZcb{}\PYGZsq{}} + message + \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{}else\PYGZcb{}\PYGZcb{}\PYGZsq{}} + messageN + \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{}end\PYGZcb{}\PYGZcb{}\PYGZsq{}}\PYG{o}{)}
+        .id\PYG{o}{(}idVar\PYG{o}{)}
+        .idTag\PYG{o}{(}idTag\PYG{o}{)}
+        .levelTag\PYG{o}{(}levelTag\PYG{o}{)}
+        .messageField\PYG{o}{(}messageField\PYG{o}{)}
+        .durationField\PYG{o}{(}durationField\PYG{o}{)}
+        .slack\PYG{o}{()}
+        .channel\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}embassyalerts\PYGZsq{}}\PYG{o}{)}
+\PYG{o}{\PYGZob{}}\PYGZpc{} endraw \PYGZpc{}\PYG{o}{\PYGZcb{}}
+        .exec\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}butler\PYGZus{}healing\PYGZus{}agent\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}relaunch\PYGZhy{}worker\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}t\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{} pillar[\PYGZsq{}}terraform\PYGZus{}files\PYG{l+s+s1}{\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}s\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{} pillar[\PYGZsq{}}terraform\PYGZus{}state\PYG{l+s+s1}{\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}v\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{} pillar[\PYGZsq{}}terraform\PYGZus{}vars\PYG{l+s+s1}{\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}p\PYGZsq{}}, \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{} pillar[\PYGZsq{}}terraform\PYGZus{}provider\PYG{l+s+s1}{\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYGZsq{}}\PYG{o}{)}
+\PYG{o}{\PYGZob{}}\PYGZpc{} raw \PYGZpc{}\PYG{o}{\PYGZcb{}}
+trigger
+    \PYG{p}{|}eval\PYG{o}{(}lambda: \PYG{l+s+s2}{\PYGZdq{}emitted\PYGZdq{}}\PYG{o}{)}
+        .as\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}value\PYGZsq{}}\PYG{o}{)}
+        .keep\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}value\PYGZsq{}}, messageField, durationField\PYG{o}{)}
+    \PYG{p}{|}influxDBOut\PYG{o}{()}
+        .create\PYG{o}{()}
+        .database\PYG{o}{(}outputDB\PYG{o}{)}
+        .retentionPolicy\PYG{o}{(}outputRP\PYG{o}{)}
+        .measurement\PYG{o}{(}outputMeasurement\PYG{o}{)}
+        .tag\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}alertName\PYGZsq{}}, name\PYG{o}{)}
+        .tag\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}triggerType\PYGZsq{}}, triggerType\PYG{o}{)}
+
+trigger
+    \PYG{p}{|}httpOut\PYG{o}{(}\PYG{l+s+s1}{\PYGZsq{}output\PYGZsq{}}\PYG{o}{)}
+\PYG{o}{\PYGZob{}}\PYGZpc{} endraw \PYGZpc{}\PYG{o}{\PYGZcb{}}
+\end{Verbatim}
