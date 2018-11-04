@@ -295,60 +295,62 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Executing Self-Healing}{103}{section*.116}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.5}Service Discovery}{104}{subsection.3.7.5}
+\contentsline {subsubsection}{Self-Healing Caveats}{107}{section*.118}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{106}{chapter.4}
+\contentsline {subsection}{\numberline {3.7.5}Service Discovery}{107}{subsection.3.7.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Deployment on EMBL/EBI Embassy Cloud}{106}{section.4.1}
+\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{109}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Embassy Cloud Architecture}{107}{section*.120}
+\contentsline {section}{\numberline {4.1}Deployment on EMBL/EBI Embassy Cloud}{109}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Access to PCAWG Data}{108}{section*.122}
+\contentsline {subsubsection}{Embassy Cloud Architecture}{110}{section*.121}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Butler deployment}{108}{section*.123}
+\contentsline {subsubsection}{Access to PCAWG Data}{111}{section*.123}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}PCAWG Germline Analyses}{110}{section.4.2}
+\contentsline {subsubsection}{Butler deployment}{111}{section*.124}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Variant Discovery}{111}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.2}PCAWG Germline Analyses}{113}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{The freebayes Butler workflow}{111}{section*.126}
+\contentsline {subsection}{\numberline {4.2.1}Variant Discovery}{114}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{AnalysisRun configurations for freebayes workflow}{115}{section*.129}
+\contentsline {subsubsection}{The freebayes Butler workflow}{114}{section*.127}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Variant Genotyping}{117}{subsection.4.2.2}
+\contentsline {subsubsection}{AnalysisRun configurations for freebayes workflow}{118}{section*.130}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Variant Filtration}{118}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.2}Variant Genotyping}{120}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.4}Genotype Phasing}{119}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.3}Variant Filtration}{121}{subsection.4.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Data Submission}{119}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.4}Genotype Phasing}{122}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Structural Variant Calling}{121}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.5}Data Submission}{122}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Experimental Runs}{122}{section.4.3}
+\contentsline {subsection}{\numberline {4.2.6}Structural Variant Calling}{124}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Freebayes Common Variant Genotyping}{122}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.3}Experimental Runs}{125}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}Freebayes Variant Discovery}{124}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.1}Freebayes Common Variant Genotyping}{125}{subsection.4.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.3}Freebayes Variant Genotyping}{124}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.2}Freebayes Variant Discovery}{127}{subsection.4.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.4}Delly Full Variant Genotyping}{126}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.3}Freebayes Variant Genotyping}{127}{subsection.4.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Deletions Genotyping}{126}{section*.137}
+\contentsline {subsection}{\numberline {4.3.4}Delly Full Variant Genotyping}{129}{subsection.4.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Duplications Genotyping}{128}{section*.141}
+\contentsline {subsubsection}{Deletions Genotyping}{129}{section*.138}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}System Design Recap}{130}{section.4.4}
+\contentsline {subsubsection}{Duplications Genotyping}{131}{section*.142}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.5}Validation and Conclusion}{132}{section.4.5}
+\contentsline {section}{\numberline {4.4}System Design Recap}{133}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.6}Future Direction}{132}{section.4.6}
+\contentsline {section}{\numberline {4.5}Validation and Conclusion}{135}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}The Rheos Framework}{134}{chapter.5}
+\contentsline {section}{\numberline {4.6}Future Direction}{135}{section.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{135}{chapter.6}
+\contentsline {chapter}{\numberline {5}The Rheos Framework}{137}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendix}{136}{section*.145}
+\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{138}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Code Listings}{136}{Appendix.1.A}
+\contentsline {chapter}{Appendix}{139}{section*.146}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Code Listings}{139}{Appendix.1.A}

@@ -638,7 +638,7 @@ Detailed requirements for these capabilities are specified in sections \ref{sec:
 
 To fulfill these requirements in a cloud agnostic manner Butler utilizes a framework called Terraform, developed by Hashicorp.
 
-\subsection{Terraform}
+\subsection{Terraform}\label{sec:terraform_design}
 
 Terraform is an Open Source framework for cloud agnostic cluster lifecycle management, that has been built by Hashicorp Inc., a San Francisco, California based company, and is distributed via a Mozilla Public License. The source code for Terraform is hosted on Github at https://github.com/hashicorp/terraform, and at the time of this writing (September, 2016) the latest release of the software is version v0.7.3
 
@@ -1709,14 +1709,87 @@ Metrics are comprehensively collected within Butler and anomaly detection signal
 The self-healing agent relies on the configuration management capabilities available in Butler via Saltstack in order to communicate healing instructions to other hosts. Specifically, Saltstack provides a programmatic interface through which a salt-master can be controlled. This interface is called salt-api. In addition, there exists a module called \mintinline{shell}{pepper} that allows for the salt-api to be communicated with by a remote program via openssl. Butler uses this mechanism to communicate with, and restart various failed services in an automated fashion. For instance, in the case of a failed Airflow Scheduler service (see Listing \ref{lst:self_healing_airflow_scheduler_restart}), the local telegraf metrics collector monitors the \mintinline{shell}{airflow-scheduler} service, and sends updated metrics to the monitoring-server every 10 seconds, where the data is stored in InfluxDB. A kapacitor rule runs on the monitoring-server every 10 seconds and evaluates whether the \mintinline{shell}{airflow-scheduler} is still sending data. If there is no data for longer than 3 minutes, the rule is triggered. As a result the Self-Healing Agent is requested to restart the \mintinline{shell}{airflow-scheduler} service. The agent itself does not know how to communicate with other machines in the cluster, but knows how to communicate with the salt-master. It establishes a salt-api connection to the salt-master and asks for the VM that has the tracker role to restart its \mintinline{shell}{airflow-scheduler} service. The salt-master knows about all of the VMs in the Butler cluster and issues the restart service command, placing the service back in a functioning state. A Slack notification is sent to alert a human operator that an outage has occurred and has been resolved. The total time of the outage is slightly longer than 3 minutes.
 
 \begin{figure}[h]
-    \includegraphics[scale=0.5]{butler_chronograf_alert_barchart}
+    \includegraphics[scale=0.55]{butler_chronograf_alert_barchart}
     \centering
     \caption {Butler timeline of alerts for high CPU utilization.}
     \label{fig:butler_chronograf_alert_barchart}
 \end{figure} 
 
+Although, as described above, there are quite a few steps involved between the initial stoppage of a running service and a successful automated restart, the process is relatively straightforward. Restarting a failed VM, on the other hand, requires quite a bit more effort and careful management. Detecting when an entire VM fails is not really possible in a centralized uniform manner, since a failed VM is completely unresponsive by definition, yet other conditions such as network outages and failures of the metrics collection system may appear in an identical manner to an outside observer. Thus, VM failure detection is prone to false positive signals, and because re-creating VMs from scratch is a costly and time consuming process it is important to use this feature sparingly.
+
+For every VM a set of basic metrics is collected via telegraf, and the particular metric that is used to detect failed VMs is \mintinline{shell}{uptime}. This metric simply measures how long a particular VM has been alive for. When \mintinline{shell}{uptime} ceases to be updated for a period of time (current default is 30 minutes) the VM is declared dead and is slotted for destruction. Since within Butler all concerns related to creation and destruction of VMs are handled by terraform it is necessary to ensure that terraform can be executed by the self-healing agent and is kept up to date of the infrastructure state that may be updated elsewhere. Details of the terraform cluster lifecycle management system are described in Section \ref{sec:terraform_design}. To support automated relaunching of VMs several changes to how terraform is used are required. 
+
+Typically, Butler clusters are launched from a machine that is external to the cloud that is being deployed to. Oftentimes this happens from an individual user's computer. By default terraform creates and keeps up to date a file called \mintinline{shell}{terraform.tfstate} which contains a tree representation of the entire Butler infrastructure. This file typically does not contain sensitive information, thus, it can most frequently be simply checked into source control and checked out on the host that will run the self-healing agent. When it is desired to keep the state information private the data can be encrypted and shared in the manner described below for other private data. Not all of the terraform configuration information is non-private. In order to successfully communicate with cloud API endpoints sensitive configuration settings such as endpoint URLs, paths, and user credentials are required. Relaying this information over to the host running the self-healing agent in a secure manner is handled via passing of a GPG encrypted variable through saltstack.
+
+Under this scheme a public/private GPG keypair is created and the public key is imported on the machine that is holding the secret data and will perform the encryption. The private key is imported on the salt-master machine of the Butler cluster. Secret data is encrypted and stored as a string literal in a salt pillar variable that can be checked into source control, see Listing \ref{lst:gpg_encrypted_pillar}.
+
+\captionof{listing} {Storing GPG encrypted data in a salt pillar variable. \label{lst:gpg_encrypted_pillar}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{yaml}
+#!yaml|gpg
+tf_vars: |
+  -----BEGIN PGP MESSAGE-----
+  
+  hQEMA0LYc5MkOCPHAQf8CeN7ykRp518Fm3co0DF5q8pwk9O92ctmDnAhhAascZ2c
+  3QESmEIswLVWhKjbZ9tqmmOJeBR+i5gadJjeMStGLHjJm4hNeWLvduk9y63VvhO7
+  sjm1N+zzEeYINoj5dkFn9ursggwVP/yk7tlKovvhCO6vwOdIh3UI1S+BzfYb79Sd
+  aQGMID1n2LoYCy2y1xXjpTlsYU9uVPhQds2WeFL3Kfhc9B8Q/5i58XdiISVg8ueo
+  pg98uOOtIe9BruB6m6tRG6f1W3ZDhjpoBE+DrcBm5k8LZ1khZV70+SjTuoMNOfDl
+  K84meNBDoATi5x0FpfNLnQWXLjJkxaxWaZdGaBplhdLAJAF/PvyvMG0BX7XJdCcW
+  XGs3BoM+NUJqDgjI5gytmLbPRHA2YWUVNTBmUUw6r9abJyBta1w2RwOFMxEGnszL
+  kT0kBPZCAoWiCkgug2G5mnwwP9Wh/CERDCuqObPKHdnES0EMkZ6Bpo7cwX2HMUNj
+  5NAYt0gJ6uD1n3zGstQ8Crchj7rkDqottQ/b1JkgFoXKGCYLnv9EuZxaRXz1ad0n
+  V7We5/GI+4PmemBLKOHqSdaE/z9sveF1xwY1iUb9hHrHZL2s68nJ4T4VU6VSfVZa
+  9W1p4QHic5VDacisq/gWYbSL/ERqKA==
+  =B+ao
+  -----END PGP MESSAGE-----
+
+terraform_files: /opt/eosc_pilot/deployment/embassy/
+terraform_state: /opt/eosc_pilot/deployment/embassy/terraform.tfstate
+terraform_vars: /opt/eosc_pilot/deployment/embassy/ebi_credentials.tfvars
+terraform_provider: openstack
+\end{minted}
+
+When the pillar variable is targeted to the VM that runs the self-healing agent and needs to be able to execute terraform commands, the salt-master uses its copy of the private key to decrypt the file contents and deliver them to the appropriate VM as a file (see Listing \ref{lst:gpg_decrypted_pillar}) that is ready to be consumed by terraform.
+
+\captionof{listing} {Retrieving contents of a GPG encrypted pillar variable and storing them in a file. \label{lst:gpg_decrypted_pillar}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{yaml}
+{{ pillar['terraform_vars'] }}:
+  file.managed:
+    - contents_pillar: tf_vars
+    - user: root
+    - group: root
+    - mode: 600
+    - makedirs: True
+\end{minted}
+
+Because of the ephemeral nature of cloud-based VMs it is not advisable to simply store terraform state in a file as may be sufficient on a user's computer. Section \ref{sec:design_consul} describes Consul, which is a software package that handles Service Discovery concerns in Butler, but also provides a distributed key-value store. In order to support a more robust storage back-end for terraform state we ingest this state data into a Consul key-value store, which terraform can subsequently interact with directly. This requires setting some terraform initialization parameters to indicate a Consul back-end and a location of the terraform state file to ingest. Because the key-value store is replicated across several Consul nodes it is robust to individual VM outages and supports the deployment of several self-healing agents against one back-end as may be necessary for scalability.
 
 
+Listing \ref{lst:self_healing_relaunch_vm} shows self-healing agent code excerpts that demonstrate the general flow of terminating and relaunching of a worker VM. Each machine managed by saltstack exchanges SSH keys with the salt-master. To ensure that there are no collisions between keys when reusing worker machine names the defunct worker's SSH key needs to be removed from the salt-master. Subsequently, terraform's \mintinline{shell}{taint} command is used to mark the VM for destruction. Once that succeeds the terraform \mintinline{shell}{apply} command is used to actually carry out the destruction and re-provisioning of the VM using an appropriate cloud-provider-specific set of instructions. Since the configuration of the newly launched VM cannot continue until the machine is registered with the salt-master the agent periodically polls salt-master until it is able to successfully retrieve the new key. Once the new key is available configuration proceeds according to the same recipe as when manually launching the Butler cluster. First, DNS is configured via dnsmasq, then service lookup is configured via consul, and lastly the full salt highstate is executed to install the rest of the necessary software. Upon the completion of this process the newly launched VM is placed in service and can tak on new tasks from the scheduler.
+
+\subsubsection{Self-Healing Caveats}
+
+Self-healing is a powerful concept and can play a huge role in facilitating the smooth operation of large computational clusters with minimal human intervention. It is possible though, to over-automate, ending up in a situation where rules are frequently triggered under false conditions, causing needless restarts and wasted system resources. This is due to the sheer number of different things that can go wrong in a large-scale distributed system and the relative difficuluty of expressing the resultant conditions and resolution steps in a manner that isn't prone to false positive signals and low robustness. Thus, it is imperative for the Butler user to approach self-healing as a component of the system that requires tuning, project-to-project and environment-to-environment. 
+
+When deciding which aspects of the system operational behaviour to automate, the user should keep in mind the level of regularity with which particular classes of issues occur, the reliability of the metrics signal in detecting these issues, and the potential benefits of automated action versus the potential costs of acting on false-positive signals. This can require getting detailed knowledge of the operational profile of the individual algorithms that are being executed as part of a particular project in order to understand what normal and unnormal operating conditions look like so that these may be encoded as anomaly detection rules. This is most easily accomplished by careful observation and analysis of monitoring dashboards to identify important patterns. With the self-healing system it is advised to start with a small number of robust signals, and build up the rule complexity as the users' level of understanding and sophistication with the Butler framework increases in order to reap the most benefits.
 
 \subsection{Service Discovery} 
 \label{sec:design_consul}

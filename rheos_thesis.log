@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.10.18)  2 NOV 2018 22:22
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.10.18)  4 NOV 2018 20:31
  system commands enabled.
  file:line:error style messages enabled.
 **"/Users/siakhnin/Google Drive/Research/projects/Rheos/thesis/rheos_thesis.tex"
@@ -23,7 +23,7 @@ Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
 Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'.
-luaotfload | main : initialization completed in 0.106 seconds (/usr/local/texlive/2018/texmf-dist/tex/latex/base/report.cls
+luaotfload | main : initialization completed in 0.104 seconds (/usr/local/texlive/2018/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -3024,7 +3024,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 File: images/butler_chronograf_alert_barchart.png Graphic file (type png)
 <use images/butler_chronograf_alert_barchart.png>
 Package luatex.def Info: images/butler_chronograf_alert_barchart.png  used on input line 1712.
-(luatex.def)             Requested size: 384.4353pt x 209.28136pt.
+(luatex.def)             Requested size: 422.88118pt x 230.21077pt.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3033,12 +3033,62 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [104<./images/butler_chronograf_alert_barchart.png>]
-<images/consul_architecture.png, id=1556, 2323.68124pt x 2409.0pt>
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/AD8242E4904D6FEEEAFDC432D60CC05D33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/AD8242E4904D6FEEEAFDC432D60CC05D33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/34E7880FFA016925F52FDC9A4777713033AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1726.
+See the caption package documentation for explanation.
+
+
+\openout3 = rheos_thesis.pyg
+(./_minted-rheos_thesis/9F3F46497F5F4DC0D74CDCD30A3CA545263DE7D4A1A8B2875D24A94DC0BB3C96.pygtex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[105])
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1763.
+See the caption package documentation for explanation.
+
+
+\openout3 = rheos_thesis.pyg
+(./_minted-rheos_thesis/F225437900CA48214CD83E57D5788E03263DE7D4A1A8B2875D24A94DC0BB3C96.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/FDF0F8A65855A52BBE69CD2075F8902733AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/33A3313205E7CBE1CF7FC3936B7F806733AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[106]
+<images/consul_architecture.png, id=1575, 2323.68124pt x 2409.0pt>
 File: images/consul_architecture.png Graphic file (type png)
 <use images/consul_architecture.png>
-Package luatex.def Info: images/consul_architecture.png  used on input line 1729.
+Package luatex.def Info: images/consul_architecture.png  used on input line 1802.
 (luatex.def)             Requested size: 232.38173pt x 240.91411pt.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[107]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/D4915AB9A90CCCF8C0D1024EC0F5855233AABC92B3F1DC44296C26B1BD7730ED.pygtex))
 
@@ -3047,18 +3097,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[105<./images/consul_architecture.png>]
+[108<./images/consul_architecture.png>]
 Chapter 4.
 (./chapters/butler_implementation.tex
-<images/embassy_architecture.png, id=1571, 1126.2075pt x 534.99875pt>
+<images/embassy_architecture.png, id=1597, 1126.2075pt x 534.99875pt>
 File: images/embassy_architecture.png Graphic file (type png)
 <use images/embassy_architecture.png>
 Package luatex.def Info: images/embassy_architecture.png  used on input line 18.
 (luatex.def)             Requested size: 426.79134pt x 202.74652pt.
- [106
+ [109
 
 ]
-<images/embassy_dashboard.png, id=1580, 632.3625pt x 303.1325pt>
+<images/embassy_dashboard.png, id=1605, 632.3625pt x 303.1325pt>
 File: images/embassy_dashboard.png Graphic file (type png)
 <use images/embassy_dashboard.png>
 Package luatex.def Info: images/embassy_dashboard.png  used on input line 31.
@@ -3070,7 +3120,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[107<./images/embassy_architecture.png><./images/embassy_dashboard.png>]
+[110<./images/embassy_architecture.png><./images/embassy_dashboard.png>]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/B8A7936C7C2C471631E1515206E6F5EBD73EE0002A44DF9B2D9BE1572E518995.pygtex)
 \openout5 = rheos_thesis.pyg
@@ -3104,8 +3154,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[108]
-<images/embassy_butler_deployment_architecture.png, id=1600, 761.84625pt x 746.79pt>
+[111]
+<images/embassy_butler_deployment_architecture.png, id=1626, 761.84625pt x 746.79pt>
 File: images/embassy_butler_deployment_architecture.png Graphic file (type png)
 <use images/embassy_butler_deployment_architecture.png>
 Package luatex.def Info: images/embassy_butler_deployment_architecture.png  used on input line 73.
@@ -3117,20 +3167,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[109<./images/embassy_butler_deployment_architecture.png>]
+[112<./images/embassy_butler_deployment_architecture.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[110]
+[113]
 
 Package caption Warning: \label without proper reference on input line 115.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `tab:chromosome_sizes' on page 111 undefined on input line 112.
+LaTeX Warning: Reference `tab:chromosome_sizes' on page 114 undefined on input line 112.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3142,8 +3192,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[111]
-<images/butler_freebayes_workflow.png, id=1632, 343.2825pt x 716.6775pt>
+[114]
+<images/butler_freebayes_workflow.png, id=1657, 343.2825pt x 716.6775pt>
 File: images/butler_freebayes_workflow.png Graphic file (type png)
 <use images/butler_freebayes_workflow.png>
 Package luatex.def Info: images/butler_freebayes_workflow.png  used on input line 154.
@@ -3158,7 +3208,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[112]
+[115]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/F75D0B28BB612483F38DC742D6EEC6584EDB6D7A69951E996E27037C1CB03AC9.pygtex)
 \openout5 = rheos_thesis.pyg
@@ -3169,7 +3219,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[113<./images/butler_freebayes_workflow.png>]
+[116<./images/butler_freebayes_workflow.png>]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/D0B09263F586DC5FA8E26AC773F169684EDB6D7A69951E996E27037C1CB03AC9.pygtex)
 
@@ -3205,7 +3255,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[114]
+[117]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/2DC17AD74063996AB2716946D0454A8833AABC92B3F1DC44296C26B1BD7730ED.pygtex)
 \openout5 = rheos_thesis.pyg
@@ -3215,7 +3265,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/584BF592CD2AE4D5BFF633D8F878557833AABC92B3F1DC44296C26B1BD7730ED.pygtex)
 
-LaTeX Warning: Reference `sec:available_samples' on page 115 undefined on input line 261.
+LaTeX Warning: Reference `sec:available_samples' on page 118 undefined on input line 261.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3223,7 +3273,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[115]
+[118]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 263.
@@ -3321,7 +3371,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[116]
+[119]
 Overfull \hbox (11.97615pt too wide) in paragraph at lines 19--19
 []\TU/lmtt/m/n/12 "/freebayes.chr_16.sites.snv_indel.annot.final.vcf.gz"[],|  
  []
@@ -3368,8 +3418,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[117]
-<images/butler_filter_variants_workflow.png, id=1690, 444.66125pt x 52.195pt>
+[120]
+<images/butler_filter_variants_workflow.png, id=1716, 444.66125pt x 52.195pt>
 File: images/butler_filter_variants_workflow.png Graphic file (type png)
 <use images/butler_filter_variants_workflow.png>
 Package luatex.def Info: images/butler_filter_variants_workflow.png  used on input line 316.
@@ -3389,8 +3439,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[118<./images/butler_filter_variants_workflow.png>]
-<images/butler_gtupload_workflow.png, id=1707, 753.81625pt x 60.225pt>
+[121<./images/butler_filter_variants_workflow.png>]
+<images/butler_gtupload_workflow.png, id=1733, 753.81625pt x 60.225pt>
 File: images/butler_gtupload_workflow.png Graphic file (type png)
 <use images/butler_gtupload_workflow.png>
 Package luatex.def Info: images/butler_gtupload_workflow.png  used on input line 359.
@@ -3412,7 +3462,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[119<./images/butler_gtupload_workflow.png>]
+[122<./images/butler_gtupload_workflow.png>]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/E516F0CD121B5A8DD962CAD714D9B65F33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
 \openout5 = rheos_thesis.pyg
@@ -3447,15 +3497,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[120]
+[123]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[121]
-<images/butler_delly_workflow.png, id=1739, 584.1825pt x 49.18375pt>
+[124]
+<images/butler_delly_workflow.png, id=1764, 584.1825pt x 49.18375pt>
 File: images/butler_delly_workflow.png Graphic file (type png)
 <use images/butler_delly_workflow.png>
 Package luatex.def Info: images/butler_delly_workflow.png  used on input line 388.
@@ -3472,10 +3522,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[122<./images/butler_delly_workflow.png>]
+[125<./images/butler_delly_workflow.png>]
 \openout3 = rheos_thesis.pyg
  (./_minted-rheos_thesis/B531C91638DE366B76EDF1D3E9343B3D63BEBE44FD60CC478B0439FAAE7250D6.pygtex)
-<images/freebayes_1_percent_maf_genotyping.png, id=1755, 598.235pt x 670.505pt>
+<images/freebayes_1_percent_maf_genotyping.png, id=1780, 598.235pt x 670.505pt>
 File: images/freebayes_1_percent_maf_genotyping.png Graphic file (type png)
 <use images/freebayes_1_percent_maf_genotyping.png>
 Package luatex.def Info: images/freebayes_1_percent_maf_genotyping.png  used on input line 460.
@@ -3487,13 +3537,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[123<./images/freebayes_1_percent_maf_genotyping.png>]
-<images/freebayes_discovery_regenotype_task_durations.png, id=1765, 698.61pt x 402.50375pt>
+[126<./images/freebayes_1_percent_maf_genotyping.png>]
+<images/freebayes_discovery_regenotype_task_durations.png, id=1790, 698.61pt x 402.50375pt>
 File: images/freebayes_discovery_regenotype_task_durations.png Graphic file (type png)
 <use images/freebayes_discovery_regenotype_task_durations.png>
 Package luatex.def Info: images/freebayes_discovery_regenotype_task_durations.png  used on input line 474.
 (luatex.def)             Requested size: 426.79134pt x 245.89543pt.
-<images/freebayes_discovery_regenotype_task_duration_densities.png, id=1767, 1465.475pt x 1700.3525pt>
+<images/freebayes_discovery_regenotype_task_duration_densities.png, id=1792, 1465.475pt x 1700.3525pt>
 File: images/freebayes_discovery_regenotype_task_duration_densities.png Graphic file (type png)
 <use images/freebayes_discovery_regenotype_task_duration_densities.png>
 Package luatex.def Info: images/freebayes_discovery_regenotype_task_duration_densities.png  used on input line 483.
@@ -3508,8 +3558,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[124<./images/freebayes_discovery_regenotype_task_durations.png>]
-<images/freebayes_discovery_regenotype_cluster_load.png, id=1777, 726.715pt x 791.95876pt>
+[127<./images/freebayes_discovery_regenotype_task_durations.png>]
+<images/freebayes_discovery_regenotype_cluster_load.png, id=1802, 726.715pt x 791.95876pt>
 File: images/freebayes_discovery_regenotype_cluster_load.png Graphic file (type png)
 <use images/freebayes_discovery_regenotype_cluster_load.png>
 Package luatex.def Info: images/freebayes_discovery_regenotype_cluster_load.png  used on input line 492.
@@ -3524,7 +3574,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[125<./images/freebayes_discovery_regenotype_task_duration_densities.png>]
+[128<./images/freebayes_discovery_regenotype_task_duration_densities.png>]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 506.
@@ -3542,13 +3592,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[126<./images/freebayes_discovery_regenotype_cluster_load.png>])
-<images/delly_deletion_durations.png, id=1793, 935.495pt x 504.88625pt>
+[129<./images/freebayes_discovery_regenotype_cluster_load.png>])
+<images/delly_deletion_durations.png, id=1818, 935.495pt x 504.88625pt>
 File: images/delly_deletion_durations.png Graphic file (type png)
 <use images/delly_deletion_durations.png>
 Package luatex.def Info: images/delly_deletion_durations.png  used on input line 531.
 (luatex.def)             Requested size: 426.79134pt x 230.3399pt.
-<images/delly_deletion_regenotyping.png, id=1796, 700.6175pt x 791.95876pt>
+<images/delly_deletion_regenotyping.png, id=1821, 700.6175pt x 791.95876pt>
 File: images/delly_deletion_regenotyping.png Graphic file (type png)
 <use images/delly_deletion_regenotyping.png>
 Package luatex.def Info: images/delly_deletion_regenotyping.png  used on input line 554.
@@ -3560,7 +3610,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[127<./images/delly_deletion_durations.png>]
+[130<./images/delly_deletion_durations.png>]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 564.
@@ -3575,13 +3625,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[128<./images/delly_deletion_regenotyping.png>])
-<images/delly_duplication_durations.png, id=1814, 935.495pt x 504.88625pt>
+[131<./images/delly_deletion_regenotyping.png>])
+<images/delly_duplication_durations.png, id=1841, 935.495pt x 504.88625pt>
 File: images/delly_duplication_durations.png Graphic file (type png)
 <use images/delly_duplication_durations.png>
 Package luatex.def Info: images/delly_duplication_durations.png  used on input line 590.
 (luatex.def)             Requested size: 426.79134pt x 230.3399pt.
-<images/delly_duplication_regenotyping.png, id=1817, 705.63625pt x 789.95125pt>
+<images/delly_duplication_regenotyping.png, id=1844, 705.63625pt x 789.95125pt>
 File: images/delly_duplication_regenotyping.png Graphic file (type png)
 <use images/delly_duplication_regenotyping.png>
 Package luatex.def Info: images/delly_duplication_regenotyping.png  used on input line 613.
@@ -3596,14 +3646,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[129<./images/delly_duplication_durations.png>]
+[132<./images/delly_duplication_durations.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[130<./images/delly_duplication_regenotyping.png>]
+[133<./images/delly_duplication_regenotyping.png>]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/FE2410D1E5CE06D0F3DFAE284D3A49F24EDB6D7A69951E996E27037C1CB03AC9.pygtex)
 Underfull \hbox (badness 5245) in paragraph at lines 628--629
@@ -3620,27 +3670,27 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[131]
+[134]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[132])
+[135])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[133]
+[136]
 Chapter 5.
-(./chapters/rheos_framework.tex) [134
+(./chapters/rheos_framework.tex) [137
 
 ]
 Chapter 6.
-(./chapters/conclusion.tex) (./chapters/appendices.tex [135
+(./chapters/conclusion.tex) (./chapters/appendices.tex [138
 
 ]
 Appendix A.
@@ -3654,7 +3704,7 @@ See the caption package documentation for explanation.
 (./_minted-rheos_thesis/479CD11BF868FE93F0E894873C3CB2708B91B0F219C7C528D152A14D5292185D.pygtex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [136
+ [139
 
 
 ])
@@ -3680,7 +3730,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[137])
+[140])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 111.
@@ -3711,7 +3761,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[138]
+[141]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3721,7 +3771,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[139])
+[142])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 250.
@@ -3744,7 +3794,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[140])
+[143])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 334.
@@ -3759,7 +3809,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[141]
+[144]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3769,7 +3819,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[142])
+[145])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 405.
@@ -3790,17 +3840,45 @@ See the caption package documentation for explanation.
 
 
 \openout3 = rheos_thesis.pyg
-(./_minted-rheos_thesis/02724010425C93F943FB6E918085EC9163BEBE44FD60CC478B0439FAAE7250D6.pygtex
+(./_minted-rheos_thesis/68B865F7AC8698E981F9AACB3F70F7714EDB6D7A69951E996E27037C1CB03AC9.pygtex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[143])
+[146]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[147]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[148])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 473.
+(caption)                particular \caption on input line 563.
+See the caption package documentation for explanation.
+
+
+\openout3 = rheos_thesis.pyg
+(./_minted-rheos_thesis/02724010425C93F943FB6E918085EC9163BEBE44FD60CC478B0439FAAE7250D6.pygtex)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 581.
 See the caption package documentation for explanation.
 
 
@@ -3812,7 +3890,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[144]
+[149]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3822,11 +3900,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[145])
+[150]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 613.
-See the caption package documentation for explanation.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3834,12 +3910,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[146]
-\openout3 = rheos_thesis.pyg
- (./_minted-rheos_thesis/EB2FB028B5A634C7D4638A70EF2D0F9F263DE7D4A1A8B2875D24A94DC0BB3C96.pygtex)
+[151])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 651.
+(caption)                particular \caption on input line 721.
+See the caption package documentation for explanation.
+
+
+\openout3 = rheos_thesis.pyg
+(./_minted-rheos_thesis/EB2FB028B5A634C7D4638A70EF2D0F9F263DE7D4A1A8B2875D24A94DC0BB3C96.pygtex)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 759.
 See the caption package documentation for explanation.
 
 
@@ -3851,10 +3933,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[147])
+[152])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 700.
+(caption)                particular \caption on input line 808.
 See the caption package documentation for explanation.
 
 
@@ -3862,7 +3944,7 @@ See the caption package documentation for explanation.
 (./_minted-rheos_thesis/7CD21AFF0D335D88492A6860DC414BE563BEBE44FD60CC478B0439FAAE7250D6.pygtex)
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 731.
+(caption)                particular \caption on input line 839.
 See the caption package documentation for explanation.
 
 
@@ -3874,10 +3956,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[148])
+[153])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 764.
+(caption)                particular \caption on input line 872.
 See the caption package documentation for explanation.
 
 
@@ -3889,10 +3971,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[149])
+[154])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 818.
+(caption)                particular \caption on input line 926.
 See the caption package documentation for explanation.
 
 
@@ -3904,7 +3986,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[150] [151
+[155] [156
 
 ]
 
@@ -3913,14 +3995,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[152]
+[157]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[153]
+[158]
 Underfull \hbox (badness 1675) in paragraph at lines 70--70
 []\TU/lmr/m/it/12 Home-page | Cel-ery: Dis-tributed Task Queue\TU/lmr/m/n/12 . \TU/lmr/m/sc/12 url\TU/lmr/m/n/12 : []$\TU/lmtt/m/n/12 http : / / www .
  []
@@ -3936,28 +4018,28 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[154]
+[159]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[155]
+[160]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[156]
+[161]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[157]
+[162]
 Underfull \hbox (badness 1769) in paragraph at lines 70--70
 \TU/lmr/m/it/12 Re-search In-sti-tute (NHGRI)\TU/lmr/m/n/12 . \TU/lmr/m/sc/12 url\TU/lmr/m/n/12 : []$\TU/lmtt/m/n/12 https : / / www . genome . gov /
  []
@@ -3973,7 +4055,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[158]
+[163]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
 
 
@@ -3982,13 +4064,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[159]
+[164]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
  (./rheos_thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
 Package rerunfilecheck Info: File `rheos_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 567DA4DEF029FDD11B33EA2673B028FA;6605.
+(rerunfilecheck)             Checksum: 82669D9B35C08BCC647C2D818C17EE7F;6605.
 
 
 LaTeX Warning: There were undefined references.
@@ -3999,19 +4081,19 @@ Package logreq Info: Writing requests to 'rheos_thesis.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 36315 strings out of 494407
- 156472,1373583 words of node,token memory allocated
+ 36488 strings out of 494407
+ 156465,1648299 words of node,token memory allocated
  712 words of node memory still in use:
    8 hlist, 2 vlist, 3 rule, 2 glue, 4 kern, 1 glyph, 21 attribute, 70 glue_spec, 21 attribute_list, 1 write, 9 pdf_action nodes
-   avail lists: 1:6,2:8387,3:275,4:246,5:1857,6:242,7:8029,8:113,9:5247,10:90,11:1655
- 35031 multiletter control sequences out of 65536+600000
- 95 fonts using 11906887 bytes
+   avail lists: 1:7,2:7295,3:278,4:245,5:1596,6:241,7:7053,8:116,9:4495,10:90,11:1417
+ 35042 multiletter control sequences out of 65536+600000
+ 96 fonts using 12038023 bytes
  47i,15n,65p,2825b,2024s stack positions out of 5000i,500n,10000p,200000b,100000s
-</usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rheos_thesis.pdf (159 pages, 7413245 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on rheos_thesis.pdf (164 pages, 7434667 bytes).
 
-PDF statistics: 2127 PDF objects out of 2487 (max. 8388607)
- 1815 compressed objects within 19 object streams
- 588 named destinations out of 1000 (max. 131072)
+PDF statistics: 2167 PDF objects out of 2487 (max. 8388607)
+ 1847 compressed objects within 19 object streams
+ 597 named destinations out of 1000 (max. 131072)
  729 words of extra memory for PDF output out of 10000 (max. 100000000)
 

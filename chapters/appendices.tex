@@ -452,6 +452,114 @@ def restart_airflow_scheduler_command(args, alert_data):
       restart_service("-G 'roles:tracker'", "airflow-scheduler")
 \end{minted}
 
+\captionof{listing} {Butler healing agent code for relaunching a failed VM. \label{lst:self_healing_relaunch_vm}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{python}
+def call_command(command, cwd=None):
+  try:
+      logging.debug("About to invoke command: " + command)
+      my_output = check_output(command, shell=True, cwd=cwd, stderr=STDOUT)
+      logging.debug("Command output is: " + my_output)
+      return my_output
+  except CalledProcessError as e:
+      logging.error("An error occurred! Command output is: " + e.output.decode("utf-8") )
+      raise
+    
+def is_critical(level):
+  return level == "CRITICAL"
+
+def parse_alert_data():
+  return json.loads(sys.stdin.read())
+
+def get_host_name(alert_data):
+  return alert_data["data"]["series"][0]["tags"]["host"]
+
+def restart_service(host, service_name):
+  call_command("pepper {} service.restart {}".format(host, service_name), None)
+
+def parse_args():
+  my_parser = argparse.ArgumentParser()
+
+  sub_parsers = my_parser.add_subparsers()
+
+  common_args_parser = argparse.ArgumentParser(
+    add_help=False, conflict_handler='resolve')
+
+  relaunch_worker_parser = sub_parsers.add_parser(
+      "relaunch-worker", parents=[common_args_parser], conflict_handler='resolve')
+  relaunch_worker_parser.add_argument(
+      "-t", "--terraform_location", help="Location of the terraform definition files.",
+      dest="terraform_location", required=True)
+  relaunch_worker_parser.add_argument(
+      "-s", "--terraform_state_location", help="Location of the terraform state file.",
+      dest="terraform_state_location", required=True)
+  relaunch_worker_parser.add_argument(
+      "-v", "--terraform_var_file_location", help="Location of the terraform vars file.",
+      dest="terraform_var_file_location", required=True)
+  relaunch_worker_parser.add_argument(
+      "-p", "--terraform_provider", help="The terraform provider to use.",
+      choices = provider_list,
+      dest="terraform_provider", required=True)
+  relaunch_worker_parser.set_defaults(func=relaunch_worker_command)
+
+  def is_key_present(key_data, host_name):
+  parsed_key_data = json.loads(key_data)
+  return_data = parsed_key_data["return"][0]["data"]["return"]
+  
+  if "minions" in return_data:
+      return_vals = return_data["minions"]
+      for val in return_vals:
+          if val == host_name:
+              return True
+  
+  return False
+
+def locate_minon_key(host_name):
+  minion_connect_try = 1
+  while minion_connect_try <= MINION_CONNECT_MAX_RETRIES:
+      logging.info("Attempt #{} of {} to retrieve minion key for host {} from the master.".format(minion_connect_try, MINION_CONNECT_MAX_RETRIES, host_name))
+      key_data = call_command("pepper --client=wheel key.name_match match={}".format(host_name))
+      logging.debug("Retrieved key data: " + key_data)
+      if is_key_present(key_data, host_name):
+          return True
+      else:
+          logging.debug("Key data for host {} not found at time {}. Sleeping for {} seconds.".format(host_name, datetime.now(), MINION_CONNECT_SLEEP_PERIOD))
+          time.sleep(MINION_CONNECT_SLEEP_PERIOD)
+          minion_connect_try = minion_connect_try + 1
+          
+  return False
+
+def relaunch_worker_command(args, alert_data):    
+  if is_critical(alert_data["level"]):
+      host_name = get_host_name(alert_data)
+      
+      
+      tf_location = args.terraform_location
+      tf_state_location = args.terraform_state_location
+      tf_var_file_location = args.terraform_var_file_location
+      tf_resource = provider_resource_lookup[args.terraform_provider]
+      worker_number = host_name.split("-")[1]
+  
+      call_command("pepper --client=wheel key.delete match={}".format(host_name))
+      call_command("terraform taint -lock=false -state={} {}.worker.{}".format(tf_state_location, tf_resource, worker_number), tf_location)
+      call_command("terraform apply -lock=false -state={} --var-file {} -auto-approve".format(tf_state_location, tf_var_file_location), tf_location)
+
+      locate_minon_key(host_name)
+                              
+      call_command("pepper '*' mine.update")
+      call_command("pepper {} state.apply dnsmasq".format(host_name))
+      call_command("pepper {} state.apply consul".format(host_name))
+      call_command("pepper {} state.highstate".format(host_name))  
+\end{minted}
+
 \captionof{listing} {Consul service definition for PostgreSQL. \label{lst:consul_postgres_service}}
 \begin{minted}
 [
