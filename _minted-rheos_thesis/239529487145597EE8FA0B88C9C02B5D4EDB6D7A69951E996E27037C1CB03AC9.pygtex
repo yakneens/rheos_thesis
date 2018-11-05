@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{call\PYGZus{}command}\PYG{p}{(}\PYG{n}{command}\PYG{p}{,} \PYG{n}{command\PYGZus{}name}\PYG{p}{,} \PYG{n}{cwd}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{)}
-\end{Verbatim}

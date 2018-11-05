@@ -1555,4 +1555,130 @@
   url = {https://github.com/influxdata/chronograf},
 }
 
+@Article{shen2013comprehensive,
+  author    = {Shen, Hui and Li, Jian and Zhang, Jigang and Xu, Chao and Jiang, Yan and Wu, Zikai and Zhao, Fuping and Liao, Li and Chen, Jun and Lin, Yong and others},
+  title     = {Comprehensive characterization of human genome variation by high coverage whole-genome sequencing of forty four Caucasians},
+  journal   = {PLoS One},
+  year      = {2013},
+  volume    = {8},
+  number    = {4},
+  pages     = {e59494},
+  publisher = {Public Library of Science},
+}
+
+@Article{hirschhorn2005genome,
+  author    = {Hirschhorn, Joel N and Daly, Mark J},
+  title     = {Genome-wide association studies for common diseases and complex traits},
+  journal   = {Nature Reviews Genetics},
+  year      = {2005},
+  volume    = {6},
+  number    = {2},
+  pages     = {95},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{satake2009genome,
+  author    = {Satake, Wataru and Nakabayashi, Yuko and Mizuta, Ikuko and Hirota, Yushi and Ito, Chiyomi and Kubo, Michiaki and Kawaguchi, Takahisa and Tsunoda, Tatsuhiko and Watanabe, Masahiko and Takeda, Atsushi and others},
+  title     = {Genome-wide association study identifies common variants at four loci as genetic risk factors for Parkinson's disease},
+  journal   = {Nature genetics},
+  year      = {2009},
+  volume    = {41},
+  number    = {12},
+  pages     = {1303},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{ingram1957gene,
+  author  = {Ingram, Vernon M and others},
+  title   = {Gene mutations in human haemoglobin: the chemical difference between normal and sickle cell haemoglobin},
+  journal = {Nature},
+  year    = {1957},
+  volume  = {180},
+  number  = {4581},
+  pages   = {326--328},
+}
+
+@Article{wellcome2007genome,
+  author    = {Wellcome Trust Case Control Consortium and others},
+  title     = {Genome-wide association study of 14,000 cases of seven common diseases and 3,000 shared controls},
+  journal   = {Nature},
+  year      = {2007},
+  volume    = {447},
+  number    = {7145},
+  pages     = {661},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{yang2013clinical,
+  author    = {Yang, Yaping and Muzny, Donna M and Reid, Jeffrey G and Bainbridge, Matthew N and Willis, Alecia and Ward, Patricia A and Braxton, Alicia and Beuten, Joke and Xia, Fan and Niu, Zhiyv and others},
+  title     = {Clinical whole-exome sequencing for the diagnosis of mendelian disorders},
+  journal   = {New England Journal of Medicine},
+  year      = {2013},
+  volume    = {369},
+  number    = {16},
+  pages     = {1502--1511},
+  publisher = {Mass Medical Soc},
+}
+
+@Article{weitzel2011genetics,
+  author    = {Weitzel, Jeffrey N and Blazer, Kathleen R and MacDonald, Deborah J and Culver, Julie O and Offit, Kenneth},
+  title     = {Genetics, genomics, and cancer risk assessment: state of the art and future directions in the era of personalized medicine},
+  journal   = {CA: a cancer journal for clinicians},
+  year      = {2011},
+  volume    = {61},
+  number    = {5},
+  pages     = {327--359},
+  publisher = {Wiley Online Library},
+}
+
+@Article{heller2002dna,
+  author    = {Heller, Michael J},
+  title     = {DNA microarray technology: devices, systems, and applications},
+  journal   = {Annual review of biomedical engineering},
+  year      = {2002},
+  volume    = {4},
+  number    = {1},
+  pages     = {129--153},
+  publisher = {Annual Reviews 4139 El Camino Way, PO Box 10139, Palo Alto, CA 94303-0139, USA},
+}
+
+@Article{li2010mathematical,
+  author = {Li, Heng},
+  title  = {Mathematical Notes on SAMtools Algorithms},
+  year   = {2010},
+}
+
+@Article{li2018synthetic,
+  author    = {Li, Heng and Bloom, Jonathan M and Farjoun, Yossi and Fleharty, Mark and Gauthier, Laura and Neale, Benjamin and MacArthur, Daniel},
+  title     = {A synthetic-diploid benchmark for accurate variant-calling evaluation},
+  journal   = {Nature methods},
+  year      = {2018},
+  volume    = {15},
+  number    = {8},
+  pages     = {595},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{li2011statistical,
+  author    = {Li, Heng},
+  title     = {A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data},
+  journal   = {Bioinformatics},
+  year      = {2011},
+  volume    = {27},
+  number    = {21},
+  pages     = {2987--2993},
+  publisher = {Oxford University Press},
+}
+
+@Article{hodgkinson2010human,
+  author    = {Hodgkinson, Alan and Eyre-Walker, Adam},
+  title     = {Human triallelic sites: evidence for a new mutational mechanism?},
+  journal   = {Genetics},
+  year      = {2010},
+  volume    = {184},
+  number    = {1},
+  pages     = {233--241},
+  publisher = {Genetics Soc America},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

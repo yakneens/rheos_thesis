@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZob{}
+	\PYGZdq{}variants\PYGZus{}location\PYGZdq{}: \PYGZdq{}/shared/data/samples/vcf/delly\PYGZus{}deletion\PYGZus{}sites/dup.sites.bcf\PYGZdq{},
+	\PYGZdq{}results\PYGZus{}base\PYGZus{}path\PYGZdq{}: \PYGZdq{}/shared/data/results/delly\PYGZus{}germline\PYGZus{}dups\PYGZus{}05\PYGZus{}09\PYGZus{}2016/\PYGZdq{},
+	\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}: \PYGZdq{}/tmp/delly\PYGZus{}germline\PYGZus{}dups/\PYGZdq{},
+	\PYGZdq{}variants\PYGZus{}type\PYGZdq{}: \PYGZdq{}DUP\PYGZdq{}
+	
+\PYGZcb{}
+\end{Verbatim}

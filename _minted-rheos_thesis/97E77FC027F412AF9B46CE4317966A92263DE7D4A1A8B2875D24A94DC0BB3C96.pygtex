@@ -1,3 +1,3 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-terraform destroy
+\PYG{l+lScalar+lScalarPlain}{procstat}
 \end{Verbatim}
