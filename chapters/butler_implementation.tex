@@ -465,7 +465,7 @@ Figure \ref{fig:freebayes_1_percent_maf_genotyping} shows a distribution of job 
 
 Overall 130,152 compute hours were used to complete 70,850 workflow tasks for this analysis with an additional 2688 CPU hours used for cluster management overhead. Thus, management overhead accounted for ~2\% of the overall computational resource costs for this analysis. Utilizing 1000 cores this analysis took less than 6 days to complete.
 
-\subsection{Freebayes Variant Discovery}
+
 \subsection{Freebayes Variant Genotyping}
 
 Using the site-list of 60 million variants obtained from the Freebayes Variant Discovery analysis we used the Butler Freebayes Workflow in genotyping mode to calculate genotypes at ~170 billion genomic positions. 76,518 tasks workflow tasks were completed utilizing 302,071 CPU hours over the course of the analysis (~10 days wall time), of which 5,040 CPU hours were cluster management overhead, accounting for 1.6\% of total resource utilization. Figure  \ref{fig:freebayes_discovery_regenotype_task_durations} demonstrates the distribution of task durations by chromosome.
@@ -616,6 +616,79 @@ Figure \ref{fig:delly_duplication_regenotyping} shows a measurement of cluster p
 \label{fig:delly_duplication_regenotyping}
 \end{figure}
 
+\section{Performance Evaluation and Comparison}
+
+We evaluate the relative effectiveness of Butler-based pipelines compared to a set of pipelines operating under similar conditions, and over the same data-set, namely the “core” PCAWG somatic pipelines that have been used to accomplish genome alignment and somatic variant calling for the PCAWG Technical Working Group1. The core PCAWG pipeline set consists of five pipelines – BWA, Sanger, Broad, DKFZ/EMBL, and “OxoG detection” run over the course of 18 months over all samples in PCAWG. The Butler-based pipeline set consists of two pipelines – Freebayes, and Delly, used to accomplish four analyses – germline SNV discovery, germline SNV genotyping, germline SV deletion genotyping, and germline SV duplication genotyping, also running over all samples in PCAWG (725 TB in total). We assessed and compared pipeline performance with respect to an estimated optimal performance (based on available hardware), as well as with respect to analysis progress uniformity in time.
+
+For core PCAWG pipelines, we used the date of data upload to the official data repository as the most reliable sample completion date. However, approximately 25\% of the DKFZ/EMBL pipeline results were uploaded in two batches on two separate days, and thus do not accurately represent the real analysis progress rate. For this reason, we excluded this pipeline from the optimal performance analysis. Butler sample completion dates are based on timestamps collected in Butler’s analysis tracking database.
+
+Our assessment of pipeline performance is based on establishing an “optimal” progress rate for a pipeline given a hardware allocation. We divided the sample set into 20 bins and defined the optimal progress rate for each pipeline to be the smallest proportion of overall analysis time required to process 5\% of all samples (scaled to a 1\% rate).
+
+\begin{equation}
+	r_{opt} = \min_{b \in bins}\{duration_b/duration_{total}/5\}
+\end{equation}
+
+
+We observed that the mean $r_{opt}$  was significantly higher for Butler-based pipelines at 0.46 than for the core PCAWG pipelines at 0.13 (See Table \ref{tab:pipeline_optimal_rates}). 
+
+\begin{table}[H]
+	\renewcommand{\arraystretch}{1.2} 
+	\centering
+	\begin{tabular}{@{}lll@{}}
+	\toprule
+	\multicolumn{2}{c}{Core PCAWG} \\
+	\midrule
+	BWA & 0.16\\
+	Broad & 0.14\\
+	Sanger & 0.07\\
+	OxoG & 0.14\\
+	\midrule
+	\multicolumn{2}{c}{Butler} \\
+	\midrule
+	SNV Discovery & 0.27\\
+	SNV Genotyping & 0.90\\
+	SV Duplications & 0.39\\
+	SV Deletions & 0.28\\
+	\bottomrule
+	\end{tabular}
+	\caption{Optimal rates for PCAWG and Butler pipelines.}
+	\label{tab:pipeline_optimal_rates}
+	\end{table}
+
+For each pipeline and each 1\% of the samples under analysis, we then computed a metric $e$ (for effectiveness) defined as the proportion of $r_{opt}$ actually achieved.
+
+\begin{equation}
+	e = \frac{r_{act}}{r_{opt}}
+\end{equation}
+
+Comparing the core PCAWG and Butler pipelines with respect to e (Figure \ref{fig:butler_r_opt}) we observed that effectiveness was on average lower for PCAWG pipelines ($\mu_{e_{PCWAG}}=0.49$) than for Butler pipelines ($\mu_{e_{Butler}}=0.70$). 
+
+\begin{figure}[H]
+\includegraphics[scale=0.5]{butler_r_opt}
+\centering
+\caption {Effectiveness for "core PCAWG" and Butler-based pipelines. a - core PCAWG individual, b - Butler individual, c - mean "core" vs Butler. }
+\label{fig:butler_r_opt}
+\end{figure}
+
+Assessing the expected analysis duration for the two sets of pipelines we observed:
+
+\begin{align}
+	d_{PCAWG} = {\frac{100}{\mu_{e_{PCAWG}}}} = 2.04d_{opt} \\
+	d_{Butler} = {\frac{100}{\mu_{e_{Butler}}}} = 1.43d_{opt} \\
+	d_{PCAWG} = 1.43d_{Butler} 
+\end{align}
+
+Thus, the estimated duration for PCAWG pipelines was 43\% longer than that for Butler-based pipelines.
+
+We further compared core PCAWG pipelines with Butler pipelines on the basis of uniformity of rate of progress through an analysis. Given a constant resource allocation an ideal analysis execution processes 1\% of all samples in 1\% of the analysis runtime. We divided the sample set into 100 equal size bins and measured the percentage of overall analysis time spent on processing each bin (Figure \ref{fig:butler_analysis_uniformity}). Deviations from the diagonal indicate inefficiencies in data processing. Measuring this deviation we observed that PCAWG pipelines deviated 23.1\% from the diagonal on average (min 0.0\%, max 57.8\%, sd 15.0\%) while Butler pipelines only deviate 4.0\% (min 0.0\%, max 15.6\%, sd 3.7\%) from the diagonal on average, over the same sample set. This indicates that Butler pipelines are considerably less impacted by various causes that slow down an analysis (such as job and infrastructure failures). 
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{butler_analysis_uniformity}
+\centering
+\caption {Butler vs "core PCAWG" analysis progress uniformity. a) - "core PCAWG", b) - Butler.}
+\label{fig:butler_analysis_uniformity}
+\end{figure}
+
 Carrying out large-scale scientific analyses in the cloud has its own distinct set of challenges from other types of scientific analyses. Throughout this work we have established four key areas of concerns that need to be met in order to facilitate the performance of such analyses by the end user - Provisioning, Configuration Management, Workflow, and Operations Management. We have built the Butler framework to utilize existing robust open-source components where possible to fulfill the detailed requirements in the four areas thus described.
 
 \section{System Design Recap}
@@ -631,32 +704,7 @@ To further facilitate workflow configurability we implemented a hierarchical con
 
 Butler's Operations Management framework relies on two complementary systems - metrics, and logs. The metrics collection system is an agglomeration of tools that work together to harvest over 50 health metrics from each host and into a time-series database wherefrom a dashboarding engine presents the information in a series of dashboards. The log collection system similarly harvests application and server logs, filtering them down to extract useful information and storing it in an Elasticsearch index. Log information is then visualized in a set of separate dashboards. The two data collection and visualization systems provide the user with information at two granularity levels - the metrics system is more coarse-grained and gives a VM-level view of the health of the system, while the log system provides an application level view with a finer grained resolution of the events that are occurring at any given time. Together, these two systems allow the user to have very clear visibility into the overall system health and detect any issues, whether they be individual machine or application crashes, or wider systemic events like network bottlenecks or outages.
 
-\section{Validation and Conclusion}
-We have deployed Butler in a production setting at the EMBL/EBI's Embassy Cloud in a configuration that utilizes 1500 CPUs, 6 TB RAM, 1 PB of Isilon storage accessed over NFS, and 40 TB of block-storage. Furthermore, we have built a series of workflows that facilitate the large-scale cancer genomics analyses carried out by the Germline Working Group of the Pan Cancer Analysis of Whole Genomes project, including:
 
-\begin{itemize}
-\item Germline SNV discovery
-\item Germline SNV joint-genotyping
-\item Germline SV genotyping
-\item Variant Filtration
-\item Sample submission
-\end{itemize}
-
-Using these workflows wSe have carried out a number of analyses on a 725TB data set of 2834 cancer patients' DNA samples consuming a total of 546,552 CPU hours. Each analysis took no longer than two weeks to complete and utilized only 1.5\% - 2.2\% of the overall compute capacity for management overhead. On several occasions we were able detect large scale cluster instability and program crashes utilizing the Operational Management system and take corrective action with a minimal impact on overall cluster productivity.
-
-Subsequent to the success of these analyses several research groups from the European Bioinformatics Institute, Ontario Institute for Cancer Research, Francis Crick Institute, and the Centre for Genomic Regulation have expressed their interest in utilizing Butler for their own large scale analyses in the cloud.
-
-Based on the adherence of the Butler design and implementation to the stated set of requirements, and sustained successful production operation in a large scale deployment on a multitude of scientific analyses of significant scope and size, we conclude that the Butler framework is an effective tool for large scale scientific workflow management in the cloud.
-
-\section{Future Direction}
-
-Butler has been created to facilitate scientific analyses at scale and we have demonstrated that it is able to successfully perform at the level required for today's big data initiatives in the genomics domain. There are projects on the horizon, however, that are one to two orders of magnitude larger than the current biggest projects, these include the UK's 100,000 Genomes Project\autocite{marx2015dna}, and the US Precision Medicine Initiative\autocite{collins2015new} (with up to 1,000,000 genomes). This means that in order to not have to proportionately increase the timeline for theses projects the computational infrastructure will have to be scaled up instead. It is thus imperative for Butler's continued relevance to be able to ascertain the framework's performance level at 1 or 2 orders of magnitude larger than the current 1500 core empirically obtained result. The most immediate opportunity to do so will come up in 2017 when the EMBL/EBI's Embassy Cloud will be upgraded to 5000 CPU cores and Butler has been invited to take part in the stress-testing of the upgraded cloud. 
-
-It is important to grow the library of workflows that are readily available for the Butler system to make the framework more appealing to new users. The Technical Working Group of the PCAWG project is in the process of migrating all of the main computational pipelines that have been used in the project into Docker\autocite{merkel2014docker} containers. Although the workflows that have been developed for the Germline Working Group have not yet been ported to Docker, Airflow, the workflow system underlying Butler has support for running Docker containers. Thus, a key next step for growing the library of Butler workflows lies in the adaptation of the core PCAWG workflows to be able to easily run them on a Butler instance. This would allow Butler to offer a comprehensive set of next generation sequencing workflows that are used for cancer genomics analysis.
-
-Deploying Butler to a larger variety of environments will confirm the multi-cloud purpose of the framework and allow for the development of a richer set of configuration and provisioning profiles, as necessitated by the differences between deployment environments. On the basis of the already completed analyses for the PCAWG Germline Working Group, the Butler framework has also been selected to help deliver the science demonstrator work packet of the European Open Science Cloud Pilot\autocite{European_Open_Science_Cloud_2016} initiative that is launching in 2017. Additionally, de.NBI - The German Network for Bioinformatics Infrastructure\autocite{denbi_2016-10-31} which is working to establish a German academic cloud computing environment for bioinformatics research will be using Butler to deliver a number of new bioinformatics pipelines on its cloud in 2017.
-
-Thus, over the course of the next 12 months the focus of Butler development will be on supporting improved scalability, developing a richer set of computational pipelines and operating in a number of new cloud computing environments. These steps should result in a more robust, feature rich, and useful tool.
 
   
 

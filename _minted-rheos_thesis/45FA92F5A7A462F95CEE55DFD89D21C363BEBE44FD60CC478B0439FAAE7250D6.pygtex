@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+	\PYG{n+nt}{\PYGZdq{}sample\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}sample\PYGZus{}location\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/gnosdata/tcga/PCAWG.67455c36\PYGZhy{}aa47\PYGZhy{}4cc4\PYGZhy{}8b6d\PYGZhy{}9a9012b616ed.bam\PYGZdq{}}\PYG{p}{,}
+		\PYG{n+nt}{\PYGZdq{}donor\PYGZus{}index\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
+		\PYG{n+nt}{\PYGZdq{}sample\PYGZus{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}f22a72c5\PYGZhy{}73c8\PYGZhy{}478d\PYGZhy{}b03e\PYGZhy{}04599b9d5321\PYGZdq{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

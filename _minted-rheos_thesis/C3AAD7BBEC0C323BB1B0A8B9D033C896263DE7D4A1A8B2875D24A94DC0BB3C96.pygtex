@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+lScalar+lScalarPlain}{install\PYGZus{}server}\PYG{p+pIndicator}{:}
+  \PYG{l+lScalar+lScalarPlain}{pkg.installed}\PYG{p+pIndicator}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{name}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{postgresql95\PYGZhy{}server.x86\PYGZus{}64}
+
+\PYG{l+lScalar+lScalarPlain}{initialize\PYGZus{}db}\PYG{p+pIndicator}{:}
+  \PYG{l+lScalar+lScalarPlain}{cmd.run}\PYG{p+pIndicator}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{name}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{/usr/pgsql\PYGZhy{}9.5/bin/postgresql95\PYGZhy{}setup initdb}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{unless}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{stat /var/lib/psql/9.5/data/postgresql.conf}
+
+\PYG{l+lScalar+lScalarPlain}{/var/lib/pgsql/9.5/data/postgresql.conf}\PYG{p+pIndicator}{:}
+  \PYG{l+lScalar+lScalarPlain}{file.managed}\PYG{p+pIndicator}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{source}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{salt://postgres/config/postgresql.conf}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{user}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{postgres}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{group}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{postgres}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{mode}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{600}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{makedirs}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{True}
+
+
+\PYG{l+lScalar+lScalarPlain}{start\PYGZus{}server}\PYG{p+pIndicator}{:}
+  \PYG{l+lScalar+lScalarPlain}{service.running}\PYG{p+pIndicator}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{name}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{postgresql\PYGZhy{}9.5}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{watch}\PYG{p+pIndicator}{:}
+      \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{file}\PYG{p+pIndicator}{:} \PYG{l+lScalar+lScalarPlain}{/var/lib/pgsql/9.5/data/*}
+\end{Verbatim}

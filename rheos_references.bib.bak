@@ -1670,4 +1670,181 @@
   publisher = {Oxford University Press},
 }
 
+@Article{hodgkinson2010human,
+  author    = {Hodgkinson, Alan and Eyre-Walker, Adam},
+  title     = {Human triallelic sites: evidence for a new mutational mechanism?},
+  journal   = {Genetics},
+  year      = {2010},
+  volume    = {184},
+  number    = {1},
+  pages     = {233--241},
+  publisher = {Genetics Soc America},
+}
+
+@Article{daly2001high,
+  author    = {Daly, Mark J and Rioux, John D and Schaffner, Stephen F and Hudson, Thomas J and Lander, Eric S},
+  title     = {High-resolution haplotype structure in the human genome},
+  journal   = {Nature genetics},
+  year      = {2001},
+  volume    = {29},
+  number    = {2},
+  pages     = {229},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{marth1999general,
+  author    = {Marth, Gabor T and Korf, Ian and Yandell, Mark D and Yeh, Raymond T and Gu, Zhijie and Zakeri, Hamideh and Stitziel, Nathan O and Hillier, LaDeana and Kwok, Pui-Yan and Gish, Warren R},
+  title     = {A general approach to single-nucleotide polymorphism discovery},
+  journal   = {Nature genetics},
+  year      = {1999},
+  volume    = {23},
+  number    = {4},
+  pages     = {452},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{ewens1972sampling,
+  author    = {Ewens, Warren J},
+  title     = {The sampling theory of selectively neutral alleles},
+  journal   = {Theoretical population biology},
+  year      = {1972},
+  volume    = {3},
+  number    = {1},
+  pages     = {87--112},
+  publisher = {Elsevier},
+}
+
+@Online{gatkwebsite,
+  url = {https://software.broadinstitute.org/gatk/documentation},
+}
+
+@Article{compeau2011apply,
+  author    = {Compeau, Phillip EC and Pevzner, Pavel A and Tesler, Glenn},
+  title     = {How to apply de Bruijn graphs to genome assembly},
+  journal   = {Nature biotechnology},
+  year      = {2011},
+  volume    = {29},
+  number    = {11},
+  pages     = {987},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{smith1981comparison,
+  author    = {Smith, Temple F and Waterman, Michael S},
+  title     = {Comparison of biosequences},
+  journal   = {Advances in applied mathematics},
+  year      = {1981},
+  volume    = {2},
+  number    = {4},
+  pages     = {482--489},
+  publisher = {Elsevier},
+}
+
+@Article{iqbal2012novo,
+  author    = {Iqbal, Zamin and Caccamo, Mario and Turner, Isaac and Flicek, Paul and McVean, Gil},
+  title     = {De novo assembly and genotyping of variants using colored de Bruijn graphs},
+  journal   = {Nature genetics},
+  year      = {2012},
+  volume    = {44},
+  number    = {2},
+  pages     = {226},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{forney1973viterbi,
+  author    = {Forney, G David},
+  title     = {The viterbi algorithm},
+  journal   = {Proceedings of the IEEE},
+  year      = {1973},
+  volume    = {61},
+  number    = {3},
+  pages     = {268--278},
+  publisher = {IEEE},
+}
+
+@Article{alkan2011genome,
+  author    = {Alkan, Can and Coe, Bradley P and Eichler, Evan E},
+  title     = {Genome structural variation discovery and genotyping},
+  journal   = {Nature Reviews Genetics},
+  year      = {2011},
+  volume    = {12},
+  number    = {5},
+  pages     = {363},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{mills2011mapping,
+  author    = {Mills, Ryan E and Walter, Klaudia and Stewart, Chip and Handsaker, Robert E and Chen, Ken and Alkan, Can and Abyzov, Alexej and Yoon, Seungtai Chris and Ye, Kai and Cheetham, R Keira and others},
+  title     = {Mapping copy number variation by population-scale genome sequencing},
+  journal   = {Nature},
+  year      = {2011},
+  volume    = {470},
+  number    = {7332},
+  pages     = {59},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{zhao2013computational,
+  author    = {Zhao, Min and Wang, Qingguo and Wang, Quan and Jia, Peilin and Zhao, Zhongming},
+  title     = {Computational tools for copy number variation (CNV) detection using next-generation sequencing data: features and perspectives},
+  journal   = {BMC bioinformatics},
+  year      = {2013},
+  volume    = {14},
+  number    = {11},
+  pages     = {S1},
+  publisher = {BioMed Central},
+}
+
+@Article{layer2014lumpy,
+  author    = {Layer, Ryan M and Chiang, Colby and Quinlan, Aaron R and Hall, Ira M},
+  title     = {LUMPY: a probabilistic framework for structural variant discovery},
+  journal   = {Genome biology},
+  year      = {2014},
+  volume    = {15},
+  number    = {6},
+  pages     = {R84},
+  publisher = {BioMed Central},
+}
+
+@Article{faust2012yaha,
+  author    = {Faust, Gregory G and Hall, Ira M},
+  title     = {YAHA: fast and flexible long-read alignment with optimal breakpoint detection},
+  journal   = {Bioinformatics},
+  year      = {2012},
+  volume    = {28},
+  number    = {19},
+  pages     = {2417--2424},
+  publisher = {Oxford University Press},
+}
+
+@Article{wala2018svaba,
+  author    = {Wala, Jeremiah A and Bandopadhayay, Pratiti and Greenwald, Noah and O'Rourke, Ryan and Sharpe, Ted and Stewart, Chip and Schumacher, Steve and Li, Yilong and Weischenfeldt, Joachim and Yao, Xiaotong and others},
+  title     = {SvABA: genome-wide detection of structural variants and indels by local assembly},
+  journal   = {Genome research},
+  year      = {2018},
+  publisher = {Cold Spring Harbor Lab},
+}
+
+@Article{simpson2012efficient,
+  author    = {Simpson, Jared T and Durbin, Richard},
+  title     = {Efficient de novo assembly of large genomes using compressed data structures},
+  journal   = {Genome research},
+  year      = {2012},
+  volume    = {22},
+  number    = {3},
+  pages     = {549--556},
+  publisher = {Cold Spring Harbor Lab},
+}
+
+@Article{ye2009pindel,
+  author    = {Ye, Kai and Schulz, Marcel H and Long, Quan and Apweiler, Rolf and Ning, Zemin},
+  title     = {Pindel: a pattern growth approach to detect break points of large deletions and medium sized insertions from paired-end short reads},
+  journal   = {Bioinformatics},
+  year      = {2009},
+  volume    = {25},
+  number    = {21},
+  pages     = {2865--2871},
+  publisher = {Oxford University Press},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

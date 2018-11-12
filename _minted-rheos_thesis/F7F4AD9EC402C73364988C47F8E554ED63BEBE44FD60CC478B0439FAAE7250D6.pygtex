@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}base\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/shared/data/results/discovery\PYGZus{}filtered/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/tmp/discovery\PYGZus{}filtered/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}vcffilter\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}flags\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}QUAL \PYGZgt{} 20 \PYGZam{} DP \PYGZgt{} 3 \PYGZam{} QUAL / AO \PYGZgt{} 2 \PYGZam{} SAF \PYGZgt{} 1 \PYGZam{} SAR \PYGZgt{} 1 \PYGZam{} RPR \PYGZgt{} 1 \PYGZam{} RPL \PYGZgt{} 1\PYGZdq{}}
+	\PYG{p}{\PYGZcb{},}
+	\PYG{n+nt}{\PYGZdq{}vt\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}command\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}normalize\PYGZdq{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -46,7 +46,7 @@ Although there is a large number of identified mutations that are implicated in 
 \subsection{Clinical Genomics}
 
 \section{Computational Methods for Next Generation Sequencing}
-Abracadabraca. Because the size of a typical genome is millions to billions of basepairs long, and current DNA sequencing technology frequently generates errors during the sequencing process, requiring multiple samples of each genomic location to be generated, the amount of data required to be examined in order to characterize even a single sample is well beyond the capabilities of any human. Thus, a multitude of computational approaches are required in order to make the task tractable for individual samples as well as cohorts, and entire populations.
+Because the size of a typical genome is millions to billions of basepairs long, and current DNA sequencing technology frequently generates errors during the sequencing process, requiring multiple samples of each genomic location to be generated, the amount of data required to be examined in order to characterize even a single sample is well beyond the capabilities of any human. Thus, a multitude of computational approaches are required in order to make the task tractable for individual samples as well as cohorts, and entire populations.
 
 The task of comprehensive characterization of genomic data for an individual is typically decomposed into a series of computational steps, each with its own data representation, and typically developed by a separate research group, which are then assembled into computational pipelines and executed by workflow engines on diverse computing environments. Our goal in this section is to enumerate and describe the individual steps and to provide a survey of the key computational tools and data formats that presently form the set of best practices in this rapidly evolving branch of science. Since Rheos is designed to improve upon these best practices we identify in each section the key mathematical and algorithmic ideas that underpin each approach in order to adapt and translate them into the Rheos framework.
 
@@ -131,7 +131,7 @@ Samtools\autocite{li2009sequence} is a software package for genomic data process
 Although the samtools framework could be extended to support calling multi-allelic sites, the framework, as-published, has been developed for calling only bi-allelic variants. Table \ref{tab:samtools_notation} contains commonly used definitions.
 
 \begin{table}[!htb]
-    \caption{Samtools common notations}
+    \caption{Samtools common definitions}
     \label{tab:samtools_notation}
     {\begin{tabular}{lp{7cm}}
     \toprule
@@ -173,43 +173,332 @@ The error probability of the $j$-th base is $\epsilon_j$, which is taken to be t
     \mathcal{L}_i(m_i) = P(d_i|m_i)=\left(1-\sum_{j=1}^l\epsilon_j+o(\epsilon^2)\right)\prod_{j=l+1}^k\epsilon_j
 \end{equation}
 For $0<g_i<m_i$:
-\begin{eqnarray}\label{eq:gd}
+\begin{eqnarray*}\label{eq:gd}
     \mathcal{L}_i(g_i) = P(d_i|g_i)&=&\sum_{a_1=0}^1\cdots\sum_{a_k=0}^1\Pr\{d_i|B_1=a_1,\ldots,B_k=a_k\}\Pr\{B_1=a_1,\ldots,B_k=a_k|g\}\\\nonumber
     &=&\sum_{\vec{a}}\left(\frac{g}{m}\right)^{\sum_j a_j}\left(1-\frac{g}{m}\right)^{k-\sum_j a_j}\cdot\prod_j p_j(a_j)\\\nonumber
     &=&\left(1-\frac{g}{m}\right)^k\prod_j\sum_{a=0}^1 p_j(a)\left(\frac{g}{m-g}\right)^a\\\nonumber
     &=&\left(1-\frac{g}{m}\right)^k\prod_{j=1}^l\left(\epsilon_j+\frac{g}{m-g}(1-\epsilon_j)\right)\prod_{j=l+1}^k\left(1-\epsilon_j+\frac{\epsilon_jg}{m-g}\right)\\\nonumber
     &=&\left(1-\frac{g}{m}\right)^k\left\{\left(\frac{g}{m-g}\right)^l+\left(1-\frac{g}{m-g}\right)\left(\sum_{j=1}^l\epsilon_j-\sum_{j=l+1}^k\epsilon_j\right)+o(\epsilon^2)\right\}
-\end{eqnarray}
+\end{eqnarray*}
 where $a=\sum_j a_j$ and
 $$
-p_j(a)=\left\{\begin{array}{ll}
-\epsilon_j & \mbox{$a=1$}\\
-1-\epsilon_j & \mbox{$a=0$}\\
-\end{array}\right.
+    p_j(a)=\left\{\begin{array}{ll}
+    \epsilon_j & \mbox{$a=1$}\\
+    1-\epsilon_j & \mbox{$a=0$}\\
+    \end{array}\right.
 $$
 
 In particular, for a diploid sample ($m=2$), the likelihoods for $g=0,1,2$ are
-\begin{eqnarray*}
-\mathcal{L}(0)&=&\prod_{j=1}^l\epsilon_j\prod_{j=l+1}^k(1-\epsilon_j)\\
-\mathcal{L}(1)&=&\frac{1}{2^k}\\
-\mathcal{L}(2)&=&\prod_{j=1}^l(1-\epsilon_j)\prod_{j=l+1}^k\epsilon_j\\
-\end{eqnarray*}
+\begin{eqnarray}
+    \label{samtools_diploid_genotype_likelihoods}
+    \mathcal{L}(0)&=&\prod_{j=1}^l\epsilon_j\prod_{j=l+1}^k(1-\epsilon_j)\\
+    \mathcal{L}(1)&=&\frac{1}{2^k}\\
+    \mathcal{L}(2)&=&\prod_{j=1}^l(1-\epsilon_j)\prod_{j=l+1}^k\epsilon_j
+\end{eqnarray}
 
 For instance, taking $g_i = 2$ (i.e. the true genotype is homozygous-reference) as an example, and under above independence assumptions, the likelihood of observing the data $d_i$ is the likelihood of sampling $l$ reads without error (the reads match the reference) and $k-l$ reads with error (the reads do not match the reference).
 
-Given that $\phi$ is some prior distribution of genotypes (a model from population genetics can be used, or an empirical distribution from antoher study), the actual genotype for individual $i$ at the given locus is estimated via Bayes' Rule as:
+Let $\Phi = \{\phi_k\}$ for $k \in [0,m_i]$ be a prior distribution of genotype probabilities (a model from population genetics, such as Wright-Fisher, can be used, or an empirical distribution from antoher study), the actual genotype for individual $i$ at the given locus is estimated via Bayes' Rule as:
 
-$$
-\hat{g}_i=\argmax_{g_i} \Pr\{G_i=g_i|d_i,\phi\}=\argmax_{g_i}\frac{P(d_i|g_i)P(g_i|\phi)}{\sum_{h_i}P(d_i|h_i)P(h_i|\phi)}
-$$
+\begin{equation}
+    \label{eq:samtools_genotype}
+    \hat{g}_i=\argmax_{g_i} \Pr\{G_i=g_i|d_i,\Phi\}=\argmax_{g_i}\frac{P(d_i|g_i)\phi_k}{\sum_{h_i}P(d_i|h_i)\phi_h}=\argmax_{g_i}\frac{\mathcal{L}(g_i)\phi_k}{\sum_{h_i}\mathcal{L}(h_i)\phi_h}
+\end{equation}
+
+The variant quality is defined as:
+
+\begin{equation}
+    \label{eq:samtools_variant_quality}
+    Q_{\rm var}=-10\log_{10}\Pr\{G=m_i|d_i,\Phi\}
+\end{equation}
+
+i.e. the Phred-scaled probability that the locus is homozygous reference given the observed data. The locus is called \emph{variant} if the variant quality exceeds a certain pre-defined threshold.
+
+Equations \ref{eq:samtools_genotype} and \ref{eq:samtools_variant_quality} thus represent the key computations corresponding to the activities of SNP genotyping and variant calling that are performed by samtools for each genomic locus in a sample.
+
+\subsubsection{freebayes}
+
+freebayes\autocite{garrison2012haplotype} is a C software package implemented by E. Garrison for discovery and genotyping of SNPs, indels, and other small variants that builds on a previous method by G. Marth\autocite{marth1999general}. Where small means that the variant length is smaller than the size of a sequencing read. Unlike samtools, which looks at all genomic loci independently, freebayes uses local sequence context to guide detection and genotyping of variants, additionally freebayes builds variant haplotypes\autocite{daly2001high} i.e. groups of variants that are inherited together on the same DNA molecule. All of the figures and methematical formuls in this section are reproduced from the 2012 preprint by Garrison et al\autocite{garrison2012haplotype}.
+
+\begin{table}[!htb]
+    \caption{Freebayes common definitions}
+    \label{tab:freebayes_notation}
+    {\begin{tabular}{lp{7cm}}
+    \toprule
+    Symbol & Description \\
+    \midrule
+    $n$ & Number of samples \\
+    $m_i$ & Copy number of the $i$-th sample ($1\le i\le n$)\\
+    $M$ & Total number of copies of each locus in all samples: $M=\sum_i m_i$\\
+    $\{b_j: j \in [1,K]\}$ & Set of $K$ distinct alleles present among $M$ copies\\
+    $\{C_j: j \in [1,K]\}$ & Corresponding set of allele counts for each $b_K$\\
+    $\{f_j: j \in [1,K]\}$ & Corresponding set of allele frequencies for each $b_K$\\
+    $G_i$ & Unphased genotype of individual $i$\\
+    $\{b_{i_{j}}: i \in [1,n], j \in [1,k_i]\}$ & Set of $k_i$ distinct alleles of $G_i$\\
+    $\{c_{i_{j}}: i \in [1,n], j \in [1,k_i]\}$ & Set of $k_i$ allele counts for each $b_{i_{j}}$\\
+    $\{f_{i_{j}}: i \in [1,n], j \in [1,k_i], f_i = c_i/k_i\}$ & Set of allele frequencies of $G_i$\\
+    $B_i:|B_i| = m_i$ & Multiset of alleles equivalent to $G_i$\\
+    $R_i = \{r_j: j \in [1,s_i]\} $ & Set of $s_i$ sequencing observations for each sample $i$ s.t. there are $\sum_{i=1}^n |R_i|$ reads at a given locus\\
+    $\{q_j : j \in [1,s_i]\}$ & Mapping quality, i.e. probability that read $r_j$ is mis-mapped against the reference\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+
+For a set of $n$ individuals the conditional probability of a combination of genotypes given the observed data is assessed simultaneously as:
+
+\begin{equation}
+P(G_1,\ldots,G_n|R_1,\ldots,R_n) 
+= { P(G_1,\ldots,G_n) P(R_1,\ldots,R_n|G_1,\ldots,G_n) \over P(R_1,\ldots,R_n)} \\
+\end{equation}
+
+\begin{equation}
+\label{eq:freebayes_main_model}
+P(G_1,\ldots,G_n|R_1,\ldots,R_n) = { P(G_1,\ldots,G_n) \prod_{i=1}^n P(R_i|G_i) \over 
+\sum_{\forall{G_1,\ldots,G_n}}  P(G_1,\ldots,G_n) \prod_{i=1}^n P(R_i|G_i) }
+\end{equation}
+    
+For a single sample at a particular locus there are $R_i$ reads, and $k_i$ observed alleles - $B'_i = b'_1,\ldots,b'_{k_i}$, which correspond to $b_1,\ldots,b_i$ underlying alleles represented at the given locus. For each observed allele $b'_i$ there is a corresponding count of observations $o_f$ s.t. $: \sum_{j=1}^{k_i} o_j = s_i$ and each $b'_i$ corresponds to a true allele $b_i$. The probability of a single observation $b'_i$ given a genotype in a single sample is:
+
+\begin{equation}
+P(b'_i|G) = \sum_{\forall(b_i \in G)} { f_i P(b'_i|b_i) }
+\end{equation}
+
+where $f_i$ is the allele frequency of $b_i$ in $G$. The authors introduce the following approximation:
+
+
+\begin{equation}
+P(b'|b) = 
+\left\{
+        \begin{array}{ll}
+                1 & \mbox{if } b' = b \\
+                P(error) & \mbox{if } b' \neq b
+        \end{array}
+\right.
+\end{equation}
+
+where $P(error)$ is derived from the base quality score from the sequencing read. Using the above approximation the probability of observing the data $R_i$ given the genotype is estimated as:
+
+\begin{equation}
+P(R_i|G) \approx {s_i \choose o_1,\ldots,o_{k_i} } 
+\prod_{j=1}^{k_i} { f_{i_j}^{o_j} }
+\prod_{l=1}^{s_i} { P(b'_l | b_l) }
+\end{equation}
+
+In order to evaluate the posterior probability of a particular combination of genotypes given the data, the authors derive:
+
+\begin{equation}
+\label{eq:freebayes_unphasedsampling}
+P(G_1,\ldots,G_n | f_1,\ldots,f_k) =
+{ M \choose c_1,\ldots,c_k }^{-1}
+\prod_{i=1}^n { m_i \choose c_{i_1}, \ldots, c_{i_{k_i}}}
+\end{equation}
+    
+counting the number of ways of selecting a set of unphased genotypes $G_i$ given the allele frequency spectrum $f_k$, and
+
+\begin{equation}
+    \label{eq:freebayes_afs}
+P(f_1,\ldots,f_k) =
+P(a_1,\ldots,a_M) = 
+{M! \over \theta \prod_{z=1}^{M-1}(\theta+z)}
+\prod_{j=1}^M{\theta^{a_j} \over j^{a_j} a_j!}
+\end{equation}
+
+using Ewens' sampling formula\autocite{ewens1972sampling}, where $\theta$ is the population mutation rate and allele frequencies $f_i$ are transformed to frequency counts $a_1,\ldots,a_M : \sum_{c=1}^M{ca_c} = M$ where each $a_f$ is the number of alleles in $b_1,\ldots,b_k$ whose allele count in the sample set is $c$.
+
+Once variants are initially detected using Equation \ref{eq:freebayes_main_model}, the method continues to build local haplotypes grouping variants that are inherited together in dynamically-sized windows based on a distance threshold between successive variants. Each group of variants is combined into a haplotype observation $H_i$, with an assigned quality score that is the minimum of the supporting reads' mapping quality and the minimum base quality of the variant allele observations (bases that span the variants). The size of the window is determined via an iterative process where an initial variant is used as the seed, and all of the reads that overlap it are added. If these reads overlap any other variants, then these are added, along with any reads that overlap them, and so on, until no new variants can be added.
+
+Once the window is determined, the method uses a gradient descent algorithm to find a MAP estimate of the genotype for each sample. It starts with the maximum likelihood estimate for each sample's genotype given the observed data, and then attempts to find a genotype assignment that has a higher posteriror probability across all samples.
+
+\subsubsection{GATK}
+The GATK\autocite{depristo2011framework} is not actually a tool that's built solely for SNP calling, but is instead a comprehensive framework for genomic data analysis that includes tools for data pre-processing and QA, SNP and indel calling, CNV calling, and SV calling, as well as post-processing and filtering. It is implemented as a Java program and the latest version makes use of the in-memory computing engine Apache Spark for efficient computation over large data sets. Here we focus on the SNP calling aspects of the framework. There are two components in the GATK that deal with SNP calling, the UnifiedGenotyper, and the HaplotypeCaller. The UnifiedGenotyper is an older component that has been superceded by the HaplotypeCaller for all practical purposes and we focus our attention on it. All of the mathematical formulas and figures, as well as some of the descriptions, in this section have been reproduced from the 2010 manuscript by McKenna et al.\autocite{mckenna2010genome}, the 2011 manuscript by DePristo et al.\autocite{depristo2011framework}, and the GATK website\autocite{gatkwebsite}
+
+\begin{figure}[!htb]
+\includegraphics[scale=0.22]{gatk_best_practices}
+\centering
+\caption {GATK Best Practices pipeline\autocite{gatkwebsite}}
+\label{fig:gatk_best_practices}
+\end{figure}
+
+The GATK Best Practices pipeline (see Figure \ref{fig:gatk_best_practices}) is a set of best practices published by The Broad Institute that describe how to best use their software. In the context of this section we are primarily interested in the processes that occur in the middle panel of this figure that deal with processing aligned reads to call and genotype variants that will then be used for post-processing and filtering.
+
+The HaplotypeCaller which is the tool that is primarily used for SNP calling takes a continued refinement approach, where the data is processed in the following sequential steps:
+
+\begin{description}
+    \item [Define active regions] - The program determines which regions of the genome it needs to operate on (active regions), based on the presence of evidence for variation. 
+    \item [Determine haplotypes by assembly of the active region] - For each active region, the program builds a De Bruijn-like graph to reassemble the active region and identifies what are the possible haplotypes present in the data. The program then realigns each haplotype against the reference haplotype using the Smith-Waterman algorithm in order to identify potentially variant sites.
+    \item [Determine likelihoods of the haplotypes given the read data] - For each active region, the program performs a pairwise alignment of each read against each haplotype using the PairHMM algorithm. This produces a matrix of likelihoods of haplotypes given the read data. These likelihoods are then marginalized to obtain the likelihoods of alleles for each potentially variant site given the read data.
+    \item [Assign sample genotypes] - For each potentially variant site, the program applies Bayes' rule, using the likelihoods of alleles given the read data to calculate the likelihoods of each genotype per sample given the read data observed for that sample. The most likely genotype is then assigned to the sample.
+\end{description}
+
+Active regions are defined by targeting loci with high quality reads that are different from the refernce and surrounded by soft-clipped bases (bases in the read that couldn't be aligned by the alignment algorithm). The region is then smoothed by a Gaussian kernel and passed onto variant calling if its profile score exceeds a pre-defined threshold. 
+
+For each active region the GATK performs local assembly by first building a de-Bruijn graph\autocite{compeau2011apply} using just the reference sequence for the active region. The graph is enhanced by comparing each read from the active region and creating nodes in the graph where the read differs from the graph. Edge weights between pairs of nodes are increased when a read passes through that edge. The resulting graph must meet complexity requirements based on the ratio of non-unique to unique kmers and presence of cycles (that are a sign of repetitive sequence). When the graph does not meet complexity requirements it is automatically rebuilt with successively increased kmer sizes. If a sufficiently complex graph cannot be built, the region is discarded because the method is not able to produce a high quality variant call in this case. Once the graph is built it is refined by pruning out paths that are not supported by a sufficient number of reads. By traversing the paths in the graph and selecting those with a high aggregate weight the algorithm builds a list of possible local haplotypes within the active region. Each candidate haplotype is then re-aligned to the reference sequence using Smith-Waterman\autocite{smith1981comparison} alignment to produce a list of potential variant sites that includes SNPs and other potential variants.
+
+Reads from the active region are aligned to each haplotype using a Hidden Markov Model via the PairHMM algorithm\autocite{durbin1998biological} to produce a likelihood of each read given a haplotype. The set of haplotype likelihoods is transformed to a set of likelihoods per allele where for each allele at a given site the the highest scoring likelihood for a given read and a given haplotype that supports that allele is selected. Under a read independence assumption the total likelihood of the allele is computed as the product of read likelihoods.
+
+For each variant locus the probability of each genotype is calculated using:
+
+\begin{equation}
+    \label{eq:gatk_genotyping}
+P(G|D) = {P(G)P(D|G)\over\sum_i P(G_i)P(D|G_i)}
+\end{equation}
+
+where $D$ is the set of reads, $G_i$ is the set of possible genotypes, and under the assumptions of a diploid sample, independent read observations, and independent errors. The prior probability of genotypes $P(G)$ is assumed to be uniform. 
+
+Based on the diploid and independence assumptions:
+
+\begin{equation}
+    P(D|G) = \prod_j{\bigg({P(D_j|H_1)\over 2} + {P(Dj|H_2)\over 2}\bigg)}
+\end{equation}
+
+where $P(D_j|H_n)$ is the likelihood of read given the haplotype perviously obtained.
+
+The genotype with the highest $P(G|D)$ is emitted as the genotype for that variant.
+
+\subsubsection{Platypus}
+Platypus\autocite{rimmer2014integrating} is a Python and C package by Rimmer et al., that provides SNP, indel, and other small and medium (upt to ~1kb) variant calling capabilities utilizing a Bayesian statistical framework built on top of reference-free local assembly of haplotypes. All of the figures and methematical formuls in this section are reproduced from the 2014 Nature Genetics manuscript by Rimmer et al. See Figure \ref{fig:platypus_main_flow} for the general sequence of data processing steps in platypus.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.45]{platypus_main_flow}
+    \centering
+    \caption {Three stages of data processing in Platypus\autocite{rimmer2014integrating}}
+    \label{fig:platypus_main_flow}
+    \end{figure}
+
+
+Platypus works by loading batches of reads into memory from a BAM file. 100 kb (kilobases) are loaded at a time. Low quality reads are filtered out. Sites that are flagged as potential variants by the aligned become candidate variants. The local assembly step operates on successive windows of 1.5 kb in size, including all reads that map to the window as well as their mates, irrespective of where or if they map. As a first step, the algorithm builds a colored de Bruijn graph\autocite{iqbal2012novo} from the reads and the reference sequence. Candidate variant haplotypes are produced by finding paths that diverge from the reference and come back to the reference by performing a Depth First Search from the graph node that diverges and until the reference is reached again. All such paths are recorded and contain putative SNPs, MNVs, indels, and larger rearrangements that are up to the window-size in length. A prior of $\num{0.33e-3}$ is used for SNPs under the assumption that SNPs occur in humans at a density of $10^{-3}$ per base and every non-reference allele is equally likely. Smaller windows are created by combining groups of candidate variants that are within 15 basepairs of each other, as long as window size is smaller than read-length and there are fewer than 8 variants in a group.
+
+Candidate haplotypes are generated by taking all possible combinations of candidate variants (assuming diploid sample), resulting in  $2^n$ haplotypes. For a window with 8 variants there are 256 possible haplotypes. The haplotype likelihood $P(r|h)$ is calculated by aligning reads to each haplotype using a Hidden Markov Model. Platypus uses the Viterbi algorithm\autocite{forney1973viterbi} to compute the most likely path through the HMM as an approximation of the actual likelihood as a matter of optimization. After haplotype likelihoods are computed for all combinations of reads and haplotypes Platypus uses Expectation Maximization to estimate the frequency of each haplotype under the following model:
+
+\begin{equation}
+    \label{eq:platypus_likelihood_model}
+    \mathcal{L}(R|\{h_i,f_i\}_{i=1 \dots a}) = \prod_{\substack{samples,\\ s}} \sum_{\substack{haplotypes,\\ i,j}} f_i f_j \prod_{\substack{reads,\\ r\in{R_s}}}\bigg(\frac{1} {2}{p(r|h_i)}+ \frac {1} {2}{p(r|h_j)}\bigg)
+\end{equation}
+
+where $f_i$ is frequency of haplotype $h_i$, $a$ is the number of considered alleles, $R$ is all reads, $R_s$ reads in sample $s$.
+
+The posterior probability of a variant $v$ given the data is computed as:
+
+\begin{equation}
+    \label{eq:platypus_variant_posterior}
+    P(v|R) = \frac {P(v)\mathcal{L}(R|\{h_i,f_i\}_{i=1\dots a})} {P(v)\mathcal{L}(R|\{h_i,f_i\}_{i=1\dots a}) + (1-P(v))\mathcal{L}(R|\{h_i,\frac{f_i}{1-F_v}\}_{i \in I_v})}
+\end{equation}
+
+here the likelihood of data $R$ given all haplotypes is compared to the likelihood of $R$ given those haplotypes that do not include $v$. $I_v$ is the set of haplotype indices such that $h_i$ does not contain $v$, and $F_v = \sum_{i \in I_v}f_i$. A variant is called when its posterior exceeds a pre-defined threshold. Genotype likelihoods for a variant are calculated by marginalizing over the genotypes at other variants within the window, and the best likelihood is selected as the genotype.
+
+\subsubsection{Remarks}
+
+Although samtools, freebayes, GATK, and Platypus are not the only tools that have been successfully used for germline SNP calling in the past 10 years, they have enjoyed sustained popularity and continued use in large scale genomics projects such as 1000 Genomes Project, ExAC\autocite{lek2016analysis}, PCAWG\autocite{stein2015data} and others. They thus can serve as primary examples of how the problem of calling germline SNPs is currently approached within the field, as well as providing a benchmark for new methods that attempt to solve similar problems. There are several key distinctions in the approaches that these tools take to the overall problem, yet a number of key similarities exist that we outline here and adopt as a general framework for tackling the SNP calling problem in our work.
+
+\paragraph{Site Selection}
+
+The problem of selecting sites in the genome for detecting variants has variety of approaches from evaluating every single site independently as one that potentially harbors a variant (as in samtools) to the varied windowing approaches used by the other variant callers. Looking at sites independently has the benefit of simplicity, while the windowing approach, at the expense of additional computation, allows a more comprehensive evaluation of a genomic region that is not limited to SNPs but can also support the detection of other types of variants. Thus, even though an independent site approach may be acceptable in an initial implementation, some form of windowing is desired in order to benefit from knowledge about the surrounding sequence context. In general, the interestingness of a site for the purposes of detecting a potential variant is universally linked to the presence of high quality reads spanning a particular locus that disagree with the reference sequence at that locus.
+
+\paragraph{Haplotype Construction}
+
+Samtools has the simplest model here as it does not attempt to construct haplotypes at all. This limits the ability of samtools to accurately represent genomic architecture, and prevents it from being able to supply phasing information for variants, which is of interest. Freebayes has the next simplest model, where putative haplotypes are constructed directly from the observed read sequences with the observation window. GATK and Platypus actually perform local assembly in the window to come up with an arrangement of reads that is free of artifacts\autocite{li2014towards} associated with alignment to the reference. Although local assembly appears to improve the ability of these callers to accruately represent sequence variants (especially non-SNPs) this processing step introduces a significant impact on the overall processing cost, mostly incurred from the resource-intensive HMM-aided alignment of reads to the putative haplotypes.
+
+\paragraph{Allele Frequency Spectrum Estimation}
+
+A distribution of allele frequencies in a population is of interest as it can be used as a prior in the calculation of genotype likelihoods for the samples under analysis and local and population-specific allele frequencies can vary significantly from values implied by generic population-genetics models. Most callers provide capabilities for estimating the Allele Frequency Spectrum by Expectation Maximization or similar approaches (Equation (5) in \autocite{li2011statistical}, not covered here, equation \ref{eq:freebayes_afs} for freebayes above). Alternatively, a non-informative prior (as in GATK) can be used.
+
+\paragraph{Genotyping}
+
+Pretty universally across the methods, genotyping is set up as a Bayesian inference selecting a Maximum Likelihood Estimate or a Maximum A Posteriori estimate of the genotype (for a single site or a haplotype) given the reads data, and taking into account the probability of errors dervied from read base quality and mapping quality scores supplied by the aligner. See Eq. \ref{eq:samtools_genotype} for samtools', Eq. \ref{eq:freebayes_main_model} frebayes', Eq. \ref{eq:gatk_genotyping} GATK's, Eq. \ref{eq:platypus_likelihood_model} Platypus' model setups. This model thus remains highly relevant for any new development in the space. 
+
+
 
 \subsection{Germline Indel Calling}
 
-\subsection{Germline Structural Variant Calling}
-Delly - 
-Hydra - 
 
-   s
+
+
+\subsection{Germline Structural Variant Calling}
+
+Structural Variants (SVs) are medium- to large-size alterations (typically >50bp in length) of the genomic sequence that fall into a several broad categories (see Figure \ref{fig:sv_classes}) including insertions, deletions, tandem and interspersed duplications, inversions, translocations, mobile element insertions, as well as complex rearrangements that constitute a combination of the above classes or are otherwise difficult to classify. 
+
+\begin{figure}[H]
+    \includegraphics[scale=0.65]{sv_classes}
+    \centering
+    \caption {Classes of structural variation.\autocite{alkan2011genome}.}
+    \label{fig:sv_classes}
+\end{figure}
+
+Accurate detection of SVs remains an open challenge since both sensitivity and specificity performance of SV calling is an order of magnitude worse than for SNP calling. For instance, in the latest data release of the 1000 Genomes Project an estimated sensitivity of 88\% was achieved for deletions, 65\% for duplications, 32\% for inversions\autocite{sudmant2015integrated} and False Discovery Rate of up to 89\%autocite{mills2011mapping}. A key challenge that impacts calling accuracy is small read size relative to the size of the variants. Since SVs can be hudreds of kilobases in length and typical Illumina reads are only 150-500 baspeairs long, accurate reconstruction relies on an agglomeration of reads in order to produce the variants. Structural Variant detection approaches typically make use of several sources of evidence (see Figure \ref{fig:sv_calling_info_sources}) for the detection of "breakpoints" - regions of the genome where a DNA double-strand break is detected and sequence is either inserted or excised. The breakpoints are then interpreted to produce the most likely variants that they represent. 
+
+\paragraph{Discordantly-mapped read pairs} are pairs of sequencing reads that the alignment algorithm has mapped at a distance that is statistically significantly larger or smaller than the average read-pair distance for that sample, or that have an unusual read orientation, since read-pairs are supposed to be sequencing from two ends of a molecule towards each other. Reads that map closer than they are supposed to are indicative of an insertion, reads that map farther are indicative of a deletion, and reads that map in an unusual orientation are indicative of an inversion. 
+
+\paragraph{Split-reads} are read-pairs where one of the reads maps properly but the aligner is not able to map the other read because different pieces of the read map to different locations in the genome indicating that this read spans a breakpoint. Distance between the split read pieces and their mapping orientation are informative of the type of breakpoint that the read spans.
+
+\paragraph{Read-depth} Regions have a higher than normal or lower than normal read depth (count of reads spanning a region) are indicative of increased or reduced copy number respectively. Care must be taken to distinguish actual SVs from areas of repetitive sequence where the same simple sequence pattern is repeated many times. Typically aligners are not able to accurately resolve such areas and map many reads to the same set of coordinates making it appear like a duplication.
+
+\paragraph{Assembly-based} approaches perform local assembly in a reference-free manner to reconstruct the variants encoded in the sample sequence that the aligner may struggle with resolving because of a large number or increased complexity of rearrangements.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.35]{sv_calling_info_sources}
+    \centering
+    \caption {Sources of evidence for the presence of Structural Variants.\autocite{zhao2013computational}.}
+    \label{fig:sv_calling_info_sources}
+\end{figure}
+
+We look at several SV callers in closer detail.
+
+\subsubsection{Delly}
+
+Delly\autocite{rausch2012delly} is a structural variant calling tool built in 2011 by T. Rausch et al. in the context of the 1000 Genomes Project. Delly uses discordantly-mapped reads and split-reads as sources of evidence for the presence of SVs, is able to characterize a broad set of variants and has been implemented in C++. All of the mathematical formulas and figures in this section are reproduced from the 2012 mauscript by Raush et al.
+
+The discordantly-mapped reads component of Delly begins by computing the median and standard deviation of the read insert size (distance between the ends of the two reads in a pair), as well as the default read orientation by sampling a pre-defined number of reads from the BAM file. Read-pairs that have an insert size farther than 3 standard deviations from the median are considered as evidence for structural variation. This induces a minimum SV size detectable by Delly. See Figure \ref{fig:delly_variant_classes} for the variant types implied by each insert size deviation and read-pair orientation.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.98]{delly_variant_classes}
+    \centering
+    \caption {Variant classes detectable by Delly based on their read-pair and split-read signatures.\autocite{rausch2012delly}.}
+    \label{fig:delly_variant_classes}
+\end{figure}
+
+Using the list of discordantly-mapped read-pairs Delly builds an undirected, weighted graph to indicate which read-pairs support the same variant. In the graph $G(V,E)$, a read-pair $p_i$ corresponds to a node $v_i \in V$ and an edge $e_{v_i,v_j} \in E$ connects two nodes that support the same SV. The weight $w(e_{v_i,v_j})$ is the absolute value of the difference between the SV sizes predicted by $v_i$ and $v_j$. $v_i$ and $v_j$ support the same variant when the corresponding read pairs have the same read orientation and the absolute difference between the left and right ends of the two reads is less than the expected insert size. Variants are identified by computing connected components $C_i$ of $G$. When components are not fully connected, Delly sorts the edges in each such component by weight and attempts to find a maximal clique $M_i$ within $C_i$ using edge with the smallest weight as the seed of the clique. The clique is extended by searching for the next smallest edge for which one of the vertices is already in the clique $M_i$, and requiring that $M_i \cup \{v_l,v_m\}$ is also a clique, until no further vertices can be added. The vertices in $M_i$ are reported as the read pairs supporting that SV. Each rearrangement type is analyzed independently in this manner.
+
+All of the rearrangements identified in the discordantly-mapped read analysis are refined using split-read analysis. The reads used for split-read analysis are those where one read in the pair maps to the reference and the other is unmapped. All such reads within a distance of 2 standard deviations of the median insert size from the breakpoint are considered up to a configurable maximum of 1000. Delly splits each unmapped read into kmers and aligns the kmers to the reference sequence spanning the SV.
+
+\subsubsection{Lumpy}
+
+Lumpy\autocite{layer2014lumpy} is an SV caller developed in 2013 by R. Layer et al. and is a package implemented in C++. All of the mathematical formulas and figures presented in this section are reproduced from the 2014 publication by R. Layer et al. 
+
+\begin{figure}[H]
+    \includegraphics[scale=0.5]{lumpy_model}
+    \centering
+    \caption {Lumpy calling model integrates several signals from a single sample.\autocite{layer2014lumpy}.}
+    \label{fig:lumpy_model}
+\end{figure}
+
+Lumpy defines an SV breakpoint as a pair of bases that are adjacent in the sample under study but not in the reference genome. Furthermore, each breakpoint is represented as a pair of probability distributions that span the predicted breakpoint regions and represent the uncertainty about the precise location of the breakpoint. Lumpy integrates multiple signals (see Figure \ref{fig:lumpy_model}) to update the probability distributions that represent each breakpoint based on different kinds of evidence provided. A breakpoint is a tuple $b = \langle E,l,r,v \rangle$ where $E$ is the evidence, $b.l$ and $b.r$ are the left and right intervals each having start and end coordinates, $b.l.s$ and $b.l.e$ for example. $b.l.p$ is a vector of length $b.l.e - b.l.s$ where each $p[i]$ is the probablity that $b.l.s + i$ is the true location of the breakpoint. $b.v$ is the breakpoint class (insertion, deletion, etc.). Overlapping breakpoints are merged together. The intervals that contain 95\% of the probability density, as well as the Maximum Likelihood Estimates of the location of each variant are returned. 
+
+The paired-end analysis looks at read pairs $\langle x, y\rangle$ where each read is aligned to the reference genome as $R(x) = \langle c, o, s, e \rangle$ where $c$ is the chromosome, $o \in {+,-}$ indicates alignment orientation, $s$ and $e$ represent the alignment start and end respectively. It is assumed that $x$ and $y$ align uniquely and that $R(x).s < R(x).e < R(y).s < R(y).e$. $S(x) = \langle o, s, e \rangle$ is defined to be the alignment of $x$ with respect to the sample's (unknown) genome. Read pairs are assumed to be aligned with $R(x).o = +, R(y).o = -$ and having $R(y).e - R(x).s$ approximately equal to the library preparation fragment size. Read pairs that align outside the expected parameters for orientation and distance constitute evidence for structural variant breakpoints, in particular reads with the same or switched orientation, and pairs that align at a distance shorter or longer than the fragment size. Expected fragment length is estimated from the mean fragment length in the sample, along with its standard deviation. Breakpoint variety is determined as follows:
+
+When $R(x).c = R(y).c$, the variety is inferred from read orientation. $R(x).o = R(y).o$ implies an inversion. $R(x).o = -, R(y).o = +$ implies a tandem duplication, $R(x).o = +, R(y).o = -$ implies a deletion. Insertions are not presently supported. When $R(x).c \ne R(y).c$ the breakpoint is labelled an interchromosomal rearrangement.
+
+$\langle x, y \rangle$ are mapped to $b.l$ and $b.r$ as follows. By convention $x$ is assumed to map to $l$ and $y$ to $r$. It is assumed that there exists a single breakpoint $b$ between $x$ and $y$. Orientation of $x$ determines whether $l$ is upstream or downstream from $x$. Thus, if $R(x).s = +$, then the breakpoint begins after $R(x).e$. The length of the breakpoint interval is proportional to expected fragment length and its standard deviation. The distance of one end of the breakpoint from $x$ is assumed to be less than expected insert size $L$ plus $v_fs$ - a configurable number of standard deviations. The probability that position $i$ in the breakpoint interval $l$ is part of the actual breakpoint is estimated as the probability that $x$ and $y$ span $i$, which is true when the fragment that had produced $\langle x, y \rangle$ is longer than the distance from $x$ to $i$. Thus, the quantity of interest is $P(S(y).e - S(x).s > i - R(x).s)$ for $R(x).o = +$ and $P(S(y).e - S(x).s > R(x).e -i)$ for $R(x).o = -$. This quantity is estimated from the empirical distribution of fragment sizes collected from the sample.
+
+Lumpy does not perform its own split-read alignment instead relying on the results of a split-read aligner like YAHA\autocite{faust2012yaha}. Every split-read is a DNA fragment $X$ that consits of two or more sub-fragments $x_i,...,x_j$ that do not map to adjacent locations of the reference. Each sub-fragment pair $\langle x_i, x_{i+1} \rangle$ is evaluated independently depending on how it maps with respect to the reference $R(x)$. When $R(x_i).o = R(x_{i+1}).o$ the event is marked as either a deletion or a tandem duplication, where $R(x_i).s < R(x_{i+1}).s$ implies a deletion, and otherwise a tandem duplication. When orientations do not match, the event is marked an inversion. To account for potential inaccuracies in the location of the breakpoint with respect to the split-read pair, each split-read pair is mapped to two breakpoint intervals $l$ and $r$ that are centered at the split. The probability is modeled to be highest at the split with an exponential decrease towards the edges, with a configurable width parameter.
+
+\subsubsection{SvABA}
+
+SvABA\autocite{wala2018svaba} is a germline and somatic SV caller by J. Walla et al., created in 2016. Svaba is implemented in C++ and relies on genome-wide local assembly for variant detection. Internally SvABA makes use of SGA\autocite{simpson2012efficient} and BWA-MEM\autocite{li2009fast} for assembly and read mapping respectively. 
+
+\begin{figure}[H]
+    \centering
+    \caption {The SvABA variant callng method\autocite{wala2018svaba}.}
+    \label{fig:svaba_method}
+\end{figure}
+
+SvABA performs local de-novo assembly in 25-kbp windows tiled across the genome with a 2kb overlap. First reads that may be indicative of variation are extracted from a BAM file, these include reads with high-quality soft-clipped bases, discordant reads (with non-standard orietnation or with insert size greater than four standard deviations away from the sample mean insert size, determined using a sample of 5 million reads with top and bottom 5\% of insert sizes truncated), unmapped reads, reads with unmapped mates, and reads with insertions or deletions indicated in the CIGAR string. Low quality reads that are marked as PCR duplicates, have failed QC, and reads with repeats of >20 basepairs are filtered out. Discordant reads are realigned to the reference with BWA-MEM and those with an available nondiscordant alignment of >70\% of the maximum alignment score are discarded. Reads with many different (>20) high quality candidate alignments are also discarded. Remaining discordant reads are clustered based on orientation and insert-size and assembled using SGA.
+
+The contigs produced by SGA are aligned to the reference genome using BWA-MEM and examined for potential variants. Contigs with an alignment that has fewer than 30 nonaligned bases and no alignment gaps are considered reference. Indels are called when the alignment has gaps, and SVs called when the resulting alignment is multi-part. In order to evaluate read support for the putative variants, reads from the windows are aligned to both the reference and the assembled contigs using BWA-MEM. Reads are considered matching to the contig when the alignment score for the read to the contig is greater than the alignment of the read to the reference and is >90\% of the length of the match. Reads that have an alignment that is up to 8 bases to the left or right of a putative variant are consdered supporing the variant.
+
+\subsubsection{Remarks}
+
+We looked at Delly, Lumpy, and SvABA in the context of germline SV calling. Although there are some differences in the details of the approaches taken by the tools' authors there are consistent similarities as well, which additionally carry over to other SV callers such as Pindel\autocite{ye2009pindel}, and Manta\autocite{chen2015manta}, that have not been presented here. These approaches rely heavily on paired-end reads and select those that are mapped uncommonly far apart or close together. These are clustered or optionally locally assembled to produce putative breakpoints. Breakpoint locations are further refined by split-read analysis, using those reads that are unmapped by regular read mapping software. These reads are broken down into kmers and each kmer is aligned separately to non-adjacent locations in the genome. Alternative haplotypes may be constructed using these reads and alignments to the reference and the alternative haplotypes scored for genotyping purposes. A new method for structural variant calling should thus focus on making the best use of these two data types (discordant and split reads), while possibly also making use of read depth information to be competitive with the current generation of best callers. 
+
 \subsection{Variant Filtering}
 
 \subsection{Somatic SNP Calling}
