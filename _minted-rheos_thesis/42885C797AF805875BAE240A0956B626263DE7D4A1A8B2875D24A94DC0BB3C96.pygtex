@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-  \PYG{l+s}{\PYGZsq{}*\PYGZsq{}}\PYG{p+pIndicator}{:}
-    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{consul}
-    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{dnsmasq}
-    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{collectd}
-    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{elastic.filebeat}
-    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{elastic.packetbeat}
-\end{Verbatim}

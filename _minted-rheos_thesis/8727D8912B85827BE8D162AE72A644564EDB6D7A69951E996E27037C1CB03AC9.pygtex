@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{get\PYGZus{}run\PYGZus{}status\PYGZus{}from\PYGZus{}string}\PYG{p}{(}\PYG{n}{run\PYGZus{}status\PYGZus{}string}\PYG{p}{)}
-\end{Verbatim}

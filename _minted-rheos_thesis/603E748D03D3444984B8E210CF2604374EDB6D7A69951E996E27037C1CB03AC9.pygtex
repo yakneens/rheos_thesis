@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{uncompress\PYGZus{}gzip\PYGZus{}sample}\PYG{p}{(}\PYG{n}{result\PYGZus{}filename}\PYG{p}{,} \PYG{n}{config}\PYG{p}{)}
-\end{Verbatim}

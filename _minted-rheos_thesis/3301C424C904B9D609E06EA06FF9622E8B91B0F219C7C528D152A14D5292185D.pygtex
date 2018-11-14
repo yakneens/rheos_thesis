@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-class airflow.models.DAG(dag\PYGZus{}id, schedule\PYGZus{}interval=datetime.timedelta(1), start\PYGZus{}date=None, end\PYGZus{}date=None, full\PYGZus{}filepath=None, template\PYGZus{}searchpath=None, user\PYGZus{}defined\PYGZus{}macros=None, default\PYGZus{}args=None, concurrency=16, max\PYGZus{}active\PYGZus{}runs=16, dagrun\PYGZus{}timeout=None, sla\PYGZus{}miss\PYGZus{}callback=None, params=None)
-\end{Verbatim}

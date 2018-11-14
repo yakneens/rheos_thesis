@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{set\PYGZus{}configuration\PYGZus{}for\PYGZus{}analysis}\PYG{p}{(}\PYG{n}{analysis\PYGZus{}id}\PYG{p}{,} \PYG{n}{config\PYGZus{}id}\PYG{p}{)}
-\end{Verbatim}

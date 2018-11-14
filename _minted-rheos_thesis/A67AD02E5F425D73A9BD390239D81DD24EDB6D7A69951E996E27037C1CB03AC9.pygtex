@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{RUN\PYGZus{}STATUS\PYGZus{}READY}\PYG{p}{,} \PYG{n}{RUN\PYGZus{}STATUS\PYGZus{}SCHEDULED}\PYG{p}{,} \PYG{n}{RUN\PYGZus{}STATUS\PYGZus{}IN\PYGZus{}PROGRESS}\PYG{p}{,} \PYG{n}{RUN\PYGZus{}STATUS\PYGZus{}COMPLETED}\PYG{p}{,} \PYG{n}{RUN\PYGZus{}STATUS\PYGZus{}ERROR}
-\end{Verbatim}
