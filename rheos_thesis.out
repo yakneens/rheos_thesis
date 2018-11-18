@@ -35,10 +35,11 @@
 \BOOKMARK [0][-]{chapter.5}{The Rheos Framework}{}% 35
 \BOOKMARK [1][-]{section.5.1}{General Framework Design}{chapter.5}% 36
 \BOOKMARK [1][-]{section.5.2}{Data Streaming Architecture}{chapter.5}% 37
-\BOOKMARK [1][-]{section.5.3}{Domain-specific Problems}{chapter.5}% 38
-\BOOKMARK [1][-]{section.5.4}{Services of Rheos}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.5}{Proof of concept implementation}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.6}{Conclusions}{chapter.5}% 41
-\BOOKMARK [0][-]{chapter.6}{Discussion and Conclusion}{}% 42
-\BOOKMARK [0][-]{section*.33}{Appendix}{}% 43
-\BOOKMARK [0][-]{Appendix.1.A}{Code Listings}{}% 44
+\BOOKMARK [2][-]{subsection.5.2.1}{Service-Oriented Data Streaming Model}{section.5.2}% 38
+\BOOKMARK [1][-]{section.5.3}{Domain-specific Problems}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.4}{Services of Rheos}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.5}{Proof of concept implementation}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.6}{Conclusions}{chapter.5}% 42
+\BOOKMARK [0][-]{chapter.6}{Discussion and Conclusion}{}% 43
+\BOOKMARK [0][-]{section*.47}{Appendix}{}% 44
+\BOOKMARK [0][-]{Appendix.1.A}{Code Listings}{}% 45

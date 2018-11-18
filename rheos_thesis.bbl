@@ -1522,6 +1522,50 @@
       \field{title}{Event processing in action}
       \field{year}{2011}
     \endentry
+    \entry{eugster2003many}{article}{}
+      \name{author}{4}{}{%
+        {{hash=4e25e843def1caf05eb09a6840479224}{%
+           family={Eugster},
+           familyi={E\bibinitperiod},
+           given={Patrick\bibnamedelima Th},
+           giveni={P\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=7c10f4e8548493eb61ea3d7683c60a01}{%
+           family={Felber},
+           familyi={F\bibinitperiod},
+           given={Pascal\bibnamedelima A},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=6d84b5e8da24c645eb6bc438af7621c4}{%
+           family={Guerraoui},
+           familyi={G\bibinitperiod},
+           given={Rachid},
+           giveni={R\bibinitperiod}}}%
+        {{hash=43b428701b71e726f0f4000ea91297c8}{%
+           family={Kermarrec},
+           familyi={K\bibinitperiod},
+           given={Anne-Marie},
+           giveni={A\bibinithyphendelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{09019e018de8d5eeb9e99f8b22268a95}
+      \strng{fullhash}{401b0315b2d12581383954ed42efcb13}
+      \strng{bibnamehash}{09019e018de8d5eeb9e99f8b22268a95}
+      \strng{authorbibnamehash}{09019e018de8d5eeb9e99f8b22268a95}
+      \strng{authornamehash}{09019e018de8d5eeb9e99f8b22268a95}
+      \strng{authorfullhash}{401b0315b2d12581383954ed42efcb13}
+      \field{sortinit}{E}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM computing surveys (CSUR)}
+      \field{number}{2}
+      \field{title}{The many faces of publish/subscribe}
+      \field{volume}{35}
+      \field{year}{2003}
+      \field{pages}{114\bibrangedash 131}
+      \range{pages}{18}
+    \endentry
     \entry{ewen2000identification}{article}{}
       \name{author}{7}{}{%
         {{hash=7acc72546d3a90464310968cde408e26}{%
@@ -2456,6 +2500,43 @@
       \field{year}{2012}
       \field{pages}{117\bibrangedash 122}
       \range{pages}{6}
+    \endentry
+    \entry{ingham2000constructing}{incollection}{}
+      \name{author}{3}{}{%
+        {{hash=a27fce0a0f5a93384e6ecc0cdc2447b9}{%
+           family={Ingham},
+           familyi={I\bibinitperiod},
+           given={David\bibnamedelima B},
+           giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=2b1ae177f2a9134277de0553481c0c18}{%
+           family={Panzieri},
+           familyi={P\bibinitperiod},
+           given={Fabio},
+           giveni={F\bibinitperiod}}}%
+        {{hash=0a160b0db9fb5170667b5a4e568e4d71}{%
+           family={Shrivastava},
+           familyi={S\bibinitperiod},
+           given={Santosh\bibnamedelima K},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{fc8a112bcae1a65c36e018c802b8a447}
+      \strng{fullhash}{fc8a112bcae1a65c36e018c802b8a447}
+      \strng{bibnamehash}{fc8a112bcae1a65c36e018c802b8a447}
+      \strng{authorbibnamehash}{fc8a112bcae1a65c36e018c802b8a447}
+      \strng{authornamehash}{fc8a112bcae1a65c36e018c802b8a447}
+      \strng{authorfullhash}{fc8a112bcae1a65c36e018c802b8a447}
+      \field{sortinit}{I}
+      \field{sortinithash}{320bc8fe8101b9376f9f21cd507de0e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Distributed Systems}
+      \field{title}{Constructing dependable Web services}
+      \field{year}{2000}
+      \field{pages}{277\bibrangedash 294}
+      \range{pages}{18}
     \endentry
     \entry{ingram1957gene}{article}{}
       \true{moreauthor}
@@ -5095,6 +5176,36 @@
       \field{journaltitle}{Cape Visions}
       \field{title}{A technical comparison of XPDL, BPML and BPEL4WS}
       \field{year}{2002}
+    \endentry
+    \entry{shaw1996software}{book}{}
+      \name{author}{2}{}{%
+        {{hash=a71c8aa98b158fa0b3a629457cda1498}{%
+           family={Shaw},
+           familyi={S\bibinitperiod},
+           given={Mary},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5e93a0537dc9db010915acd5407760d4}{%
+           family={Garlan},
+           familyi={G\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall Englewood Cliffs}%
+      }
+      \strng{namehash}{2f1c1b8d56655474bf41bee1ed639169}
+      \strng{fullhash}{2f1c1b8d56655474bf41bee1ed639169}
+      \strng{bibnamehash}{2f1c1b8d56655474bf41bee1ed639169}
+      \strng{authorbibnamehash}{2f1c1b8d56655474bf41bee1ed639169}
+      \strng{authornamehash}{2f1c1b8d56655474bf41bee1ed639169}
+      \strng{authorfullhash}{2f1c1b8d56655474bf41bee1ed639169}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Software architecture}
+      \field{volume}{101}
+      \field{year}{1996}
     \endentry
     \entry{shen2013comprehensive}{article}{}
       \true{moreauthor}

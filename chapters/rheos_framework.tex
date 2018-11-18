@@ -29,6 +29,113 @@ We use the following definitions throughout the text:
 
 \section{Data Streaming Architecture}
 
+The overall technical architecture of the Rheos system is set up as a Service Oriented Architecture (SOA)\autocite{shaw1996software} which is an information system architecture paradigm where the overall problem that the system is trying to solve is broken down into a collection of loosely-coupled components called services. Each service has a well defined interface of inputs that it accepts and outputs that it produces. Services can be combined and orchestrated together to produce the overall desired output for the system. A key distinguishing feature of this architectural approach is that each service can be individually optimized to fulfill its contract most efficiently helping break down some of the performance limitations brought about by the necessity to simultaneously tackle competing constraints in more monolithic information system designs. Additionally, within a services framework, the dependencies between separate services can be negotiated not only in terms of service interfaces, but also in terms Service Level Agreements which constitute Quality of Service promises made by one service to its dependents\autocite{ingham2000constructing}. Because it is unlikely that a service designer will be able to accurately foresee all of the demands that will be placed on a service during its lifetime the SLAs provide a valuable feedback framework through which the service can be evaluated as it operates in production, as well as serving as a basis for negotiating evolving requirements between dependent services.
+
+While general web services can support any data processing paradigm, in the Rheos framework we adopt a data streaming approach\autocite{babcock2002models}. In this approach we assume that the input to any service is a randomly ordered sequence of messages $M = {m_1, m_2, ....}$ where each message represents a fact about the underlying domain that the service reasons over, as well as some metadata, including an identifier, and a variety of timestamps of interest. The content of each message may provide a datum, such as the measurement of a quantity of interest, or signal that a particular event has taken place. It is in general assumed that the data stream is infinite in size, that messages may arrive out of order, and that any message that is placed in the stream is observed at most once, and may, in fact, never be observed. Messages are typically not sent directly from one service to another, instead the transfer of messages is mediated by a queuing system using a publish-subscribe\autocite{eugster2003many} model. Under this model each queue acts as a \emph{topic}. Message producers can publish data to the topic, and message consumers subscribe to receive messages from the topic. A message is consumed from the queue only after all of the subscribed consumers have seen it. End users retrieve information from the system via a set of User Interfaces that support both push (notifications) and pull (querying) models of data retrieval. A more detailed description of the architectural aspects of the system follows:
+
+\subsection{Service-Oriented Data Streaming Model}
+
+A data stream $M_{s,d} = {m_1, m_2, ....}$ is a sequence of datagrams transmitted over the network with the following properties:
+
+\begin{itemize}
+    \item The stream has a source $s$ and a destination $d$.
+    \item A message $m$ in the stream is a tuple of the form $(header, payload)$, where:
+    \begin{itemize}
+        \item $header$ is a tuple of the form $(id, \dots)$ that holds at minimum a unique identifier $id$ for messages, and may hold additional metadata.
+        \item $payload$ is an arbitrary data structure that holds the informational content of the message. 
+    \end{itemize}
+    \item $|M| = \infty$ by assumption.
+    \item Messages may not arrive at destination $d$ in the same order that they were sent from source $s$.
+    \item If $t_{i,s}$ is the time message $m_i$ leaves the source $s$ and $t_{i,d}$ is the time of arrival at destination $d$, then $\sup_i \{t_{i,d} - t_{i,s}\} = \infty$, i.e. a given sent message may never arrive at its destination.
+\end{itemize}
+
+A service $S = \{o_i\}$ is a collection of operations $o_i$ that act on one or more input data streams $\{M_i\}$ to produce one or more transformed output data streams $\{M_j\}$. Specifically:
+
+An operation $O$ is a tuple of the form  $O = (i,o,p,f)$, where:
+\begin{itemize} 
+    \item $i = \{M_j, j \in [0, K]\}$ is a set of $K \ge 0$ input data streams.
+    \item $o = \{M'_j, j \in [0, L]\}$ is a set of $L \ge 0$ output data streams.
+    \item $f:M^K \mapsto M'^L$ is a transformation function that produces messages $m'$ in the output streams based on messages $m$ observed in the input streams.
+    \item $p = \{p_i\}$ is a set of potentially optional query parameters.  
+\end{itemize}
+
+There are several distinct categories of operations that a service can perform on a set of input streams. We describe these here:
+
+\paragraph{Windowing Function} - Service $S$ observes a sliding window, which is a sample of size $n$ of messages from stream $M_i$ and computes a summary statistic (see Figure \ref{fig:stream_window_function}) over the sample which is meant to be an approximation of the corresponding population parameter.
+
+\begin{figure}[H]
+\includegraphics[scale=0.6]{stream_window_function}
+\centering
+\caption {Service S computes a summary statistic over a window of messages from stream $M$}
+\label{fig:stream_window_function}
+\end{figure}
+ 
+\paragraph{Decorator Function} - Service $S$ observes messages $m_i$ and applies a function that augments (decorates) each message with additional attributes (see Figure \ref{fig:stream_decorator_function}) producing augmented messages $m_o$ as output.
+
+\begin{figure}[H]
+\includegraphics[scale=0.6]{stream_decorator_function}
+\centering
+\caption {Service S computes a summary statistic over a window of messages from stream $M$}
+\label{fig:stream_decorator_function}
+\end{figure}
+
+\paragraph{Filter Function} - Service $S$ observes messages $m_i$ and applies a function $f:M\mapsto\{True,False\}$ that evaluates to a boolean value (see Figure \ref{fig:stream_decorator_function}). Only messages that map to $True$ are emitted as output.
+
+\begin{figure}[H]
+\includegraphics[scale=0.6]{stream_filter_function}
+\centering
+\caption {Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.}
+\label{fig:stream_filter_function}
+\end{figure}
+
+\paragraph{Aggregator Function} - Service $S$ observes messages $m_i$ and applies a function $f:M\mapsto\{True,False\}$ that evaluates to a boolean value (see Figure \ref{fig:stream_decorator_function}). Only messages that map to $True$ are emitted as output.
+
+\begin{figure}[H]
+\includegraphics[scale=0.6]{stream_aggregator_function}
+\centering
+\caption {Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.}
+\label{fig:stream_aggregator_function}
+\end{figure}
+
+
+\paragraph{Local State Aggregator Function} - Service $S$ observes messages $m_i$ and applies a function $f:M\mapsto\{True,False\}$ that evaluates to a boolean value (see Figure \ref{fig:stream_decorator_function}). Only messages that map to $True$ are emitted as output.
+
+\begin{figure}[H]
+\includegraphics[scale=0.6]{stream_local_state_aggregator_function}
+\centering
+\caption {Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.}
+\label{fig:stream_local_state_aggregator_function}
+\end{figure}
+
+
+\paragraph{Persistence Function} - Service $S$ observes messages $m_i$ and applies a function $f:M\mapsto\{True,False\}$ that evaluates to a boolean value (see Figure \ref{fig:stream_decorator_function}). Only messages that map to $True$ are emitted as output.
+
+\begin{figure}[H]
+\includegraphics[scale=0.6]{stream_persistence_function}
+\centering
+\caption {Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.}
+\label{fig:stream_persistence_function}
+\end{figure}
+
+\paragraph{Query Function} - Service $S$ observes messages $m_i$ and applies a function $f:M\mapsto\{True,False\}$ that evaluates to a boolean value (see Figure \ref{fig:stream_decorator_function}). Only messages that map to $True$ are emitted as output.
+
+\begin{figure}[H]
+\includegraphics[scale=0.6]{stream_query_function}
+\centering
+\caption {Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.}
+\label{fig:stream_query_function}
+\end{figure}
+
+
+Aggregator
+Local State Aggregator
+Persistence
+Query
+
+
+    
+
+-----------------
 Set up the general architecture of information flow through the system - types of entities, communication channels, contracts, SLAs, capabilities:
 
 \begin{itemize}
@@ -56,6 +163,7 @@ Set up the general architecture of information flow through the system - types o
 \section{Domain-specific Problems}
 
 Describe specific problems that need to be addressed by the system in a stream-based formulation - how to go from a collection of raw reads to a set of annotated variants: map reads, perform QC filtering, model loci, assemble alternative haplotypes, call variants, filter variants, annotate, produce output.  
+
 
 \begin{itemize}
     \item Perform read QC

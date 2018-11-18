@@ -54,10 +54,18 @@
 \contentsline {chapter}{\numberline {5}The Rheos Framework}{50}{chapter.5}
 \contentsline {section}{\numberline {5.1}General Framework Design}{50}{section.5.1}
 \contentsline {section}{\numberline {5.2}Data Streaming Architecture}{51}{section.5.2}
-\contentsline {section}{\numberline {5.3}Domain-specific Problems}{52}{section.5.3}
-\contentsline {section}{\numberline {5.4}Services of Rheos}{52}{section.5.4}
-\contentsline {section}{\numberline {5.5}Proof of concept implementation}{53}{section.5.5}
-\contentsline {section}{\numberline {5.6}Conclusions}{54}{section.5.6}
-\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{55}{chapter.6}
-\contentsline {chapter}{Appendix}{56}{section*.33}
-\contentsline {chapter}{\numberline {A}Code Listings}{56}{Appendix.1.A}
+\contentsline {subsection}{\numberline {5.2.1}Service-Oriented Data Streaming Model}{52}{subsection.5.2.1}
+\contentsline {paragraph}{Windowing Function}{53}{section*.33}
+\contentsline {paragraph}{Decorator Function}{53}{section*.35}
+\contentsline {paragraph}{Filter Function}{53}{section*.37}
+\contentsline {paragraph}{Aggregator Function}{54}{section*.39}
+\contentsline {paragraph}{Local State Aggregator Function}{54}{section*.41}
+\contentsline {paragraph}{Persistence Function}{54}{section*.43}
+\contentsline {paragraph}{Query Function}{55}{section*.45}
+\contentsline {section}{\numberline {5.3}Domain-specific Problems}{56}{section.5.3}
+\contentsline {section}{\numberline {5.4}Services of Rheos}{56}{section.5.4}
+\contentsline {section}{\numberline {5.5}Proof of concept implementation}{57}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conclusions}{58}{section.5.6}
+\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{59}{chapter.6}
+\contentsline {chapter}{Appendix}{60}{section*.47}
+\contentsline {chapter}{\numberline {A}Code Listings}{60}{Appendix.1.A}

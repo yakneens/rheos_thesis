@@ -1,19 +1,20 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'rheos_thesis.blg'
-[50] biber-darwin:313> INFO - === Wed Nov 14, 2018, 14:48:00
-[78] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
-[186] Biber.pm:857> INFO - Found 146 citekeys in bib section 0
-[202] Biber.pm:3976> INFO - Processing section 0
-[217] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
-[228] bibtex.pm:1500> INFO - LaTeX decoding ...
-[549] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
-[571] Utils.pm:193> WARN - Duplicate entry key: 'alkan2011genome' in file 'rheos_references.bib', skipping ...
-[572] Utils.pm:193> WARN - Duplicate entry key: 'zhao2013computational' in file 'rheos_references.bib', skipping ...
-[1875] Utils.pm:193> WARN - I didn't find a database entry for 'needcitation' (section 0)
-[2034] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[2034] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[2034] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[2034] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[2223] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
-[2296] bbl.pm:720> INFO - Output to rheos_thesis.bbl
-[2296] Biber.pm:110> INFO - WARNINGS: 3
+[50] biber-darwin:313> INFO - === Fri Nov 16, 2018, 14:16:16
+[82] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
+[226] Biber.pm:857> INFO - Found 149 citekeys in bib section 0
+[245] Biber.pm:3976> INFO - Processing section 0
+[262] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
+[273] bibtex.pm:1500> INFO - LaTeX decoding ...
+[673] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
+[699] Utils.pm:193> WARN - Duplicate entry key: 'alkan2011genome' in file 'rheos_references.bib', skipping ...
+[699] Utils.pm:193> WARN - Duplicate entry key: 'zhao2013computational' in file 'rheos_references.bib', skipping ...
+[701] Utils.pm:193> WARN - Duplicate entry key: 'babcock2002models' in file 'rheos_references.bib', skipping ...
+[2144] Utils.pm:193> WARN - I didn't find a database entry for 'needcitation' (section 0)
+[2306] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2306] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2306] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[2307] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[2481] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
+[2546] bbl.pm:720> INFO - Output to rheos_thesis.bbl
+[2547] Biber.pm:110> INFO - WARNINGS: 4

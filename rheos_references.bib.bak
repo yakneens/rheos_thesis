@@ -1847,4 +1847,41 @@
   publisher = {Oxford University Press},
 }
 
+@Article{chen2015manta,
+  author    = {Chen, Xiaoyu and Schulz-Trieglaff, Ole and Shaw, Richard and Barnes, Bret and Schlesinger, Felix and K{\"a}llberg, Morten and Cox, Anthony J and Kruglyak, Semyon and Saunders, Christopher T},
+  title     = {Manta: rapid detection of structural variants and indels for germline and cancer sequencing applications},
+  journal   = {Bioinformatics},
+  year      = {2015},
+  volume    = {32},
+  number    = {8},
+  pages     = {1220--1222},
+  publisher = {Oxford University Press},
+}
+
+@Book{shaw1996software,
+  author    = {Shaw, Mary and Garlan, David},
+  title     = {Software architecture},
+  year      = {1996},
+  volume    = {101},
+  publisher = {Prentice Hall Englewood Cliffs},
+}
+
+@InCollection{ingham2000constructing,
+  author    = {Ingham, David B and Panzieri, Fabio and Shrivastava, Santosh K},
+  title     = {Constructing dependable Web services},
+  booktitle = {Advances in Distributed Systems},
+  year      = {2000},
+  publisher = {Springer},
+  pages     = {277--294},
+}
+
+@InProceedings{babcock2002models,
+  author       = {Babcock, Brian and Babu, Shivnath and Datar, Mayur and Motwani, Rajeev and Widom, Jennifer},
+  title        = {Models and issues in data stream systems},
+  booktitle    = {Proceedings of the twenty-first ACM SIGMOD-SIGACT-SIGART symposium on Principles of database systems},
+  year         = {2002},
+  organization = {ACM},
+  pages        = {1--16},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
