@@ -482,6 +482,8 @@
 \newlabel{tab:rheos_notation}{{5.1}{51}{Rheos common definitions\relax }{table.caption.32}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.2}Data Streaming Architecture}{51}{section.5.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Service-Oriented Data Streaming Model}{52}{subsection.5.2.1}}
+\abx@aux@cite{oppenheimer2002architecture}
+\abx@aux@segm{0}{0}{oppenheimer2002architecture}
 \@writefile{toc}{\contentsline {paragraph}{Windowing Function}{53}{section*.33}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Service S computes a summary statistic over a window of messages from stream $M$\relax }}{53}{figure.caption.34}}
 \newlabel{fig:stream_window_function}{{5.1}{53}{Service S computes a summary statistic over a window of messages from stream $M$\relax }{figure.caption.34}{}}
@@ -492,68 +494,77 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{53}{figure.caption.38}}
 \newlabel{fig:stream_filter_function}{{5.3}{53}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.38}{}}
 \@writefile{toc}{\contentsline {paragraph}{Aggregator Function}{54}{section*.39}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{54}{figure.caption.40}}
-\newlabel{fig:stream_aggregator_function}{{5.4}{54}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Service S integrates messages from multiple input streams $M_i$ to produce an aggregated output stream $M_o$ via $f$.\relax }}{54}{figure.caption.40}}
+\newlabel{fig:stream_aggregator_function}{{5.4}{54}{Service S integrates messages from multiple input streams $M_i$ to produce an aggregated output stream $M_o$ via $f$.\relax }{figure.caption.40}{}}
 \@writefile{toc}{\contentsline {paragraph}{Local State Aggregator Function}{54}{section*.41}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{54}{figure.caption.42}}
-\newlabel{fig:stream_local_state_aggregator_function}{{5.5}{54}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }}{54}{figure.caption.42}}
+\newlabel{fig:stream_local_state_aggregator_function}{{5.5}{54}{Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }{figure.caption.42}{}}
 \@writefile{toc}{\contentsline {paragraph}{Persistence Function}{54}{section*.43}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{54}{figure.caption.44}}
-\newlabel{fig:stream_persistence_function}{{5.6}{54}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.44}{}}
+\abx@aux@cite{vaquero2011dynamically}
+\abx@aux@segm{0}{0}{vaquero2011dynamically}
+\abx@aux@cite{mao2011auto}
+\abx@aux@segm{0}{0}{mao2011auto}
+\abx@aux@segm{0}{0}{vaquero2011dynamically}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Service $S$ processes messages $m_i$ into persistent storage. The output stream $M_o$ contains persistence confirmation and error events.\relax }}{55}{figure.caption.44}}
+\newlabel{fig:stream_persistence_function}{{5.6}{55}{Service $S$ processes messages $m_i$ into persistent storage. The output stream $M_o$ contains persistence confirmation and error events.\relax }{figure.caption.44}{}}
 \@writefile{toc}{\contentsline {paragraph}{Query Function}{55}{section*.45}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{55}{figure.caption.46}}
 \newlabel{fig:stream_query_function}{{5.7}{55}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.46}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Domain-specific Problems}{56}{section.5.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Services of Rheos}{56}{section.5.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Proof of concept implementation}{57}{section.5.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}Conclusions}{58}{section.5.6}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{59}{chapter.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces a) In horizontal scaling new servers are added and removed (dashed arrow) behind a load balancer as the rate of data stream $M_i$ fluctuates. b) In vertical scaling more powerful servers need to be launched (dashed arrow) to replace smaller servers (with potential service outage) when the rate of $M_i$ increases beyond capacity.\relax }}{56}{figure.caption.47}}
+\newlabel{fig:horizontal_vs_vertical_scaling}{{5.8}{56}{a) In horizontal scaling new servers are added and removed (dashed arrow) behind a load balancer as the rate of data stream $M_i$ fluctuates. b) In vertical scaling more powerful servers need to be launched (dashed arrow) to replace smaller servers (with potential service outage) when the rate of $M_i$ increases beyond capacity.\relax }{figure.caption.47}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces A\relax }}{57}{figure.caption.48}}
+\newlabel{fig:queue}{{5.9}{57}{A\relax }{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Domain-specific Problems}{58}{section.5.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Services of Rheos}{59}{section.5.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Proof of concept implementation}{60}{section.5.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Conclusions}{60}{section.5.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{61}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:conclusion}{{6}{59}{Discussion and Conclusion}{chapter.6}{}}
-\newlabel{ch:appendices}{{6}{59}{Discussion and Conclusion}{chapter.6}{}}
-\@writefile{toc}{\contentsline {chapter}{Appendix}{60}{section*.47}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Code Listings}{60}{Appendix.1.A}}
+\newlabel{ch:conclusion}{{6}{61}{Discussion and Conclusion}{chapter.6}{}}
+\newlabel{ch:appendices}{{6}{61}{Discussion and Conclusion}{chapter.6}{}}
+\@writefile{toc}{\contentsline {chapter}{Appendix}{62}{section*.49}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Code Listings}{62}{Appendix.1.A}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{lol}{\contentsline {listing}{\numberline {1}{\ignorespaces Terraform configuration of a worker VM \relax }}{60}{listing.1}}
-\newlabel{lst:terraform_worker}{{1}{60}{Terraform configuration of a worker VM \relax }{listing.1}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {2}{\ignorespaces Terraform configuration of a security group \relax }}{61}{listing.2}}
-\newlabel{lst:terraform_security_group}{{2}{61}{Terraform configuration of a security group \relax }{listing.2}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {3}{\ignorespaces Salt Pillar for specifying test data location. \relax }}{61}{listing.3}}
-\newlabel{lst:salt_pillar_test_data}{{3}{61}{Salt Pillar for specifying test data location. \relax }{listing.3}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {4}{\ignorespaces Using Salt Mine to look up a server's IP Address. \relax }}{62}{listing.4}}
-\newlabel{lst:salt_mine}{{4}{62}{Using Salt Mine to look up a server's IP Address. \relax }{listing.4}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {5}{\ignorespaces Using Top File to map States to Roles. \relax }}{62}{listing.5}}
-\newlabel{lst:salt_top_file}{{5}{62}{Using Top File to map States to Roles. \relax }{listing.5}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {6}{\ignorespaces Collectd configuration for metrics collection. \relax }}{62}{listing.6}}
-\newlabel{lst:telegraf_config}{{6}{62}{Collectd configuration for metrics collection. \relax }{listing.6}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {7}{\ignorespaces Filebeat Prospector configuration. \relax }}{64}{listing.7}}
-\newlabel{lst:filebeat_prospectors}{{7}{64}{Filebeat Prospector configuration. \relax }{listing.7}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {8}{\ignorespaces TICKscript for alerting on CPU value. \relax }}{64}{listing.8}}
-\newlabel{lst:cpu_value_tick}{{8}{64}{TICKscript for alerting on CPU value. \relax }{listing.8}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {9}{\ignorespaces TICKscript for handling dead VMs. \relax }}{65}{listing.9}}
-\newlabel{lst:host_deadman_tick}{{9}{65}{TICKscript for handling dead VMs. \relax }{listing.9}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {10}{\ignorespaces Butler healing agent code for restarting the Airflow Scheduler. \relax }}{67}{listing.10}}
-\newlabel{lst:self_healing_airflow_scheduler_restart}{{10}{67}{Butler healing agent code for restarting the Airflow Scheduler. \relax }{listing.10}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {11}{\ignorespaces Butler healing agent code for relaunching a failed VM. \relax }}{67}{listing.11}}
-\newlabel{lst:self_healing_relaunch_vm}{{11}{67}{Butler healing agent code for relaunching a failed VM. \relax }{listing.11}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {12}{\ignorespaces Consul service definition for PostgreSQL. \relax }}{70}{listing.12}}
-\newlabel{lst:consul_postgres_service}{{12}{70}{Consul service definition for PostgreSQL. \relax }{listing.12}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {13}{\ignorespaces Source code for the freebayes workflow.\relax }}{70}{listing.13}}
-\newlabel{lst:freebayes_workflow}{{13}{70}{Source code for the freebayes workflow.\relax }{listing.13}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {14}{\ignorespaces Saltstack state for workflow deployment.\relax }}{73}{listing.14}}
-\newlabel{lst:workflow_deployment}{{14}{73}{Saltstack state for workflow deployment.\relax }{listing.14}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {15}{\ignorespaces Butler Analysis configuration for SNP genotyping.\relax }}{73}{listing.15}}
-\newlabel{lst:genotyping_analysis}{{15}{73}{Butler Analysis configuration for SNP genotyping.\relax }{listing.15}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {16}{\ignorespaces Butler Workflow configuration for Data Submission.\relax }}{74}{listing.16}}
-\newlabel{lst:gtupload_workflow}{{16}{74}{Butler Workflow configuration for Data Submission.\relax }{listing.16}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {17}{\ignorespaces Butler Analysis configuration for Data Submission.\relax }}{74}{listing.17}}
-\newlabel{lst:gtupload_analysis}{{17}{74}{Butler Analysis configuration for Data Submission.\relax }{listing.17}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {18}{\ignorespaces Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }}{75}{listing.18}}
-\newlabel{lst:run_delly}{{18}{75}{Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }{listing.18}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {19}{\ignorespaces Butler Delly Workflow analysis configuration to genotype deletions.\relax }}{76}{listing.19}}
-\newlabel{lst:delly_analysis}{{19}{76}{Butler Delly Workflow analysis configuration to genotype deletions.\relax }{listing.19}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {1}{\ignorespaces Terraform configuration of a worker VM \relax }}{62}{listing.1}}
+\newlabel{lst:terraform_worker}{{1}{62}{Terraform configuration of a worker VM \relax }{listing.1}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {2}{\ignorespaces Terraform configuration of a security group \relax }}{63}{listing.2}}
+\newlabel{lst:terraform_security_group}{{2}{63}{Terraform configuration of a security group \relax }{listing.2}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {3}{\ignorespaces Salt Pillar for specifying test data location. \relax }}{63}{listing.3}}
+\newlabel{lst:salt_pillar_test_data}{{3}{63}{Salt Pillar for specifying test data location. \relax }{listing.3}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {4}{\ignorespaces Using Salt Mine to look up a server's IP Address. \relax }}{64}{listing.4}}
+\newlabel{lst:salt_mine}{{4}{64}{Using Salt Mine to look up a server's IP Address. \relax }{listing.4}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {5}{\ignorespaces Using Top File to map States to Roles. \relax }}{64}{listing.5}}
+\newlabel{lst:salt_top_file}{{5}{64}{Using Top File to map States to Roles. \relax }{listing.5}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {6}{\ignorespaces Collectd configuration for metrics collection. \relax }}{64}{listing.6}}
+\newlabel{lst:telegraf_config}{{6}{64}{Collectd configuration for metrics collection. \relax }{listing.6}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {7}{\ignorespaces Filebeat Prospector configuration. \relax }}{66}{listing.7}}
+\newlabel{lst:filebeat_prospectors}{{7}{66}{Filebeat Prospector configuration. \relax }{listing.7}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {8}{\ignorespaces TICKscript for alerting on CPU value. \relax }}{66}{listing.8}}
+\newlabel{lst:cpu_value_tick}{{8}{66}{TICKscript for alerting on CPU value. \relax }{listing.8}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {9}{\ignorespaces TICKscript for handling dead VMs. \relax }}{67}{listing.9}}
+\newlabel{lst:host_deadman_tick}{{9}{67}{TICKscript for handling dead VMs. \relax }{listing.9}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {10}{\ignorespaces Butler healing agent code for restarting the Airflow Scheduler. \relax }}{69}{listing.10}}
+\newlabel{lst:self_healing_airflow_scheduler_restart}{{10}{69}{Butler healing agent code for restarting the Airflow Scheduler. \relax }{listing.10}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {11}{\ignorespaces Butler healing agent code for relaunching a failed VM. \relax }}{69}{listing.11}}
+\newlabel{lst:self_healing_relaunch_vm}{{11}{69}{Butler healing agent code for relaunching a failed VM. \relax }{listing.11}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {12}{\ignorespaces Consul service definition for PostgreSQL. \relax }}{72}{listing.12}}
+\newlabel{lst:consul_postgres_service}{{12}{72}{Consul service definition for PostgreSQL. \relax }{listing.12}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {13}{\ignorespaces Source code for the freebayes workflow.\relax }}{72}{listing.13}}
+\newlabel{lst:freebayes_workflow}{{13}{72}{Source code for the freebayes workflow.\relax }{listing.13}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {14}{\ignorespaces Saltstack state for workflow deployment.\relax }}{75}{listing.14}}
+\newlabel{lst:workflow_deployment}{{14}{75}{Saltstack state for workflow deployment.\relax }{listing.14}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {15}{\ignorespaces Butler Analysis configuration for SNP genotyping.\relax }}{75}{listing.15}}
+\newlabel{lst:genotyping_analysis}{{15}{75}{Butler Analysis configuration for SNP genotyping.\relax }{listing.15}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {16}{\ignorespaces Butler Workflow configuration for Data Submission.\relax }}{76}{listing.16}}
+\newlabel{lst:gtupload_workflow}{{16}{76}{Butler Workflow configuration for Data Submission.\relax }{listing.16}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {17}{\ignorespaces Butler Analysis configuration for Data Submission.\relax }}{76}{listing.17}}
+\newlabel{lst:gtupload_analysis}{{17}{76}{Butler Analysis configuration for Data Submission.\relax }{listing.17}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {18}{\ignorespaces Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }}{77}{listing.18}}
+\newlabel{lst:run_delly}{{18}{77}{Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }{listing.18}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {19}{\ignorespaces Butler Delly Workflow analysis configuration to genotype deletions.\relax }}{78}{listing.19}}
+\newlabel{lst:delly_analysis}{{19}{78}{Butler Delly Workflow analysis configuration to genotype deletions.\relax }{listing.19}{}}
 \gdef\minted@oldcachelist{,
   default-pyg-prefix.pygstyle,
   default.pygstyle,
@@ -661,6 +672,7 @@
 \abx@aux@defaultrefcontext{0}{luengo2013economic}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{malkin1990germ}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{manolio2010genomewide}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{mao2011auto}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{mardis2008next}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{margolis2014national}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{marth1999general}{nty/global//global/global}
@@ -676,6 +688,7 @@
 \abx@aux@defaultrefcontext{0}{nielsen2011genotype}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{nitzberg1991distributed}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{oinn2004taverna}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{oppenheimer2002architecture}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{papadopoulos2016tiledb}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{papazoglou2003service}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{patel2012ngs}{nty/global//global/global}
@@ -706,6 +719,7 @@
 \abx@aux@defaultrefcontext{0}{The_Cost_of_Sequencing_a_Human_Genome_2016-11-04}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{torre2015global}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{van2013fastq}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{vaquero2011dynamically}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{venter2001sequence}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{venter1998shotgun}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{vermeersch2013applications}{nty/global//global/global}

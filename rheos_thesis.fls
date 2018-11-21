@@ -363,6 +363,10 @@ INPUT ./images/stream_persistence_function.png
 INPUT ./images/stream_persistence_function.png
 INPUT ./images/stream_query_function.png
 INPUT ./images/stream_query_function.png
+INPUT ./images/horizontal_vs_vertical_scaling.png
+INPUT ./images/horizontal_vs_vertical_scaling.png
+INPUT ./images/queue.png
+INPUT ./images/queue.png
 INPUT ./chapters/appendices.tex
 INPUT ./chapters/appendices.tex
 OUTPUT rheos_thesis.pyg

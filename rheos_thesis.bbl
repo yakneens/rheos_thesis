@@ -3642,6 +3642,38 @@
       \field{pages}{166\bibrangedash 176}
       \range{pages}{11}
     \endentry
+    \entry{mao2011auto}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=1d2bf74d2a87d43e4758336d4e07dbba}{%
+           family={Mao},
+           familyi={M\bibinitperiod},
+           given={Ming},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e33a22dcea6c706559488cbb98f7bf69}{%
+           family={Humphrey},
+           familyi={H\bibinitperiod},
+           given={Marty},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c246213fec4789826b8b75279a3941f9}
+      \strng{fullhash}{c246213fec4789826b8b75279a3941f9}
+      \strng{bibnamehash}{c246213fec4789826b8b75279a3941f9}
+      \strng{authorbibnamehash}{c246213fec4789826b8b75279a3941f9}
+      \strng{authornamehash}{c246213fec4789826b8b75279a3941f9}
+      \strng{authorfullhash}{c246213fec4789826b8b75279a3941f9}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{High Performance Computing, Networking, Storage and Analysis (SC), 2011 International Conference for}
+      \field{title}{Auto-scaling to minimize cost and meet application deadlines in cloud workflows}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 12}
+      \range{pages}{12}
+    \endentry
     \entry{mardis2008next}{article}{}
       \name{author}{1}{}{%
         {{hash=eb8cb884c78e3e88937a0297b67954e4}{%
@@ -4377,6 +4409,40 @@
       \field{year}{2004}
       \field{pages}{3045\bibrangedash 3054}
       \range{pages}{10}
+    \endentry
+    \entry{oppenheimer2002architecture}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3b7c6d08ef992f50cc6cb714826cab85}{%
+           family={Oppenheimer},
+           familyi={O\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5745a50c2a193202bb748caf186fa77d}{%
+           family={Patterson},
+           familyi={P\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c8e8f404b0c95d2ba303c18762930c29}
+      \strng{fullhash}{c8e8f404b0c95d2ba303c18762930c29}
+      \strng{bibnamehash}{c8e8f404b0c95d2ba303c18762930c29}
+      \strng{authorbibnamehash}{c8e8f404b0c95d2ba303c18762930c29}
+      \strng{authornamehash}{c8e8f404b0c95d2ba303c18762930c29}
+      \strng{authorfullhash}{c8e8f404b0c95d2ba303c18762930c29}
+      \field{sortinit}{O}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Internet Computing}
+      \field{number}{5}
+      \field{title}{Architecture and dependability of large-scale internet services}
+      \field{volume}{6}
+      \field{year}{2002}
+      \field{pages}{41\bibrangedash 49}
+      \range{pages}{9}
     \endentry
     \entry{papadopoulos2016tiledb}{article}{}
       \name{author}{4}{}{%
@@ -5757,6 +5823,45 @@
       \field{year}{2013}
       \field{pages}{11\bibrangedash 10}
       \range{pages}{1}
+    \endentry
+    \entry{vaquero2011dynamically}{article}{}
+      \name{author}{3}{}{%
+        {{hash=177da3b70ad3da6153446db44b758170}{%
+           family={Vaquero},
+           familyi={V\bibinitperiod},
+           given={Luis\bibnamedelima M},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=1863cee4c4a77f3e3652b09d9aa57037}{%
+           family={Rodero-Merino},
+           familyi={R\bibinithyphendelim M\bibinitperiod},
+           given={Luis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=029e03ba4e08a5605b31a31f86375741}{%
+           family={Buyya},
+           familyi={B\bibinitperiod},
+           given={Rajkumar},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{e51010b3eaa1f18031e03b64c760b477}
+      \strng{fullhash}{e51010b3eaa1f18031e03b64c760b477}
+      \strng{bibnamehash}{e51010b3eaa1f18031e03b64c760b477}
+      \strng{authorbibnamehash}{e51010b3eaa1f18031e03b64c760b477}
+      \strng{authornamehash}{e51010b3eaa1f18031e03b64c760b477}
+      \strng{authorfullhash}{e51010b3eaa1f18031e03b64c760b477}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM SIGCOMM Computer Communication Review}
+      \field{number}{1}
+      \field{title}{Dynamically scaling applications in the cloud}
+      \field{volume}{41}
+      \field{year}{2011}
+      \field{pages}{45\bibrangedash 52}
+      \range{pages}{8}
     \endentry
     \entry{venter2001sequence}{article}{}
       \true{moreauthor}

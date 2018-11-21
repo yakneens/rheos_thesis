@@ -2176,6 +2176,10 @@
     <bcf:citekey order="184">ingham2000constructing</bcf:citekey>
     <bcf:citekey order="185">babcock2002models</bcf:citekey>
     <bcf:citekey order="186">eugster2003many</bcf:citekey>
+    <bcf:citekey order="187">oppenheimer2002architecture</bcf:citekey>
+    <bcf:citekey order="188">vaquero2011dynamically</bcf:citekey>
+    <bcf:citekey order="189">mao2011auto</bcf:citekey>
+    <bcf:citekey order="190">vaquero2011dynamically</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

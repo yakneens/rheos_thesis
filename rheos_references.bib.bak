@@ -1884,4 +1884,37 @@
   pages        = {1--16},
 }
 
+@Article{eugster2003many,
+  author    = {Eugster, Patrick Th and Felber, Pascal A and Guerraoui, Rachid and Kermarrec, Anne-Marie},
+  title     = {The many faces of publish/subscribe},
+  journal   = {ACM computing surveys (CSUR)},
+  year      = {2003},
+  volume    = {35},
+  number    = {2},
+  pages     = {114--131},
+  publisher = {ACM},
+}
+
+@Article{oppenheimer2002architecture,
+  author    = {Oppenheimer, David and Patterson, David A},
+  title     = {Architecture and dependability of large-scale internet services},
+  journal   = {IEEE Internet Computing},
+  year      = {2002},
+  volume    = {6},
+  number    = {5},
+  pages     = {41--49},
+  publisher = {IEEE},
+}
+
+@Article{vaquero2011dynamically,
+  author    = {Vaquero, Luis M and Rodero-Merino, Luis and Buyya, Rajkumar},
+  title     = {Dynamically scaling applications in the cloud},
+  journal   = {ACM SIGCOMM Computer Communication Review},
+  year      = {2011},
+  volume    = {41},
+  number    = {1},
+  pages     = {45--52},
+  publisher = {ACM},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

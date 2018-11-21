@@ -62,10 +62,10 @@
 \contentsline {paragraph}{Local State Aggregator Function}{54}{section*.41}
 \contentsline {paragraph}{Persistence Function}{54}{section*.43}
 \contentsline {paragraph}{Query Function}{55}{section*.45}
-\contentsline {section}{\numberline {5.3}Domain-specific Problems}{56}{section.5.3}
-\contentsline {section}{\numberline {5.4}Services of Rheos}{56}{section.5.4}
-\contentsline {section}{\numberline {5.5}Proof of concept implementation}{57}{section.5.5}
-\contentsline {section}{\numberline {5.6}Conclusions}{58}{section.5.6}
-\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{59}{chapter.6}
-\contentsline {chapter}{Appendix}{60}{section*.47}
-\contentsline {chapter}{\numberline {A}Code Listings}{60}{Appendix.1.A}
+\contentsline {section}{\numberline {5.3}Domain-specific Problems}{58}{section.5.3}
+\contentsline {section}{\numberline {5.4}Services of Rheos}{59}{section.5.4}
+\contentsline {section}{\numberline {5.5}Proof of concept implementation}{60}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conclusions}{60}{section.5.6}
+\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{61}{chapter.6}
+\contentsline {chapter}{Appendix}{62}{section*.49}
+\contentsline {chapter}{\numberline {A}Code Listings}{62}{Appendix.1.A}
