@@ -85,7 +85,75 @@ BWA/MEM -
 Bowtie - 
 Gem - 
 
-\subsection{Raw Data QA}
+\subsection{Raw Data QC}
+
+The data that is generated as part of NGS experiments can have widely varying quality, and may suffer from systematic biases introduced by the experimental protocol employed, the technology used, as well as individual events such as sample contamination\autocites{lauss2013monitoring}{aird2011analyzing}{dohm2008substantial}{cibulskis2011contest}. The effect of low quality data such as sequencing errors on downstream analysis can be quite significant, not only because it may introduce false positive variants in the final output, but also because it can produce a large number of potentially variant sites that need to be evaluated and will consume a large amount additional computational resources to eventually rule out. A wide variety of computational methods exist for examining the data after it has been generated in order to identify and fix or filter out low quality data. The most widely used tools include Picard\autocite{Picard2018toolkit}, FastQC\autocite{andrews2010fastqc}, QC Toolkit\autocite{patel2012ngs}, QC-Chain\autocite{zhou2013qc}, and FASTX-Toolkit\autocite{gordon2010fastx}. These tools evaluate data at two granularities - read-level, and sample-level. Some of these can act on sequencing data pre-alignment, while others either work post-alignment or actively make use of a built-in aligner. The QC process is generally organized into a QC pipeline (see Figure \ref{fig:qc-chain}). Furthermore, some tools, like FastQC and Picard tend to only collect various QC metrics and generate reports, leaving the filtering based on these metrics up to the user, while other tools, such as QC Toolkit and QC-Chain perform the actual filtering themselves.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.85]{journal.pone.0060234.g001}
+    \centering
+    \caption {The QC-Chain pipeline involves trimming low quality bases, removal of adapter sequences, removal of duplicate reads, and contamination detection.\autocite{zhou2013qc}.}
+    \label{fig:qc-chain}
+\end{figure}
+
+At individual read level the following QC measures are of interest:
+
+\begin{description}
+    \item [Base Quality Distribution] - Reads in FASTQ format have a base-quality score associated with each nucleotide which serve as estimates of the probability that the base has been called correctly by the base-caller software. Bases towards the end of Illumina reads tend to suffer from deteriorating quality(\autocite{dohm2008substantial} and may not be usable for downstream analysis. 
+    \item [Adapter Sequence Presence] - The NGS library preparation protocol involves ligating an adapter sequence to the end of DNA fragments in order to bind the fragment to the sequencing flowcell. Sometimes the sequencing process does not stop at the end of the actual DNA molecule and also sequences the adapter. It is necessary to detect and trim out these adapter sequences as they do not belong to the genome\autocite{bolger2014trimmomatic}.
+    \item [Duplicate Detection] - in NGS libraries that use PCR amplification a particular DNA fragment may be sequenced multiple times resulting in increased apparent, and depleted actual coverage of that region of the genome, possibly influencing downstream variant calling efforts. Both Picard\autocite{Picard2018toolkit} and Samtools\autocite{li2011statistical} have utilities for detecting PCR duplicates, although the additional benefit of this processing step may be marginal\autocite{ebbert2016evaluating}.
+    \item [Sample Contamination/Sample Swap] - Sample contamination during library preparation may result in the presence of foreign DNA in the generated sequence. The foreign sequence may originate from the same or from foreign species. Furthermore, entire samples may be swapped or mislabelled (for instance, cancer samples with tumour from one patient, but normal sample from another patient). Contamination may be detected by aligning reads to a panel of potentially contaminating species' reference genomes\autocite{zhou2013qc}, or when a surprising number of variants is found in a given genome.
+\end{description}
+
+\begin{figure}[H]
+    \includegraphics[scale=0.65]{base_errors_read_position}
+    \centering
+    \caption {Frequency of wrong base calls in Illumina reads based on position in the read from 5' to 3'.\autocite{dohm2008substantial}.}
+    \label{fig:base_errors_read_position}
+\end{figure}
+
+At the sample level the following QC measures are important:
+
+\begin{description}
+    \item [Insert Distribution] - summary statistics (mean, median, standard deviation) related to the distribution of the distance between paired-end reads.
+    \item [Per-base Quality Distribution] - distribution of base qualities for each position in a read, aggregated over all reads.
+    \begin{figure}[H]
+        \includegraphics[scale=0.35]{fastqc_per_base_quality}
+        \centering
+        \caption {from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
+        \label{fig:fastqc_per_base_quality}
+    \end{figure} 
+    \item [Per-read Quality Distribution] - distribution of average read qualities.
+    \item [Per-base Sequence Content Distribution] - distribution of nucleotide frequencies for each position in a read, aggregated over all reads.
+    \begin{figure}[H]
+        \includegraphics[scale=0.35]{fastqc_sequence_content}
+        \centering
+        \caption {from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
+        \label{fig:fastqc_sequence_content}
+    \end{figure} 
+    \item [Per-read GC Content Distribution] - distribution of average GC content per read.
+    \begin{figure}[H]
+        \includegraphics[scale=0.35]{fastqc_gc_content}
+        \centering
+        \caption {from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
+        \label{fig:fastqc_gc_content}
+    \end{figure}
+    
+    \item [Read-length Distribution] - summary statistics of read lengths.
+    \item [Per-base N Content] - distribution of uncalled bases for each position in a read, aggregated over all reads.
+    \item [Sequence Duplication Distribution] - distribution of counts for duplicated sequences.
+    \item [Overrepresented Sequence Distribution] - frequency of sequence fragments that occur more frequently that expected.
+    \item [Per-base Adapter Content Distribution] - frequency of adapter sequence presence for each position in a read, aggregated over all reads.
+    \begin{figure}[H]
+        \includegraphics[scale=0.35]{fastqc_adapter_content}
+        \centering
+        \caption {from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
+        \label{fig:fastqc_adapter_content}
+    \end{figure} 
+    
+\end{description}
+
+Many other QC metrics can be of interest and are listed on the individual tools' pages (for instance https://broadinstitute.github.io/picard/picard-metric-definitions.html). Once collected, these metrics can be used for visualization, manual curation, threshold-based filtering, or machine learning approaches to QC.
 
 \subsection{Germline SNP Calling}
 
@@ -522,7 +590,7 @@ Variant Effect Predictor -
 Velvet -
 Abyss - 
 
-\section{High Performance and High Throughput Computing}
+\section{High Performance , High Throughput, and Cloud Computing}
 
 The practice of performing large scale scientific computation on supercomputers or clusters of commodity hardware can be split into two notions - High Performance Computing (HPC) and High Throughput Computing (HTC).
 
@@ -535,8 +603,6 @@ The European Grid Infrastructure defines these as follows\autocite{Glossary_V1_-
 Although early High Performance Computing efforts (1960's - 1980's) relied on supercomputers with a shared memory model\autocite{russell1978cray}, where all of the memory was shared between multiple processors, by the late 1980's machines with a distributed memory model\autocite{nitzberg1991distributed}, where each processor has its own memory, started gaining ground, forming the basis for the modern HPC cluster.
 
 The software interface that the user has to a HPC/HTC cluster typically takes the shape of a queueing system such as PBS\autocite{henderson1995job} or LSF\autocite{zhou1992lsf}  where the user writes a script that submits a series of jobs to the queueing system. The jobs can invoke software that is installed by the IT department that manages the cluster. The user is not able to install any software and has limited visibility into the runtime performance characteristics of the jobs they submit. 
-
-\section{Cloud Computing}
 
 Cloud computing has emerged in the early 2000's enabled by improvements in hardware virtualization which was driven by the adoption of Virtual Private Networks, and the desire to commercialize access to compute capacity as a utility\autocite{buyya2009cloud}.
 

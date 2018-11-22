@@ -326,16 +326,6 @@
   year={2013},
   publisher={BioMed Central}
 }
-@article{alkan2011genome,
-  title={Genome structural variation discovery and genotyping},
-  author={Alkan, Can and Coe, Bradley P and Eichler, Evan E},
-  journal={Nature reviews. Genetics},
-  volume={12},
-  number={5},
-  pages={363},
-  year={2011},
-  publisher={NIH Public Access}
-}
 @article{mclaren2016ensembl,
   title={The ensembl variant effect predictor},
   author={McLaren, William and Gil, Laurent and Hunt, Sarah E and Riat, Harpreet Singh and Ritchie, Graham RS and Thormann, Anja and Flicek, Paul and Cunningham, Fiona},
@@ -1551,7 +1541,7 @@
   url = {https://slack.com},
 }
 
-@Online{c,
+@Online{chronograf,
   url = {https://github.com/influxdata/chronograf},
 }
 
@@ -1784,17 +1774,6 @@
   publisher = {Nature Publishing Group},
 }
 
-@Article{zhao2013computational,
-  author    = {Zhao, Min and Wang, Qingguo and Wang, Quan and Jia, Peilin and Zhao, Zhongming},
-  title     = {Computational tools for copy number variation (CNV) detection using next-generation sequencing data: features and perspectives},
-  journal   = {BMC bioinformatics},
-  year      = {2013},
-  volume    = {14},
-  number    = {11},
-  pages     = {S1},
-  publisher = {BioMed Central},
-}
-
 @Article{layer2014lumpy,
   author    = {Layer, Ryan M and Chiang, Colby and Quinlan, Aaron R and Hall, Ira M},
   title     = {LUMPY: a probabilistic framework for structural variant discovery},
@@ -1875,15 +1854,6 @@
   pages     = {277--294},
 }
 
-@InProceedings{babcock2002models,
-  author       = {Babcock, Brian and Babu, Shivnath and Datar, Mayur and Motwani, Rajeev and Widom, Jennifer},
-  title        = {Models and issues in data stream systems},
-  booktitle    = {Proceedings of the twenty-first ACM SIGMOD-SIGACT-SIGART symposium on Principles of database systems},
-  year         = {2002},
-  organization = {ACM},
-  pages        = {1--16},
-}
-
 @Article{eugster2003many,
   author    = {Eugster, Patrick Th and Felber, Pascal A and Guerraoui, Rachid and Kermarrec, Anne-Marie},
   title     = {The many faces of publish/subscribe},
@@ -1915,6 +1885,131 @@
   number    = {1},
   pages     = {45--52},
   publisher = {ACM},
+}
+
+@InProceedings{mao2011auto,
+  author       = {Mao, Ming and Humphrey, Marty},
+  title        = {Auto-scaling to minimize cost and meet application deadlines in cloud workflows},
+  booktitle    = {High Performance Computing, Networking, Storage and Analysis (SC), 2011 International Conference for},
+  year         = {2011},
+  organization = {IEEE},
+  pages        = {1--12},
+}
+
+@Book{wieder2011service,
+  author    = {Wieder, Philipp and Butler, Joe M and Theilmann, Wolfgang and Yahyapour, Ramin},
+  title     = {Service level agreements for cloud computing},
+  year      = {2011},
+  publisher = {Springer Science \& Business Media},
+}
+
+@Article{cock2009sanger,
+  author    = {Cock, Peter JA and Fields, Christopher J and Goto, Naohisa and Heuer, Michael L and Rice, Peter M},
+  title     = {The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants},
+  journal   = {Nucleic acids research},
+  year      = {2009},
+  volume    = {38},
+  number    = {6},
+  pages     = {1767--1771},
+  publisher = {Oxford University Press},
+}
+
+@Article{lauss2013monitoring,
+  author    = {Lauss, Martin and Visne, Ilhami and Kriegner, Albert and Ringn{\'e}r, Markus and J{\"o}nsson, G{\"o}ran and H{\"o}glund, Mattias},
+  title     = {Monitoring of technical variation in quantitative high-throughput datasets},
+  journal   = {Cancer informatics},
+  year      = {2013},
+  volume    = {12},
+  pages     = {CIN--S12862},
+  publisher = {SAGE Publications Sage UK: London, England},
+}
+
+@Article{aird2011analyzing,
+  author    = {Aird, Daniel and Ross, Michael G and Chen, Wei-Sheng and Danielsson, Maxwell and Fennell, Timothy and Russ, Carsten and Jaffe, David B and Nusbaum, Chad and Gnirke, Andreas},
+  title     = {Analyzing and minimizing PCR amplification bias in Illumina sequencing libraries},
+  journal   = {Genome biology},
+  year      = {2011},
+  volume    = {12},
+  number    = {2},
+  pages     = {R18},
+  publisher = {BioMed Central},
+}
+
+@Article{dohm2008substantial,
+  author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
+  title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
+  journal   = {Nucleic acids research},
+  year      = {2008},
+  volume    = {36},
+  number    = {16},
+  pages     = {e105},
+  publisher = {Oxford University Press},
+}
+
+@Article{gordon2010fastx,
+  author  = {Gordon, A and Hannon, GJ},
+  title   = {Fastx-toolkit},
+  journal = {FASTQ/A short-reads preprocessing tools (unpublished) http://hannonlab. cshl. edu/fastx\_toolkit},
+  year    = {2010},
+  volume  = {5},
+}
+
+@Article{patel2012ngs,
+  author    = {Patel, Ravi K and Jain, Mukesh},
+  title     = {NGS QC Toolkit: a toolkit for quality control of next generation sequencing data},
+  journal   = {PloS one},
+  year      = {2012},
+  volume    = {7},
+  number    = {2},
+  pages     = {e30619},
+  publisher = {Public Library of Science},
+}
+
+@Article{andrews2010fastqc,
+  author = {Andrews, Simon and others},
+  title  = {FastQC: a quality control tool for high throughput sequence data},
+  year   = {2010},
+}
+
+@Misc{Picard2018toolkit,
+  title        = {Picard toolkit},
+  year         = {2018},
+  howpublished = {\url{http://broadinstitute.github.io/picard/}},
+  journal      = {Broad Institute, GitHub repository},
+  publisher    = {Broad Institute},
+}
+
+@Article{zhou2013qc,
+  author    = {Zhou, Qian and Su, Xiaoquan and Wang, Anhui and Xu, Jian and Ning, Kang},
+  title     = {QC-Chain: fast and holistic quality control method for next-generation sequencing data},
+  journal   = {PloS one},
+  year      = {2013},
+  volume    = {8},
+  number    = {4},
+  pages     = {e60234},
+  publisher = {Public Library of Science},
+}
+
+@Article{dohm2008substantial,
+  author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
+  title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
+  journal   = {Nucleic acids research},
+  year      = {2008},
+  volume    = {36},
+  number    = {16},
+  pages     = {e105},
+  publisher = {Oxford University Press},
+}
+
+@Article{bolger2014trimmomatic,
+  author    = {Bolger, Anthony M and Lohse, Marc and Usadel, Bjoern},
+  title     = {Trimmomatic: a flexible trimmer for Illumina sequence data},
+  journal   = {Bioinformatics},
+  year      = {2014},
+  volume    = {30},
+  number    = {15},
+  pages     = {2114--2120},
+  publisher = {Oxford University Press},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

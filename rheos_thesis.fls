@@ -324,6 +324,18 @@ INPUT ./images/costpergenome2015_4.jpg
 INPUT ./images/costpergenome2015_4.jpg
 INPUT ./images/nature12912-f5.jpg
 INPUT ./images/nature12912-f5.jpg
+INPUT ./images/journal.pone.0060234.g001.png
+INPUT ./images/journal.pone.0060234.g001.png
+INPUT ./images/base_errors_read_position.jpeg
+INPUT ./images/base_errors_read_position.jpeg
+INPUT ./images/fastqc_per_base_quality.png
+INPUT ./images/fastqc_per_base_quality.png
+INPUT ./images/fastqc_sequence_content.png
+INPUT ./images/fastqc_sequence_content.png
+INPUT ./images/fastqc_gc_content.png
+INPUT ./images/fastqc_gc_content.png
+INPUT ./images/fastqc_adapter_content.png
+INPUT ./images/fastqc_adapter_content.png
 INPUT ./images/genetic_architecture_of_cancer_risk.jpg
 INPUT ./images/genetic_architecture_of_cancer_risk.jpg
 INPUT ./images/fb_hc_st_pt.jpg
@@ -367,6 +379,8 @@ INPUT ./images/horizontal_vs_vertical_scaling.png
 INPUT ./images/horizontal_vs_vertical_scaling.png
 INPUT ./images/queue.png
 INPUT ./images/queue.png
+INPUT ./images/ngs_flow.png
+INPUT ./images/ngs_flow.png
 INPUT ./chapters/appendices.tex
 INPUT ./chapters/appendices.tex
 OUTPUT rheos_thesis.pyg

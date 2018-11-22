@@ -14,7 +14,7 @@
 \BOOKMARK [2][-]{subsection.2.2.1}{File Formats}{section.2.2}% 14
 \BOOKMARK [2][-]{subsection.2.2.2}{Base-calling}{section.2.2}% 15
 \BOOKMARK [2][-]{subsection.2.2.3}{Alignment}{section.2.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.4}{Raw Data QA}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.4}{Raw Data QC}{section.2.2}% 17
 \BOOKMARK [2][-]{subsection.2.2.5}{Germline SNP Calling}{section.2.2}% 18
 \BOOKMARK [2][-]{subsection.2.2.6}{Germline Indel Calling}{section.2.2}% 19
 \BOOKMARK [2][-]{subsection.2.2.7}{Germline Structural Variant Calling}{section.2.2}% 20
@@ -25,21 +25,20 @@
 \BOOKMARK [2][-]{subsection.2.2.12}{Germline Variant Annotation}{section.2.2}% 25
 \BOOKMARK [2][-]{subsection.2.2.13}{Somatic Variant Annotation}{section.2.2}% 26
 \BOOKMARK [2][-]{subsection.2.2.14}{de-novo Assembly}{section.2.2}% 27
-\BOOKMARK [1][-]{section.2.3}{High Performance and High Throughput Computing}{chapter.2}% 28
-\BOOKMARK [1][-]{section.2.4}{Cloud Computing}{chapter.2}% 29
-\BOOKMARK [1][-]{section.2.5}{Workflow Systems}{chapter.2}% 30
-\BOOKMARK [1][-]{section.2.6}{Service Oriented Architectures}{chapter.2}% 31
-\BOOKMARK [1][-]{section.2.7}{Stream-based Systems}{chapter.2}% 32
-\BOOKMARK [0][-]{chapter.3}{The Butler Framework - Requirements and Architecture}{}% 33
-\BOOKMARK [0][-]{chapter.4}{The Butler Framework - Implementation and Experimental Validation}{}% 34
-\BOOKMARK [0][-]{chapter.5}{The Rheos Framework}{}% 35
-\BOOKMARK [1][-]{section.5.1}{General Framework Design}{chapter.5}% 36
-\BOOKMARK [1][-]{section.5.2}{Data Streaming Architecture}{chapter.5}% 37
-\BOOKMARK [2][-]{subsection.5.2.1}{Service-Oriented Data Streaming Model}{section.5.2}% 38
-\BOOKMARK [1][-]{section.5.3}{Domain-specific Problems}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.4}{Services of Rheos}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.5}{Proof of concept implementation}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.6}{Conclusions}{chapter.5}% 42
-\BOOKMARK [0][-]{chapter.6}{Discussion and Conclusion}{}% 43
-\BOOKMARK [0][-]{section*.49}{Appendix}{}% 44
-\BOOKMARK [0][-]{Appendix.1.A}{Code Listings}{}% 45
+\BOOKMARK [1][-]{section.2.3}{High Performance , High Throughput, and Cloud Computing}{chapter.2}% 28
+\BOOKMARK [1][-]{section.2.4}{Workflow Systems}{chapter.2}% 29
+\BOOKMARK [1][-]{section.2.5}{Service Oriented Architectures}{chapter.2}% 30
+\BOOKMARK [1][-]{section.2.6}{Stream-based Systems}{chapter.2}% 31
+\BOOKMARK [0][-]{chapter.3}{The Butler Framework - Requirements and Architecture}{}% 32
+\BOOKMARK [0][-]{chapter.4}{The Butler Framework - Implementation and Experimental Validation}{}% 33
+\BOOKMARK [0][-]{chapter.5}{The Rheos Framework}{}% 34
+\BOOKMARK [1][-]{section.5.1}{General Framework Design}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.2}{Data Streaming Architecture}{chapter.5}% 36
+\BOOKMARK [2][-]{subsection.5.2.1}{Service-Oriented Data Streaming Model}{section.5.2}% 37
+\BOOKMARK [1][-]{section.5.3}{Domain-specific Problems}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.4}{Services of Rheos}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.5}{Proof of concept implementation}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.6}{Conclusions}{chapter.5}% 41
+\BOOKMARK [0][-]{chapter.6}{Discussion and Conclusion}{}% 42
+\BOOKMARK [0][-]{section*.56}{Appendix}{}% 43
+\BOOKMARK [0][-]{Appendix.1.A}{Code Listings}{}% 44

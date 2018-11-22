@@ -108,6 +108,75 @@
       \field{volume}{31}
       \field{year}{2007}
     \endentry
+    \entry{aird2011analyzing}{article}{}
+      \name{author}{9}{}{%
+        {{hash=f72de49aff413ce96112f162cf612f86}{%
+           family={Aird},
+           familyi={A\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3b1fac74212cdffec58bea8b854ee8de}{%
+           family={Ross},
+           familyi={R\bibinitperiod},
+           given={Michael\bibnamedelima G},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=f7e121b053831a99eee7ebf09f2e384b}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Wei-Sheng},
+           giveni={W\bibinithyphendelim S\bibinitperiod}}}%
+        {{hash=5da40fb35a7ed33a06a57156809b5c2f}{%
+           family={Danielsson},
+           familyi={D\bibinitperiod},
+           given={Maxwell},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f56b9f43d628793b011837821c29132f}{%
+           family={Fennell},
+           familyi={F\bibinitperiod},
+           given={Timothy},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4a37153058f96bd5189af9d352f477f7}{%
+           family={Russ},
+           familyi={R\bibinitperiod},
+           given={Carsten},
+           giveni={C\bibinitperiod}}}%
+        {{hash=58c9b203ddd45184d939a361b8e7a2e7}{%
+           family={Jaffe},
+           familyi={J\bibinitperiod},
+           given={David\bibnamedelima B},
+           giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=62906b245bcf166af3723a13f3db6595}{%
+           family={Nusbaum},
+           familyi={N\bibinitperiod},
+           given={Chad},
+           giveni={C\bibinitperiod}}}%
+        {{hash=f53c256d9e569f0fff3e0f1203b33b0e}{%
+           family={Gnirke},
+           familyi={G\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {BioMed Central}%
+      }
+      \strng{namehash}{86bb725dce8c36297e4ac1e3c66cd5a5}
+      \strng{fullhash}{c685f7216f78cb9505e16766a08ba9df}
+      \strng{bibnamehash}{86bb725dce8c36297e4ac1e3c66cd5a5}
+      \strng{authorbibnamehash}{86bb725dce8c36297e4ac1e3c66cd5a5}
+      \strng{authornamehash}{86bb725dce8c36297e4ac1e3c66cd5a5}
+      \strng{authorfullhash}{c685f7216f78cb9505e16766a08ba9df}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genome biology}
+      \field{number}{2}
+      \field{title}{Analyzing and minimizing PCR amplification bias in Illumina sequencing libraries}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{R18}
+      \range{pages}{-1}
+    \endentry
     \entry{alioto2015comprehensive}{article}{}
       \true{moreauthor}
       \true{morelabelname}
@@ -202,7 +271,7 @@
            giveni={E\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {NIH Public Access}%
+        {Nature Publishing Group}%
       }
       \strng{namehash}{bc7c7588099982475050d0bdf066f553}
       \strng{fullhash}{bc7c7588099982475050d0bdf066f553}
@@ -214,7 +283,7 @@
       \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature reviews. Genetics}
+      \field{journaltitle}{Nature Reviews Genetics}
       \field{number}{5}
       \field{title}{Genome structural variation discovery and genotyping}
       \field{volume}{12}
@@ -290,6 +359,29 @@
       \field{year}{2009}
       \field{pages}{2091\bibrangedash 2096}
       \range{pages}{6}
+    \endentry
+    \entry{andrews2010fastqc}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=e66026ce6d26f325615b05149f4d10a9}{%
+           family={Andrews},
+           familyi={A\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{fullhash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{bibnamehash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{authorbibnamehash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{authornamehash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{authorfullhash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{FastQC: a quality control tool for high throughput sequence data}
+      \field{year}{2010}
     \endentry
     \entry{babcock2002models}{inproceedings}{}
       \name{author}{5}{}{%
@@ -385,6 +477,45 @@
       \field{labeltitlesource}{title}
       \field{title}{Statistical decision theory and Bayesian analysis}
       \field{year}{2013}
+    \endentry
+    \entry{bolger2014trimmomatic}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0e7d6c60fe69e0900e1f1ca7e46a9309}{%
+           family={Bolger},
+           familyi={B\bibinitperiod},
+           given={Anthony\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=3dcc76f5d42d7950271a25c7a248e14d}{%
+           family={Lohse},
+           familyi={L\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e1abaac47b7afb5e628a32b4eb78b78c}{%
+           family={Usadel},
+           familyi={U\bibinitperiod},
+           given={Bjoern},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{aa8c897bf6034b1cdf1db4585d47bcc7}
+      \strng{fullhash}{aa8c897bf6034b1cdf1db4585d47bcc7}
+      \strng{bibnamehash}{aa8c897bf6034b1cdf1db4585d47bcc7}
+      \strng{authorbibnamehash}{aa8c897bf6034b1cdf1db4585d47bcc7}
+      \strng{authornamehash}{aa8c897bf6034b1cdf1db4585d47bcc7}
+      \strng{authorfullhash}{aa8c897bf6034b1cdf1db4585d47bcc7}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{15}
+      \field{title}{Trimmomatic: a flexible trimmer for Illumina sequence data}
+      \field{volume}{30}
+      \field{year}{2014}
+      \field{pages}{2114\bibrangedash 2120}
+      \range{pages}{7}
     \endentry
     \entry{boycott2013rare}{article}{}
       \name{author}{4}{}{%
@@ -704,6 +835,55 @@
       \field{year}{2013}
       \field{pages}{213\bibrangedash 219}
       \range{pages}{7}
+    \endentry
+    \entry{cock2009sanger}{article}{}
+      \name{author}{5}{}{%
+        {{hash=d137f905e5d213a265af73bf04f04d42}{%
+           family={Cock},
+           familyi={C\bibinitperiod},
+           given={Peter\bibnamedelima JA},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=828bc01af4773ac10e7075add07d076f}{%
+           family={Fields},
+           familyi={F\bibinitperiod},
+           given={Christopher\bibnamedelima J},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=6a69f64486d05ddb12099a22aa9609c0}{%
+           family={Goto},
+           familyi={G\bibinitperiod},
+           given={Naohisa},
+           giveni={N\bibinitperiod}}}%
+        {{hash=67ba7e1bbc18b4cb8eb3cd98f2f37e17}{%
+           family={Heuer},
+           familyi={H\bibinitperiod},
+           given={Michael\bibnamedelima L},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=fea1249cf2447e6d5c858b5777b0e4e6}{%
+           family={Rice},
+           familyi={R\bibinitperiod},
+           given={Peter\bibnamedelima M},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{8ec80efac70fcb69d3291cf83e6807b1}
+      \strng{fullhash}{167a2763367e9fb7d35eca86763c447a}
+      \strng{bibnamehash}{8ec80efac70fcb69d3291cf83e6807b1}
+      \strng{authorbibnamehash}{8ec80efac70fcb69d3291cf83e6807b1}
+      \strng{authornamehash}{8ec80efac70fcb69d3291cf83e6807b1}
+      \strng{authorfullhash}{167a2763367e9fb7d35eca86763c447a}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nucleic acids research}
+      \field{number}{6}
+      \field{title}{The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants}
+      \field{volume}{38}
+      \field{year}{2009}
+      \field{pages}{1767\bibrangedash 1771}
+      \range{pages}{5}
     \endentry
     \entry{compeau2011apply}{article}{}
       \name{author}{3}{}{%
@@ -1439,6 +1619,75 @@
       \field{title}{Biological sequence analysis: probabilistic models of proteins and nucleic acids}
       \field{year}{1998}
     \endentry
+    \entry{ebbert2016evaluating}{article}{}
+      \name{author}{9}{}{%
+        {{hash=56765a0f8e4455c632238c75b40d04e5}{%
+           family={Ebbert},
+           familyi={E\bibinitperiod},
+           given={Mark\bibnamedelima TW},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=b69d14bf0f762f13ef077f7aaf6c76d7}{%
+           family={Wadsworth},
+           familyi={W\bibinitperiod},
+           given={Mark\bibnamedelima E},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=7fb108693a87b024d936076f84dc1019}{%
+           family={Staley},
+           familyi={S\bibinitperiod},
+           given={Lyndsay\bibnamedelima A},
+           giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=392d91d63d105cfac39b135912894567}{%
+           family={Hoyt},
+           familyi={H\bibinitperiod},
+           given={Kaitlyn\bibnamedelima L},
+           giveni={K\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=299c5c13b112fbf016df9665f8ac9448}{%
+           family={Pickett},
+           familyi={P\bibinitperiod},
+           given={Brandon},
+           giveni={B\bibinitperiod}}}%
+        {{hash=b09d437327bf2158b39c7d9abb1ffeb7}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Justin},
+           giveni={J\bibinitperiod}}}%
+        {{hash=16b2ed49485fbfa9e0c929b212cebcc4}{%
+           family={Duce},
+           familyi={D\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=89c175bd757892b3a6e0209096107092}{%
+           family={Kauwe},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelima SK},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=074c084c64ab1a6630caa0e17c42ad59}{%
+           family={Ridge},
+           familyi={R\bibinitperiod},
+           given={Perry\bibnamedelima G},
+           giveni={P\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {BioMed Central}%
+      }
+      \strng{namehash}{a6b94778f0892b9ce7f2373a6af20b2b}
+      \strng{fullhash}{e30b0c916c3e1ed7c529e8d2440074cb}
+      \strng{bibnamehash}{a6b94778f0892b9ce7f2373a6af20b2b}
+      \strng{authorbibnamehash}{a6b94778f0892b9ce7f2373a6af20b2b}
+      \strng{authornamehash}{a6b94778f0892b9ce7f2373a6af20b2b}
+      \strng{authorfullhash}{e30b0c916c3e1ed7c529e8d2440074cb}
+      \field{sortinit}{E}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BMC bioinformatics}
+      \field{number}{7}
+      \field{title}{Evaluating the necessity of PCR duplicate removal from next-generation sequencing data and a comparison of approaches}
+      \field{volume}{17}
+      \field{year}{2016}
+      \field{pages}{239}
+      \range{pages}{1}
+    \endentry
     \entry{england2016100}{article}{}
       \name{author}{1}{}{%
         {{hash=9ff7645447a0028b83b92cf14aa7c2d6}{%
@@ -2028,6 +2277,34 @@
       \field{year}{2010}
       \field{pages}{1}
       \range{pages}{1}
+    \endentry
+    \entry{gordon2010fastx}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a82b0947932f95fdeb7acdd5baa09b42}{%
+           family={Gordon},
+           familyi={G\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+        {{hash=71abf1580714b0457b46245d39bdabdf}{%
+           family={Hannon},
+           familyi={H\bibinitperiod},
+           given={GJ},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{4cf13100a31c34dbf8a7009f73cf1b4f}
+      \strng{fullhash}{4cf13100a31c34dbf8a7009f73cf1b4f}
+      \strng{bibnamehash}{4cf13100a31c34dbf8a7009f73cf1b4f}
+      \strng{authorbibnamehash}{4cf13100a31c34dbf8a7009f73cf1b4f}
+      \strng{authornamehash}{4cf13100a31c34dbf8a7009f73cf1b4f}
+      \strng{authorfullhash}{4cf13100a31c34dbf8a7009f73cf1b4f}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{FASTQ/A short-reads preprocessing tools (unpublished) http://hannonlab. cshl. edu/fastx\_toolkit}
+      \field{title}{Fastx-toolkit}
+      \field{volume}{5}
+      \field{year}{2010}
     \endentry
     \entry{greenman2007patterns}{article}{}
       \true{moreauthor}
@@ -2860,6 +3137,59 @@
       \field{year}{2012}
       \field{pages}{357\bibrangedash 359}
       \range{pages}{3}
+    \endentry
+    \entry{lauss2013monitoring}{article}{}
+      \name{author}{6}{}{%
+        {{hash=7ed8aa42fcc118c9ca03a8cded550e45}{%
+           family={Lauss},
+           familyi={L\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fb163004b2618f3cf15d6eeb29baa036}{%
+           family={Visne},
+           familyi={V\bibinitperiod},
+           given={Ilhami},
+           giveni={I\bibinitperiod}}}%
+        {{hash=f76de8cc615c4df12d2b345f7c94e44e}{%
+           family={Kriegner},
+           familyi={K\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5f8b31020d4fa8a6a6c5fa25eb1fdd5d}{%
+           family={Ringn{é}r},
+           familyi={R\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=858ec7ff3cbc4a514615dd5defbe4ece}{%
+           family={J{ö}nsson},
+           familyi={J\bibinitperiod},
+           given={G{ö}ran},
+           giveni={G\bibinitperiod}}}%
+        {{hash=6c6b91f346a71f1aab3886fc42409bce}{%
+           family={H{ö}glund},
+           familyi={H\bibinitperiod},
+           given={Mattias},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications Sage UK: London, England}%
+      }
+      \strng{namehash}{fb188ec6fafde4f23c5aabae47468785}
+      \strng{fullhash}{7eab4d6ed591b7c8a05e9bfe511f4091}
+      \strng{bibnamehash}{fb188ec6fafde4f23c5aabae47468785}
+      \strng{authorbibnamehash}{fb188ec6fafde4f23c5aabae47468785}
+      \strng{authornamehash}{fb188ec6fafde4f23c5aabae47468785}
+      \strng{authorfullhash}{7eab4d6ed591b7c8a05e9bfe511f4091}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cancer informatics}
+      \field{title}{Monitoring of technical variation in quantitative high-throughput datasets}
+      \field{volume}{12}
+      \field{year}{2013}
+      \field{pages}{CIN\bibrangedash S12862}
+      \range{pages}{-1}
     \endentry
     \entry{lawrence2014discovery}{article}{}
       \name{author}{10}{}{%
@@ -4611,6 +4941,18 @@
       \field{labeltitlesource}{title}
       \field{title}{Petri net theory and the modeling of systems}
       \field{year}{1981}
+    \endentry
+    \entry{Picard2018toolkit}{misc}{}
+      \list{publisher}{1}{%
+        {Broad Institute}%
+      }
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://broadinstitute.github.io/picard/}}
+      \field{journaltitle}{Broad Institute, GitHub repository}
+      \field{title}{Picard toolkit}
+      \field{year}{2018}
     \endentry
     \entry{pleasance2010comprehensive}{article}{}
       \true{moreauthor}
@@ -6482,6 +6824,45 @@
       \field{pages}{140921}
       \range{pages}{1}
     \endentry
+    \entry{wieder2011service}{book}{}
+      \name{author}{4}{}{%
+        {{hash=214c3807f600aff29d5516e6162ff644}{%
+           family={Wieder},
+           familyi={W\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e0b4e2e9543914d1ccd29837cf44e55e}{%
+           family={Butler},
+           familyi={B\bibinitperiod},
+           given={Joe\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=28f948bd403f3d96f08221d770ed0a13}{%
+           family={Theilmann},
+           familyi={T\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=924db91f79c05e1404293d4682f02a49}{%
+           family={Yahyapour},
+           familyi={Y\bibinitperiod},
+           given={Ramin},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{5992f6990cead022a51880dc50db5739}
+      \strng{fullhash}{890e28baf9f6687a26c45b4977dade8f}
+      \strng{bibnamehash}{5992f6990cead022a51880dc50db5739}
+      \strng{authorbibnamehash}{5992f6990cead022a51880dc50db5739}
+      \strng{authornamehash}{5992f6990cead022a51880dc50db5739}
+      \strng{authorfullhash}{890e28baf9f6687a26c45b4977dade8f}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Service level agreements for cloud computing}
+      \field{year}{2011}
+    \endentry
     \entry{yabroff2011economic}{article}{}
       \name{author}{4}{}{%
         {{hash=d03bb610abcd284e3a715e11634172b6}{%
@@ -6833,6 +7214,55 @@
       \field{volume}{14}
       \field{year}{2013}
       \field{pages}{S1}
+      \range{pages}{-1}
+    \endentry
+    \entry{zhou2013qc}{article}{}
+      \name{author}{5}{}{%
+        {{hash=71cf700e28df678ceb5f10761a14c76c}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Qian},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=eb1910554833e00e8c85a9648528bc03}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={Xiaoquan},
+           giveni={X\bibinitperiod}}}%
+        {{hash=a4f00567d4cce539cbb0b25493b3353a}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Anhui},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3c38570c1a2c89c3525a2139602c96b0}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=86d8b78518f9c50d8762c26fe9949ffe}{%
+           family={Ning},
+           familyi={N\bibinitperiod},
+           given={Kang},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science}%
+      }
+      \strng{namehash}{f849146d6423115cb5cb40d25426ca2c}
+      \strng{fullhash}{0e82118bcd67183ed1f103ac07e066b1}
+      \strng{bibnamehash}{f849146d6423115cb5cb40d25426ca2c}
+      \strng{authorbibnamehash}{f849146d6423115cb5cb40d25426ca2c}
+      \strng{authornamehash}{f849146d6423115cb5cb40d25426ca2c}
+      \strng{authorfullhash}{0e82118bcd67183ed1f103ac07e066b1}
+      \field{sortinit}{Z}
+      \field{sortinithash}{156173bd08b075d7295bc3e0f4735a04}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PloS one}
+      \field{number}{4}
+      \field{title}{QC-Chain: fast and holistic quality control method for next-generation sequencing data}
+      \field{volume}{8}
+      \field{year}{2013}
+      \field{pages}{e60234}
       \range{pages}{-1}
     \endentry
     \entry{zhou1992lsf}{inproceedings}{}

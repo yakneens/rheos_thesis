@@ -161,32 +161,36 @@ A queue is the mechanism that we put in place to address this concern (see Figur
 
 Messages arrive into a particular topic of $Q$ from all producers $D_p$, and are marked safe for deletion only when all of the subscribed consumers $C_p$ have observed a particular message. Thus, for topic $p_i$, the incoming message rate is $\displaystyle R_i = \sum_{j=1}^k r_{M_{o,j}}$ i.e. the sum of the message processing rates for all of the producers for this topic. The queue message processing rate $\displaystyle R_o = \min_{i \in [1,l]}\{r_{M_{o,i}}\}$ is the slowest message processing rate among all consumers. Assuming $R_i > R_o$ and that there are $N$ messages presently in $B_p$, there remains $t = \frac{N_{max} - N} {R_i - R_o}$ time before queue overflow occurs. The situation should then be remedied by allocating additional hardware to $Q$ or those services $S_i$ whose consumers are slowest, until the condition $R_o \ge R_i$ can be reliably maintained. If the queue does reach its maximum capacity overflow measures need to be put in place. Depending on the data stream in question data loss may or may not be acceptable. If data loss is acceptable then overflow messages can be simply discarded. If data loss is not acceptable then producers must block waiting for additional queue capacity to become available. This not only degrades performance locally, but can have a drastic effect on the entire system if the effects are allowed to percolate trough the complex distributed system. As message rates evolve through time with system load, the scheme above sets up a framework for flow control and hardware allocation within the architecture.
 
------------------
-Set up the general architecture of information flow through the system - types of entities, communication channels, contracts, SLAs, capabilities:
+When designing a service-oriented system the interfaces of operations provided by the service are of utmost importance as they define the capabilities that the service offers to its clients. Of secondary, but also significant, importance is the set of Service-Level Agreements (SLAs)\autocite{wieder2011service} that a service advertises. These SLAs are a set of commitments that a service makes to its clients that describe the operational characteristics of the service, such as:
 
-\begin{itemize}
- \item Each stream is a collection of randomly ordered datagrams.
- \item A datagram may constitute data or an event.
- \item The rate of the stream is understood.
- \item A service applies a transformation to the stream by virtue of making a decision upon inspecting stream contents.
- \item A service makes decisions based on:
- \begin{itemize}
-    \item Individual datagrams
-    \item Sliding windows of datagrams
-    \item Particular sequences of datagrams
-    \item Integration of incoming stream signal with a static data store
-    \item Combinations of multiple streams
- \end{itemize}
- \item A service emits a new stream as output.
- \item A service may decorate an existing stream with new info or create new datagrams.
- \item A service may persist data to a permanent store.
- \item The rate at which the service can make decisions is understood (along with limiting conditions).
- \item Communication between services is mediated via queues.
- \item Services provide an SLA on uptime, latency, throughput, etc.
- \item Services fail fast.
- \item System output supports push and pull modes.
-\end{itemize}
+\begin{description}
+    \item [Availability] - Guarantees related to the service uptime, maintenance outages, disaster recovery, etc.
+    \item [Throughput] - The number of requests serviced per unit time.
+    \item [Latency] - The delay between a request being sent and a response being received.
+    \item [Abandonment Rate] - Proportion of requests that are never answered.
+    \item [Error Rate] - Proportion of well-formed requests that result in an error.
+\end{description}
+
+Based on the SLAs that are advertised by a given service, the services that depend on it can make assumptions about expected runtime behavior, and take action when expectations are not met. Furthermore, when requirements evolve and features are added to or removed from a service, the impact on the advertised SLAs helps communicate the full effect of the changes. Lastly, the costs of operating a service are more clearly understood through the SLA framework, where improvements to a particular SLA metric, such as Transactions-Per-Minute (TPM) can be transparently traced to a corresponding increase in operational costs.
+
+The set of services $\{S\}$ that communicate over data streams $\{M_{s,d}\}$, mediated by a set of queues $\{Q\}$ with a set of established SLAs $\{L_s\}$ together form the overall framework of Rheos that is used to tackle the challenges of large-scale genomic data processing in a manner the enables active tradeoffs between the competing constraints of cost, time, and accuracy. 
+
 \section{Domain-specific Problems}
+
+Having laid out the general data-streaming service-oriented architecture of Rheos in the previous section we now turn to a discussion of the set of actual domain-specific problems that need to be solved within the data-streaming paradigm in order to enable the comprehensive genomic characterization of large cohorts of samples within Rheos, as we have set out to do. We make use of the flow of data types from the most raw to the most refined (see Figure \ref{fig:ngs_flow}) to illustrate the challenges that need to be solved during transformation of the input data between each successive stage, first in summary form, and then in full detail, below.
+
+\begin{figure}[H]
+\includegraphics[scale=0.5]{ngs_flow}
+\centering
+\caption {The conceptual flow of data types within Rheos from the most raw - Sequencer Images, to the most refined - a set of Functionally Annotated Variants.}
+\label{fig:ngs_flow}
+\end{figure}
+    
+The most raw data type that is produced from a sequencing experiment is the set of raw image files generated by the sequencer. Although, conceptually, processing of the raw images could also be accomplished within Rheos, it is presently outside of the scope of this work. Instead, we assume the most basic data type to be raw sequencing reads, as found in a FASTQ\autocite{cock2009sanger} file. 
+
+
+
+
 
 Describe specific problems that need to be addressed by the system in a stream-based formulation - how to go from a collection of raw reads to a set of annotated variants: map reads, perform QC filtering, model loci, assemble alternative haplotypes, call variants, filter variants, annotate, produce output.  
 
