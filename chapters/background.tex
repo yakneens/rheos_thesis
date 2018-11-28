@@ -73,19 +73,434 @@ Once variants (SNPs/SNVs, Indels, and SVs) have been comprehensively called, a f
 When a filtered high quality call-set has been prepared it is of interest to determine which of the variants are likely to have an effect on the organism's phenotype and which variants are likely to have no consequence. This is accomplished via variant annotation. The annotation process consults a database of known genes and other genomic elements (promoters, enhancers, etc.) to determine the likely consequence of each variant based on the type of mutation that it represents i.e. a synonymous mutation (that doesn't change the underlying amino acid) is likely to have no phenotypic effect, whereas a stop gain mutation inside the coding region of a known gene may indicate a potential loss of function of that gene and may thus have a considerable effect on the observed phenotype. When annotating somatic mutations it is important to consider known cancer genes and delineate whether mutations are "passengers" or "drivers" depending on whether they are thought to be driving the carcinogenesis process by constitutively activating a cancer gene or deactivating a tumour suppressor, or they are simply acquired as part of the genomic instability that is induced by carcinogenesis. An outcome of the variant annotation process then, is a list of somatic or germline variants accompanied by a designation of the known genomic features that they fall in, along with an assigned functional impact. This is typically the last step of an NGS analysis pipeline after which the variant call-set is considered completed and can be used for any number of downstream analyses depending on the particular research question or clinical application being considered. For instance, the variants may be used as input into a Genome Wide Association Study (GWAS), a Quantitative Trait Locus (QTL) analysis, a rare variant association study, or as input into the computation of a clinical biomarker. 
 
 \subsection{File Formats}
-FASTQ - 
-BAM/SAM -
-CRAM -
-VCF - 
+\label{sec:bg_file_formats}
+
+DNA sequencing studies generate large amounts of data - a single whole-genome sample sequenced at ~30x coverage on a modern Illumina sequencer generates roughly $10^9$ reads which are strings of length 150 characters and take ~100 GB of space on disk when compressed with gzip. Thus, even a moderately-sized study of several thousand individuals needs to grapple with the efficient management of hundreds of terabytes of data. Because of the size of these datasets data storage, access, and exchange formats play a major role in determining the speed, cost, and efficiency with which large-scale analyses can be undertaken. The field of genomics has developed in bursts associated with the major international projects that have been undertaken in the past 30 years, including the Human Genome Project\autocite{lander2001initial}, the HapMap Project\autocite{international2003international}, and the 1000 Genomes Project\autocite{10002010map}. It is the latter project that has given rise to most of the currently adopted file format standards in use today, including FASTA/FASTQ for raw sequence data, SAM/BAM for reference-mapped sequence data, and VCF for representing genomic variants. Because these file formats have become the primary information exchange medium in the field of genomics they have a large influence on software tools and data access patterns that are in common use today and thus warrant a closer look.
+
+\subsubsection{FASTA/FASTQ}
+
+The FASTA/FASTQ file format is a text file format developed at The Sanger Institute for representing genomic sequencing reads\autocite{cock2009sanger}. Each read in the file consists of four lines:
+
+\begin{itemize}
+    \item The first is a unique identifier (that encodes some information about the sequencing process). For example - \@HWUSI-EAS100R:6:73:941:1973\#0/1
+    \item The second is the read sequence itself: $S = \{s_i: s \in\{A,C,G,T,N\}\}$. For example - ACGTCCCGTCCCTNTCCA
+    \item The third is a $+$ sign acting as a separator.
+    \item The fourth is a set of per-base quality scores, represented on the Phred scale, that represent an estimate of the probability that the base has been called correctly. If the error probability is defined as $\epsilon$ then $Q_{phred} = -10\times\log_{10}(\epsilon)$ and conversely $\epsilon = 10^{\frac{-Q_{phred}}{10}}$. In the actual file Phred scores are represented with ASCII characters from !"\#\$\%\&'()*+,-./0123456789:;<=>?@ABCDEFG HIJKLMNOPQRSTUVWXYZ[\textbackslash]\^\_\`abcdefghijklmnopqrstuvwxyz\{|\}\textasciitilde ordered by increasing quality, where ! is the lowest possible quality and \textasciitilde is the highest.
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[scale=0.7]{fastq}
+    \centering
+    \caption {Excerpt from a FASTQ file. /1 and /2 at the end of read ID indicate whether read is first or second in pair.}
+    \label{fig:fastq}
+\end{figure}
+
+Since FASTQ is a large text file with highly repetitive content it is typically stored in a compressed manner.
+
+\subsubsection{SAM/BAM}
+
+The Sequence Alignment Map (SAM) text file format and its accompanying binary compressed version BAM was created for sequencing data storage and analysis in the context of the 1000 genomes project\autocite{li2009sequence}. These files provide additional fields on top of the ones available in FASTA/FASTQ in order to relay information related to sequence alignment to a reference genome, and are the most widely used format for storing DNA sequencing data today. A SAM file consists of a header and a body. These are described below. All tables, descriptions, and definitions in this section are reproduced or adapted from the SAM file specification at https://samtools.github.io/hts-specs/SAMv1.pdf.
+
+\paragraph{SAM Header}
+Each line of the header begins with the character `{\tt @}' followed by a header record (see Table \ref{tab:sam_file_header}). Each line is TAB-delimited and, apart from {\tt @CO} lines,
+each data field follows the format `{\tt TAG:VALUE}' where {\tt TAG} is a two-character string that defines the format and content of {\tt VALUE}.
+
+\begin{table}
+    \caption{SAM file header record and column definition. Tags listed with `*' are required. (adapted from https://samtools.github.io/hts-specs/SAMv1.pdf)}
+    \label{tab:sam_file_header}
+\small
+\begin{longtable}{|l|l|p{13.5cm}|}
+  \cline{1-3}
+  \multicolumn{2}{|l|}{\bf Tag} & {\bf Description} \\
+  \cline{1-3}
+  \multicolumn{2}{|l}{\tt @HD} & The header line. The first line if present. \\\cline{2-3}
+  & {\tt VN}* & Format version. \emph{Accepted format}: {\tt /\char94[0-9]+\char92.[0-9]+\$/}.\\\cline{2-3}
+  & {\tt SO} & Sorting order of alignments. \emph{Valid values}: {\tt unknown} (default), {\tt
+    unsorted}, {\tt queryname} and {\tt coordinate}.\\\cline{2-3}
+  & {\tt GO} & Grouping of alignments, indicating that similar alignment records
+    are grouped together but the file is not necessarily sorted overall.
+    \emph{Valid values}: {\tt none} (default), {\tt query} (alignments are
+    grouped by {\sf QNAME}), and {\tt reference} (alignments are grouped by
+    {\sf RNAME}/{\sf POS}).\\\cline{1-3}
+  & {\tt SS} & Sub-sorting order of alignments. Valid values are of the form \emph{sort-order}{\tt :}\emph{sub-sort}, where \emph{sort-order} is the same value stored in the {\tt SO} tag and \emph{sub-sort} is an implementation-dependent colon-separated string further describing the sort order. 
+    \emph{Regular expression}: {\tt (coordinate|queryname|unsorted)(:[\verb"A-Za-z0-9_-"]+)+}\\\cline{1-3}
+  \multicolumn{2}{|l}{\tt @SQ} & Reference sequence dictionary. The order of {\tt @SQ} lines defines the alignment sorting order.\\\cline{2-3}
+  & {\tt SN}* & Reference sequence name.
+The {\tt SN} tags and all individual {\tt AN} names in all {\tt @SQ} lines
+must be distinct.
+  The value of this field is used in the
+  alignment records in {\sf RNAME} and {\sf RNEXT} fields. Regular expression: {\tt [!-)+-\char60\char62-\char126][!-\char126]*}\\\cline{2-3}
+  & {\tt LN}* & Reference sequence length. \emph{Range}: $[1,\,2^{31}-1]$\\\cline{2-3}
+  & {\tt AH} & Indicates that this sequence is an alternate locus.\\\cline{2-3}
+  & {\tt AN} & Alternative reference sequence names.\\\cline{2-3}
+  & {\tt AS} & Genome assembly identifier. \\\cline{2-3}
+  & {\tt DS} & Description.  UTF-8 encoding may be used.\\\cline{2-3}
+  & {\tt M5} & MD5 checksum of the sequence.\\\cline{2-3}
+  & {\tt SP} & Species.\\\cline{2-3}
+  & {\tt UR} & URI of the sequence.\\\cline{1-3}
+  \multicolumn{2}{|l}{\tt @RG} & Read group. Unordered multiple {\tt @RG} lines are allowed.\\\cline{2-3}
+  & {\tt ID}* & Read group identifier. Each {\tt @RG} line must have a unique {\tt ID}.\\\cline{2-3}
+  & {\tt BC} & Barcode sequence identifying the sample or library.\\\cline{2-3}
+  & {\tt CN} & Name of sequencing center producing the read.\\\cline{2-3}
+  & {\tt DS} & Description.  UTF-8 encoding may be used.\\\cline{2-3}
+  & {\tt DT} & Date the run was produced (ISO8601 date or date/time).\\\cline{2-3}
+  & {\tt FO} & Flow order. The array of nucleotide bases that correspond to the nucleotides used for each flow of each read.\\\cline{2-3}
+  & {\tt KS} & The array of nucleotide bases that correspond to the key sequence of each read.\\\cline{2-3}
+  & {\tt LB} & Library.\\\cline{2-3}
+  & {\tt PG} & Programs used for processing the read group.\\\cline{2-3}
+  & {\tt PI} & Predicted median insert size.\\\cline{2-3}
+  & {\tt PL} & Platform/technology used to produce the reads. \emph{Valid values}:
+  {\tt CAPILLARY}, {\tt LS454}, {\tt ILLUMINA}, {\tt SOLID}, {\tt HELICOS}, {\tt IONTORRENT}, {\tt ONT}, and {\tt PACBIO}.\\\cline{2-3}
+  & {\tt PM} & Platform model. Free-form text providing further details of the
+  platform/technology used.\\\cline{2-3}
+  & {\tt PU} & Platform unit (e.g. flowcell-barcode.lane for Illumina or slide for SOLiD). Unique identifier.\\\cline{2-3}
+  & {\tt SM} & Sample. Use pool name where a pool is being sequenced.\\\cline{1-3}
+  \multicolumn{2}{|l}{\tt @PG} & Program. \\\cline{2-3}
+  & {\tt ID}* & Program record identifier. Each {\tt @PG} line must have a unique {\tt ID}.
+  	The value of {\tt ID} is used in the alignment {\tt PG} tag and {\tt PP} tags of other {\tt @PG} lines.
+	{\tt PG} IDs may be modified when merging SAM files in order to handle collisions.\\\cline{2-3}
+  & {\tt PN} & Program name \\\cline{2-3}
+  & {\tt CL} & Command line.  UTF-8 encoding may be used. \\\cline{2-3}
+  & {\tt PP} & Previous {\tt @PG-ID}. Must match another {\tt @PG} header's {\tt ID} tag.
+  	{\tt @PG} records may be chained using {\tt PP} tag, with the last record in the chain
+	having no {\tt PP} tag. This chain defines the order of programs that have been applied to the alignment.\\\cline{2-3}
+  & {\tt DS} & Description.  UTF-8 encoding may be used.\\\cline{2-3}
+  & {\tt VN} & Program version \\\cline{1-3}
+  \multicolumn{2}{|l}{\tt @CO} & One-line text comment. Unordered multiple {\tt @CO} lines are allowed. UTF-8 encoding may be used.\\
+  \cline{1-3}
+
+\end{longtable}
+\end{table}
+
+\paragraph{SAM Body}
+The body of a SAM file contains alignment records (see Section \ref{sec:bg_alignment} on details of alignment algorithms). Each record has 11 mandatory fields. These fields always appear in the same order and must be present, but their values may be `0' or `*' (depending on the field) if the corresponding information is unavailable. Table \ref{tab:sam_file_body_mandatory_fields} lists the mandatory fields in the SAM format:
+\begin{table}
+    \caption{SAM file alignment record mandatory column definition. (adapted from https://samtools.github.io/hts-specs/SAMv1.pdf)}
+    \label{tab:sam_file_body_mandatory_fields}
+\small
+\begin{tabular}{rllll}
+
+  \hline
+  {\bf Col} & {\bf Field} & {\bf Type} & {\bf Regexp/Range} & {\bf Brief description} \\
+  \hline
+  1 & {\sf QNAME} & String & \verb:[!-?A-~]{1,254}: & Query template NAME\\
+  2 & {\sf FLAG} & Int & $[0,\,2^{16}-1]$ & bitwise FLAG \\
+  3 & {\sf RNAME} & String & {\tt \char92*|[!-()+-\char60\char62-\char126][!-\char126]*} & Reference sequence NAME\\
+  4 & {\sf POS} & Int & $[0,\,2^{31}-1]$ & 1-based leftmost mapping POSition \\
+  5 & {\sf MAPQ} & Int & $[0,\,2^8-1]$ & MAPping Quality \\
+  6 & {\sf CIGAR} & String & {\tt \char92*|([0-9]+[MIDNSHPX=])+} & CIGAR string \\
+  7 & {\sf RNEXT} & String & {\tt \char92*|=|[!-()+-\char60\char62-\char126][!-\char126]*} & Ref. name of the mate/next read\\
+  8 & {\sf PNEXT} & Int & $[0,\,2^{31}-1]$ & Position of the mate/next read \\
+  9 & {\sf TLEN} & Int & $[-2^{31}+1,\,2^{31}-1]$ & observed Template LENgth \\
+  10 & {\sf SEQ} & String & {\tt \char92*|[A-Za-z=.]+} & segment SEQuence\\
+  11 & {\sf QUAL} & String & {\tt [!-\char126]+} & ASCII of Phred-scaled base QUALity+33 \\
+  \hline
+
+\end{tabular}
+\end{table}
+Alignment records represent the information contained in a sequencing read subsequent to it being aligned to a reference genome (see Figure \ref{fig:read_pair}).
+
+\begin{figure}[H]
+\includegraphics[scale=0.40]{read_pair}
+\centering
+\caption {A read-pair that is aligned to the reference.}
+\label{fig:read_pair}
+\end{figure}
+
+\begin{enumerate}
+    \item {\sf QNAME}: Query template NAME. Reads/segments having identical {\sf QNAME} are regarded to come from the same template. A {\sf QNAME} `{\tt *}' indicates the information is unavailable.  In a SAM file, a read may occupy
+        multiple alignment lines, when its alignment is chimeric or when multiple mappings are given.
+    \item {\sf FLAG}: Combination of bitwise FLAGs. Each bit is explained in the following table:
+      \begin{center}\small
+      \begin{tabular}{rrl}
+      \hline
+      \multicolumn{2}{c}{Bit} & Description\\
+      \hline
+        1 &    0x1 & template having multiple segments in sequencing \\
+        2 &    0x2 & each segment properly aligned according to the aligner \\
+        4 &    0x4 & segment unmapped \\
+        8 &    0x8 & next segment in the template unmapped \\
+       16 &   0x10 & {\sf SEQ} being reverse complemented \\
+       32 &   0x20 & {\sf SEQ} of the next segment in the template being reverse complemented \\
+       64 &   0x40 & the first segment in the template \\
+      128 &   0x80 & the last segment in the template \\
+      256 &  0x100 & secondary alignment \\
+      512 &  0x200 & not passing filters, such as platform/vendor quality controls \\
+     1024 &  0x400 & PCR or optical duplicate \\
+     2048 &  0x800 & supplementary alignment \\
+      \hline
+      \end{tabular}
+      \end{center}
+      \begin{itemize}
+      \item For each read/contig in a SAM file, it is required that one and only
+        one line associated with the read satisfies \mbox{`{\sf FLAG} {\tt \& 0x900
+        == 0}'}. This line is called the \emph{primary line} of the read.
+      \item Bit 0x100 marks the alignment not to be used in certain analyses
+        when the tools in use are aware of this bit. It is typically used to
+        flag alternative mappings when multiple mappings are presented in a SAM.
+      \item Bit 0x800 indicates that the corresponding alignment line is part of
+        a chimeric alignment. A line flagged with 0x800 is called as a \emph{supplementary line}.
+      \item Bit 0x4 is the only reliable place to tell whether the read
+        is unmapped. If 0x4 is set, no assumptions can be made about {\sf
+          RNAME}, {\sf POS}, {\sf CIGAR}, {\sf MAPQ}, and bits 0x2, 0x100,
+        and 0x800.
+      \item Bit 0x10 indicates whether {\sf SEQ} has been reverse complemented
+        and {\sf QUAL} reversed.
+        When bit~0x4 is unset, this corresponds to the strand to which the
+        segment has been mapped.
+        When 0x4 is set, this indicates whether the unmapped read is stored
+        in its original orientation as it came off the sequencing machine.
+      \item Bits 0x40 and 0x80 reflect the read ordering within each template
+        inherent in the sequencing technology used.\footnote{For example,
+        in Illumina paired-end sequencing, {\sf first}~(0x40) corresponds to
+        the R1~`forward' read and {\sf last}~(0x80) to the R2~`reverse' read.
+        (Despite the terminology, this is unrelated to the segments' orientations
+        when they are mapped: either, neither, or both may have their
+        {\sf reverse} flag bits~(0x10) set after mapping.)}
+        If 0x40 and 0x80 are both set, the read is part of a linear
+        template, but it is neither the first nor the last read. If both
+        0x40 and 0x80 are unset, the index of the read in the template
+        is unknown. This may happen for a non-linear template or when this
+        information is lost during data processing.
+      \item If 0x1 is unset, no assumptions can be made about 0x2, 0x8,
+        0x20, 0x40 and 0x80.
+      \item Bits that are not listed in the table are reserved for future use.
+        They should not be set when writing and should be ignored on reading
+        by current software.
+      \end{itemize}
+    \item {\sf RNAME}: Reference sequence NAME of the alignment. If {\tt
+        @SQ} header lines are present, {\sf RNAME} (if not `*') must be
+      present in one of the {\tt SQ-SN} tag. An unmapped segment without
+      coordinate has a `*' at this field. However, an unmapped segment may
+      also have an ordinary coordinate such that it can be placed at a
+      desired position after sorting. If {\sf RNAME} is `*', no assumptions
+      can be made about {\sf POS} and {\sf CIGAR}.
+    \item {\sf POS}: 1-based leftmost mapping POSition of the first {\sf
+        CIGAR} operation that ``consumes'' a reference base (see table below).
+        The first base in a reference sequence has coordinate 1. {\sf
+        POS} is set as 0 for an unmapped read without coordinate. If {\sf
+        POS} is 0, no assumptions can be made about {\sf RNAME} and {\sf
+        CIGAR}.
+    \item {\sf MAPQ}: MAPping Quality. It equals
+      $-10\log_{10}\Pr\{\mbox{mapping position is wrong}\}$, rounded to the
+      nearest integer. A value 255 indicates that the mapping quality is not
+      available.
+    \item {\sf CIGAR}: CIGAR string. The CIGAR operations are given in the
+      following table (set `*' if unavailable):
+      \begin{center}
+      \begin{tabular}{cclcc}
+      \toprule
+      Op & BAM & Description & \makecell{Consumes \\ query} & \makecell{Consumes \\ reference}\\
+      \midrule
+      {\tt M} & 0 & alignment match (can be a sequence match or mismatch)       & yes & yes \\
+      {\tt I} & 1 & insertion to the reference                                  & yes & no  \\
+      {\tt D} & 2 & deletion from the reference                                 & no  & yes \\
+      {\tt N} & 3 & skipped region from the reference                           & no  & yes \\
+      {\tt S} & 4 & soft clipping (clipped sequences present in {\sf SEQ})      & yes & no  \\
+      {\tt H} & 5 & hard clipping (clipped sequences NOT present in {\sf SEQ})  & no  & no  \\
+      {\tt P} & 6 & padding (silent deletion from padded reference)             & no  & no  \\
+      {\tt =} & 7 & sequence match                                              & yes & yes \\
+      {\tt X} & 8 & sequence mismatch                                           & yes & yes \\
+      \bottomrule
+      \end{tabular}
+      \end{center}
+      \begin{figure}[H]
+        \includegraphics[scale=0.40]{cigar_string}
+        \centering
+        \caption {Example of an alignment CIGAR string.}
+        \label{fig:cigar_string}
+        \end{figure}
+      \begin{itemize}
+      \item ``Consumes query'' and ``consumes reference'' indicate
+        whether the CIGAR operation causes the alignment to step along the
+        query sequence and the reference sequence respectively.
+      \item {\tt H} can only be present as the first and/or last operation.
+      \item {\tt S} may only have {\tt H} operations between them and the
+        ends of the {\sf CIGAR} string.
+      \item For mRNA-to-genome alignment, an {\tt N} operation represents an
+        intron. For other types of alignments, the interpretation of {\tt N}
+        is not defined.
+      \item Sum of lengths of the {\tt M/I/S/=/X} operations shall equal
+        the length of {\sf SEQ}.
+      \end{itemize}
+    \item {\sf RNEXT}: Reference sequence name of the primary alignment of the NEXT read in the
+      template. For the last read, the next read is the first
+      read in the template. If {\tt @SQ} header lines are present, {\sf
+        RNEXT} (if not `*' or `=') must be present in one of the {\tt SQ-SN}
+      tag. This field is set as `*' when the information is unavailable, and
+      set as `=' if {\sf RNEXT} is identical {\sf RNAME}. If not `=' and the
+      next read in the template has one primary mapping (see also bit
+      0x100 in {\sf FLAG}), this field is identical to {\sf RNAME} at the primary line of the
+      next read.  If {\sf
+        RNEXT} is `*', no assumptions can be made on {\sf PNEXT} and bit
+      0x20.
+    \item {\sf PNEXT}: 1-based Position of the primary alignment of the NEXT read in the template. Set as
+      0 when the information is unavailable. This field equals {\sf POS} at the primary line of
+      the next read. If {\sf PNEXT} is 0, no assumptions can be made on
+      {\sf RNEXT} and bit 0x20.
+    \item {\sf TLEN}: signed observed Template LENgth. If all segments are
+      mapped to the same reference, the unsigned observed template length
+      equals the number of bases from the leftmost mapped base to the
+      rightmost mapped base. The leftmost segment has a plus sign and the
+      rightmost has a minus sign. The sign of segments in the middle is
+      undefined. It is set as 0 for single-segment template or when the
+      information is unavailable.
+    \item {\sf SEQ}: segment SEQuence. This field can be a `*' when the
+      sequence is not stored. If not a `*', the length of the sequence must
+      equal the sum of lengths of {\tt M/I/S/=/X} operations in {\sf CIGAR}.
+      An `=' denotes the base is identical to the reference base. No
+      assumptions can be made on the letter cases.
+    \item {\sf QUAL}: ASCII of base QUALity plus 33 (same as the quality
+      string in the Sanger FASTQ format). A base quality is the phred-scaled
+      base error probability which equals $-10\log_{10}\Pr\{\mbox{base is
+        wrong}\}$. This field can be a `*' when quality is not stored. If
+      not a `*', {\sf SEQ} must not be a `*' and the length of the quality string
+      ought to equal the length of {\sf SEQ}.
+    \end{enumerate}
+\paragraph{BAM Files}
+
+BAM files are SAM files that have been compressed with block gzip compression\autocite{li2011tabix}. If the reads inside the BAM file are sorted in increasing order of reference coordinate, the BAM file supports random access via a supplementary BAM index (\emph{*.bam.bai}) file. Each block inside a BAM file is a separate gzip archive up to 64Kb in size with extra metadata to encode the read positions contained inside the block. The BAM index file contains offsets into the BAM file that correspond to particular genomic coordinate ranges. The BAM file this provides a binary compressed structure that supports indexed search on genomic coordinates. No other indexing, including by ID, is currently supported. The majority of DNA sequencing data in the world is currently stored as BAM files.
+
+\subsubsection{VCF Files}
+The Variant Call Format (VCF)\autocite{danecek2011variant} is a type of text file that was created in the context of the 1000 Genomes project to allow the representation of various types of genetic variation that are discovered via NGS experiments. VCF files describe variants in a refererence-relative manner - i.e. all genetic variation is shown with respect to a given reference genome build. VCF files have a tabular form and allow one to describe genetic variants as they occur in (or are absent from) a entire cohort of samples using a single file. This file format, despite several significant limitations, has become the widely adopted standard for representing genetic variation. All descriptions in this section have been reproduced or adapted from the 2011 Danecek et al. paper and the VCF specification ()   
+
+A VCF file consists of the following sections - Meta-information section describes the format and content of the data contained in the file, header section specifies the columns present in the file, data section contains the actual variant calls that are being described.
+
+\paragraph{Meta-information}
+The meta-information section contains a number of lines that describe the data section. The first line of this section is a \emph{fileformat} line that specifies what version of the VCF spec the file adheres to. There can be any number of lines describing INFO fields. These fields are populated into the INFO column of the data section. A single INFO field may describe a single value or a tuple of values. These values can be Integer, Float, Flag, Character, or String. All of the INFO fields thus described are to be placed into the INFO column as a string of semi-colon-separated key-value pairs. The FILTER field describes any filters that have been applied to the variants. The FORMAT field describes the format of the genotype columns that are specified in the data section. The ALT field describes symbolic alternate alleles, that result from variants that have been called but not accurately genotyped. The \emph{contig} field lists the contigs that the variants specified in the file have been called relative to (typically these are chromosome names from the reference sequence). The SAMPLE field specifies the samples that the variants map to. The PEDIGREE field specifies pedigree relationships between samples in the file.
+
+\paragraph{Header}
+The header section is a single tab-delimited line that lists what columns are present in the body. The mandatory columns are:
+\begin{itemize}
+    \item \#CHROM
+    \item POS
+    \item ID
+    \item REF
+    \item ALT
+    \item QUAL
+    \item FILTER
+    \item INFO
+\end{itemize}
+
+If the VCF file contains genotypes then the INFO column is followed by a FORMAT column, followed by one column for each present sample where each column name is the respective sample ID and all sample IDs are unique within the file.
+
+\paragraph{Data}
+
+The data section of a VCF file contains the actual list of variants and their genotypes in all samples in tabular form where the columns align with the header section. The values are tab-separated. Any missing values are indicated with a '.' (dot). The line contents are as follows:
+
+\begin{description}
+    \item [CHROM] - An identifier of the chromosome where the variant resides. The ID of the chromosome should match one of the \emph{contig} entries in the meta-information section. All of the variants that belong to a single CHROM should exist in a single contiguous block of rows in a VCF file.
+    \item [POS] - 1-based position of the variant with respect to the reference chromosome specified in CHROM. Variant positions should be sorted numerically in increasing order.
+    \item [ID] - A semi-colon separated list of unique identifiers, where they exist. If no identifier exists a missing value should be indicated.
+    \item [REF] - the reference bases corresponding to the variant location where each base $b \in \{A,C,G,T,N\}$.
+    \item [ALT] - a comma separated list of alternative alleles. The alleles do not have to called in any of the samples. Value can be either a String of $b \in \{A,C,G,T,N,*\}$ or a missing value (when there is no variant).
+    \item [QUAL] - the PHRED scale variant quality. When ALT is present QUAL is $-10\log_{10}({no variant})$ and when ALT is missing QUAL is $-10\log_{10}({variant})$. If QUAL is unknown then missing value must be specified.
+    \item [FILTER] - encodes the filter status. If the variant passes all QC filters the value should be PASS. Otherwise there should be a semi-colon separated list of codes for filters that have not passed. If FILTER information is not available there should be a missing value.
+    \item [INFO] - A list of key-value pairs for the additional fields encoded for each variant as specified in the INFO lines of the metadata section. Keys without corresponding values may be used to indicate group membership. There is a number of frequently used reserved keys (see Table \ref{tab:reserved-info}).
+\end{description}
+ 
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{ | p{2.5cm} | p{1.5cm} | p{1.5cm} | X | }
+    \toprule
+    Key		& Number	& Type		& Description \\ 
+    \midrule
+	AA		& 1		& String	& Ancestral allele \\
+	AC		& A		& Integer	& Allele count in genotypes, for each ALT allele, in the same order as listed  \\
+	AD		& R		& Integer	& Total read depth for each allele \\
+	ADF		& R		& Integer	& Read depth for each allele on the forward strand \\
+	ADR		& R		& Integer	& Read depth for each allele on the reverse strand \\
+	AF		& A		& Float		& Allele frequency for each ALT allele in the same order as listed (estimated from primary data, not called genotypes) \\
+	AN		& 1		& Integer	& Total number of alleles in called genotypes \\
+	BQ   		& 1		& Float		& RMS base quality \\
+	CIGAR		& A		& String	& Cigar string describing how to align an alternate allele to the reference allele \\
+	DB		& 0		& Flag		& dbSNP membership \\
+	DP		& 1		& Integer	& Combined depth across samples \\
+	END		& 1		& Integer	& End position (for use with symbolic alleles) \\
+	H2		& 0		& Flag		& HapMap2 membership \\
+	H3		& 0		& Flag		& HapMap3 membership \\
+	MQ		& 1		& Float		& RMS mapping quality \\
+	MQ0   		& 1		& Integer	& Number of MAPQ == 0 reads \\
+	NS		& 1		& Integer	& Number of samples with data \\
+	SB		& 4		& Integer	& Strand bias \\
+	SOMATIC		& 0		& Flag		& Somatic mutation (for cancer genomics) \\
+	VALIDATED	& 0		& Flag		& Validated by follow-up experiment \\
+    1000G		& 0		& Flag		& 1000 Genomes membership \\
+    \bottomrule
+    \end{tabularx}
+    \caption{Reserved INFO keys (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).}
+    \label{tab:reserved-info}
+  \end{table}
+
+If genotype information is present, the exact same definition is used for all samples. The FORMAT field specifies a column seprated list of the data types and their order that are present in the genotype columns. This is followed by one data block for each sample that contains the genotype data as described in the FORMAT column. All keys are optional but missing values should be indicated. There is a number of frequently used and reserved keys (see Table \ref{tab:reserved-genotypes}).
+
+\begin{table}[H]
+    \centering
+      \begin{tabularx}{\textwidth}{ | p{2.5cm} | p{1.5cm} | p{1.5cm} | X | }
+        \toprule
+        Field		& Number	& Type		& Description \\ 
+        \midrule
+        AD		& R		& Integer	& Read depth for each allele \\
+        ADF		& R		& Integer	& Read depth for each allele on the forward strand \\
+        ADR		& R		& Integer	& Read depth for each allele on the reverse strand \\
+        DP		& 1		& Integer	& Read depth \\
+        EC		& A		& Integer	& Expected alternate allele counts \\
+        FT		& 1		& String	& Filter indicating if this genotype was ``called'' \\
+        GL		& G		& Float		& Genotype likelihoods \\
+        GP		& G		& Float		& Genotype posterior probabilities \\
+        GQ		& 1		& Integer	& Conditional genotype quality \\
+        GT		& 1		& String	& Genotype \\
+        HQ		& 2		& Integer	& Haplotype quality \\
+        MQ		& 1		& Integer	& RMS mapping quality \\
+        PL		& G		& Integer	& Phred-scaled genotype likelihoods rounded to the closest integer \\
+        PQ		& 1		& Integer	& Phasing quality \\
+        PS		& 1		& Integer	& Phase set \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Reserved genotype keys (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).}
+    \label{tab:reserved-genotypes}
+  \end{table}
+
+The following keys are most important and frequently used:
+
+\begin{itemize}
+    \item [GT] - The genotype, encoded as allele values separated by / for unphased genotypes and | for phased genotypes. The values are 0 for reference allele, 1 for first allele listed in ALT, 2 for the second, and so on (for instance 0/1 for heterozygous variant in a diploid sample). When a call cannot be made the missing value is used (for instance ./.).
+    \item [GL] - Genotype likelihoods. A comma separated list of $log_{10}$ likelihoods for all possible genotypes given the set of REF and ALT alleles at the locus.
+    \item [GP] - Genotype posterior probabilities, in the same order as GL field.
+    \item [GQ] - Genotype Quality in PHRED scale. Probability the genotype call is wrong given that the site is variant.
+    \item [AD] - Allele Depth. Per-sample read depth for each allele.
+    \item [DP] - Read Depth. $\sum_i AD_i$.
+\end{itemize}
+
+See Listing \ref{lst:vcf_file} for an example of a VCF file.
+
+\subsubsection{Remarks}
+
+The SAM/BAM and VCF file formats have bencome the de-facto standards for representing sequencing read data and genetic variation respectively. Because of this status most computational tools that exist in this space either consume or produce one of these data-types and the data analysis process is influenced by the file access patterns inherent in these standards. This introduces a number of challenges and limitations that have held back scalability of the existing tools to larger data sets. Specifically:
+
+\begin{itemize}
+    \item The focus on files for information storage and retrieval implies that sophisticated file management schemes must be deployed for successful management of large cohorts of samples. This includes concerns of data security, and data migration that must be implemented at the file-system level.
+    \item Storage of sequence data at sample level of granularity in SAM/BAM files creates very large files that are typically greater than 150 GB in size per sample and are thus quite cumbersome to work with.
+    \item Lack of usage of databases implies only basic indexing and querying schemes are possible for sequencing and variant data. Large amounts of data thus need to be loaded into memory in order to perform basic queries.
+    \item Indexing only by genomic coordinate implies a coordinate-based data traversal mechanisms that process a genome linearly from beginning to the end.
+    \item The multi-sample VCF format makes it easy to interpret all carriers for a single variant (by reading a single row), but is not well suited for interrogating all variants for a single individual (scanning all rows for a single column) in a text file.
+    \item Storage of sequencing data in multiple per-sample files does not take advantage of extreme sequence similarity between samples at a given genomic locus, thus reducing the opportunities for data compression and driving up project costs for large scale sequencing efforts where data set size exceeds 1PB.
+\end{itemize}
+
+The stream-based approach adopted by the Rheos framework desribed in this work attempts to address many of the above issues.
 
 \subsection{Base-calling}
 
 \subsection{Alignment}
+\label{sec:bg_alignment}
+
+
 BWA/MEM -
 Bowtie - 
 Gem - 
 
 \subsection{Raw Data QC}
+\label{sec:bg_raw_data_qc}
 
 The data that is generated as part of NGS experiments can have widely varying quality, and may suffer from systematic biases introduced by the experimental protocol employed, the technology used, as well as individual events such as sample contamination\autocites{lauss2013monitoring}{aird2011analyzing}{dohm2008substantial}{cibulskis2011contest}. The effect of low quality data such as sequencing errors on downstream analysis can be quite significant, not only because it may introduce false positive variants in the final output, but also because it can produce a large number of potentially variant sites that need to be evaluated and will consume a large amount additional computational resources to eventually rule out. A wide variety of computational methods exist for examining the data after it has been generated in order to identify and fix or filter out low quality data. The most widely used tools include Picard\autocite{Picard2018toolkit}, FastQC\autocite{andrews2010fastqc}, QC Toolkit\autocite{patel2012ngs}, QC-Chain\autocite{zhou2013qc}, and FASTX-Toolkit\autocite{gordon2010fastx}. These tools evaluate data at two granularities - read-level, and sample-level. Some of these can act on sequencing data pre-alignment, while others either work post-alignment or actively make use of a built-in aligner. The QC process is generally organized into a QC pipeline (see Figure \ref{fig:qc-chain}). Furthermore, some tools, like FastQC and Picard tend to only collect various QC metrics and generate reports, leaving the filtering based on these metrics up to the user, while other tools, such as QC Toolkit and QC-Chain perform the actual filtering themselves.
 
@@ -156,6 +571,7 @@ At the sample level the following QC measures are important:
 Many other QC metrics can be of interest and are listed on the individual tools' pages (for instance https://broadinstitute.github.io/picard/picard-metric-definitions.html). Once collected, these metrics can be used for visualization, manual curation, threshold-based filtering, or machine learning approaches to QC.
 
 \subsection{Germline SNP Calling}
+\label{sec:bg_germline_snp_calling}
 
 Single Nucleotide Polymorphisms or SNPs are locations in an individual's genome where that individual differs from the reference sequence at a single position. The reference sequence is haploid i.e. it provides a single base (for instance T) at every genomic location, whereas the human genome is diploid (there are two copies of each chromosome, and thus two bases at each location) for chromosomes 1-22, and chromosome X for females, while being haploid for chromosomes X and Y for males. Thus, at each genomic location, the human genome may be:
 
@@ -482,6 +898,7 @@ Pretty universally across the methods, genotyping is set up as a Bayesian infere
 
 
 \subsection{Germline Structural Variant Calling}
+\label{sec:bg_germline_sv_calling}
 
 Structural Variants (SVs) are medium- to large-size alterations (typically >50bp in length) of the genomic sequence that fall into a several broad categories (see Figure \ref{fig:sv_classes}) including insertions, deletions, tandem and interspersed duplications, inversions, translocations, mobile element insertions, as well as complex rearrangements that constitute a combination of the above classes or are otherwise difficult to classify. 
 

@@ -1935,7 +1935,7 @@
   publisher = {BioMed Central},
 }
 
-@Article{dohm2008substantial,
+@Article{Dohm2008,
   author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
   title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
   journal   = {Nucleic acids research},
@@ -1954,7 +1954,7 @@
   volume  = {5},
 }
 
-@Article{patel2012ngs,
+@Article{Patel2012,
   author    = {Patel, Ravi K and Jain, Mukesh},
   title     = {NGS QC Toolkit: a toolkit for quality control of next generation sequencing data},
   journal   = {PloS one},
@@ -1990,7 +1990,7 @@
   publisher = {Public Library of Science},
 }
 
-@Article{dohm2008substantial,
+@Article{Dohm2008a,
   author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
   title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
   journal   = {Nucleic acids research},
@@ -2010,6 +2010,79 @@
   number    = {15},
   pages     = {2114--2120},
   publisher = {Oxford University Press},
+}
+
+@Article{ebbert2016evaluating,
+  author    = {Ebbert, Mark TW and Wadsworth, Mark E and Staley, Lyndsay A and Hoyt, Kaitlyn L and Pickett, Brandon and Miller, Justin and Duce, John and Kauwe, John SK and Ridge, Perry G},
+  title     = {Evaluating the necessity of PCR duplicate removal from next-generation sequencing data and a comparison of approaches},
+  journal   = {BMC bioinformatics},
+  year      = {2016},
+  volume    = {17},
+  number    = {7},
+  pages     = {239},
+  publisher = {BioMed Central},
+}
+
+@Article{international2003international,
+  author    = {International HapMap Consortium and others},
+  title     = {The international HapMap project},
+  journal   = {Nature},
+  year      = {2003},
+  volume    = {426},
+  number    = {6968},
+  pages     = {789},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{Cock2009,
+  author    = {Cock, Peter JA and Fields, Christopher J and Goto, Naohisa and Heuer, Michael L and Rice, Peter M},
+  title     = {The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants},
+  journal   = {Nucleic acids research},
+  year      = {2009},
+  volume    = {38},
+  number    = {6},
+  pages     = {1767--1771},
+  publisher = {Oxford University Press},
+}
+
+@Article{li2011tabix,
+  author    = {Li, Heng},
+  title     = {Tabix: fast retrieval of sequence features from generic TAB-delimited files},
+  journal   = {Bioinformatics},
+  year      = {2011},
+  volume    = {27},
+  number    = {5},
+  pages     = {718--719},
+  publisher = {Oxford University Press},
+}
+
+@InProceedings{manku1998approximate,
+  author       = {Manku, Gurmeet Singh and Rajagopalan, Sridhar and Lindsay, Bruce G},
+  title        = {Approximate medians and other quantiles in one pass and with limited memory},
+  booktitle    = {ACM SIGMOD Record},
+  year         = {1998},
+  volume       = {27},
+  number       = {2},
+  organization = {ACM},
+  pages        = {426--435},
+}
+
+@InProceedings{greenwald2001space,
+  author       = {Greenwald, Michael and Khanna, Sanjeev},
+  title        = {Space-efficient online computation of quantile summaries},
+  booktitle    = {ACM SIGMOD Record},
+  year         = {2001},
+  volume       = {30},
+  number       = {2},
+  organization = {ACM},
+  pages        = {58--66},
+}
+
+@Book{garofalakis2016data,
+  author    = {Garofalakis, Minos and Gehrke, Johannes and Rastogi, Rajeev},
+  title     = {Data Stream Management: Processing High-Speed Data Streams},
+  year      = {2016},
+  publisher = {Springer},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

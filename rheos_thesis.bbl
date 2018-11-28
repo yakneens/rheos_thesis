@@ -986,6 +986,37 @@
       \field{pages}{57\bibrangedash 74}
       \range{pages}{18}
     \endentry
+    \entry{international2003international}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=638d30f6deb1e7e6318146b6f5e7bf0d}{%
+           family={Consortium},
+           familyi={C\bibinitperiod},
+           given={International\bibnamedelima HapMap},
+           giveni={I\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{3b5d94c7d84b5550b817f0639dde7c93}
+      \strng{fullhash}{3b5d94c7d84b5550b817f0639dde7c93}
+      \strng{bibnamehash}{3b5d94c7d84b5550b817f0639dde7c93}
+      \strng{authorbibnamehash}{3b5d94c7d84b5550b817f0639dde7c93}
+      \strng{authornamehash}{3b5d94c7d84b5550b817f0639dde7c93}
+      \strng{authorfullhash}{3b5d94c7d84b5550b817f0639dde7c93}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{number}{6968}
+      \field{title}{The international HapMap project}
+      \field{volume}{426}
+      \field{year}{2003}
+      \field{pages}{789}
+      \range{pages}{1}
+    \endentry
     \entry{wellcome2007genome}{article}{}
       \true{moreauthor}
       \true{morelabelname}
@@ -2193,6 +2224,40 @@
       \field{pages}{210\bibrangedash 219}
       \range{pages}{10}
     \endentry
+    \entry{garofalakis2016data}{book}{}
+      \name{author}{3}{}{%
+        {{hash=24c4048315c3ac8a7ea43d047ba12ff0}{%
+           family={Garofalakis},
+           familyi={G\bibinitperiod},
+           given={Minos},
+           giveni={M\bibinitperiod}}}%
+        {{hash=89173e109d33053942397c24c048f5c2}{%
+           family={Gehrke},
+           familyi={G\bibinitperiod},
+           given={Johannes},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5f6bcd33f186294619c1e79faa97cd57}{%
+           family={Rastogi},
+           familyi={R\bibinitperiod},
+           given={Rajeev},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9566a1c71272e5136f53e8e63c0a7775}
+      \strng{fullhash}{9566a1c71272e5136f53e8e63c0a7775}
+      \strng{bibnamehash}{9566a1c71272e5136f53e8e63c0a7775}
+      \strng{authorbibnamehash}{9566a1c71272e5136f53e8e63c0a7775}
+      \strng{authornamehash}{9566a1c71272e5136f53e8e63c0a7775}
+      \strng{authorfullhash}{9566a1c71272e5136f53e8e63c0a7775}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Data Stream Management: Processing High-Speed Data Streams}
+      \field{year}{2016}
+    \endentry
     \entry{garrison2012haplotype}{article}{}
       \name{author}{2}{}{%
         {{hash=ed2afc937ebadd8cc2df8ef63f91f2ae}{%
@@ -2381,6 +2446,40 @@
       \field{year}{2007}
       \field{pages}{153\bibrangedash 158}
       \range{pages}{6}
+    \endentry
+    \entry{greenwald2001space}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=34dc06ea3775c29788f4f3df2594560b}{%
+           family={Greenwald},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1892633f2f52be776bcfd32f9967a0f0}{%
+           family={Khanna},
+           familyi={K\bibinitperiod},
+           given={Sanjeev},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{f17178df8be234b93a609a52d6d65e46}
+      \strng{fullhash}{f17178df8be234b93a609a52d6d65e46}
+      \strng{bibnamehash}{f17178df8be234b93a609a52d6d65e46}
+      \strng{authorbibnamehash}{f17178df8be234b93a609a52d6d65e46}
+      \strng{authornamehash}{f17178df8be234b93a609a52d6d65e46}
+      \strng{authorfullhash}{f17178df8be234b93a609a52d6d65e46}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{ACM SIGMOD Record}
+      \field{number}{2}
+      \field{title}{Space-efficient online computation of quantile summaries}
+      \field{volume}{30}
+      \field{year}{2001}
+      \field{pages}{58\bibrangedash 66}
+      \range{pages}{9}
     \endentry
     \entry{mendel1865}{article}{}
       \name{author}{1}{}{%
@@ -3532,6 +3631,35 @@
       \field{labeltitlesource}{title}
       \field{title}{Mathematical Notes on SAMtools Algorithms}
       \field{year}{2010}
+    \endentry
+    \entry{li2011tabix}{article}{}
+      \name{author}{1}{}{%
+        {{hash=466d90849ccf7e74e32d338b7c35491d}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Heng},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{fullhash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{bibnamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authorbibnamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authornamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authorfullhash}{466d90849ccf7e74e32d338b7c35491d}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{5}
+      \field{title}{Tabix: fast retrieval of sequence features from generic TAB-delimited files}
+      \field{volume}{27}
+      \field{year}{2011}
+      \field{pages}{718\bibrangedash 719}
+      \range{pages}{2}
     \endentry
     \entry{li2014towards}{article}{}
       \name{author}{1}{}{%
@@ -5690,6 +5818,48 @@
       \field{year}{2013}
       \field{pages}{e59494}
       \range{pages}{-1}
+    \endentry
+    \entry{shrivastava2004medians}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=e001346eaa5b434d2f4a799442134a17}{%
+           family={Shrivastava},
+           familyi={S\bibinitperiod},
+           given={Nisheeth},
+           giveni={N\bibinitperiod}}}%
+        {{hash=1e441ea474ed474e8f8129d5231eea87}{%
+           family={Buragohain},
+           familyi={B\bibinitperiod},
+           given={Chiranjeeb},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d52a30445cfae3ca4f61faee6dd6c5d3}{%
+           family={Agrawal},
+           familyi={A\bibinitperiod},
+           given={Divyakant},
+           giveni={D\bibinitperiod}}}%
+        {{hash=bfc7c4a61967484cf7b20777bf74e5c1}{%
+           family={Suri},
+           familyi={S\bibinitperiod},
+           given={Subhash},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{b51a3881e81b7d26b1fd7306d5c58569}
+      \strng{fullhash}{9d92236f6f77880ba7f5d0cf152e456b}
+      \strng{bibnamehash}{b51a3881e81b7d26b1fd7306d5c58569}
+      \strng{authorbibnamehash}{b51a3881e81b7d26b1fd7306d5c58569}
+      \strng{authornamehash}{b51a3881e81b7d26b1fd7306d5c58569}
+      \strng{authorfullhash}{9d92236f6f77880ba7f5d0cf152e456b}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2nd international conference on Embedded networked sensor systems}
+      \field{title}{Medians and beyond: new aggregation techniques for sensor networks}
+      \field{year}{2004}
+      \field{pages}{239\bibrangedash 249}
+      \range{pages}{11}
     \endentry
     \entry{simpson2012efficient}{article}{}
       \name{author}{2}{}{%

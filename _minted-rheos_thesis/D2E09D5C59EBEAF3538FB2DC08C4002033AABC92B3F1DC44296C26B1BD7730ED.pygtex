@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZob{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}fileformat=VCFv4.3}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}fileDate=20090805}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}source=myImputationProgramV3.1}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}reference=file:///seq/references/1000GenomesPilot\PYGZhy{}NCBI36.fasta}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}contig=\PYGZlt{}ID=20,length=62435964,assembly=B36,md5=f126cdf8a6e0c7f379d618ff66beb2da,species=\PYGZdq{}Homo sapiens\PYGZdq{},taxonomy=x\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}phasing=partial}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}INFO=\PYGZlt{}ID=NS,Number=1,Type=Integer,Description=\PYGZdq{}Number of Samples With Data\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}INFO=\PYGZlt{}ID=DP,Number=1,Type=Integer,Description=\PYGZdq{}Total Depth\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}INFO=\PYGZlt{}ID=AF,Number=A,Type=Float,Description=\PYGZdq{}Allele Frequency\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}INFO=\PYGZlt{}ID=AA,Number=1,Type=String,Description=\PYGZdq{}Ancestral Allele\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}INFO=\PYGZlt{}ID=DB,Number=0,Type=Flag,Description=\PYGZdq{}dbSNP membership, build 129\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}INFO=\PYGZlt{}ID=H2,Number=0,Type=Flag,Description=\PYGZdq{}HapMap2 membership\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}FILTER=\PYGZlt{}ID=q10,Description=\PYGZdq{}Quality below 10\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}FILTER=\PYGZlt{}ID=s50,Description=\PYGZdq{}Less than 50\PYGZpc{} of samples have data\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}FORMAT=\PYGZlt{}ID=GT,Number=1,Type=String,Description=\PYGZdq{}Genotype\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}FORMAT=\PYGZlt{}ID=GQ,Number=1,Type=Integer,Description=\PYGZdq{}Genotype Quality\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}FORMAT=\PYGZlt{}ID=DP,Number=1,Type=Integer,Description=\PYGZdq{}Read Depth\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}\PYGZsh{}FORMAT=\PYGZlt{}ID=HQ,Number=2,Type=Integer,Description=\PYGZdq{}Haplotype Quality\PYGZdq{}\PYGZgt{}}
+  \PYG{c+c1}{\PYGZsh{}CHROM POS ID REF ALT QUAL FILTER INFO FORMAT NA00001 NA00002 NA00003}
+  \PYG{l+m}{20} \PYG{l+m}{14370} rs6054257 G A \PYG{l+m}{29} PASS \PYG{n+nv}{NS}\PYG{o}{=}\PYG{l+m}{3}\PYG{p}{;}\PYG{n+nv}{DP}\PYG{o}{=}\PYG{l+m}{14}\PYG{p}{;}\PYG{n+nv}{AF}\PYG{o}{=}\PYG{l+m}{0}.5\PYG{p}{;}DB\PYG{p}{;}H2 GT:GQ:DP:HQ \PYG{l+m}{0}\PYG{p}{|}\PYG{l+m}{0}:48:1:51,51 \PYG{l+m}{1}\PYG{p}{|}\PYG{l+m}{0}:48:8:51,51 \PYG{l+m}{1}/1:43:5:.,.
+  \PYG{l+m}{20} \PYG{l+m}{17330} . T A \PYG{l+m}{3} q10 \PYG{n+nv}{NS}\PYG{o}{=}\PYG{l+m}{3}\PYG{p}{;}\PYG{n+nv}{DP}\PYG{o}{=}\PYG{l+m}{11}\PYG{p}{;}\PYG{n+nv}{AF}\PYG{o}{=}\PYG{l+m}{0}.017 GT:GQ:DP:HQ \PYG{l+m}{0}\PYG{p}{|}\PYG{l+m}{0}:49:3:58,50 \PYG{l+m}{0}\PYG{p}{|}\PYG{l+m}{1}:3:5:65,3 \PYG{l+m}{0}/0:41:3
+  \PYG{l+m}{20} \PYG{l+m}{1110696} rs6040355 A G,T \PYG{l+m}{67} PASS \PYG{n+nv}{NS}\PYG{o}{=}\PYG{l+m}{2}\PYG{p}{;}\PYG{n+nv}{DP}\PYG{o}{=}\PYG{l+m}{10}\PYG{p}{;}\PYG{n+nv}{AF}\PYG{o}{=}\PYG{l+m}{0}.333,0.667\PYG{p}{;}\PYG{n+nv}{AA}\PYG{o}{=}T\PYG{p}{;}DB GT:GQ:DP:HQ \PYG{l+m}{1}\PYG{p}{|}\PYG{l+m}{2}:21:6:23,27 \PYG{l+m}{2}\PYG{p}{|}\PYG{l+m}{1}:2:0:18,2 \PYG{l+m}{2}/2:35:4
+  \PYG{l+m}{20} \PYG{l+m}{1230237} . T . \PYG{l+m}{47} PASS \PYG{n+nv}{NS}\PYG{o}{=}\PYG{l+m}{3}\PYG{p}{;}\PYG{n+nv}{DP}\PYG{o}{=}\PYG{l+m}{13}\PYG{p}{;}\PYG{n+nv}{AA}\PYG{o}{=}T GT:GQ:DP:HQ \PYG{l+m}{0}\PYG{p}{|}\PYG{l+m}{0}:54:7:56,60 \PYG{l+m}{0}\PYG{p}{|}\PYG{l+m}{0}:48:4:51,51 \PYG{l+m}{0}/0:61:2
+  \PYG{l+m}{20} \PYG{l+m}{1234567} microsat1 GTC G,GTCT \PYG{l+m}{50} PASS \PYG{n+nv}{NS}\PYG{o}{=}\PYG{l+m}{3}\PYG{p}{;}\PYG{n+nv}{DP}\PYG{o}{=}\PYG{l+m}{9}\PYG{p}{;}\PYG{n+nv}{AA}\PYG{o}{=}G GT:GQ:DP \PYG{l+m}{0}/1:35:4 \PYG{l+m}{0}/2:17:2 \PYG{l+m}{1}/1:40:3
+\end{Verbatim}
