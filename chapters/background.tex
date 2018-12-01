@@ -494,10 +494,115 @@ The stream-based approach adopted by the Rheos framework desribed in this work a
 \subsection{Alignment}
 \label{sec:bg_alignment}
 
+Genome alignment (also called mapping) is the process that, given a DNA sequencing read, finds the location in a reference genome that the read best matches to. This is an important process in a next generation sequencing pipeline because it provides a way of ordering the otherwise unordered collection of raw reads (by refrence coordinate) that can be used to find locations where the sample genome is different from the reference (see Figure \ref{fig:locus}). 
 
-BWA/MEM -
-Bowtie - 
-Gem - 
+\begin{figure}[H]
+    \includegraphics[scale=0.45]{locus}
+    \centering
+    \caption {Collection of reads aligned to a reference genome and evaluated at a locus that contains a heterozygous SNP.}
+    \label{fig:locus}
+\end{figure}
+
+This process is equivalent to substring search where the string being searched is $3\times10^9$ characters long and there are $10^9$ patterns of length $150$ to be found. This process is complicated by the fact that reads from a sample have both sequencing errors and genuine genetic variation that make them differ from the reference, and the fact that certain regions of the genome can be highly repetititve, with the same sequence pattern occurring hundreds of times, making unique mapping challenging.
+
+Initially, algorithms for mapping sequencing reads (such as Maq\autocite{li2008mapping} and SOAP\autocite{li2008soap}) have used a hash table approach\autocite{reinert2015alignment} (building up tables of subsequences) for finding promising approximate locations for a read within the reference, and then using the Smith-Waterman\autocite{smith1981comparison} dynamic programming algorithm for selecting the best matching location. These approaches, however, have proven to be quite slow with typical runtimes exceeding 72 hours on a single high coverage whole genome sample. For the past decade the best available genome alignment approaches in terms of balanced accuracy and speed of processing have been based on the Burrows-Wheeler Transform (BWT)\autocite{burrows1994block} and the FM index\autocite{ferragina2000opportunistic}. Two of the most popular and widely used are Bowtie\autocite{langmead2009ultrafast} and BWA\autocite{li2009fast}. With recent improvements in computer power, hash table based approaches, such as minimap2\autocite{li2018minimap2} and SNAP\autocite{zaharia2011faster} have made a comeback and are again becoming competitive in the alignment space. A commercial tool called Novoalign (http://www.novocraft.com/products/novoalign/) has consistently been a top performer in terms of speed and accuracy, but the method is not publically available.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.55]{aligner_comparison_2018}
+    \centering
+    \caption {Comparison of several aligners on simulated a)long reads >1000 bp, and b) short reads 150bp.\autocite{li2018minimap2}}
+    \label{fig:aligner_comparison_2018}
+\end{figure}
+
+String search is a well studied field, and many genome aligners use the equivalence relationship between suffix trees, suffix arrays, and the BWT (see Figure \ref{fig:suffix_tree_array_bwt}) to construct searchable and compressed data structures suitable for genome aligment applications.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.5]{suffix_tree_array_bwt}
+    \centering
+    \caption {Equivalence between a Suffix Tree, Suffix Array, and the BWT matrix of the string BANANA.\autocite{langmead_teaching}}
+    \label{fig:suffix_tree_array_bwt}
+\end{figure}
+
+\paragraph{Suffix Tree}
+
+A suffix \emph{trie} $T$ is a tree data structure that given a string $s=c_1,c_2,...,c_n$ over an alphabet $\Sigma$, such that $c_i \in \Sigma$ encodes all of the suffixes of $s$ from the root to the leaves. $s$ is terminated with a sentinel character $\$$. For any character $c \in \Sigma$ and node $n_i \in T$, $n_i$ has at most one child labeled $c$. Every leaf is the sentinel character $\$$. See Figure \ref{fig:suffix_trie} for example.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.5]{suffix_trie}
+    \centering
+    \caption {Suffix trie of string $abaaba\$$.\autocite{langmead_teaching}}
+    \label{fig:suffix_trie}
+\end{figure}
+
+Because every substring of $s$ is a prefix of some suffix of $s$, given a search query $q$ one can check whether $q$ is a substring of $s$ in $\mathcal{O}(|q|)$ time by progressively matching each character of $q$ from the root of $T$ until either all of $q$ is matched (hence $q$ is a substring of $T$) or at some point a character of $q$ does not have a matching node in $T$, indicating that $q$ is not a substring of $T$. The size (number of nodes) of the trie can grow with $\mathcal{O}(|s|^2)$  
+
+\begin{figure}[H]
+    \includegraphics[scale=0.3]{suffix_tree_1}
+    \centering
+    \caption {Create suffix tree by coalescing non-branching paths into single nodes.\autocite{langmead_teaching}}
+    \label{fig:suffix_tree_1}
+\end{figure}
+
+The size of the tree can be reduced by coalescing all non-branching subpaths of $T$ into single nodes (see Figure \ref{fig:suffix_tree_1}). 
+
+\begin{figure}[H]
+    \includegraphics[scale=0.3]{suffix_tree_2}
+    \centering
+    \caption {Reduce size by replacing substrings by offsets into the original string.\autocite{langmead_teaching}}
+    \label{fig:suffix_tree_2}
+\end{figure}
+
+The size can be further reduced to $\mathcal{O}(|s|)$ by replacing string nodes with pairs of offsets into the original string $s$ (see Figure \ref{fig:suffix_tree_2}).
+
+\begin{figure}[H]
+    \includegraphics[scale=0.3]{suffix_tree_3}
+    \centering
+    \caption {Aid search by storing index of substring in leaves.\autocite{langmead_teaching}}
+    \label{fig:suffix_tree_3}
+\end{figure}
+
+Searching can be aided by storing offsets of suffixes in the leaf node of the path spelling out that suffix. See Figure \ref{fig:suffix_tree_3}. The online construction algorithm by Ukkonen\autocite{ukkonen1995line} allows creation of suffix trees in $\mathcal{O}(|s|)$ time and space. Although search against the suffix tree is very fast - $\mathcal{O}(|q|)$, the tree size is still an issue when considering applications to human genome sequencing. A suffix tree for a human would take occupy more than 45 GB of memory\autocite{langmead_teaching}. Furthermore, alignment of real reads is made more complex because reads have errors and encode genetic variation, thus inexact searching mechanisms are required.
+
+\paragraph{Suffix Array}
+
+Suffix arrays were developed by Manber and Myers\autocite{manber1993suffix} as a data structure that is equivalent to a suffix tree but occupies less space. Given a string $s = c_1,c_2,....,c_n$, and letting $s[i,j]$ be a substring of $s$ between indexes $i$ and $j$, the suffix array $SA$ of $s$ contains integers providing the starting positions of suffixes of $s$ sorted in lexicographical order, s.t. $\forall i \in [1,n]: s[SA[i-1],n] < s[SA[i],n]$. See Figure \ref{fig:suffix_tree_array_bwt} for an exaple suffix array representing the string $banana$. Because the array is sorted, a simple binary search is possible that finds or rules out a match of query $q$ in $s$ in $\mathcal{O}(|q|\log{|s|})$, although a more sophisticated search algorithm in $\mathcal{O}(|q| + \log{|s|})$ is possible\autocite{manber1993suffix}. A suffix array can be constructed by a depth-first traversal of a suffix tree in $\mathcal{O}(|s|)$ time, with the best current algorithm due to Kärkkäinen\autocite{karkkainen2003simple}. Using the array can bring the space requirements for a human-sized genome search index down to about ~16GB\autocite{langmead_teaching}.
+
+
+\paragraph{The BWT} (see Figure \ref{fig:bwt_bowtie}) is constructed from an original string $s$ by appending a special termination character \$ that is lexicographically smaller than all other characters and does not occur in $s$. Then a matrix of all cyclic rotations of $s\$$ is constructed and sorted in ascending lexicographical order (Figure \ref{fig:bwt_bowtie} a). The last column of this matrix is the BWT, which can be used to reconstruct the original string and perform substring searches on it. This mechanism relies on the fact that all common prefixes of substrings occupy a contiguous block of rows in the BWT matrix (because of lexicographical ordering, Figure \ref{fig:bwt_bowtie} c)), and the LF (last-first) property of the BWT. Namely, the character in the last column of the BWT directly precedes the character in the first column of the BWT in the original string. And, the index of the occurrence of a character in the last column of the BWT is the same as the index of the occurrence of the same character in the first column of the BWT (see Figure \ref{fig:bwt_bowtie} b)) i.e. the first occurrence of $g$ in the last column corresponds to the first occurence of $g$ in the first column. The third occurrence of $a$ in the last column corresponds to the third occurrence of $a$ in the first column, etc.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.35]{bwt_bowtie}
+    \centering
+    \caption {a) Creating the BWT of a string. b) All substrings with the same prefix occupy adjacent rows. c) The original string can be recovered from the BWT by using the LF rule.\autocite{langmead2009ultrafast}}
+    \label{fig:bwt_bowtie}
+\end{figure}
+
+Alternatively the BWT can be constructed from the suffix array via:
+
+\begin{equation}
+    BWT[i] = \begin{cases}
+        s[SA[i] - 1],& \text{if } SA[i] > 1\\
+        \$,& \text{otherwise}
+    \end{cases}
+\end{equation}, per \autocite{simpson2010efficient}
+
+The entire original string can be recovered from the BWT in the following manner. The last column is the BWT. The first column is the lexicographically sorted BWT. Find the row that starts with $\$$. The character in the last column in that row is the last character of original string $s$ ($g$ in the example above). Find the first occurrence of that character in the first column. Look up the character in the last column of that row ($c$ in the example above). This is the second-last character of $s$. Note the index of its occurrence in the last column (it's a second $c$ in the example). Find the row with the same character and the same index in the first column (second $c$ in the first column). The last character in that row is the second-last character of $s$. Repeat this process until the last character in a row is $\$$. This recovers the original string.
+
+\paragraph{FM Index}
+
+\paragraph{Bowtie}
+
+Bowtie is a popular aligner developed by Ben Langmead in 2009, with a focus on fast alignment of short reads\autocite{langmead2009ultrafast}, later followed up and ehnanced with Bowtie 2 for longer reads\autocite{langmead2012fast}, and adapted massively parallel deployment on the AWS cloud with Crossbow\autocite{langmead2009searching}. Since the <50bp long short-reads that the original Bowtie was created for are no longer seen we focus our exposition on Bowtie 2.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.5]{bowtie_pipeline}
+    \centering
+    \caption Steps used by Bowtie 2 alignment.\autocite{langmead2012fast}
+    \label{fig:bowtie_pipeline}
+\end{figure}
+
+
+
 
 \subsection{Raw Data QC}
 \label{sec:bg_raw_data_qc}

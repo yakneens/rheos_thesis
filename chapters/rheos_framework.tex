@@ -225,9 +225,10 @@ where:
 
 Section \ref{sec:bg_raw_data_qc} of the Background chapter discusses various metrics of interest that are based on observations of read data and the tools that are used to collect them. Here we describe how to collect the most typical metrics in the streaming paradigm of Rheos. As before, there are per-read metrics such as Base Quality Distribution, and Adapter Sequence Presence, as well as per-sample metrics such as Average GC Content, Insert Distribution, Read Length Distribution, and others. The utility of these metrics is to be able to set up filters for low quality data as well as input for downstream variant-calling models (see Section \ref{sec:bg_germline_sv_calling} for example). 
 
-Assume that we are observing a stream $M_{raw} = \{m_i: m_i = (header, payload)\}$ of read messages where the payload is a read $r$ as defined above. Under the assumptions of Section \ref{sec:rheos_streaming_architecture} we know that the number of elements in the stream is unbounded. We are thus able to straightforwardly calculate metrics such as mean, max, min based on a running tally, but must resort to approximations for rank statistics such as median and other quantiles to maintain operations in bounded space. We use the following update rules for min, max, and mean calculations:
+Assume that we are observing a stream $M_{raw} = \{m_i: m_i = (header, payload)\}$ of read messages where the payload is a read $r$ as defined above. Under the assumptions of Section \ref{sec:rheos_streaming_architecture} we know that the number of elements in the stream is unbounded. We are able to straightforwardly calculate incremental estimates for metrics such as mean, variance, max, and min, but require more sophisticated structures for computing estimates of rank statistics such as median and other quantiles to maintain operations in bounded space. We use the following update rules for min, max, mean, and variance\autocite{welford1962note} calculations:
 
 \begin{equation}
+    \label{eq:stream_min}
     min_k(M) =  \begin{cases}
         m_k,& \text{if } m_k < min_{k-1}(M)\\
         min_{k-1}(M),& \text{otherwise}
@@ -235,6 +236,7 @@ Assume that we are observing a stream $M_{raw} = \{m_i: m_i = (header, payload)\
 \end{equation}
 
 \begin{equation}
+    \label{eq:stream_max}
     max_k(M) =  \begin{cases}
         m_k,& \text{if } m_k > max_{k-1}(M)\\
         max_{k-1}(M),& \text{otherwise}
@@ -242,7 +244,13 @@ Assume that we are observing a stream $M_{raw} = \{m_i: m_i = (header, payload)\
 \end{equation}
 
 \begin{equation}
-    \mu_k(M) =  \mu_{k-1}(M) + \frac {m_k - \mu_{k-1}} {t} 
+    \label{eq:stream_mean}
+    \mu_k(M) =  \mu_{k-1}(M) + \frac {m_k - \mu_{k-1}} {k} 
+\end{equation}
+
+\begin{equation}
+    \label{eq:stream_variance}
+    \sigma_k^2(M) =  \frac{\sigma_{k-1}^2(M) + (m_k - \mu_{k-1}(M))(m_k - \mu_k(M))}{k-1} 
 \end{equation}
 
 In order to set up the mechanisms to answer quantile queries the following definitions are used\autocite{garofalakis2016data}:
@@ -281,29 +289,79 @@ Since the local state required for storing the quantile summaries may not fit in
 
 Input: $M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
 Operation: $f(r) = updateQuantileSummaries(r)$\\
-Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, Q_{bqd})$.
+Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, Q_{bqd})$.
 
 \begin{algorithm}
     \caption{Updating quantile summaries for Base Quality Distribution.}\label{ag:update_quantile_summaries_bqd}
     \begin{algorithmic}[1]
         \Function{updateBQDQuantileSummaries}{$r$}
             \State $reservoir \gets \Call{getReservoir}{r.s\_id}$
-            \State $summaries \gets \Call{getQuantileSummaries}{r.s\_id}$
             \State $reservoir.addNewRead(r)$
             \If {$reservoir.isFull$}
+                \State $summaries \gets \Call{getQuantileSummaries}{r.s\_id}$
                 \For{$read$ in $reservoir$}
                     \For{$index,read.q$ in $read$}
-                        \State \Call{updateQGram}{$summaries[index], read.q$}
+                        \State \Call{updateQGram}{$summaries[index], read.q$} \Comment{per \autocite{shrivastava2004medians}}
                     \EndFor
                 \EndFor
                 \State \Call{purgeReservoir}{$reservoir$}
-                \State \Call{outputQuatileSummary}{$r.s\_id, summaries$}
+                \State \Call{outputQuantileSummary}{$r.s\_id, summaries$}
             \EndIf
     \EndFunction
     \end{algorithmic}
 \end{algorithm}
 
-\paragraph{Insert Size Distribution} - The insert size distribution is an important metric because it is not only indicative of the overall quality of a sample's data, but it is also used by structural variant calling to find read-pairs that map abnormally far apart (indicating a deletion), or abnormally close together (indicating an insertion). Calculating this metric requires a stream of read-pairs, where both reads have been successfully mapped to the reference genome. Given a mapped read-pair $(r_1,r_2)$ where each read has a beginning coordinate $r.pos$ and an end coordinate $r.end$, the insert size is $l = r_2.end - r_1.pos$.
+\paragraph{Insert Size Distribution} - The insert size distribution is an important metric because it is not only indicative of the overall quality of a sample's data, but it is also used by structural variant calling to find read-pairs that map abnormally far apart (indicating a deletion), or abnormally close together (indicating an insertion). Calculating this metric requires a stream of read-pairs, where both reads have been successfully mapped to the reference genome. Given a mapped read-pair $(r_1,r_2)$ where each read has a beginning coordinate $r.pos$ and an end coordinate $r.end$, the insert size is $l = r_2.end - r_1.pos$. We are interested in the mean, variance and quantiles of the insert size distribution. Because the insert length can be any size the quantile summary method of Greenwald and Khanna\autocite{greenwald2001space} is most appropriate for the quantiles. Read pairs are observed on the input stream and buffered in per-sample reservoirs. When a reservoir is full the read pairs are used to update and output an appropriate insert size distribution mean, variance, and quantile summary.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.85]{insert_size_distribution}
+    \centering
+    \caption {Distribution of insert sizes from two ICGC pancreatic cancer patients DO35138 and DO22154.\autocite{stephens2016simulating}}
+    \label{fig:insert_size_distribution}
+\end{figure} 
+
+Input: $M_{pair} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$, and $r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
+Operation: $f(r) = updateInsertSizeDistribution(s\_id,r_1, r_2)$\\
+Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, \mu_{isd}, \sigma_{isd}^2, Q_{isd})$.
+
+\begin{algorithm}
+    \caption{Updating metrics for Insert Size Distribution.}\label{ag:update_metrics_isd}
+    \begin{algorithmic}[1]
+        \Function{updateInsertSizeDistribution}{$s\_id, r_1,r_2$}
+            \State $pairReservoir \gets \Call{getReservoir}{s\_id}$
+            \State $pairReservoir.addNewReadPair(r_1, r_2)$
+            \If {$pairReservoir.isFull$}
+                \State $summary \gets \Call{getQuantileSummary}{s\_id}$
+                \State $mu \gets \Call{getMu}{s\_id}$
+                \State $sigmaSq \gets \Call{getSigmaSq}{s\_id}$
+                \For{($r_1, r_2$) in $pairReservoir$}
+                    \State $insertSize$ \gets $r_2.end - r_1.pos$
+                    \State \Call{updateQuantileSummary}{$summary, insertSize$} \Comment{per \autocite{greenwald2001space}}
+                    \State $newMu$ \gets \Call{updateMu}{$mu, insertSize$} \Comment{using Eq. \ref{eq:stream_mean}}
+                    \State $newSigmaSq$ \gets \Call{updateSigmaSQ}{$sigmaSq, mu, newMu, insertSize$} \Comment{using Eq. \ref{eq:stream_variance}}
+                \EndFor
+                \State \Call{purgeReservoir}{$pairReservoir$}
+                \State \Call{outputInsertSizeDistribution}{$s\_id, newMu, newSigmaSq, summary$}
+            \EndIf
+    \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+Other QC metrics, such as those measuring GC Content Distribution, Read Length Distribution, etc. can be collected analogously. 
+
+\subsection{Alignment}
+
+\subsection{Local Assembly}
+
+\subsection{Simple SNP Calling}
+
+\subsection{Assembly-based Variant Calling}
+
+\subsection{Variant Filtering}
+
+\subsection{Variant Annotation}
+
+\subsection{Variant Output}
 
 \hrule
 Describe specific problems that need to be addressed by the system in a stream-based formulation - how to go from a collection of raw reads to a set of annotated variants: map reads, perform QC filtering, model loci, assemble alternative haplotypes, call variants, filter variants, annotate, produce output.  

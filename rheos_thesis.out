@@ -37,9 +37,18 @@
 \BOOKMARK [2][-]{subsection.5.2.1}{Service-Oriented Data Streaming Model}{section.5.2}% 37
 \BOOKMARK [1][-]{section.5.3}{Domain-specific Problems}{chapter.5}% 38
 \BOOKMARK [2][-]{subsection.5.3.1}{Read QC Metrics}{section.5.3}% 39
-\BOOKMARK [1][-]{section.5.4}{Services of Rheos}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.5}{Proof of concept implementation}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.6}{Conclusions}{chapter.5}% 42
-\BOOKMARK [0][-]{chapter.6}{Discussion and Conclusion}{}% 43
-\BOOKMARK [0][-]{section*.78}{Appendix}{}% 44
-\BOOKMARK [0][-]{Appendix.1.A}{Code Listings}{}% 45
+\BOOKMARK [2][-]{subsection.5.3.2}{Alignment}{section.5.3}% 40
+\BOOKMARK [2][-]{subsection.5.3.3}{Local Assembly}{section.5.3}% 41
+\BOOKMARK [2][-]{subsection.5.3.4}{Simple SNP Calling}{section.5.3}% 42
+\BOOKMARK [2][-]{subsection.5.3.5}{Assembly-based Variant Calling}{section.5.3}% 43
+\BOOKMARK [2][-]{subsection.5.3.6}{Variant Filtering}{section.5.3}% 44
+\BOOKMARK [2][-]{subsection.5.3.7}{Variant Annotation}{section.5.3}% 45
+\BOOKMARK [2][-]{subsection.5.3.8}{Variant Output}{section.5.3}% 46
+\BOOKMARK [1][-]{section.5.4}{Services of Rheos}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.5}{Proof of concept implementation}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.6}{Conclusions}{chapter.5}% 49
+\BOOKMARK [0][-]{chapter.6}{Discussion and Conclusion}{}% 50
+\BOOKMARK [1][-]{section.6.1}{Validation and Conclusion}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.2}{Future Direction}{chapter.6}% 52
+\BOOKMARK [0][-]{section*.93}{Appendix}{}% 53
+\BOOKMARK [0][-]{Appendix.1.A}{Code Listings}{}% 54

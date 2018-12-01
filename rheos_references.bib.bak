@@ -2085,4 +2085,177 @@
   publisher = {Springer},
 }
 
+@InProceedings{shrivastava2004medians,
+  author       = {Shrivastava, Nisheeth and Buragohain, Chiranjeeb and Agrawal, Divyakant and Suri, Subhash},
+  title        = {Medians and beyond: new aggregation techniques for sensor networks},
+  booktitle    = {Proceedings of the 2nd international conference on Embedded networked sensor systems},
+  year         = {2004},
+  organization = {ACM},
+  pages        = {239--249},
+}
+
+@Article{stephens2016simulating,
+  author    = {Stephens, Zachary D and Hudson, Matthew E and Mainzer, Liudmila S and Taschuk, Morgan and Weber, Matthew R and Iyer, Ravishankar K},
+  title     = {Simulating next-generation sequencing datasets from empirical mutation and sequencing models},
+  journal   = {PloS one},
+  year      = {2016},
+  volume    = {11},
+  number    = {11},
+  pages     = {e0167047},
+  publisher = {Public Library of Science},
+}
+
+@Article{welford1962note,
+  author    = {Welford, BP},
+  title     = {Note on a method for calculating corrected sums of squares and products},
+  journal   = {Technometrics},
+  year      = {1962},
+  volume    = {4},
+  number    = {3},
+  pages     = {419--420},
+  publisher = {Taylor \& Francis Group},
+}
+
+@Article{burrows1994block,
+  author    = {Burrows, Michael and Wheeler, David J},
+  title     = {A block-sorting lossless data compression algorithm},
+  year      = {1994},
+  publisher = {Citeseer},
+}
+
+@InProceedings{ferragina2000opportunistic,
+  author       = {Ferragina, Paolo and Manzini, Giovanni},
+  title        = {Opportunistic data structures with applications},
+  booktitle    = {Foundations of Computer Science, 2000. Proceedings. 41st Annual Symposium on},
+  year         = {2000},
+  organization = {IEEE},
+  pages        = {390--398},
+}
+
+@Article{li2008mapping,
+  author    = {Li, Heng and Ruan, Jue and Durbin, Richard},
+  title     = {Mapping short DNA sequencing reads and calling variants using mapping quality scores},
+  journal   = {Genome research},
+  year      = {2008},
+  pages     = {gr--078212},
+  publisher = {Cold Spring Harbor Lab},
+}
+
+@Article{li2008soap,
+  author    = {Li, Ruiqiang and Li, Yingrui and Kristiansen, Karsten and Wang, Jun},
+  title     = {SOAP: short oligonucleotide alignment program},
+  journal   = {Bioinformatics},
+  year      = {2008},
+  volume    = {24},
+  number    = {5},
+  pages     = {713--714},
+  publisher = {Oxford University Press},
+}
+
+@Article{langmead2009ultrafast,
+  author    = {Langmead, Ben and Trapnell, Cole and Pop, Mihai and Salzberg, Steven L},
+  title     = {Ultrafast and memory-efficient alignment of short DNA sequences to the human genome},
+  journal   = {Genome biology},
+  year      = {2009},
+  volume    = {10},
+  number    = {3},
+  pages     = {R25},
+  publisher = {BioMed Central},
+}
+
+@Article{reinert2015alignment,
+  author    = {Reinert, Knut and Langmead, Ben and Weese, David and Evers, Dirk J},
+  title     = {Alignment of next-generation sequencing reads},
+  journal   = {Annual review of genomics and human genetics},
+  year      = {2015},
+  volume    = {16},
+  pages     = {133--151},
+  publisher = {Annual Reviews},
+}
+
+@Article{li2018minimap2,
+  author    = {Li, Heng},
+  title     = {Minimap2: pairwise alignment for nucleotide sequences},
+  journal   = {Bioinformatics},
+  year      = {2018},
+  volume    = {1},
+  pages     = {7},
+  publisher = {Oxford University Press},
+}
+
+@Article{zaharia2011faster,
+  author  = {Zaharia, Matei and Bolosky, William J and Curtis, Kristal and Fox, Armando and Patterson, David and Shenker, Scott and Stoica, Ion and Karp, Richard M and Sittler, Taylor},
+  title   = {Faster and more accurate sequence alignment with SNAP},
+  journal = {arXiv preprint arXiv:1111.5572},
+  year    = {2011},
+}
+
+@Online{langmead_teaching,
+  url = {http://www.langmead-lab.org/teaching-materials/},
+}
+
+@Article{ukkonen1995line,
+  author    = {Ukkonen, Esko},
+  title     = {On-line construction of suffix trees},
+  journal   = {Algorithmica},
+  year      = {1995},
+  volume    = {14},
+  number    = {3},
+  pages     = {249--260},
+  publisher = {Springer},
+}
+
+@Article{manber1993suffix,
+  author    = {Manber, Udi and Myers, Gene},
+  title     = {Suffix arrays: a new method for on-line string searches},
+  journal   = {siam Journal on Computing},
+  year      = {1993},
+  volume    = {22},
+  number    = {5},
+  pages     = {935--948},
+  publisher = {SIAM},
+}
+
+@InProceedings{karkkainen2003simple,
+  author       = {K{\"a}rkk{\"a}inen, Juha and Sanders, Peter},
+  title        = {Simple linear work suffix array construction},
+  booktitle    = {International Colloquium on Automata, Languages, and Programming},
+  year         = {2003},
+  organization = {Springer},
+  pages        = {943--955},
+}
+
+@Article{simpson2010efficient,
+  author    = {Simpson, Jared T and Durbin, Richard},
+  title     = {Efficient construction of an assembly string graph using the FM-index},
+  journal   = {Bioinformatics},
+  year      = {2010},
+  volume    = {26},
+  number    = {12},
+  pages     = {i367--i373},
+  publisher = {Oxford University Press},
+}
+
+@Article{langmead2012fast,
+  author    = {Langmead, Ben and Salzberg, Steven L},
+  title     = {Fast gapped-read alignment with Bowtie 2},
+  journal   = {Nature methods},
+  year      = {2012},
+  volume    = {9},
+  number    = {4},
+  pages     = {357},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{langmead2009searching,
+  author    = {Langmead, Ben and Schatz, Michael C and Lin, Jimmy and Pop, Mihai and Salzberg, Steven L},
+  title     = {Searching for SNPs with cloud computing},
+  journal   = {Genome biology},
+  year      = {2009},
+  volume    = {10},
+  number    = {11},
+  pages     = {R134},
+  publisher = {BioMed Central},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
