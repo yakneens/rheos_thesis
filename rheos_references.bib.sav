@@ -2236,7 +2236,7 @@
   publisher = {Oxford University Press},
 }
 
-@Article{langmead2012fast,
+@Article{Langmead2012,
   author    = {Langmead, Ben and Salzberg, Steven L},
   title     = {Fast gapped-read alignment with Bowtie 2},
   journal   = {Nature methods},
@@ -2256,6 +2256,111 @@
   number    = {11},
   pages     = {R134},
   publisher = {BioMed Central},
+}
+
+@Article{farrar2006striped,
+  author    = {Farrar, Michael},
+  title     = {Striped Smith--Waterman speeds database searches six times over other SIMD implementations},
+  journal   = {Bioinformatics},
+  year      = {2006},
+  volume    = {23},
+  number    = {2},
+  pages     = {156--161},
+  publisher = {Oxford University Press},
+}
+
+@Article{li2010fast,
+  author    = {Li, Heng and Durbin, Richard},
+  title     = {Fast and accurate long-read alignment with Burrows--Wheeler transform},
+  journal   = {Bioinformatics},
+  year      = {2010},
+  volume    = {26},
+  number    = {5},
+  pages     = {589--595},
+  publisher = {Oxford University Press},
+}
+
+@Article{Li2013,
+  author  = {Li, Heng},
+  title   = {Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM},
+  journal = {arXiv preprint arXiv:1303.3997},
+  year    = {2013},
+}
+
+@Article{li2012exploring,
+  author    = {Li, Heng},
+  title     = {Exploring single-sample SNP and INDEL calling with whole-genome de novo assembly},
+  journal   = {Bioinformatics},
+  year      = {2012},
+  volume    = {28},
+  number    = {14},
+  pages     = {1838--1844},
+  publisher = {Oxford University Press},
+}
+
+@Article{rhoads2015pacbio,
+  author    = {Rhoads, Anthony and Au, Kin Fai},
+  title     = {PacBio sequencing and its applications},
+  journal   = {Genomics, proteomics \& bioinformatics},
+  year      = {2015},
+  volume    = {13},
+  number    = {5},
+  pages     = {278--289},
+  publisher = {Elsevier},
+}
+
+@Article{lu2016oxford,
+  author    = {Lu, Hengyun and Giordano, Francesca and Ning, Zemin},
+  title     = {Oxford Nanopore MinION sequencing and genome assembly},
+  journal   = {Genomics, proteomics \& bioinformatics},
+  year      = {2016},
+  volume    = {14},
+  number    = {5},
+  pages     = {265--279},
+  publisher = {Elsevier},
+}
+
+@Article{roberts2013advantages,
+  author    = {Roberts, Richard J and Carneiro, Mauricio O and Schatz, Michael C},
+  title     = {The advantages of SMRT sequencing},
+  journal   = {Genome biology},
+  year      = {2013},
+  volume    = {14},
+  number    = {6},
+  pages     = {405},
+  publisher = {BioMed Central},
+}
+
+@Article{li2018minimap2,
+  author    = {Li, Heng},
+  title     = {Minimap2: pairwise alignment for nucleotide sequences},
+  journal   = {Bioinformatics},
+  year      = {2018},
+  volume    = {1},
+  pages     = {7},
+  publisher = {Oxford University Press},
+}
+
+@Article{roberts2004reducing,
+  author    = {Roberts, Michael and Hayes, Wayne and Hunt, Brian R and Mount, Stephen M and Yorke, James A},
+  title     = {Reducing storage requirements for biological sequence comparison},
+  journal   = {Bioinformatics},
+  year      = {2004},
+  volume    = {20},
+  number    = {18},
+  pages     = {3363--3369},
+  publisher = {Oxford University Press},
+}
+
+@Article{li2018synthetic,
+  author    = {Li, Heng and Bloom, Jonathan M and Farjoun, Yossi and Fleharty, Mark and Gauthier, Laura and Neale, Benjamin and MacArthur, Daniel},
+  title     = {A synthetic-diploid benchmark for accurate variant-calling evaluation},
+  journal   = {Nature methods},
+  year      = {2018},
+  volume    = {15},
+  number    = {8},
+  pages     = {595},
+  publisher = {Nature Publishing Group},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

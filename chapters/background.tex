@@ -489,8 +489,6 @@ The SAM/BAM and VCF file formats have bencome the de-facto standards for represe
 
 The stream-based approach adopted by the Rheos framework desribed in this work attempts to address many of the above issues.
 
-\subsection{Base-calling}
-
 \subsection{Alignment}
 \label{sec:bg_alignment}
 
@@ -504,6 +502,17 @@ Genome alignment (also called mapping) is the process that, given a DNA sequenci
 \end{figure}
 
 This process is equivalent to substring search where the string being searched is $3\times10^9$ characters long and there are $10^9$ patterns of length $150$ to be found. This process is complicated by the fact that reads from a sample have both sequencing errors and genuine genetic variation that make them differ from the reference, and the fact that certain regions of the genome can be highly repetititve, with the same sequence pattern occurring hundreds of times, making unique mapping challenging.
+
+There are several key applications of alignment that involve sequences of varying length, require different properties, and may not all be best accomplished by the same algorithms. These are:
+
+\begin{itemize}
+    \item Alignment of individual single-end and paired-end reads to a human reference sequence. Where most of the read is expected to match successfully. This is the most abundant use case and the one towards which most alignment algorithms and software implementations are geared.
+    \item Alignment of split-reads to a reference sequence. Split-reads are those where a part of the read maps to one position in the reference sequence and another part of the read maps to a different part of the reference indicating that the read spans a genomic rearrangement. Reads that admit a split alignment may come out unmapped from a normal alignment stage. This type of alignment is important for both germline structural variant calling and somatic structural variant calling where genomic aberrations are more common.
+    \item Alignment of reads to a group of reference genomes for common pathogens (viruses, bacteria), as well as other common sample contaminating species.
+    \item Alignment of assembled contigs to the reference sequence after local assembly. Some variant calling methods will perform local assembly of reads into a group of potential haplotypes and will perform alignment of these haplotypes to the reference sequence to identify where the actual variants are. The haplotypes may be anywhere from hundreds to millions of bases long.
+    \item Alignment of reads to a group of alternative haplotypes. Variant callers may generate a list of candidate alternative haplotypes and reads need to be aligned to all of these in order to determine which haplotype is best supported by the reads data.      
+\end{itemize}
+
 
 Initially, algorithms for mapping sequencing reads (such as Maq\autocite{li2008mapping} and SOAP\autocite{li2008soap}) have used a hash table approach\autocite{reinert2015alignment} (building up tables of subsequences) for finding promising approximate locations for a read within the reference, and then using the Smith-Waterman\autocite{smith1981comparison} dynamic programming algorithm for selecting the best matching location. These approaches, however, have proven to be quite slow with typical runtimes exceeding 72 hours on a single high coverage whole genome sample. For the past decade the best available genome alignment approaches in terms of balanced accuracy and speed of processing have been based on the Burrows-Wheeler Transform (BWT)\autocite{burrows1994block} and the FM index\autocite{ferragina2000opportunistic}. Two of the most popular and widely used are Bowtie\autocite{langmead2009ultrafast} and BWA\autocite{li2009fast}. With recent improvements in computer power, hash table based approaches, such as minimap2\autocite{li2018minimap2} and SNAP\autocite{zaharia2011faster} have made a comeback and are again becoming competitive in the alignment space. A commercial tool called Novoalign (http://www.novocraft.com/products/novoalign/) has consistently been a top performer in terms of speed and accuracy, but the method is not publically available.
 
@@ -601,8 +610,192 @@ Bowtie is a popular aligner developed by Ben Langmead in 2009, with a focus on f
     \label{fig:bowtie_pipeline}
 \end{figure}
 
+Figure \ref{fig:bowtie_pipeline} shows the sequence of steps used by the Bowtie 2 alignment process. One of the big challenges for aligners is the ability to deal with gapped alignment i.e. sequences in the reads that are inserted or deleted with respect to the reference. These may be the result of sequencing errors or genuine genetic variation present in the sample. Since the read sequence cannot be matched to the reference exactly, gapped alignment drastically increases the search space of possible matches that need to be considered, corresponding to different possible gap sizes. In order to mitigate the degrading effect of gapped alignment on performance, Bowtie adopts a seed-and-extend mechanism where it performs ungapped exact alignments of substrings of the read that become seeds, followed by a gap-aware dynamic programming-based seed extension to obtain the final alignment. The index is built using a variant of \autocite{karkkainen2003simple} and occupies ~2.2 GB of disk space for the human reference.
 
+For alignment every read and its reverse complement are divided into overlapping subsequences that become the potential seeds. Each seed is aligned to the reference using the FM index in an ungapped fashion, but allowing a configurable number of mismatches. For a given read, if the FM index search fails to match the seed to the refrence at some location $i$ it backtracks and attempts a base substitution at that position that can be successfully matched and in a way that maximizes the overall alignment quality. It performs up to $k$ (configurable, default 1) such substitutions per read. Since the substitutions are made in a greedy manner the alignment result may not be globally optimal. To avoid potentially excessive backtracking Bowtie builds both a forward and a mirror index of the reference genome and attempts to match both ends of the read one after the other, with the forward and mirror index respectively attempting to obtain a high scoring alignment of both ends. The number of backtracking steps is further cut off at a hard threshold for performance reasons.
 
+The FM index search produces sets of ranges between which each seed matches. Seeds are assigned priorities based on the number of potential matches, where seeds that have fewer potential matches (i.e. map more uiquely) are given higher priority. Seeds are then selected in priority order for exact resolution. Using the BWT LF property and the FM occurrence array the selected range is resolved to an actual maching location for a given seed. The seeds are then extended in both directions using an adaptation of SIMD-accellerated Smith Waterman alignment via dynamic programming. The striped Smith-Waterman algorithm\autocite{farrar2006striped} that Bowtie 2's alignment is based on allows end-to-end alignment in the neighbourhood of the seed with arbitrary numbers of mismatches and gaps and is base quality aware. When reads align to repetitive regions there may be many thousands of match locations for the seeds. To more accurately position these reads Bowtie employs a reseeding strategy where the seeds are selected from a read multiple times using a sliding window in an attempt to find a more accurate seed location. 
+
+\begin{figure}[H]
+    \includegraphics[scale=0.5]{bowtie_2_performance}
+    \centering
+    \caption {Performance comparison of Bowtie 2 to other callers on simulated data a) 100 and 150 bp unpaired, b) 100x100 and 150x150 paired, and c) 250 and 400 long reads.\autocite{langmead2012fast}}
+    \label{fig:bowtie_2_performance}
+\end{figure}
+
+Bowtie uses information about paired-end reads to attempt to perform a more accurate alignment of the pairs. When the user supplies an expected DNA fragment length and read orientation and one read in a pair is fully aligned, Bowtie calculates a window of reference coordinates where the other read in the pair would be expected to reside and attempts to align the other read in that window using dynamic programing. If it's not able to produce a high quality alignment in this fashion it will attempt to align the other read using the full normal procedure. 
+
+A performance comparison by the tool's author Ben Langemead from \autocite{langmead2012fast} is shown in Figure \ref{fig:bowtie_2_performance}. Bowtie 2 can be seen to be the same or slightly better than BWA and significantly better than Bowtie and SOAP2 on the simulated dataset.
+
+\paragraph{BWA}
+
+BWA is a tool by Heng Li that implements a series of algorithms for genome alignment based on the BWT and the FM index and described in a series of papers - \autocite{li2009fast}, \autocite{li2010fast}, \autocite{li2013aligning}. Although the original BWA algorithm was focused towards reads that are fewer than 50 basepairs long and is no longer relevant, the subsequent BWA-SW, and BWA-MEM algorithms remain very popular. Since BWA-MEM is seen as the ultimate successor to the previous BWA algorithms we focus our discussion on this implementation of alignement. The following common notation is adopted (see Table \ref{tab:bwa_mem_notation})
+
+\begin{table}[htb!]\label{tab:bwa_mem_notation}
+\caption{BWA Common notation\autocite{li2012exploring},\autocite{li2013aligning}}
+{\begin{tabular}{lp{7cm}}
+\toprule
+Symbol & Description \\
+\midrule
+$\Sigma=\{\$,A,C,G,T,N\}$ & alphabet of DNA strings with lexicographical order $\$<A<C<G<T<N$\\
+$\$$& Is a sentinel character\\
+$N$& Is an ambiguous DNA base\\
+$T$ & String: $T=a_0a_1\ldots a_{n-1}$ with $a_{n-1}=\$$\\
+$|T|$ & Length of $T$ including sentinels: $|T|=n$\\
+$T[i]$ & The $i$-th symbol in string $T$: $T[i]=a_i$\\
+$T[i,j]$ & Substring: $T[i,j]=a_i\ldots a_j$\\
+$T_i$ & Suffix: $T_i=T[i,n-1]$\\
+$S$ & Suffix array; $S(i)$ is the position of the $i$-th smallest suffix\\
+$B$ & BWT: $B[i]=T[S(i)-1]$ if $S(i)>0$ or $B[i]=\$$ otherwise\\
+$C(a)$ & Accumul. count array: $C(a)=|\{0\le i\le n-1:T[i]<a\}|$ \\
+$O(a,i)$ & Occurrence array: $O(a,i)=|\{0\le j\le i:B[j]=a\}|$\\
+$P\circ W$ & String concatenation of string $P$ and $W$\\
+$Pa$ & String concatenation of string $P$ and symbol $a$: $Pa=P\circ a$\\
+$\overline{P}$ & Watson-Crick reverse complement of DNA string $P$\\
+\bottomrule
+\end{tabular}}{}
+\end{table}
+
+The \emph{suffix array interval} $l^l(P),l^u(P)$ of a string $P$ is defined as:
+
+\begin{align*}
+    l^l(P)=\min{\{k:P \text{ is the prefix of } T_{S(k)}\}}\\
+    l^u(P)=\max{\{k:P \text{ is the prefix of } T_{S(k)}\}}\\
+    l^s(P)=l^u(P)-l^l(P)+1 \text{ - the interval size}
+\end{align*}
+
+Based on the definition of the FM index:
+
+\begin{eqnarray}\label{eq:fm_index_prefix}
+    I^l(aP)&=&C(a)+O(a,I^l(P)-1)\\
+    I^u(aP)&=&C(a)+O(a,I^u(P))-1
+\end{eqnarray}
+
+and $I^l(aP)\le I^u(aP)$ if and only if $aP$ is a substring of $T$.
+
+A string that terminates with a $\$$ is called a \emph{text}. A text may have multiple sentinels and every sentinel has a different lexicographical rank i.e. given a text $T$ if there exist $T[i]=\$$ and $T[j]=\$$, then $T[i] < T[j]$ iff $i<j$. Given an ordered set of texts their ordered string concatenation is called a \emph{collection}. Given a set of DNA texts $R_0,\dots,R_n$, let $T=R_0\overline{R_0}R_1\overline{R_1},\dots,R_{n-1}\overline{R_{n-1}}$ be a {bidirectional collection} of $R$. The FM index of $T$ is called the FMD index, and the \emph{bi-interval} of P is $[l^l(P),l^l(\overline{P}), l^s(P)]$. Using the fact that we can compute the suffix array interval of $aP$ via Equation \ref{eq:fm_index_prefix}, and that $I^s(\overline{cP})=I^s(cP)$ the full bi-interval of $aP$ can be derived. This can be used, as in Algorithms \ref{alg:fmd_forward_extend} and \ref{alg:fmd_backward_extend} to bi-directionally extend a substring match $P$ and its complement $\overline{P}$ in either direction.
+
+\begin{algorithm2e}[h]
+\DontPrintSemicolon
+\footnotesize
+\KwIn{Bi-interval $[k,l,s]$ of string $W$ and a symbol $a$}
+\KwOut{Bi-interval of string $aW$}
+\BlankLine
+\textbf{Function} {\sc BackwardExt}$([k,l,s],a)$
+\Begin {
+    \For{$b\gets0$ \KwTo $5$} {
+        $k_b\gets C(b) + O(b,k-1)$
+        $s_b\gets O(b,k+s-1) - O(b,k-1)$
+    }
+    $l_0\gets l$\;
+    $l_4\gets l_0+s_0$\;
+    \For{$b\gets3$ \KwTo $1$} {
+        $l_b\gets l_{b+1}+s_{b+1}$
+    }
+    $l_5\gets l_1+s_1$\;
+    \Return{$[k_a,l_a,s_a]$}
+}
+\caption{Backward extension\autocite{li2012exploring}}
+\label{alg:fmd_backward_extend}
+\end{algorithm2e}
+
+\begin{algorithm2e}[h]
+\DontPrintSemicolon
+\footnotesize
+\KwIn{Bi-interval $[k,l,s]$ of string $W$ and a symbol $a$}
+\KwOut{Bi-interval of string $Wa$}
+\BlankLine
+\textbf{Function} {\sc ForwardExt}$([k,l,s],a)$
+\Begin {
+    $[l',k',s']\gets${\sc BackwardExt}$([l,k,s],\overline{a})$\;
+    \Return{$[k',l',s']$}
+}
+\caption{Forward extension\autocite{li2012exploring}}
+\label{alg:fmd_forward_extend}
+\end{algorithm2e}
+
+A MEM (\emph{maximal exact match} is an exact pattern match to the index that cannot be extended in either direction, and a SMEM (\emph{supermaximal exact match}) is a MEM that is not contained in other MEMs of the pattern. Building on match extension, Algorithm \ref{alg:find_smems}\autocite{li2012exploring} provides a mechanism for finding SMEMs of a read in the reference sequence. BWA-MEM generates SMEMs that cover each position in a read, it then performs greedy SMEM filtering and chaining, linking together SMEMs that are located close to each other and filtering out chains that are contained in other longer chains. The list of seeds generated through this process is ranked by the length of its chain and the length of the seed itself. 
+
+\begin{algorithm2e}[h]
+\DontPrintSemicolon
+\footnotesize
+\KwIn{String $P$ and start position $i_0$; $P[-1]=0$}
+\KwOut{Set of bi-intervals of SMEMs overlapping $i_0$}
+\BlankLine
+\textbf{Function} {\sc SuperMEM1}$(P,x)$
+\Begin {
+    \emph{Initialize ${\sf Curr}$, ${\sf Prev}$ and ${\sf Match}$ as empty arrays}\;
+    $[k,l,s]\gets [C(P[i_0]), C(\overline{P[i_0]}), C(P[i_0]+1) - C(P[i_0])]$\;
+    \For{$i\gets i_0+1$ \KwTo $|P|$} {
+        \If{$i=|P|$} {
+            \emph{Append $[k,l,s]$ to ${\sf Curr}$}
+        } \Else {
+            $[k',l',s']\gets${\sc ForwardExt$([k,l,s],P[i])$}\;
+            \If{$s'\not=s$} {
+                \emph{Append $[k,l,s]$ to ${\sf Curr}$}
+            }
+            \If{$s'=0$} {
+                {\bf break}\;
+            }
+            $[k,l,s]\gets[k',l',s']$
+        }
+    }
+    \emph{Swap array ${\sf Curr}$ and ${\sf Prev}$}\;
+    $i'\gets |P|$\;
+    \For{$i\gets i_0-1$ \KwTo $-1$} {
+        \emph{Reset ${\sf Curr}$ to empty}\;
+        $s''\gets -1$\;
+        \For{$[k,l,s]$ {\bf in} ${\sf Prev}$}{
+            $[k',l',s']\gets${\sc BackwardExt$([k,l,s],P[i])$}\;
+            \If{$s' = 0$ {\bf or} $i = -1$} {
+                \If{${\sf Curr}$ is empty {\bf and} $i+1<i'+1$} {
+                    $i'\gets i$\;
+                    \emph{Append $[k,l,s]$ to ${\sf Match}$}
+                }
+            }
+            \If{$s'\not=0$ {\bf and} $s'\not=s''$} {
+                $s''\gets s'$\;
+                \emph{Append $[k,l,s]$ to ${\sf Curr}$}
+            }
+        }
+        \If{${\sf Curr}$ is empty} {
+            {\bf break}
+        }
+        \emph{Swap ${\sf Curr}$ and ${\sf Prev}$}\;
+    }
+    \Return ${\sf Match}$
+}
+\caption{Finding super-maximal exact matches (SMEMs)\autocite{li2012exploring}}
+\label{alg:find_smems}
+\end{algorithm2e}
+
+The seeds are extended using a banded affine-gap-penalty dynamic programming alignment implementation. A number of heuristics is deployed to limit the search space. For paired-end mapping, BWA-MEM performs Smith-Waterman alignment in a window of $[\mu - 4\sigma, \mu+4\sigma]$ from a mapped read, when its mate in unmapped. When selecting how to match paired alignments BWA-MEM uses a score of $S_{i,j}=S_i+S_j-\min{\{-a\log_4P(d_{i,j},U\}}$, where $S_i$ and $S_j$ are individual read alignment scores, $d_{i,j}$ is the insert distance between two reads, $P(d_{i,j})$ is the probability of observing $d_{i,j}$ under a normal model of insert sizes, and $U$ is a sensitivity threshold. Figure \ref{fig:bwa_mem_comparison} shows a comparison performed by BWA-MEM author between BWA-MEM and other popular aligners. BWA-MEM is seen to outperform all aligners except the commercial tool Novoalign on accuracy and be in the top two tools for speed.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.5]{bwa_mem_comparison}
+    \centering
+    \caption Performance of multiple aligners on simulated single-end and paired-end 101 bp reads.\autocite{li2013aligning}
+    \label{fig:bwa_mem_comparison}
+\end{figure}
+
+\paragraph{Minimap2}
+
+Bowtie 2 and BWA-MEM that have been presented so far represent state-of-the-art algorithms for the alignment of short (<500 bp) reads to a reference genome using an FM-index. There are, however, several legitimate cases for the alignment of much longer reads to one or several references, and for finding overlaps between groups of long reads. New DNA sequencing technologies, including Single Molecule Real-Time (SMRT)\autocite{rhoads2015pacbio} from Pacific Biosciences Inc., and Oxford Nanopore Technologes' (ONT)\autocite{lu2016oxford}, have been producing reads that range from 1000 bp to $>10^6$ bp albeit with a much higher error rate than those from Illumina short reads. These long reads can be used to resolve structural variation encountered in repeat-enriched areas of the genome that are not possible to uniquely resolve with shorter Illumina-based reads\autocite{roberts2013advantages}. Additionally, tools such as the GATK HaplotypeCaller (see Section \ref{sec:bg_gatk}) create locally assembled haplotypes (that can be thousands of basepairs long) and align these to the reference sequence to detect variants. Yet, tools that have been developed primarily for short read alignment (like BWA-MEM) either crash or perform exceedingly slow when aligning long read sequences. Minimap 2\autocite{li2018minimap2} has been created to solve the efficient alignment problem for long reads using hashmap-based approach. All of the formulas in this section have been reproduced from the 2018 paper by Heng Li\autocite{li2018minimap2}.
+
+Minimap2 uses a hashmap approach based on building a database of representative k-mers, called minimizers, for a reference sequnce, and searching against this database. Minmizers have been introduced by Roberts et al.\autocite{roberts2004reducing} as a way of reducing the storage required for comparing biological sequences. The intuitive notion is that if one is comparing two strings with a significant overlap, extracting and comparing a set of representative k-mers from both strings will produce a match between the k-mers that can then be used as the basis for a seed-and-extend algorithm for more accurate matching. In this case, rather than storing all k-mers, one may store only the minimizers and use them when searching for seeds.
+
+Given a string $T_i=a_1a_2...a_n$ where $a_i \in \Sigma = \{A,C,G,T,N\}$, a k-mer triple is a tuple $(s,i,p)$ that stores the k-mer string $s$, index $i$ that identifies $T_i$ and $p$ the start index of $s$ in $T_i$. Assume there exists an order on elements of $\Sigma$. If we consider $w$ consecutive k-mers, covering $w+k-1$ letters of $T_i$, then the smallest k-mer is called a $(w,k)$ minimizer of $T_i$ (See Figure \ref{fig:k_w_minimizer}). If two strings have a substring of length $w+k-1$ in common, then they have a $(w,k)$ minimizer in common.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.55]{k_w_minimizer}
+    \centering
+    \caption Examples of minimizers - a) (5,3)-minimizer, b) (6,7)-minimizer.\autocite{roberts2004reducing}
+    \label{fig:k_w_minimizer}
+\end{figure}
+
+Minimap2 builds a list of of minimizers of the reference sequence and stores them in a hash table where the key is the hash of the minimizer string and the value is the list of offsets into the reference where that minimizer is found. For each query sequence that needs to be aligned, minimap2 builds minimizers of the query and searches the reference hash table for them. The matches that are found become alignment anchors and sets of anchors that are in the same order and orientation in the query and the referece are joined into chains. The gaps between anchors in a chain are then filled using dynamic programming with a 2-piece affine gap penalty to produce a final base-level alignment.
+
+On simulated long reads (Figure \ref{fig:aligner_comparison_2018} a)), minimap2 is more accurate than other aligners and is up to 30 times faster. On real SMRT reads minimap2 was 70 times faster than short-read aligners. On short reads (Figure \ref{fig:aligner_comparison_2018} b)), minimap2 was less accurate than BWA-MEM but was up to 3 times faster. Using data from a synthetic diploid cell-line\autocite{li2018synthetic} minimap2 shows a higher false negative rate compared to BWA-MEM (FNR 2.6\% vs. 2.3\%), but a lower false positives per million bases (FPPM, 7.0 vs. 8.8) for SNPs, and similar performance for indels.
 
 \subsection{Raw Data QC}
 \label{sec:bg_raw_data_qc}
@@ -899,6 +1092,7 @@ Once variants are initially detected using Equation \ref{eq:freebayes_main_model
 Once the window is determined, the method uses a gradient descent algorithm to find a MAP estimate of the genotype for each sample. It starts with the maximum likelihood estimate for each sample's genotype given the observed data, and then attempts to find a genotype assignment that has a higher posteriror probability across all samples.
 
 \subsubsection{GATK}
+\label{sec:bg_gatk}
 The GATK\autocite{depristo2011framework} is not actually a tool that's built solely for SNP calling, but is instead a comprehensive framework for genomic data analysis that includes tools for data pre-processing and QA, SNP and indel calling, CNV calling, and SV calling, as well as post-processing and filtering. It is implemented as a Java program and the latest version makes use of the in-memory computing engine Apache Spark for efficient computation over large data sets. Here we focus on the SNP calling aspects of the framework. There are two components in the GATK that deal with SNP calling, the UnifiedGenotyper, and the HaplotypeCaller. The UnifiedGenotyper is an older component that has been superceded by the HaplotypeCaller for all practical purposes and we focus our attention on it. All of the mathematical formulas and figures, as well as some of the descriptions, in this section have been reproduced from the 2010 manuscript by McKenna et al.\autocite{mckenna2010genome}, the 2011 manuscript by DePristo et al.\autocite{depristo2011framework}, and the GATK website\autocite{gatkwebsite}
 
 \begin{figure}[!htb]

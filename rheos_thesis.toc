@@ -24,75 +24,76 @@
 \contentsline {paragraph}{Header}{30}{section*.16}
 \contentsline {paragraph}{Data}{31}{section*.17}
 \contentsline {subsubsection}{Remarks}{34}{section*.20}
-\contentsline {subsection}{\numberline {2.2.2}Base-calling}{34}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Alignment}{34}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.2}Alignment}{34}{subsection.2.2.2}
 \contentsline {paragraph}{Suffix Tree}{37}{section*.24}
-\contentsline {paragraph}{Suffix Array}{39}{section*.29}
-\contentsline {paragraph}{The BWT}{39}{section*.30}
-\contentsline {paragraph}{FM Index}{40}{section*.32}
-\contentsline {paragraph}{Bowtie}{41}{section*.33}
-\contentsline {subsection}{\numberline {2.2.4}Raw Data QC}{41}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Germline SNP Calling}{46}{subsection.2.2.5}
-\contentsline {subsubsection}{samtools}{48}{section*.43}
-\contentsline {subsubsection}{freebayes}{51}{section*.45}
-\contentsline {subsubsection}{GATK}{53}{section*.47}
-\contentsline {subsubsection}{Platypus}{55}{section*.49}
-\contentsline {subsubsection}{Remarks}{57}{section*.51}
-\contentsline {paragraph}{Site Selection}{57}{section*.52}
-\contentsline {paragraph}{Haplotype Construction}{57}{section*.53}
-\contentsline {paragraph}{Allele Frequency Spectrum Estimation}{58}{section*.54}
-\contentsline {paragraph}{Genotyping}{58}{section*.55}
-\contentsline {subsection}{\numberline {2.2.6}Germline Indel Calling}{58}{subsection.2.2.6}
-\contentsline {subsection}{\numberline {2.2.7}Germline Structural Variant Calling}{58}{subsection.2.2.7}
-\contentsline {paragraph}{Discordantly-mapped read pairs}{59}{section*.57}
-\contentsline {paragraph}{Split-reads}{59}{section*.58}
-\contentsline {paragraph}{Read-depth}{60}{section*.59}
-\contentsline {paragraph}{Assembly-based}{60}{section*.60}
-\contentsline {subsubsection}{Delly}{61}{section*.62}
-\contentsline {subsubsection}{Lumpy}{62}{section*.64}
-\contentsline {subsubsection}{SvABA}{64}{section*.66}
-\contentsline {subsubsection}{Remarks}{65}{section*.68}
-\contentsline {subsection}{\numberline {2.2.8}Variant Filtering}{65}{subsection.2.2.8}
-\contentsline {subsection}{\numberline {2.2.9}Somatic SNP Calling}{65}{subsection.2.2.9}
-\contentsline {subsection}{\numberline {2.2.10}Somatic Indel Calling}{65}{subsection.2.2.10}
-\contentsline {subsection}{\numberline {2.2.11}Somatic Structural Variant Calling}{65}{subsection.2.2.11}
-\contentsline {subsection}{\numberline {2.2.12}Germline Variant Annotation}{65}{subsection.2.2.12}
-\contentsline {subsection}{\numberline {2.2.13}Somatic Variant Annotation}{65}{subsection.2.2.13}
-\contentsline {subsection}{\numberline {2.2.14}de-novo Assembly}{65}{subsection.2.2.14}
-\contentsline {section}{\numberline {2.3}High Performance , High Throughput, and Cloud Computing}{66}{section.2.3}
-\contentsline {section}{\numberline {2.4}Workflow Systems}{68}{section.2.4}
-\contentsline {section}{\numberline {2.5}Service Oriented Architectures}{70}{section.2.5}
-\contentsline {section}{\numberline {2.6}Stream-based Systems}{70}{section.2.6}
-\contentsline {chapter}{\numberline {3}The Butler Framework - Requirements and Architecture}{71}{chapter.3}
-\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{72}{chapter.4}
-\contentsline {chapter}{\numberline {5}The Rheos Framework}{73}{chapter.5}
-\contentsline {section}{\numberline {5.1}General Framework Design}{73}{section.5.1}
-\contentsline {section}{\numberline {5.2}Data Streaming Architecture}{74}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Service-Oriented Data Streaming Model}{75}{subsection.5.2.1}
-\contentsline {paragraph}{Windowing Function}{76}{section*.70}
-\contentsline {paragraph}{Decorator Function}{76}{section*.72}
-\contentsline {paragraph}{Filter Function}{76}{section*.74}
-\contentsline {paragraph}{Aggregator Function}{77}{section*.76}
-\contentsline {paragraph}{Local State Aggregator Function}{77}{section*.78}
-\contentsline {paragraph}{Persistence Function}{78}{section*.80}
-\contentsline {paragraph}{Query Function}{78}{section*.82}
-\contentsline {section}{\numberline {5.3}Domain-specific Problems}{82}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Read QC Metrics}{83}{subsection.5.3.1}
-\contentsline {paragraph}{Average Base Quality}{85}{section*.88}
-\contentsline {paragraph}{Base Quality Distribution}{85}{section*.89}
-\contentsline {paragraph}{Insert Size Distribution}{86}{section*.91}
-\contentsline {subsection}{\numberline {5.3.2}Alignment}{88}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Local Assembly}{88}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}Simple SNP Calling}{88}{subsection.5.3.4}
-\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{88}{subsection.5.3.5}
-\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{88}{subsection.5.3.6}
-\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{88}{subsection.5.3.7}
-\contentsline {subsection}{\numberline {5.3.8}Variant Output}{88}{subsection.5.3.8}
-\contentsline {section}{\numberline {5.4}Services of Rheos}{88}{section.5.4}
-\contentsline {section}{\numberline {5.5}Proof of concept implementation}{90}{section.5.5}
-\contentsline {section}{\numberline {5.6}Conclusions}{90}{section.5.6}
-\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{91}{chapter.6}
-\contentsline {section}{\numberline {6.1}Validation and Conclusion}{91}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future Direction}{92}{section.6.2}
-\contentsline {chapter}{Appendix}{94}{section*.93}
-\contentsline {chapter}{\numberline {A}Code Listings}{94}{Appendix.1.A}
+\contentsline {paragraph}{Suffix Array}{40}{section*.29}
+\contentsline {paragraph}{The BWT}{40}{section*.30}
+\contentsline {paragraph}{FM Index}{41}{section*.32}
+\contentsline {paragraph}{Bowtie}{42}{section*.33}
+\contentsline {paragraph}{BWA}{45}{section*.36}
+\contentsline {paragraph}{Minimap2}{48}{section*.42}
+\contentsline {subsection}{\numberline {2.2.3}Raw Data QC}{50}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Germline SNP Calling}{55}{subsection.2.2.4}
+\contentsline {subsubsection}{samtools}{57}{section*.52}
+\contentsline {subsubsection}{freebayes}{60}{section*.54}
+\contentsline {subsubsection}{GATK}{62}{section*.56}
+\contentsline {subsubsection}{Platypus}{64}{section*.58}
+\contentsline {subsubsection}{Remarks}{66}{section*.60}
+\contentsline {paragraph}{Site Selection}{66}{section*.61}
+\contentsline {paragraph}{Haplotype Construction}{66}{section*.62}
+\contentsline {paragraph}{Allele Frequency Spectrum Estimation}{67}{section*.63}
+\contentsline {paragraph}{Genotyping}{67}{section*.64}
+\contentsline {subsection}{\numberline {2.2.5}Germline Indel Calling}{67}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Germline Structural Variant Calling}{67}{subsection.2.2.6}
+\contentsline {paragraph}{Discordantly-mapped read pairs}{68}{section*.66}
+\contentsline {paragraph}{Split-reads}{68}{section*.67}
+\contentsline {paragraph}{Read-depth}{69}{section*.68}
+\contentsline {paragraph}{Assembly-based}{69}{section*.69}
+\contentsline {subsubsection}{Delly}{70}{section*.71}
+\contentsline {subsubsection}{Lumpy}{71}{section*.73}
+\contentsline {subsubsection}{SvABA}{73}{section*.75}
+\contentsline {subsubsection}{Remarks}{74}{section*.77}
+\contentsline {subsection}{\numberline {2.2.7}Variant Filtering}{74}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {2.2.8}Somatic SNP Calling}{74}{subsection.2.2.8}
+\contentsline {subsection}{\numberline {2.2.9}Somatic Indel Calling}{74}{subsection.2.2.9}
+\contentsline {subsection}{\numberline {2.2.10}Somatic Structural Variant Calling}{74}{subsection.2.2.10}
+\contentsline {subsection}{\numberline {2.2.11}Germline Variant Annotation}{74}{subsection.2.2.11}
+\contentsline {subsection}{\numberline {2.2.12}Somatic Variant Annotation}{74}{subsection.2.2.12}
+\contentsline {subsection}{\numberline {2.2.13}de-novo Assembly}{74}{subsection.2.2.13}
+\contentsline {section}{\numberline {2.3}High Performance , High Throughput, and Cloud Computing}{75}{section.2.3}
+\contentsline {section}{\numberline {2.4}Workflow Systems}{77}{section.2.4}
+\contentsline {section}{\numberline {2.5}Service Oriented Architectures}{79}{section.2.5}
+\contentsline {section}{\numberline {2.6}Stream-based Systems}{79}{section.2.6}
+\contentsline {chapter}{\numberline {3}The Butler Framework - Requirements and Architecture}{80}{chapter.3}
+\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{81}{chapter.4}
+\contentsline {chapter}{\numberline {5}The Rheos Framework}{82}{chapter.5}
+\contentsline {section}{\numberline {5.1}General Framework Design}{82}{section.5.1}
+\contentsline {section}{\numberline {5.2}Data Streaming Architecture}{83}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Service-Oriented Data Streaming Model}{84}{subsection.5.2.1}
+\contentsline {paragraph}{Windowing Function}{85}{section*.79}
+\contentsline {paragraph}{Decorator Function}{85}{section*.81}
+\contentsline {paragraph}{Filter Function}{85}{section*.83}
+\contentsline {paragraph}{Aggregator Function}{86}{section*.85}
+\contentsline {paragraph}{Local State Aggregator Function}{86}{section*.87}
+\contentsline {paragraph}{Persistence Function}{87}{section*.89}
+\contentsline {paragraph}{Query Function}{87}{section*.91}
+\contentsline {section}{\numberline {5.3}Domain-specific Problems}{91}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Read QC Metrics}{92}{subsection.5.3.1}
+\contentsline {paragraph}{Average Base Quality}{94}{section*.97}
+\contentsline {paragraph}{Base Quality Distribution}{94}{section*.98}
+\contentsline {paragraph}{Insert Size Distribution}{95}{section*.101}
+\contentsline {subsection}{\numberline {5.3.2}Alignment}{97}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Local Assembly}{97}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}Simple SNP Calling}{97}{subsection.5.3.4}
+\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{97}{subsection.5.3.5}
+\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{97}{subsection.5.3.6}
+\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{97}{subsection.5.3.7}
+\contentsline {subsection}{\numberline {5.3.8}Variant Output}{97}{subsection.5.3.8}
+\contentsline {section}{\numberline {5.4}Services of Rheos}{97}{section.5.4}
+\contentsline {section}{\numberline {5.5}Proof of concept implementation}{99}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conclusions}{99}{section.5.6}
+\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{100}{chapter.6}
+\contentsline {section}{\numberline {6.1}Validation and Conclusion}{100}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future Direction}{101}{section.6.2}
+\contentsline {chapter}{Appendix}{103}{section*.104}
+\contentsline {chapter}{\numberline {A}Code Listings}{103}{Appendix.1.A}

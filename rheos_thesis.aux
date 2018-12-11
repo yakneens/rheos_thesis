@@ -17,6 +17,7 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\providecommand \oddpage@label [2]{}
 \@writefile{toc}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
 \@writefile{lof}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
 \@writefile{lot}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
@@ -50,6 +51,7 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
 \newlabel{ch:introduction}{{1}{5}{Introduction}{chapter.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Context and Motivation}{5}{section.1.1}}
 \abx@aux@cite{lee2014clinical}
@@ -190,6 +192,7 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Background and Related Work}{13}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
 \newlabel{ch:background}{{2}{13}{Background and Related Work}{chapter.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Genomics}{13}{section.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}History of Genomics}{13}{subsection.2.1.1}}
@@ -293,9 +296,10 @@
 \@writefile{lot}{\contentsline {table}{\numberline {2.5}{\ignorespaces Reserved genotype keys (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).\relax }}{33}{table.caption.19}}
 \newlabel{tab:reserved-genotypes}{{2.5}{33}{Reserved genotype keys (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).\relax }{table.caption.19}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Remarks}{34}{section*.20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Base-calling}{34}{subsection.2.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Alignment}{34}{subsection.2.2.3}}
-\newlabel{sec:bg_alignment}{{2.2.3}{34}{Alignment}{subsection.2.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Alignment}{34}{subsection.2.2.2}}
+\newlabel{sec:bg_alignment}{{2.2.2}{34}{Alignment}{subsection.2.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Collection of reads aligned to a reference genome and evaluated at a locus that contains a heterozygous SNP.\relax }}{35}{figure.caption.21}}
+\newlabel{fig:locus}{{2.6}{35}{Collection of reads aligned to a reference genome and evaluated at a locus that contains a heterozygous SNP.\relax }{figure.caption.21}{}}
 \abx@aux@cite{li2008mapping}
 \abx@aux@segm{0}{0}{li2008mapping}
 \abx@aux@cite{li2008soap}
@@ -315,32 +319,30 @@
 \abx@aux@segm{0}{0}{li2018minimap2}
 \abx@aux@cite{zaharia2011faster}
 \abx@aux@segm{0}{0}{zaharia2011faster}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Collection of reads aligned to a reference genome and evaluated at a locus that contains a heterozygous SNP.\relax }}{35}{figure.caption.21}}
-\newlabel{fig:locus}{{2.6}{35}{Collection of reads aligned to a reference genome and evaluated at a locus that contains a heterozygous SNP.\relax }{figure.caption.21}{}}
 \abx@aux@segm{0}{0}{li2018minimap2}
 \abx@aux@segm{0}{0}{li2018minimap2}
 \abx@aux@cite{langmead_teaching}
 \abx@aux@segm{0}{0}{langmead_teaching}
 \abx@aux@segm{0}{0}{langmead_teaching}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Comparison of several aligners on simulated a)long reads >1000 bp, and b) short reads 150bp.\autocite {li2018minimap2}\relax }}{36}{figure.caption.22}}
-\newlabel{fig:aligner_comparison_2018}{{2.7}{36}{Comparison of several aligners on simulated a)long reads >1000 bp, and b) short reads 150bp.\autocite {li2018minimap2}\relax }{figure.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Equivalence between a Suffix Tree, Suffix Array, and the BWT matrix of the string BANANA.\autocite {langmead_teaching}\relax }}{36}{figure.caption.23}}
-\newlabel{fig:suffix_tree_array_bwt}{{2.8}{36}{Equivalence between a Suffix Tree, Suffix Array, and the BWT matrix of the string BANANA.\autocite {langmead_teaching}\relax }{figure.caption.23}{}}
 \abx@aux@segm{0}{0}{langmead_teaching}
 \abx@aux@segm{0}{0}{langmead_teaching}
-\abx@aux@segm{0}{0}{langmead_teaching}
-\abx@aux@segm{0}{0}{langmead_teaching}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Comparison of several aligners on simulated a)long reads >1000 bp, and b) short reads 150bp.\autocite {li2018minimap2}\relax }}{37}{figure.caption.22}}
+\newlabel{fig:aligner_comparison_2018}{{2.7}{37}{Comparison of several aligners on simulated a)long reads >1000 bp, and b) short reads 150bp.\autocite {li2018minimap2}\relax }{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Equivalence between a Suffix Tree, Suffix Array, and the BWT matrix of the string BANANA.\autocite {langmead_teaching}\relax }}{37}{figure.caption.23}}
+\newlabel{fig:suffix_tree_array_bwt}{{2.8}{37}{Equivalence between a Suffix Tree, Suffix Array, and the BWT matrix of the string BANANA.\autocite {langmead_teaching}\relax }{figure.caption.23}{}}
 \@writefile{toc}{\contentsline {paragraph}{Suffix Tree}{37}{section*.24}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Suffix trie of string $abaaba\$$.\autocite {langmead_teaching}\relax }}{37}{figure.caption.25}}
-\newlabel{fig:suffix_trie}{{2.9}{37}{Suffix trie of string $abaaba\$$.\autocite {langmead_teaching}\relax }{figure.caption.25}{}}
+\abx@aux@segm{0}{0}{langmead_teaching}
+\abx@aux@segm{0}{0}{langmead_teaching}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Suffix trie of string $abaaba\$$.\autocite {langmead_teaching}\relax }}{38}{figure.caption.25}}
+\newlabel{fig:suffix_trie}{{2.9}{38}{Suffix trie of string $abaaba\$$.\autocite {langmead_teaching}\relax }{figure.caption.25}{}}
 \abx@aux@segm{0}{0}{langmead_teaching}
 \abx@aux@segm{0}{0}{langmead_teaching}
 \abx@aux@segm{0}{0}{langmead_teaching}
 \abx@aux@segm{0}{0}{langmead_teaching}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Create suffix tree by coalescing non-branching paths into single nodes.\autocite {langmead_teaching}\relax }}{38}{figure.caption.26}}
-\newlabel{fig:suffix_tree_1}{{2.10}{38}{Create suffix tree by coalescing non-branching paths into single nodes.\autocite {langmead_teaching}\relax }{figure.caption.26}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Reduce size by replacing substrings by offsets into the original string.\autocite {langmead_teaching}\relax }}{38}{figure.caption.27}}
-\newlabel{fig:suffix_tree_2}{{2.11}{38}{Reduce size by replacing substrings by offsets into the original string.\autocite {langmead_teaching}\relax }{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Create suffix tree by coalescing non-branching paths into single nodes.\autocite {langmead_teaching}\relax }}{39}{figure.caption.26}}
+\newlabel{fig:suffix_tree_1}{{2.10}{39}{Create suffix tree by coalescing non-branching paths into single nodes.\autocite {langmead_teaching}\relax }{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Reduce size by replacing substrings by offsets into the original string.\autocite {langmead_teaching}\relax }}{39}{figure.caption.27}}
+\newlabel{fig:suffix_tree_2}{{2.11}{39}{Reduce size by replacing substrings by offsets into the original string.\autocite {langmead_teaching}\relax }{figure.caption.27}{}}
 \abx@aux@cite{ukkonen1995line}
 \abx@aux@segm{0}{0}{ukkonen1995line}
 \abx@aux@segm{0}{0}{langmead_teaching}
@@ -350,10 +352,10 @@
 \abx@aux@cite{karkkainen2003simple}
 \abx@aux@segm{0}{0}{karkkainen2003simple}
 \abx@aux@segm{0}{0}{langmead_teaching}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces Aid search by storing index of substring in leaves.\autocite {langmead_teaching}\relax }}{39}{figure.caption.28}}
-\newlabel{fig:suffix_tree_3}{{2.12}{39}{Aid search by storing index of substring in leaves.\autocite {langmead_teaching}\relax }{figure.caption.28}{}}
-\@writefile{toc}{\contentsline {paragraph}{Suffix Array}{39}{section*.29}}
-\@writefile{toc}{\contentsline {paragraph}{The BWT}{39}{section*.30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces Aid search by storing index of substring in leaves.\autocite {langmead_teaching}\relax }}{40}{figure.caption.28}}
+\newlabel{fig:suffix_tree_3}{{2.12}{40}{Aid search by storing index of substring in leaves.\autocite {langmead_teaching}\relax }{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {paragraph}{Suffix Array}{40}{section*.29}}
+\@writefile{toc}{\contentsline {paragraph}{The BWT}{40}{section*.30}}
 \abx@aux@segm{0}{0}{langmead2009ultrafast}
 \abx@aux@segm{0}{0}{langmead2009ultrafast}
 \abx@aux@cite{simpson2010efficient}
@@ -362,10 +364,63 @@
 \abx@aux@segm{0}{0}{langmead2012fast}
 \abx@aux@cite{langmead2009searching}
 \abx@aux@segm{0}{0}{langmead2009searching}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.13}{\ignorespaces a) Creating the BWT of a string. b) All substrings with the same prefix occupy adjacent rows. c) The original string can be recovered from the BWT by using the LF rule.\autocite {langmead2009ultrafast}\relax }}{40}{figure.caption.31}}
-\newlabel{fig:bwt_bowtie}{{2.13}{40}{a) Creating the BWT of a string. b) All substrings with the same prefix occupy adjacent rows. c) The original string can be recovered from the BWT by using the LF rule.\autocite {langmead2009ultrafast}\relax }{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {paragraph}{FM Index}{40}{section*.32}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.13}{\ignorespaces a) Creating the BWT of a string. b) All substrings with the same prefix occupy adjacent rows. c) The original string can be recovered from the BWT by using the LF rule.\autocite {langmead2009ultrafast}\relax }}{41}{figure.caption.31}}
+\newlabel{fig:bwt_bowtie}{{2.13}{41}{a) Creating the BWT of a string. b) All substrings with the same prefix occupy adjacent rows. c) The original string can be recovered from the BWT by using the LF rule.\autocite {langmead2009ultrafast}\relax }{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {paragraph}{FM Index}{41}{section*.32}}
 \abx@aux@segm{0}{0}{langmead2012fast}
+\abx@aux@segm{0}{0}{karkkainen2003simple}
+\@writefile{toc}{\contentsline {paragraph}{Bowtie}{42}{section*.33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.14}{\ignorespaces S\relax }}{42}{figure.caption.34}}
+\newlabel{fig:bowtie_pipeline}{{2.14}{42}{S\relax }{figure.caption.34}{}}
+\abx@aux@cite{farrar2006striped}
+\abx@aux@segm{0}{0}{farrar2006striped}
+\abx@aux@segm{0}{0}{langmead2012fast}
+\abx@aux@segm{0}{0}{langmead2012fast}
+\abx@aux@segm{0}{0}{langmead2012fast}
+\abx@aux@segm{0}{0}{li2009fast}
+\abx@aux@cite{li2010fast}
+\abx@aux@segm{0}{0}{li2010fast}
+\abx@aux@segm{0}{0}{li2013aligning}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.15}{\ignorespaces Performance comparison of Bowtie 2 to other callers on simulated data a) 100 and 150 bp unpaired, b) 100x100 and 150x150 paired, and c) 250 and 400 long reads.\autocite {langmead2012fast}\relax }}{44}{figure.caption.35}}
+\newlabel{fig:bowtie_2_performance}{{2.15}{44}{Performance comparison of Bowtie 2 to other callers on simulated data a) 100 and 150 bp unpaired, b) 100x100 and 150x150 paired, and c) 250 and 400 long reads.\autocite {langmead2012fast}\relax }{figure.caption.35}{}}
+\abx@aux@cite{li2012exploring}
+\abx@aux@segm{0}{0}{li2012exploring}
+\abx@aux@segm{0}{0}{li2013aligning}
+\abx@aux@segm{0}{0}{li2012exploring}
+\abx@aux@segm{0}{0}{li2013aligning}
+\@writefile{toc}{\contentsline {paragraph}{BWA}{45}{section*.36}}
+\newlabel{tab:bwa_mem_notation}{{\caption@xref {tab:bwa_mem_notation}{ on input line 634}}{45}{BWA}{table.caption.37}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.6}{\ignorespaces BWA Common notation\autocite {li2012exploring},\autocite {li2013aligning}\relax }}{45}{table.caption.37}}
+\abx@aux@segm{0}{0}{li2012exploring}
+\abx@aux@segm{0}{0}{li2012exploring}
+\abx@aux@segm{0}{0}{li2012exploring}
+\abx@aux@segm{0}{0}{li2012exploring}
+\newlabel{eq:fm_index_prefix}{{2.2}{46}{BWA}{equation.2.2.2}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Backward extension\autocite {li2012exploring}\relax }}{46}{algocf.1}}
+\newlabel{alg:fmd_backward_extend}{{1}{46}{BWA}{algocf.1}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Forward extension\autocite {li2012exploring}\relax }}{46}{algocf.2}}
+\newlabel{alg:fmd_forward_extend}{{2}{46}{BWA}{algocf.2}{}}
+\abx@aux@segm{0}{0}{li2013aligning}
+\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces Finding super-maximal exact matches (SMEMs)\autocite {li2012exploring}\relax }}{47}{algocf.3}}
+\newlabel{alg:find_smems}{{3}{47}{BWA}{algocf.3}{}}
+\abx@aux@cite{rhoads2015pacbio}
+\abx@aux@segm{0}{0}{rhoads2015pacbio}
+\abx@aux@cite{lu2016oxford}
+\abx@aux@segm{0}{0}{lu2016oxford}
+\abx@aux@cite{roberts2013advantages}
+\abx@aux@segm{0}{0}{roberts2013advantages}
+\abx@aux@segm{0}{0}{li2018minimap2}
+\abx@aux@segm{0}{0}{li2018minimap2}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.16}{\ignorespaces P\relax }}{48}{figure.caption.41}}
+\newlabel{fig:bwa_mem_comparison}{{2.16}{48}{P\relax }{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {paragraph}{Minimap2}{48}{section*.42}}
+\abx@aux@cite{roberts2004reducing}
+\abx@aux@segm{0}{0}{roberts2004reducing}
+\abx@aux@segm{0}{0}{roberts2004reducing}
+\abx@aux@cite{li2018synthetic}
+\abx@aux@segm{0}{0}{li2018synthetic}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.17}{\ignorespaces E\relax }}{49}{figure.caption.43}}
+\newlabel{fig:k_w_minimizer}{{2.17}{49}{E\relax }{figure.caption.43}{}}
 \abx@aux@cite{lauss2013monitoring}
 \abx@aux@segm{0}{0}{lauss2013monitoring}
 \abx@aux@cite{aird2011analyzing}
@@ -381,36 +436,33 @@
 \abx@aux@segm{0}{0}{zhou2013qc}
 \abx@aux@cite{gordon2010fastx}
 \abx@aux@segm{0}{0}{gordon2010fastx}
-\@writefile{toc}{\contentsline {paragraph}{Bowtie}{41}{section*.33}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.14}{\ignorespaces S\relax }}{41}{figure.caption.34}}
-\newlabel{fig:bowtie_pipeline}{{2.14}{41}{S\relax }{figure.caption.34}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Raw Data QC}{41}{subsection.2.2.4}}
-\newlabel{sec:bg_raw_data_qc}{{2.2.4}{41}{Raw Data QC}{subsection.2.2.4}{}}
 \abx@aux@segm{0}{0}{zhou2013qc}
 \abx@aux@segm{0}{0}{zhou2013qc}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Raw Data QC}{50}{subsection.2.2.3}}
+\newlabel{sec:bg_raw_data_qc}{{2.2.3}{50}{Raw Data QC}{subsection.2.2.3}{}}
 \abx@aux@segm{0}{0}{dohm2008substantial}
 \abx@aux@cite{bolger2014trimmomatic}
 \abx@aux@segm{0}{0}{bolger2014trimmomatic}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.15}{\ignorespaces The QC-Chain pipeline involves trimming low quality bases, removal of adapter sequences, removal of duplicate reads, and contamination detection.\autocite {zhou2013qc}.\relax }}{42}{figure.caption.35}}
-\newlabel{fig:qc-chain}{{2.15}{42}{The QC-Chain pipeline involves trimming low quality bases, removal of adapter sequences, removal of duplicate reads, and contamination detection.\autocite {zhou2013qc}.\relax }{figure.caption.35}{}}
 \abx@aux@segm{0}{0}{Picard2018toolkit}
 \abx@aux@cite{li2011statistical}
 \abx@aux@segm{0}{0}{li2011statistical}
 \abx@aux@cite{ebbert2016evaluating}
 \abx@aux@segm{0}{0}{ebbert2016evaluating}
 \abx@aux@segm{0}{0}{zhou2013qc}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.18}{\ignorespaces The QC-Chain pipeline involves trimming low quality bases, removal of adapter sequences, removal of duplicate reads, and contamination detection.\autocite {zhou2013qc}.\relax }}{51}{figure.caption.44}}
+\newlabel{fig:qc-chain}{{2.18}{51}{The QC-Chain pipeline involves trimming low quality bases, removal of adapter sequences, removal of duplicate reads, and contamination detection.\autocite {zhou2013qc}.\relax }{figure.caption.44}{}}
 \abx@aux@segm{0}{0}{dohm2008substantial}
 \abx@aux@segm{0}{0}{dohm2008substantial}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.16}{\ignorespaces Frequency of wrong base calls in Illumina reads based on position in the read from 5' to 3'.\autocite {dohm2008substantial}.\relax }}{43}{figure.caption.36}}
-\newlabel{fig:base_errors_read_position}{{2.16}{43}{Frequency of wrong base calls in Illumina reads based on position in the read from 5' to 3'.\autocite {dohm2008substantial}.\relax }{figure.caption.36}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.17}{\ignorespaces from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }}{44}{figure.caption.37}}
-\newlabel{fig:fastqc_per_base_quality}{{2.17}{44}{from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }{figure.caption.37}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.18}{\ignorespaces from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }}{44}{figure.caption.38}}
-\newlabel{fig:fastqc_sequence_content}{{2.18}{44}{from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }{figure.caption.38}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.19}{\ignorespaces from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }}{45}{figure.caption.39}}
-\newlabel{fig:fastqc_gc_content}{{2.19}{45}{from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }{figure.caption.39}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.20}{\ignorespaces from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }}{45}{figure.caption.40}}
-\newlabel{fig:fastqc_adapter_content}{{2.20}{45}{from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.19}{\ignorespaces Frequency of wrong base calls in Illumina reads based on position in the read from 5' to 3'.\autocite {dohm2008substantial}.\relax }}{52}{figure.caption.45}}
+\newlabel{fig:base_errors_read_position}{{2.19}{52}{Frequency of wrong base calls in Illumina reads based on position in the read from 5' to 3'.\autocite {dohm2008substantial}.\relax }{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.20}{\ignorespaces from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }}{53}{figure.caption.46}}
+\newlabel{fig:fastqc_per_base_quality}{{2.20}{53}{from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }{figure.caption.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.21}{\ignorespaces from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }}{53}{figure.caption.47}}
+\newlabel{fig:fastqc_sequence_content}{{2.21}{53}{from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }{figure.caption.47}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.22}{\ignorespaces from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }}{54}{figure.caption.48}}
+\newlabel{fig:fastqc_gc_content}{{2.22}{54}{from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }{figure.caption.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.23}{\ignorespaces from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }}{54}{figure.caption.49}}
+\newlabel{fig:fastqc_adapter_content}{{2.23}{54}{from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.\relax }{figure.caption.49}{}}
 \abx@aux@cite{hodgkinson2010human}
 \abx@aux@segm{0}{0}{hodgkinson2010human}
 \abx@aux@cite{shen2013comprehensive}
@@ -428,43 +480,42 @@
 \abx@aux@cite{weitzel2011genetics}
 \abx@aux@segm{0}{0}{weitzel2011genetics}
 \abx@aux@segm{0}{0}{weitzel2011genetics}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.5}Germline SNP Calling}{46}{subsection.2.2.5}}
-\newlabel{sec:bg_germline_snp_calling}{{2.2.5}{46}{Germline SNP Calling}{subsection.2.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Germline SNP Calling}{55}{subsection.2.2.4}}
+\newlabel{sec:bg_germline_snp_calling}{{2.2.4}{55}{Germline SNP Calling}{subsection.2.2.4}{}}
 \abx@aux@cite{heller2002dna}
 \abx@aux@segm{0}{0}{heller2002dna}
-\abx@aux@cite{li2018synthetic}
 \abx@aux@segm{0}{0}{li2018synthetic}
 \abx@aux@segm{0}{0}{li2018synthetic}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.21}{\ignorespaces Distribution of mutations by population frequency against phenotypic effect size.\autocite {weitzel2011genetics}.\relax }}{47}{figure.caption.41}}
-\newlabel{fig:genetic_architecture_of_cancer_risk}{{2.21}{47}{Distribution of mutations by population frequency against phenotypic effect size.\autocite {weitzel2011genetics}.\relax }{figure.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.24}{\ignorespaces Distribution of mutations by population frequency against phenotypic effect size.\autocite {weitzel2011genetics}.\relax }}{56}{figure.caption.50}}
+\newlabel{fig:genetic_architecture_of_cancer_risk}{{2.24}{56}{Distribution of mutations by population frequency against phenotypic effect size.\autocite {weitzel2011genetics}.\relax }{figure.caption.50}{}}
 \abx@aux@segm{0}{0}{li2009sequence}
 \abx@aux@segm{0}{0}{10002010map}
 \abx@aux@segm{0}{0}{li2011statistical}
 \abx@aux@cite{li2010mathematical}
 \abx@aux@segm{0}{0}{li2010mathematical}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.22}{\ignorespaces Comparison of samtools,freebayes, GATK, and platypus on three benchmark data sets - Syndip, GIAB, and PlatGen. Here FPPM - number of false positives per megabase of sequence, and FNR - false negative rate = 100xFN/(TP+FN).\autocite {li2018synthetic}.\relax }}{48}{figure.caption.42}}
-\newlabel{fig:fb_hc_st_pt}{{2.22}{48}{Comparison of samtools,freebayes, GATK, and platypus on three benchmark data sets - Syndip, GIAB, and PlatGen. Here FPPM - number of false positives per megabase of sequence, and FNR - false negative rate = 100xFN/(TP+FN).\autocite {li2018synthetic}.\relax }{figure.caption.42}{}}
-\@writefile{toc}{\contentsline {subsubsection}{samtools}{48}{section*.43}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.6}{\ignorespaces Samtools common definitions\relax }}{49}{table.caption.44}}
-\newlabel{tab:samtools_notation}{{2.6}{49}{Samtools common definitions\relax }{table.caption.44}{}}
-\newlabel{eq:gd}{{2.5}{50}{samtools}{}{}}
-\newlabel{samtools_diploid_genotype_likelihoods}{{2.5}{50}{samtools}{equation.2.2.5}{}}
-\newlabel{eq:samtools_genotype}{{2.8}{50}{samtools}{equation.2.2.8}{}}
-\newlabel{eq:samtools_variant_quality}{{2.9}{50}{samtools}{equation.2.2.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.25}{\ignorespaces Comparison of samtools,freebayes, GATK, and platypus on three benchmark data sets - Syndip, GIAB, and PlatGen. Here FPPM - number of false positives per megabase of sequence, and FNR - false negative rate = 100xFN/(TP+FN).\autocite {li2018synthetic}.\relax }}{57}{figure.caption.51}}
+\newlabel{fig:fb_hc_st_pt}{{2.25}{57}{Comparison of samtools,freebayes, GATK, and platypus on three benchmark data sets - Syndip, GIAB, and PlatGen. Here FPPM - number of false positives per megabase of sequence, and FNR - false negative rate = 100xFN/(TP+FN).\autocite {li2018synthetic}.\relax }{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {subsubsection}{samtools}{57}{section*.52}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.7}{\ignorespaces Samtools common definitions\relax }}{58}{table.caption.53}}
+\newlabel{tab:samtools_notation}{{2.7}{58}{Samtools common definitions\relax }{table.caption.53}{}}
+\newlabel{eq:gd}{{2.7}{59}{samtools}{}{}}
+\newlabel{samtools_diploid_genotype_likelihoods}{{2.7}{59}{samtools}{equation.2.2.7}{}}
+\newlabel{eq:samtools_genotype}{{2.10}{59}{samtools}{equation.2.2.10}{}}
+\newlabel{eq:samtools_variant_quality}{{2.11}{59}{samtools}{equation.2.2.11}{}}
 \abx@aux@segm{0}{0}{garrison2012haplotype}
 \abx@aux@cite{marth1999general}
 \abx@aux@segm{0}{0}{marth1999general}
 \abx@aux@cite{daly2001high}
 \abx@aux@segm{0}{0}{daly2001high}
 \abx@aux@segm{0}{0}{garrison2012haplotype}
-\@writefile{toc}{\contentsline {subsubsection}{freebayes}{51}{section*.45}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.7}{\ignorespaces Freebayes common definitions\relax }}{51}{table.caption.46}}
-\newlabel{tab:freebayes_notation}{{2.7}{51}{Freebayes common definitions\relax }{table.caption.46}{}}
+\@writefile{toc}{\contentsline {subsubsection}{freebayes}{60}{section*.54}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.8}{\ignorespaces Freebayes common definitions\relax }}{60}{table.caption.55}}
+\newlabel{tab:freebayes_notation}{{2.8}{60}{Freebayes common definitions\relax }{table.caption.55}{}}
 \abx@aux@cite{ewens1972sampling}
 \abx@aux@segm{0}{0}{ewens1972sampling}
-\newlabel{eq:freebayes_main_model}{{2.11}{52}{freebayes}{equation.2.2.11}{}}
-\newlabel{eq:freebayes_unphasedsampling}{{2.15}{52}{freebayes}{equation.2.2.15}{}}
-\newlabel{eq:freebayes_afs}{{2.16}{52}{freebayes}{equation.2.2.16}{}}
+\newlabel{eq:freebayes_main_model}{{2.13}{61}{freebayes}{equation.2.2.13}{}}
+\newlabel{eq:freebayes_unphasedsampling}{{2.17}{61}{freebayes}{equation.2.2.17}{}}
+\newlabel{eq:freebayes_afs}{{2.18}{61}{freebayes}{equation.2.2.18}{}}
 \abx@aux@segm{0}{0}{depristo2011framework}
 \abx@aux@segm{0}{0}{mckenna2010genome}
 \abx@aux@segm{0}{0}{depristo2011framework}
@@ -472,67 +523,68 @@
 \abx@aux@segm{0}{0}{gatkwebsite}
 \abx@aux@segm{0}{0}{gatkwebsite}
 \abx@aux@segm{0}{0}{gatkwebsite}
-\@writefile{toc}{\contentsline {subsubsection}{GATK}{53}{section*.47}}
+\@writefile{toc}{\contentsline {subsubsection}{GATK}{62}{section*.56}}
+\newlabel{sec:bg_gatk}{{2.2.4}{62}{GATK}{section*.56}{}}
 \abx@aux@cite{compeau2011apply}
 \abx@aux@segm{0}{0}{compeau2011apply}
 \abx@aux@segm{0}{0}{smith1981comparison}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.23}{\ignorespaces GATK Best Practices pipeline\autocite {gatkwebsite}\relax }}{54}{figure.caption.48}}
-\newlabel{fig:gatk_best_practices}{{2.23}{54}{GATK Best Practices pipeline\autocite {gatkwebsite}\relax }{figure.caption.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.26}{\ignorespaces GATK Best Practices pipeline\autocite {gatkwebsite}\relax }}{63}{figure.caption.57}}
+\newlabel{fig:gatk_best_practices}{{2.26}{63}{GATK Best Practices pipeline\autocite {gatkwebsite}\relax }{figure.caption.57}{}}
 \abx@aux@segm{0}{0}{durbin1998biological}
 \abx@aux@segm{0}{0}{rimmer2014integrating}
 \abx@aux@segm{0}{0}{rimmer2014integrating}
 \abx@aux@segm{0}{0}{rimmer2014integrating}
-\newlabel{eq:gatk_genotyping}{{2.17}{55}{GATK}{equation.2.2.17}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Platypus}{55}{section*.49}}
+\newlabel{eq:gatk_genotyping}{{2.19}{64}{GATK}{equation.2.2.19}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Platypus}{64}{section*.58}}
 \abx@aux@cite{iqbal2012novo}
 \abx@aux@segm{0}{0}{iqbal2012novo}
 \abx@aux@cite{forney1973viterbi}
 \abx@aux@segm{0}{0}{forney1973viterbi}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.24}{\ignorespaces Three stages of data processing in Platypus\autocite {rimmer2014integrating}\relax }}{56}{figure.caption.50}}
-\newlabel{fig:platypus_main_flow}{{2.24}{56}{Three stages of data processing in Platypus\autocite {rimmer2014integrating}\relax }{figure.caption.50}{}}
-\newlabel{eq:platypus_likelihood_model}{{2.19}{56}{Platypus}{equation.2.2.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.27}{\ignorespaces Three stages of data processing in Platypus\autocite {rimmer2014integrating}\relax }}{65}{figure.caption.59}}
+\newlabel{fig:platypus_main_flow}{{2.27}{65}{Three stages of data processing in Platypus\autocite {rimmer2014integrating}\relax }{figure.caption.59}{}}
+\newlabel{eq:platypus_likelihood_model}{{2.21}{65}{Platypus}{equation.2.2.21}{}}
 \abx@aux@segm{0}{0}{lek2016analysis}
 \abx@aux@segm{0}{0}{stein2015data}
 \abx@aux@cite{li2014towards}
 \abx@aux@segm{0}{0}{li2014towards}
-\newlabel{eq:platypus_variant_posterior}{{2.20}{57}{Platypus}{equation.2.2.20}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Remarks}{57}{section*.51}}
-\@writefile{toc}{\contentsline {paragraph}{Site Selection}{57}{section*.52}}
-\@writefile{toc}{\contentsline {paragraph}{Haplotype Construction}{57}{section*.53}}
+\newlabel{eq:platypus_variant_posterior}{{2.22}{66}{Platypus}{equation.2.2.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Remarks}{66}{section*.60}}
+\@writefile{toc}{\contentsline {paragraph}{Site Selection}{66}{section*.61}}
+\@writefile{toc}{\contentsline {paragraph}{Haplotype Construction}{66}{section*.62}}
 \abx@aux@segm{0}{0}{li2011statistical}
 \abx@aux@segm{0}{0}{alkan2011genome}
 \abx@aux@segm{0}{0}{alkan2011genome}
-\@writefile{toc}{\contentsline {paragraph}{Allele Frequency Spectrum Estimation}{58}{section*.54}}
-\@writefile{toc}{\contentsline {paragraph}{Genotyping}{58}{section*.55}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.6}Germline Indel Calling}{58}{subsection.2.2.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.7}Germline Structural Variant Calling}{58}{subsection.2.2.7}}
-\newlabel{sec:bg_germline_sv_calling}{{2.2.7}{58}{Germline Structural Variant Calling}{subsection.2.2.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Allele Frequency Spectrum Estimation}{67}{section*.63}}
+\@writefile{toc}{\contentsline {paragraph}{Genotyping}{67}{section*.64}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.5}Germline Indel Calling}{67}{subsection.2.2.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.6}Germline Structural Variant Calling}{67}{subsection.2.2.6}}
+\newlabel{sec:bg_germline_sv_calling}{{2.2.6}{67}{Germline Structural Variant Calling}{subsection.2.2.6}{}}
 \abx@aux@cite{sudmant2015integrated}
 \abx@aux@segm{0}{0}{sudmant2015integrated}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.25}{\ignorespaces Classes of structural variation.\autocite {alkan2011genome}.\relax }}{59}{figure.caption.56}}
-\newlabel{fig:sv_classes}{{2.25}{59}{Classes of structural variation.\autocite {alkan2011genome}.\relax }{figure.caption.56}{}}
-\@writefile{toc}{\contentsline {paragraph}{Discordantly-mapped read pairs}{59}{section*.57}}
-\@writefile{toc}{\contentsline {paragraph}{Split-reads}{59}{section*.58}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.28}{\ignorespaces Classes of structural variation.\autocite {alkan2011genome}.\relax }}{68}{figure.caption.65}}
+\newlabel{fig:sv_classes}{{2.28}{68}{Classes of structural variation.\autocite {alkan2011genome}.\relax }{figure.caption.65}{}}
+\@writefile{toc}{\contentsline {paragraph}{Discordantly-mapped read pairs}{68}{section*.66}}
+\@writefile{toc}{\contentsline {paragraph}{Split-reads}{68}{section*.67}}
 \abx@aux@segm{0}{0}{zhao2013computational}
 \abx@aux@segm{0}{0}{zhao2013computational}
 \abx@aux@cite{rausch2012delly}
 \abx@aux@segm{0}{0}{rausch2012delly}
-\@writefile{toc}{\contentsline {paragraph}{Read-depth}{60}{section*.59}}
-\@writefile{toc}{\contentsline {paragraph}{Assembly-based}{60}{section*.60}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.26}{\ignorespaces Sources of evidence for the presence of Structural Variants.\autocite {zhao2013computational}.\relax }}{60}{figure.caption.61}}
-\newlabel{fig:sv_calling_info_sources}{{2.26}{60}{Sources of evidence for the presence of Structural Variants.\autocite {zhao2013computational}.\relax }{figure.caption.61}{}}
+\@writefile{toc}{\contentsline {paragraph}{Read-depth}{69}{section*.68}}
+\@writefile{toc}{\contentsline {paragraph}{Assembly-based}{69}{section*.69}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.29}{\ignorespaces Sources of evidence for the presence of Structural Variants.\autocite {zhao2013computational}.\relax }}{69}{figure.caption.70}}
+\newlabel{fig:sv_calling_info_sources}{{2.29}{69}{Sources of evidence for the presence of Structural Variants.\autocite {zhao2013computational}.\relax }{figure.caption.70}{}}
 \abx@aux@segm{0}{0}{rausch2012delly}
 \abx@aux@segm{0}{0}{rausch2012delly}
-\@writefile{toc}{\contentsline {subsubsection}{Delly}{61}{section*.62}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.27}{\ignorespaces Variant classes detectable by Delly based on their read-pair and split-read signatures.\autocite {rausch2012delly}.\relax }}{61}{figure.caption.63}}
-\newlabel{fig:delly_variant_classes}{{2.27}{61}{Variant classes detectable by Delly based on their read-pair and split-read signatures.\autocite {rausch2012delly}.\relax }{figure.caption.63}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Delly}{70}{section*.71}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.30}{\ignorespaces Variant classes detectable by Delly based on their read-pair and split-read signatures.\autocite {rausch2012delly}.\relax }}{70}{figure.caption.72}}
+\newlabel{fig:delly_variant_classes}{{2.30}{70}{Variant classes detectable by Delly based on their read-pair and split-read signatures.\autocite {rausch2012delly}.\relax }{figure.caption.72}{}}
 \abx@aux@cite{layer2014lumpy}
 \abx@aux@segm{0}{0}{layer2014lumpy}
 \abx@aux@segm{0}{0}{layer2014lumpy}
 \abx@aux@segm{0}{0}{layer2014lumpy}
-\@writefile{toc}{\contentsline {subsubsection}{Lumpy}{62}{section*.64}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.28}{\ignorespaces Lumpy calling model integrates several signals from a single sample.\autocite {layer2014lumpy}.\relax }}{62}{figure.caption.65}}
-\newlabel{fig:lumpy_model}{{2.28}{62}{Lumpy calling model integrates several signals from a single sample.\autocite {layer2014lumpy}.\relax }{figure.caption.65}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Lumpy}{71}{section*.73}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.31}{\ignorespaces Lumpy calling model integrates several signals from a single sample.\autocite {layer2014lumpy}.\relax }}{71}{figure.caption.74}}
+\newlabel{fig:lumpy_model}{{2.31}{71}{Lumpy calling model integrates several signals from a single sample.\autocite {layer2014lumpy}.\relax }{figure.caption.74}{}}
 \abx@aux@cite{faust2012yaha}
 \abx@aux@segm{0}{0}{faust2012yaha}
 \abx@aux@cite{wala2018svaba}
@@ -546,17 +598,17 @@
 \abx@aux@segm{0}{0}{ye2009pindel}
 \abx@aux@cite{chen2015manta}
 \abx@aux@segm{0}{0}{chen2015manta}
-\@writefile{toc}{\contentsline {subsubsection}{SvABA}{64}{section*.66}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.29}{\ignorespaces The SvABA variant callng method\autocite {wala2018svaba}.\relax }}{64}{figure.caption.67}}
-\newlabel{fig:svaba_method}{{2.29}{64}{The SvABA variant callng method\autocite {wala2018svaba}.\relax }{figure.caption.67}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Remarks}{65}{section*.68}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.8}Variant Filtering}{65}{subsection.2.2.8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.9}Somatic SNP Calling}{65}{subsection.2.2.9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.10}Somatic Indel Calling}{65}{subsection.2.2.10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.11}Somatic Structural Variant Calling}{65}{subsection.2.2.11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.12}Germline Variant Annotation}{65}{subsection.2.2.12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.13}Somatic Variant Annotation}{65}{subsection.2.2.13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.14}de-novo Assembly}{65}{subsection.2.2.14}}
+\@writefile{toc}{\contentsline {subsubsection}{SvABA}{73}{section*.75}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.32}{\ignorespaces The SvABA variant callng method\autocite {wala2018svaba}.\relax }}{73}{figure.caption.76}}
+\newlabel{fig:svaba_method}{{2.32}{73}{The SvABA variant callng method\autocite {wala2018svaba}.\relax }{figure.caption.76}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Remarks}{74}{section*.77}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.7}Variant Filtering}{74}{subsection.2.2.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.8}Somatic SNP Calling}{74}{subsection.2.2.8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.9}Somatic Indel Calling}{74}{subsection.2.2.9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.10}Somatic Structural Variant Calling}{74}{subsection.2.2.10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.11}Germline Variant Annotation}{74}{subsection.2.2.11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.12}Somatic Variant Annotation}{74}{subsection.2.2.12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.13}de-novo Assembly}{74}{subsection.2.2.13}}
 \abx@aux@cite{Glossary_V1_-_EGIWiki_2016-10-28}
 \abx@aux@segm{0}{0}{Glossary_V1_-_EGIWiki_2016-10-28}
 \abx@aux@cite{russell1978cray}
@@ -570,7 +622,7 @@
 \abx@aux@segm{0}{0}{buyya2009cloud}
 \abx@aux@cite{mell2011nist}
 \abx@aux@segm{0}{0}{mell2011nist}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}High Performance , High Throughput, and Cloud Computing}{66}{section.2.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}High Performance , High Throughput, and Cloud Computing}{75}{section.2.3}}
 \abx@aux@cite{knoppers2005human}
 \abx@aux@segm{0}{0}{knoppers2005human}
 \abx@aux@cite{sefraoui2012openstack}
@@ -587,7 +639,7 @@
 \abx@aux@segm{0}{0}{taylor2004scientific}
 \abx@aux@cite{barnes1949motion}
 \abx@aux@segm{0}{0}{barnes1949motion}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Workflow Systems}{68}{section.2.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Workflow Systems}{77}{section.2.4}}
 \abx@aux@cite{hollingsworth1995workflow}
 \abx@aux@segm{0}{0}{hollingsworth1995workflow}
 \abx@aux@cite{shapiro2002technical}
@@ -608,78 +660,81 @@
 \abx@aux@segm{0}{0}{curcin2008scientific}
 \abx@aux@cite{afgan2010galaxy}
 \abx@aux@segm{0}{0}{afgan2010galaxy}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Service Oriented Architectures}{70}{section.2.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.6}Stream-based Systems}{70}{section.2.6}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}The Butler Framework - Requirements and Architecture}{71}{chapter.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Service Oriented Architectures}{79}{section.2.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Stream-based Systems}{79}{section.2.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}The Butler Framework - Requirements and Architecture}{80}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:butler_architecture}{{3}{71}{The Butler Framework - Requirements and Architecture}{chapter.3}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{72}{chapter.4}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch:butler_architecture}{{3}{80}{The Butler Framework - Requirements and Architecture}{chapter.3}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{81}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:butler_implementation}{{4}{72}{The Butler Framework - Implementation and Experimental Validation}{chapter.4}{}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch:butler_implementation}{{4}{81}{The Butler Framework - Implementation and Experimental Validation}{chapter.4}{}}
 \abx@aux@segm{0}{0}{depristo2011framework}
 \abx@aux@cite{shaw1996software}
 \abx@aux@segm{0}{0}{shaw1996software}
 \abx@aux@cite{ingham2000constructing}
 \abx@aux@segm{0}{0}{ingham2000constructing}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}The Rheos Framework}{73}{chapter.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}The Rheos Framework}{82}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:rheos_framework}{{5}{73}{The Rheos Framework}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}General Framework Design}{73}{section.5.1}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch:rheos_framework}{{5}{82}{The Rheos Framework}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}General Framework Design}{82}{section.5.1}}
 \abx@aux@segm{0}{0}{babcock2002models}
 \abx@aux@cite{eugster2003many}
 \abx@aux@segm{0}{0}{eugster2003many}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Rheos common definitions\relax }}{74}{table.caption.69}}
-\newlabel{tab:rheos_notation}{{5.1}{74}{Rheos common definitions\relax }{table.caption.69}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Data Streaming Architecture}{74}{section.5.2}}
-\newlabel{sec:rheos_streaming_architecture}{{5.2}{74}{Data Streaming Architecture}{section.5.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Service-Oriented Data Streaming Model}{75}{subsection.5.2.1}}
-\newlabel{sec:rheos_data_streaming_model}{{5.2.1}{75}{Service-Oriented Data Streaming Model}{subsection.5.2.1}{}}
-\newlabel{eq:service_opertaion_equation}{{5.1}{75}{Service-Oriented Data Streaming Model}{equation.5.2.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{Windowing Function}{76}{section*.70}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Service S computes a summary statistic over a window of messages from stream $M$\relax }}{76}{figure.caption.71}}
-\newlabel{fig:stream_window_function}{{5.1}{76}{Service S computes a summary statistic over a window of messages from stream $M$\relax }{figure.caption.71}{}}
-\@writefile{toc}{\contentsline {paragraph}{Decorator Function}{76}{section*.72}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Service S augments messages from $M$ with an additional set of attributes.\relax }}{76}{figure.caption.73}}
-\newlabel{fig:stream_decorator_function}{{5.2}{76}{Service S augments messages from $M$ with an additional set of attributes.\relax }{figure.caption.73}{}}
-\@writefile{toc}{\contentsline {paragraph}{Filter Function}{76}{section*.74}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Rheos common definitions\relax }}{83}{table.caption.78}}
+\newlabel{tab:rheos_notation}{{5.1}{83}{Rheos common definitions\relax }{table.caption.78}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Data Streaming Architecture}{83}{section.5.2}}
+\newlabel{sec:rheos_streaming_architecture}{{5.2}{83}{Data Streaming Architecture}{section.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Service-Oriented Data Streaming Model}{84}{subsection.5.2.1}}
+\newlabel{sec:rheos_data_streaming_model}{{5.2.1}{84}{Service-Oriented Data Streaming Model}{subsection.5.2.1}{}}
+\newlabel{eq:service_opertaion_equation}{{5.1}{84}{Service-Oriented Data Streaming Model}{equation.5.2.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Windowing Function}{85}{section*.79}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Service S computes a summary statistic over a window of messages from stream $M$\relax }}{85}{figure.caption.80}}
+\newlabel{fig:stream_window_function}{{5.1}{85}{Service S computes a summary statistic over a window of messages from stream $M$\relax }{figure.caption.80}{}}
+\@writefile{toc}{\contentsline {paragraph}{Decorator Function}{85}{section*.81}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Service S augments messages from $M$ with an additional set of attributes.\relax }}{85}{figure.caption.82}}
+\newlabel{fig:stream_decorator_function}{{5.2}{85}{Service S augments messages from $M$ with an additional set of attributes.\relax }{figure.caption.82}{}}
+\@writefile{toc}{\contentsline {paragraph}{Filter Function}{85}{section*.83}}
 \abx@aux@cite{oppenheimer2002architecture}
 \abx@aux@segm{0}{0}{oppenheimer2002architecture}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{77}{figure.caption.75}}
-\newlabel{fig:stream_filter_function}{{5.3}{77}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.75}{}}
-\@writefile{toc}{\contentsline {paragraph}{Aggregator Function}{77}{section*.76}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Service S integrates messages from multiple input streams $M_i$ to produce an aggregated output stream $M_o$ via $f$.\relax }}{77}{figure.caption.77}}
-\newlabel{fig:stream_aggregator_function}{{5.4}{77}{Service S integrates messages from multiple input streams $M_i$ to produce an aggregated output stream $M_o$ via $f$.\relax }{figure.caption.77}{}}
-\@writefile{toc}{\contentsline {paragraph}{Local State Aggregator Function}{77}{section*.78}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }}{78}{figure.caption.79}}
-\newlabel{fig:stream_local_state_aggregator_function}{{5.5}{78}{Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }{figure.caption.79}{}}
-\@writefile{toc}{\contentsline {paragraph}{Persistence Function}{78}{section*.80}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Service $S$ processes messages $m_i$ into persistent storage. The output stream $M_o$ contains persistence confirmation and error events.\relax }}{78}{figure.caption.81}}
-\newlabel{fig:stream_persistence_function}{{5.6}{78}{Service $S$ processes messages $m_i$ into persistent storage. The output stream $M_o$ contains persistence confirmation and error events.\relax }{figure.caption.81}{}}
-\@writefile{toc}{\contentsline {paragraph}{Query Function}{78}{section*.82}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{78}{figure.caption.83}}
-\newlabel{fig:stream_query_function}{{5.7}{78}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.83}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{86}{figure.caption.84}}
+\newlabel{fig:stream_filter_function}{{5.3}{86}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.84}{}}
+\@writefile{toc}{\contentsline {paragraph}{Aggregator Function}{86}{section*.85}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Service S integrates messages from multiple input streams $M_i$ to produce an aggregated output stream $M_o$ via $f$.\relax }}{86}{figure.caption.86}}
+\newlabel{fig:stream_aggregator_function}{{5.4}{86}{Service S integrates messages from multiple input streams $M_i$ to produce an aggregated output stream $M_o$ via $f$.\relax }{figure.caption.86}{}}
+\@writefile{toc}{\contentsline {paragraph}{Local State Aggregator Function}{86}{section*.87}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }}{87}{figure.caption.88}}
+\newlabel{fig:stream_local_state_aggregator_function}{{5.5}{87}{Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }{figure.caption.88}{}}
+\@writefile{toc}{\contentsline {paragraph}{Persistence Function}{87}{section*.89}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Service $S$ processes messages $m_i$ into persistent storage. The output stream $M_o$ contains persistence confirmation and error events.\relax }}{87}{figure.caption.90}}
+\newlabel{fig:stream_persistence_function}{{5.6}{87}{Service $S$ processes messages $m_i$ into persistent storage. The output stream $M_o$ contains persistence confirmation and error events.\relax }{figure.caption.90}{}}
+\@writefile{toc}{\contentsline {paragraph}{Query Function}{87}{section*.91}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{87}{figure.caption.92}}
+\newlabel{fig:stream_query_function}{{5.7}{87}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.92}{}}
 \abx@aux@cite{vaquero2011dynamically}
 \abx@aux@segm{0}{0}{vaquero2011dynamically}
 \abx@aux@cite{mao2011auto}
 \abx@aux@segm{0}{0}{mao2011auto}
 \abx@aux@segm{0}{0}{vaquero2011dynamically}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces a) In horizontal scaling new servers are added and removed (dashed arrow) behind a load balancer as the rate of data stream $M_i$ fluctuates. b) In vertical scaling more powerful servers need to be launched (dashed arrow) to replace smaller servers (with potential service outage) when the rate of $M_i$ increases beyond capacity.\relax }}{80}{figure.caption.84}}
-\newlabel{fig:horizontal_vs_vertical_scaling}{{5.8}{80}{a) In horizontal scaling new servers are added and removed (dashed arrow) behind a load balancer as the rate of data stream $M_i$ fluctuates. b) In vertical scaling more powerful servers need to be launched (dashed arrow) to replace smaller servers (with potential service outage) when the rate of $M_i$ increases beyond capacity.\relax }{figure.caption.84}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces A\relax }}{80}{figure.caption.85}}
-\newlabel{fig:queue}{{5.9}{80}{A\relax }{figure.caption.85}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces a) In horizontal scaling new servers are added and removed (dashed arrow) behind a load balancer as the rate of data stream $M_i$ fluctuates. b) In vertical scaling more powerful servers need to be launched (dashed arrow) to replace smaller servers (with potential service outage) when the rate of $M_i$ increases beyond capacity.\relax }}{89}{figure.caption.93}}
+\newlabel{fig:horizontal_vs_vertical_scaling}{{5.8}{89}{a) In horizontal scaling new servers are added and removed (dashed arrow) behind a load balancer as the rate of data stream $M_i$ fluctuates. b) In vertical scaling more powerful servers need to be launched (dashed arrow) to replace smaller servers (with potential service outage) when the rate of $M_i$ increases beyond capacity.\relax }{figure.caption.93}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces A\relax }}{89}{figure.caption.94}}
+\newlabel{fig:queue}{{5.9}{89}{A\relax }{figure.caption.94}{}}
 \abx@aux@cite{wieder2011service}
 \abx@aux@segm{0}{0}{wieder2011service}
 \abx@aux@segm{0}{0}{cock2009sanger}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Domain-specific Problems}{82}{section.5.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces The conceptual flow of data types within Rheos from the most raw - Sequencer Images, to the most refined - a set of Functionally Annotated Variants.\relax }}{82}{figure.caption.86}}
-\newlabel{fig:ngs_flow}{{5.10}{82}{The conceptual flow of data types within Rheos from the most raw - Sequencer Images, to the most refined - a set of Functionally Annotated Variants.\relax }{figure.caption.86}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces A read-pair that is aligned to the reference.\relax }}{83}{figure.caption.87}}
-\newlabel{fig:rheos_read_pair}{{5.11}{83}{A read-pair that is aligned to the reference.\relax }{figure.caption.87}{}}
-\newlabel{eq:raw_read_message}{{5.2}{83}{Domain-specific Problems}{equation.5.3.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Read QC Metrics}{83}{subsection.5.3.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Domain-specific Problems}{91}{section.5.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces The conceptual flow of data types within Rheos from the most raw - Sequencer Images, to the most refined - a set of Functionally Annotated Variants.\relax }}{91}{figure.caption.95}}
+\newlabel{fig:ngs_flow}{{5.10}{91}{The conceptual flow of data types within Rheos from the most raw - Sequencer Images, to the most refined - a set of Functionally Annotated Variants.\relax }{figure.caption.95}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces A read-pair that is aligned to the reference.\relax }}{92}{figure.caption.96}}
+\newlabel{fig:rheos_read_pair}{{5.11}{92}{A read-pair that is aligned to the reference.\relax }{figure.caption.96}{}}
+\newlabel{eq:raw_read_message}{{5.2}{92}{Domain-specific Problems}{equation.5.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Read QC Metrics}{92}{subsection.5.3.1}}
 \abx@aux@cite{welford1962note}
 \abx@aux@segm{0}{0}{welford1962note}
 \abx@aux@cite{garofalakis2016data}
@@ -688,43 +743,44 @@
 \abx@aux@segm{0}{0}{greenwald2001space}
 \abx@aux@cite{shrivastava2004medians}
 \abx@aux@segm{0}{0}{shrivastava2004medians}
-\newlabel{eq:stream_min}{{5.3}{84}{Read QC Metrics}{equation.5.3.3}{}}
-\newlabel{eq:stream_max}{{5.4}{84}{Read QC Metrics}{equation.5.3.4}{}}
-\newlabel{eq:stream_mean}{{5.5}{84}{Read QC Metrics}{equation.5.3.5}{}}
-\newlabel{eq:stream_variance}{{5.6}{84}{Read QC Metrics}{equation.5.3.6}{}}
+\newlabel{eq:stream_min}{{5.3}{93}{Read QC Metrics}{equation.5.3.3}{}}
+\newlabel{eq:stream_max}{{5.4}{93}{Read QC Metrics}{equation.5.3.4}{}}
+\newlabel{eq:stream_mean}{{5.5}{93}{Read QC Metrics}{equation.5.3.5}{}}
+\newlabel{eq:stream_variance}{{5.6}{93}{Read QC Metrics}{equation.5.3.6}{}}
 \abx@aux@segm{0}{0}{shrivastava2004medians}
-\@writefile{toc}{\contentsline {paragraph}{Average Base Quality}{85}{section*.88}}
-\@writefile{toc}{\contentsline {paragraph}{Base Quality Distribution}{85}{section*.89}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Distribution of base qualities per read position, from https://www.bioinformatics.babraham.ac.uk/projects/fastqc. Large quality drop-off can be see towards the end of the read.\relax }}{85}{figure.caption.90}}
-\newlabel{fig:main_body_fastqc_per_base_quality}{{5.12}{85}{Distribution of base qualities per read position, from https://www.bioinformatics.babraham.ac.uk/projects/fastqc. Large quality drop-off can be see towards the end of the read.\relax }{figure.caption.90}{}}
+\@writefile{toc}{\contentsline {paragraph}{Average Base Quality}{94}{section*.97}}
+\@writefile{toc}{\contentsline {paragraph}{Base Quality Distribution}{94}{section*.98}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Distribution of base qualities per read position, from https://www.bioinformatics.babraham.ac.uk/projects/fastqc. Large quality drop-off can be see towards the end of the read.\relax }}{94}{figure.caption.99}}
+\newlabel{fig:main_body_fastqc_per_base_quality}{{5.12}{94}{Distribution of base qualities per read position, from https://www.bioinformatics.babraham.ac.uk/projects/fastqc. Large quality drop-off can be see towards the end of the read.\relax }{figure.caption.99}{}}
 \abx@aux@segm{0}{0}{shrivastava2004medians}
 \abx@aux@segm{0}{0}{greenwald2001space}
 \abx@aux@cite{stephens2016simulating}
 \abx@aux@segm{0}{0}{stephens2016simulating}
 \abx@aux@segm{0}{0}{stephens2016simulating}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Updating quantile summaries for Base Quality Distribution.\relax }}{86}{algorithm.1}}
-\newlabel{ag:update_quantile_summaries_bqd}{{1}{86}{Updating quantile summaries for Base Quality Distribution.\relax }{algorithm.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{Insert Size Distribution}{86}{section*.91}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces Updating quantile summaries for Base Quality Distribution.\relax }}{95}{algocf.4}}
+\newlabel{ag:update_quantile_summaries_bqd}{{4}{95}{Base Quality Distribution}{algocf.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Insert Size Distribution}{95}{section*.101}}
 \abx@aux@segm{0}{0}{greenwald2001space}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Distribution of insert sizes from two ICGC pancreatic cancer patients DO35138 and DO22154.\autocite {stephens2016simulating}\relax }}{87}{figure.caption.92}}
-\newlabel{fig:insert_size_distribution}{{5.13}{87}{Distribution of insert sizes from two ICGC pancreatic cancer patients DO35138 and DO22154.\autocite {stephens2016simulating}\relax }{figure.caption.92}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Updating metrics for Insert Size Distribution.\relax }}{87}{algorithm.2}}
-\newlabel{ag:update_metrics_isd}{{2}{87}{Updating metrics for Insert Size Distribution.\relax }{algorithm.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Alignment}{88}{subsection.5.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Local Assembly}{88}{subsection.5.3.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Simple SNP Calling}{88}{subsection.5.3.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{88}{subsection.5.3.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{88}{subsection.5.3.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{88}{subsection.5.3.7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.8}Variant Output}{88}{subsection.5.3.8}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Services of Rheos}{88}{section.5.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Proof of concept implementation}{90}{section.5.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}Conclusions}{90}{section.5.6}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{91}{chapter.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Distribution of insert sizes from two ICGC pancreatic cancer patients DO35138 and DO22154.\autocite {stephens2016simulating}\relax }}{96}{figure.caption.102}}
+\newlabel{fig:insert_size_distribution}{{5.13}{96}{Distribution of insert sizes from two ICGC pancreatic cancer patients DO35138 and DO22154.\autocite {stephens2016simulating}\relax }{figure.caption.102}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces Updating metrics for Insert Size Distribution.\relax }}{96}{algocf.5}}
+\newlabel{ag:update_metrics_isd}{{5}{96}{Insert Size Distribution}{algocf.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Alignment}{97}{subsection.5.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Local Assembly}{97}{subsection.5.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Simple SNP Calling}{97}{subsection.5.3.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{97}{subsection.5.3.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{97}{subsection.5.3.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{97}{subsection.5.3.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.8}Variant Output}{97}{subsection.5.3.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Services of Rheos}{97}{section.5.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Proof of concept implementation}{99}{section.5.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Conclusions}{99}{section.5.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{100}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:conclusion}{{6}{91}{Discussion and Conclusion}{chapter.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Validation and Conclusion}{91}{section.6.1}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch:conclusion}{{6}{100}{Discussion and Conclusion}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Validation and Conclusion}{100}{section.6.1}}
 \abx@aux@cite{marx2015dna}
 \abx@aux@segm{0}{0}{marx2015dna}
 \abx@aux@cite{collins2015new}
@@ -735,52 +791,53 @@
 \abx@aux@segm{0}{0}{European_Open_Science_Cloud_2016}
 \abx@aux@cite{denbi_2016-10-31}
 \abx@aux@segm{0}{0}{denbi_2016-10-31}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Future Direction}{92}{section.6.2}}
-\newlabel{ch:appendices}{{6.2}{93}{Future Direction}{section.6.2}{}}
-\@writefile{toc}{\contentsline {chapter}{Appendix}{94}{section*.93}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Code Listings}{94}{Appendix.1.A}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Future Direction}{101}{section.6.2}}
+\newlabel{ch:appendices}{{6.2}{102}{Future Direction}{section.6.2}{}}
+\@writefile{toc}{\contentsline {chapter}{Appendix}{103}{section*.104}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Code Listings}{103}{Appendix.1.A}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{lol}{\contentsline {listing}{\numberline {1}{\ignorespaces Terraform configuration of a worker VM \relax }}{94}{listing.1}}
-\newlabel{lst:terraform_worker}{{1}{94}{Terraform configuration of a worker VM \relax }{listing.1}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {2}{\ignorespaces Terraform configuration of a security group \relax }}{95}{listing.2}}
-\newlabel{lst:terraform_security_group}{{2}{95}{Terraform configuration of a security group \relax }{listing.2}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {3}{\ignorespaces Salt Pillar for specifying test data location. \relax }}{95}{listing.3}}
-\newlabel{lst:salt_pillar_test_data}{{3}{95}{Salt Pillar for specifying test data location. \relax }{listing.3}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {4}{\ignorespaces Using Salt Mine to look up a server's IP Address. \relax }}{96}{listing.4}}
-\newlabel{lst:salt_mine}{{4}{96}{Using Salt Mine to look up a server's IP Address. \relax }{listing.4}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {5}{\ignorespaces Using Top File to map States to Roles. \relax }}{96}{listing.5}}
-\newlabel{lst:salt_top_file}{{5}{96}{Using Top File to map States to Roles. \relax }{listing.5}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {6}{\ignorespaces Collectd configuration for metrics collection. \relax }}{96}{listing.6}}
-\newlabel{lst:telegraf_config}{{6}{96}{Collectd configuration for metrics collection. \relax }{listing.6}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {7}{\ignorespaces Filebeat Prospector configuration. \relax }}{98}{listing.7}}
-\newlabel{lst:filebeat_prospectors}{{7}{98}{Filebeat Prospector configuration. \relax }{listing.7}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {8}{\ignorespaces TICKscript for alerting on CPU value. \relax }}{98}{listing.8}}
-\newlabel{lst:cpu_value_tick}{{8}{98}{TICKscript for alerting on CPU value. \relax }{listing.8}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {9}{\ignorespaces TICKscript for handling dead VMs. \relax }}{99}{listing.9}}
-\newlabel{lst:host_deadman_tick}{{9}{99}{TICKscript for handling dead VMs. \relax }{listing.9}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {10}{\ignorespaces Butler healing agent code for restarting the Airflow Scheduler. \relax }}{101}{listing.10}}
-\newlabel{lst:self_healing_airflow_scheduler_restart}{{10}{101}{Butler healing agent code for restarting the Airflow Scheduler. \relax }{listing.10}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {11}{\ignorespaces Butler healing agent code for relaunching a failed VM. \relax }}{101}{listing.11}}
-\newlabel{lst:self_healing_relaunch_vm}{{11}{101}{Butler healing agent code for relaunching a failed VM. \relax }{listing.11}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {12}{\ignorespaces Consul service definition for PostgreSQL. \relax }}{104}{listing.12}}
-\newlabel{lst:consul_postgres_service}{{12}{104}{Consul service definition for PostgreSQL. \relax }{listing.12}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {13}{\ignorespaces Source code for the freebayes workflow.\relax }}{104}{listing.13}}
-\newlabel{lst:freebayes_workflow}{{13}{104}{Source code for the freebayes workflow.\relax }{listing.13}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {14}{\ignorespaces Saltstack state for workflow deployment.\relax }}{107}{listing.14}}
-\newlabel{lst:workflow_deployment}{{14}{107}{Saltstack state for workflow deployment.\relax }{listing.14}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {15}{\ignorespaces Butler Analysis configuration for SNP genotyping.\relax }}{107}{listing.15}}
-\newlabel{lst:genotyping_analysis}{{15}{107}{Butler Analysis configuration for SNP genotyping.\relax }{listing.15}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {16}{\ignorespaces Butler Workflow configuration for Data Submission.\relax }}{108}{listing.16}}
-\newlabel{lst:gtupload_workflow}{{16}{108}{Butler Workflow configuration for Data Submission.\relax }{listing.16}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {17}{\ignorespaces Butler Analysis configuration for Data Submission.\relax }}{108}{listing.17}}
-\newlabel{lst:gtupload_analysis}{{17}{108}{Butler Analysis configuration for Data Submission.\relax }{listing.17}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {18}{\ignorespaces Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }}{109}{listing.18}}
-\newlabel{lst:run_delly}{{18}{109}{Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }{listing.18}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {19}{\ignorespaces Butler Delly Workflow analysis configuration to genotype deletions.\relax }}{110}{listing.19}}
-\newlabel{lst:delly_analysis}{{19}{110}{Butler Delly Workflow analysis configuration to genotype deletions.\relax }{listing.19}{}}
-\@writefile{lol}{\contentsline {listing}{\numberline {20}{\ignorespaces Example of a VCF file (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).\relax }}{110}{listing.20}}
-\newlabel{lst:vcf_file}{{20}{110}{Example of a VCF file (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).\relax }{listing.20}{}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{lol}{\contentsline {listing}{\numberline {1}{\ignorespaces Terraform configuration of a worker VM \relax }}{103}{listing.1}}
+\newlabel{lst:terraform_worker}{{1}{103}{Terraform configuration of a worker VM \relax }{listing.1}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {2}{\ignorespaces Terraform configuration of a security group \relax }}{104}{listing.2}}
+\newlabel{lst:terraform_security_group}{{2}{104}{Terraform configuration of a security group \relax }{listing.2}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {3}{\ignorespaces Salt Pillar for specifying test data location. \relax }}{104}{listing.3}}
+\newlabel{lst:salt_pillar_test_data}{{3}{104}{Salt Pillar for specifying test data location. \relax }{listing.3}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {4}{\ignorespaces Using Salt Mine to look up a server's IP Address. \relax }}{105}{listing.4}}
+\newlabel{lst:salt_mine}{{4}{105}{Using Salt Mine to look up a server's IP Address. \relax }{listing.4}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {5}{\ignorespaces Using Top File to map States to Roles. \relax }}{105}{listing.5}}
+\newlabel{lst:salt_top_file}{{5}{105}{Using Top File to map States to Roles. \relax }{listing.5}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {6}{\ignorespaces Collectd configuration for metrics collection. \relax }}{105}{listing.6}}
+\newlabel{lst:telegraf_config}{{6}{105}{Collectd configuration for metrics collection. \relax }{listing.6}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {7}{\ignorespaces Filebeat Prospector configuration. \relax }}{107}{listing.7}}
+\newlabel{lst:filebeat_prospectors}{{7}{107}{Filebeat Prospector configuration. \relax }{listing.7}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {8}{\ignorespaces TICKscript for alerting on CPU value. \relax }}{107}{listing.8}}
+\newlabel{lst:cpu_value_tick}{{8}{107}{TICKscript for alerting on CPU value. \relax }{listing.8}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {9}{\ignorespaces TICKscript for handling dead VMs. \relax }}{108}{listing.9}}
+\newlabel{lst:host_deadman_tick}{{9}{108}{TICKscript for handling dead VMs. \relax }{listing.9}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {10}{\ignorespaces Butler healing agent code for restarting the Airflow Scheduler. \relax }}{110}{listing.10}}
+\newlabel{lst:self_healing_airflow_scheduler_restart}{{10}{110}{Butler healing agent code for restarting the Airflow Scheduler. \relax }{listing.10}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {11}{\ignorespaces Butler healing agent code for relaunching a failed VM. \relax }}{110}{listing.11}}
+\newlabel{lst:self_healing_relaunch_vm}{{11}{110}{Butler healing agent code for relaunching a failed VM. \relax }{listing.11}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {12}{\ignorespaces Consul service definition for PostgreSQL. \relax }}{113}{listing.12}}
+\newlabel{lst:consul_postgres_service}{{12}{113}{Consul service definition for PostgreSQL. \relax }{listing.12}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {13}{\ignorespaces Source code for the freebayes workflow.\relax }}{113}{listing.13}}
+\newlabel{lst:freebayes_workflow}{{13}{113}{Source code for the freebayes workflow.\relax }{listing.13}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {14}{\ignorespaces Saltstack state for workflow deployment.\relax }}{116}{listing.14}}
+\newlabel{lst:workflow_deployment}{{14}{116}{Saltstack state for workflow deployment.\relax }{listing.14}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {15}{\ignorespaces Butler Analysis configuration for SNP genotyping.\relax }}{116}{listing.15}}
+\newlabel{lst:genotyping_analysis}{{15}{116}{Butler Analysis configuration for SNP genotyping.\relax }{listing.15}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {16}{\ignorespaces Butler Workflow configuration for Data Submission.\relax }}{117}{listing.16}}
+\newlabel{lst:gtupload_workflow}{{16}{117}{Butler Workflow configuration for Data Submission.\relax }{listing.16}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {17}{\ignorespaces Butler Analysis configuration for Data Submission.\relax }}{117}{listing.17}}
+\newlabel{lst:gtupload_analysis}{{17}{117}{Butler Analysis configuration for Data Submission.\relax }{listing.17}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {18}{\ignorespaces Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }}{118}{listing.18}}
+\newlabel{lst:run_delly}{{18}{118}{Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }{listing.18}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {19}{\ignorespaces Butler Delly Workflow analysis configuration to genotype deletions.\relax }}{119}{listing.19}}
+\newlabel{lst:delly_analysis}{{19}{119}{Butler Delly Workflow analysis configuration to genotype deletions.\relax }{listing.19}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {20}{\ignorespaces Example of a VCF file (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).\relax }}{119}{listing.20}}
+\newlabel{lst:vcf_file}{{20}{119}{Example of a VCF file (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).\relax }{listing.20}{}}
 \gdef\minted@oldcachelist{,
   default-pyg-prefix.pygstyle,
   default.pygstyle,
@@ -852,6 +909,7 @@
 \abx@aux@defaultrefcontext{0}{European_Open_Science_Cloud_2016}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{ewen2000identification}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{ewens1972sampling}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{farrar2006striped}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{faust2012yaha}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{ferragina2000opportunistic}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{forbes2015cosmic}{nty/global//global/global}
@@ -898,16 +956,19 @@
 \abx@aux@defaultrefcontext{0}{lek2016analysis}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2011statistical}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2013aligning}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2012exploring}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2010mathematical}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2018minimap2}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2011tabix}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2014towards}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2010fast}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2009fast}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2010survey}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2008mapping}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2018synthetic}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2009sequence}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{li2008soap}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{lu2016oxford}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{ludascher2006scientific}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{luengo2013economic}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{malkin1990germ}{nty/global//global/global}
@@ -941,8 +1002,11 @@
 \abx@aux@defaultrefcontext{0}{pleasance2010comprehensive}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{rausch2012delly}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{reinert2015alignment}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{rhoads2015pacbio}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{rimmer2014integrating}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{roberts2004reducing}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{roberts2013comparative}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{roberts2013advantages}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{robinson2015integrative}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{russell1978cray}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{sanger1975rapid}{nty/global//global/global}

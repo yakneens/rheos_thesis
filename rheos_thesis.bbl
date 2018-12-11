@@ -2026,6 +2026,35 @@
       \field{pages}{87\bibrangedash 112}
       \range{pages}{26}
     \endentry
+    \entry{farrar2006striped}{article}{}
+      \name{author}{1}{}{%
+        {{hash=18944327be53a1d4db26f06b5e442c26}{%
+           family={Farrar},
+           familyi={F\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{18944327be53a1d4db26f06b5e442c26}
+      \strng{fullhash}{18944327be53a1d4db26f06b5e442c26}
+      \strng{bibnamehash}{18944327be53a1d4db26f06b5e442c26}
+      \strng{authorbibnamehash}{18944327be53a1d4db26f06b5e442c26}
+      \strng{authornamehash}{18944327be53a1d4db26f06b5e442c26}
+      \strng{authorfullhash}{18944327be53a1d4db26f06b5e442c26}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{2}
+      \field{title}{Striped Smith--Waterman speeds database searches six times over other SIMD implementations}
+      \field{volume}{23}
+      \field{year}{2006}
+      \field{pages}{156\bibrangedash 161}
+      \range{pages}{6}
+    \endentry
     \entry{faust2012yaha}{article}{}
       \name{author}{2}{}{%
         {{hash=ece4ec4148b6bdb49d75a5062b70bc93}{%
@@ -3879,6 +3908,35 @@
       \field{title}{Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM}
       \field{year}{2013}
     \endentry
+    \entry{li2012exploring}{article}{}
+      \name{author}{1}{}{%
+        {{hash=466d90849ccf7e74e32d338b7c35491d}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Heng},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{fullhash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{bibnamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authorbibnamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authornamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authorfullhash}{466d90849ccf7e74e32d338b7c35491d}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{14}
+      \field{title}{Exploring single-sample SNP and INDEL calling with whole-genome de novo assembly}
+      \field{volume}{28}
+      \field{year}{2012}
+      \field{pages}{1838\bibrangedash 1844}
+      \range{pages}{7}
+    \endentry
     \entry{li2010mathematical}{article}{}
       \name{author}{1}{}{%
         {{hash=466d90849ccf7e74e32d338b7c35491d}{%
@@ -3983,6 +4041,40 @@
       \field{year}{2014}
       \field{pages}{btu356}
       \range{pages}{-1}
+    \endentry
+    \entry{li2010fast}{article}{}
+      \name{author}{2}{}{%
+        {{hash=466d90849ccf7e74e32d338b7c35491d}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Heng},
+           giveni={H\bibinitperiod}}}%
+        {{hash=517afe729b2eb59735ba80628d943bb0}{%
+           family={Durbin},
+           familyi={D\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{68b0c2c99236e02736a0ab4098e9a024}
+      \strng{fullhash}{68b0c2c99236e02736a0ab4098e9a024}
+      \strng{bibnamehash}{68b0c2c99236e02736a0ab4098e9a024}
+      \strng{authorbibnamehash}{68b0c2c99236e02736a0ab4098e9a024}
+      \strng{authornamehash}{68b0c2c99236e02736a0ab4098e9a024}
+      \strng{authorfullhash}{68b0c2c99236e02736a0ab4098e9a024}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{5}
+      \field{title}{Fast and accurate long-read alignment with Burrows--Wheeler transform}
+      \field{volume}{26}
+      \field{year}{2010}
+      \field{pages}{589\bibrangedash 595}
+      \range{pages}{7}
     \endentry
     \entry{li2009fast}{article}{}
       \name{author}{2}{}{%
@@ -4260,6 +4352,45 @@
       \field{year}{2008}
       \field{pages}{713\bibrangedash 714}
       \range{pages}{2}
+    \endentry
+    \entry{lu2016oxford}{article}{}
+      \name{author}{3}{}{%
+        {{hash=6c6d88b8c060227785ba509b767dcfe1}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Hengyun},
+           giveni={H\bibinitperiod}}}%
+        {{hash=7757a9932c5bb49314c7ba32f664db74}{%
+           family={Giordano},
+           familyi={G\bibinitperiod},
+           given={Francesca},
+           giveni={F\bibinitperiod}}}%
+        {{hash=9b4657aea5dfeeb111e6a1b95f6b46fa}{%
+           family={Ning},
+           familyi={N\bibinitperiod},
+           given={Zemin},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{e4830baeaaba04c7598a69f319c6cf5e}
+      \strng{fullhash}{e4830baeaaba04c7598a69f319c6cf5e}
+      \strng{bibnamehash}{e4830baeaaba04c7598a69f319c6cf5e}
+      \strng{authorbibnamehash}{e4830baeaaba04c7598a69f319c6cf5e}
+      \strng{authornamehash}{e4830baeaaba04c7598a69f319c6cf5e}
+      \strng{authorfullhash}{e4830baeaaba04c7598a69f319c6cf5e}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genomics, proteomics \& bioinformatics}
+      \field{number}{5}
+      \field{title}{Oxford Nanopore MinION sequencing and genome assembly}
+      \field{volume}{14}
+      \field{year}{2016}
+      \field{pages}{265\bibrangedash 279}
+      \range{pages}{15}
     \endentry
     \entry{ludascher2006scientific}{article}{}
       \name{author}{9}{}{%
@@ -5724,6 +5855,40 @@
       \field{pages}{133\bibrangedash 151}
       \range{pages}{19}
     \endentry
+    \entry{rhoads2015pacbio}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2371c28c381d2e11b4c5ca9da15945c6}{%
+           family={Rhoads},
+           familyi={R\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod}}}%
+        {{hash=75c2b539b6c786f6a5cc24d84b99460c}{%
+           family={Au},
+           familyi={A\bibinitperiod},
+           given={Kin\bibnamedelima Fai},
+           giveni={K\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{cc3bc6398b3397e708b8c8ebe90aa49c}
+      \strng{fullhash}{cc3bc6398b3397e708b8c8ebe90aa49c}
+      \strng{bibnamehash}{cc3bc6398b3397e708b8c8ebe90aa49c}
+      \strng{authorbibnamehash}{cc3bc6398b3397e708b8c8ebe90aa49c}
+      \strng{authornamehash}{cc3bc6398b3397e708b8c8ebe90aa49c}
+      \strng{authorfullhash}{cc3bc6398b3397e708b8c8ebe90aa49c}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genomics, proteomics \& bioinformatics}
+      \field{number}{5}
+      \field{title}{PacBio sequencing and its applications}
+      \field{volume}{13}
+      \field{year}{2015}
+      \field{pages}{278\bibrangedash 289}
+      \range{pages}{12}
+    \endentry
     \entry{rimmer2014integrating}{article}{}
       \true{moreauthor}
       \true{morelabelname}
@@ -5795,6 +5960,55 @@
       \field{pages}{912\bibrangedash 918}
       \range{pages}{7}
     \endentry
+    \entry{roberts2004reducing}{article}{}
+      \name{author}{5}{}{%
+        {{hash=6294e89b004d84cb749e88477d2fdcb8}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b606fadf5530029cb00e44ace53ce45d}{%
+           family={Hayes},
+           familyi={H\bibinitperiod},
+           given={Wayne},
+           giveni={W\bibinitperiod}}}%
+        {{hash=c270313a5023fe701eb2643f9393d027}{%
+           family={Hunt},
+           familyi={H\bibinitperiod},
+           given={Brian\bibnamedelima R},
+           giveni={B\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=247f872288b3538170ad4af386f04f2b}{%
+           family={Mount},
+           familyi={M\bibinitperiod},
+           given={Stephen\bibnamedelima M},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=2ef4f18b7e6344da22ac2c97a2539d47}{%
+           family={Yorke},
+           familyi={Y\bibinitperiod},
+           given={James\bibnamedelima A},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{4939ec74c220ffe0d93187ff5543fc4d}
+      \strng{fullhash}{d62bf654119aa3088bb2f48b19a61451}
+      \strng{bibnamehash}{4939ec74c220ffe0d93187ff5543fc4d}
+      \strng{authorbibnamehash}{4939ec74c220ffe0d93187ff5543fc4d}
+      \strng{authornamehash}{4939ec74c220ffe0d93187ff5543fc4d}
+      \strng{authorfullhash}{d62bf654119aa3088bb2f48b19a61451}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{18}
+      \field{title}{Reducing storage requirements for biological sequence comparison}
+      \field{volume}{20}
+      \field{year}{2004}
+      \field{pages}{3363\bibrangedash 3369}
+      \range{pages}{7}
+    \endentry
     \entry{roberts2013comparative}{article}{}
       \name{author}{8}{}{%
         {{hash=c64bfd74b891c4e57eded1c34ccfbd4c}{%
@@ -5856,6 +6070,45 @@
       \field{year}{2013}
       \field{pages}{btt375}
       \range{pages}{-1}
+    \endentry
+    \entry{roberts2013advantages}{article}{}
+      \name{author}{3}{}{%
+        {{hash=37a778c433f6c97bea67e6f7e6100a49}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Richard\bibnamedelima J},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=1db0372a781011c25fa525f54ac5cd10}{%
+           family={Carneiro},
+           familyi={C\bibinitperiod},
+           given={Mauricio\bibnamedelima O},
+           giveni={M\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=6edd05711f1d982ffd8bc0ae9885919b}{%
+           family={Schatz},
+           familyi={S\bibinitperiod},
+           given={Michael\bibnamedelima C},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {BioMed Central}%
+      }
+      \strng{namehash}{9c1dce4c7326cf434373421ed21cedd3}
+      \strng{fullhash}{9c1dce4c7326cf434373421ed21cedd3}
+      \strng{bibnamehash}{9c1dce4c7326cf434373421ed21cedd3}
+      \strng{authorbibnamehash}{9c1dce4c7326cf434373421ed21cedd3}
+      \strng{authornamehash}{9c1dce4c7326cf434373421ed21cedd3}
+      \strng{authorfullhash}{9c1dce4c7326cf434373421ed21cedd3}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genome biology}
+      \field{number}{6}
+      \field{title}{The advantages of SMRT sequencing}
+      \field{volume}{14}
+      \field{year}{2013}
+      \field{pages}{405}
+      \range{pages}{1}
     \endentry
     \entry{robinson2015integrative}{article}{}
       \true{moreauthor}
