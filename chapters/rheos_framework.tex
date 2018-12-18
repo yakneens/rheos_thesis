@@ -222,6 +222,7 @@ where:
 \end{itemize}
 
 \subsection{Read QC Metrics}
+\label{sec:main_body_read_qc_metrics}
 
 Section \ref{sec:bg_raw_data_qc} of the Background chapter discusses various metrics of interest that are based on observations of read data and the tools that are used to collect them. Here we describe how to collect the most typical metrics in the streaming paradigm of Rheos. As before, there are per-read metrics such as Base Quality Distribution, and Adapter Sequence Presence, as well as per-sample metrics such as Average GC Content, Insert Distribution, Read Length Distribution, and others. The utility of these metrics is to be able to set up filters for low quality data as well as input for downstream variant-calling models (see Section \ref{sec:bg_germline_sv_calling} for example). 
 
@@ -268,9 +269,22 @@ We provide several examples of QC queries of interest that are specified on a da
 
 \paragraph{Average Base Quality} -  As an assessment of the individual quality of each read we are interested in the average base quality so that we can filter out reads that are of low quality as a whole. We use a Decorator Function construct from Section \ref{sec:rheos_data_streaming_model}. 
 
-Input: $M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \
-Operation: $q_{av} = f(r) = \frac{\sum_{i \in [1,|r|]} r.q_i}{|r|}$\\
-Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p, q_{av})$
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $q_{av}$ which computes average base quality for a read}
+    \label{tab:op_average_base_quality}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em$M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}.\\
+    \cline{2-2}
+    Operation & $q_{av} = \frac{\sum_{i \in [1,|r|]} r.q_i}{|r|}$\\
+    \cline{2-2}
+    {Outputs} & \hangindent=1em$M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p, q_{av})$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
 
 
 \paragraph{Base Quality Distribution} - The distribution of base quality scores per base position of a read and per sample are of interest to investigate the presence of systemic biases in base quality scores as a function of the position within the read.
@@ -285,11 +299,24 @@ Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_
 
 Because PHRED-scaled quality scores are integers that fall in a fixed range $q \in [0,96]$ building quantile summaries using the q-gram\autocite{shrivastava2004medians} approach is the most space-efficient. Because base quality scores need to be aggregated over many reads and tracked for many samples, a service that implements this functionality needs to keep local state, and the operation to update the quantile summaries based on incoming reads follows the Local State Aggregator pattern from Section \ref{sec:rheos_data_streaming_model}. 
 
-Since the local state required for storing the quantile summaries may not fit in memory and may need to be persisted to disk, updating the summaries may be too expensive to do for every single read that is observed in a read input stream. Instead, reads may be buffered into a set of reservoirs, triggering an update of the quantile summaries when the reservoir is full. The contents of the reservoir would then be purged and an updated set of quantile summaries $Q_s,{bqg} = \{q_i: i\in [1,max\_bases]\}$, where each $q_i$ is a quantile summary corresponding to the Base Quality Distribution at a particular read position, issued to the output stream (see Algorithm \ref{ag:update_quantile_summaries_bqd}).
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $updateQuantileSummaries()$}
+    \label{tab:op_update_quantile_summaries}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em$M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
+    \cline{2-2}
+    Operation & $updateQuantileSummaries(r)$\\
+    \cline{2-2}
+    {Outputs} & \hangindent=1em$M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, Q_{bqd})$.\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
 
-Input: $M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
-Operation: $f(r) = updateQuantileSummaries(r)$\\
-Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, Q_{bqd})$.
+Since the local state required for storing the quantile summaries may not fit in memory and may need to be persisted to disk, updating the summaries may be too expensive to do for every single read that is observed in a read input stream. Instead, reads may be buffered into a set of reservoirs, triggering an update of the quantile summaries when the reservoir is full. The contents of the reservoir would then be purged and an updated set of quantile summaries $Q_s,{bqg} = \{q_i: i\in [1,max\_bases]\}$, where each $q_i$ is a quantile summary corresponding to the Base Quality Distribution at a particular read position, issued to the output stream (see Algorithm \ref{ag:update_quantile_summaries_bqd}).
 
 \begin{algorithm2e}[h]
 \DontPrintSemicolon
@@ -313,7 +340,7 @@ Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, 
 \label{ag:update_quantile_summaries_bqd}
 \end{algorithm2e}
 
-\paragraph{Insert Size Distribution} - The insert size distribution is an important metric because it is not only indicative of the overall quality of a sample's data, but it is also used by structural variant calling to find read-pairs that map abnormally far apart (indicating a deletion), or abnormally close together (indicating an insertion). Calculating this metric requires a stream of read-pairs, where both reads have been successfully mapped to the reference genome. Given a mapped read-pair $(r_1,r_2)$ where each read has a beginning coordinate $r.pos$ and an end coordinate $r.end$, the insert size is $l = r_2.end - r_1.pos$. We are interested in the mean, variance and quantiles of the insert size distribution. Because the insert length can be any size the quantile summary method of Greenwald and Khanna\autocite{greenwald2001space} is most appropriate for the quantiles. Read pairs are observed on the input stream and buffered in per-sample reservoirs. When a reservoir is full the read pairs are used to update and output an appropriate insert size distribution mean, variance, and quantile summary.
+\paragraph{Insert Size Distribution} - The insert size distribution is an important metric because it is not only indicative of the overall quality of a sample's data, but it is also used by structural variant calling to find read-pairs that map abnormally far apart (indicating a deletion), or abnormally close together (indicating an insertion). 
 
 \begin{figure}[H]
     \includegraphics[scale=0.85]{insert_size_distribution}
@@ -322,9 +349,24 @@ Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, 
     \label{fig:insert_size_distribution}
 \end{figure} 
 
-Input: $M_{pair} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$, and $r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
-Operation: $f(r) = updateInsertSizeDistribution(s\_id,r_1, r_2)$\\
-Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, \mu_{isd}, \sigma_{isd}^2, Q_{isd})$.
+Calculating this metric requires a stream of read-pairs, where both reads have been successfully mapped to the reference genome. Given a mapped read-pair $(r_1,r_2)$ where each read has a beginning coordinate $r.pos$ and an end coordinate $r.end$, the insert size is $l = r_2.end - r_1.pos$. We are interested in the mean, variance and quantiles of the insert size distribution. Because the insert length can be any size the quantile summary method of Greenwald and Khanna\autocite{greenwald2001space} is most appropriate for the quantiles. Read pairs are observed on the input stream and buffered in per-sample reservoirs. When a reservoir is full the read pairs are used to update and output an appropriate insert size distribution mean, variance, and quantile summary.
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $updateInsertSizeDistribution()$}
+    \label{tab:op_update_insert_size_dist}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em$M_{pair} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$, and $r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
+    \cline{2-2}
+    Operation & $updateInsertSizeDistribution(s\_id,r_1, r_2)$\\
+    \cline{2-2}
+    {Outputs} & \hangindent=1em$M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, \mu_{isd}, \sigma_{isd}^2, Q_{isd})$.\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
 
 \begin{algorithm2e}[h]
     \DontPrintSemicolon
@@ -353,6 +395,115 @@ Output: $M_{out} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, 
 Other QC metrics, such as those measuring GC Content Distribution, Read Length Distribution, etc. can be collected analogously. 
 
 \subsection{Alignment}
+
+Section \ref{sec:bg_alignment} of Chapter \ref{ch:background} provides an overview of the existing approaches in the extremely important and computationally intensive genome alignment stage of the overall NGS processing pipeline. In the overall data flow diagram (Figure \ref{fig:ngs_flow}), alignment is primarily responsible for transforming Raw Reads into Mapped Reads, but is also used in QC (insert size distribution, sample contamination) as well as in the construction and evaluation of local haplotypes for variant calling. In this section we describe the adaptation of already established read mapping best practices to the stream and services based domain of Rheos. Because of the generally independent nature of individual read observations (except for read pairs), this read mapping problem is highly amenable to a stream-based approach. We begin by enumerating and describing the types of alignment tasks that the Rheos framework needs to be able to accomplish and follow up by describing how these tasks will be performed within Rheos.
+
+\begin{description}
+    \item [Single read alignment to reference] - Given a representation of the human reference genome we are interested in finding a coordinate relative to this reference where the given read best matches. If we are not able to find a high quality mapping the read should be flagged as unmapped.
+    \item [Read pair alignment to reference] - Given a pair of reads and an estimate of fragment size, attempt to find a high quality consistent mapping for both reads in a window around the expected fragment size.
+    \item [Single read alignment to multiple references] - Given a read and a database of several genome references from multiple species determine if the read has a high quality mapping in any of the references. This can be used for assessing sample contamination.
+    \item [Candidate haplotype alignment to reference] - Given a candidate haplotype i.e. a contiguous (potentially long) sequence locally assembled from a set of reads, align the sequence to the reference genome to identify locations of potential variation.
+    \item [Single read alignment to list of alternative haplotypes] - Given a read and a list of alternative haplotypes for a region align the read to all of the haplotypes in the list to determine which haplotype is best supported by the reads.
+    \item [Single read split-alignment to reference] - Given a read that does not align well to a contiguous region of the reference, search for an alignment where individual pieces of the read might align to separate and possibly distant locations on the reference, suggesting that the read spans a region of structural variation.
+\end{description}
+
+\paragraph{Single read alignment to reference} - Assume we are observing a data stream of raw unmapped short (<500 bp) reads $M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. Using an existing human reference genome, such as \emph{GRCh38}, we would like to align each read in $m.payload$ to produce two new output streams $M_{aln}$ and $M_{unaln}$, depending on alignment results. $M_{aln}$, will contain messages from $M_{raw}$ with additional attributes related to the alignment, as described in Section \ref{sec:bg_sam_bam}, replicating the information contained in a SAM alignment record (see Table \ref{tab:sam_file_body_mandatory_fields}). $M_{unaln}$ shall contain reads from $M_{raw}$ that failed to align to a reference sequence, with an additional flag $unmapped=true$.
+
+For $M_{aln}$ the following values are computed:
+
+\begin{description}
+    \item [rname] - name of the reference contig read is aligned to.
+    \item [pos] - 1-based position offset of the left end of the read alignment to the contig specified in qname.
+    \item [mapq] - Phred-scaled mapping quality representing probability that the read is misaligned.
+    \item [cigar] - CIGAR string (as in SAM specification Section \ref{sec:bg_sam_bam}).
+    \item [flags] - a tuple of flags as specified in the FLAG field of a SAM record.
+\end{description}
+
+Given that BWT and FM-index based algorithms\autocite{langmead2012fast},\autocite{Li2013} have currently shown the best balanced performance characteristics on both simulated and real data (see Figures \ref{fig:bwa_mem_comparison}, \ref{fig:bowtie_2_performance}) and the fact that these algorithms are amenable to straightforward parallelization, as in \autocite{langmead2009searching} for example, we adopt this approach as well in Rheos. Using this approach we will be able to locate $k$ locations for potential matches of a seed $d_i$ of read sequence $r.q$ in $\mathcal{O}(|r.q.d_i| + k)$ time using a data structure that takes $\mathcal{O}(|R|)$ space for a reference genome $R$. The seeds will then be extended using a version of Smith-Waterman\autocite{smith1981comparison} dynamic programming based alignment with affine gap penalites that can be performed in $\mathcal{O}(|R||r.q|)$ time and $\mathcal{O}(|r.q|)$ space based on \autocite{myers1988optimal} and \autocite{farrar2006striped}. The overall processing pipeline closely follows Figure \ref{fig:bowtie_pipeline} i.e. given a read $r$: 
+
+\begin{itemize}
+    \item Using Algorithm \ref{alg:find_smems} find a set $E$ of SMEMs of $r.q$\autocite{Li2013} using the FMD index formulation described in Section \ref{sec:bg_alignment} in relation to BWA. 
+    \item Organize SMEMs $e_i$ in $E$ into co-linear chains of the form $C_i = \{(e_j,e_{j+1},p)\}$, where $e_j$ and $e_{j+1}$ are neighbouring SMEMs in the chain and $p$ is the mapping coordinate of $e_j$. Here co-linearity means that the SMEMs are in the same order and orientation on the query read and the reference genome, and a chain of maximal length is selected at each genomic location for the following processing step.
+    \item For each chain, complete the read alignment between chain seeds using a vectorized SIMD-enabled implementation of Smith-Waterman local alignment, as in \autocite{farrar2006striped}.
+    \item Output alignment with the highest alignment score (based on number of mismatched bases and number of secondary alignments) if it's above a minimum quality threshold. 
+\end{itemize}
+
+Because of the FMD index formulation used in finding seeds, both the read and its complement are considered at the same time. $rname$ and $pos$ values are straightforwardly obtained from the coordinate and name of the leftmost position of the winning alignment. The $cigar$ string (see Figure \ref{fig:main_body_cigar_string}) is produced directly as a concatenation of the winning dynamic programming paths, and the SMEM seeds which are exact matches. $mapq$ converts alignment score to Phred-scale, and $flags$ encode a set of boolean values as per the SAM spec. This provides all of the information necessary for the output mapping.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.40]{cigar_string}
+    \centering
+    \caption {Example of an alignment CIGAR string.}
+    \label{fig:main_body_cigar_string}
+\end{figure}
+
+If a co-linear set of seeds is not available, or the alignment score fails to reach the predetermined minimal score threshold then the read is emitted into the unmapped read stream with an appropriate flag set.
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $mapToReference()$}
+    \label{tab:op_map_read_to_reference}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em$M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
+    \cline{2-2}
+    Operation & $mapToReference(r, ref\_id)$\\
+    \cline{2-2}
+    \multirow{2}{*}{Outputs} & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, r)\} \text{ where } mr = (s\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$\\
+    & \hangindent=1em $M_{unaln} = \{m_i: m_i = (header, r)\} \text{  where } r = (s\_id, r\_id, b, q, f_p, unmapped=true)$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+
+The reference pointed to by $ref_id$ when $mapToReference()$ is invoked consists of the typical data structures required by the FM Index i.e. the reference BWT, suffix array, occurrence array, as in \autocite{ferragina2000opportunistic}, but encoding both the forward and reverse complement of the reference sequence as in \autocite{Li2013} to produce the FMD index. Because the reference sequence is static, updated less frequently than once a year, the requisite data structures can be computed once offline and stored in secondary storage. During service initialization they are loaded in RAM and kept memory-resident for the duration of the operation of the service. Because, once computed, the reference index is read-only it can be accessed in a thread-safe manner by multiple concurrent threads without the need for explicit concurrency management. Because of the embarrassingly-parallel nature of read alignment this operation can be scaled up as necessary simply by adding servers, provided additional computational resources exist, and network capacity is not exhausted.
+
+\paragraph{Read pair alignment to reference} - Since paired-end sequencing produces two reads that represent the opposite ends of a single molecule of approximately known size (known as insert size) it is possible to use knowledge about the insert size distribution along with corresponding pairs of reads to improve the quality of mapping for these reads, and even rescue mappings for reads that do not have a high quality unique mapping themselves but are anchored by a high quality mate. The mapping operation in this context proceeds similarly to the already described single read mapping but requires an input stream of read pairs along with a stream of sample QC metrics, including the empirical insert size distribution (as described in Section \ref{sec:main_body_read_qc_metrics}).
+
+Depending on the result of the mapping operation for each read in a pair the output stream will contain pairs of reads of type \\
+$r_{aln} = (s\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$\\
+or \\
+$r_{unaln} = (s\_id, r\_id, b, q, f_p, unmapped=true)$. 
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $mapPairToReference()$}
+    \label{tab:op_map_pair_to_reference}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    \multirow{2}{*}{Inputs} & \hangindent=1em$M_{pair} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$, and $r_i = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
+    & \hangindent=1em$M_{qc} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (s\_id, \mu_{isd}, \sigma_{isd}^2, Q_{isd})$\\
+    \cline{2-2}
+    \multirow{2}{*}{Operations} & $mapPairToReference(r_1,r_2, ref\_id)$\\
+    & $updateInsertSizeDistribution(s\_id,\mu_{isd}, \sigma_{isd}^2)$\\
+    \cline{2-2}
+    \multirow{2}{*}{Outputs} & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$ and each read is of type $r_{aln}$\\
+    & \hangindent=1em$M_{unaln} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$ and each read is of type $r_{aln}$ or $r_{unaln}$ depending on the outcome of mapping.\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+In order to perform the $mapPairToReference()$ operation the service needs to have information about the insert size distribution for the sample the read pairs are originating from. It is notified with updated information about the insert size distribution by the $updateInsertSizeDistribution()$ operation which is subscribed to the appropriate message stream from the Read QC Service. This information is stored locally for each sample and may be cached. Assuming that the insert size distribution is approximately gaussian with mean $\mu_{isd}$ and variance $\sigma_{isd}^2$, which is the case for well-behaved samples, a scoring metric can be constructed that favours paired alignments that fall close to the expected insert size. This metric helps select among non-uniquely mapping reads. For instance, BWA-MEM uses the following metric:
+
+\begin{equation}
+    S_{ij}=S_i + S_j - \min{-a\log_4P(d_{ij}),U}
+\end{equation}
+
+Here $S_i$ and $S_j$ are the alignment scores for the individual reads in the pair obtained by single-end mapping via $mapToReference(r, ref\_id)$. $d_ij$ is the insert size implied by the mapping, $P(d_{i,j})$ is the probability of observing an insert size larger than $d$ under the assumption $D \sim \mathcal{N}(\mu_{isd}, \sigma_{isd}^2)$, $a$ is a matching score, and $U$ is a thresholding constant. Thus, given a set of possible mapping locations for each read in a pair, the joint mapping that maximizes the pairing metric is chosen.
+
+$mapPairToReference()$ outputs read pairs to two output streams. If both reads are mapped successfully then they are output to the $M_{aln}$ stream. If at least one of two reads in a pair does not have a high quality mapping assigned through the paired mapping process, the pair is emitted through the $M_{unaln}$ stream.
+
+Pairing information is vital to downstream variant calling because it can both help with fragment assembly, when reads are properly paired and mapped, and signal the location of potential structural variants when reads are not properly paired and mapped within expected distances.
+
+\paragraph{Single read alignment to multiple references} -
+\paragraph{Candidate haplotype alignment to reference} -
+\paragraph{Single read alignment to list of alternative haplotypes} -
+\paragraph{Single read split-alignment to reference} -
+
 
 \subsection{Local Assembly}
 

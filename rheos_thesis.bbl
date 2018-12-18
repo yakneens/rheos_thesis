@@ -3908,6 +3908,28 @@
       \field{title}{Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM}
       \field{year}{2013}
     \endentry
+    \entry{Li2013}{article}{}
+      \name{author}{1}{}{%
+        {{hash=466d90849ccf7e74e32d338b7c35491d}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Heng},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{fullhash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{bibnamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authorbibnamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authornamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authorfullhash}{466d90849ccf7e74e32d338b7c35491d}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1303.3997}
+      \field{title}{Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM}
+      \field{year}{2013}
+    \endentry
     \entry{li2012exploring}{article}{}
       \name{author}{1}{}{%
         {{hash=466d90849ccf7e74e32d338b7c35491d}{%
@@ -5289,6 +5311,40 @@
       \field{year}{2005}
       \field{pages}{117\bibrangedash 236}
       \range{pages}{120}
+    \endentry
+    \entry{myers1988optimal}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7434aca92253b1ad71204f51c27a3a07}{%
+           family={Myers},
+           familyi={M\bibinitperiod},
+           given={Eugene\bibnamedelima W},
+           giveni={E\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=c13772644daf4bc5872dadebc400007c}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Webb},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{e86fe7ac820cf9eadff12d51de58d8d3}
+      \strng{fullhash}{e86fe7ac820cf9eadff12d51de58d8d3}
+      \strng{bibnamehash}{e86fe7ac820cf9eadff12d51de58d8d3}
+      \strng{authorbibnamehash}{e86fe7ac820cf9eadff12d51de58d8d3}
+      \strng{authornamehash}{e86fe7ac820cf9eadff12d51de58d8d3}
+      \strng{authorfullhash}{e86fe7ac820cf9eadff12d51de58d8d3}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{1}
+      \field{title}{Optimal alignments in linear space}
+      \field{volume}{4}
+      \field{year}{1988}
+      \field{pages}{11\bibrangedash 17}
+      \range{pages}{7}
     \endentry
     \entry{nachman2001single}{article}{}
       \name{author}{1}{}{%

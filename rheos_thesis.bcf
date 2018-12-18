@@ -2274,15 +2274,25 @@
     <bcf:citekey order="282">shrivastava2004medians</bcf:citekey>
     <bcf:citekey order="283">shrivastava2004medians</bcf:citekey>
     <bcf:citekey order="284">shrivastava2004medians</bcf:citekey>
-    <bcf:citekey order="285">greenwald2001space</bcf:citekey>
+    <bcf:citekey order="285">stephens2016simulating</bcf:citekey>
     <bcf:citekey order="286">stephens2016simulating</bcf:citekey>
-    <bcf:citekey order="287">stephens2016simulating</bcf:citekey>
+    <bcf:citekey order="287">greenwald2001space</bcf:citekey>
     <bcf:citekey order="288">greenwald2001space</bcf:citekey>
-    <bcf:citekey order="289">marx2015dna</bcf:citekey>
-    <bcf:citekey order="290">collins2015new</bcf:citekey>
-    <bcf:citekey order="291">merkel2014docker</bcf:citekey>
-    <bcf:citekey order="292">European_Open_Science_Cloud_2016</bcf:citekey>
-    <bcf:citekey order="293">denbi_2016-10-31</bcf:citekey>
+    <bcf:citekey order="289">langmead2012fast</bcf:citekey>
+    <bcf:citekey order="290">Li2013</bcf:citekey>
+    <bcf:citekey order="291">langmead2009searching</bcf:citekey>
+    <bcf:citekey order="292">smith1981comparison</bcf:citekey>
+    <bcf:citekey order="293">myers1988optimal</bcf:citekey>
+    <bcf:citekey order="294">farrar2006striped</bcf:citekey>
+    <bcf:citekey order="295">Li2013</bcf:citekey>
+    <bcf:citekey order="296">farrar2006striped</bcf:citekey>
+    <bcf:citekey order="297">ferragina2000opportunistic</bcf:citekey>
+    <bcf:citekey order="298">Li2013</bcf:citekey>
+    <bcf:citekey order="299">marx2015dna</bcf:citekey>
+    <bcf:citekey order="300">collins2015new</bcf:citekey>
+    <bcf:citekey order="301">merkel2014docker</bcf:citekey>
+    <bcf:citekey order="302">European_Open_Science_Cloud_2016</bcf:citekey>
+    <bcf:citekey order="303">denbi_2016-10-31</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

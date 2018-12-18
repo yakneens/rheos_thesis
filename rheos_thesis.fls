@@ -97,6 +97,8 @@ INPUT /Users/siakhnin/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/
 INPUT /Users/siakhnin/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-italic.luc
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/minted/minted.sty
@@ -446,6 +448,7 @@ INPUT ./images/read_pair.png
 INPUT ./images/fastqc_per_base_quality.png
 INPUT ./images/insert_size_distribution.png
 INPUT ./images/insert_size_distribution.png
+INPUT ./images/cigar_string.png
 INPUT ./chapters/conclusion.tex
 INPUT ./chapters/conclusion.tex
 INPUT ./chapters/appendices.tex

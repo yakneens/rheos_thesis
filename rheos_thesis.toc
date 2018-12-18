@@ -80,20 +80,26 @@
 \contentsline {section}{\numberline {5.3}Domain-specific Problems}{91}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Read QC Metrics}{92}{subsection.5.3.1}
 \contentsline {paragraph}{Average Base Quality}{94}{section*.97}
-\contentsline {paragraph}{Base Quality Distribution}{94}{section*.98}
-\contentsline {paragraph}{Insert Size Distribution}{95}{section*.101}
-\contentsline {subsection}{\numberline {5.3.2}Alignment}{97}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Local Assembly}{97}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}Simple SNP Calling}{97}{subsection.5.3.4}
-\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{97}{subsection.5.3.5}
-\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{97}{subsection.5.3.6}
-\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{97}{subsection.5.3.7}
-\contentsline {subsection}{\numberline {5.3.8}Variant Output}{97}{subsection.5.3.8}
-\contentsline {section}{\numberline {5.4}Services of Rheos}{97}{section.5.4}
-\contentsline {section}{\numberline {5.5}Proof of concept implementation}{99}{section.5.5}
-\contentsline {section}{\numberline {5.6}Conclusions}{99}{section.5.6}
-\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{100}{chapter.6}
-\contentsline {section}{\numberline {6.1}Validation and Conclusion}{100}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future Direction}{101}{section.6.2}
-\contentsline {chapter}{Appendix}{103}{section*.104}
-\contentsline {chapter}{\numberline {A}Code Listings}{103}{Appendix.1.A}
+\contentsline {paragraph}{Base Quality Distribution}{94}{section*.99}
+\contentsline {paragraph}{Insert Size Distribution}{95}{section*.103}
+\contentsline {subsection}{\numberline {5.3.2}Alignment}{96}{subsection.5.3.2}
+\contentsline {paragraph}{Single read alignment to reference}{98}{section*.107}
+\contentsline {paragraph}{Read pair alignment to reference}{100}{section*.110}
+\contentsline {paragraph}{Single read alignment to multiple references}{101}{section*.112}
+\contentsline {paragraph}{Candidate haplotype alignment to reference}{101}{section*.113}
+\contentsline {paragraph}{Single read alignment to list of alternative haplotypes}{101}{section*.114}
+\contentsline {paragraph}{Single read split-alignment to reference}{101}{section*.115}
+\contentsline {subsection}{\numberline {5.3.3}Local Assembly}{102}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}Simple SNP Calling}{102}{subsection.5.3.4}
+\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{102}{subsection.5.3.5}
+\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{102}{subsection.5.3.6}
+\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{102}{subsection.5.3.7}
+\contentsline {subsection}{\numberline {5.3.8}Variant Output}{102}{subsection.5.3.8}
+\contentsline {section}{\numberline {5.4}Services of Rheos}{102}{section.5.4}
+\contentsline {section}{\numberline {5.5}Proof of concept implementation}{103}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conclusions}{104}{section.5.6}
+\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{105}{chapter.6}
+\contentsline {section}{\numberline {6.1}Validation and Conclusion}{105}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future Direction}{106}{section.6.2}
+\contentsline {chapter}{Appendix}{108}{section*.116}
+\contentsline {chapter}{\numberline {A}Code Listings}{108}{Appendix.1.A}

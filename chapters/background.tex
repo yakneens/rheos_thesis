@@ -98,6 +98,7 @@ The FASTA/FASTQ file format is a text file format developed at The Sanger Instit
 Since FASTQ is a large text file with highly repetitive content it is typically stored in a compressed manner.
 
 \subsubsection{SAM/BAM}
+\label{sec:bg_sam_bam}
 
 The Sequence Alignment Map (SAM) text file format and its accompanying binary compressed version BAM was created for sequencing data storage and analysis in the context of the 1000 genomes project\autocite{li2009sequence}. These files provide additional fields on top of the ones available in FASTA/FASTQ in order to relay information related to sequence alignment to a reference genome, and are the most widely used format for storing DNA sequencing data today. A SAM file consists of a header and a body. These are described below. All tables, descriptions, and definitions in this section are reproduced or adapted from the SAM file specification at https://samtools.github.io/hts-specs/SAMv1.pdf.
 
@@ -198,13 +199,13 @@ The body of a SAM file contains alignment records (see Section \ref{sec:bg_align
 
 \end{tabular}
 \end{table}
-Alignment records represent the information contained in a sequencing read subsequent to it being aligned to a reference genome (see Figure \ref{fig:read_pair}).
+Alignment records represent the information contained in a sequencing read subsequent to it being aligned to a reference genome (see Figure \ref{fig:bg_read_pair}).
 
 \begin{figure}[H]
 \includegraphics[scale=0.40]{read_pair}
 \centering
 \caption {A read-pair that is aligned to the reference.}
-\label{fig:read_pair}
+\label{fig:bg_read_pair}
 \end{figure}
 
 \begin{enumerate}
@@ -308,7 +309,7 @@ Alignment records represent the information contained in a sequencing read subse
         \includegraphics[scale=0.40]{cigar_string}
         \centering
         \caption {Example of an alignment CIGAR string.}
-        \label{fig:cigar_string}
+        \label{fig:bg_cigar_string}
         \end{figure}
       \begin{itemize}
       \item ``Consumes query'' and ``consumes reference'' indicate
@@ -492,13 +493,13 @@ The stream-based approach adopted by the Rheos framework desribed in this work a
 \subsection{Alignment}
 \label{sec:bg_alignment}
 
-Genome alignment (also called mapping) is the process that, given a DNA sequencing read, finds the location in a reference genome that the read best matches to. This is an important process in a next generation sequencing pipeline because it provides a way of ordering the otherwise unordered collection of raw reads (by refrence coordinate) that can be used to find locations where the sample genome is different from the reference (see Figure \ref{fig:locus}). 
+Genome alignment (also called mapping) is the process that, given a DNA sequencing read, finds the location in a reference genome that the read best matches to. This is an important process in a next generation sequencing pipeline because it provides a way of ordering the otherwise unordered collection of raw reads (by refrence coordinate) that can be used to find locations where the sample genome is different from the reference (see Figure \ref{fig:bg_locus}). 
 
 \begin{figure}[H]
     \includegraphics[scale=0.45]{locus}
     \centering
     \caption {Collection of reads aligned to a reference genome and evaluated at a locus that contains a heterozygous SNP.}
-    \label{fig:locus}
+    \label{fig:bg_locus}
 \end{figure}
 
 This process is equivalent to substring search where the string being searched is $3\times10^9$ characters long and there are $10^9$ patterns of length $150$ to be found. This process is complicated by the fact that reads from a sample have both sequencing errors and genuine genetic variation that make them differ from the reference, and the fact that certain regions of the genome can be highly repetititve, with the same sequence pattern occurring hundreds of times, making unique mapping challenging.
@@ -769,7 +770,7 @@ A MEM (\emph{maximal exact match} is an exact pattern match to the index that ca
 \label{alg:find_smems}
 \end{algorithm2e}
 
-The seeds are extended using a banded affine-gap-penalty dynamic programming alignment implementation. A number of heuristics is deployed to limit the search space. For paired-end mapping, BWA-MEM performs Smith-Waterman alignment in a window of $[\mu - 4\sigma, \mu+4\sigma]$ from a mapped read, when its mate in unmapped. When selecting how to match paired alignments BWA-MEM uses a score of $S_{i,j}=S_i+S_j-\min{\{-a\log_4P(d_{i,j},U\}}$, where $S_i$ and $S_j$ are individual read alignment scores, $d_{i,j}$ is the insert distance between two reads, $P(d_{i,j})$ is the probability of observing $d_{i,j}$ under a normal model of insert sizes, and $U$ is a sensitivity threshold. Figure \ref{fig:bwa_mem_comparison} shows a comparison performed by BWA-MEM author between BWA-MEM and other popular aligners. BWA-MEM is seen to outperform all aligners except the commercial tool Novoalign on accuracy and be in the top two tools for speed.
+The seeds are extended using a banded affine gap-penalty dynamic programming alignment implementation. A number of heuristics is deployed to limit the search space. For paired-end mapping, BWA-MEM performs Smith-Waterman alignment in a window of $[\mu - 4\sigma, \mu+4\sigma]$ from a mapped read, when its mate in unmapped. When selecting how to match paired alignments BWA-MEM uses a score of $S_{i,j}=S_i+S_j-\min{\{-a\log_4P(d_{i,j},U\}}$, where $S_i$ and $S_j$ are individual read alignment scores, $d_{i,j}$ is the insert distance between two reads, $P(d_{i,j})$ is the probability of observing $d_{i,j}$ under a normal model of insert sizes, and $U$ is a sensitivity threshold. Figure \ref{fig:bwa_mem_comparison} shows a comparison performed by BWA-MEM author between BWA-MEM and other popular aligners. BWA-MEM is seen to outperform all aligners except the commercial tool Novoalign on accuracy and be in the top two tools for speed.
 
 \begin{figure}[H]
     \includegraphics[scale=0.5]{bwa_mem_comparison}
