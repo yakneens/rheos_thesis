@@ -449,6 +449,10 @@ INPUT ./images/fastqc_per_base_quality.png
 INPUT ./images/insert_size_distribution.png
 INPUT ./images/insert_size_distribution.png
 INPUT ./images/cigar_string.png
+INPUT ./images/split_reads.png
+INPUT ./images/split_reads.png
+INPUT ./images/igv_split_read.png
+INPUT ./images/igv_split_read.png
 INPUT ./chapters/conclusion.tex
 INPUT ./chapters/conclusion.tex
 INPUT ./chapters/appendices.tex

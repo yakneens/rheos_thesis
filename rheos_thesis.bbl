@@ -3297,6 +3297,46 @@
       \field{pages}{943\bibrangedash 955}
       \range{pages}{13}
     \endentry
+    \entry{kim2016centrifuge}{article}{}
+      \name{author}{4}{}{%
+        {{hash=1c096124982efd964bcd9183a4494a64}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Daehwan},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3fb3973981b1eda9b9f9232438a94d97}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod}}}%
+        {{hash=435d1659aad20db352b6d7150319344e}{%
+           family={Breitwieser},
+           familyi={B\bibinitperiod},
+           given={Florian\bibnamedelima P},
+           giveni={F\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=68312dbcfda5c8c8441e721d0f4fde0a}{%
+           family={Salzberg},
+           familyi={S\bibinitperiod},
+           given={Steven\bibnamedelima L},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cold Spring Harbor Lab}%
+      }
+      \strng{namehash}{13f82ff410734984ce18084861b2d263}
+      \strng{fullhash}{7425e5b3eaa35186bc19cc6204950e7d}
+      \strng{bibnamehash}{13f82ff410734984ce18084861b2d263}
+      \strng{authorbibnamehash}{13f82ff410734984ce18084861b2d263}
+      \strng{authornamehash}{13f82ff410734984ce18084861b2d263}
+      \strng{authorfullhash}{7425e5b3eaa35186bc19cc6204950e7d}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genome research}
+      \field{title}{Centrifuge: rapid and sensitive classification of metagenomic sequences}
+      \field{year}{2016}
+    \endentry
     \entry{knoppers2005human}{article}{}
       \name{author}{2}{}{%
         {{hash=5ed9e92ee3ae04f4da67820dce36faf9}{%
@@ -7999,6 +8039,40 @@
       \field{labeltitlesource}{title}
       \field{title}{Service level agreements for cloud computing}
       \field{year}{2011}
+    \endentry
+    \entry{wood2014kraken}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f39e181775cafb51dc28e77c8fb3d149}{%
+           family={Wood},
+           familyi={W\bibinitperiod},
+           given={Derrick\bibnamedelima E},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=68312dbcfda5c8c8441e721d0f4fde0a}{%
+           family={Salzberg},
+           familyi={S\bibinitperiod},
+           given={Steven\bibnamedelima L},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {BioMed Central}%
+      }
+      \strng{namehash}{a09900295090e3706de64f42a9e087ea}
+      \strng{fullhash}{a09900295090e3706de64f42a9e087ea}
+      \strng{bibnamehash}{a09900295090e3706de64f42a9e087ea}
+      \strng{authorbibnamehash}{a09900295090e3706de64f42a9e087ea}
+      \strng{authornamehash}{a09900295090e3706de64f42a9e087ea}
+      \strng{authorfullhash}{a09900295090e3706de64f42a9e087ea}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genome biology}
+      \field{number}{3}
+      \field{title}{Kraken: ultrafast metagenomic sequence classification using exact alignments}
+      \field{volume}{15}
+      \field{year}{2014}
+      \field{pages}{R46}
+      \range{pages}{-1}
     \endentry
     \entry{yabroff2011economic}{article}{}
       \name{author}{4}{}{%

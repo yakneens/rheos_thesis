@@ -407,7 +407,8 @@ Section \ref{sec:bg_alignment} of Chapter \ref{ch:background} provides an overvi
     \item [Single read split-alignment to reference] - Given a read that does not align well to a contiguous region of the reference, search for an alignment where individual pieces of the read might align to separate and possibly distant locations on the reference, suggesting that the read spans a region of structural variation.
 \end{description}
 
-\paragraph{Single read alignment to reference} - Assume we are observing a data stream of raw unmapped short (<500 bp) reads $M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. Using an existing human reference genome, such as \emph{GRCh38}, we would like to align each read in $m.payload$ to produce two new output streams $M_{aln}$ and $M_{unaln}$, depending on alignment results. $M_{aln}$, will contain messages from $M_{raw}$ with additional attributes related to the alignment, as described in Section \ref{sec:bg_sam_bam}, replicating the information contained in a SAM alignment record (see Table \ref{tab:sam_file_body_mandatory_fields}). $M_{unaln}$ shall contain reads from $M_{raw}$ that failed to align to a reference sequence, with an additional flag $unmapped=true$.
+\paragraph{Single read alignment to reference} 
+Assume we are observing a data stream of raw unmapped short (<500 bp) reads $M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. Using an existing human reference genome, such as \emph{GRCh38}, we would like to align each read in $m.payload$ to produce two new output streams $M_{aln}$ and $M_{unaln}$, depending on alignment results. $M_{aln}$, will contain messages from $M_{raw}$ with additional attributes related to the alignment, as described in Section \ref{sec:bg_sam_bam}, replicating the information contained in a SAM alignment record (see Table \ref{tab:sam_file_body_mandatory_fields}). $M_{unaln}$ shall contain reads from $M_{raw}$ that failed to align to a reference sequence, with an additional flag $unmapped=true$.
 
 For $M_{aln}$ the following values are computed:
 
@@ -450,7 +451,7 @@ If a co-linear set of seeds is not available, or the alignment score fails to re
     \cline{2-2}
     Operation & $mapToReference(r, ref\_id)$\\
     \cline{2-2}
-    \multirow{2}{*}{Outputs} & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, r)\} \text{ where } mr = (s\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$\\
+    \multirow{2}{*}{Outputs} & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, r)\} \text{ where } r = (s\_id, ref\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$\\
     & \hangindent=1em $M_{unaln} = \{m_i: m_i = (header, r)\} \text{  where } r = (s\_id, r\_id, b, q, f_p, unmapped=true)$\\
     \bottomrule
     \end{tabular}}
@@ -460,7 +461,8 @@ If a co-linear set of seeds is not available, or the alignment score fails to re
 
 The reference pointed to by $ref_id$ when $mapToReference()$ is invoked consists of the typical data structures required by the FM Index i.e. the reference BWT, suffix array, occurrence array, as in \autocite{ferragina2000opportunistic}, but encoding both the forward and reverse complement of the reference sequence as in \autocite{Li2013} to produce the FMD index. Because the reference sequence is static, updated less frequently than once a year, the requisite data structures can be computed once offline and stored in secondary storage. During service initialization they are loaded in RAM and kept memory-resident for the duration of the operation of the service. Because, once computed, the reference index is read-only it can be accessed in a thread-safe manner by multiple concurrent threads without the need for explicit concurrency management. Because of the embarrassingly-parallel nature of read alignment this operation can be scaled up as necessary simply by adding servers, provided additional computational resources exist, and network capacity is not exhausted.
 
-\paragraph{Read pair alignment to reference} - Since paired-end sequencing produces two reads that represent the opposite ends of a single molecule of approximately known size (known as insert size) it is possible to use knowledge about the insert size distribution along with corresponding pairs of reads to improve the quality of mapping for these reads, and even rescue mappings for reads that do not have a high quality unique mapping themselves but are anchored by a high quality mate. The mapping operation in this context proceeds similarly to the already described single read mapping but requires an input stream of read pairs along with a stream of sample QC metrics, including the empirical insert size distribution (as described in Section \ref{sec:main_body_read_qc_metrics}).
+\paragraph{Read pair alignment to reference} 
+Since paired-end sequencing produces two reads that represent the opposite ends of a single molecule of approximately known size (known as insert size) it is possible to use knowledge about the insert size distribution along with corresponding pairs of reads to improve the quality of mapping for these reads, and even rescue mappings for reads that do not have a high quality unique mapping themselves but are anchored by a high quality mate. The mapping operation in this context proceeds similarly to the already described single read mapping but requires an input stream of read pairs along with a stream of sample QC metrics, including the empirical insert size distribution (as described in Section \ref{sec:main_body_read_qc_metrics}).
 
 Depending on the result of the mapping operation for each read in a pair the output stream will contain pairs of reads of type \\
 $r_{aln} = (s\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$\\
@@ -499,11 +501,85 @@ $mapPairToReference()$ outputs read pairs to two output streams. If both reads a
 
 Pairing information is vital to downstream variant calling because it can both help with fragment assembly, when reads are properly paired and mapped, and signal the location of potential structural variants when reads are not properly paired and mapped within expected distances.
 
-\paragraph{Single read alignment to multiple references} -
-\paragraph{Candidate haplotype alignment to reference} -
-\paragraph{Single read alignment to list of alternative haplotypes} -
-\paragraph{Single read split-alignment to reference} -
+\paragraph{Single read alignment to multiple references}
+When high average base quality reads fail to map to the reference genome this can be the result of sequencing errors, genomic rearrangements or sample contamination. It's important to be able to detect contamination both at the individual read level, to discard such reads from the analysis, lest they lead to spurious variant calls, as well as at the sample level, where samples with an overabundance of contaminated reads may need to be discarded completely due to low confidence in the resulting call set. Contamination may occur in a variety of ways including sample-swap between tumour and normal DNA samples, between individuals, or accidental introduction of DNA from other species including other mammals, plants, bacteria, and viruses. 
 
+Because a relatively large collection of species' reference genomes has already been built up, one relatively simple way of detecting cross-species contamination is to classify reads by how well they align to a database of known references, if they fail to align to the human reference with a high enough quality. This can be accomplished with a general-purpose aligner like Bowtie or BWA, as well as with some purpose built approaches like Kraken\autocite{wood2014kraken} or Centrifuge\autocite{kim2016centrifuge}. While general purpose aligners appear to offer similar specificity and sensitivity to the purpose built tools, they are an order of magnitude slower and require approximately five times more RAM for storing the reference database\autocite{kim2016centrifuge}. Kraken breaks down the references into k-mers and uses k-mer counting to build a database of k-mer abundances and a taxonomic tree of species that can be searched for classification purposes, while Centrifuge uses the same FM index approach taken by Bowtie and BWA, but merges genomes from similar species into a graph structure and applies exact k-mer search when classifying reads from a sample (which is why it's faster than general purpose aligners since it avoids the expensive dynamic programming step).
+
+Since the FM index implementation is necessitated by other alignment use cases it makes sense to adopt this approach for contamination analysis as well. 
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $mapReadToReferenceDB()$}
+    \label{tab:op_map_pair_to_reference_db}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em $M_{unaln} = \{m_i: m_i = (header, r)\} \text{  where } r = (s\_id, r\_id, b, q, f_p, unmapped=true)$\\
+    \cline{2-2}
+    Operations & $mapReadToReferenceDB(r)$\\
+    \cline{2-2}
+    \multirow{2}{*}{Outputs} & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, r)\} \text{ where } r = (s\_id, ref\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags, contamination=true)$\\
+    & \hangindent=1em $M_{unaln} = \{m_i: m_i = (header, r)\} \text{  where } r = (s\_id, r\_id, b, q, f_p, unmapped=true, contamination=false)$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+The key to performing the $mapReadToReferenceDB()$ is the construction of the reference DB itself. Assuming there are $N$ genome references $G = \{g_i: i\in[1,N]\}$, create a joined reference $T = g_1\$_1g_2\$_2...\$_{N-1}g_N$ by concatenating all of the references interspersed with a set of sentinel characters $\{\$_i : i \in [1,N-1]\}$ that don't occur in $G$, are lexicographically smaller than any character in $G$, and having $\$_i < \$_j \text{ iff } i < j$. Record the index $d$ of the occurrence of each $\$_i$ in $T$, such that $T[d_i] = \$_i$. Then construct and search the FM Index of $T$ as usual. Given that a read $r$ maps to some location $l$ in $T$, $|\{d_i : d_i < l\}|$ identifies the rank of reference genome $g_j$ in $T$ that $r$ belongs to, thus identifying the reference of origin. The alignment process itself may be tuned to only perform exact matching as in Centrifuge, or carry out dynamic programming alignment as well, depending on cost and performance requirements. Reads in the output stream that are successfully aligned to a reference that is part of the database of contaminants are emitted with the corresponding reference ID and the contamination flag set.
+
+\paragraph{Candidate haplotype alignment to reference}
+Many of the modern leading variant callers\autocites{depristo2011framework}{garrison2012haplotype}{rimmer2014integrating} rely on local assembly of alternative haplotypes to detect variants with high accuracy. The haplotypes that are produced may be up to hundreds of kilobases long. These are aligned to the reference genome to reveal the location of potential variants that are implied by each alternative haplotype. The variants are subsequently evaluated in the context of read evidence to select the variants that are best supported by the data. This brings about the problem of aligning long sequences, potentially with many mismatches, to a reference genome. Additionally, long read technologies such as PacBio SMRT\autocite{rhoads2015pacbio} and Oxford Nanopore Technologies\autocite{lu2016oxford} routinely generate reads that are many kilobases long and may enjoy increased use in sequencing projects due to their ability to resolve structural variation.
+
+BWT and FM Index seed-and-extend approaches\autocites{li2013aligning}{langmead2012fast} that have been successful for shorter read lengths have proven to be exceedingly slow or crash altogether for long reads, because of the extra backtracking required by the dynamic programming step in the presence of read sequence divergence from the reference, whereas a k-mer hash table chaining approach based on minimizers\autocite{roberts2004reducing} was shown to be highly accurate and performant\autocite{li2018minimap2}. To take advantage of the improved alignment performance on long reads (30-70 times faster than BWA-MEM) we adopt Minimap's approach when aligning locally assembled alternative haplotypes to the reference sequence.
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $mapLongReadToReference()$}
+    \label{tab:op_map_long_read_to_reference}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em$M_{asm} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$. \\
+    \cline{2-2}
+    Operation & $mapLongReadToReference(r, ref\_id)$\\
+    \cline{2-2}
+    Outputs & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, r)\} \text{ where } r = (s\_id, ref\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+As described in \ref{sec:bg_alignment} and \autocite{li2018minimap2} the reference index in this case consists of a hashmap of minimizers (see Figure \ref{fig:k_w_minimizer}) of the reference genome where the key is the minimizer sequence and the value is a list of locations of that sequence. As with BWT based indexes, the structure is static over time, can be pre-generated, stored on disk, and loaded into memory during operation. When a read arrives on the input stream $M_{asm}$ the $mapLongReadToReference()$ operation breaks the read into a set of minimizers and searches these against the reference hash table. Sets of co-linear exact matches are formed into chains. Sequences that are between matches in a chain are locally aligned with dynamic programming. 
+
+\paragraph{Single read alignment to list of alternative haplotypes}
+NEED TO THINK ABOUT HOW THIS CAN WORK
+
+
+\paragraph{Single read split-alignment to reference}
+When a high average base quality read fails to align to the reference with high mapping quality one of the reasons may be that the read covers a DNA double-strand breakpoint in the sample, at the site of a structural variant that is longer than the size of the read. Such a read, if it were to be aligned to the sequence of the sample would map normally, but when mapped to the reference sequence, one part of the read maps to one location in te genome, and another part maps to a different location (see Figure \ref{fig:split_reads}). Such reads are called split-reads and they form an important source of signal for precise detection of structural variant breakpoints\autocites{rausch2012delly}{layer2014lumpy}.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.33]{split_reads}
+    \centering
+    \caption {Split-reads at the site of a deletion breakpoint.}
+    \label{fig:split_reads}
+\end{figure}
+
+Although the techniques used for single read mapping, described above, can be used for split-read alignment there are several issues to consider that make the creation of a separate $mapSplitReadToReference()$ operation desirable. 
+
+Since a split-read consists essentially of two or more separate pieces of varying lengths that may map to distant locations in the genome and have different orientations, determining where to "split" the read affects the quality of the subsequent mapping, as improper splits will generate many mismatches. $mapToReference()$ is intended to be optimized for speed on well-behaved reads which constitute most of the data that is seen for a given sample, but as a result make a number of assumptions, such as a single k-mer size and co-linearity of matches, that are invalid or sub-optimal for split-read alignment. Furthermore, the data representation for an aligned read in $mapToReference()$ of a single sequence $b$ of bases, $q$ of base qualities, and $cigar$ string representing the alignment is not well suited to representing an alignment consisting of multiple, possibly distant, pieces of possibly different orientations, as this is not readily representable in CIGAR. 
+
+In current software that relies on writing SAM files as a medium for alignments, split-reads are represented as multiple records with the same ID, where one record is arbitrarily chosen to be primary (or representative) and others are marked supplementary (via an 0x800 FLAG value). Each record represents a separate piece of the split read where the unmatched portion is masked out via soft-clipping in the CIGAR string or is hard-clipped (see Section \ref{sec:bg_file_formats} for details on the SAM format). The details of the split-read alignment are captured in each read's optional SA tag in the form of a semi-colon separated list of strings that describe the supplementary alignments. In Figure \ref{fig:igv_split_read}, for example, there is a split read pictured that was obtained from a sample on chromosome 20 of the NA12878 individual in the 1000 Genomes Project, aligned by BWA-MEM, where one portion of the read aligns on the positive(+) strand, while another portion of the read aligns on the negative(-) strand some distance away. The yellow area in the figure describes the first part of the read which is labeled primary. The read is 250 basepairs long and the CIGAR string is 68S81M101S, indicating 68 soft-clipped bases, followed by an 81 basepair match to the reference, and followed by another 101 soft-clipped bases. The 101 basepair segment has low base quality, so it likely consists primarily of sequencing errors, but the 81 basepair segment has base qualities around 30, which is relatively high. The SA tag reads - SA:Z:20,42589216,-,179S71M,60,0;, indicating that there is a secondary alignment mapped to chromosome 20, starting at position 42589216, on the negative strand, with CIGAR string 179S71M (179 soft-clipped bases followed by a 71 basepair match to the reference). This is indeed the case and the corresponding read is pictured in Figure \ref{fig:igv_split_read} shaded purple. Investigating the SAM record for this mapping reveals that the actual record has CIGAR string 179H71M, i.e. the bases at the beginning are actually hard-clipped, not soft-clipped (soft-clipped bases are excluded from the alignment but the sequence is still preserved in the file record, whereas hard-clipped bases are excluded from alignment and the sequence is not recorded in the file). Such a split-read might imply the presence of deletion proximal to an inversion in the sample with respect to the reference sequence, although the evidence from the read should be investigated in light of the evidence from all of the other reads that overlap this locus to make an accurate determination of the presence of a potential variant in that location.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.285]{igv_split_read}
+    \centering
+    \caption {IGV viewer rendering of a split-read on chromosome 20 from NA12878 sample.}
+    \label{fig:igv_split_read}
+\end{figure}
+
+There are several issues with this scheme in addition to the apparent disagreement between duplicated information in the two records. The duplication is wasteful of space, and prone to errors as demonstrated above. There is no apparent ordering of the segments of the read that map to different locations because the next or previous segment are not specified for a given record, instead all secondary records point back to the primary. There is no well defined schema for the optional SA tag other than specifying a record separator. Thus, formats and contents of the encoding may vary between tools and even from record to record, without the ability to validate correctness of the encoding. Additionally, because the records in the SAM file are typically either in random order or coordinate-sorted order, the records for a split-read are not easily locatable and in the worst-case the entire file may need to be scanned in order to get the full split-read alignment for a single read.
 
 \subsection{Local Assembly}
 

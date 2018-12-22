@@ -86,20 +86,20 @@
 \contentsline {paragraph}{Single read alignment to reference}{98}{section*.107}
 \contentsline {paragraph}{Read pair alignment to reference}{100}{section*.110}
 \contentsline {paragraph}{Single read alignment to multiple references}{101}{section*.112}
-\contentsline {paragraph}{Candidate haplotype alignment to reference}{101}{section*.113}
-\contentsline {paragraph}{Single read alignment to list of alternative haplotypes}{101}{section*.114}
-\contentsline {paragraph}{Single read split-alignment to reference}{101}{section*.115}
-\contentsline {subsection}{\numberline {5.3.3}Local Assembly}{102}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}Simple SNP Calling}{102}{subsection.5.3.4}
-\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{102}{subsection.5.3.5}
-\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{102}{subsection.5.3.6}
-\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{102}{subsection.5.3.7}
-\contentsline {subsection}{\numberline {5.3.8}Variant Output}{102}{subsection.5.3.8}
-\contentsline {section}{\numberline {5.4}Services of Rheos}{102}{section.5.4}
-\contentsline {section}{\numberline {5.5}Proof of concept implementation}{103}{section.5.5}
-\contentsline {section}{\numberline {5.6}Conclusions}{104}{section.5.6}
-\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{105}{chapter.6}
-\contentsline {section}{\numberline {6.1}Validation and Conclusion}{105}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future Direction}{106}{section.6.2}
-\contentsline {chapter}{Appendix}{108}{section*.116}
-\contentsline {chapter}{\numberline {A}Code Listings}{108}{Appendix.1.A}
+\contentsline {paragraph}{Candidate haplotype alignment to reference}{102}{section*.114}
+\contentsline {paragraph}{Single read alignment to list of alternative haplotypes}{103}{section*.116}
+\contentsline {paragraph}{Single read split-alignment to reference}{103}{section*.117}
+\contentsline {subsection}{\numberline {5.3.3}Local Assembly}{106}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}Simple SNP Calling}{106}{subsection.5.3.4}
+\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{106}{subsection.5.3.5}
+\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{106}{subsection.5.3.6}
+\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{106}{subsection.5.3.7}
+\contentsline {subsection}{\numberline {5.3.8}Variant Output}{106}{subsection.5.3.8}
+\contentsline {section}{\numberline {5.4}Services of Rheos}{106}{section.5.4}
+\contentsline {section}{\numberline {5.5}Proof of concept implementation}{107}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conclusions}{108}{section.5.6}
+\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{109}{chapter.6}
+\contentsline {section}{\numberline {6.1}Validation and Conclusion}{109}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future Direction}{110}{section.6.2}
+\contentsline {chapter}{Appendix}{112}{section*.120}
+\contentsline {chapter}{\numberline {A}Code Listings}{112}{Appendix.1.A}

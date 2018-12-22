@@ -2288,11 +2288,26 @@
     <bcf:citekey order="296">farrar2006striped</bcf:citekey>
     <bcf:citekey order="297">ferragina2000opportunistic</bcf:citekey>
     <bcf:citekey order="298">Li2013</bcf:citekey>
-    <bcf:citekey order="299">marx2015dna</bcf:citekey>
-    <bcf:citekey order="300">collins2015new</bcf:citekey>
-    <bcf:citekey order="301">merkel2014docker</bcf:citekey>
-    <bcf:citekey order="302">European_Open_Science_Cloud_2016</bcf:citekey>
-    <bcf:citekey order="303">denbi_2016-10-31</bcf:citekey>
+    <bcf:citekey order="299">wood2014kraken</bcf:citekey>
+    <bcf:citekey order="300">kim2016centrifuge</bcf:citekey>
+    <bcf:citekey order="301">kim2016centrifuge</bcf:citekey>
+    <bcf:citekey order="302">depristo2011framework</bcf:citekey>
+    <bcf:citekey order="303">garrison2012haplotype</bcf:citekey>
+    <bcf:citekey order="304">rimmer2014integrating</bcf:citekey>
+    <bcf:citekey order="305">rhoads2015pacbio</bcf:citekey>
+    <bcf:citekey order="306">lu2016oxford</bcf:citekey>
+    <bcf:citekey order="307">li2013aligning</bcf:citekey>
+    <bcf:citekey order="308">langmead2012fast</bcf:citekey>
+    <bcf:citekey order="309">roberts2004reducing</bcf:citekey>
+    <bcf:citekey order="310">li2018minimap2</bcf:citekey>
+    <bcf:citekey order="311">li2018minimap2</bcf:citekey>
+    <bcf:citekey order="312">rausch2012delly</bcf:citekey>
+    <bcf:citekey order="313">layer2014lumpy</bcf:citekey>
+    <bcf:citekey order="314">marx2015dna</bcf:citekey>
+    <bcf:citekey order="315">collins2015new</bcf:citekey>
+    <bcf:citekey order="316">merkel2014docker</bcf:citekey>
+    <bcf:citekey order="317">European_Open_Science_Cloud_2016</bcf:citekey>
+    <bcf:citekey order="318">denbi_2016-10-31</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

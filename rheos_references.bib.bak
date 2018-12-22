@@ -2374,4 +2374,23 @@
   publisher = {Oxford University Press},
 }
 
+@Article{kim2016centrifuge,
+  author    = {Kim, Daehwan and Song, Li and Breitwieser, Florian P and Salzberg, Steven L},
+  title     = {Centrifuge: rapid and sensitive classification of metagenomic sequences},
+  journal   = {Genome research},
+  year      = {2016},
+  publisher = {Cold Spring Harbor Lab},
+}
+
+@Article{wood2014kraken,
+  author    = {Wood, Derrick E and Salzberg, Steven L},
+  title     = {Kraken: ultrafast metagenomic sequence classification using exact alignments},
+  journal   = {Genome biology},
+  year      = {2014},
+  volume    = {15},
+  number    = {3},
+  pages     = {R46},
+  publisher = {BioMed Central},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
