@@ -553,7 +553,7 @@ BWT and FM Index seed-and-extend approaches\autocites{li2013aligning}{langmead20
 As described in \ref{sec:bg_alignment} and \autocite{li2018minimap2} the reference index in this case consists of a hashmap of minimizers (see Figure \ref{fig:k_w_minimizer}) of the reference genome where the key is the minimizer sequence and the value is a list of locations of that sequence. As with BWT based indexes, the structure is static over time, can be pre-generated, stored on disk, and loaded into memory during operation. When a read arrives on the input stream $M_{asm}$ the $mapLongReadToReference()$ operation breaks the read into a set of minimizers and searches these against the reference hash table. Sets of co-linear exact matches are formed into chains. Sequences that are between matches in a chain are locally aligned with dynamic programming. 
 
 \paragraph{Single read alignment to list of alternative haplotypes}
-NEED TO THINK ABOUT HOW THIS CAN WORK
+NEED TO THINK ABOUT HOW THIS SHOULD WORK
 
 
 \paragraph{Single read split-alignment to reference}
@@ -579,11 +579,91 @@ In current software that relies on writing SAM files as a medium for alignments,
     \label{fig:igv_split_read}
 \end{figure}
 
-There are several issues with this scheme in addition to the apparent disagreement between duplicated information in the two records. The duplication is wasteful of space, and prone to errors as demonstrated above. There is no apparent ordering of the segments of the read that map to different locations because the next or previous segment are not specified for a given record, instead all secondary records point back to the primary. There is no well defined schema for the optional SA tag other than specifying a record separator. Thus, formats and contents of the encoding may vary between tools and even from record to record, without the ability to validate correctness of the encoding. Additionally, because the records in the SAM file are typically either in random order or coordinate-sorted order, the records for a split-read are not easily locatable and in the worst-case the entire file may need to be scanned in order to get the full split-read alignment for a single read.
+There are several issues with this scheme in addition to the apparent disagreement between duplicated information in the two records. The duplication is wasteful of space, and prone to errors as demonstrated above. There is no apparent ordering of the segments of the read that map to different locations because the next or previous segment are not specified for a given record, instead all secondary records point back to the primary. There is no well defined schema for the optional SA tag other than specifying a record separator. Thus, formats and contents of the encoding may vary between tools and even from record to record, without the ability to validate correctness of the encoding. Additionally, because the records in the SAM file are typically either in random order or coordinate-sorted order, the records for a split-read are not easily locatable and in the worst-case the entire file may need to be scanned in order to get the full split-read alignment for a single read. 
+
+As Rheos does not rely on traditional genomics file formats for encoding, we chose a split-read representation that alleviates the issues above and encodes the entirety of a split-read alignment in a single record. Define:
+
+\begin{equation}
+    \label{eq:split_read}
+    r_{split} = (s\_id, ref\_id, r\_id, b, q, f_p, aln)
+\end{equation}
+
+Here $s\_id, ref\_id, r\_id, b, q, f_p$ are as in Equation \ref{eq:raw_read_message} defining a raw read. $aln = (a_1,a_2,...,a_n)$ - an ordered list of alignment segments, where each \\$a_i = (i, rname, pos, offset, len, mapq, cigar, strand, flags)$, and:
+
+\begin{description}
+    \item[i] - ordinal number of $a_i$ in $aln$.
+    \item[rname] - name of reference contig to which $a_i$ maps.
+    \item[pos] - position on $rname$ where $a_i$ maps.
+    \item[offset] - offset on $r_split$ where $a_i$ begins.
+    \item[len] - length of $a_i$.
+    \item[mapq] - mapping quality.
+    \item[cigar] - CIGAR of the alignment.
+    \item[strand] - alignment strand, 0 for positive, 1 for negative. Strand disagreement between $r_{split}$ and $a_i$ indicates sequence inversion.
+    \item[flags] - various flags as in SAM format.   
+\end{description}
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $mapSplitReadToReference()$}
+    \label{tab:op_map_split_read_to_reference}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em$M_{unaln} = \{m_i: m_i = (header, r)\}$ where $r = (s\_id, r\_id, b, q, f_p, unmapped=true)$.\\
+    \cline{2-2}
+    Operation & $mapSplitReadToReference(r, ref\_id)$\\
+    \cline{2-2}
+    \multirow{2}{*}{Outputs} & \hangindent=1em$M_{split} = \{m_i: m_i = (header, r)\}$ where $r$ is as defined in Equation \ref{eq:split_read}.\\
+    & \hangindent=1em $M_{unaln} = \{m_i: m_i = (header, r)\}$ where $r = (s\_id, r\_id, b, q, f_p, unmapped=true,split\_align=false)$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+The split-read alignment operates on reads that emerge unmapped from the regular alignment stage via $mapToReference()$. Alignment proceeds using the same general FM Index based framework as $mapToReference()$ but here each read is broken down into a series of progressively smaller k-mers. Each k-mer is aligned individually, and the alignment that maximizes aggregate alignment score across all k-mer sizes and candidate alignments is chosen. 
+
+The alignment operations that have been considered in this section present a set of distinct challenges on the basis of 
+the gamut of query sequence and reference database size combinations. Each scenario presented admits optimization with respect to its specific parameters. Existing aligners typically attempt to solve all or most of these problems with a single approach, and thus suffer from inability to fully optimize each specific use case. Our treatment, that separates the different alignment scenarios into distinct operations, with well delineated optimization criteria, and even into potentially separate services that may run on separate physical machines, allows us to fully optimize each operation without negatively impacting others.
+
+\subsection{Simple Germline SNP Calling}
+
+SNPs are the most abundant and widely studied type of genetic variant\autocite{10002010map}. Section \ref{sec:bg_germline_snp_calling} provides an overview of existing methods for germline SNP calling. For a human diploid sample when calling variants on one of the autosomes (chromosomes 1-22), germline SNP calling comes down to selecting between three alternative models for each genomic locus based on the set of reads that are observed - homozygous reference, heterozygous, or homozygous variant (see Figure \ref{fig:snps}).   
+
+\begin{figure}[H]
+    \includegraphics[scale=0.325]{snps}
+    \centering
+    \caption {Examples of genomic loci that match the reference sequence, have a heterozygous SNP, and a homozygous SNP.}
+    \label{fig:snps}
+\end{figure}
+
+Although the most accurate currently available variant callers model the region around a SNP via local assembly of haplotypes\autocites{depristo2011framework}{rimmer2014integrating}{garrison2012haplotype}, a simpler approach assumes that every locus is independent and can still achieve high accuracy. For instance, samtools\autocite{li2011statistical}, which makes the independence assumption, has recently been compared to several local assembly based methods in \autocite{li2018synthetic} and was shown to have a slightly higher false-negative rate than platypus, freebayes, and Haplotype Caller, but also a slightly lower false-positive (FPPM = false positives per million bases) rate (see Figure \ref{fig:fb_hc_st_pt}). Additionally, in \autocite{rimmer2014integrating} Table 1, samtools has the highest sensitivity, but also the highest false discovery rate (FDR) on SNPs. Thus, the simpler independent locus model should be sufficient for calling germline SNPs and is of interest in the context of the data streaming approach of Rheos.
+
+The random order in which reads appear in a Rheos data stream means that a new approach is required to successfully implement germline SNP calling on this data. Specifically, all of the existing tools for variant calling assume that all of the reads for a given sample have been observed, mapped to the reference, sorted by increasing reference coordinate, and stored in a SAM or BAM file. Variant calling (see Section \ref{sec:bg_germline_snp_calling}) proceeds by traversing the data in a coordinate-ordered fashion, loading all of the reads that overlap a given locus into memory, into a structure called a read pileup (see Figure \ref{fig:main_body_locus}), and evaluating a set of alternative models for each locus, typically in a Bayesian framework, selecting either the maximum-likelihood estimate (MLE) or the maximum a posteriori (MAP) estimate as the called genotype.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.325]{locus}
+    \centering
+    \caption {A read pileup over a locus with a heterozygous SNP.}
+    \label{fig:main_body_locus}
+\end{figure}
+
+The Bayesian framework that is typically adopted follows this form (see also Section \ref{sec:bg_gatk}):
+
+\begin{equation}
+    \label{eq:main_body_gatk_genotyping}
+P(G|D) = {P(G)P(D|G)\over\sum_i P(G_i)P(D|G_i)}
+\end{equation}
+
+Here some prior distribution $P(G)$ of genotypes at a locus is assumed. This can be an uninformative prior (for instance one that assigns equal probability to all possible genotypes), or it can be a prior based on a population genetics model, or empirically obtained distribution of genotypes in a given population. The genotype likelihood $P(D|G)$ under assumptions of independent observations (reads) and independent errors, factors into a product of individual observation likelihoods i.e. $P(D|G) = \prod_j{P(D_j|G)}$. Each observation $P(D_j|G)$ is further subject to a sequencing error probability $\epsilon_j$, derived from the recorded base quality for the read over the locus being considered. Thus, $P(D_j|G) = 1 - \epsilon_j$ when $D_j = G$ and $P(D_j|G) = \epsilon_j$, otherwise. Genotype likelihoods are then computed as in Equations \ref{eq:samtools_diploid_genotype_likelihoods} for samtools, and similarly Equations \ref{eq:freebayes_main_model}, \ref{eq:freebayes_afs}, \ref{eq:freebayes_obs_given_base} for freebayes, Equation \ref{eq:gatk_genotype_likelihood} for GATK, and Equation \ref{eq:platypus_likelihood_model} for platypus. A site is called variant if the probability of having at least one non-reference allele at the locus exceeds the probability of having 0 non-reference alleles. A genotype is assigned if the ratio of the genotype with the highest likelihood to the genotype with the second highest likelihood exceeds some pre-determined constant, i.e., assuming genotype $g \in [0,1,2]$ denotes the number of reference alleles at the locus, and, for example, given $\mathcal{L}(g_2) > \mathcal{L}(g_1) > \mathcal{L}(g_0)$, assign the genotype $g=2$ if $\frac{\mathcal{L}(g_2)}{\mathcal{L}(g_1)} > c$, where $c > 1$ is some user-set threshold. The calling proceeds locus-by-locus in coordinate-ordered fashion, and the results are written to a file in VCF format (see \ref{sec:bg_file_formats}) where each row represents a variant.
+
+The process above is efficient in that each locus is looked at only once in order to be able to make a call, but it is inefficient in that all of the data needs to have been observed, mapped, and sorted in order to even begin calling. The streaming approach that we adopt in Rheos allows us to begin calling immediately as we start seeing data, in return for needing to re-evaluate a locus multiple times as new data arrives. Because each read is immediately integrated into the model once it is observed, the state of our model of the genome is at all times consistent with all of the read evidence that has been observed to date. Each locus then simply provides an estimate of the underlying genotype based on the data that is available at that time. Initially, these estimates may be inaccurate, but accuracy improves as more and more data arrives and the estimates are refined in an iterative fashion.   
+
+
+
+
+
 
 \subsection{Local Assembly}
-
-\subsection{Simple SNP Calling}
 
 \subsection{Assembly-based Variant Calling}
 

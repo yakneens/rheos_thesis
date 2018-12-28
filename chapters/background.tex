@@ -973,7 +973,7 @@ $$
 
 In particular, for a diploid sample ($m=2$), the likelihoods for $g=0,1,2$ are
 \begin{eqnarray}
-    \label{samtools_diploid_genotype_likelihoods}
+    \label{eq:samtools_diploid_genotype_likelihoods}
     \mathcal{L}(0)&=&\prod_{j=1}^l\epsilon_j\prod_{j=l+1}^k(1-\epsilon_j)\\
     \mathcal{L}(1)&=&\frac{1}{2^k}\\
     \mathcal{L}(2)&=&\prod_{j=1}^l(1-\epsilon_j)\prod_{j=l+1}^k\epsilon_j
@@ -1043,6 +1043,7 @@ P(G_1,\ldots,G_n|R_1,\ldots,R_n) = { P(G_1,\ldots,G_n) \prod_{i=1}^n P(R_i|G_i) 
 For a single sample at a particular locus there are $R_i$ reads, and $k_i$ observed alleles - $B'_i = b'_1,\ldots,b'_{k_i}$, which correspond to $b_1,\ldots,b_i$ underlying alleles represented at the given locus. For each observed allele $b'_i$ there is a corresponding count of observations $o_f$ s.t. $: \sum_{j=1}^{k_i} o_j = s_i$ and each $b'_i$ corresponds to a true allele $b_i$. The probability of a single observation $b'_i$ given a genotype in a single sample is:
 
 \begin{equation}
+\label{eq:freebayes_data_given_g}
 P(b'_i|G) = \sum_{\forall(b_i \in G)} { f_i P(b'_i|b_i) }
 \end{equation}
 
@@ -1050,6 +1051,7 @@ where $f_i$ is the allele frequency of $b_i$ in $G$. The authors introduce the f
 
 
 \begin{equation}
+\label{eq:freebayes_obs_given_base}
 P(b'|b) = 
 \left\{
         \begin{array}{ll}
@@ -1132,6 +1134,7 @@ where $D$ is the set of reads, $G_i$ is the set of possible genotypes, and under
 Based on the diploid and independence assumptions:
 
 \begin{equation}
+    \label{eq:gatk_genotype_likelihood}
     P(D|G) = \prod_j{\bigg({P(D_j|H_1)\over 2} + {P(Dj|H_2)\over 2}\bigg)}
 \end{equation}
 
