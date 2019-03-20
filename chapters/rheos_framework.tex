@@ -296,7 +296,6 @@ We provide several examples of QC queries of interest that are specified on a da
     \label{fig:main_body_fastqc_per_base_quality}
 \end{figure} 
 
-
 Because PHRED-scaled quality scores are integers that fall in a fixed range $q \in [0,96]$ building quantile summaries using the q-gram\autocite{shrivastava2004medians} approach is the most space-efficient. Because base quality scores need to be aggregated over many reads and tracked for many samples, a service that implements this functionality needs to keep local state, and the operation to update the quantile summaries based on incoming reads follows the Local State Aggregator pattern from Section \ref{sec:rheos_data_streaming_model}. 
 
 \bgroup
@@ -458,7 +457,6 @@ If a co-linear set of seeds is not available, or the alignment score fails to re
 \end{table}
 \egroup
 
-
 The reference pointed to by $ref_id$ when $mapToReference()$ is invoked consists of the typical data structures required by the FM Index i.e. the reference BWT, suffix array, occurrence array, as in \autocite{ferragina2000opportunistic}, but encoding both the forward and reverse complement of the reference sequence as in \autocite{Li2013} to produce the FMD index. Because the reference sequence is static, updated less frequently than once a year, the requisite data structures can be computed once offline and stored in secondary storage. During service initialization they are loaded in RAM and kept memory-resident for the duration of the operation of the service. Because, once computed, the reference index is read-only it can be accessed in a thread-safe manner by multiple concurrent threads without the need for explicit concurrency management. Because of the embarrassingly-parallel nature of read alignment this operation can be scaled up as necessary simply by adding servers, provided additional computational resources exist, and network capacity is not exhausted.
 
 \paragraph{Read pair alignment to reference} 
@@ -554,7 +552,6 @@ As described in \ref{sec:bg_alignment} and \autocite{li2018minimap2} the referen
 
 \paragraph{Single read alignment to list of alternative haplotypes}
 NEED TO THINK ABOUT HOW THIS SHOULD WORK
-
 
 \paragraph{Single read split-alignment to reference}
 When a high average base quality read fails to align to the reference with high mapping quality one of the reasons may be that the read covers a DNA double-strand breakpoint in the sample, at the site of a structural variant that is longer than the size of the read. Such a read, if it were to be aligned to the sequence of the sample would map normally, but when mapped to the reference sequence, one part of the read maps to one location in te genome, and another part maps to a different location (see Figure \ref{fig:split_reads}). Such reads are called split-reads and they form an important source of signal for precise detection of structural variant breakpoints\autocites{rausch2012delly}{layer2014lumpy}.
@@ -658,10 +655,121 @@ Here some prior distribution $P(G)$ of genotypes at a locus is assumed. This can
 
 The process above is efficient in that each locus is looked at only once in order to be able to make a call, but it is inefficient in that all of the data needs to have been observed, mapped, and sorted in order to even begin calling. The streaming approach that we adopt in Rheos allows us to begin calling immediately as we start seeing data, in return for needing to re-evaluate a locus multiple times as new data arrives. Because each read is immediately integrated into the model once it is observed, the state of our model of the genome is at all times consistent with all of the read evidence that has been observed to date. Each locus then simply provides an estimate of the underlying genotype based on the data that is available at that time. Initially, these estimates may be inaccurate, but accuracy improves as more and more data arrives and the estimates are refined in an iterative fashion.   
 
+We are thus interested in an iterative update rule that, given a current set of genotype likelihood estimates at a locus, that incorporate evidence from $n$ reads that have already been observed, when the read $n+1$ arrives, is able to produce an updated set of genotype likelihoods that is consistent with evidence from all $n+1$ reads, as well as any other auxiliary structures necessary for producing a variant call record. To do this we adopt a sequential Bayesian framework, where the posterior distribution of genotype likelihoods at step $n$ becomes the prior (albeit unnormalized) for step $n+1$. 
 
+Let:
 
+\begin{table}[!h]
+    \label{tab:snp_calling_notation}
+    {\begin{tabular}{lp{11cm}}
+    \toprule
+    Symbol & Description \\
+    \midrule
+    $R$ & The reference sequence. \\
+    $S$ & The sample sequence. \\
+    $D = \{d_i: i \in [1,n]\}$ & The set of $n$ observations seen to date. \\ 
+    $d_i$ & $i$'th read observation. \\
+    $g_{i}$ & Genotype of sample $S$ at locus $i$. $g \in [0,1,2]$ counts the number of reference alleles at locus $i$\\
+    $P_n(G_i)$ & Probability of genotype $G = g$ at locus $i$, after seeing $n$ observations $d$ that overlap locus $i$.\\
+    $\mathcal{L}(d_n|G_i)$ & Genotype likelihood function at locus $i$ for the $n$'th observation.\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
 
+We take $P_0(G_i)$ to be the prior probability of $G$ at $i$. After observing the first data point $d_1$ which has base quality (probability of error) $\epsilon_1$, we calculate:
 
+\begin{align*}
+&\mathcal{L}(d_1|G=0) = 1 - \epsilon_1\\
+&\mathcal{L}(d_1|G=1) = \frac{1}{2}\\
+&\mathcal{L}(d_1|G=2) = \epsilon_1
+\end{align*}
+
+if $d_1$ is different from reference, and:
+
+\begin{align*}
+&\mathcal{L}(d_1|G=0) = \epsilon_1\\
+&\mathcal{L}(d_1|G=1) = \frac{1}{2}\\
+&\mathcal{L}(d_1|G=2) = 1 - \epsilon_1
+\end{align*}
+
+if $d_1$ matches the reference. Consequently, by Bayes' Rule:
+
+\begin{align*}
+&\mathcal{L}(G=0|d_1) \propto \mathcal{L}(d_1|G=0) * P_0(G=0)\\
+&\mathcal{L}(G=1|d_1) \propto \mathcal{L}(d_1|G=1) * P_0(G=1)\\
+&\mathcal{L}(G=2|d_1) \propto \mathcal{L}(d_1|G=2) *  P_0(G=2)
+\end{align*}
+
+Now, assuming that we have observed $n$ data points and calculated $\mathcal{L}(G|D_n)$ (likelihood of genotype given $n$ data points $D_n$). We obtain a new data point $d_{n+1}$ and calculate:
+
+\begin{align*}
+&\mathcal{L}(d_{n+1}|G=0) = 1 - \epsilon_1\\
+&\mathcal{L}(d_{n+1}|G=1) = \frac{1}{2}\\
+&\mathcal{L}(d_{n+1}|G=2) = \epsilon_1
+\end{align*}
+
+if $d_{n+1}$ is different from reference, and:
+
+\begin{align*}
+&\mathcal{L}(d_{n+1}|G=0) = \epsilon_1\\
+&\mathcal{L}(d_{n+1}|G=1) = \frac{1}{2}\\
+&\mathcal{L}(d_{n+1}|G=2) = 1 - \epsilon_1
+\end{align*}
+
+if $d_{n+1}$ matches the reference. Using this likelihood and the posterior from step $n+$ as the prior for step $n+1$, again by Bayes' Rule, we obtain:
+
+\begin{align*} 
+&\mathcal{L}(G=0|D_{n+1}) \propto \mathcal{L}(d_{n+1}|G=0) * \mathcal{L}(G=0|D_{n})\\
+&\mathcal{L}(G=1|D_{n+1}) \propto \mathcal{L}(d_{n+1}|G=1) * \mathcal{L}(G=1|D_{n})\\
+&\mathcal{L}(G=2|D_{n+1}) \propto \mathcal{L}(d_{n+1}|G=2) * \mathcal{L}(G=2|D_{n}) \numberthis \label{eq:rheos_genotype_likelihood}
+\end{align*}
+
+Equation \ref{eq:rheos_genotype_likelihood} provides the general update rule for incorporating new evidence about a given locus $i$ having already made and recorded $n$ observations, upon making observation $n+1$. This iterative approach is mathematically equivalent to the batch update approaches such as \autocite{li2011statistical}, that collect all of the data about a locus before evaluating genotype likelihoods. The posteriors obtained by equation \ref{eq:rheos_genotype_likelihood} can be used directly to evaluate relative likelihoods of the possible genotypes, and to assign genotypes via a likelihood ratio, for example, but in order to obtain a proper posterior probability mass function over the genotypes they need to be normalized, to obtain:
+
+\begin{equation}
+    P(G=g|D) = \frac {\mathcal{L}(G=g|D)} {\sum_{g'\in G} \mathcal{L}(G=g'|D)}
+\end{equation}
+
+This equation can be used to obtain a probability estimate of any given genotype, having observed any given amount of data about a specific locus.
+
+Armed with the update rule for integrating read evidence we are ready to define a data stream operation of Local State Aggregator type is responsible for processing a stream of aligned reads (or read pairs), updating its local state with the genetic variation evidence contained in the reads, and emitting a stream of updated genomic loci (see Fig. \ref{fig:main_body_locus}) that can be used by downstream services for variant calling.
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $updateLociFromRead()$}
+    \label{tab:op_update_loci_from_read}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, r)\} \text{ where } r = (s\_id, ref\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$. \\
+    \cline{2-2}
+    Operation & $updateLociFromRead(r, ref, current_loci)$\\
+    \cline{2-2}
+    Outputs & \hangindent=1em$M_{loci} = \{m_i: m_i = (header, L)\} \text{ where } L = \{l : l=(s\_id, ref\_id, contig, pos, alt, gl_0, gl_1, gl_2, dp, ro, qr, ao, qa)\}$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+A Locus $l$ for SNP calling represents a single genomic location for a single sample and a particular reference genome. For each Locus we keep track of the following fields:
+
+\begin{description}
+    \item[s\_id] - Sample ID.
+    \item[ref\_id] - Reference Genome ID.
+    \item[contig] - Name of the reference contig.
+    \item[pos] - Reference-relative position of the Locus on the contig.
+    \item[alt] - The alternative allele at this locus (if any alternative alleles have been observed).
+    \item[gl\_0] - Likelihood of homozygous alternative genotype at this locus, based on the data seen so far.
+    \item[gl\_1] - Likelihood of heterozygous genotype at this locus, based on the data seen so far.
+    \item[gl\_2] - Likelihood of homozygous reference genotyp at this locus, based on the data seen so far.
+    \item[dp] - Read depth - number of reads observed at this locus so far.
+    \item[ro] - Number of reference observations at this locus.
+    \item[qr] - Sum of base qualities of reference observations at this locus.
+    \item[ao] - Number of alternative observations at this locus.
+    \item[qa] - Sum of base qualities of alternative observations at this locus.       
+\end{description}
+
+The Locus Processing Service which is responsible for implementing $updateLociFromRead()$ maintains a local data store of Locus objects, ideally in memory. When a new mapped read arrives via the input stream, the service walks along the read and for each position on the read compares it to the respective position on the reference sequence. It retrieves the Locus corresponding to this position and, depending on whether the read matches, or is different from, the reference sequence, updates the Locus genotype likelihoods, and other fields, according to the update rule of Equation \ref{eq:rheos_genotype_likelihood}. Those Locus objects that have been updated, and have alternative allele observations (i.e. potential variants) are added to a list of objects that should be emitted by the service as output of $updateLociFromRead()$.
 
 \subsection{Local Assembly}
 
@@ -689,7 +797,6 @@ Describe specific problems that need to be addressed by the system in a stream-b
     \item Annotate variants
     \item Output variants
 \end{itemize}
-
 
 
 

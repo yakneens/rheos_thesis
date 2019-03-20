@@ -713,4 +713,430 @@
 \newlabel{fig:stream_aggregator_function}{{5.4}{86}{Service S integrates messages from multiple input streams $M_i$ to produce an aggregated output stream $M_o$ via $f$.\relax }{figure.caption.86}{}}
 \@writefile{toc}{\contentsline {paragraph}{Local State Aggregator Function}{86}{section*.87}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }}{87}{figure.caption.88}}
-\newlabel{fig:stream_local_state_aggregator_function}{{5.5}{87}{Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }{figure.capt
+\newlabel{fig:stream_local_state_aggregator_function}{{5.5}{87}{Service S aggregates $m_i$ with query results $q_i$ obtained from a local data store.\relax }{figure.caption.88}{}}
+\@writefile{toc}{\contentsline {paragraph}{Persistence Function}{87}{section*.89}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Service $S$ processes messages $m_i$ into persistent storage. The output stream $M_o$ contains persistence confirmation and error events.\relax }}{87}{figure.caption.90}}
+\newlabel{fig:stream_persistence_function}{{5.6}{87}{Service $S$ processes messages $m_i$ into persistent storage. The output stream $M_o$ contains persistence confirmation and error events.\relax }{figure.caption.90}{}}
+\@writefile{toc}{\contentsline {paragraph}{Query Function}{87}{section*.91}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }}{87}{figure.caption.92}}
+\newlabel{fig:stream_query_function}{{5.7}{87}{Service S filters messages from input stream $M$ and only allows through those that pass the filtering condition.\relax }{figure.caption.92}{}}
+\abx@aux@cite{vaquero2011dynamically}
+\abx@aux@segm{0}{0}{vaquero2011dynamically}
+\abx@aux@cite{mao2011auto}
+\abx@aux@segm{0}{0}{mao2011auto}
+\abx@aux@segm{0}{0}{vaquero2011dynamically}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces a) In horizontal scaling new servers are added and removed (dashed arrow) behind a load balancer as the rate of data stream $M_i$ fluctuates. b) In vertical scaling more powerful servers need to be launched (dashed arrow) to replace smaller servers (with potential service outage) when the rate of $M_i$ increases beyond capacity.\relax }}{89}{figure.caption.93}}
+\newlabel{fig:horizontal_vs_vertical_scaling}{{5.8}{89}{a) In horizontal scaling new servers are added and removed (dashed arrow) behind a load balancer as the rate of data stream $M_i$ fluctuates. b) In vertical scaling more powerful servers need to be launched (dashed arrow) to replace smaller servers (with potential service outage) when the rate of $M_i$ increases beyond capacity.\relax }{figure.caption.93}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces A\relax }}{89}{figure.caption.94}}
+\newlabel{fig:queue}{{5.9}{89}{A\relax }{figure.caption.94}{}}
+\abx@aux@cite{wieder2011service}
+\abx@aux@segm{0}{0}{wieder2011service}
+\abx@aux@segm{0}{0}{cock2009sanger}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Domain-specific Problems}{91}{section.5.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces The conceptual flow of data types within Rheos from the most raw - Sequencer Images, to the most refined - a set of Functionally Annotated Variants.\relax }}{91}{figure.caption.95}}
+\newlabel{fig:ngs_flow}{{5.10}{91}{The conceptual flow of data types within Rheos from the most raw - Sequencer Images, to the most refined - a set of Functionally Annotated Variants.\relax }{figure.caption.95}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces A read-pair that is aligned to the reference.\relax }}{92}{figure.caption.96}}
+\newlabel{fig:rheos_read_pair}{{5.11}{92}{A read-pair that is aligned to the reference.\relax }{figure.caption.96}{}}
+\newlabel{eq:raw_read_message}{{5.2}{92}{Domain-specific Problems}{equation.5.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Read QC Metrics}{92}{subsection.5.3.1}}
+\newlabel{sec:main_body_read_qc_metrics}{{5.3.1}{92}{Read QC Metrics}{subsection.5.3.1}{}}
+\abx@aux@cite{welford1962note}
+\abx@aux@segm{0}{0}{welford1962note}
+\abx@aux@cite{garofalakis2016data}
+\abx@aux@segm{0}{0}{garofalakis2016data}
+\abx@aux@cite{greenwald2001space}
+\abx@aux@segm{0}{0}{greenwald2001space}
+\abx@aux@cite{shrivastava2004medians}
+\abx@aux@segm{0}{0}{shrivastava2004medians}
+\newlabel{eq:stream_min}{{5.3}{93}{Read QC Metrics}{equation.5.3.3}{}}
+\newlabel{eq:stream_max}{{5.4}{93}{Read QC Metrics}{equation.5.3.4}{}}
+\newlabel{eq:stream_mean}{{5.5}{93}{Read QC Metrics}{equation.5.3.5}{}}
+\newlabel{eq:stream_variance}{{5.6}{93}{Read QC Metrics}{equation.5.3.6}{}}
+\abx@aux@segm{0}{0}{shrivastava2004medians}
+\@writefile{toc}{\contentsline {paragraph}{Average Base Quality}{94}{section*.97}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Definition of $q_{av}$ which computes average base quality for a read\relax }}{94}{table.caption.98}}
+\newlabel{tab:op_average_base_quality}{{5.2}{94}{Definition of $q_{av}$ which computes average base quality for a read\relax }{table.caption.98}{}}
+\@writefile{toc}{\contentsline {paragraph}{Base Quality Distribution}{94}{section*.99}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Distribution of base qualities per read position, from https://www.bioinformatics.babraham.ac.uk/projects/fastqc. Large quality drop-off can be see towards the end of the read.\relax }}{94}{figure.caption.100}}
+\newlabel{fig:main_body_fastqc_per_base_quality}{{5.12}{94}{Distribution of base qualities per read position, from https://www.bioinformatics.babraham.ac.uk/projects/fastqc. Large quality drop-off can be see towards the end of the read.\relax }{figure.caption.100}{}}
+\abx@aux@segm{0}{0}{shrivastava2004medians}
+\abx@aux@cite{stephens2016simulating}
+\abx@aux@segm{0}{0}{stephens2016simulating}
+\abx@aux@segm{0}{0}{stephens2016simulating}
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Definition of $updateQuantileSummaries()$\relax }}{95}{table.caption.101}}
+\newlabel{tab:op_update_quantile_summaries}{{5.3}{95}{Definition of $updateQuantileSummaries()$\relax }{table.caption.101}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces Updating quantile summaries for Base Quality Distribution.\relax }}{95}{algocf.4}}
+\newlabel{ag:update_quantile_summaries_bqd}{{4}{95}{Base Quality Distribution}{algocf.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Insert Size Distribution}{95}{section*.103}}
+\abx@aux@segm{0}{0}{greenwald2001space}
+\abx@aux@segm{0}{0}{greenwald2001space}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Distribution of insert sizes from two ICGC pancreatic cancer patients DO35138 and DO22154.\autocite {stephens2016simulating}\relax }}{96}{figure.caption.104}}
+\newlabel{fig:insert_size_distribution}{{5.13}{96}{Distribution of insert sizes from two ICGC pancreatic cancer patients DO35138 and DO22154.\autocite {stephens2016simulating}\relax }{figure.caption.104}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Definition of $updateInsertSizeDistribution()$\relax }}{96}{table.caption.105}}
+\newlabel{tab:op_update_insert_size_dist}{{5.4}{96}{Definition of $updateInsertSizeDistribution()$\relax }{table.caption.105}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Alignment}{96}{subsection.5.3.2}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces Updating metrics for Insert Size Distribution.\relax }}{97}{algocf.5}}
+\newlabel{ag:update_metrics_isd}{{5}{97}{Insert Size Distribution}{algocf.5}{}}
+\abx@aux@segm{0}{0}{langmead2012fast}
+\abx@aux@cite{Li2013}
+\abx@aux@segm{0}{0}{Li2013}
+\abx@aux@segm{0}{0}{langmead2009searching}
+\abx@aux@segm{0}{0}{smith1981comparison}
+\abx@aux@cite{myers1988optimal}
+\abx@aux@segm{0}{0}{myers1988optimal}
+\abx@aux@segm{0}{0}{farrar2006striped}
+\abx@aux@segm{0}{0}{Li2013}
+\@writefile{toc}{\contentsline {paragraph}{Single read alignment to reference}{98}{section*.107}}
+\abx@aux@segm{0}{0}{farrar2006striped}
+\abx@aux@segm{0}{0}{ferragina2000opportunistic}
+\abx@aux@segm{0}{0}{Li2013}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Example of an alignment CIGAR string.\relax }}{99}{figure.caption.108}}
+\newlabel{fig:main_body_cigar_string}{{5.14}{99}{Example of an alignment CIGAR string.\relax }{figure.caption.108}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces Definition of $mapToReference()$\relax }}{99}{table.caption.109}}
+\newlabel{tab:op_map_read_to_reference}{{5.5}{99}{Definition of $mapToReference()$\relax }{table.caption.109}{}}
+\@writefile{toc}{\contentsline {paragraph}{Read pair alignment to reference}{100}{section*.110}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces Definition of $mapPairToReference()$\relax }}{100}{table.caption.111}}
+\newlabel{tab:op_map_pair_to_reference}{{5.6}{100}{Definition of $mapPairToReference()$\relax }{table.caption.111}{}}
+\abx@aux@cite{wood2014kraken}
+\abx@aux@segm{0}{0}{wood2014kraken}
+\abx@aux@cite{kim2016centrifuge}
+\abx@aux@segm{0}{0}{kim2016centrifuge}
+\abx@aux@segm{0}{0}{kim2016centrifuge}
+\@writefile{toc}{\contentsline {paragraph}{Single read alignment to multiple references}{101}{section*.112}}
+\abx@aux@segm{0}{0}{depristo2011framework}
+\abx@aux@segm{0}{0}{garrison2012haplotype}
+\abx@aux@segm{0}{0}{rimmer2014integrating}
+\abx@aux@segm{0}{0}{rhoads2015pacbio}
+\abx@aux@segm{0}{0}{lu2016oxford}
+\@writefile{lot}{\contentsline {table}{\numberline {5.7}{\ignorespaces Definition of $mapReadToReferenceDB()$\relax }}{102}{table.caption.113}}
+\newlabel{tab:op_map_pair_to_reference_db}{{5.7}{102}{Definition of $mapReadToReferenceDB()$\relax }{table.caption.113}{}}
+\@writefile{toc}{\contentsline {paragraph}{Candidate haplotype alignment to reference}{102}{section*.114}}
+\abx@aux@segm{0}{0}{li2013aligning}
+\abx@aux@segm{0}{0}{langmead2012fast}
+\abx@aux@segm{0}{0}{roberts2004reducing}
+\abx@aux@segm{0}{0}{li2018minimap2}
+\abx@aux@segm{0}{0}{li2018minimap2}
+\abx@aux@segm{0}{0}{rausch2012delly}
+\abx@aux@segm{0}{0}{layer2014lumpy}
+\@writefile{lot}{\contentsline {table}{\numberline {5.8}{\ignorespaces Definition of $mapLongReadToReference()$\relax }}{103}{table.caption.115}}
+\newlabel{tab:op_map_long_read_to_reference}{{5.8}{103}{Definition of $mapLongReadToReference()$\relax }{table.caption.115}{}}
+\@writefile{toc}{\contentsline {paragraph}{Single read alignment to list of alternative haplotypes}{103}{section*.116}}
+\@writefile{toc}{\contentsline {paragraph}{Single read split-alignment to reference}{103}{section*.117}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Split-reads at the site of a deletion breakpoint.\relax }}{104}{figure.caption.118}}
+\newlabel{fig:split_reads}{{5.15}{104}{Split-reads at the site of a deletion breakpoint.\relax }{figure.caption.118}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces IGV viewer rendering of a split-read on chromosome 20 from NA12878 sample.\relax }}{105}{figure.caption.119}}
+\newlabel{fig:igv_split_read}{{5.16}{105}{IGV viewer rendering of a split-read on chromosome 20 from NA12878 sample.\relax }{figure.caption.119}{}}
+\newlabel{eq:split_read}{{5.8}{106}{Single read split-alignment to reference}{equation.5.3.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.9}{\ignorespaces Definition of $mapSplitReadToReference()$\relax }}{106}{table.caption.120}}
+\newlabel{tab:op_map_split_read_to_reference}{{5.9}{106}{Definition of $mapSplitReadToReference()$\relax }{table.caption.120}{}}
+\abx@aux@segm{0}{0}{10002010map}
+\abx@aux@segm{0}{0}{depristo2011framework}
+\abx@aux@segm{0}{0}{rimmer2014integrating}
+\abx@aux@segm{0}{0}{garrison2012haplotype}
+\abx@aux@segm{0}{0}{li2011statistical}
+\abx@aux@segm{0}{0}{li2018synthetic}
+\abx@aux@segm{0}{0}{rimmer2014integrating}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Simple Germline SNP Calling}{107}{subsection.5.3.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Examples of genomic loci that match the reference sequence, have a heterozygous SNP, and a homozygous SNP.\relax }}{107}{figure.caption.121}}
+\newlabel{fig:snps}{{5.17}{107}{Examples of genomic loci that match the reference sequence, have a heterozygous SNP, and a homozygous SNP.\relax }{figure.caption.121}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.18}{\ignorespaces A read pileup over a locus with a heterozygous SNP.\relax }}{108}{figure.caption.122}}
+\newlabel{fig:main_body_locus}{{5.18}{108}{A read pileup over a locus with a heterozygous SNP.\relax }{figure.caption.122}{}}
+\newlabel{eq:main_body_gatk_genotyping}{{5.9}{108}{Simple Germline SNP Calling}{equation.5.3.9}{}}
+\newlabel{tab:snp_calling_notation}{{\caption@xref {tab:snp_calling_notation}{ on input line 663}}{109}{Simple Germline SNP Calling}{table.caption.123}{}}
+\abx@aux@segm{0}{0}{li2011statistical}
+\newlabel{eq:rheos_genotype_likelihood}{{{5.10}}{111}{Simple Germline SNP Calling}{table.caption.123}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.10}{\ignorespaces Definition of $updateLociFromRead()$\relax }}{111}{table.caption.124}}
+\newlabel{tab:op_update_loci_from_read}{{5.10}{111}{Definition of $updateLociFromRead()$\relax }{table.caption.124}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Local Assembly}{112}{subsection.5.3.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}Assembly-based Variant Calling}{112}{subsection.5.3.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}Variant Filtering}{112}{subsection.5.3.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.7}Variant Annotation}{112}{subsection.5.3.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.8}Variant Output}{112}{subsection.5.3.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Services of Rheos}{113}{section.5.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Proof of concept implementation}{114}{section.5.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Conclusions}{114}{section.5.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{115}{chapter.6}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch:conclusion}{{6}{115}{Discussion and Conclusion}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Validation and Conclusion}{115}{section.6.1}}
+\abx@aux@cite{marx2015dna}
+\abx@aux@segm{0}{0}{marx2015dna}
+\abx@aux@cite{collins2015new}
+\abx@aux@segm{0}{0}{collins2015new}
+\abx@aux@cite{merkel2014docker}
+\abx@aux@segm{0}{0}{merkel2014docker}
+\abx@aux@cite{European_Open_Science_Cloud_2016}
+\abx@aux@segm{0}{0}{European_Open_Science_Cloud_2016}
+\abx@aux@cite{denbi_2016-10-31}
+\abx@aux@segm{0}{0}{denbi_2016-10-31}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Future Direction}{116}{section.6.2}}
+\newlabel{ch:appendices}{{6.2}{117}{Future Direction}{section.6.2}{}}
+\@writefile{toc}{\contentsline {chapter}{Appendix}{118}{section*.125}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Code Listings}{118}{Appendix.1.A}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{lol}{\contentsline {listing}{\numberline {1}{\ignorespaces Terraform configuration of a worker VM \relax }}{118}{listing.1}}
+\newlabel{lst:terraform_worker}{{1}{118}{Terraform configuration of a worker VM \relax }{listing.1}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {2}{\ignorespaces Terraform configuration of a security group \relax }}{119}{listing.2}}
+\newlabel{lst:terraform_security_group}{{2}{119}{Terraform configuration of a security group \relax }{listing.2}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {3}{\ignorespaces Salt Pillar for specifying test data location. \relax }}{119}{listing.3}}
+\newlabel{lst:salt_pillar_test_data}{{3}{119}{Salt Pillar for specifying test data location. \relax }{listing.3}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {4}{\ignorespaces Using Salt Mine to look up a server's IP Address. \relax }}{120}{listing.4}}
+\newlabel{lst:salt_mine}{{4}{120}{Using Salt Mine to look up a server's IP Address. \relax }{listing.4}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {5}{\ignorespaces Using Top File to map States to Roles. \relax }}{120}{listing.5}}
+\newlabel{lst:salt_top_file}{{5}{120}{Using Top File to map States to Roles. \relax }{listing.5}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {6}{\ignorespaces Collectd configuration for metrics collection. \relax }}{120}{listing.6}}
+\newlabel{lst:telegraf_config}{{6}{120}{Collectd configuration for metrics collection. \relax }{listing.6}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {7}{\ignorespaces Filebeat Prospector configuration. \relax }}{122}{listing.7}}
+\newlabel{lst:filebeat_prospectors}{{7}{122}{Filebeat Prospector configuration. \relax }{listing.7}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {8}{\ignorespaces TICKscript for alerting on CPU value. \relax }}{122}{listing.8}}
+\newlabel{lst:cpu_value_tick}{{8}{122}{TICKscript for alerting on CPU value. \relax }{listing.8}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {9}{\ignorespaces TICKscript for handling dead VMs. \relax }}{123}{listing.9}}
+\newlabel{lst:host_deadman_tick}{{9}{123}{TICKscript for handling dead VMs. \relax }{listing.9}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {10}{\ignorespaces Butler healing agent code for restarting the Airflow Scheduler. \relax }}{125}{listing.10}}
+\newlabel{lst:self_healing_airflow_scheduler_restart}{{10}{125}{Butler healing agent code for restarting the Airflow Scheduler. \relax }{listing.10}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {11}{\ignorespaces Butler healing agent code for relaunching a failed VM. \relax }}{125}{listing.11}}
+\newlabel{lst:self_healing_relaunch_vm}{{11}{125}{Butler healing agent code for relaunching a failed VM. \relax }{listing.11}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {12}{\ignorespaces Consul service definition for PostgreSQL. \relax }}{128}{listing.12}}
+\newlabel{lst:consul_postgres_service}{{12}{128}{Consul service definition for PostgreSQL. \relax }{listing.12}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {13}{\ignorespaces Source code for the freebayes workflow.\relax }}{128}{listing.13}}
+\newlabel{lst:freebayes_workflow}{{13}{128}{Source code for the freebayes workflow.\relax }{listing.13}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {14}{\ignorespaces Saltstack state for workflow deployment.\relax }}{131}{listing.14}}
+\newlabel{lst:workflow_deployment}{{14}{131}{Saltstack state for workflow deployment.\relax }{listing.14}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {15}{\ignorespaces Butler Analysis configuration for SNP genotyping.\relax }}{131}{listing.15}}
+\newlabel{lst:genotyping_analysis}{{15}{131}{Butler Analysis configuration for SNP genotyping.\relax }{listing.15}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {16}{\ignorespaces Butler Workflow configuration for Data Submission.\relax }}{132}{listing.16}}
+\newlabel{lst:gtupload_workflow}{{16}{132}{Butler Workflow configuration for Data Submission.\relax }{listing.16}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {17}{\ignorespaces Butler Analysis configuration for Data Submission.\relax }}{132}{listing.17}}
+\newlabel{lst:gtupload_analysis}{{17}{132}{Butler Analysis configuration for Data Submission.\relax }{listing.17}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {18}{\ignorespaces Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }}{133}{listing.18}}
+\newlabel{lst:run_delly}{{18}{133}{Python code for the run\_delly function which implements the functionality of the delly\_genotype task inside the Butler Delly Workflow.\relax }{listing.18}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {19}{\ignorespaces Butler Delly Workflow analysis configuration to genotype deletions.\relax }}{134}{listing.19}}
+\newlabel{lst:delly_analysis}{{19}{134}{Butler Delly Workflow analysis configuration to genotype deletions.\relax }{listing.19}{}}
+\@writefile{lol}{\contentsline {listing}{\numberline {20}{\ignorespaces Example of a VCF file (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).\relax }}{134}{listing.20}}
+\newlabel{lst:vcf_file}{{20}{134}{Example of a VCF file (from https://samtools.github.io/hts-specs/VCFv4.3.pdf).\relax }{listing.20}{}}
+\gdef\minted@oldcachelist{,
+  default-pyg-prefix.pygstyle,
+  default.pygstyle,
+  479CD11BF868FE93F0E894873C3CB2708B91B0F219C7C528D152A14D5292185D.pygtex,
+  F4B5DA8C183DE105E092DAEAFA4F22908B91B0F219C7C528D152A14D5292185D.pygtex,
+  AE60CA620DAFF2B84BCE6B79D47DE614263DE7D4A1A8B2875D24A94DC0BB3C96.pygtex,
+  69B643FD41BDE2AB1831036D350E78328B91B0F219C7C528D152A14D5292185D.pygtex,
+  1DD5182157F7B9883FA62705BCB88219263DE7D4A1A8B2875D24A94DC0BB3C96.pygtex,
+  7856C79B5DFB6DAC02B63BD4F254DE338B91B0F219C7C528D152A14D5292185D.pygtex,
+  7DFCFF5A7E938073353E795986997D35263DE7D4A1A8B2875D24A94DC0BB3C96.pygtex,
+  10D6252C6002B5418BFFB4AEF7FFE78433AABC92B3F1DC44296C26B1BD7730ED.pygtex,
+  2D88B15D825B88C2F25423F70E0C5D7033AABC92B3F1DC44296C26B1BD7730ED.pygtex,
+  91B0734F5F8C3391B947EF14F5EB6CFC4EDB6D7A69951E996E27037C1CB03AC9.pygtex,
+  68B865F7AC8698E981F9AACB3F70F7714EDB6D7A69951E996E27037C1CB03AC9.pygtex,
+  02724010425C93F943FB6E918085EC9163BEBE44FD60CC478B0439FAAE7250D6.pygtex,
+  B28BA180884AAB9FDD3A6E372382278C4EDB6D7A69951E996E27037C1CB03AC9.pygtex,
+  EB2FB028B5A634C7D4638A70EF2D0F9F263DE7D4A1A8B2875D24A94DC0BB3C96.pygtex,
+  C1D33490C3E8619E5A4DE1DB1E9EE04B63BEBE44FD60CC478B0439FAAE7250D6.pygtex,
+  7CD21AFF0D335D88492A6860DC414BE563BEBE44FD60CC478B0439FAAE7250D6.pygtex,
+  C1D5B22628AA55327A4BF6C0EABD7D6D63BEBE44FD60CC478B0439FAAE7250D6.pygtex,
+  4A93A2AD535064EBB6D1859D9D6A619C4EDB6D7A69951E996E27037C1CB03AC9.pygtex,
+  1D502ECD1D72F834BF7DEE0BAF8E072163BEBE44FD60CC478B0439FAAE7250D6.pygtex,
+  D2E09D5C59EBEAF3538FB2DC08C4002033AABC92B3F1DC44296C26B1BD7730ED.pygtex}
+\abx@aux@refcontextdefaultsdone
+\abx@aux@defaultrefcontext{0}{langmead_teaching}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{gatkwebsite}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{afgan2010galaxy}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{aggarwal2007data}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{aird2011analyzing}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{alioto2015comprehensive}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{alkan2011genome}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{allegra2009american}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{andrews2010fastqc}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{babcock2002models}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{barnes1949motion}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{berger2013statistical}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{bolger2014trimmomatic}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{boycott2013rare}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{bruneau2008developmental}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{burrows1994block}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{buyya2009cloud}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{chen2015manta}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{cibulskis2011contest}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{cibulskis2013sensitive}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{cock2009sanger}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{collins2015new}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{compeau2011apply}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{10002010map}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{encode2012integrated}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{international2003international}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{wellcome2007genome}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{cook2016european}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{copil2013multi}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{curcin2008scientific}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{daly2001high}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{danecek2011variant}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{originofspecies}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{datar2002maintaining}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{davis1999overview}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{depristo2011framework}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{van2003workflow}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{dohm2008substantial}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{durbin1998biological}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ebbert2016evaluating}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{england2016100}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{erl2005service}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{etzion2011event}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{eugster2003many}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{European_Open_Science_Cloud_2016}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ewen2000identification}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ewens1972sampling}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{farrar2006striped}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{faust2012yaha}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ferragina2000opportunistic}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{forbes2015cosmic}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{forney1973viterbi}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{franklin1953molecular}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{fritz2011efficient}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{gaber2005mining}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{garcia1984debugging}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{garofalakis2016data}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{garrison2012haplotype}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{Glossary_V1_-_EGIWiki_2016-10-28}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{goecks2010galaxy}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{gordon2010fastx}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{greenman2007patterns}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{greenwald2001space}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{mendel1865}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{grossman2010overview}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{gudbjartsson2015large}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{han2011data}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{hanahan2011hallmarks}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{heller2002dna}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{henderson1995job}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{hirschhorn2005genome}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{hodgkinson2010human}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{hollingsworth1995workflow}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{denbi_2016-10-31}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{hong2012sample}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ingham2000constructing}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ingram1957gene}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{iqbal2012novo}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{jobling2013human}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{jones2007epigenomics}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{kaiser2016biden}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{karkkainen2003simple}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{kim2016centrifuge}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{knoppers2005human}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{lander2001initial}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{langmead2012fast}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{langmead2009searching}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{langmead2009ultrafast}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{lauss2013monitoring}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{lawrence2014discovery}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{layer2014lumpy}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{lee2014clinical}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{lek2016analysis}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2011statistical}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2013aligning}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{Li2013}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2012exploring}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2010mathematical}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2018minimap2}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2011tabix}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2014towards}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2010fast}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2009fast}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2010survey}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2008mapping}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2018synthetic}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2009sequence}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{li2008soap}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{lu2016oxford}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ludascher2006scientific}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{luengo2013economic}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{malkin1990germ}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{manber1993suffix}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{manolio2010genomewide}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{mao2011auto}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{mardis2008next}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{margolis2014national}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{marth1999general}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{marx2013biology}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{marx2015dna}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{mckenna2010genome}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{mclaren2016ensembl}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{mell2011nist}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{merkel2014docker}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{mohinudeen2017overview}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{molnar2017computing}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{muir2016real}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{muthukrishnan2005data}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{myers1988optimal}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{nachman2001single}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{nielsen2011genotype}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{nitzberg1991distributed}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{oinn2004taverna}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{oppenheimer2002architecture}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{papadopoulos2016tiledb}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{papazoglou2003service}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{patel2012ngs}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{pellicer2010largest}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{peterson1981petri}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{Picard2018toolkit}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{pleasance2010comprehensive}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{rausch2012delly}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{reinert2015alignment}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{rhoads2015pacbio}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{rimmer2014integrating}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{roberts2004reducing}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{roberts2013comparative}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{roberts2013advantages}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{robinson2015integrative}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{russell1978cray}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{sanger1975rapid}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{sanger1977dna}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{satake2009genome}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{schuster2007next}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{sefraoui2012openstack}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{selkoe1996amyloid}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{shapiro2002technical}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{shaw1996software}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{shen2013comprehensive}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{shrivastava2004medians}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{simpson2010efficient}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{simpson2012efficient}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{smith1981comparison}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{stein2015data}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{stephens2015big}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{stephens2016simulating}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{stratton2009cancer}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{sudmant2015integrated}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{taylor2004scientific}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{The_Cost_of_Sequencing_a_Human_Genome_2016-11-04}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{torre2015global}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ukkonen1995line}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{van2013fastq}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{vaquero2011dynamically}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{venter2001sequence}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{venter1998shotgun}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{vermeersch2013applications}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{voelkerding2009next}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{wala2018svaba}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{wang2009rna}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{watson1953molecular}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{weinstein2013cancer}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{weitzel2011genetics}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{welford1962note}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{welter2013nhgri}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{whalley2017framework}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{wieder2011service}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{wood2014kraken}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{yabroff2011economic}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{yang2013clinical}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{ye2009pindel}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{yung2016icgc}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{zacks1971theory}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{zaharia2011faster}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{zerbino2008velvet}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{zhao2013computational}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{zhou2013qc}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{zhou1992lsf}{nty/global//global/global}
