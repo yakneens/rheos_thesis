@@ -2331,7 +2331,7 @@
   publisher = {BioMed Central},
 }
 
-@Article{li2018minimap2,
+@Article{Li2018,
   author    = {Li, Heng},
   title     = {Minimap2: pairwise alignment for nucleotide sequences},
   journal   = {Bioinformatics},
@@ -2352,7 +2352,7 @@
   publisher = {Oxford University Press},
 }
 
-@Article{li2018synthetic,
+@Article{Li2018a,
   author    = {Li, Heng and Bloom, Jonathan M and Farjoun, Yossi and Fleharty, Mark and Gauthier, Laura and Neale, Benjamin and MacArthur, Daniel},
   title     = {A synthetic-diploid benchmark for accurate variant-calling evaluation},
   journal   = {Nature methods},

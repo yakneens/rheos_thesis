@@ -37,7 +37,6 @@ While general web services can support any data processing paradigm, in the Rheo
 \subsection{Service-Oriented Data Streaming Model}
 \label{sec:rheos_data_streaming_model}
 
-
 A data stream $M_{s,d} = {m_1, m_2, ....}$ is a sequence of datagrams transmitted over the network with the following properties:
 
 \begin{itemize}
@@ -726,13 +725,13 @@ if $d_{n+1}$ matches the reference. Using this likelihood and the posterior from
 
 Equation \ref{eq:rheos_genotype_likelihood} provides the general update rule for incorporating new evidence about a given locus $i$ having already made and recorded $n$ observations, upon making observation $n+1$. This iterative approach is mathematically equivalent to the batch update approaches such as \autocite{li2011statistical}, that collect all of the data about a locus before evaluating genotype likelihoods. The posteriors obtained by equation \ref{eq:rheos_genotype_likelihood} can be used directly to evaluate relative likelihoods of the possible genotypes, and to assign genotypes via a likelihood ratio, for example, but in order to obtain a proper posterior probability mass function over the genotypes they need to be normalized, to obtain:
 
-\begin{equation}
+\begin{equation} \label{eq:rheos_genotype_posterior}
     P(G=g|D) = \frac {\mathcal{L}(G=g|D)} {\sum_{g'\in G} \mathcal{L}(G=g'|D)}
 \end{equation}
 
 This equation can be used to obtain a probability estimate of any given genotype, having observed any given amount of data about a specific locus.
 
-Armed with the update rule for integrating read evidence we are ready to define a data stream operation of Local State Aggregator type is responsible for processing a stream of aligned reads (or read pairs), updating its local state with the genetic variation evidence contained in the reads, and emitting a stream of updated genomic loci (see Fig. \ref{fig:main_body_locus}) that can be used by downstream services for variant calling.
+Armed with the update rule for integrating read evidence we are ready to define a data stream operation of Local State Aggregator type that is responsible for processing a stream of aligned read pairs, updating its local state with the genetic variation evidence contained in the reads, and emitting a stream of updated genomic loci (see Fig. \ref{fig:main_body_locus}) that can be used by downstream services for variant calling.
 
 \bgroup
 \def\arraystretch{1.5}
@@ -741,7 +740,7 @@ Armed with the update rule for integrating read evidence we are ready to define 
     \label{tab:op_update_loci_from_read}
     {\begin{tabular}{l|p{12cm}}
     \toprule
-    Inputs & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, r)\} \text{ where } r = (s\_id, ref\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$. \\
+    Inputs & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$ and each read is of type $r_{aln}$. \\
     \cline{2-2}
     Operation & $updateLociFromRead(r, ref, current_loci)$\\
     \cline{2-2}
@@ -761,7 +760,7 @@ A Locus $l$ for SNP calling represents a single genomic location for a single sa
     \item[alt] - The alternative allele at this locus (if any alternative alleles have been observed).
     \item[gl\_0] - Likelihood of homozygous alternative genotype at this locus, based on the data seen so far.
     \item[gl\_1] - Likelihood of heterozygous genotype at this locus, based on the data seen so far.
-    \item[gl\_2] - Likelihood of homozygous reference genotyp at this locus, based on the data seen so far.
+    \item[gl\_2] - Likelihood of homozygous reference genotype at this locus, based on the data seen so far.
     \item[dp] - Read depth - number of reads observed at this locus so far.
     \item[ro] - Number of reference observations at this locus.
     \item[qr] - Sum of base qualities of reference observations at this locus.
@@ -769,7 +768,150 @@ A Locus $l$ for SNP calling represents a single genomic location for a single sa
     \item[qa] - Sum of base qualities of alternative observations at this locus.       
 \end{description}
 
-The Locus Processing Service which is responsible for implementing $updateLociFromRead()$ maintains a local data store of Locus objects, ideally in memory. When a new mapped read arrives via the input stream, the service walks along the read and for each position on the read compares it to the respective position on the reference sequence. It retrieves the Locus corresponding to this position and, depending on whether the read matches, or is different from, the reference sequence, updates the Locus genotype likelihoods, and other fields, according to the update rule of Equation \ref{eq:rheos_genotype_likelihood}. Those Locus objects that have been updated, and have alternative allele observations (i.e. potential variants) are added to a list of objects that should be emitted by the service as output of $updateLociFromRead()$.
+\paragraph{The Locus Processing Service} which is responsible for implementing $updateLociFromRead()$ maintains a local data store of Locus objects, ideally in memory. When a new mapped read arrives via the input stream, the service walks along the read and for each position on the read compares it to the respective position on the reference sequence. It retrieves the Locus corresponding to this position and, depending on whether the read matches, or is different from the reference sequence, updates the Locus genotype likelihoods (and other fields) according to the update rule of Equation \ref{eq:rheos_genotype_likelihood}. Those Locus objects that have been updated, and have alternative allele observations (i.e. potential variants) are added to a list of objects that should be emitted by the service as output of $updateLociFromRead()$. Since a read alignment consists of not only matches and mismatches with respect to the reference sequence, but also encodes insertions and deletions as an array of CIGAR elements (see \ref{sec:bg_alignment}), and the alignment may occur on the forward or the reverse strand of DNA (requiring reverse complementing) special care needs to be taken during read processing to account for all of the possible cases of simultaneous read and reference traversal. Read processing proceeds as in the following algorithms:
+
+\begin{algorithm2e}[h]
+    \DontPrintSemicolon
+    \footnotesize
+    \textbf{Function} {\sc processReadPair}$(read\_pair, ref)$
+    \Begin {
+        \For{$read$ {\bf in } $read\_pair$}{
+            $strand \gets read.strand$\;
+            $cigar\_els \gets read.cigar\_els$\;
+            $ref\_offset \gets 0$\;
+            $read\_idx \gets read.query\_start$\; \tcc*{Alignment does not necessarily start at index 0.}\;
+
+            \For{$el$ {\bf in} $cigar\_els$}{
+                \If {$el.type = MATCH$ {\bf or } $ el.type = DEL$}{
+                    \If {$el.type = MATCH$}{
+                        $updated\_loci$ \gets {\sc handleMatch$(read, read\_idx, el.length, ref\_offest, ref)$}\;
+                    }
+                    $ref\_offset \gets ref\_offest + el.length * strand$\; \tcc*{both matches and deletions consume reference sequence. Reads that align on the negative strand consume reference backwards.}\;
+                }
+
+                \If {$el.type != DEL$ {\bf and } $el.type != SOFT\_CLIP$}{
+                    $read\_idx = read\_idx + el.length$ \tcc*{All elements but deletions and soft-clips consume read sequence.}\;
+                }
+            }
+        }
+    }
+    \caption{Process read and reference in tandem to find matching CIGAR elements.}\label{ag:process_read_pair}
+\end{algorithm2e}
+
+\begin{algorithm2e}[h]
+    \DontPrintSemicolon
+    \footnotesize
+    \textbf{Function} {\sc handleMatch$(read, read\_idx, match\_length, ref\_offest, ref)$}
+    \Begin {
+        $seq \gets read.seq[read\_idx:read\_idx+match\_len]$\;
+        $qual \gets read.qual[read\_idx:read\_idx+match\_len]$\;
+        \If {$read.strand = 1$}{
+            $ref\_start \gets read.position + ref\_offest - 1$\;
+        }
+        \Else{ \tcc*{When read is on negative strand sequence is reverse complemented and matching starts from end of reference.}
+            $seq \gets ${\sc reverseComplement$(seq)$}\;
+            $ref\_start \gets read.end + ref\_offest - match\_length - 1$\;
+        }
+        $read\_ref \gets ref[ref\_start: ref\_start+match\_length]$\;
+        \For{$pos\_idx$ {\bf in} $seq$}{
+            $cur\_ref \gets ref\_start + pos\_idx$\;
+            $cur\_locus \gets ${\sc all\_loci.getLocus$(cur\_ref)$}\;
+            $p\_error \gets ${\sc baseQualityToProbabilityOfError$(qual[pos\_idx])$}\;
+            $cur\_locus.dp \gets cur\_locus.dp + 1$\;
+            $cur\_locus.gl\_het \gets cur\_locus.get\_het * 0.5$\;
+
+            \If{$seq[pos\_idx] != ref[pos\_idx]$}{
+                $cur\_locus.alt \gets seq[pos\_idx]$\;
+                $cur\_locus.gl\_ref \gets cur\_locus.gl\_ref * p\_error$\;
+                $cur\_locus.gl\_hom \gets cur\_locus.gl\_ref * (1 - p\_error$)\;
+                $cur\_locus.ao \gets cur\_locus.ao + 1$\;
+                $cur\_locus.qa \gets cur\_locus.qa * qual[pos\_idx]$\;
+            }
+            \Else{
+                $cur\_locus.gl\_ref \gets cur\_locus.gl\_ref * (1 - p\_error$\;
+                $cur\_locus.gl\_hom \gets cur\_locus.gl\_ref * p\_error$\;
+                $cur\_locus.ao \gets cur\_locus.ro + 1$\;
+                $cur\_locus.qa \gets cur\_locus.qr * qual[pos\_idx]$\;
+            }            
+        }
+    }
+    \caption{Process a portion of the read that maps to reference as a match, updating all loci that it overlaps.}\label{ag:handle_match}
+\end{algorithm2e}
+
+Algorithm \ref{ag:process_read_pair} is responsible for locating the genomic coordinates of those parts of the alignment that are flagged as matches (a match may still have differences from the reference). This is accomplished by traversing the CIGAR elements of the alignment and updating the coordinate offset of the read, the reference, or both, depending on the type of CIGAR element that is encountered. When a CIGAR element corresponding to a match is encountered it is processed by Algorithm \ref{ag:handle_match}, which is responsible for updating the set of loci that the matching region overlaps with the evidence for (or against) variation that exists in the read. In Algorithm \ref{ag:handle_match}, the DNA strand to which the read maps determines whether the read sequence needs to be reverse complemented and whether the match offsetting proceeds from the beginning or the end of the reference sequence. After offsets are computed the actual matching always proceeds moving forward (in the direction of increasing coordinates) along the reference sequence. At each location the reference and read sequences are compared and the underlying Locus model is updated based on the update rule of Equations \ref{eq:rheos_genotype_likelihood}. Those loci that have a non-zero count of alternative allele observations are added to a list of loci that potentially harbour variants and will be emitted from the Locus Processing Service as a stream $M_{loci}$ for further downstream processing by the variant caller.
+
+\paragraph{The Variant Calling Service} - is responsible for actually making SNP variant calls based on a set of user-defined calling criteria, such as a region of interest, variant quality, genotype likelihood, number of supporting observations, etc. The service translates between a set of Locus models maintained by Rheos and an external data format (namely VCF). This service does not operate on a stream of data, but instead acts as a query service that can be invoked by the user ad hoc with specified parameters to answer queries of interest.
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $callVariants()$}
+    \label{tab:op_call_variants}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Operation & $callVariants(region, calling\_threshold)$\\
+    \cline{2-2}
+    Outputs & \hangindent=1em$outputVCF$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+For each locus inside the queried region the Variant Calling Service evaluates the set of genotype likelihoods at that locus and calculates normalized genotype posterior probabilities using Equation \ref{eq:rheos_genotype_posterior}. The variant quality is defined to be the Phred-scale transformed probability that a site is homozygous reference, i.e. sites that, based on the read evidence, have a very low probability of being reference, under the Phred-scale transformation end up with a high variant quality (see Equation \ref{eq:samtools_variant_quality}). Variants that exceed $calling\_threshold$ will be emitted as records to the output VCF file. It is possible to envision more sophisticated versions of the Variant Calling Service that provide extended querying and filtering capabilities.
+
+\subsection{Germline Structural Variant Calling}
+
+As Rheos aims to provide comprehensive sample characterization it is not enough to only be able to call single nucleotide polymorphisms, the ability to call other variants, such as indels and structural variants is also required. Here we examine an approach for calling a specific class of structural variants, namely deletions, using a stream of mapped read pairs made available by the Read Mapping Service's $mapPairToReference()$ operation. 
+
+In general, structural variant callers typically make use of three types of evidence for the presence of structural variation - read depth, discordantly mapped reads, and split-reads (see Section \ref{sec:bg_germline_sv_calling}). Here we utilize discordantly mapped reads i.e. those read pairs that align farther away from each other than expected in order to assess the presence of sequence deletions in the sample with respect to the reference.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.295]{sv_deletion}
+    \centering
+    \caption {Effect on read-pair mapping distance for reads overlapping a deletion.}
+    \label{fig:sv_deletion}
+\end{figure}
+
+In Figure \ref{fig:sv_deletion} the sample being sequenced has a deletion with respect to the genome reference, namely the sequence "CCAAATTAG" is deleted. When sequencing with read pairs, the term "insert size" refers to the size of a DNA fragment that is being sequenced, less the size of the sequence adapters on both ends(see \ref{fig:insert_size}). Thus, assuming that both reads in a pair have been mapped, and have mapped in the proper orientations (5' towards 3' on both strands). If the Read Mapping Service emits the read pair as $(r_1, r_2)$ where $r_i$ are as previously defined and $r_1.pos$, $r_1.end$, $r_2.pos$, $r_2.end$, and assuming without loss of generality that $r_1$ is the read that maps on the positive strand, then the insert size $l_{r_1,r_2} = r_2.end - r_1.pos$.    
+
+\begin{figure}[H]
+    \includegraphics[scale=4]{insert_size}
+    \centering
+    \caption {Read-pair insert size is the size of the DNA molecule being sequenced minus the length of adapters on both sides\autocite{turner2014assessment}.}
+    \label{fig:insert_size}
+\end{figure}
+
+As can be seen from Figure \ref{fig:sv_deletion}, for those reads that span the site of the deletion the inferred insert size is larger than the actual insert size (approximately by the size of the deletion), since the read are mapped farther apart on the reference than they are on the sample. Such read pairs are said to be discordantly mapped. Since the insert size distribution for a given sample is relatively predictable (see Figure \ref{fig:insert_size_distribution}), it is possible to detect the presence of deletions in a sample by identifying clusters of read pairs that have an inferred insert size larger than some predefined threshold. Such an approach is already used by several structural variant callers\autocites{rausch2012delly}{layer2014lumpy} and we adopt it in Rheos with several key innovations.
+
+Detection proceeds in two stages performed by two different services. The Insert Size Filtering Service is responsible for listening to the general stream of read pairs and filtering out all of the pairs that don't meet the requisite criteria. The Insert Size Clustering Service is responsible for consuming a stream of discordantly mapped read pairs, clustering the reads that are located close to each other, and outputting those clusters that have sufficient evidence for being considered sites of deletions.
+
+For the Insert Size Filtering Service we define the following operation:
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $filterDiscordantPairs()$}
+    \label{tab:op_filter_discordant_pairs}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    \multirow{2}{*}{Inputs} & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$ and each read is of type $r_{aln}$\\
+    \cline{2-2}
+    \multirow{2}{*}{Operation} & $filterDiscordantPairs(r_1,r_2)$\\
+     \cline{2-2}
+    \multirow{2}{*}{Outputs} & \hangindent=1em$M_{disc} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$ and each read is of type $r_{aln}$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+Here, the $filterDiscordantPairs()$ operation subscribes to the stream of mapped read pairs that is produced by the Read Mapping Service. The goal is to produce a stream of read pairs that are suitable for clustering. The following conditions must be satisfied in order for a pair to be considered suitable:
+
+\begin{description}
+    \item [Both reads in a pair must be mapped] - the Read Mapping Service actually emits some read pairs where only one of the reads is mapped into the mapped reads stream.
+    \item [Both reads in a pair must be mapped to the same contig] - Read pairs where individual reads map to different contigs may be indicative of genomic translocations (another type of structural variant), but are not suitable for the detection of deletions, since different contigs are actually different physical molecules.
+    \item [Both reads must have mapping quality >= 30] - A mapping quality of at least 30 on the Phred scale implies a probability of no more than $10^{-3}$ that a read is mapped to the wrong location on the reference.
+    \item [The inferred insert size must be $> 5 * MAD$ (Median Absolute Deviation) of the insert size distribution] - the Median Absolute Deviation is taken as a measure of the central tendency of the distribution of insert sizes that is robust against extreme outliers, which can be quite common. Typical fragament size of the DNA that is being sequenced is in the hundreds of nucleotides long, whereas certain inferred insert sizes can reach millions of bases, due to structural variants or spurious mappings. 
+\end{description}
 
 \subsection{Local Assembly}
 

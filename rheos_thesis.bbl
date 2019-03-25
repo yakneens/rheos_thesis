@@ -7209,6 +7209,34 @@
       \field{pages}{87\bibrangedash 108}
       \range{pages}{22}
     \endentry
+    \entry{turner2014assessment}{article}{}
+      \name{author}{1}{}{%
+        {{hash=615804129a6b26aa6d23b45c2c0657c0}{%
+           family={Turner},
+           familyi={T\bibinitperiod},
+           given={Frances\bibnamedelima Susan},
+           giveni={F\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Frontiers}%
+      }
+      \strng{namehash}{615804129a6b26aa6d23b45c2c0657c0}
+      \strng{fullhash}{615804129a6b26aa6d23b45c2c0657c0}
+      \strng{bibnamehash}{615804129a6b26aa6d23b45c2c0657c0}
+      \strng{authorbibnamehash}{615804129a6b26aa6d23b45c2c0657c0}
+      \strng{authornamehash}{615804129a6b26aa6d23b45c2c0657c0}
+      \strng{authorfullhash}{615804129a6b26aa6d23b45c2c0657c0}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in genetics}
+      \field{title}{Assessment of insert sizes and adapter content in fastq data from NexteraXT libraries}
+      \field{volume}{5}
+      \field{year}{2014}
+      \field{pages}{5}
+      \range{pages}{1}
+    \endentry
     \entry{ukkonen1995line}{article}{}
       \name{author}{1}{}{%
         {{hash=2bf5ebde67f064ea22feb321e39e2501}{%
