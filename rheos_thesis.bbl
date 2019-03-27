@@ -1217,6 +1217,84 @@
       \field{pages}{429\bibrangedash 436}
       \range{pages}{8}
     \endentry
+    \entry{cormen2009introduction}{book}{}
+      \name{author}{4}{}{%
+        {{hash=875d0e644e9b2df15d2a834abaecc2e8}{%
+           family={Cormen},
+           familyi={C\bibinitperiod},
+           given={Thomas\bibnamedelima H},
+           giveni={T\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=cc52123efbc319dd8b741b29399a7d1e}{%
+           family={Leiserson},
+           familyi={L\bibinitperiod},
+           given={Charles\bibnamedelima E},
+           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=934f07990d3d2deab2d3b8aa93e2611e}{%
+           family={Rivest},
+           familyi={R\bibinitperiod},
+           given={Ronald\bibnamedelima L},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=bc78426660400760f77758aec45e71a8}{%
+           family={Stein},
+           familyi={S\bibinitperiod},
+           given={Clifford},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT press}%
+      }
+      \strng{namehash}{9e52293b01f2b1924c0a4c85d0516c5a}
+      \strng{fullhash}{ad74957a3be4e1d347a9297bf6b9372c}
+      \strng{bibnamehash}{9e52293b01f2b1924c0a4c85d0516c5a}
+      \strng{authorbibnamehash}{9e52293b01f2b1924c0a4c85d0516c5a}
+      \strng{authornamehash}{9e52293b01f2b1924c0a4c85d0516c5a}
+      \strng{authorfullhash}{ad74957a3be4e1d347a9297bf6b9372c}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introduction to algorithms}
+      \field{year}{2009}
+    \endentry
+    \entry{cuevas2001cluster}{article}{}
+      \name{author}{3}{}{%
+        {{hash=62c3c639a426827fb7a474dc5da71cd1}{%
+           family={Cuevas},
+           familyi={C\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=767e81d08aa95ac12dbe84cbb0de4e30}{%
+           family={Febrero},
+           familyi={F\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=408d002777bc0bd534895eca15335034}{%
+           family={Fraiman},
+           familyi={F\bibinitperiod},
+           given={Ricardo},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{455bc54c8e7865b943f85341b7f70cb4}
+      \strng{fullhash}{455bc54c8e7865b943f85341b7f70cb4}
+      \strng{bibnamehash}{455bc54c8e7865b943f85341b7f70cb4}
+      \strng{authorbibnamehash}{455bc54c8e7865b943f85341b7f70cb4}
+      \strng{authornamehash}{455bc54c8e7865b943f85341b7f70cb4}
+      \strng{authorfullhash}{455bc54c8e7865b943f85341b7f70cb4}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computational Statistics \& Data Analysis}
+      \field{number}{4}
+      \field{title}{Cluster analysis: a further approach based on density estimation}
+      \field{volume}{36}
+      \field{year}{2001}
+      \field{pages}{441\bibrangedash 459}
+      \range{pages}{19}
+    \endentry
     \entry{curcin2008scientific}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=13f9ec4222b44c2ffb69406933c45c52}{%
@@ -2854,6 +2932,30 @@
       \field{pages}{646\bibrangedash 674}
       \range{pages}{29}
     \endentry
+    \entry{hartigan1975clustering}{article}{}
+      \name{author}{1}{}{%
+        {{hash=27d2cef7ec55874407dd8b09b7f3a94b}{%
+           family={Hartigan},
+           familyi={H\bibinitperiod},
+           given={John\bibnamedelima A},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{27d2cef7ec55874407dd8b09b7f3a94b}
+      \strng{fullhash}{27d2cef7ec55874407dd8b09b7f3a94b}
+      \strng{bibnamehash}{27d2cef7ec55874407dd8b09b7f3a94b}
+      \strng{authorbibnamehash}{27d2cef7ec55874407dd8b09b7f3a94b}
+      \strng{authornamehash}{27d2cef7ec55874407dd8b09b7f3a94b}
+      \strng{authorfullhash}{27d2cef7ec55874407dd8b09b7f3a94b}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Clustering algorithms}
+      \field{year}{1975}
+    \endentry
     \entry{heller2002dna}{article}{}
       \name{author}{1}{}{%
         {{hash=a69bba33d4f23767657e431399cdc520}{%
@@ -3370,6 +3472,50 @@
       \field{year}{2005}
       \field{pages}{75\bibrangedash 79}
       \range{pages}{5}
+    \endentry
+    \entry{kriegel2011density}{article}{}
+      \name{author}{4}{}{%
+        {{hash=9559fe65ed2c0877cf14a66fe1f8e9b3}{%
+           family={Kriegel},
+           familyi={K\bibinitperiod},
+           given={Hans-Peter},
+           giveni={H\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=703ae229981ac8d32362f8e1ba93f326}{%
+           family={Kr{ö}ger},
+           familyi={K\bibinitperiod},
+           given={Peer},
+           giveni={P\bibinitperiod}}}%
+        {{hash=7d34eae111aaac3e5a20099697d828d3}{%
+           family={Sander},
+           familyi={S\bibinitperiod},
+           given={J{ö}rg},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cbfafee6627ecbb346007c41a5787a4e}{%
+           family={Zimek},
+           familyi={Z\bibinitperiod},
+           given={Arthur},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{948c61331d3e794a11e290f69c14b114}
+      \strng{fullhash}{6c6927144d459e31fb7171a06f8411fe}
+      \strng{bibnamehash}{948c61331d3e794a11e290f69c14b114}
+      \strng{authorbibnamehash}{948c61331d3e794a11e290f69c14b114}
+      \strng{authornamehash}{948c61331d3e794a11e290f69c14b114}
+      \strng{authorfullhash}{6c6927144d459e31fb7171a06f8411fe}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery}
+      \field{number}{3}
+      \field{title}{Density-based clustering}
+      \field{volume}{1}
+      \field{year}{2011}
+      \field{pages}{231\bibrangedash 240}
+      \range{pages}{10}
     \endentry
     \entry{lander2001initial}{article}{}
       \true{moreauthor}
@@ -5669,6 +5815,35 @@
       \field{pages}{3\bibrangedash 12}
       \range{pages}{10}
     \endentry
+    \entry{parzen1962estimation}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3538e72c10a2ef29e8444e94614376a0}{%
+           family={Parzen},
+           familyi={P\bibinitperiod},
+           given={Emanuel},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{fullhash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{bibnamehash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{authorbibnamehash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{authornamehash}{3538e72c10a2ef29e8444e94614376a0}
+      \strng{authorfullhash}{3538e72c10a2ef29e8444e94614376a0}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The annals of mathematical statistics}
+      \field{number}{3}
+      \field{title}{On estimation of a probability density function and mode}
+      \field{volume}{33}
+      \field{year}{1962}
+      \field{pages}{1065\bibrangedash 1076}
+      \range{pages}{12}
+    \endentry
     \entry{patel2012ngs}{article}{}
       \name{author}{2}{}{%
         {{hash=3e883d124b30b9a7d303fa9a671ddcdc}{%
@@ -6281,6 +6456,33 @@
       \field{year}{2015}
       \field{pages}{1215\bibrangedash 1228}
       \range{pages}{14}
+    \endentry
+    \entry{rosenblatt1956remarks}{article}{}
+      \name{author}{1}{}{%
+        {{hash=02b2439d480906c2f443b35ff6ba2406}{%
+           family={Rosenblatt},
+           familyi={R\bibinitperiod},
+           given={Murray},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{fullhash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{bibnamehash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{authorbibnamehash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{authornamehash}{02b2439d480906c2f443b35ff6ba2406}
+      \strng{authorfullhash}{02b2439d480906c2f443b35ff6ba2406}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
+      \field{title}{Remarks on some nonparametric estimates of a density function}
+      \field{year}{1956}
+      \field{pages}{832\bibrangedash 837}
+      \range{pages}{6}
     \endentry
     \entry{russell1978cray}{article}{}
       \name{author}{1}{}{%
@@ -8588,6 +8790,80 @@
       \field{title}{Lsf: Load sharing in large heterogeneous distributed systems}
       \field{volume}{136}
       \field{year}{1992}
+    \endentry
+    \entry{zook2018reproducible}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=552c06a4c0ed314a1568a442425c7797}{%
+           family={Zook},
+           familyi={Z\bibinitperiod},
+           given={Justin},
+           giveni={J\bibinitperiod}}}%
+        {{hash=b2e0a9a31ca1b8d4835f67f25a219458}{%
+           family={McDaniel},
+           familyi={M\bibinitperiod},
+           given={Jennifer},
+           giveni={J\bibinitperiod}}}%
+        {{hash=92aa7595f4c1d9410cae33bae5c41ad3}{%
+           family={Parikh},
+           familyi={P\bibinitperiod},
+           given={Hemang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=dafdf772af0ae98caccc53c43b16189a}{%
+           family={Heaton},
+           familyi={H\bibinitperiod},
+           given={Haynes},
+           giveni={H\bibinitperiod}}}%
+        {{hash=8e2ab18b734ee2342a7fd7941965d4c7}{%
+           family={Irvine},
+           familyi={I\bibinitperiod},
+           given={Sean\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=35ab2e92b463f12a59ddaa7fa9ef04ff}{%
+           family={Trigg},
+           familyi={T\bibinitperiod},
+           given={Len},
+           giveni={L\bibinitperiod}}}%
+        {{hash=26c2e22130b90f9847c70dfd31239d36}{%
+           family={Truty},
+           familyi={T\bibinitperiod},
+           given={Rebecca},
+           giveni={R\bibinitperiod}}}%
+        {{hash=c365ff6ebc6782db8cc3f35964ae9ff7}{%
+           family={McLean},
+           familyi={M\bibinitperiod},
+           given={Cory\bibnamedelima Y},
+           giveni={C\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=c5a8e27c28ecedf8d744cd0c521739f8}{%
+           family={De\bibnamedelima La\bibnamedelima Vega},
+           familyi={D\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim V\bibinitperiod},
+           given={Francisco\bibnamedelima M},
+           giveni={F\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=6fe602ae795e3ac47abca2971035da2f}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Chunlin},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cold Spring Harbor Laboratory}%
+      }
+      \strng{namehash}{33e6a73d056c680825cc68100c018ac1}
+      \strng{fullhash}{46d69ade4367d8543abb1d068a4c072f}
+      \strng{bibnamehash}{33e6a73d056c680825cc68100c018ac1}
+      \strng{authorbibnamehash}{33e6a73d056c680825cc68100c018ac1}
+      \strng{authornamehash}{33e6a73d056c680825cc68100c018ac1}
+      \strng{authorfullhash}{46d69ade4367d8543abb1d068a4c072f}
+      \field{sortinit}{Z}
+      \field{sortinithash}{156173bd08b075d7295bc3e0f4735a04}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BioRxiv}
+      \field{title}{Reproducible integration of multiple sequencing datasets to form high-confidence SNP, indel, and reference calls for five human genome reference materials}
+      \field{year}{2018}
+      \field{pages}{281006}
+      \range{pages}{1}
     \endentry
   \enddatalist
   \missing{needcitation}

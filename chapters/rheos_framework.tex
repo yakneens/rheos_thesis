@@ -896,7 +896,7 @@ For the Insert Size Filtering Service we define the following operation:
     \toprule
     \multirow{2}{*}{Inputs} & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$ and each read is of type $r_{aln}$\\
     \cline{2-2}
-    \multirow{2}{*}{Operation} & $filterDiscordantPairs(r_1,r_2)$\\
+    \multirow{2}{*}{Operation} & $filterDiscordantPairs(r_1,r_2, min\_mapq, mad\_threshold, min\_sample\_size)$\\
      \cline{2-2}
     \multirow{2}{*}{Outputs} & \hangindent=1em$M_{disc} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$ and each read is of type $r_{aln}$\\
     \bottomrule
@@ -908,10 +908,88 @@ Here, the $filterDiscordantPairs()$ operation subscribes to the stream of mapped
 
 \begin{description}
     \item [Both reads in a pair must be mapped] - the Read Mapping Service actually emits some read pairs where only one of the reads is mapped into the mapped reads stream.
-    \item [Both reads in a pair must be mapped to the same contig] - Read pairs where individual reads map to different contigs may be indicative of genomic translocations (another type of structural variant), but are not suitable for the detection of deletions, since different contigs are actually different physical molecules.
-    \item [Both reads must have mapping quality >= 30] - A mapping quality of at least 30 on the Phred scale implies a probability of no more than $10^{-3}$ that a read is mapped to the wrong location on the reference.
-    \item [The inferred insert size must be $> 5 * MAD$ (Median Absolute Deviation) of the insert size distribution] - the Median Absolute Deviation is taken as a measure of the central tendency of the distribution of insert sizes that is robust against extreme outliers, which can be quite common. Typical fragament size of the DNA that is being sequenced is in the hundreds of nucleotides long, whereas certain inferred insert sizes can reach millions of bases, due to structural variants or spurious mappings. 
+    \item [Both reads in must be mapped to the same contig] - Read pairs where individual reads map to different contigs may be indicative of genomic translocations (another type of structural variant), but are not suitable for the detection of deletions, since different contigs are actually different physical molecules.
+    \item [Both reads must have mapping quality $\ge$ min\_mapq] - A mapping quality of at least 30 (the default value) on the Phred scale, for instance, implies a probability of no more than $10^{-3}$ that a read is mapped to the wrong location on the reference.
+    \item [Insert size must be > MAD * mad\_threshold] - the Median Absolute Deviation is taken as a measure of the central tendency of the distribution of insert sizes that is robust against extreme outliers, which can be quite common. Typical fragment size of the DNA that is being sequenced is in the hundreds of nucleotides long, whereas certain inferred insert sizes can reach millions of bases due to structural variants or spurious mappings. Thus, it is desirable to have a metric similar to variance that will not be sensitive to these extreme values. Given a set of insert sizes $L = \{l_i: l_i=r_2.end-r_1.pos \}$, define $MAD(L) = median(\mid l_i - median(L)\mid)$. The cutoff of mad\_threshold*MAD places a lower bound on the size of deletions that can be detected with this method. A value of 5 is arbitrarily chosen as the default for $mad\_threshold$.
 \end{description}
+
+Since obtaining an accurate estimate of median insert size and MAD requires observing a sample of read pairs, the Insert Size Filtering Service does not emit any reads at first, but accumulates observations in a local data store while collecting enough information to obtain reliable estimates of these metrics. $min\_sample\_size$ ($10^5$ by default) read pairs are collected before filtering begins. Once the metrics are obtained, collected reads are filtered first and released, before processing any of the remaining reads on the stream.
+
+Read pairs that satisfy all of the conditions above are emitted in an output stream for consumption by the Insert Size Clustering Service. The main points of control for the user are the $min\_mapq$ and $mad\_threshold$ parameters. Decreasing $min\_mapq$ increases sensitivity by allowing more reads through while simultaneously decreasing specificity. Likewise, decreasing $mad\_threshold$ increases sensitivity and allows detection of smaller size deletions,at the expense of allowing "less surprising" insert sizes through the filter. Choosing a higher $min\_sample\_size$ provides more accurate estimates of median insert size and MAD at the expense of a higher delay before producing filtered output, and higher peak memory requirements for the Insert Size Filtering Service. Ideal parameter values may be project dependent.
+
+The Insert Size Clustering Service is responsible for consuming the stream of discordantly mapped reads and figuring out locations of read clusters in genomic space that may be the site of potential deletions. Those read clusters that have sufficient evidence are then emitted as variant calls. Because discordantly mapping read pairs are fairly rare (out of 6705731 mapped read pairs on Chromosome 20 of sample NA12878 analyzed as part of this work, only 2663 or ~0.04\% successfully passed through the Insert Size Filtering Service with $min\_mapq=30$ and $mad\_threshold=5$), and the addition of a single new read pair can only potentially affect a small number of variants, it does not make sense to re-evaluate the clustering model for each new pair that comes in. Instead, the Insert Size Clustering Service accumulates discordantly mapped read pairs from the input stream and will process them as part of an ad hoc query or a periodically scheduled execution, producing an updated call set as a result. We define the service's operations in Table \ref{tab:op_insert_size_clustering}.
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!h]
+    \caption{Operations of Insert Size Clustering Service}
+    \label{tab:op_insert_size_clustering}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    \multirow{2}{*}{Input} & \hangindent=1em$M_{disc} = \{m_i: m_i = (header, payload)\}$ where $m.payload = (r_1,r_2)$, and $r_i = (s\_id, r\_id, b, q, f_p)$ as in \ref{eq:raw_read_message}. \\
+    \cline{2-2}
+    \multirow{2}{*}{Operations} & $addReadPair(r_1,r_2)$\\
+    & $callDeletions(region, insert\_size\_threshold, min\_read\_support)$\\
+    \cline{2-2}
+    \multirow{2}{*}{Output} & \hangindent=1em$M_{del} = \{m_i: m_i = (header, payload)\}$ where $m.payload = V = \{v_i: v_i = (s\_id, contig, pos, length, vqual, R)\}$ is the set of called variants, and $R = \{r_i: r_i = (r_1,r_2)\}$ is the set of read pairs supporting the variant call.\\ 
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+
+Here $addReadPair()$ is an operation that reads the stream of discordantly mapped reads and stores each read pair in the service's data store. The data store is an in-memory data structure that consists of an array for general read processing and an Interval Tree for performing queries for finding those reads that support a particular putative variant. The Interval Tree is a type of balanced binary search tree (described in \autocite{cormen2009introduction}, for example) that allows efficient querying of which intervals overlap a particular query interval. The tree can be constructed in $\mathcal{O}(n\log{}n)$ time, $\mathcal{O}(n)$ space, and answers queries in $\mathcal{O}(\log{}n + m)$ time, where $n$ is the total number of intervals stored and $m$ is the number of intervals being returned by the query (see Figure \ref{fig:interval_tree}). Insertions into the tree after construction take $\mathcal{O}(\log{}n)$ time.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.75]{interval_tree}
+    \centering
+    \caption {a) Intervals arranged on the number line. b)An Interval Tree constructed from the same intervals. Each node contains an interval and the maximum value of any interval in the subtree rooted at that node.\autocite{cormen2009introduction}.}
+    \label{fig:interval_tree}
+\end{figure}
+
+Invocation of $callDeletions()$ uses the data accumulated by $addReadPair()$ to perform the actual deletion calling. The calling proceeds as follows:
+
+\begin{enumerate}
+    \item For each read pair determine the center point of the interval spanned by the pair.
+    \item Using pair centers perform Kernel Density Estimation\autocites{rosenblatt1956remarks}{parzen1962estimation} to estimate the distribution of the location of pair centers.
+    \item Using the estimated density detect regions with local maxima (clusters) that become locations for putative deletions.
+    \item Using the sites of putative deletions query the Interval Tree for a list of reads that overlaps each site.
+    \item For each site and set of read overlaps call the deletion boundary to be the maximal interval that is spanned by the inner distance (see Fig. \ref{fig:insert_size}) of all overlapping read pairs.
+    \item Based on the width of the deletion remove all overlapping reads whose inferred insert size is greater than $deletion\_width + insert\_size\_threshold$.
+    \item Output a deletion if the number of supporting reads after filtering above is $> min\_read\_support$.
+\end{enumerate}
+
+ The key approach used in this method for the clustering of read pair interval centers is Kernel Density Estimation. This approach has been used as a highly successful and efficient one-dimensional clustering method in a variety of settings\autocites{hartigan1975clustering}{kriegel2011density}{cuevas2001cluster}, but has not been applied in the context of genomic variant calling to date. 
+
+ If we have a one-dimensional data set of iid observations $(x_1, x_2, ..., x_n)$ from some unknown distribution and we wish to estimate the pdf $f$ we can do so using:  
+
+ $\widehat{f}_h(x) = \frac{1}{n}\sum_{i=1}^n K_h (x - x_i) = \frac{1}{nh} \sum_{i=1}^n K\Big(\frac{x-x_i}{h}\Big)$
+ 
+ Here $K$ is a non-negative real-valued integrable windowing function, and $h$ is a smoothing parameter called bandwidth. A variety of kernels are possible. In this method we use the gaussian kernel as a way to attenuate the influence of each read pair center with distance from that center.
+
+ \begin{figure}[H]
+    \includegraphics[scale=0.27]{kde}
+    \centering
+    \caption {Centers of discordantly mapped read pairs on Chromosome 20 of NA12878 (plotted as points below x-axis) along with the KDE estimate plotted above x-axis.}
+    \label{fig:kde}
+\end{figure}
+
+In Figure \ref{fig:kde} we demonstrate the results of applying KDE with a gaussian kernel and a bandwidth of 100 on the 2663 discordantly mapped read pairs from Chromosome 20 of the NA12878 sample, sequenced by the Genome In A Bottle\autocite{zook2018reproducible} consortium and processed by Rheos. The x-axis specifies integer genomic coordinates from 0 to \~$6.3\times10^7$ and the y-axis is real-valued. Each point below the x-axis represents the coordinates of a centre for a single read-pair. The y-axis values for each point are randomly generated from a small interval in order to obtain visual point separation on the graph. The graph above the x-axis shows the estimated density function based on the 2663 points, with peaks indicating the position of clusters, and hence, the location of putative deleted regions. The location of peaks is obtained via a peak finding algorithm that returns the maximum value in an n-neighbourhood of points.
+
+Once the location of the center points of putative deletions is known it is important to determine deletion size and evaluate the amount of support that exists for each deletion call. To achieve this $callDeletions()$ makes use of the Interval Tree data structure that has been constructed from all of the read pairs. The Interval Tree is queried for all read pairs that overlap the position of a given deletion center. This query is answered in $\mathcal{O}(\log{}n + m)$ time. 
+
+\begin{figure}[H]
+    \includegraphics[scale=0.45]{deletion_read_cluster}
+    \centering
+    \caption {A cluster of reads spanning a germline deletion.}
+    \label{fig:deletion_read_cluster}
+\end{figure}
+
+Given a set of read pairs $R = \{(r_1,r_2) : r=(r.pos, r.end)\}$ spanning the site of the deletion we are interested in determining the extent (position, and size) of the deletion. We take the deletion site (see Figure \ref{fig:deletion_read_cluster}) to be an interval $[\max_{r_{1,i} \in R}{(r_{1,i}.end)}, \min_{r_{2,i} \in R}{(r_{2,i}.pos)}]$, based on the following argument. If the deletion is homozygous, then no read in the sample should map into the deletion sequence, thus the deletion should be entirely contained in the inner distance between reads spanning the deletion. If the deletion is heterozygous, then the reads that are discordantly mapped come from the haplotype with the deleted allele, and should thus, also not have any sequence map into the deletion, again containing the deletion entirely in the inner distance between reads. Thus, the deletion boundaries are in the interval between the largest end coordinate for a read to the left of the deletion center, and the smallest start coordinate to the right of the deletion center.
+
+Given the location and width of a putative deletion it is necessary to determine whether the deletion has sufficient support in the reads to be considered real, or may be dismissed as spurious. Many filtering strategies are possible, but the simplest relies on counting the number of read pairs that support a deletion and only retaining those that exceed a minimum threshold of $min\_read\_support$ supplied by the user. To reduce the number of false positive results we would like to remove remove from the list of reads supporting a deletion call those that are likely spurious. Since, low quality reads are already filtered by the Insert Size Filtering Service one of the few remaining sources of false positive signal are reads for which the inferred insert size is much larger than the actual deletion call that they span. These reads are either part of another, much larger, deletion, in which case they are accounted for in that deletion call, or they are spuriously mapped, as there is no other plausible reason for their large insert size. We thus, use a thresholding cutoff $insert\_size\_threshold$, supplied by the user, such that read pairs with $insert\_size > deletion\_width + insert\_size\_threshold$ are removed from the list of reads supporting a particular call. Afterwards, deletions that have read support exceeding the $min\_read\_support$ threshold are selected as called variants. 
+
+The variant quality for the deletion is taken to be $vqual = \sum_{r \in R}{r.mapq}$ i.e. the Phred-scaled probability that all of the reads that support the deletion have been mis-mapped. All of the variants that have been called are emitted in the Insert Size Clustering Service's output stream in the format $M_{del} = \{m_i: m_i = (header, payload)\}$ where $m.payload = V = \{v_i: v_i = (s\_id, contig, pos, length, vqual, R)\}$, as described in Table \ref{tab:op_insert_size_clustering}, where the header includes the query details that are being answered.
+
 
 \subsection{Local Assembly}
 

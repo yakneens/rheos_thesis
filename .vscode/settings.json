@@ -27,5 +27,8 @@
             "latexmk"
           ]
         },  
+      ],
+      "cSpell.words": [
+        "rheos"
       ]
-}
+    }
