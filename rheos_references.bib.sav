@@ -2468,4 +2468,12 @@
   publisher = {Cold Spring Harbor Laboratory},
 }
 
+@InProceedings{kreps2011kafka,
+  author    = {Kreps, Jay and Narkhede, Neha and Rao, Jun and others},
+  title     = {Kafka: A distributed messaging system for log processing},
+  booktitle = {Proceedings of the NetDB},
+  year      = {2011},
+  pages     = {1--7},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

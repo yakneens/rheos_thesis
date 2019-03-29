@@ -183,7 +183,7 @@ Based on the SLAs that are advertised by a given service, the services that depe
 
 The set of services $\{S\}$ that communicate over data streams $\{M_{s,d}\}$, mediated by a set of queues $\{Q\}$ with a set of established SLAs $\{L_s\}$ together form the overall framework of Rheos that is used to tackle the challenges of large-scale genomic data processing in a manner the enables active tradeoffs between the competing constraints of cost, time, and accuracy. 
 
-\section{Domain-specific Problems}
+\section{Domain-specific Problems}\label{sec:main_body_domain_specific_problems}
 
 Having laid out the general data-streaming service-oriented architecture of Rheos in the previous section we now turn to a discussion of the set of actual domain-specific problems that need to be solved within the data-streaming paradigm in order to enable the comprehensive genomic characterization of large cohorts of samples within Rheos, as we have set out to do. We make use of the flow of data types from the most raw to the most refined (see Figure \ref{fig:ngs_flow}) to illustrate the challenges that need to be solved during transformation of the input data between each successive stage, first in summary form, and then in full detail, below.
 
@@ -991,33 +991,114 @@ Given the location and width of a putative deletion it is necessary to determine
 The variant quality for the deletion is taken to be $vqual = \sum_{r \in R}{r.mapq}$ i.e. the Phred-scaled probability that all of the reads that support the deletion have been mis-mapped. All of the variants that have been called are emitted in the Insert Size Clustering Service's output stream in the format $M_{del} = \{m_i: m_i = (header, payload)\}$ where $m.payload = V = \{v_i: v_i = (s\_id, contig, pos, length, vqual, R)\}$, as described in Table \ref{tab:op_insert_size_clustering}, where the header includes the query details that are being answered.
 
 
-\subsection{Local Assembly}
+\section{Rheos implementation}
 
-\subsection{Assembly-based Variant Calling}
+In order to prove the viability of the concepts behind Rheos we have built and tested a limited implementation of Rheos. This implementation provides a data streaming architecture of services and is able to perform genome alignment, followed by online germline SNP and deletion calling, as described in Section \ref{sec:main_body_domain_specific_problems}. The source code is available on github at - https://github.com/llevar/rheos. In this section we describe the details of the technical implementation, including the key approaches taken for the establishment of data streaming, service organization, scalable deployment, and performance optimization. Even though the implementation is fully functional and has been used to analyze real data, it is worth noting that due to the extremely broad scope of the overall Rheos framework, and the limited resources available, the implementation focuses on a narrow set of use cases and is meant to be treated as a proof of concept rather than a production system.
 
-\subsection{Variant Filtering}
+As in the implementation of Butler (see Chapters \ref{ch:butler_architecture}, \ref{ch:butler_implementation}) we make a concentrated effort to rely on established Open Source software frameworks where possible to ensure that components of Rheos are robust and scalable, require minimal maintenance, and can be easily deployed on a variety of platforms. Some of the key frameworks used by Rheos are Apache Kafka, Google Kubernetes, Docker, and Prometheus.
 
-\subsection{Variant Annotation}
+The implementation is focused on the following key services:
 
-\subsection{Variant Output}
+\begin{description}
+    \item [Read Mapping Service] - Reads a FASTQ file and turns it into a set of streams for mapped and unmapped reads and read-pairs.
+    \item [Locus Processor Service] - Reads a stream of mapped read pairs and incorporates variant evidence from the reads into a model of genomic Loci. Emits a stream of updated Loci.
+    \item [Locus Saver Service] - Reads a stream of Loci and stores them in a distributed data store.
+    \item [Variant Calling Service] - Reads Loci from a data store and performs germline SNP calling. Emits a VCF file.
+    \item [Insert Size Filtering Service] - Reads a stream of mapped read pairs and emits a stream of filtered high quality read pairs that are discordantly mapped and can be used for calling deletions.
+    \item [Insert Size Clustering Service] - Reads a stream of discordantly mapped read pairs and calls germline deletions via KDE clustering. Emits a stream of deletion variants.
+\end{description}
 
-\hrule
-Describe specific problems that need to be addressed by the system in a stream-based formulation - how to go from a collection of raw reads to a set of annotated variants: map reads, perform QC filtering, model loci, assemble alternative haplotypes, call variants, filter variants, annotate, produce output.  
+We first focus on the general architecture of a Rheos service and describe how services communicate with each other, then describe the deployment and operation of the Rheos system as a whole, and finally describe the individual services to comprise the Rheos implementation.
 
+\subsection{Rheos Service}
+A service in Rheos is a continuously running program with a well defined interface (implementing one or more operations described in Section \ref{sec:rheos_data_streaming_model}), and a set of well understood operating characteristics. Even though a service author is completely free to use different technologies for different services (as long as the interface is respected), we have chosen to implement the initial set of Rheos services in Python. Since Rheos services are typically streaming services, their operations are most often invoked automatically when new data appears on the stream.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.55]{rheos_service_interface}
+    \centering
+    \caption {Several instances of the Read Mapping Service are managed behind a Load Balancer.}
+    \label{fig:rheos_service_interface}
+\end{figure}
+
+Figure \ref{fig:rheos_service_interface} demonstrates several key concepts behind Rheos services using the example of a Read Mapping Service:
 
 \begin{itemize}
-    \item Perform read QC
-    \item Align reads to reference
-    \item Collect read stream statistics
-    \item Assemble local read contigs
-    \item Model individual loci
-    \item Call variants (maybe need to split by variant types)
-    \item Genotype variants
-    \item Filter variants
-    \item Annotate variants
-    \item Output variants
+    \item The service transforms the granularity of the data from sample-level on the input to read-level on the output. 
+    \item The service implements a streaming operation of type Decorator, it decorates the incoming read data with additional information, that of the read coordinates, CIGAR string, mapping quality, etc. 
+    \item The service provides a uniform interface to its clients, that of \emph{ReadService.mapToReference()}. Machines that implement this interface are indistinguishable from each other. 
+    \item Clients of the service talk to the service interface through the Load Balancer. The DNS entry for the service returns the IP of the Load Balancer which is then responsible for routing requests to one of the service instances. This allows one to control the scalability of the service, seamlessly adding and removing instances of the Read Mapper depending on the rate of the data that is coming into the system, and the ability of downstream services to process it.  
 \end{itemize}
 
+When services are deployed it is desirable to be able to easily deploy them to a variety of different environments and achieve a level of resource and environment isolation, so that other programs running on the same machine can only minimally impact the installation and running of the service. To accomplish these goals, all of the services in Rheos follow a containerized approach using Docker\autocite{merkel2014docker}.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.55]{docker_architecture}
+    \centering
+    \caption {Docker system architecture (https://docs.docker.com/engine/docker-overview/).}
+    \label{fig:docker_architecture}
+\end{figure}
+
+Docker is an Open Source framework that isolates the execution of a program from the host machine and other programs by encapsulating it in a lightweight Linux container. The container is a separate instance of an operating system and a program running inside it is not aware of its enclosing environment. The Docker architecture consists of three main components (see Figure \ref{fig:docker_architecture}). A machine that can run Docker containers (the Docker Host)
+needs to be running the Docker Daemon. A container is a runtime instance of a Docker environment, but the blueprint from which all containers are created is called a Docker Image. The user starts with a base image that only has an operating system in it. The user can then augment the image by installing additional software packages and custom programs. This can be done interactively inside a shell inside a running container, or declaratively via a Dockerfile. When the user is finished preparing their image they can use the Docker Client to build it and upload it to an external Docker Registry. This is an external registry where various Docker images are hosted. When Docker Daemon needs to create a container it pulls down the requisite image from a registry to the local machine, and then instantiates the container. Containers can be started and stopped, created and deleted easily, and provide a great deal of abstraction and simplification when it comes to running many different applications, with potentially conflicting dependencies on a server. They also provide a seamless migration path from the local development machine, through the testing environment,and into production. All Rheos services are implemented to be encapsulated inside Docker containers.
+
+\begin{figure}[H]
+    \includegraphics[scale=1]{rheos_service_file_structure}
+    \centering
+    \caption {Rheos service file structure.}
+    \label{fig:rheos_service_file_structure}
+\end{figure}
+
+The layout of a Rheos service file structure is standard (see Fig. \ref{fig:rheos_service_file_structure}). One or more Python files implement the service functionality in the form of a Python module. The file \emph{setup.py} provides a list of dependencies that are needed for the functionality of the service. The \emph{Dockerfile} specifies how to build a Docker image of the service (See Listing \ref{lst:rheos_dockerfile}). 
+
+\captionof{listing}{Example Dockerfile for setting up a service. \label{lst:rheos_dockerfile}}
+\begin{minted}
+[
+breaklines=true,
+linenos,
+fontsize=\footnotesize,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2
+]
+{shell}
+FROM python:3.7.2-alpine3.8
+RUN apk add --no-cache build-base python3-dev zlib-dev cython make bzip2-dev xz-dev libcurl
+WORKDIR /app
+COPY . /app/
+RUN python setup.py install
+RUN mkdir /app/log && touch /app/log/mapper.log
+ENTRYPOINT ["python", "read_mapper/batchy_mapper.py"]
+\end{minted}
+
+The Dockerfile uses a base image of Alpine Linux with python 3.7.2 preinstalled. Several addon linux packages are installed. The service module code is copied to the \mintinline{shell}{/app} directory. \mintinline{shell}{setup.py} is run to install all of the service's dependencies, and the program entrypoint for the Docker container is set to point to the service executable.
+
+The file \mintinline{shell}{build_and_push.sh} is a shell script that is responsible for building a Docker image using the supplied Dockerfile and pushing this image to a Docker registry (hub.docker.com). Any deployment of the service can now pull down this image from the registry and instantiate new containers from it.
+
+As there is a good deal of functionality that is common between several Rheos services there is a separate Python module called \mintinline{shell}{rheos-common} that houses both utility classes and commonly used models (such as that for genomic loci) in its submodules. This module is hosted on Pypi and can be installed from anywhere using standard Python installation techniques such as \emph{pip}.
+
+The wire format for messages exchanged between services is currently schema-less and relies on standard Python serialization mechanisms (namely \emph{pickle}), and \emph{json}. Although \emph{json} is completely generic, \emph{pickle} is proprietary to Python and thus represents a weakness of the current implementation. A generic wire format with a defined schema will be a future improvement.
+
+Serialized messages are streamed between services via distributed queues.
+
+
+\subsection{Queueing}
+
+For message queueing Rheos relies on an Open Source framework called Apache Kafka\autocite{kreps2011kafka}. Kafka queues provide a distributed fault-tolerant implementation of the publish/subscribe mechanism, and streaming. 
+
+\begin{figure}[H]
+    \includegraphics[scale=0.48]{kafka_queue}
+    \centering
+    \caption {Example of a Kafka queue with multiple data producers and consumers.}
+    \label{fig:kafka_queue}
+\end{figure}
+
+At the heart of Kafka lies an Event Topic (see Figure \ref{fig:kafka_queue}). The topic is a distributed transaction log. When messages are put in the queue, they are never deleted by a consumer. Instead, consumers keep an offset into the log that tells them where they currently are in the processing of the data. Offsets can be moved freely so that a consumer may process the same message multiple times if needed. Data is deleted from the queue by virtue of a retention policy that removes data that is older than some specified time period. 
+
+The queue is distributed between several machines by virtue of a partition. A partition is a function that specifies how many logical and physical partitions of the data exist. Data may be partitioned onto several machines based on data size considerations, or it may be partitioned based on a logical grouping. In the former case, an automated partitioning function is employed that decides which partition to send new messages to in round-robin fashion. In the latter case a logical partitioning function needs to be supplied by the user. Rheos mainly uses the latter approach to partition data by genomic coordinate (see Section \ref{sec:main_body_partitioning} for details.)
+
+Data producers put messages into the queue by communicating with a Broker. A Broker is a Kafka service that manages one or more queues on a particular machine. Multiple Brokers may be put in a cluster for load balancing. A data producer establishes a connection with a broker using a client library (\mintinline{shell}{kafka-python} in the case of Rheos). The partitioning function determines which machine a particular message ends up on.
+
+On the data consumer side, consumers are organized into Consmer Groups. Each Consumer Group is a set of consumers that are assumed to be a separate entity from the consumers in all the other consumer groups. A Consumer Group has its on separate set of offsets into every partition of a topic that it is subscribed to and these do not interefer with the offsets of other groups. Assignment of consumers within a group to partitions of a topic can be automated or manual. In the case of automated assignment Kafka will decide on its own how to pair a consumer with a partition. In the case of manual assignment the partitioning function is used to make the assignment. It is in general not advisable to have multiple consumers from the same group reading data from the same partition. 
 
 
 \section{Services of Rheos}

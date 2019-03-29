@@ -3473,6 +3473,42 @@
       \field{pages}{75\bibrangedash 79}
       \range{pages}{5}
     \endentry
+    \entry{kreps2011kafka}{inproceedings}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{3}{}{%
+        {{hash=1eb7552c6ea712a30e5b05e6f943e688}{%
+           family={Kreps},
+           familyi={K\bibinitperiod},
+           given={Jay},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f0758f2b7b5ca25d25bfae9f9629d17d}{%
+           family={Narkhede},
+           familyi={N\bibinitperiod},
+           given={Neha},
+           giveni={N\bibinitperiod}}}%
+        {{hash=762632644bfb48406439c48609c9497c}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Jun},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{d5b1fae3546b940043bf1e642d3dacaf}
+      \strng{fullhash}{d5b1fae3546b940043bf1e642d3dacaf}
+      \strng{bibnamehash}{d5b1fae3546b940043bf1e642d3dacaf}
+      \strng{authorbibnamehash}{d5b1fae3546b940043bf1e642d3dacaf}
+      \strng{authornamehash}{d5b1fae3546b940043bf1e642d3dacaf}
+      \strng{authorfullhash}{d5b1fae3546b940043bf1e642d3dacaf}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the NetDB}
+      \field{title}{Kafka: A distributed messaging system for log processing}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 7}
+      \range{pages}{7}
+    \endentry
     \entry{kriegel2011density}{article}{}
       \name{author}{4}{}{%
         {{hash=9559fe65ed2c0877cf14a66fe1f8e9b3}{%

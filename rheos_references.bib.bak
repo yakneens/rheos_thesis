@@ -2459,4 +2459,13 @@
   publisher = {Wiley},
 }
 
+@Article{zook2018reproducible,
+  author    = {Zook, Justin and McDaniel, Jennifer and Parikh, Hemang and Heaton, Haynes and Irvine, Sean A and Trigg, Len and Truty, Rebecca and McLean, Cory Y and De La Vega, Francisco M and Xiao, Chunlin and others},
+  title     = {Reproducible integration of multiple sequencing datasets to form high-confidence SNP, indel, and reference calls for five human genome reference materials},
+  journal   = {BioRxiv},
+  year      = {2018},
+  pages     = {281006},
+  publisher = {Cold Spring Harbor Laboratory},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+FROM python:3.7.2\PYGZhy{}alpine3.8
+RUN apk add \PYGZhy{}\PYGZhy{}no\PYGZhy{}cache build\PYGZhy{}base python3\PYGZhy{}dev zlib\PYGZhy{}dev cython make bzip2\PYGZhy{}dev xz\PYGZhy{}dev libcurl
+WORKDIR /app
+COPY . /app/
+RUN python setup.py install
+RUN mkdir /app/log \PYG{o}{\PYGZam{}\PYGZam{}} touch /app/log/mapper.log
+ENTRYPOINT \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}python\PYGZdq{}}, \PYG{l+s+s2}{\PYGZdq{}read\PYGZus{}mapper/batchy\PYGZus{}mapper.py\PYGZdq{}}\PYG{o}{]}
+\end{Verbatim}
