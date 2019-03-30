@@ -1094,12 +1094,104 @@ For message queueing Rheos relies on an Open Source framework called Apache Kafk
 
 At the heart of Kafka lies an Event Topic (see Figure \ref{fig:kafka_queue}). The topic is a distributed transaction log. When messages are put in the queue, they are never deleted by a consumer. Instead, consumers keep an offset into the log that tells them where they currently are in the processing of the data. Offsets can be moved freely so that a consumer may process the same message multiple times if needed. Data is deleted from the queue by virtue of a retention policy that removes data that is older than some specified time period. 
 
-The queue is distributed between several machines by virtue of a partition. A partition is a function that specifies how many logical and physical partitions of the data exist. Data may be partitioned onto several machines based on data size considerations, or it may be partitioned based on a logical grouping. In the former case, an automated partitioning function is employed that decides which partition to send new messages to in round-robin fashion. In the latter case a logical partitioning function needs to be supplied by the user. Rheos mainly uses the latter approach to partition data by genomic coordinate (see Section \ref{sec:main_body_partitioning} for details.)
+The queue is distributed between several machines by using partitions. A Kafka partition is a function that specifies how many logical and physical partitions of the data exist. Data may be partitioned onto several machines based on data size considerations, or it may be partitioned based on a logical grouping. In the former case, an automated partitioning function is employed that decides which partition to send new messages to in round-robin fashion. In the latter case a logical partitioning function needs to be supplied by the user. Rheos mainly uses the latter approach to partition data by genomic coordinate (see Section \ref{sec:main_body_partitioning} for details.)
 
 Data producers put messages into the queue by communicating with a Broker. A Broker is a Kafka service that manages one or more queues on a particular machine. Multiple Brokers may be put in a cluster for load balancing. A data producer establishes a connection with a broker using a client library (\mintinline{shell}{kafka-python} in the case of Rheos). The partitioning function determines which machine a particular message ends up on.
 
-On the data consumer side, consumers are organized into Consmer Groups. Each Consumer Group is a set of consumers that are assumed to be a separate entity from the consumers in all the other consumer groups. A Consumer Group has its on separate set of offsets into every partition of a topic that it is subscribed to and these do not interefer with the offsets of other groups. Assignment of consumers within a group to partitions of a topic can be automated or manual. In the case of automated assignment Kafka will decide on its own how to pair a consumer with a partition. In the case of manual assignment the partitioning function is used to make the assignment. It is in general not advisable to have multiple consumers from the same group reading data from the same partition. 
+On the data consumer side, consumers are organized into Consumer Groups. Each Consumer Group is a set of consumers that are assumed to be a separate entity from the consumers in all the other consumer groups. A Consumer Group has its on separate set of offsets into every partition of a topic that it is subscribed to and these do not interefer with the offsets of other groups. Assignment of consumers within a group to partitions of a topic can be automated or manual. In the case of automated assignment Kafka will decide on its own how to pair a consumer with a partition. In the case of manual assignment the partitioning function is used to make the assignment. It is in general not advisable to have multiple consumers from the same group reading data from the same partition. 
 
+We implement a generic Kafka Handler in the \mintinline{shell}{rheods-common} module. This handler allows Rheos services to initialize Kafka producers and consumers. serialize and deserialize data using pickle and json, and to store and retrieve messages using the topics that have been set up for inter-service communication.
+
+\subsection{Partitioning}
+
+Partitioning is important in Rheos not only because the data is quite big and thus needs to be parceled out to multiple machines, but also because data exhibits strong locality subsequent to the read mapping stage, where most of the data that is required to make decisions about the presence or absence of a genomic variant resides in some small genomic neighbourhood around the variant. It is thus natural for us to partition the read data (which is biggest in size) by genomic coordinate.
+
+\begin{figure}[H]
+    \includegraphics[scale=0.48]{rheos_data_partitioning}
+    \centering
+    \caption {Rheos data is partitioned by genomic coordinate.}
+    \label{fig:rheos_data_partitioning}
+\end{figure}
+
+Partitioning can be challenging because different partitions end up on different machines, yet certain reads and structural variants end up spanning one or several partitions. We need to decide what to do at the partition boundaries, i.e. if a particular read ends up spanning the boundary, does it end up in one partition, the other, or both? If a read ends up in two partitions how does one avoid double counting the read in downstream processing? Likewise, if the reads supporting one breakpoint of a structural variant lie in one partition, and the reads supporting the other breakpoint lie in another partition, how can these be put together to form a single variant?
+
+We take a simple approach in the initial Rheos implementation that will require further work when the system is elaborated. The following assumptions are made by the Partitioner:
+
+\begin{itemize}
+    \item All partitions are of equal size, except at the end of contigs.
+    \item Reads that span multiple partitions are assigned to all partitions that they map to (see Figure \ref{fig:rheos_partition_boundary}).
+    \item A given read will always map to the same set of partitions.
+    \item All reads that are unmapped end up in the "unmapped" partition.
+    \item All reads that map to special contigs (like decoy sequences) are mapped to a special "other" partition.
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[scale=0.55]{rheos_partition_boundary}
+    \centering
+    \caption {Reads that map near the partition boundary - a) The read pair maps to partitions 1 and 2, b) The read pair maps to partition 2 only, c) The single read maps to Partition 1 only, d) The read pair maps to partitions 1 and 2, e) The single read maps to partitions 1 and 2.}
+    \label{fig:rheos_partition_boundary}
+\end{figure}
+
+In general the partitioning problem can be stated as follows:
+
+Given a reference genome $G = G_{main} \cup G_{other}$, where $G_{main} = \{g_i: g_i = (name_i, length), name_i \in \{1,..,22,X,Y,MT\}\}$ and $G_{other} = \{g_i: g_i = (name_i, length), name_i \in Aux\_Contig\_Names\}$, we assign a set of indexed partitions $P = \{(g_i.name, start, end, i) : g_i \in G_{main}, i \in [1,|G_{main}|]\} \cup \{("other",|G_{main}|+1), ("unmapped",|G_{main}|+2\}$, where given a set of reads $R = \{r_i: r_i = (contig, pos, end)\}$ (most often a read or a read pair), we desire to have a function $f:R \mapsto \mathcal{P}(P)$ (where $\mathcal{P}(P)$ is the power set of $P$) that maps those reads to a set of partitions from $P$.
+
+We opt for partitions of fixed width $partition\_width$ (except at ends of contigs) and use the following algorithm that given $G$, produces $P$, and for a given interval or read pair returns a set of partitions they map to:
+
+\begin{algorithm2e}[h]
+    \DontPrintSemicolon
+    \footnotesize
+    \textbf{Function} {\sc initializePartitioner}$(g\_main, g\_other, partition\_width)$
+    \Begin {
+        $partition\_index \gets 0$\;
+        \For{$name, length $ {\bf in }$g\_main$}{
+            $num\_partitions \gets $ {\sc ceiling}$(length / partition\_width)$\;
+            \For{$i \gets 0 $ \KwTo $num\_partitions$}{
+                $left \gets i \times partition\_width + 1 $\;
+                $right \gets $ {\sc min}$((i + 1) \times partition\_width, length)$\; 
+
+                $new\_record \gets $ {\sc PartitionRecord}$(name, left, right, partition\_index)$\;
+                {\sc addBreaksByContig}$(name, left)$\;
+                {\sc addPartitionsByContigAndLeft}$(partition\_index, name, left)$\;
+                $partition\_index \gets partition\_index + 1$\;
+            }
+        }
+    }
+    \textbf{Function} {\sc getPartitionsForInterval}$(contig, left, right)$
+    \Begin {
+        $partitions\_for\_int \gets $ {\sc Set}$()$\;
+        \If{$contig \notin$ {\sc getOtherContigNames}$()$}{
+            $breaks \gets$ {\sc getBreaksByContig}$()$\;
+            $left\_index \gets$ {\sc binarySearch}$(breaks, left)$\;
+            $left\_partition \gets$ {\sc getPartitionByContigAndLeft}$(contig, breaks[left\_index-1])$\;
+            {\sc addToSet}$(partitions\_for\_int, left\_partition)$\;
+         
+            $right\_index \gets$ {\sc binarySearch}$(breaks, right)$\;
+            $right\_partition \gets$ {\sc getPartitionByContigAndLeft}$(contig, breaks[right\_index-1])$\;
+            {\sc addToSet}$(partitions\_for\_int, right\_partition)$\;
+        }
+        \Else{
+            {\sc addToSet}$(partitions\_for\_int,$ {\sc getOtherPartition}$)$\;
+        }
+    }
+    \textbf{Function} {\sc getPartitionsForReadPair}$(read\_pair)$
+    \Begin {
+        $partitions\_for\_reads \gets $ {\sc Set}$()$\;
+        \For{$read$ {\bf in } $read\_pair$}{
+            \If{$read.mapped$ {\bf is} $TRUE$}{
+                $left \gets read.pos + 1$\;
+                $right \gets read.end$\;
+                $contig \gets read.contig$\;
+                {\sc addAllToSet}$(partitions\_for\_reads, ${\sc getPartitionsForInterval}$(contig, left, right))$\;
+            }
+            \Else{
+                {\sc addToSet}$(partitions\_for\_reads,$ {\sc getUnmappedPartition}$)$\;
+            }
+        }
+        
+    }
+    \caption{Partitioning the reference genome by a set width and mapping reads to partition sets.}\label{ag:partitioner}
+\end{algorithm2e}
 
 \section{Services of Rheos}
 
