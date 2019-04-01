@@ -97,11 +97,12 @@
 \contentsline {subsection}{\numberline {5.4.1}Rheos Service}{122}{subsection.5.4.1}
 \contentsline {subsection}{\numberline {5.4.2}Queueing}{126}{subsection.5.4.2}
 \contentsline {subsection}{\numberline {5.4.3}Partitioning}{127}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}Services of Rheos}{130}{section.5.5}
-\contentsline {section}{\numberline {5.6}Proof of concept implementation}{131}{section.5.6}
-\contentsline {section}{\numberline {5.7}Conclusions}{131}{section.5.7}
-\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{132}{chapter.6}
-\contentsline {section}{\numberline {6.1}Validation and Conclusion}{132}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future Direction}{133}{section.6.2}
-\contentsline {chapter}{Appendix}{134}{section*.144}
-\contentsline {chapter}{\numberline {A}Code Listings}{134}{Appendix.1.A}
+\contentsline {subsection}{\numberline {5.4.4}Deployment}{129}{subsection.5.4.4}
+\contentsline {section}{\numberline {5.5}Services of Rheos}{133}{section.5.5}
+\contentsline {section}{\numberline {5.6}Proof of concept implementation}{134}{section.5.6}
+\contentsline {section}{\numberline {5.7}Conclusions}{134}{section.5.7}
+\contentsline {chapter}{\numberline {6}Discussion and Conclusion}{135}{chapter.6}
+\contentsline {section}{\numberline {6.1}Validation and Conclusion}{135}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future Direction}{136}{section.6.2}
+\contentsline {chapter}{Appendix}{137}{section*.148}
+\contentsline {chapter}{\numberline {A}Code Listings}{137}{Appendix.1.A}

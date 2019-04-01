@@ -39,6 +39,20 @@
       \verb https://software.broadinstitute.org/gatk/documentation
       \endverb
     \endentry
+    \entry{scalingkubernetes}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \verb{urlraw}
+      \verb http://www.langmead-lab.org/teaching-materials/
+      \endverb
+      \verb{url}
+      \verb http://www.langmead-lab.org/teaching-materials/
+      \endverb
+    \endentry
+    \entry{kubernetes_microservice_components}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+    \endentry
     \entry{afgan2010galaxy}{article}{}
       \name{author}{6}{}{%
         {{hash=a90c63c8486067c2d25efd0be132b0f6}{%
@@ -487,6 +501,35 @@
       \field{labeltitlesource}{title}
       \field{title}{Statistical decision theory and Bayesian analysis}
       \field{year}{2013}
+    \endentry
+    \entry{bernstein2014containers}{article}{}
+      \name{author}{1}{}{%
+        {{hash=0e48d39ed6acd37cafe2ec2c3116ef10}{%
+           family={Bernstein},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{0e48d39ed6acd37cafe2ec2c3116ef10}
+      \strng{fullhash}{0e48d39ed6acd37cafe2ec2c3116ef10}
+      \strng{bibnamehash}{0e48d39ed6acd37cafe2ec2c3116ef10}
+      \strng{authorbibnamehash}{0e48d39ed6acd37cafe2ec2c3116ef10}
+      \strng{authornamehash}{0e48d39ed6acd37cafe2ec2c3116ef10}
+      \strng{authorfullhash}{0e48d39ed6acd37cafe2ec2c3116ef10}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Cloud Computing}
+      \field{number}{3}
+      \field{title}{Containers and cloud: From lxc to docker to kubernetes}
+      \field{volume}{1}
+      \field{year}{2014}
+      \field{pages}{81\bibrangedash 84}
+      \range{pages}{4}
     \endentry
     \entry{bolger2014trimmomatic}{article}{}
       \name{author}{3}{}{%

@@ -1136,9 +1136,9 @@ In general the partitioning problem can be stated as follows:
 
 Given a reference genome $G = G_{main} \cup G_{other}$, where $G_{main} = \{g_i: g_i = (name_i, length), name_i \in \{1,..,22,X,Y,MT\}\}$ and $G_{other} = \{g_i: g_i = (name_i, length), name_i \in Aux\_Contig\_Names\}$, we assign a set of indexed partitions $P = \{(g_i.name, start, end, i) : g_i \in G_{main}, i \in [1,|G_{main}|]\} \cup \{("other",|G_{main}|+1), ("unmapped",|G_{main}|+2\}$, where given a set of reads $R = \{r_i: r_i = (contig, pos, end)\}$ (most often a read or a read pair), we desire to have a function $f:R \mapsto \mathcal{P}(P)$ (where $\mathcal{P}(P)$ is the power set of $P$) that maps those reads to a set of partitions from $P$.
 
-We opt for partitions of fixed width $partition\_width$ (except at ends of contigs) and use the following algorithm that given $G$, produces $P$, and for a given interval or read pair returns a set of partitions they map to:
+We opt for partitions of fixed width $partition\_width$ (except at ends of contigs) and implement Algorithm \ref{ag:partitioner}, that, given $G$, produces $P$, and for a given interval or read pair returns a set of partitions they map to:
 
-\begin{algorithm2e}[h]
+\begin{algorithm2e}[h!]
     \DontPrintSemicolon
     \footnotesize
     \textbf{Function} {\sc initializePartitioner}$(g\_main, g\_other, partition\_width)$
@@ -1150,18 +1150,19 @@ We opt for partitions of fixed width $partition\_width$ (except at ends of conti
                 $left \gets i \times partition\_width + 1 $\;
                 $right \gets $ {\sc min}$((i + 1) \times partition\_width, length)$\; 
 
-                $new\_record \gets $ {\sc PartitionRecord}$(name, left, right, partition\_index)$\;
-                {\sc addBreaksByContig}$(name, left)$\;
-                {\sc addPartitionsByContigAndLeft}$(partition\_index, name, left)$\;
+                $new\_record \gets $ {\sc PartitionRecord}$(name, left, right, partition\_index)$\tcp*{Create a member of $P$}\;
+                {\sc addBreaksByContig}$(name, left)$ \tcp*{Keep a hashmap of partition boundaries by contig}\;
+                {\sc addPartitionsByContigAndLeft}$(partition\_index, name, left)$\tcp*{Keep a hashmap of partition records by contig and left boundary.}\;
                 $partition\_index \gets partition\_index + 1$\;
             }
         }
     }
     \textbf{Function} {\sc getPartitionsForInterval}$(contig, left, right)$
     \Begin {
-        $partitions\_for\_int \gets $ {\sc Set}$()$\;
+        $partitions\_for\_int \gets $ {\sc Set}$()$\tcp*{Partition records are a set, to avoid duplicates}\;
         \If{$contig \notin$ {\sc getOtherContigNames}$()$}{
-            $breaks \gets$ {\sc getBreaksByContig}$()$\;
+            $breaks \gets$ {\sc getSortedBreaksByContig}$()$\tcp*{Breaks are sorted by left coordinate}\;
+
             $left\_index \gets$ {\sc binarySearch}$(breaks, left)$\;
             $left\_partition \gets$ {\sc getPartitionByContigAndLeft}$(contig, breaks[left\_index-1])$\;
             {\sc addToSet}$(partitions\_for\_int, left\_partition)$\;
@@ -1190,8 +1191,56 @@ We opt for partitions of fixed width $partition\_width$ (except at ends of conti
         }
         
     }
-    \caption{Partitioning the reference genome by a set width and mapping reads to partition sets.}\label{ag:partitioner}
+    \caption{Partitioning the reference genome by a fixed width and mapping reads to partition sets.}\label{ag:partitioner}
 \end{algorithm2e}
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.55]{rheos_partitioner_class}
+    \centering
+    \caption {Rheos Partitioner class diagram.}
+    \label{fig:rheos_partitioner_class}
+\end{figure}
+
+Algorithm \ref{ag:partitioner} is implemented in Rheos via the \mintinline{python}{Partitioner} and \mintinline{python}{PartitionRecord} classes of the \mintinline{python}{rheos-common} package. Namely, members of $P$ are implemented as instances of \mintinline{python}{PartitionRecord}, function {\sc initializePartitioner}$(g\_main, g\_other, partition\_width)$ is implemented in \mintinline{python}{Partitioner.__init__()}, function {\sc getPartitionsForInterval}$(contig, left, right)$ is implemented in \mintinline{python}{Partitioner.get_partitions()} method, and function {\sc getPartitionsForReadPair}$(read\_pair)$ is implemented in \mintinline{python}{Partitioner.get_partitions_for_read_pair()}.
+
+In our tests we have been using a partition width of $2\times10^7$ bases, resulting in 148 partitions for read data. The Partitioner is used in the Read Mapping Service to determine which partition to write data to, as well as in the Locus Processor Service to determine which partition is assigned to which instance of the service.
+
+\subsection{Deployment}
+
+Deployment of large-scale distributed systems can be complex as each component can have its own requirements related to computational resources, environment, or the ability to scale. This heterogeneity of requirements demands a flexible deployment approach that can cater to the individual needs of the various components of the system. Additionally, there is a wide variety of computational infrastructures into which a user may wish to deploy the system, again with a distinct set of capabilities and limitations. With Butler (see Chapters \ref{ch:butler_architecture}, \ref{ch:butler_implementation}) we solve this problem by utilizing a separate framework (Terraform) for abstracting the specifics of cloud provider's provisioning API, another separate framework (Saltstack) for providing a flexible configuration management facility that can configure software on a variety of platforms, and a separate suite of frameworks (InfluxDB, Grafana, Telegraf, Kapacitor) for operational management of the deployed components. We take a somewhat different approach with Rheos, one that based on the containerized nature of Rheos services, and one that relies on a single common execution environment being deployed on top of any cloud provider, or other types of computational infrastructure. The environment that we use is Google Kubernetes\autocite{bernstein2014containers}. 
+
+\begin{figure}[H]
+    \includegraphics[scale=0.48]{kubernetes_architecture}
+    \centering
+    \caption {Kubernetes high level architecture (https://kubernetes.io/docs/concepts/architecture).}
+    \label{fig:kubernetes_architecture}
+\end{figure}
+
+Kubernetes is a cluster resource management and container execution framework developed by Google. It can deploy on virtually any cloud as well as bare metal hardware (which makes it more flexible than the approach adopted in Butler). A Kubernetes cluster is a collection generic compute hosts (Nodes) each running the \mintinline{shell}{Docker} and \mintinline{shell}{kubelet} daemons. These nodes go into a generic pool of computational resources, although nodes with specialized capabilities, such as high RAM, or advanced GPUs can be held in separate pools. A master node is responsible for keeping track of the configuration and computational capabilities of the cluster by virtue of an etcd registry that it keeps. This node runs a special management daemon called \mintinline{shell}{kubeadm} and schedules the deployment and execution of workloads on the cluster, all of which are encapsulated in Docker containers. See Figure \ref{fig:kubernetes_architecture} for the general high level architecture of Kubernetes. This architecture is scalable to over 2500 compute nodes per cluster\autocite{scalingkubernetes}.
+
+In order to facilitate inter-container communication Kubernetes provides an overlay network that is responsible for managing address translation, network security, and local DNS by running a proxy agent \mintinline{shell}{kube-proxy} on each node. This allows various components of the system to refer to each other by name rather than IP address, and enables role-based access to various network resources.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.375]{kubernetes_dashboard}
+    \centering
+    \caption {Kubernetes dashboard.}
+    \label{fig:kubernetes_dashboard}
+\end{figure}
+
+Kubernetes was built for deploying and operating services and provides a large number of high-level abstractions to facilitate the full service lifecycle. Kubernetes objects are managed through declarative documents in YAML format that describe the desired state of the system. The user interacts with the cluster by virtue of a CLI (\mintinline{shell}{kubectl}) running on the master node, or via a GUI dashboard (see Figure \ref{fig:kubernetes_dashboard}).
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.55]{kubernetes_service_components}
+    \centering
+    \caption {Kubernetes microservice components (from \autocite{kubernetes_microservice_components}, by Bilgin Ibryam)}
+    \label{fig:kubernetes_service_components}
+\end{figure}
+
+At the lowest level of abstraction in Kubernetes hierarchy is a Pod. The Pod is a wrapper around a Docker container and describes some useful metadata for categorizing as well as describing the resource requirements of the underlying container that are used for scheduling the container onto nodes. These resources include CPU and memory requirements, as well as requests for various types of storage (called a PersistentVolumeClaim). A Pod is scheduled for execution only when the cluster manager can find a suitable node that can meet all of the pod's resource requirements. If the Pod exceeds its stated resource requirements during its lifetime it will be terminated by the scheduler.
+
+Since the goal of kuberenetes is to enable computation at scale, Pods are rarely run as single instances. Depending on the intended usage of the underlying container Pods can be organized in groups such as a DaemonSet, ReplicaSet, StatefulSet, Job, etc. These abstractions describe the runtime behaviour of groups of Pods and provide lifecycle management support for each. For instance, a ReplicaSet provides a group stateless interchangeable Pods where each Pod can identically service a request from a client, and Pods can be scaled horizontally. The configuration for a ReplicaSet may specify the number of such Pods that should be running at a given time and the scheduler will create and delete Pods as necessary to make sure that the requisite number of Pods is running. Other groups of Pods that do not scale horizontally, and require access to non-ephemeral secondary storage (such as those running a database) may use the StatefulSet to provide such services.
+
+A Service is a high level abstraction that provides a logical grouping of pods and provides a number of capabilities such as DNS, load balancing, and security.  
 
 \section{Services of Rheos}
 

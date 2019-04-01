@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.10.18)  30 MAR 2019 21:41
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.10.18)  1 APR 2019 16:17
  system commands enabled.
  file:line:error style messages enabled.
 **"/Users/siakhnin/Google Drive/Research/projects/Rheos/thesis/rheos_thesis.tex"
@@ -23,7 +23,7 @@ Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
 Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'.
-luaotfload | main : initialization completed in 0.146 seconds (/usr/local/texlive/2018/texmf-dist/tex/latex/base/report.cls
+luaotfload | main : initialization completed in 0.165 seconds (/usr/local/texlive/2018/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -1885,7 +1885,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [14]
-<images/costpergenome2015_4.jpg, id=532, 722.7pt x 542.025pt>
+<images/costpergenome2015_4.jpg, id=537, 722.7pt x 542.025pt>
 File: images/costpergenome2015_4.jpg Graphic file (type jpg)
 <use images/costpergenome2015_4.jpg>
 Package luatex.def Info: images/costpergenome2015_4.jpg  used on input line 19.
@@ -1905,7 +1905,7 @@ Overfull \hbox (6.26085pt too wide) in paragraph at lines 34--35
 []\TU/lmr/m/n/12 Study-ing can-cer genomes is more com-plex and ex-pen-sive than study-ing the genomes
  []
 
-<images/nature12912-f5.jpg, id=556, 949.5475pt x 619.31375pt>
+<images/nature12912-f5.jpg, id=561, 949.5475pt x 619.31375pt>
 File: images/nature12912-f5.jpg Graphic file (type jpg)
 <use images/nature12912-f5.jpg>
 Package luatex.def Info: images/nature12912-f5.jpg  used on input line 38.
@@ -1974,7 +1974,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [22]
-<images/fastq.png, id=607, 548.0475pt x 400.49625pt>
+<images/fastq.png, id=612, 548.0475pt x 400.49625pt>
 File: images/fastq.png Graphic file (type png)
 <use images/fastq.png>
 Package luatex.def Info: images/fastq.png  used on input line 92.
@@ -2025,7 +2025,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [25]
-<images/read_pair.png, id=650, 1063.8144pt x 529.0164pt>
+<images/read_pair.png, id=655, 1063.8144pt x 529.0164pt>
 File: images/read_pair.png Graphic file (type png)
 <use images/read_pair.png>
 Package luatex.def Info: images/read_pair.png  used on input line 205.
@@ -2053,7 +2053,7 @@ Overfull \hbox (104.70087pt too wide) in paragraph at lines 292--307
  [] 
  []
 
-<images/cigar_string.png, id=672, 1062.8508pt x 208.6194pt>
+<images/cigar_string.png, id=677, 1062.8508pt x 208.6194pt>
 File: images/cigar_string.png Graphic file (type png)
 <use images/cigar_string.png>
 Package luatex.def Info: images/cigar_string.png  used on input line 309.
@@ -2127,7 +2127,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [33]
-<images/locus.png, id=730, 897.5934pt x 755.2215pt>
+<images/locus.png, id=735, 897.5934pt x 755.2215pt>
 File: images/locus.png Graphic file (type png)
 <use images/locus.png>
 Package luatex.def Info: images/locus.png  used on input line 499.
@@ -2148,10 +2148,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [35<./images/locus.png>]
 Overfull \hbox (13.57373pt too wide) in paragraph at lines 518--519
-[]\TU/lmr/m/n/12 Ini-tially, al-go-rithms for map-ping se-quenc-ing reads (such as Maq[[]110[]] and SOAP[[]113[]])
+[]\TU/lmr/m/n/12 Ini-tially, al-go-rithms for map-ping se-quenc-ing reads (such as Maq[[]113[]] and SOAP[[]116[]])
  []
 
-<images/aligner_comparison_2018.png, id=753, 728.7225pt x 374.39874pt>
+<images/aligner_comparison_2018.png, id=758, 728.7225pt x 374.39874pt>
 File: images/aligner_comparison_2018.png Graphic file (type png)
 <use images/aligner_comparison_2018.png>
 Package luatex.def Info: images/aligner_comparison_2018.png  used on input line 521.
@@ -2167,12 +2167,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [36]
-<images/suffix_tree_array_bwt.png, id=771, 810.02625pt x 428.60126pt>
+<images/suffix_tree_array_bwt.png, id=776, 810.02625pt x 428.60126pt>
 File: images/suffix_tree_array_bwt.png Graphic file (type png)
 <use images/suffix_tree_array_bwt.png>
 Package luatex.def Info: images/suffix_tree_array_bwt.png  used on input line 530.
 (luatex.def)             Requested size: 405.01213pt x 214.3001pt.
-<images/suffix_trie.png, id=775, 559.08875pt x 888.31876pt>
+<images/suffix_trie.png, id=780, 559.08875pt x 888.31876pt>
 File: images/suffix_trie.png Graphic file (type png)
 <use images/suffix_trie.png>
 Package luatex.def Info: images/suffix_trie.png  used on input line 541.
@@ -2185,7 +2185,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [37<./images/aligner_comparison_2018.png><./images/suffix_tree_array_bwt.png>]
-<images/suffix_tree_1.png, id=790, 1116.17pt x 768.8725pt>
+<images/suffix_tree_1.png, id=796, 1116.17pt x 768.8725pt>
 File: images/suffix_tree_1.png Graphic file (type png)
 <use images/suffix_tree_1.png>
 Package luatex.def Info: images/suffix_tree_1.png  used on input line 550.
@@ -2201,12 +2201,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [38<./images/suffix_trie.png>]
-<images/suffix_tree_2.png, id=801, 1095.09125pt x 493.845pt>
+<images/suffix_tree_2.png, id=806, 1095.09125pt x 493.845pt>
 File: images/suffix_tree_2.png Graphic file (type png)
 <use images/suffix_tree_2.png>
 Package luatex.def Info: images/suffix_tree_2.png  used on input line 559.
 (luatex.def)             Requested size: 328.5299pt x 148.15463pt.
-<images/suffix_tree_3.png, id=805, 1184.425pt x 582.175pt>
+<images/suffix_tree_3.png, id=810, 1184.425pt x 582.175pt>
 File: images/suffix_tree_3.png Graphic file (type png)
 <use images/suffix_tree_3.png>
 Package luatex.def Info: images/suffix_tree_3.png  used on input line 568.
@@ -2229,7 +2229,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [40<./images/suffix_tree_3.png>]
-<images/bwt_bowtie.jpg, id=842, 1204.5pt x 563.10374pt>
+<images/bwt_bowtie.jpg, id=847, 1204.5pt x 563.10374pt>
 File: images/bwt_bowtie.jpg Graphic file (type jpg)
 <use images/bwt_bowtie.jpg>
 Package luatex.def Info: images/bwt_bowtie.jpg  used on input line 584.
@@ -2242,7 +2242,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [41<./images/bwt_bowtie.jpg>]
-<images/bowtie_pipeline.png, id=858, 780.9175pt x 862.22125pt>
+<images/bowtie_pipeline.png, id=863, 780.9175pt x 862.22125pt>
 File: images/bowtie_pipeline.png Graphic file (type png)
 <use images/bowtie_pipeline.png>
 Package luatex.def Info: images/bowtie_pipeline.png  used on input line 608.
@@ -2255,7 +2255,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [42<./images/bowtie_pipeline.png>]
-<images/bowtie_2_performance.png, id=872, 553.06625pt x 910.40125pt>
+<images/bowtie_2_performance.png, id=877, 553.06625pt x 910.40125pt>
 File: images/bowtie_2_performance.png Graphic file (type png)
 <use images/bowtie_2_performance.png>
 Package luatex.def Info: images/bowtie_2_performance.png  used on input line 621.
@@ -2306,7 +2306,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [46]
-<images/bwa_mem_comparison.png, id=936, 568.1225pt x 782.925pt>
+<images/bwa_mem_comparison.png, id=941, 568.1225pt x 782.925pt>
 File: images/bwa_mem_comparison.png Graphic file (type png)
 <use images/bwa_mem_comparison.png>
 Package luatex.def Info: images/bwa_mem_comparison.png  used on input line 776.
@@ -2332,7 +2332,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [48<./images/bwa_mem_comparison.png>]
-<images/k_w_minimizer.png, id=964, 764.8575pt x 201.75375pt>
+<images/k_w_minimizer.png, id=969, 764.8575pt x 201.75375pt>
 File: images/k_w_minimizer.png Graphic file (type png)
 <use images/k_w_minimizer.png>
 Package luatex.def Info: images/k_w_minimizer.png  used on input line 791.
@@ -2345,7 +2345,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [49<./images/k_w_minimizer.png>]
-<images/journal.pone.0060234.g001.png, id=988, 450.64914pt x 378.79448pt>
+<images/journal.pone.0060234.g001.png, id=993, 450.64914pt x 378.79448pt>
 File: images/journal.pone.0060234.g001.png Graphic file (type png)
 <use images/journal.pone.0060234.g001.png>
 Package luatex.def Info: images/journal.pone.0060234.g001.png  used on input line 807.
@@ -2368,12 +2368,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [51<./images/journal.pone.0060234.g001.png>]
-<images/base_errors_read_position.jpeg, id=1018, 510.90875pt x 504.88625pt>
+<images/base_errors_read_position.jpeg, id=1023, 510.90875pt x 504.88625pt>
 File: images/base_errors_read_position.jpeg Graphic file (type jpg)
 <use images/base_errors_read_position.jpeg>
 Package luatex.def Info: images/base_errors_read_position.jpeg  used on input line 823.
 (luatex.def)             Requested size: 332.08675pt x 328.17215pt.
-<images/fastqc_per_base_quality.png, id=1021, 803.0pt x 602.25pt>
+<images/fastqc_per_base_quality.png, id=1026, 803.0pt x 602.25pt>
 File: images/fastqc_per_base_quality.png Graphic file (type png)
 <use images/fastqc_per_base_quality.png>
 Package luatex.def Info: images/fastqc_per_base_quality.png  used on input line 835.
@@ -2389,12 +2389,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [52<./images/base_errors_read_position.jpeg>]
-<images/fastqc_sequence_content.png, id=1028, 803.0pt x 602.25pt>
+<images/fastqc_sequence_content.png, id=1033, 803.0pt x 602.25pt>
 File: images/fastqc_sequence_content.png Graphic file (type png)
 <use images/fastqc_sequence_content.png>
 Package luatex.def Info: images/fastqc_sequence_content.png  used on input line 843.
 (luatex.def)             Requested size: 281.05421pt x 210.79065pt.
-<images/fastqc_gc_content.png, id=1029, 803.0pt x 602.25pt>
+<images/fastqc_gc_content.png, id=1034, 803.0pt x 602.25pt>
 File: images/fastqc_gc_content.png Graphic file (type png)
 <use images/fastqc_gc_content.png>
 Package luatex.def Info: images/fastqc_gc_content.png  used on input line 850.
@@ -2414,7 +2414,7 @@ Overfull \hbox (3.84879pt too wide) in paragraph at lines 859--860
 []\TU/lmr/m/n/12 - fre-quency of se-quence frag-ments that
  []
 
-<images/fastqc_adapter_content.png, id=1036, 803.0pt x 602.25pt>
+<images/fastqc_adapter_content.png, id=1041, 803.0pt x 602.25pt>
 File: images/fastqc_adapter_content.png Graphic file (type png)
 <use images/fastqc_adapter_content.png>
 Package luatex.def Info: images/fastqc_adapter_content.png  used on input line 862.
@@ -2436,7 +2436,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [54<./images/fastqc_gc_content.png><./images/fastqc_adapter_content.png>]
-<images/genetic_architecture_of_cancer_risk.jpg, id=1051, 722.7pt x 494.3268pt>
+<images/genetic_architecture_of_cancer_risk.jpg, id=1056, 722.7pt x 494.3268pt>
 File: images/genetic_architecture_of_cancer_risk.jpg Graphic file (type jpg)
 <use images/genetic_architecture_of_cancer_risk.jpg>
 Package luatex.def Info: images/genetic_architecture_of_cancer_risk.jpg  used on input line 887.
@@ -2452,7 +2452,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [55]
-<images/fb_hc_st_pt.jpg, id=1069, 903.375pt x 485.815pt>
+<images/fb_hc_st_pt.jpg, id=1074, 903.375pt x 485.815pt>
 File: images/fb_hc_st_pt.jpg Graphic file (type jpg)
 <use images/fb_hc_st_pt.jpg>
 Package luatex.def Info: images/fb_hc_st_pt.jpg  used on input line 905.
@@ -2521,7 +2521,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [61]
-<images/gatk_best_practices.png, id=1142, 1794.705pt x 825.0825pt>
+<images/gatk_best_practices.png, id=1147, 1794.705pt x 825.0825pt>
 File: images/gatk_best_practices.png Graphic file (type png)
 <use images/gatk_best_practices.png>
 Package luatex.def Info: images/gatk_best_practices.png  used on input line 1102.
@@ -2553,7 +2553,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [63<./images/gatk_best_practices.png>]
-<images/platypus_main_flow.jpg, id=1165, 929.4725pt x 318.18875pt>
+<images/platypus_main_flow.jpg, id=1170, 929.4725pt x 318.18875pt>
 File: images/platypus_main_flow.jpg Graphic file (type jpg)
 <use images/platypus_main_flow.jpg>
 Package luatex.def Info: images/platypus_main_flow.jpg  used on input line 1149.
@@ -2580,7 +2580,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [66]
-<images/sv_classes.jpg, id=1206, 602.25pt x 402.50375pt>
+<images/sv_classes.jpg, id=1211, 602.25pt x 402.50375pt>
 File: images/sv_classes.jpg Graphic file (type jpg)
 <use images/sv_classes.jpg>
 Package luatex.def Info: images/sv_classes.jpg  used on input line 1209.
@@ -2603,7 +2603,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [68<./images/sv_classes.jpg>]
-<images/sv_calling_info_sources.jpg, id=1230, 1204.5pt x 1105.12875pt>
+<images/sv_calling_info_sources.jpg, id=1235, 1204.5pt x 1105.12875pt>
 File: images/sv_calling_info_sources.jpg Graphic file (type jpg)
 <use images/sv_calling_info_sources.jpg>
 Package luatex.def Info: images/sv_calling_info_sources.jpg  used on input line 1226.
@@ -2616,7 +2616,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [69<./images/sv_calling_info_sources.jpg>]
-<images/delly_variant_classes.jpeg, id=1242, 433.62pt x 257.5221pt>
+<images/delly_variant_classes.jpeg, id=1247, 433.62pt x 257.5221pt>
 File: images/delly_variant_classes.jpeg Graphic file (type jpg)
 <use images/delly_variant_classes.jpeg>
 Package luatex.def Info: images/delly_variant_classes.jpeg  used on input line 1241.
@@ -2633,7 +2633,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [70<./images/delly_variant_classes.jpeg>]
-<images/lumpy_model.jpg, id=1254, 608.2725pt x 489.83pt>
+<images/lumpy_model.jpg, id=1259, 608.2725pt x 489.83pt>
 File: images/lumpy_model.jpg Graphic file (type jpg)
 <use images/lumpy_model.jpg>
 Package luatex.def Info: images/lumpy_model.jpg  used on input line 1256.
@@ -2730,7 +2730,7 @@ Chapter 4.
 Chapter 5.
 (./chapters/rheos_framework.tex
 Overfull \hbox (2.3169pt too wide) in paragraph at lines 33--34
-\TU/lmr/m/n/12 Ar-chi-tec-ture (SOA)[[]165[]] which is an in-for-ma-tion sys-tem ar-chi-tec-ture paradigm where
+\TU/lmr/m/n/12 Ar-chi-tec-ture (SOA)[[]168[]] which is an in-for-ma-tion sys-tem ar-chi-tec-ture paradigm where
  []
 
 
@@ -2753,17 +2753,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [84]
-<images/stream_window_function.png, id=1412, 644.8893pt x 121.8954pt>
+<images/stream_window_function.png, id=1417, 644.8893pt x 121.8954pt>
 File: images/stream_window_function.png Graphic file (type png)
 <use images/stream_window_function.png>
 Package luatex.def Info: images/stream_window_function.png  used on input line 75.
 (luatex.def)             Requested size: 386.93657pt x 73.13779pt.
-<images/stream_decorator_function.png, id=1414, 647.2983pt x 128.6406pt>
+<images/stream_decorator_function.png, id=1419, 647.2983pt x 128.6406pt>
 File: images/stream_decorator_function.png Graphic file (type png)
 <use images/stream_decorator_function.png>
 Package luatex.def Info: images/stream_decorator_function.png  used on input line 84.
 (luatex.def)             Requested size: 388.38197pt x 77.18494pt.
-<images/stream_filter_function.png, id=1416, 641.9985pt x 179.7114pt>
+<images/stream_filter_function.png, id=1421, 641.9985pt x 179.7114pt>
 File: images/stream_filter_function.png Graphic file (type png)
 <use images/stream_filter_function.png>
 Package luatex.def Info: images/stream_filter_function.png  used on input line 93.
@@ -2779,12 +2779,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [85<./images/stream_window_function.png><./images/stream_decorator_function.png>]
-<images/stream_aggregator_function.png, id=1431, 688.2513pt x 172.4844pt>
+<images/stream_aggregator_function.png, id=1436, 688.2513pt x 172.4844pt>
 File: images/stream_aggregator_function.png Graphic file (type png)
 <use images/stream_aggregator_function.png>
 Package luatex.def Info: images/stream_aggregator_function.png  used on input line 102.
 (luatex.def)             Requested size: 412.95396pt x 103.49142pt.
-<images/stream_local_state_aggregator_function.png, id=1433, 636.4578pt x 173.2071pt>
+<images/stream_local_state_aggregator_function.png, id=1438, 636.4578pt x 173.2071pt>
 File: images/stream_local_state_aggregator_function.png Graphic file (type png)
 <use images/stream_local_state_aggregator_function.png>
 Package luatex.def Info: images/stream_local_state_aggregator_function.png  used on input line 112.
@@ -2800,12 +2800,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [86<./images/stream_filter_function.png><./images/stream_aggregator_function.png>]
-<images/stream_persistence_function.png, id=1448, 492.8814pt x 173.6889pt>
+<images/stream_persistence_function.png, id=1453, 492.8814pt x 173.6889pt>
 File: images/stream_persistence_function.png Graphic file (type png)
 <use images/stream_persistence_function.png>
 Package luatex.def Info: images/stream_persistence_function.png  used on input line 122.
 (luatex.def)             Requested size: 295.73111pt x 104.21414pt.
-<images/stream_query_function.png, id=1449, 482.5227pt x 202.8378pt>
+<images/stream_query_function.png, id=1454, 482.5227pt x 202.8378pt>
 File: images/stream_query_function.png Graphic file (type png)
 <use images/stream_query_function.png>
 Package luatex.def Info: images/stream_query_function.png  used on input line 131.
@@ -2818,7 +2818,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [87<./images/stream_local_state_aggregator_function.png><./images/stream_persistence_function.png><./images/stream_query_function.png>]
-<images/horizontal_vs_vertical_scaling.png, id=1466, 966.7317pt x 272.9397pt>
+<images/horizontal_vs_vertical_scaling.png, id=1471, 966.7317pt x 272.9397pt>
 File: images/horizontal_vs_vertical_scaling.png Graphic file (type png)
 <use images/horizontal_vs_vertical_scaling.png>
 Package luatex.def Info: images/horizontal_vs_vertical_scaling.png  used on input line 153.
@@ -2834,7 +2834,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [88]
-<images/queue.png, id=1476, 786.5385pt x 247.8861pt>
+<images/queue.png, id=1482, 786.5385pt x 247.8861pt>
 File: images/queue.png Graphic file (type png)
 <use images/queue.png>
 Package luatex.def Info: images/queue.png  used on input line 164.
@@ -2854,7 +2854,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [90]
-<images/ngs_flow.png, id=1494, 842.4273pt x 734.745pt>
+<images/ngs_flow.png, id=1499, 842.4273pt x 734.745pt>
 File: images/ngs_flow.png Graphic file (type png)
 <use images/ngs_flow.png>
 Package luatex.def Info: images/ngs_flow.png  used on input line 191.
@@ -2907,7 +2907,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [94]
-<images/insert_size_distribution.png, id=1548, 481.8pt x 220.6644pt>
+<images/insert_size_distribution.png, id=1553, 481.8pt x 220.6644pt>
 File: images/insert_size_distribution.png Graphic file (type png)
 <use images/insert_size_distribution.png>
 Package luatex.def Info: images/insert_size_distribution.png  used on input line 344.
@@ -3012,7 +3012,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 544--545
 []|$\OML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 m[] \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 m[] \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 header; r\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g[]\OML/cmm/m/it/12 r \OT1/cmr/m/n/12 =
  []
 
-<images/split_reads.png, id=1667, 1270.0248pt x 414.8298pt>
+<images/split_reads.png, id=1672, 1270.0248pt x 414.8298pt>
 File: images/split_reads.png Graphic file (type png)
 <use images/split_reads.png>
 Package luatex.def Info: images/split_reads.png  used on input line 559.
@@ -3031,7 +3031,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [104<./images/split_reads.png>]
-<images/igv_split_read.png, id=1687, 1482.53876pt x 846.16125pt>
+<images/igv_split_read.png, id=1692, 1482.53876pt x 846.16125pt>
 File: images/igv_split_read.png Graphic file (type png)
 <use images/igv_split_read.png>
 Package luatex.def Info: images/igv_split_read.png  used on input line 572.
@@ -3060,7 +3060,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [106]
-<images/snps.png, id=1706, 1296.7647pt x 341.5962pt>
+<images/snps.png, id=1711, 1296.7647pt x 341.5962pt>
 File: images/snps.png Graphic file (type png)
 <use images/snps.png>
 Package luatex.def Info: images/snps.png  used on input line 629.
@@ -3145,12 +3145,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [114]
-<images/sv_deletion.png, id=1794, 1444.1955pt x 419.4069pt>
+<images/sv_deletion.png, id=1799, 1444.1955pt x 419.4069pt>
 File: images/sv_deletion.png Graphic file (type png)
 <use images/sv_deletion.png>
 Package luatex.def Info: images/sv_deletion.png  used on input line 869.
 (luatex.def)             Requested size: 426.03398pt x 123.72395pt.
-<images/insert_size.jpg, id=1797, 71.5473pt x 29.42421pt>
+<images/insert_size.jpg, id=1802, 71.5473pt x 29.42421pt>
 File: images/insert_size.jpg Graphic file (type jpg)
 <use images/insert_size.jpg>
 Package luatex.def Info: images/insert_size.jpg  used on input line 878.
@@ -3188,7 +3188,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [117]
-<images/interval_tree.png, id=1830, 524.96124pt x 408.52625pt>
+<images/interval_tree.png, id=1835, 524.96124pt x 408.52625pt>
 File: images/interval_tree.png Graphic file (type png)
 <use images/interval_tree.png>
 Package luatex.def Info: images/interval_tree.png  used on input line 943.
@@ -3201,7 +3201,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [118<./images/interval_tree.png>]
-<images/kde.png, id=1848, 1573.88pt x 388.45125pt>
+<images/kde.png, id=1853, 1573.88pt x 388.45125pt>
 File: images/kde.png Graphic file (type png)
 <use images/kde.png>
 Package luatex.def Info: images/kde.png  used on input line 970.
@@ -3215,7 +3215,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [119<./images/kde.png>]
-<images/deletion_read_cluster.png, id=1870, 946.2552pt x 381.5856pt>
+<images/deletion_read_cluster.png, id=1875, 946.2552pt x 381.5856pt>
 File: images/deletion_read_cluster.png Graphic file (type png)
 <use images/deletion_read_cluster.png>
 Package luatex.def Info: images/deletion_read_cluster.png  used on input line 981.
@@ -3239,7 +3239,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [121]
-<images/rheos_service_interface.png, id=1890, 736.6722pt x 460.119pt>
+<images/rheos_service_interface.png, id=1895, 736.6722pt x 460.119pt>
 File: images/rheos_service_interface.png Graphic file (type png)
 <use images/rheos_service_interface.png>
 Package luatex.def Info: images/rheos_service_interface.png  used on input line 1017.
@@ -3255,7 +3255,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [122]
-<images/docker_architecture.png, id=1898, 759.83875pt x 410.53375pt>
+<images/docker_architecture.png, id=1903, 759.83875pt x 410.53375pt>
 File: images/docker_architecture.png Graphic file (type png)
 <use images/docker_architecture.png>
 Package luatex.def Info: images/docker_architecture.png  used on input line 1035.
@@ -3268,7 +3268,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [123<./images/rheos_service_interface.png>]
-<images/rheos_service_file_structure.png, id=1907, 298.11375pt x 230.8625pt>
+<images/rheos_service_file_structure.png, id=1912, 298.11375pt x 230.8625pt>
 File: images/rheos_service_file_structure.png Graphic file (type png)
 <use images/rheos_service_file_structure.png>
 Package luatex.def Info: images/rheos_service_file_structure.png  used on input line 1045.
@@ -3313,7 +3313,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [125<./images/rheos_service_file_structure.png>]
-<images/kafka_queue.png, id=1928, 825.0825pt x 426.393pt>
+<images/kafka_queue.png, id=1933, 825.0825pt x 426.393pt>
 File: images/kafka_queue.png Graphic file (type png)
 <use images/kafka_queue.png>
 Package luatex.def Info: images/kafka_queue.png  used on input line 1089.
@@ -3334,7 +3334,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [126<./images/kafka_queue.png>]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/C516D2CC196F2F810B7C9C74E367014633AABC92B3F1DC44296C26B1BD7730ED.pygtex)
-<images/rheos_data_partitioning.png, id=1938, 783.6477pt x 510.4671pt>
+<images/rheos_data_partitioning.png, id=1943, 783.6477pt x 510.4671pt>
 File: images/rheos_data_partitioning.png Graphic file (type png)
 <use images/rheos_data_partitioning.png>
 Package luatex.def Info: images/rheos_data_partitioning.png  used on input line 1110.
@@ -3347,7 +3347,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [127<./images/rheos_data_partitioning.png>]
-<images/rheos_partition_boundary.png, id=1946, 756.1851pt x 325.6968pt>
+<images/rheos_partition_boundary.png, id=1951, 756.1851pt x 325.6968pt>
 File: images/rheos_partition_boundary.png Graphic file (type png)
 <use images/rheos_partition_boundary.png>
 Package luatex.def Info: images/rheos_partition_boundary.png  used on input line 1129.
@@ -3364,12 +3364,129 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [128<./images/rheos_partition_boundary.png>]
-Overfull \hbox (55.3475pt too wide) in paragraph at lines 1193--1193
+Overfull \hbox (55.3475pt too wide) in paragraph at lines 1194--1194
 []\TU/lmr/m/sc/10 addAllToSet$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 partitions[]for[]reads;$\TU/lmr/m/sc/10 getPartitionsForInterval$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 contig; left; right\OT1/cmr/m/n/10 ))$ 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<images/rheos_partitioner_class.png, id=1960, 760.8425pt x 406.51875pt>
+File: images/rheos_partitioner_class.png Graphic file (type png)
+<use images/rheos_partitioner_class.png>
+Package luatex.def Info: images/rheos_partitioner_class.png  used on input line 1198.
+(luatex.def)             Requested size: 418.46466pt x 223.586pt.
+
+\openout5 = rheos_thesis.pyg
+(./_minted-rheos_thesis/4824D4FEAB0AE7A79EB3499817E1DB5C4EDB6D7A69951E996E27037C1CB03AC9.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/5E29129DD5FA8547F365F3FDF5E7EB0E4EDB6D7A69951E996E27037C1CB03AC9.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/5D614E78FB712F44C0557BCD92ADA3544EDB6D7A69951E996E27037C1CB03AC9.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/5E29129DD5FA8547F365F3FDF5E7EB0E4EDB6D7A69951E996E27037C1CB03AC9.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/9EB5AC0A147379B9613A66A8E71DACF04EDB6D7A69951E996E27037C1CB03AC9.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/86AE0DDAC587781221B7DFF5D788604C4EDB6D7A69951E996E27037C1CB03AC9.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/88F17B2E5B52155E73D7A0D3BBF834A84EDB6D7A69951E996E27037C1CB03AC9.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
+[]\TU/lmr/m/n/12 Al-go-rithm []8[] is im-ple-mented in Rheos via the [] and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
+[] \TU/lmr/m/n/12 classes of the [] pack-age. Namely,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
+\TU/lmr/m/n/12 mem-bers of $\OML/cmm/m/it/12 P$ \TU/lmr/m/n/12 are im-ple-mented as in-stances of [],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
+\TU/lmr/m/n/12 func-tion \TU/lmr/m/sc/12 initializePartitioner$\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 g[]main; g[]other; partition[]width\OT1/cmr/m/n/12 )$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
+\TU/lmr/m/n/12 is im-ple-mented in [], func-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
+\TU/lmr/m/sc/12 getPartitionsForInterval$\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 contig; left; right\OT1/cmr/m/n/12 )$ \TU/lmr/m/n/12 is im-ple-mented
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
+\TU/lmr/m/n/12 in [] method, and func-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1205
+\TU/lmr/m/sc/12 getPartitionsForReadPair$\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 read[]pair\OT1/cmr/m/n/12 )$ \TU/lmr/m/n/12 is im-ple-mented in
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[129<./images/rheos_partitioner_class.png>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[130]
+<images/kubernetes_architecture.png, id=1980, 853.1875pt x 376.40625pt>
+File: images/kubernetes_architecture.png Graphic file (type png)
+<use images/kubernetes_architecture.png>
+Package luatex.def Info: images/kubernetes_architecture.png  used on input line 1213.
+(luatex.def)             Requested size: 409.52534pt x 180.67294pt.
+
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/BB7933F743825D655B75F5E42B9919DD33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/0942AEDEAFF268C0A305CE264399F7FD33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/46BD63EE989541029BAA356C611C5C6A33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+\openout5 = rheos_thesis.pyg
+ (./_minted-rheos_thesis/E00649FFCCADCA957D27886A1A7D621433AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+<images/kubernetes_dashboard.png, id=1983, 1131.22626pt x 633.36626pt>
+File: images/kubernetes_dashboard.png Graphic file (type png)
+<use images/kubernetes_dashboard.png>
+Package luatex.def Info: images/kubernetes_dashboard.png  used on input line 1224.
+(luatex.def)             Requested size: 424.2088pt x 237.51176pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+\openout5 = rheos_thesis.pyg
+(./_minted-rheos_thesis/AADA7565FFE692C11090E9A62FD0F60F33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
+<images/kubernetes_service_components.png, id=1985, 770.88pt x 602.25pt>
+File: images/kubernetes_service_components.png Graphic file (type png)
+<use images/kubernetes_service_components.png>
+Package luatex.def Info: images/kubernetes_service_components.png  used on input line 1233.
+(luatex.def)             Requested size: 423.98532pt x 331.23851pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[131<./images/kubernetes_architecture.png>]
+Underfull \vbox (badness 2717) has occurred while \output is active []
 
 
 
@@ -3378,23 +3495,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[129]
+[132<./images/kubernetes_dashboard.png><./images/kubernetes_service_components.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[130])
+[133])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[131]
+[134]
 Chapter 6.
-(./chapters/conclusion.tex [132
+(./chapters/conclusion.tex [135
 
 ]) (./chapters/appendices.tex
 
@@ -3403,7 +3520,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[133]
+[136]
 Appendix A.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
@@ -3415,7 +3532,7 @@ See the caption package documentation for explanation.
 (./_minted-rheos_thesis/479CD11BF868FE93F0E894873C3CB2708B91B0F219C7C528D152A14D5292185D.pygtex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [134
+ [137
 
 
 ])
@@ -3441,7 +3558,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[135])
+[138])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 111.
@@ -3472,7 +3589,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[136]
+[139]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3482,7 +3599,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[137])
+[140])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 250.
@@ -3505,7 +3622,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[138])
+[141])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 334.
@@ -3520,7 +3637,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[139]
+[142]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3530,7 +3647,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[140])
+[143])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 405.
@@ -3561,49 +3678,6 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[141]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[142]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[143])
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 563.
-See the caption package documentation for explanation.
-
-
-\openout3 = rheos_thesis.pyg
-(./_minted-rheos_thesis/02724010425C93F943FB6E918085EC9163BEBE44FD60CC478B0439FAAE7250D6.pygtex)
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 581.
-See the caption package documentation for explanation.
-
-
-\openout3 = rheos_thesis.pyg
-(./_minted-rheos_thesis/B28BA180884AAB9FDD3A6E372382278C4EDB6D7A69951E996E27037C1CB03AC9.pygtex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
 [144]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -3627,6 +3701,49 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [146])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 563.
+See the caption package documentation for explanation.
+
+
+\openout3 = rheos_thesis.pyg
+(./_minted-rheos_thesis/02724010425C93F943FB6E918085EC9163BEBE44FD60CC478B0439FAAE7250D6.pygtex)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 581.
+See the caption package documentation for explanation.
+
+
+\openout3 = rheos_thesis.pyg
+(./_minted-rheos_thesis/B28BA180884AAB9FDD3A6E372382278C4EDB6D7A69951E996E27037C1CB03AC9.pygtex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[147]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[148]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[149])
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 721.
 See the caption package documentation for explanation.
 
@@ -3647,7 +3764,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[147])
+[150])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 808.
@@ -3670,7 +3787,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[148])
+[151])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 872.
@@ -3685,7 +3802,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[149])
+[152])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 926.
@@ -3713,41 +3830,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[150]))
+[153]))
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[151] [152
+[154] [155
 
 ]
 Underfull \hbox (badness 1540) in paragraph at lines 81--81
 []\TU/lmr/m/n/12 In-ter-na-tional HapMap Con-sor-tium et al. “  The in-ter-na-tional HapMap
  []
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[153]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[154]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[155]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -3790,6 +3886,27 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [161]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[162]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[163]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[164]
 Underfull \hbox (badness 1769) in paragraph at lines 81--81
 \TU/lmr/m/it/12 Re-search In-sti-tute (NHGRI)\TU/lmr/m/n/12 . \TU/lmr/m/sc/12 url\TU/lmr/m/n/12 : []$\TU/lmtt/m/n/12 https : / / www . genome . gov /
  []
@@ -3805,7 +3922,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[162]
+[165]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 82.
 
 
@@ -3814,13 +3931,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[163]
+[166]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 82.
  (./rheos_thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 82.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 82.
 Package rerunfilecheck Info: File `rheos_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 96EE77E16EC041CDD8EB1F5D817DFB70;3786.
+(rerunfilecheck)             Checksum: 8095CC67E6B0B9FA041A81B7CC575A27;3850.
 
 
 LaTeX Warning: There were undefined references.
@@ -3831,19 +3948,19 @@ Package logreq Info: Writing requests to 'rheos_thesis.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 37496 strings out of 494407
+ 37761 strings out of 494407
  156472,1648299 words of node,token memory allocated
  988 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 3 glue, 4 kern, 1 glyph, 69 attribute, 96 glue_spec, 69 attribute_list, 1 write, 3 pdf_action nodes
-   avail lists: 1:11,2:7546,3:487,4:339,5:1721,6:472,7:7685,8:785,9:4970,10:110,11:1593
- 39020 multiletter control sequences out of 65536+600000
+   avail lists: 1:9,2:7547,3:487,4:339,5:1721,6:474,7:7686,8:785,9:4970,10:110,11:1593
+ 39058 multiletter control sequences out of 65536+600000
  118 fonts using 14486303 bytes
  47i,25n,65p,2825b,2421s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on rheos_thesis.pdf (163 pages, 9990357 bytes).
+Output written on rheos_thesis.pdf (166 pages, 10446949 bytes).
 
-PDF statistics: 2334 PDF objects out of 2487 (max. 8388607)
- 1962 compressed objects within 20 object streams
- 654 named destinations out of 1000 (max. 131072)
- 425 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 2380 PDF objects out of 2487 (max. 8388607)
+ 1996 compressed objects within 20 object streams
+ 665 named destinations out of 1000 (max. 131072)
+ 433 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -2326,11 +2326,15 @@
     <bcf:citekey order="334">zook2018reproducible</bcf:citekey>
     <bcf:citekey order="335">merkel2014docker</bcf:citekey>
     <bcf:citekey order="336">kreps2011kafka</bcf:citekey>
-    <bcf:citekey order="337">marx2015dna</bcf:citekey>
-    <bcf:citekey order="338">collins2015new</bcf:citekey>
-    <bcf:citekey order="339">merkel2014docker</bcf:citekey>
-    <bcf:citekey order="340">European_Open_Science_Cloud_2016</bcf:citekey>
-    <bcf:citekey order="341">denbi_2016-10-31</bcf:citekey>
+    <bcf:citekey order="337">bernstein2014containers</bcf:citekey>
+    <bcf:citekey order="338">scalingkubernetes</bcf:citekey>
+    <bcf:citekey order="339">kubernetes_microservice_components</bcf:citekey>
+    <bcf:citekey order="340">kubernetes_microservice_components</bcf:citekey>
+    <bcf:citekey order="341">marx2015dna</bcf:citekey>
+    <bcf:citekey order="342">collins2015new</bcf:citekey>
+    <bcf:citekey order="343">merkel2014docker</bcf:citekey>
+    <bcf:citekey order="344">European_Open_Science_Cloud_2016</bcf:citekey>
+    <bcf:citekey order="345">denbi_2016-10-31</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
