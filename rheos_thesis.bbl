@@ -4273,6 +4273,34 @@
       \field{pages}{7}
       \range{pages}{1}
     \endentry
+    \entry{Li2018}{article}{}
+      \name{author}{1}{}{%
+        {{hash=466d90849ccf7e74e32d338b7c35491d}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Heng},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{fullhash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{bibnamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authorbibnamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authornamehash}{466d90849ccf7e74e32d338b7c35491d}
+      \strng{authorfullhash}{466d90849ccf7e74e32d338b7c35491d}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{title}{Minimap2: pairwise alignment for nucleotide sequences}
+      \field{volume}{1}
+      \field{year}{2018}
+      \field{pages}{7}
+      \range{pages}{1}
+    \endentry
     \entry{li2011tabix}{article}{}
       \name{author}{1}{}{%
         {{hash=466d90849ccf7e74e32d338b7c35491d}{%

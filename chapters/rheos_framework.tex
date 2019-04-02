@@ -392,7 +392,7 @@ Calculating this metric requires a stream of read-pairs, where both reads have b
 
 Other QC metrics, such as those measuring GC Content Distribution, Read Length Distribution, etc. can be collected analogously. 
 
-\subsection{Alignment}
+\subsection{Alignment}\label{sec:main_body_alignment}
 
 Section \ref{sec:bg_alignment} of Chapter \ref{ch:background} provides an overview of the existing approaches in the extremely important and computationally intensive genome alignment stage of the overall NGS processing pipeline. In the overall data flow diagram (Figure \ref{fig:ngs_flow}), alignment is primarily responsible for transforming Raw Reads into Mapped Reads, but is also used in QC (insert size distribution, sample contamination) as well as in the construction and evaluation of local haplotypes for variant calling. In this section we describe the adaptation of already established read mapping best practices to the stream and services based domain of Rheos. Because of the generally independent nature of individual read observations (except for read pairs), this read mapping problem is highly amenable to a stream-based approach. We begin by enumerating and describing the types of alignment tasks that the Rheos framework needs to be able to accomplish and follow up by describing how these tasks will be performed within Rheos.
 
@@ -621,7 +621,7 @@ The split-read alignment operates on reads that emerge unmapped from the regular
 The alignment operations that have been considered in this section present a set of distinct challenges on the basis of 
 the gamut of query sequence and reference database size combinations. Each scenario presented admits optimization with respect to its specific parameters. Existing aligners typically attempt to solve all or most of these problems with a single approach, and thus suffer from inability to fully optimize each specific use case. Our treatment, that separates the different alignment scenarios into distinct operations, with well delineated optimization criteria, and even into potentially separate services that may run on separate physical machines, allows us to fully optimize each operation without negatively impacting others.
 
-\subsection{Simple Germline SNP Calling}
+\subsection{Simple Germline SNP Calling}\label{sec:main_body_germline_snp_calling}
 
 SNPs are the most abundant and widely studied type of genetic variant\autocite{10002010map}. Section \ref{sec:bg_germline_snp_calling} provides an overview of existing methods for germline SNP calling. For a human diploid sample when calling variants on one of the autosomes (chromosomes 1-22), germline SNP calling comes down to selecting between three alternative models for each genomic locus based on the set of reads that are observed - homozygous reference, heterozygous, or homozygous variant (see Figure \ref{fig:snps}).   
 
@@ -1102,7 +1102,7 @@ On the data consumer side, consumers are organized into Consumer Groups. Each Co
 
 We implement a generic Kafka Handler in the \mintinline{shell}{rheods-common} module. This handler allows Rheos services to initialize Kafka producers and consumers. serialize and deserialize data using pickle and json, and to store and retrieve messages using the topics that have been set up for inter-service communication.
 
-\subsection{Partitioning}
+\subsection{Partitioning} \label{sec:main_body_partitioning}
 
 Partitioning is important in Rheos not only because the data is quite big and thus needs to be parceled out to multiple machines, but also because data exhibits strong locality subsequent to the read mapping stage, where most of the data that is required to make decisions about the presence or absence of a genomic variant resides in some small genomic neighbourhood around the variant. It is thus natural for us to partition the read data (which is biggest in size) by genomic coordinate.
 
@@ -1238,32 +1238,75 @@ Kubernetes was built for deploying and operating services and provides a large n
 
 At the lowest level of abstraction in Kubernetes hierarchy is a Pod. The Pod is a wrapper around a Docker container and describes some useful metadata for categorizing as well as describing the resource requirements of the underlying container that are used for scheduling the container onto nodes. These resources include CPU and memory requirements, as well as requests for various types of storage (called a PersistentVolumeClaim). A Pod is scheduled for execution only when the cluster manager can find a suitable node that can meet all of the pod's resource requirements. If the Pod exceeds its stated resource requirements during its lifetime it will be terminated by the scheduler.
 
-Since the goal of kuberenetes is to enable computation at scale, Pods are rarely run as single instances. Depending on the intended usage of the underlying container Pods can be organized in groups such as a DaemonSet, ReplicaSet, StatefulSet, Job, etc. These abstractions describe the runtime behaviour of groups of Pods and provide lifecycle management support for each. For instance, a ReplicaSet provides a group stateless interchangeable Pods where each Pod can identically service a request from a client, and Pods can be scaled horizontally. The configuration for a ReplicaSet may specify the number of such Pods that should be running at a given time and the scheduler will create and delete Pods as necessary to make sure that the requisite number of Pods is running. Other groups of Pods that do not scale horizontally, and require access to non-ephemeral secondary storage (such as those running a database) may use the StatefulSet to provide such services.
+Since the goal of kuberenetes is to enable computation at scale, Pods are rarely run as single instances. Depending on the intended usage of the underlying container Pods can be organized in groups such as a DaemonSet, ReplicaSet, StatefulSet, Job, etc. These abstractions describe the runtime behaviour of groups of Pods and provide lifecycle management support for each. For instance, a ReplicaSet provides a group stateless interchangeable Pods where each Pod can identically service a request from a client, and Pods can be scaled horizontally. The configuration for a ReplicaSet may specify the number of such Pods that should be running at a given time and the scheduler will create and delete Pods as necessary to make sure that the requisite number of Pods is running. Other groups of Pods that do not scale horizontally, and require access to non-ephemeral secondary storage (such as those running a database) may use the StatefulSet to provide such services. A DaemonSet makes sure that every node in a cluster is running an instance of a particular Pod. A Service is a higher level abstraction that provides a logical grouping of pods and provides a number of capabilities such as DNS, load balancing, and security.  
 
-A Service is a high level abstraction that provides a logical grouping of pods and provides a number of capabilities such as DNS, load balancing, and security.  
-
-\section{Services of Rheos}
-
-Provide a mapping from the domain-specific problems onto a particular implementation in the data streaming architecture. List services, their responsibilities, contracts, etc.
+In Rheos we make use of Kubernetes for two purposes - one is to deploy and configure the various products that Rheos services rely on for their operation. These include:
 
 \begin{description}
-    \item [Metadata] - Take in metadata related to patients, samples, files, etc. In: Metdata records, Out: ingestion confirmation events.
-    \item [Read Streaming] - Take data from outside the system (file, web service, etc) and turn it into a standard stream. In: files, external streams, Out: internal read stream.
-    \item [Read Persistence] - Store reads on disk, index. In: read stream, Out: persistence confirmation events.
-    \item [Read Statistics] - Look at read stream and calculate various approximate stats of interest - insert size, GC-bias,  etc. In: read stream, Out: running stats of interest
-    \item [QC] - Compute QC score for reads. In: reads, Out: reads with QC score
-    \item [Read Filtering] - Filter out low quality reads based on configured parameters. In: reads with QC score, Out: filtered reads.
-    \item [Read Mapping] - Align reads to reference genome. In: stream of reads, Out: streams of mapped, unmapped, split reads.
-    \item [Local Assembly] - Local assembly of reads into candidate haplotypes. In: stream of aligned reads, Out: Updated haplotypes event.
-    \item [Haplotype Persistence] - Storage and lookup of candidate haplotypes. In: stream of reads, Out: persistence confirmation events, stream of haplotypes.
-    \item [Variant Calling] - Evaluate candidate haplotypes for presence of variation. In: haplotype update events, Out: variant update events.
-    \item [Variant Persistence] - Storage and lookup of variants. In: stream of reads, Out: persistence confirmation events, stream of variants.
-    \item [Genotyping] - Genotype variant sites. In: variant update stream, Out: genotype update events.
-    \item [Variant Filtering] - Filter out low quality variants. In: stream of variants, Out: filtered stream of variants.
-    \item [Variant annotation] - Annotate variants for functional impact. In: stream of variants, Out: stream of annotated variants.
-    \item [Output variants] - Format variants for external output. In: stream of variants, Out: files, external variant stream.
-    \item [Notification] - Notify the user when events of interest occur. In: any stream, Out: stream of notifications.
+    \item [Kafka] - The queueing framework that all Rheos services use for communicating is deployed on Kubernetes as a set of fault tolerant Docker containers.
+    \item [Redis] - Is a scalable in-memory key-value data store that Rheos services use to store intermediate results.
+    \item [PostgreSQL] - Is an SQL database used for persisting variants to disk.
+    \item [Prometheus] - Is a monitoring and alerting framework used to maintain operational control of the running system.
+    \item [Grafana] - Is a metrics dashboarding software used for visualization of health metrics.
+    \item [Elasticsearch] - Is an indexing product used for harvesting and storing application logs. 
+    \item [Jenkings] - Is an automated build and deployment tool used for creating software builds.
+    \item [Kubernetes Dashboard] - Is a UI used for managing Kubernetes clusters.
 \end{description}
+
+For each product we maintain a set of configuration files used for Kubernetes deployments and configuration of these tools (see Figure \ref{fig:rheos_kubernetes_configs}).
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.55]{rheos_kubernetes_configs}
+    \centering
+    \caption {Rheos Kubernetes configurations file layout.}
+    \label{fig:rheos_kubernetes_configs}
+\end{figure}
+
+Additionally we use Kubernetes to configure and deploy the services of Rheos themselves, organized as fleets of Docker containers. This allows us to enjoy the flexibility of being able to deploy on virtually any hardware, the envirnment isolation provided by Docker, and the resource management and elastic scalability afforded by Kubernetes, which are all key concerns when operating a large-scale service-oriented system.
+
+\subsection{Services of Rheos}
+
+We build on top of the concepts of a general Rheos Service, Kafka topics, the Kubernetes framework and other products described earlier in this section to provide a cohesive implementation of a set of services that implement two major end-to-end use cases encountered in genomic analysis - germline SNP calling, and germline SV (deletion) calling. As Rheos matures these services will be extended to provide enhanced functionality and increased scalability required for production applications of the framework. 
+
+\subsubsection{Read Mapping Service}
+
+The Read Mapping Service is the entrypoint of the initial Rheos implementation. Although future versions of Rheos will likely have a different entrypoint, namely a Read Streaming Service that will accept data from an external endpoint, such as a data repository or directly from the sequencer, we proceed directly to read mapping in this initial implementation as a matter of simplification. 
+
+This service aims to implement two read mapping operations specified in Section \ref{sec:main_body_alignment} - $mapToReference()$ and $mapPairToReference()$. It reads a user-specified FASTQ file (the sample), as well as a genome reference file from disk and emits four data streams $mappedReads$, $mappedReadPairs$, $unmappedReads$, and $unmappedReadPairs$. These operations allow the service to deal with both paired and unpaired short reads produced by Illumina sequencers. The partitioning strategy of Section \label{sec:main_body_partitioning} implemented in the \mintinline{python}{rheos-common} package is used to determine which partition of their respective topics reads end up in. Instead of implementing our own read mapper from scratch we are making use of a python module called \mintinline{python}{mappy}, which is an interface to the popular read alignment tool minimap2\autocite{Li2018}, by Heng Li, which is based on the hashmap approach to alignment discussed in Section \ref{sec:bg_alignment}. The reason we chose to provide a wrapper rather than a full implementation is that minimap2 already has an API that supports a read-by-read alignment that can be adopted for a streaming use case. Additionally, minimap2 is known to be accurate, fast, and supports mapping of long reads, and other use cases, making it an attractive framework to work within for read alignment.
+
+Although the Read Mapping Service can map and stream individual reads, this approach proves quite impractical. In our tests of performance, we observed that for a single read the cost of serializing the mapped read data to send it over the wire was nearly 40\% of the overall processing time. To reduce the proportion of computational resources used for serialization/deserialization we implemented a read batching strategy based on the reservoir concept, that groups similar reads together and sends them over the wire as a group. A \mintinline{python}{PartitionedReservoirSet} that implements this functionality is shown in Figure \ref{fig:partitioned_reservoir_set}.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.43]{partitioned_reservoir_set}
+    \centering
+    \caption {A \mintinline{python}{PartitionedReservoirSet} is used to group together similar reads before streaming them as a mini batch.}
+    \label{fig:partitioned_reservoir_set}
+\end{figure}
+
+Reads are read one-by-one from a FASTQ file. Each read is attempted to be paired. If no pair exists for the read it is put into an accumulator (a type of hashmap). If a read completes a read pair, it is popped from the accumulator and the read pair is sent through to alignment by minimap2. Once the read pair is aligned it is put through the Partitioner to assign a set of PartitionRecords to it. Each PartitionRecord is further subdivided by genomic interval into a set of bins that act as reservoirs. The size of the bins is controlled by user supplied parameters where $num\_bins$ specifies how many bins are created per partition, and $bin\_size$ specifies capacity in read pairs. Each \mintinline{python}{Reservoir} accumulates read pairs that map within its genomic region, until reservoir capacity is reached. At that point all of the read pairs from that reservoir are serialized and emitted from the service as a single message. The reservoir is then emptied and is ready to accept new elements. When a whole sample is finished alignment all of the non-empty bins are serialized and emitted by the service as individual messages. Figure \ref{fig:rheos_read_mapping_service_classes} shows the classes and methods of the Read Mapping Service and the \mintinline{python}{PartitionedReservoirSet}.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.405]{rheos_read_mapping_service_classes}
+    \centering
+    \caption {Classes of the \mintinline{python}{ReadMappingService}.}
+    \label{fig:rheos_read_mapping_service_classes}
+\end{figure}
+
+The disadvantages of the mini-batching approach are the decreased initial throughput (no data is emitted by the service before at least one of the reservoirs fills up), and increased memory footprint of the Read Mapping Service. The reservoir approach, however, reduces the proportion of the overall processing time due to serialization by over 90\%. Additionally, there are benefits to processing the read data in small batches of closely-mapped reads by downstream services, because all of the loci that need to be updated by the reads can be fetched into memory and efficiently processed, and the since the reads map closely together, fewer total loci are updated by such a batch than by a random collection of reads. In general, since the usage of the \mintinline{python}{PartitionedReservoirSet} can be controlled by the user via service parameters, there is a good degree of flexibility when it comes to trading off these performance considerations.
+
+\subsubsection{Locus Processor Service}
+
+The Locus Processor Service is a Rheos service that listens to the stream of mapped read pairs produced by the Read Streaming Service and updates a set of genomic loci that the reads overlap with the variant evidence contained in the reads. It then emits a stream of updated loci that can be further processed by downstream services for variant calling. Figure \ref{fig:rheos_locus_processor_service} shows a schematic view of the Locus Processor Service.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.405]{rheos_locus_processor_service}
+    \centering
+    \caption {The Locus Processor Service uses read data to update a set of loci.}
+    \label{fig:rheos_locus_processor_service}
+\end{figure}
+
+The Locus Processor Service implements the iterative Bayesian inference framework described in Section \ref{sec:main_body_germline_snp_calling}, namely it implements the stream operation $updateLociFromRead()$, Equations \ref{eq:rheos_genotype_likelihood}, and Algorithms \ref{ag:process_read_pair}, and \ref{ag:handle_match}.
+
 
 \section{Proof of concept implementation}
 
