@@ -721,6 +721,30 @@
       \field{pages}{599\bibrangedash 616}
       \range{pages}{18}
     \endentry
+    \entry{carlson2013redis}{book}{}
+      \name{author}{1}{}{%
+        {{hash=b254208e13e29a82ad554b31aa83b75d}{%
+           family={Carlson},
+           familyi={C\bibinitperiod},
+           given={Josiah\bibnamedelima L},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Manning Publications Co.}%
+      }
+      \strng{namehash}{b254208e13e29a82ad554b31aa83b75d}
+      \strng{fullhash}{b254208e13e29a82ad554b31aa83b75d}
+      \strng{bibnamehash}{b254208e13e29a82ad554b31aa83b75d}
+      \strng{authorbibnamehash}{b254208e13e29a82ad554b31aa83b75d}
+      \strng{authornamehash}{b254208e13e29a82ad554b31aa83b75d}
+      \strng{authorfullhash}{b254208e13e29a82ad554b31aa83b75d}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Redis in action}
+      \field{year}{2013}
+    \endentry
     \entry{chen2015manta}{article}{}
       \name{author}{9}{}{%
         {{hash=72dcd4e644c91809c7e638ba38f486b6}{%

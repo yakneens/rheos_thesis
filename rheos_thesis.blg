@@ -1,17 +1,17 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'rheos_thesis.blg'
-[54] biber-darwin:313> INFO - === Tue Apr  2, 2019, 13:22:28
-[87] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
-[217] Biber.pm:857> INFO - Found 212 citekeys in bib section 0
-[235] Biber.pm:3976> INFO - Processing section 0
-[249] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
-[263] bibtex.pm:1500> INFO - LaTeX decoding ...
-[698] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
-[2644] Utils.pm:193> WARN - I didn't find a database entry for 'needcitation' (section 0)
-[2868] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[2868] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[2868] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[2868] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[3107] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
-[3215] bbl.pm:720> INFO - Output to rheos_thesis.bbl
-[3216] Biber.pm:110> INFO - WARNINGS: 1
+[47] biber-darwin:313> INFO - === Fri Apr  5, 2019, 13:40:39
+[75] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
+[209] Biber.pm:857> INFO - Found 213 citekeys in bib section 0
+[225] Biber.pm:3976> INFO - Processing section 0
+[237] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
+[247] bibtex.pm:1500> INFO - LaTeX decoding ...
+[666] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
+[2399] Utils.pm:193> WARN - I didn't find a database entry for 'needcitation' (section 0)
+[2622] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2622] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2622] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[2622] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[2850] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
+[2939] bbl.pm:720> INFO - Output to rheos_thesis.bbl
+[2939] Biber.pm:110> INFO - WARNINGS: 1

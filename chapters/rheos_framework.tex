@@ -859,7 +859,7 @@ Algorithm \ref{ag:process_read_pair} is responsible for locating the genomic coo
 
 For each locus inside the queried region the Variant Calling Service evaluates the set of genotype likelihoods at that locus and calculates normalized genotype posterior probabilities using Equation \ref{eq:rheos_genotype_posterior}. The variant quality is defined to be the Phred-scale transformed probability that a site is homozygous reference, i.e. sites that, based on the read evidence, have a very low probability of being reference, under the Phred-scale transformation end up with a high variant quality (see Equation \ref{eq:samtools_variant_quality}). Variants that exceed $calling\_threshold$ will be emitted as records to the output VCF file. It is possible to envision more sophisticated versions of the Variant Calling Service that provide extended querying and filtering capabilities.
 
-\subsection{Germline Structural Variant Calling}
+\subsection{Germline Structural Variant Calling}\label{sec:main_body_sv_calling}
 
 As Rheos aims to provide comprehensive sample characterization it is not enough to only be able to call single nucleotide polymorphisms, the ability to call other variants, such as indels and structural variants is also required. Here we examine an approach for calling a specific class of structural variants, namely deletions, using a stream of mapped read pairs made available by the Read Mapping Service's $mapPairToReference()$ operation. 
 
@@ -1305,12 +1305,256 @@ The Locus Processor Service is a Rheos service that listens to the stream of map
     \label{fig:rheos_locus_processor_service}
 \end{figure}
 
-The Locus Processor Service implements the iterative Bayesian inference framework described in Section \ref{sec:main_body_germline_snp_calling}, namely it implements the stream operation $updateLociFromRead()$, Equations \ref{eq:rheos_genotype_likelihood}, and Algorithms \ref{ag:process_read_pair}, and \ref{ag:handle_match}.
+The Locus Processor Service is of Local State Aggregator type and implements the iterative Bayesian inference framework described in Section \ref{sec:main_body_germline_snp_calling}, namely it implements the stream operation $updateLociFromRead()$, Equations \ref{eq:rheos_genotype_likelihood}, and Algorithms \ref{ag:process_read_pair}, and \ref{ag:handle_match}. The service uses the same Paritioner to decide where to get data from as is used by the Read Mapping Service.
+
+A single message received by the Locus Processor Service represents a full bin of mapped read pairs from a single partition of the $mapped\_read\_pairs$ kafka topic. \mintinline{python}{BatchyPairedLocusProcessor.process_messages()} is the main processing loop of the service (see Figure \ref{fig:locus_processor_classes}). An in-memory collection of \mintinline{python}{Locus} objects for the assigned parition, organized in a hashmap by genomic coordinate is the main holder of state for the service. For each received message, the \mintinline{python}{BatchyPairedLocusProcessor.process_reads()} method is responsible for processing all of the contained reads. It acts as the implementation of Algorithm \ref{ag:process_read_pair}.
+
+Namely, for each read, the algorithm simultaneously walks the genome reference and the read CIGAR string looking for matches. Different CIGAR elements consume the reference, the read, or both. For instance, a deletion consumes the reference sequence, but not the read. It's the opposite case for an insertion, and a sequence match consumes both. Deletion and insertion CIGAR elements will in the future be used for indel variant calling, but at the moment they are simply passed over. When a match CIGAR element is found, the \mintinline{python}{BatchyPairedLocusProcessor.handle_match()} method is called.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.36]{locus_processor_classes}
+    \centering
+    \caption {The Locus Processor Service classes and methods.}
+    \label{fig:locus_processor_classes}
+\end{figure}
+
+This method implements Algorithm \ref{ag:handle_match}. For each match the set of \mintinline{python}{Locus} objects overlapping the match are retrieved. The model of each \mintinline{python}{Locus} is updated using Equation \ref{eq:rheos_genotype_likelihood}, depending on whether that position in the read matches the reference. Reads that map to the negative strand are reverse complemented using \mintinline{python}{BatchyPairedLocusProcessor.reverese_neg_strand_read()} and matched from the end.
+
+For each input message received, all \mintinline{python}{Locus} models that have been updated by reads in this message, and that potentially have variants (determined by \mintinline{python}{Locus.AO} > 0, where AO is the count of alternative allele observations for that locus) are bundled together and emitted as a single message of updated loci from the Locus Processor Service.
+
+\subsubsection{Locus Saver Service}
+
+The Locus Saver Service is a fairly simple service that acts as an aggregating and persistence mechanism for \mintinline{python}{Locus} objects. Rheos uses an open source in-memory distributed key-value store called Redis\autocite{carlson2013redis}. Using this product allows Rheos to keep a large number of \mintinline{python}{Locus} objects in memmory for fast retrieval, while offering options for distributed access and optional disk persistence.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.55]{rheos_locus_saver_service}
+    \centering
+    \caption {The Locus Saver Service data processing schematic.}
+    \label{fig:rheos_locus_saver_service}
+\end{figure}
+
+The Locus Saver Service recieves messages from the $snp\_loci\_batchy$ kafka topic, where each message contains a batch of updated \mintinline{python}{Locus} objects. The service writes all of the updated loci to Redis potentially overwriting any existing values.
+
+\subsubsection{Variant Calling Service}
+
+The Variant Calling Service is not a stream-based service, instead it provides a querying interface into Rheos via its $callVariants(region, calling\_threshold)$ operation, where the user provides a region of interest and variant quality threshold and the service creates a VCF file of all called variants in the region that meet the variant quality criteria. 
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.55]{rheos_variant_calling_service}
+    \centering
+    \caption {The Variant Calling Service data processing schematic.}
+    \label{fig:rheos_variant_calling_service}
+\end{figure}
+
+This service communicates with the Redis locus store (see Figure \ref{fig:rheos_variant_calling_service}) and retrieves all of the loci that match the query region. For each locus it calculates the posterior genotype probabilities via Equation \ref{eq:rheos_genotype_posterior}. Variants the exceed the user provided quality threshold will be written to the output VCF file. It is possible to apply other variant filtering criteria at this stage to improve calling stringency. As the service requires access to secondary storage it is deployed as a StatefulSet under Kubernetes.
+
+\subsubsection{Insert Size Filtering Service}
+
+The Insert Size Filtering Service is a streaming service of Filter type. It implements the $filterDiscordantPairs()$ operation in order to obtain a stream of read pairs that are fit for germline deletion calling as described in Section \ref{sec:main_body_sv_calling}. The service initially only accumulates read pairs in order to estimate the insert size distribution. The default initial sample size for this purpose is 100000 read pairs, but this value is controlled by the user. Using this sample we estimate the median insert size, and subsequently the Median Absolute Deviation of the insert size which acts as our cutoff for discordantly mapped reads. Once the estimate is obtained we send the accumulated reads through the rest of the filtering process, followed by any other new read pairs that are observed in the data stream. Read pairs that pass filtering are sent to the $discordant\_read\_pairs$ kafka topic. 
+
+\subsubsection{Insert Size Clustering Service}
+
+The Insert Size Clustering service implements the $addReadPair()$ streaming operation and the $callDeletions()$ querying operation. $addReadPair()$ observes the $discordant\_read\_pairs$ data stream and adds any messages that are received into the internal data structures used for deletion calling. 
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.55]{insert_size_clusterer_class}
+    \centering
+    \caption {The Insert Size Clusterer class methods.}
+    \label{fig:insert_size_clusterer_class}
+\end{figure}
+
+The reads are stored as both a List for general handling and clustering, as well as an Interval Tree (see Figure \ref{fig:interval_tree}) - a type of balanced binary search tree useful for finding interval overlaps. We use an open source implementation of the Interval Tree from https://github.com/chaimleib/intervaltree.
+
+When $callDeletions()$ is executed the accumulated reads are prepared for processing by finding their center and insert size. The read centers are then clustered using the \mintinline{python}{KernelDensity} object from the \mintinline{python}{sklearn.neighbors} Python package (see Figure \ref{fig:kde}). Peaks of the estimated distribution are found using the \mintinline{python}{argrelextrema()} function from the \mintinline{python}{scipy.signal} package. Given the location of a cluster center we find the set of read pairs that overlap the center via the Interval Tree. Given a pre-constructer Interval Tree $t$ and a cluster center coordinate $center$ we obtain the necessary set of intervals by simply calling $overlaps = t[rec.center]$.
+
+For each set of overlap intervals the deletion size is set to be the maximum common overlap between the inner sizes of all such intervals (see Figure \ref{fig:deletion_read_cluster}). All overlapping read pairs whose $insert\_size > deletion\_size + insert\_size\_threshold$ are removed from the list of reads that support the deletion, and if the number of remaining reads is $> min\_support\_threshold$ the deletion is called as real.
+
+\section{Experimental Validation}
+
+We focused on two primary use cases in validating the initial implementaion of the Rheos framework. The first is the ability of the framework to accurately perform germline SNP calling. The second is the ability of the framework to accurately perform germline deletion calling. Deployment of the framework onto cloud computing infrastructure was also tested. Detailed performance testing was not performed because of the limited scope of the project.
+
+\subsection{Deployment}
+
+The Rheos framework has been deployed onto the academic cloud computing infrastructure provided by EMBL/EBI Embassy Cloud, an OpenStack environment with 164 CPUs, 744 GB RAM, and 15 TB of block volume storage. Resources were split into 12 virtual machines with the following variety of characteristics:
+
+\begin{table}[!ht]
+    \centering
+    \caption{Rheos deployment infrastructure}
+    \label{tab:rheos_deployment_infrastructure}
+    {\begin{tabular}{r | r | r | r}
+    \toprule
+    Count & CPU & RAM & Ephemeral Disk \\
+    \midrule
+    1 & 4 & 8GB & 60GB\\
+    4 & 8 & 32GB & 100GB\\
+    6 & 16 & 64GB & 100GB\\
+    1 & 32 & 224GB & 100GB\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+
+One VM with 4 CPU and 8 GB RAM was designated as the Kubernetes master node, with other small services like the Kubernetes Dashboard and Weave Networking Dashboard deployed to it as well. Other VMs were put into the pool of worker nodes with automated deployment scheduling of Docker containers provided by Kubernetes. A Weave overlay network was set up between all of the nodes in the Kubernetes cluster, creating a private subnet for inter-VM and inter-container communication but inaccessible from the outside.
+
+The following products were set up to support the running of Rheos:
+
+\begin{description}
+    \item [Kafka] - A Kubernetes Kafka service was deployed with a redundancy of 3, deploying 3 borkers on 3 separate nodes, to ensure availability and scalability.
+    \item [Zookeeper] - A Kubernetes Zookeeper service was deployed with a redundancy of 3.
+    \item [Redis] - A Kubernetes Redis server was set up with 1 master and 1 replication slave.
+    \item [Prometheus] - Prometheus was set up for monitoring with 1 master, and an agent running on every node.
+    \item [Grafana] - Grafana was set up as a single container for monitoring dashboarding.
+    \item [Elasticsearch] - Elasticsearch was set up as a single server for collection of application logs.
+    \item [Jenkins] - Jenkins was set up as a single server for automated deployment and continuous integration of new builds in the testing environment.
+\end{description}
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.28]{rheos_deployment_containers}
+    \centering
+    \caption {Docker containers that are part of the test Rheos deployment.}
+    \label{fig:rheos_deployment_containers}
+\end{figure}
+
+The services of Rheos were deployed into the Kubernetes environment in the following configuration:
+
+\begin{description}
+    \item [Read Mapping Service] - The service was deployed as a set of 2 Kubernetes Pods on separate nodes with access to a 500TB NFS share for reading sample data, and a local copy of the human reference genome, preprocessed for use by minimap2.
+    \item [Locus Processor Service] - The service was deployed as a set of 6 Kubernetes Pods, each with a local copy of the human reference genomes in FASTA format.
+    \item [Locus Saver Service] - The service was deployed as a set of 2 Kubernetes Pods on separate nodes.
+    \item [Variant Caller Service] - The service was deployed as a single Kubernetes Pod, with access to a 500TB NFS share for writing the VCF file.
+    \item [Insert Size Filtering Service] - The service was deployed as a single Kubernetes Pod.
+    \item [Insert Size Clustering Service] - The service was deployed as a single Kubernetes Pod.
+\end{description}
+
+The following Kafka topics were set up for management of in-flight data. A replication-factor of 1 was used.
+
+\begin{table}[!ht]
+    \centering
+    \caption{Rheos Kafka topics.}
+    \label{tab:rheos_kafka_topics}
+    {\begin{tabular}{l | r }
+    \toprule
+    Name & Partitions \\
+    \midrule
+    $mapped\_read_pairs\_batchy$ & 168\\
+    $unmapped\_read_pairs\_batchy$ & 2\\
+    $mapped\_read_pairs\_secondary\_batchy$ & 10\\
+    $snp\_loci\_batchy$ & 2\\
+    $discordant\_read\_pairs$ & 1\\
+    $deletions$ & 1\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+
+Figure \ref{fig:rheos_deployment_containers} shows the set of Docker containers that were used in the Rheos Kubernetes deployment. In addition to the Kubernetes test environment, local testing of individual components was performed on a MacBook Pro 2018, with a 6-core 2.9 GHz Intel Core i9 processor, and 32 GB RAM. 
+
+\subsection{Sample Selection and Preparation}
+
+To assess the ability of Rheos to perform germline SNP and SV calling we have selected a well characterized genomic sample from the Genome in a Bottle Consortium\autocite{zook2018reproducible}, namely the NA12878 sample that was first sequenced in the context of the 1000 Genomes Project, but has subsequently been sequenced by a variety of orthogonal sequencing technologies to very high levels of coverage and is very well studied. Choosing this sample allows us to work with data that is known to be of high quality and one that has a high quality set of published genomics variants to compare Rheos calls against.
+
+We downloaded the sample RMNISTHS\_30xdownsample.bam a 147GB file from the GIAB FTP repository at ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/NA12878/NIST\_NA12878\_HG001\_HiSeq\_300x/. This sample is a high coverage 300x sequencing run of the Illumina HiSeq 2500 instrument using a 2x148 bp paired end library. The original data has been mapped to the GRCh37d5 human reference genome using BWA-MEM, and subsequently downsampled to ~30x average coverage. 
+
+We performed our experiments on Chromosome 20 of the sample, which is a DNA molecule that is 63025520 nucleotides long. We extracted raw unaligned reads for Chromosome 20 from the BAM file into a separate FASTQ file. The size of this FASTQ file is 4.3 GB and it contains 13424120 reads. All of the alignment information was discarded in the transformation from BAM to FASTQ.
+
+The GRCh37 human reference genome was obtained from the 1000 Genomes Project FTP site at ftp://ftp.ncbi.nih.gov/1000genomes/ftp/technical/reference/phase2\_reference\_assembly\_sequence/. The reference is in FASTA format and is ~3GB in size. It contains the reference sequence for human chromosomes 1-22, X, Y, MT (mitochondrial) as well as a set of decoy sequences and unplaced contigs. We use the entire reference genome because reads that were mapped to Chromosome 20 by BWA-MEM may be mapped elsewhere by the minimap2 aligner. We pre-process the reference for use by minimap2 to generate a minimizer index genome.mmi using default parameters.
+
+\subsection{Germline SNP Calling}
+
+For germline SNP calling we put together a pipeline using Rheos services that takes a FASTQ sample file, streams the reads, maps them to a reference genome, processes the variant evidence contained in the reads, save the resulting genomic loci in a data store, and performs variant calling, outputting a result VCF (see Figure \ref{fig:rheos_snp_calling_pipeline}). We then compare the results of the VCF output to the output of other well-established variant callers.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.38]{rheos_snp_calling_pipeline}
+    \centering
+    \caption {The Rheos germline SNP calling pipeline.}
+    \label{fig:rheos_snp_calling_pipeline}
+\end{figure}
+
+In our initial implementation we have actually combined the first two steps, so that the Read Mapping Service reads a FASTQ file directly from disk, rather than a stream, and then streams the already mapped reads for further processing. We use a single instance of the Read Mapping Service for this task invoking it with the following parameters:
+\\
+\emph{file -i data/giab/RMNISTHS\_30xdownsample\_chr20.fastq \\
+-r data/reference/genome.mmi \\
+-g 20:1-63025520 \\
+-k kafka:9092 \\
+--bin\_size=10000 \\
+--num\_bins=100 \\
+--check\_freq=1000 \\
+--log\_level=DEBUG \\
+--root\_log\_level=DEBUG \\
+--logger\_type=stream\\}
+
+These parameters indicate that we are processing the entire Chromosome 20 from a FASTQ file, that we would like to use 100 bins of capacity 10000 read pairs per partition in the \mintinline{python}{PartitionedReservoirSet}, and that we would like to check which bins are full once every 1000 mapped read pairs. Partition size was left at the default 20000000 bases. Using a single CPU and an allotment of 16GB RAM this process took 1 hour and 23 minutes to complete in full, processing 13424120 reads out of which 245052 reads were unpaired, sending 12482 bins for donwstream processing. Looking at the system resource usage during the execution (see Figure \ref{fig:rheos_read_mapper_chrom20_metrics}) we see that this process appears to be CPU bound, with full utilization over almost the entirety of the processing cycle. Memory usage grows initially as more and more bins accumulate mapped reads, and peaks at ~15.5GB as the rate of bin filling is counteracted by sending off bins that are full. Due to the stateless nature of the process, the wall time of the mapping process can be sped up arbitrarily by splitting the input file into chunks and parallelizing across CPUs.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.69]{rheos_read_mapper_chrom20_metrics}
+    \centering
+    \caption {System resource usage by Read Mapping Service during alignment of Chromosome 20 of NA12878 form GIAB.}
+    \label{fig:rheos_read_mapper_chrom20_metrics}
+\end{figure}
+
+We next investigate the operation of the Locus Processor Service by simultaneously executing 4 instances of the service, one for each partition of Chromosome 20, on the stream data produced by the Read Mapping Service. We invoke the Locus Processor Service with the following set of parameters:
+\\
+\emph{
+    service\\
+-r data/reference/genome.fa\\
+-g [20:1-20000000 | 20:20000001-40000000 | 20:40000001-60000000 | 20:60000001-63025520]\\
+-k kafka:9092\\
+--log\_level=DEBUG\\
+--root\_log\_level=DEBUG\\
+--logger\_type=stream\\
+}
+
+Here, each of the service instances has a separate partition and genomic region assigned via the -g parameter. This process completed in 29 minutes and 42 seconds running four instances simultaneously and took 0.452 seconds to process a single message on average, sending an average of 32908 updated loci for downstream processing per message. Consulting the operational metrics collected during the run (Figure \ref{fig:rheos_locus_processor_chrom20_metrics}) we see a fairly stable CPU and memory utilization profiles, however significant use of swap is observed (bottom right panel), indicating that if the amount of memory per process was increased, performance could be improved.
 
 
-\section{Proof of concept implementation}
+\begin{figure}[h!]
+    \includegraphics[scale=0.24]{rheos_locus_processor_chrom20_metrics}
+    \centering
+    \caption {System resource usage by Locus Processor Service during processing of Chromosome 20 of NA12878 form GIAB.}
+    \label{fig:rheos_locus_processor_chrom20_metrics}
+\end{figure}
 
-Describe actual implementation efforts. Focus on very basic use case (take already mapped reads from a file, turn them into a stream, use stream to call SNPs, maybe some Indels/SVs). Demonstrate some comparison metrics compared to other callers. Demonstrate some service-level metrics (throughput etc.)
+
+We run a single instance of the Locus Saver Service to process locus updates with the following parameters:
+\\
+\emph{service\\
+-k kafka:9092\\
+-r redis-master -p 6379\\
+--log\_level=DEBUG\\
+--root\_log\_level=DEBUG\\
+--logger\_type=stream}
+
+This is a fairly lightweight service and takes 18 minutes and 58 seconds to process all of the messages produced by the  4 instances of Locus Processor and save them to Redis. 961 messages in total are processed, with average processing time of 0.72 seconds per message. Figure \ref{fig:rheos_locus_saver_chrom20_metrics} shows operational metrics collected from the service and the Redis server during the execution runtime. As can be seen, the execution fully utilizes the CPU of the service host (likely for serialization/deserialization of messages). Resources of the Redis server are only midly utilized indicating the ability to run several instances of the Locus Saver per instance of Redis. The bottom-left panel shows the impact of automated disk persistence of Redis in-memory data. This feature can be turned off to obtain higher throughput at the expense of lower availability, i.e. if Redis crashes data will need to be reprocessed.   
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.6]{rheos_locus_saver_chrom20_metrics}
+    \centering
+    \caption {System resource usage by Locus Saver Service during processing of Chromosome 20 of NA12878 form GIAB.}
+    \label{fig:rheos_locus_saver_chrom20_metrics}
+\end{figure}
+
+The last component in the processing pipeline is the Variant Calling Service. We invoke this service with the following parameters:
+\\
+\emph{file\\
+-g 20:1-63025520\\
+-r redis-master -p 6379\\
+--calling\_threshold=50\\
+--max\_vqual=5000\\
+-t variant\_caller\_pkg/variant\_caller/rheos\_vcf\_template.vcf\\
+-o data/na12878\_20\_1\_63025520\_rheos\_latest.vcf\\
+--log\_level=DEBUG\\
+--root\_log\_level=DEBUG\\
+--logger\_type=stream}
+
+These parameters indicate that we are calling variants on the entirety of Chromosome 20, that we only include variants exceeding variant quality of 50 (i.e. 1 in 10000 variants is estimated to be a false positive), and with a variant quality ceiling of 5000 (if a variant has vqual >5000 it will be capped at 5000). Running a single instance of this service took 1 hour and 21 minutes to complete calling on the entire Chromosome 20 of the sample, evaluating 12754171 potential variant sites from Redis. Figure \ref{fig:rheos_variant_caller_chrom20_metrics} shows steady CPU utilization and relatively low memory use by the service (top panels), and steady but low CPU utilization, but high memory consumption by Redis (bottom panels), as expected.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.6]{rheos_variant_caller_chrom_20_metrics}
+    \centering
+    \caption {System resource usage by Variant Caller Service during processing of Chromosome 20 of NA12878 form GIAB.}
+    \label{fig:rheos_variant_caller_chrom20_metrics}
+\end{figure}
+
+
+
 
 \section{Conclusions}
 Rheos is great!
