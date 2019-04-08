@@ -1553,7 +1553,166 @@ These parameters indicate that we are calling variants on the entirety of Chromo
     \label{fig:rheos_variant_caller_chrom20_metrics}
 \end{figure}
 
+Using the procedure above we obtained a germline SNP callset containing 82576 germline variants. We compare the results of our callset to 2 other callsets for the same sample and genomic region:
 
+\paragraph{freebayes} - To be able to best compare callsets, we took the same FASTQ file that has been used for the Rheos analysis, and aligned it against the GRCh37 reference genome using minimap2, producing a SAM file. We then sorted and compressed that SAM file using samtools, to produce a BAM file that can be used for variant calling by most tools.
+
+We installed the latest version of freebayes\autocite{garrison2012haplotype} and invoked it with the following command:
+\\
+\emph{freebayes -r 20 -f reference/genome.fa \\
+giab/RMNISTHS\_30xdownsample\_chr20.name\_sorted\_minimap.new\_rg.sorted.bam\\
+ > tests\_latest/original/freebayes\_chr20\_minimap.vcf}
+
+After filtering out indels we were left with a callset with 89704 SNPs.
+
+\paragraph{GATK 4} - To obtain a GATK 4 callset. We installed and built the latest version of the GATK\autocite{mckenna2010genome} from github. Utilizing the same BAM file as was used for the freebayes callset, we invoked the GATK HaplotypeCaller with the following command:
+\\
+\emph{java -jar \$GATK HaplotypeCaller \\
+-I ~/data/giab/RMNISTHS\_30xdownsample\_chr20.name\_sorted\_minimap.new\_rg.sorted.bam\\
+ -R ~/data/reference/genome.fa  \\
+ -O tests\_latest/gatk\_chrom20\_minimap.vcf  \\
+ -pairHMM AVX\_LOGLESS\_CACHING \\
+ -L 20
+}
+
+After removing indels we were left with a callset with 77762 SNPs.
+
+We compared the Rheos callset to those produced by freebayes and GATK by running the Picard\autocite{Picard2018toolkit} tools' GenotypeConcordance utility, with the command:\\
+\bigskip
+\emph{ java -jar \$PICARD GenotypeConcordance \\
+CALL\_VCF=tests\_latest/original/na12878\_20\_1\_63025520\_rheos\_latest.vcf  \\
+TRUTH\_VCF=tests\_latest/gatk\_chrom20\_no\_indels.vcf   \\
+O=tests\_latest/gatk\_to\_rheos/gatk\_to\_rheos \\
+TRUTH\_SAMPLE=NA12878 \\
+CALL\_SAMPLE=NA12878}
+\bigskip
+and a similar invocation for the freebayes to Rheos comparison.
+
+The results were as follows:
+
+\begin{table}[!ht]
+    \centering
+    \caption{Sensitivity and specificity of Rheos caller vs freebayes and GATK.}
+    \label{tab:rheos_vs_fb_and_gatk}
+    {\begin{tabular}{l | r | r}
+    \toprule
+    Rheos vs. & Sensitivity & Specificity \\
+    \midrule
+    freebayes & 0.988701 & 0.990385\\
+    GATK & 0.984848 & 0.991597\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+
+While these results are quite good, and Rheos appears to capture the greatest majority of the signal that other well established tools do on the same data set, it is illuminative to manually consider a sample of loci where the callers disagree. Figure \ref{fig:rheos_snp_fns} shows three examples where variants called by GATK do not appear in the Rheos callset. 
+
+In panel a) is a variant that is called a heterozygous SNP by GATK at the locus 930480 on Chromosome 20. Out of 14 reads 4 show the alternate allele T and GATK assigns a variant quality of 64.77. On the Rheos side, the variant was assigned a variant quality of 46.94, and consequently did not pass the quality threshold cutoff of 50 that was used when producing the callset. It is difficult to say based on this data whether this call is likely a true variant or not. Certainly, if a lower stringency cutoff was used the call would also be part of the Rheos callset.
+
+In panel b) is a variant at position 20:2678084 that is called homozygous variant by GATK, but in fact, the coverage at this site is only 2 so GATK is making a call based on very limited information, and the call has a high probability of being a false positive in the GATK callset. Rheos attaches a probability of ~0.62 that the site is homozygous variant, and ~0.32 that the site is heterozygous variant. The overall variant quality however, is 12 on the account of the low number of observations and consequently the site does not pass the quality threshold.
+
+In panel c) there are two adjacent SNPs in positions 20:18956622-18956623. The first of these is called by both variant callers, but the second is only present in the GATK callset. It is called a heterozygous SNP with 5 out of 19 reads showing the alternate A allele, and has a variant quality of 97.77. In the Rheos callset the variant is assigned a quality of 40.0 and does not pass through the quality cutoff. Because of the lower fraction of alternate allele observations than would be expected, it is possible that the site actually represents a somatic variant that is only present in the subset of the sample's cells.
+
+A unifying theme of all of the false negative calls is that even though they are detected by Rheos, they end up below the quality threshold of 50 (one false variant in 100000). Using a less stringent filter will certainly increase sensitivity of the callset, although an approach for controlling the resultant increase in false positives is also required.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.55]{rheos_snp_fns}
+    \centering
+    \caption {The Rehos germline deletion calling pipeline.}
+    \label{fig:rheos_snp_fns}
+\end{figure}
+
+Figure \ref{fig:rheos_snp_fps} shows several examples of false positive calls, those that are detected as variant by Rheos but are not called by GATK. 
+
+In panel a) we see a locus at 20:813667-813669 that is called as 3 adjacent SNPs by Rheos, whereas in GATK it is called a SNP adjacent to a complex variant. It is indeed probably a complex variant that extends to all 3 adjacent nucleotides, and there is evidence of both the presence of SNPs, as well as a small deletion at that locus. Since Rheos has no concept of indels or complex variants, these sites naturally end up as false positive SNP calls. 
+
+In panel b) we see a locus at 20:2487891 that is called a heterozygous SNP by Rheos but is not present in the GATK callset. Rheos calls this site variant because there is a relatively large number (10/24) of alternate allele observations, although they are mostly of relatively low base quality (9 our of 10 reads have base quality between 6 and 8, implyiing probability of error between 15-25\% for each). Additionally, all of the alternatve allele observations fall on reads that map to the negative strand. This type of strand bias is a strong indicator of a false positive signal and is often used by variant filtering software to filter out false positives.
+
+In panel c) we see a locus at 20:11298489 that is called homozygous variant in the Rheos callset, but is actually included as part of the neighbouring deletion by GATK. Indeed, this region is called differently by all three callers. GATK calls a 5bp indel at 11298472-11298476, followed by an 8bp indel at 11298482-11298489. Freebayes calls a 13bp indel 11298472-11298484, followed by a homozygous SNP at 11298489. And Rheos calls a bunch of SNPs inside the indel, since it presently has no concept of indels, followed by a homozygous SNP at 11298489. 
+
+Two major sources of false positive signals are apparent for Rheos from this testing, areas around indels, and loci with many low quality bases. Both of these warrant further work to improve. 
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.55]{rheos_snp_fps}
+    \centering
+    \caption {Three examples of false negative calls by Rheos, compared to GATK. a) Site with few, but high quality alternate allele observations. b) Site with very low coverage. c) Site of two adjacent SNPs, one of which has low variant quality.}
+    \label{fig:rheos_snp_fps}
+\end{figure}
+
+Our testing of Germline SNP Calling with Rheos shows that this framewrok is capable of deployng scalably onto an academic cloud computing infrastructure and producing accurate results that are compatible with callsets produced by leading variant callers, while doing so in a streamlined, online manner that is not accessible to these other tools.
+
+\subsection{Germline Deletion Calling}
+
+For germline deletion calling we are interested in collecting discordantly mapped read pairs and performing clustering, and variant calling as described in Section \ref{sec:main_body_sv_calling}. We put together a Rheos pipeline shown in Figure \ref{fig:rheos_sv_calling_pipeline}. We use the same run of the Read Mapping Service as was used for germline SNP calling, but consume all of the reads from all mapped read partitions by the same single instance of the Insert Size Filtering Service.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.45]{rheos_sv_calling_pipeline}
+    \centering
+    \caption {Three examples of false positive calls by Rheos, compared to GATK. a) Site of a complex variant. b) Site with many low quality bases. c) Site of a SNP adjacent to an indel.}
+    \label{fig:rheos_sv_calling_pipeline}
+\end{figure}
+
+We use the following settings for the Insert Size Filtering Service - accumulate 100000 read pairs for insert size estimation, keep read pairs with insert size > 5 * MAD (Median Absolute Deviation), that are both mapped, that map to the same contig, and that both have mapping quality >= 30. These settings result in 2663 read pairs passing through the Insert Size Filtering Service to the Insert Size Clustering Service. The total runtime was 4 minutes 32 seconds to process 13069 messages from 168 data partitions.
+
+We use a single instance of the Insert Size Clustering Service applying the following settings - $min\_read\_support = 2$, $insert\_size\_threshold = 500$, indicating that we only want deletions that are supported by at least two discordant reads, and that we want to remove from a deletion's list of supporting reads, those that have $insert\_size > deletion\_width + 500$. We apply KDE clustering with a gaussian kernel, setting $bandiwdth = 100$. The runtime of the clustering and deletion calling was 17 seconds. Results of the clustering can be seen in Figure \ref{fig:kde}.
+
+The initial calling produced a set of 36 putative deletions. Looking at the read pairs that support these deletions we observed that a deletion was supported, on average by ~121 read pairs. This is a very high number given that the total number of read pairs considered is 2663. This observation has led to the consideration of whether there is a significant number of potentially spurious read pairs with very long insert sizes that overlap many deletions, but do not actually contribute to the signal. We investigated the distribution of insert size widths in the data set, with results visible in Figure \ref{fig:insert_size_hist}. It is evident that even though the majority of insert sizes are relatively small - $< e^{10}$, there are over a hundred read pairs with insert size $> e^{14}$.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.6]{insert_size_hist}
+    \centering
+    \caption {A histogram of discordant read pair insert sizes on the log-log scale. X-axis is log(insert\_size), Y-axis is log(count).}
+    \label{fig:insert_size_hist}
+\end{figure}
+
+We would like to investiage whether the large insert-size read pairs contribute significantly to signal identified by one-dimensional KDE, and indeed, whether they may cluster by themselves. To assess this, we introduce a second dimension of insert size to the original clustering, and perform a second round of KDE clustering in two dimensions, where each point was now of the form $(center, width)$. The results can be seen in Figure \ref{fig:2d_kde}. Here, the horizontal dimensions are insert size center and width, and the vertical dimension is density. We can see that most of the density still falls in the area of low width and along centre coordinate. We thus, believe that the very long insert sizes are not significant contributors to the detection of deletions that they overlap, and may be removed from the list of reads supporting those deletions. Indeed, when we remove these read pairs from our data set entirely and repeat the clustering, the results recapitulate those produced with the original data set, and only one fewer deletions is called. We thus introduce a width-based cutoff for reads supporting a deletion and set it to $deletion\_width + 500$, where all read pairs that have insert size greater than this cutoff are removed from the list of supporting reads. This results in a much more sensible average number of supporting reads per deletion, namely 9. We retain those deletions for our final callset that are supported by at least 2 read pairs, leaving 29 deletions in the final callset.
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.6]{2d_kde}
+    \centering
+    \caption {2-D KDE estimate of insert size center and width, using a gaussian kernel with bandwidth 100.}
+    \label{fig:2d_kde}
+\end{figure}
+
+We compare the results of this method with two other data sets. One is a set of structural variant calls produced by the GIAB consortium. We downloaded the file Personalis\_1000\_Genomes\_deduplicated\_deletions from ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/technical/svclassify\_Manuscript/Supplementary\_Information/. We then used the software package \emph{bedtools}\autocite{quinlan2010bedtools} to filter the data set to only include deletions on Chromosome 20 and those exceeding 500bp in length. The length trimming is necessary because the insert size based method of Rheos is limited to detecting deletions that are approximately equal to the $MAD * mad\_threshold$ in size. MAD is 131.95 in our data set and $mad\_threshold$ is 5. We take the cutoff at 500 since slightly smaller deletions can be detected, due to the overlap of multiple read pairs. This results in a callset of 26 deletions.
+
+The other comparison data set is produced by calling variants with Delly\autocite{rausch2012delly}. We produce the callset by invoking Delly with the following command:
+
+\emph{delly call -n -q 30 -s 5\\
+ -g reference/genome.fa giab/RMNISTHS\_30xdownsample\_chr20.minimap.sorted.bam \\
+ -o tests\_latest/delly\_chrom20\_dels\_minimap.vcf}
+
+The flags supplied to Delly have been selected to mimic the cutoffs used for the Rheos caller. We then trim the callset to only include deletions that are not flagged as \emph{LowQuality}, and that are greater than 500 bp in length. This results in a callset of 25 deletions.
+
+We used bedtools to compare the 3 callsets and produce the diagram of Figure \ref{fig:rheos_delly_giab_dels_venn} that shows the overlap between them. 83\% of the deletions called by Rheos are called in at least one of the other two callsets. This is a pretty satisfactory result as the Rheos callset only makes use of discordantly mapped reads at this time, while the other two callsets have been produced with methods that take advantage of split-reads and read depth analysis. 
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.08]{rheos_delly_giab_dels_venn}
+    \centering
+    \caption {Venn diagram depicting overlap between the Rheos, Delly, and GIAB deletion callsets on Chromosome 20 of NA12878.}
+    \label{fig:rheos_delly_giab_dels_venn}
+\end{figure}
+
+To assess the shortcomings of the Rheos deletion calling method we take a look at a sample of the deletions that are called by Rheos and not by other tools, and also those that are called by other tools but not by Rheos. Figure \ref{fig:rheos_sv_fps} shows the 5 deletion calls that were called only by Rheos. Out of these five calls, three (a), b), and e)) look like real deletions when the region is viewed with IGV. There is a clear depletion of reads in these regions compared to the surrounding regions and there are several discordantly mapped read pairs that overlay each region (3 each for deletions a), b), and c)). The region in panel b) is difficult to make calls in, because of the large number of low quality reads, with large portions clipped out of the aligment and the call is only supported by two read pairs so this can easily be a false positive. The region in d) is hard to judge, but can also be a false positive. 
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.54]{rheos_sv_fps}
+    \centering
+    \caption {Visualization of the genomic regions that were called deletions by Rheos but not by other callers.}
+    \label{fig:rheos_sv_fps}
+\end{figure}
+
+In Figure \ref{fig:rheos_sv_fns} we show several examples of deletion calls that were not part of Rheos' callset but were called by other tool. The deletions in panels a) and b) were part of the GIAB callset and part of the Delly callset. These look like very well defined deletions with a clear dropoff in read coverage, as well as split-reads flanking the deletion site. Since Rheos is currently not using read depth or split-reads, it was not able to make these calls. When looking at the deletion call in panel c) is not readily apparent that this is a deletion. Even though there are some split-reads at the flank, there is no dropoff in coverage. It may be that this is a false positive call in the GIAB callset. The deletion in panel d) was called by Delly, but is not in GIAB and was not called by Rheos. This region is difficult to judge by sight. There is clearly a small homzygous deletion in the left portion of the image, but the Delly deletion call spans the entire visible region. There is a clear difference in read depth visible, but only on one side of the region, the read depth towards the left is relatively constant. The only true variant in this region is likely the small deletion, but since it is too small for Delly to call, it is probably extending the call towards the right, thus creating a false variant. 
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.54]{rheos_sv_fns}
+    \centering
+    \caption {Visualization of the genomic regions that were called deletions by both GIAB and Delly but not Rheos (a) and b)), GIAB but not Rheos or Delly (c)), Delly but not GIAB or Rheos (d)).}
+    \label{fig:rheos_sv_fns}
+\end{figure}
+
+Based on the manual inspection of called regions that we performed, it appears that the true sensitivity and specificity of the Rheos deletion calling method would be underestimated by a direct comparison with the two other callsets, because they miss some calls that appear to be true, and because they make some calls that appear to be false. Overall, the currently implemented method of germline deletion calling in Rheos appears to be accurate, but will certainly benefit from the additional signal sources like split-reads and read depth that other tools make use of.
+
+In our experimental validation work we were successfully able to deploy Rheos on cloud computing infrastructure using Google Kubernetes. We executed several real end-to-end variant calling use cases using a data set of ~4.7 GB in size. We successfully compared the results to the data produced by other well established variant callers and found them to be accurate. Future enhancements of the Rheos framework will surely improve both the scalability of the framework, as well as the accuracy of the callsets that it produces.
 
 
 \section{Conclusions}

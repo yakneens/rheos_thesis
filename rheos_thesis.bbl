@@ -6160,6 +6160,40 @@
       \field{pages}{191}
       \range{pages}{1}
     \endentry
+    \entry{quinlan2010bedtools}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4d1aaca7c0ddeb02b5da1bf48b8d8af3}{%
+           family={Quinlan},
+           familyi={Q\bibinitperiod},
+           given={Aaron\bibnamedelima R},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=064440488f044b7e48ae69c17e743b4a}{%
+           family={Hall},
+           familyi={H\bibinitperiod},
+           given={Ira\bibnamedelima M},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{4abdf6bcfd73321aa2c9b404d3f1aeef}
+      \strng{fullhash}{4abdf6bcfd73321aa2c9b404d3f1aeef}
+      \strng{bibnamehash}{4abdf6bcfd73321aa2c9b404d3f1aeef}
+      \strng{authorbibnamehash}{4abdf6bcfd73321aa2c9b404d3f1aeef}
+      \strng{authornamehash}{4abdf6bcfd73321aa2c9b404d3f1aeef}
+      \strng{authorfullhash}{4abdf6bcfd73321aa2c9b404d3f1aeef}
+      \field{sortinit}{Q}
+      \field{sortinithash}{d257e420984a3a5c57a3330114cd646a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{6}
+      \field{title}{BEDTools: a flexible suite of utilities for comparing genomic features}
+      \field{volume}{26}
+      \field{year}{2010}
+      \field{pages}{841\bibrangedash 842}
+      \range{pages}{2}
+    \endentry
     \entry{rausch2012delly}{article}{}
       \name{author}{6}{}{%
         {{hash=7aefbf0298b3ea17d1889f774ce80d5f}{%
