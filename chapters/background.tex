@@ -43,8 +43,6 @@ Studying cancer genomes is more complex and expensive than studying the genomes 
 
 Although there is a large number of identified mutations that are implicated in cancer (2,002,811 SNV,  10,534 gene fusions, 61,299 genome rearrangements, 695,504 CNV segments in COSMIC v70; August 2014)\autocite{forbes2015cosmic}, each mutation has a low chance of being present in any given tumour. Figure \ref{fig:nature12912-f5} demonstrates the sample size required to have 90\% statistical power to identify  90\% of the variants that occur with a set frequency in tumours with varying background mutation rates. Thus, identifying 90\% of the mutations occurring with a frequency of at most 1\% in Lung Adenocarcinoma requires a sample size of at least 10,000 patients. The necessity to sequence large cohorts of patients in order to be able to comprehensively detect  cancer related genomic variants has led to the creation of several large scale cancer sequencing studies.
 
-\subsection{Clinical Genomics}
-
 \section{Computational Methods for Next Generation Sequencing}
 Because the size of a typical genome is millions to billions of basepairs long, and current DNA sequencing technology frequently generates errors during the sequencing process, requiring multiple samples of each genomic location to be generated, the amount of data required to be examined in order to characterize even a single sample is well beyond the capabilities of any human. Thus, a multitude of computational approaches are required in order to make the task tractable for individual samples as well as cohorts, and entire populations.
 
@@ -798,8 +796,7 @@ Minimap2 builds a list of of minimizers of the reference sequence and stores the
 
 On simulated long reads (Figure \ref{fig:aligner_comparison_2018} a)), minimap2 is more accurate than other aligners and is up to 30 times faster. On real SMRT reads minimap2 was 70 times faster than short-read aligners. On short reads (Figure \ref{fig:aligner_comparison_2018} b)), minimap2 was less accurate than BWA-MEM but was up to 3 times faster. Using data from a synthetic diploid cell-line\autocite{li2018synthetic} minimap2 shows a higher false negative rate compared to BWA-MEM (FNR 2.6\% vs. 2.3\%), but a lower false positives per million bases (FPPM, 7.0 vs. 8.8) for SNPs, and similar performance for indels.
 
-\subsection{Raw Data QC}
-\label{sec:bg_raw_data_qc}
+\subsection{Raw Data QC} \label{sec:bg_raw_data_qc}
 
 The data that is generated as part of NGS experiments can have widely varying quality, and may suffer from systematic biases introduced by the experimental protocol employed, the technology used, as well as individual events such as sample contamination\autocites{lauss2013monitoring}{aird2011analyzing}{dohm2008substantial}{cibulskis2011contest}. The effect of low quality data such as sequencing errors on downstream analysis can be quite significant, not only because it may introduce false positive variants in the final output, but also because it can produce a large number of potentially variant sites that need to be evaluated and will consume a large amount additional computational resources to eventually rule out. A wide variety of computational methods exist for examining the data after it has been generated in order to identify and fix or filter out low quality data. The most widely used tools include Picard\autocite{Picard2018toolkit}, FastQC\autocite{andrews2010fastqc}, QC Toolkit\autocite{patel2012ngs}, QC-Chain\autocite{zhou2013qc}, and FASTX-Toolkit\autocite{gordon2010fastx}. These tools evaluate data at two granularities - read-level, and sample-level. Some of these can act on sequencing data pre-alignment, while others either work post-alignment or actively make use of a built-in aligner. The QC process is generally organized into a QC pipeline (see Figure \ref{fig:qc-chain}). Furthermore, some tools, like FastQC and Picard tend to only collect various QC metrics and generate reports, leaving the filtering based on these metrics up to the user, while other tools, such as QC Toolkit and QC-Chain perform the actual filtering themselves.
 
@@ -1193,13 +1190,6 @@ A distribution of allele frequencies in a population is of interest as it can be
 
 Pretty universally across the methods, genotyping is set up as a Bayesian inference selecting a Maximum Likelihood Estimate or a Maximum A Posteriori estimate of the genotype (for a single site or a haplotype) given the reads data, and taking into account the probability of errors dervied from read base quality and mapping quality scores supplied by the aligner. See Eq. \ref{eq:samtools_genotype} for samtools', Eq. \ref{eq:freebayes_main_model} frebayes', Eq. \ref{eq:gatk_genotyping} GATK's, Eq. \ref{eq:platypus_likelihood_model} Platypus' model setups. This model thus remains highly relevant for any new development in the space. 
 
-
-
-\subsection{Germline Indel Calling}
-
-
-
-
 \subsection{Germline Structural Variant Calling}
 \label{sec:bg_germline_sv_calling}
 
@@ -1274,6 +1264,7 @@ Lumpy does not perform its own split-read alignment instead relying on the resul
 SvABA\autocite{wala2018svaba} is a germline and somatic SV caller by J. Walla et al., created in 2016. Svaba is implemented in C++ and relies on genome-wide local assembly for variant detection. Internally SvABA makes use of SGA\autocite{simpson2012efficient} and BWA-MEM\autocite{li2009fast} for assembly and read mapping respectively. 
 
 \begin{figure}[H]
+    \includegraphics[scale=0.7]{svaba_method}
     \centering
     \caption {The SvABA variant callng method\autocite{wala2018svaba}.}
     \label{fig:svaba_method}
@@ -1286,29 +1277,6 @@ The contigs produced by SGA are aligned to the reference genome using BWA-MEM an
 \subsubsection{Remarks}
 
 We looked at Delly, Lumpy, and SvABA in the context of germline SV calling. Although there are some differences in the details of the approaches taken by the tools' authors there are consistent similarities as well, which additionally carry over to other SV callers such as Pindel\autocite{ye2009pindel}, and Manta\autocite{chen2015manta}, that have not been presented here. These approaches rely heavily on paired-end reads and select those that are mapped uncommonly far apart or close together. These are clustered or optionally locally assembled to produce putative breakpoints. Breakpoint locations are further refined by split-read analysis, using those reads that are unmapped by regular read mapping software. These reads are broken down into kmers and each kmer is aligned separately to non-adjacent locations in the genome. Alternative haplotypes may be constructed using these reads and alignments to the reference and the alternative haplotypes scored for genotyping purposes. A new method for structural variant calling should thus focus on making the best use of these two data types (discordant and split reads), while possibly also making use of read depth information to be competitive with the current generation of best callers. 
-
-\subsection{Variant Filtering}
-
-\subsection{Somatic SNP Calling}
-Mutect - 
-Muse - 
-Pindel -
-
-
-\subsection{Somatic Indel Calling}
-
-\subsection{Somatic Structural Variant Calling}
-
-\subsection{Germline Variant Annotation}
-Annovar - 
-Variant Effect Predictor - 
-
-
-\subsection{Somatic Variant Annotation}
-
-\subsection{de-novo Assembly}
-Velvet -
-Abyss - 
 
 \section{High Performance , High Throughput, and Cloud Computing}
 
@@ -1417,7 +1385,4 @@ Curcin et al\autocite{curcin2008scientific} provide a head-to-head comparison of
 
 The Galaxy workflow framework has a specific focus on bioinformatics analyses and comes with a large library of community-developed bioinformatics workflows. The user creates and executes workflows via a web-based GUI where pre-installed tools and scripts can be laid out into a pipeline. The primary deployment environment for Galaxy is on an institutional HPC cluster although a separate component allows the deployment of a Galaxy instance on Amazon Web Services\autocite{afgan2010galaxy}.
 
-\section{Service Oriented Architectures}
-
-\section{Stream-based Systems}
 

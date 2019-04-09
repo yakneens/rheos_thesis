@@ -1,0 +1,97 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Context and Motivation}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Challenges and Problem Statement}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Proposed Solution}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Thesis Outline}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Background and Related Work}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Genomics}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.1.1}{History of Genomics}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.2}{Next Generation Sequencing}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.3}{Genomics Studies}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.4}{Cancer Genomics}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Computational Methods for Next Generation Sequencing}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.1}{File Formats}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.2}{Alignment}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.3}{Raw Data QC}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.4}{Germline SNP Calling}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.5}{Germline Structural Variant Calling}{section.2.2}% 17
+\BOOKMARK [1][-]{section.2.3}{High Performance , High Throughput, and Cloud Computing}{chapter.2}% 18
+\BOOKMARK [1][-]{section.2.4}{Workflow Systems}{chapter.2}% 19
+\BOOKMARK [0][-]{chapter.3}{The Butler Framework - Requirements and Architecture}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Functional Requirements}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.1.1}{Access to Data}{section.3.1}% 22
+\BOOKMARK [2][-]{subsection.3.1.2}{Access to Compute Capacity}{section.3.1}% 23
+\BOOKMARK [2][-]{subsection.3.1.3}{Implementations of Scientific Algorithms}{section.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.1.4}{Workflow Definitions}{section.3.1}% 25
+\BOOKMARK [2][-]{subsection.3.1.5}{Workflow Engine}{section.3.1}% 26
+\BOOKMARK [2][-]{subsection.3.1.6}{System of Record}{section.3.1}% 27
+\BOOKMARK [2][-]{subsection.3.1.7}{Troubleshooting Errors}{section.3.1}% 28
+\BOOKMARK [1][-]{section.3.2}{Non-functional Requirements}{chapter.3}% 29
+\BOOKMARK [2][-]{subsection.3.2.1}{Scalability}{section.3.2}% 30
+\BOOKMARK [2][-]{subsection.3.2.2}{Availability}{section.3.2}% 31
+\BOOKMARK [2][-]{subsection.3.2.3}{Ease-of-use}{section.3.2}% 32
+\BOOKMARK [2][-]{subsection.3.2.4}{Interoperability}{section.3.2}% 33
+\BOOKMARK [1][-]{section.3.3}{General Design Principles}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.3.1}{Existing Open-Source Software}{section.3.3}% 35
+\BOOKMARK [2][-]{subsection.3.3.2}{Service Orientation}{section.3.3}% 36
+\BOOKMARK [2][-]{subsection.3.3.3}{Cloud Agnostic}{section.3.3}% 37
+\BOOKMARK [2][-]{subsection.3.3.4}{Open Source License}{section.3.3}% 38
+\BOOKMARK [2][-]{subsection.3.3.5}{Overall System Design}{section.3.3}% 39
+\BOOKMARK [1][-]{section.3.4}{Cluster Lifecycle Management}{chapter.3}% 40
+\BOOKMARK [2][-]{subsection.3.4.1}{Terraform}{section.3.4}% 41
+\BOOKMARK [2][-]{subsection.3.4.2}{Terraform Use in Butler}{section.3.4}% 42
+\BOOKMARK [1][-]{section.3.5}{Cluster Configuration Management}{chapter.3}% 43
+\BOOKMARK [2][-]{subsection.3.5.1}{Saltstack}{section.3.5}% 44
+\BOOKMARK [2][-]{subsection.3.5.2}{Saltstack Use in Butler}{section.3.5}% 45
+\BOOKMARK [1][-]{section.3.6}{Workflow System}{chapter.3}% 46
+\BOOKMARK [2][-]{subsection.3.6.1}{Workflow System Overview}{section.3.6}% 47
+\BOOKMARK [2][-]{subsection.3.6.2}{Workflow Definition}{section.3.6}% 48
+\BOOKMARK [2][-]{subsection.3.6.3}{Analysis Tracker}{section.3.6}% 49
+\BOOKMARK [2][-]{subsection.3.6.4}{Workflow Configuration}{section.3.6}% 50
+\BOOKMARK [2][-]{subsection.3.6.5}{Workflow Runtime Management}{section.3.6}% 51
+\BOOKMARK [1][-]{section.3.7}{Operational Management}{chapter.3}% 52
+\BOOKMARK [2][-]{subsection.3.7.1}{Monitoring Metric Collection}{section.3.7}% 53
+\BOOKMARK [2][-]{subsection.3.7.2}{Monitoring Visualization}{section.3.7}% 54
+\BOOKMARK [2][-]{subsection.3.7.3}{Server Log Collection and Visualization}{section.3.7}% 55
+\BOOKMARK [2][-]{subsection.3.7.4}{Self-Healing}{section.3.7}% 56
+\BOOKMARK [2][-]{subsection.3.7.5}{Service Discovery}{section.3.7}% 57
+\BOOKMARK [0][-]{chapter.4}{The Butler Framework - Implementation and Experimental Validation}{}% 58
+\BOOKMARK [1][-]{section.4.1}{Deployment on EMBL/EBI Embassy Cloud}{chapter.4}% 59
+\BOOKMARK [1][-]{section.4.2}{PCAWG Germline Analyses}{chapter.4}% 60
+\BOOKMARK [2][-]{subsection.4.2.1}{Variant Discovery}{section.4.2}% 61
+\BOOKMARK [2][-]{subsection.4.2.2}{Variant Genotyping}{section.4.2}% 62
+\BOOKMARK [2][-]{subsection.4.2.3}{Variant Filtration}{section.4.2}% 63
+\BOOKMARK [2][-]{subsection.4.2.4}{Genotype Phasing}{section.4.2}% 64
+\BOOKMARK [2][-]{subsection.4.2.5}{Data Submission}{section.4.2}% 65
+\BOOKMARK [2][-]{subsection.4.2.6}{Structural Variant Calling}{section.4.2}% 66
+\BOOKMARK [1][-]{section.4.3}{Experimental Runs}{chapter.4}% 67
+\BOOKMARK [2][-]{subsection.4.3.1}{Freebayes Common Variant Genotyping}{section.4.3}% 68
+\BOOKMARK [2][-]{subsection.4.3.2}{Freebayes Variant Genotyping}{section.4.3}% 69
+\BOOKMARK [2][-]{subsection.4.3.3}{Delly Full Variant Genotyping}{section.4.3}% 70
+\BOOKMARK [1][-]{section.4.4}{Performance Evaluation and Comparison}{chapter.4}% 71
+\BOOKMARK [1][-]{section.4.5}{System Design Recap}{chapter.4}% 72
+\BOOKMARK [0][-]{chapter.5}{The Rheos Framework}{}% 73
+\BOOKMARK [1][-]{section.5.1}{General Framework Design}{chapter.5}% 74
+\BOOKMARK [1][-]{section.5.2}{Data Streaming Architecture}{chapter.5}% 75
+\BOOKMARK [2][-]{subsection.5.2.1}{Service-Oriented Data Streaming Model}{section.5.2}% 76
+\BOOKMARK [1][-]{section.5.3}{Domain-specific Problems}{chapter.5}% 77
+\BOOKMARK [2][-]{subsection.5.3.1}{Read QC Metrics}{section.5.3}% 78
+\BOOKMARK [2][-]{subsection.5.3.2}{Alignment}{section.5.3}% 79
+\BOOKMARK [2][-]{subsection.5.3.3}{Simple Germline SNP Calling}{section.5.3}% 80
+\BOOKMARK [2][-]{subsection.5.3.4}{Germline Structural Variant Calling}{section.5.3}% 81
+\BOOKMARK [1][-]{section.5.4}{Rheos implementation}{chapter.5}% 82
+\BOOKMARK [2][-]{subsection.5.4.1}{Rheos Service}{section.5.4}% 83
+\BOOKMARK [2][-]{subsection.5.4.2}{Queueing}{section.5.4}% 84
+\BOOKMARK [2][-]{subsection.5.4.3}{Partitioning}{section.5.4}% 85
+\BOOKMARK [2][-]{subsection.5.4.4}{Deployment}{section.5.4}% 86
+\BOOKMARK [2][-]{subsection.5.4.5}{Services of Rheos}{section.5.4}% 87
+\BOOKMARK [1][-]{section.5.5}{Experimental Validation}{chapter.5}% 88
+\BOOKMARK [2][-]{subsection.5.5.1}{Deployment}{section.5.5}% 89
+\BOOKMARK [2][-]{subsection.5.5.2}{Sample Selection and Preparation}{section.5.5}% 90
+\BOOKMARK [2][-]{subsection.5.5.3}{Germline SNP Calling}{section.5.5}% 91
+\BOOKMARK [2][-]{subsection.5.5.4}{Germline Deletion Calling}{section.5.5}% 92
+\BOOKMARK [0][-]{chapter.6}{Discussion and Conclusion}{}% 93
+\BOOKMARK [1][-]{section.6.1}{Validation and Conclusion}{chapter.6}% 94
+\BOOKMARK [1][-]{section.6.2}{Future Direction}{chapter.6}% 95
+\BOOKMARK [0][-]{section*.325}{Appendix}{}% 96
+\BOOKMARK [0][-]{Appendix.1.A}{Code Listings}{}% 97

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p+pIndicator}{\PYGZob{}\PYGZob{}} \PYG{n+nv}{pillar}\PYG{p+pIndicator}{[}\PYG{l+s}{\PYGZsq{}terraform\PYGZus{}vars\PYGZsq{}}\PYG{p+pIndicator}{]} \PYG{p+pIndicator}{\PYGZcb{}\PYGZcb{}:}
+  \PYG{n+nt}{file.managed}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{contents\PYGZus{}pillar}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{tf\PYGZus{}vars}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{user}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{root}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{group}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{root}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{mode}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{600}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{makedirs}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{True}
+\end{Verbatim}

@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{install\PYGZus{}server}\PYG{p}{:}
+  \PYG{n+nt}{pkg.installed}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{postgresql95\PYGZhy{}server.x86\PYGZus{}64}
+
+\PYG{n+nt}{initialize\PYGZus{}db}\PYG{p}{:}
+  \PYG{n+nt}{cmd.run}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/usr/pgsql\PYGZhy{}9.5/bin/postgresql95\PYGZhy{}setup initdb}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{unless}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{stat /var/lib/psql/9.5/data/postgresql.conf}
+
+\PYG{n+nt}{/var/lib/pgsql/9.5/data/postgresql.conf}\PYG{p}{:}
+  \PYG{n+nt}{file.managed}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{source}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{salt://postgres/config/postgresql.conf}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{user}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{postgres}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{group}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{postgres}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{mode}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{600}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{makedirs}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{True}
+
+
+\PYG{n+nt}{start\PYGZus{}server}\PYG{p}{:}
+  \PYG{n+nt}{service.running}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{postgresql\PYGZhy{}9.5}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{watch}\PYG{p}{:}
+      \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{file}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/var/lib/pgsql/9.5/data/*}
+\end{Verbatim}

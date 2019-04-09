@@ -1,0 +1,34 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+	\PYG{n+nt}{\PYGZdq{}variants\PYGZus{}location\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}1\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr1.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr2.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}3\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr3.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}4\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr4.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}5\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr5.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}6\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr6.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}7\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr7.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}8\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr8.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}9\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr9.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}10\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr10.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}11\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr11.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}12\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr12.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}13\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr13.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}14\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr14.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}15\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr15.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}16\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr16.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}17\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr17.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}18\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr18.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}19\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr19.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}20\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr20.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}21\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr21.vcf.gz\PYGZdq{}}\PYG{p}{,}
+	        \PYG{n+nt}{\PYGZdq{}22\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/1000GP\PYGZus{}maf\PYGZus{}0.01/ALL.chr22.vcf.gz\PYGZdq{}}
+	\PYG{p}{\PYGZcb{},}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}base\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/shared/data/results/regenotype\PYGZus{}1\PYGZus{}percent\PYGZus{}maf/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}results\PYGZus{}local\PYGZus{}path\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}/tmp/regenotype\PYGZus{}1\PYGZus{}percent\PYGZus{}maf/\PYGZdq{}}\PYG{p}{,}
+	\PYG{n+nt}{\PYGZdq{}freebayes\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+		\PYG{n+nt}{\PYGZdq{}mode\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}regenotyping\PYGZdq{}}\PYG{p}{,}
+		\PYG{n+nt}{\PYGZdq{}flags\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}l\PYGZdq{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

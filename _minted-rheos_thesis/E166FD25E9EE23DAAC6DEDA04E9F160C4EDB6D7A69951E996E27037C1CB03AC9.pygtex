@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{get\PYGZus{}config}\PYG{p}{(}\PYG{n}{kwargs}\PYG{p}{)}
+\end{Verbatim}

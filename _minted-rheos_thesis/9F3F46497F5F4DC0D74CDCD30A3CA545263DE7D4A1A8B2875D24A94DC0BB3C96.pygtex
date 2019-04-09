@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}!yaml|gpg}
+\PYG{n+nt}{tf\PYGZus{}vars}\PYG{p}{:} \PYG{p+pIndicator}{|}
+  \PYG{n+no}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}BEGIN PGP MESSAGE\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+  \PYG{n+no}{hQEMA0LYc5MkOCPHAQf8CeN7ykRp518Fm3co0DF5q8pwk9O92ctmDnAhhAascZ2c}
+  \PYG{n+no}{3QESmEIswLVWhKjbZ9tqmmOJeBR+i5gadJjeMStGLHjJm4hNeWLvduk9y63VvhO7}
+  \PYG{n+no}{sjm1N+zzEeYINoj5dkFn9ursggwVP/yk7tlKovvhCO6vwOdIh3UI1S+BzfYb79Sd}
+  \PYG{n+no}{aQGMID1n2LoYCy2y1xXjpTlsYU9uVPhQds2WeFL3Kfhc9B8Q/5i58XdiISVg8ueo}
+  \PYG{n+no}{pg98uOOtIe9BruB6m6tRG6f1W3ZDhjpoBE+DrcBm5k8LZ1khZV70+SjTuoMNOfDl}
+  \PYG{n+no}{K84meNBDoATi5x0FpfNLnQWXLjJkxaxWaZdGaBplhdLAJAF/PvyvMG0BX7XJdCcW}
+  \PYG{n+no}{XGs3BoM+NUJqDgjI5gytmLbPRHA2YWUVNTBmUUw6r9abJyBta1w2RwOFMxEGnszL}
+  \PYG{n+no}{kT0kBPZCAoWiCkgug2G5mnwwP9Wh/CERDCuqObPKHdnES0EMkZ6Bpo7cwX2HMUNj}
+  \PYG{n+no}{5NAYt0gJ6uD1n3zGstQ8Crchj7rkDqottQ/b1JkgFoXKGCYLnv9EuZxaRXz1ad0n}
+  \PYG{n+no}{V7We5/GI+4PmemBLKOHqSdaE/z9sveF1xwY1iUb9hHrHZL2s68nJ4T4VU6VSfVZa}
+  \PYG{n+no}{9W1p4QHic5VDacisq/gWYbSL/ERqKA==}
+  \PYG{n+no}{=B+ao}
+  \PYG{n+no}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}END PGP MESSAGE\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nt}{terraform\PYGZus{}files}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/opt/eosc\PYGZus{}pilot/deployment/embassy/}
+\PYG{n+nt}{terraform\PYGZus{}state}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/opt/eosc\PYGZus{}pilot/deployment/embassy/terraform.tfstate}
+\PYG{n+nt}{terraform\PYGZus{}vars}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/opt/eosc\PYGZus{}pilot/deployment/embassy/ebi\PYGZus{}credentials.tfvars}
+\PYG{n+nt}{terraform\PYGZus{}provider}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{openstack}
+\end{Verbatim}

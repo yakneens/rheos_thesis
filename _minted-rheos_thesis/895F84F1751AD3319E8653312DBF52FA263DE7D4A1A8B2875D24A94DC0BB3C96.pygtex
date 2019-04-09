@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{l+s}{\PYGZsq{}G@roles:db\PYGZhy{}server\PYGZsq{}}\PYG{p+pIndicator}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{postgres}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{run\PYGZhy{}tracking\PYGZhy{}db}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{grafana.createdb}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{airflow.airflow\PYGZhy{}db}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{sample\PYGZhy{}tracking\PYGZhy{}db}
+\end{Verbatim}
