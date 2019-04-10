@@ -2096,6 +2096,60 @@
       \field{pages}{5\bibrangedash 51}
       \range{pages}{47}
     \endentry
+    \entry{di2017nextflow}{article}{}
+      \name{author}{6}{}{%
+        {{hash=97ef7ac3027093e0ff6e53993bc51910}{%
+           family={Di\bibnamedelima Tommaso},
+           familyi={D\bibinitperiod\bibinitdelim T\bibinitperiod},
+           given={Paolo},
+           giveni={P\bibinitperiod}}}%
+        {{hash=88c0295fc89c86fe692bc243a34bb08f}{%
+           family={Chatzou},
+           familyi={C\bibinitperiod},
+           given={Maria},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b5b285f01cf47e986ff8d81cd1035888}{%
+           family={Floden},
+           familyi={F\bibinitperiod},
+           given={Evan\bibnamedelima W},
+           giveni={E\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=3f881a7fb45a026e5d9c25c5900596f8}{%
+           family={Barja},
+           familyi={B\bibinitperiod},
+           given={Pablo\bibnamedelima Prieto},
+           giveni={P\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=5a9789d684836c90e4c407be8624e03f}{%
+           family={Palumbo},
+           familyi={P\bibinitperiod},
+           given={Emilio},
+           giveni={E\bibinitperiod}}}%
+        {{hash=9575abec5abbfbf3a0c003c8e9dc0dfc}{%
+           family={Notredame},
+           familyi={N\bibinitperiod},
+           given={Cedric},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{f5b145fb89d1f2901867c18f2951d4d0}
+      \strng{fullhash}{ace005ba8a88233a859ab5b1e7619b79}
+      \strng{bibnamehash}{f5b145fb89d1f2901867c18f2951d4d0}
+      \strng{authorbibnamehash}{f5b145fb89d1f2901867c18f2951d4d0}
+      \strng{authornamehash}{f5b145fb89d1f2901867c18f2951d4d0}
+      \strng{authorfullhash}{ace005ba8a88233a859ab5b1e7619b79}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature biotechnology}
+      \field{number}{4}
+      \field{title}{Nextflow enables reproducible computational workflows}
+      \field{volume}{35}
+      \field{year}{2017}
+      \field{pages}{316}
+      \range{pages}{1}
+    \endentry
     \entry{dohm2008substantial}{article}{}
       \name{author}{4}{}{%
         {{hash=ba4b578a80a75951bc726e1b2bd435dd}{%
@@ -2374,25 +2428,6 @@
       \field{year}{2003}
       \field{pages}{114\bibrangedash 131}
       \range{pages}{18}
-    \endentry
-    \entry{European_Open_Science_Cloud_2016}{online}{}
-      \field{sortinit}{E}
-      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
-      \field{labeltitlesource}{title}
-      \field{title}{European Open Science Cloud | Open Science - Research and Innovation - European Commission}
-      \field{urlday}{31}
-      \field{urlmonth}{10}
-      \field{urlyear}{2016}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb :./references/European Open Science Cloud | Open Science - Research and Innovation - European Commission.html:html
-      \endverb
-      \verb{urlraw}
-      \verb http://ec.europa.eu/research/openscience/index.cfm?pg=open-science-cloud
-      \endverb
-      \verb{url}
-      \verb http://ec.europa.eu/research/openscience/index.cfm?pg=open-science-cloud
-      \endverb
     \endentry
     \entry{ewen2000identification}{article}{}
       \name{author}{7}{}{%
@@ -3551,25 +3586,6 @@
       \field{title}{The workflow reference model}
       \field{year}{1995}
     \endentry
-    \entry{denbi_2016-10-31}{online}{}
-      \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
-      \field{labeltitlesource}{title}
-      \field{title}{Home}
-      \field{urlday}{31}
-      \field{urlmonth}{10}
-      \field{urlyear}{2016}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb :./references/Home.html:html
-      \endverb
-      \verb{urlraw}
-      \verb https://www.denbi.de/
-      \endverb
-      \verb{url}
-      \verb https://www.denbi.de/
-      \endverb
-    \endentry
     \entry{Celery_2016-10-31}{online}{}
       \field{sortinit}{H}
       \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
@@ -4318,6 +4334,64 @@
       \field{year}{2013}
       \field{pages}{CIN\bibrangedash S12862}
       \range{pages}{-1}
+    \endentry
+    \entry{laver2015assessing}{article}{}
+      \name{author}{7}{}{%
+        {{hash=c67add1e2ed0bca73d4ab1d1f07bed65}{%
+           family={Laver},
+           familyi={L\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=fb7aed9120fe5928cb3fa4da3a903c3a}{%
+           family={Harrison},
+           familyi={H\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+        {{hash=80d0d8aabb452bbebda9d4db3cc98cff}{%
+           family={O’neill},
+           familyi={O\bibinitperiod},
+           given={PA},
+           giveni={P\bibinitperiod}}}%
+        {{hash=35fed43d50a7afeac60e9200ba711638}{%
+           family={Moore},
+           familyi={M\bibinitperiod},
+           given={Karen},
+           giveni={K\bibinitperiod}}}%
+        {{hash=7a84f8dc9928a0c79bd0fe9f1eda4a1a}{%
+           family={Farbos},
+           familyi={F\bibinitperiod},
+           given={Audrey},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5c22d2e9f2ee13139d48654a47e6e269}{%
+           family={Paszkiewicz},
+           familyi={P\bibinitperiod},
+           given={Konrad},
+           giveni={K\bibinitperiod}}}%
+        {{hash=acf13293e37c80c72cbbd2092d09b824}{%
+           family={Studholme},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima J},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{e3cdf221c7ba7ef654ca99d6a31d5337}
+      \strng{fullhash}{5d5146cac9598885c22e6987f5697bb9}
+      \strng{bibnamehash}{e3cdf221c7ba7ef654ca99d6a31d5337}
+      \strng{authorbibnamehash}{e3cdf221c7ba7ef654ca99d6a31d5337}
+      \strng{authornamehash}{e3cdf221c7ba7ef654ca99d6a31d5337}
+      \strng{authorfullhash}{5d5146cac9598885c22e6987f5697bb9}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biomolecular detection and quantification}
+      \field{title}{Assessing the performance of the oxford nanopore technologies minion}
+      \field{volume}{3}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
     \endentry
     \entry{lawrence2014discovery}{article}{}
       \name{author}{10}{}{%
@@ -5680,35 +5754,6 @@
       \field{pages}{255\bibrangedash 260}
       \range{pages}{6}
     \endentry
-    \entry{marx2015dna}{article}{}
-      \name{author}{1}{}{%
-        {{hash=1a3f2cd98b68c2a13adceab900768f25}{%
-           family={Marx},
-           familyi={M\bibinitperiod},
-           given={Vivien},
-           giveni={V\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Nature Publishing Group}%
-      }
-      \strng{namehash}{1a3f2cd98b68c2a13adceab900768f25}
-      \strng{fullhash}{1a3f2cd98b68c2a13adceab900768f25}
-      \strng{bibnamehash}{1a3f2cd98b68c2a13adceab900768f25}
-      \strng{authorbibnamehash}{1a3f2cd98b68c2a13adceab900768f25}
-      \strng{authornamehash}{1a3f2cd98b68c2a13adceab900768f25}
-      \strng{authorfullhash}{1a3f2cd98b68c2a13adceab900768f25}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature}
-      \field{number}{7566}
-      \field{title}{The DNA of a nation}
-      \field{volume}{524}
-      \field{year}{2015}
-      \field{pages}{503\bibrangedash 505}
-      \range{pages}{3}
-    \endentry
     \entry{mckenna2010genome}{article}{}
       \true{moreauthor}
       \true{morelabelname}
@@ -5906,6 +5951,75 @@
       \field{volume}{2014}
       \field{year}{2014}
       \field{pages}{2}
+      \range{pages}{1}
+    \endentry
+    \entry{michael2018high}{article}{}
+      \name{author}{9}{}{%
+        {{hash=5ae4e01f82db1943ba3384b83d8b67c9}{%
+           family={Michael},
+           familyi={M\bibinitperiod},
+           given={Todd\bibnamedelima P},
+           giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=bdf542dbe26ea1de1ee67ccc48574231}{%
+           family={Jupe},
+           familyi={J\bibinitperiod},
+           given={Florian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=9dd122cf1d6a6f7436f03ab9dcc9c14d}{%
+           family={Bemm},
+           familyi={B\bibinitperiod},
+           given={Felix},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ead93c4318438fa09009f69e3a199e8c}{%
+           family={Motley},
+           familyi={M\bibinitperiod},
+           given={S\bibnamedelima Timothy},
+           giveni={S\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=cdf9e96bde410f3edb61d532bee43fa4}{%
+           family={Sandoval},
+           familyi={S\bibinitperiod},
+           given={Justin\bibnamedelima P},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=2d696d82e003a55c9bcd983368eaf266}{%
+           family={Lanz},
+           familyi={L\bibinitperiod},
+           given={Christa},
+           giveni={C\bibinitperiod}}}%
+        {{hash=ffebbbe98ec614c9f547e227814f4994}{%
+           family={Loudet},
+           familyi={L\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+        {{hash=fa761ae277d59727373fcb407a79f038}{%
+           family={Weigel},
+           familyi={W\bibinitperiod},
+           given={Detlef},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d8d3441da10f7bee4207ab9cc75081f0}{%
+           family={Ecker},
+           familyi={E\bibinitperiod},
+           given={Joseph\bibnamedelima R},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{345c4fcce8621109e9bbb359570dabbd}
+      \strng{fullhash}{51911d4e53a59ebd6828ae2a3f207d8b}
+      \strng{bibnamehash}{345c4fcce8621109e9bbb359570dabbd}
+      \strng{authorbibnamehash}{345c4fcce8621109e9bbb359570dabbd}
+      \strng{authornamehash}{345c4fcce8621109e9bbb359570dabbd}
+      \strng{authorfullhash}{51911d4e53a59ebd6828ae2a3f207d8b}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature communications}
+      \field{number}{1}
+      \field{title}{High contiguity Arabidopsis thaliana genome assembly with a single nanopore flow cell}
+      \field{volume}{9}
+      \field{year}{2018}
+      \field{pages}{541}
       \range{pages}{1}
     \endentry
     \entry{mohinudeen2017overview}{incollection}{}
@@ -6265,6 +6379,55 @@
       \field{year}{1991}
       \field{pages}{42\bibrangedash 50}
       \range{pages}{9}
+    \endentry
+    \entry{norris2016nanopore}{article}{}
+      \name{author}{5}{}{%
+        {{hash=69b8be57c34c69c330e97c9d5a5b6c43}{%
+           family={Norris},
+           familyi={N\bibinitperiod},
+           given={Alexis\bibnamedelima L},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=95925573317b5303db457d4efe996d8b}{%
+           family={Workman},
+           familyi={W\bibinitperiod},
+           given={Rachael\bibnamedelima E},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=3625ef0fd6502616c1e604f8eb626fe9}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Yunfan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=b7a3734ce5a5346dee38b3a00f0b284f}{%
+           family={Eshleman},
+           familyi={E\bibinitperiod},
+           given={James\bibnamedelima R},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=0235482a6931811bc1f3cace0e5aa694}{%
+           family={Timp},
+           familyi={T\bibinitperiod},
+           given={Winston},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{2d33c80a612f8e34bbb459a3ec934b7f}
+      \strng{fullhash}{6d88dbe3f1ae2c6e0304ea872819a9ec}
+      \strng{bibnamehash}{2d33c80a612f8e34bbb459a3ec934b7f}
+      \strng{authorbibnamehash}{2d33c80a612f8e34bbb459a3ec934b7f}
+      \strng{authornamehash}{2d33c80a612f8e34bbb459a3ec934b7f}
+      \strng{authorfullhash}{6d88dbe3f1ae2c6e0304ea872819a9ec}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cancer biology \& therapy}
+      \field{number}{3}
+      \field{title}{Nanopore sequencing detects structural variants in cancer}
+      \field{volume}{17}
+      \field{year}{2016}
+      \field{pages}{246\bibrangedash 253}
+      \range{pages}{8}
     \endentry
     \entry{o1996log}{article}{}
       \name{author}{4}{}{%
@@ -8694,6 +8857,82 @@
       \field{volume}{12}
       \field{year}{2013}
     \endentry
+    \entry{vivian2017toil}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=3c2e711c47c19a1d9a422e8b78f24c52}{%
+           family={Vivian},
+           familyi={V\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0453f6a03f26e0b17b0ad3f60832e80e}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Arjun\bibnamedelima Arkal},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=acf945f372ee2175aac4f2f86e9df86c}{%
+           family={Nothaft},
+           familyi={N\bibinitperiod},
+           given={Frank\bibnamedelima Austin},
+           giveni={F\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=5724e8ca93d3825b2a003bbe769cedaa}{%
+           family={Ketchum},
+           familyi={K\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a1623b690341baa9fe5244578666cc05}{%
+           family={Armstrong},
+           familyi={A\bibinitperiod},
+           given={Joel},
+           giveni={J\bibinitperiod}}}%
+        {{hash=40a1bd64d92fb35c1a40847549fe38a9}{%
+           family={Novak},
+           familyi={N\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c84c2b4b649f31b0ac3453cb42108c62}{%
+           family={Pfeil},
+           familyi={P\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=2d405f5f7e5de5c265a881264534ae0c}{%
+           family={Narkizian},
+           familyi={N\bibinitperiod},
+           given={Jake},
+           giveni={J\bibinitperiod}}}%
+        {{hash=af0315982feab214e4b980bc7237fb3f}{%
+           family={Deran},
+           familyi={D\bibinitperiod},
+           given={Alden\bibnamedelima D},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=9045a895f51c724bc4445d7bce626adf}{%
+           family={Musselman-Brown},
+           familyi={M\bibinithyphendelim B\bibinitperiod},
+           given={Audrey},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{2b5fe34a491fe93fecf17a612117c93f}
+      \strng{fullhash}{0f88e0c164882e5c386fbdf331c5cfe0}
+      \strng{bibnamehash}{2b5fe34a491fe93fecf17a612117c93f}
+      \strng{authorbibnamehash}{2b5fe34a491fe93fecf17a612117c93f}
+      \strng{authornamehash}{2b5fe34a491fe93fecf17a612117c93f}
+      \strng{authorfullhash}{0f88e0c164882e5c386fbdf331c5cfe0}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature biotechnology}
+      \field{number}{4}
+      \field{title}{Toil enables reproducible, open source, big biomedical data analyses}
+      \field{volume}{35}
+      \field{year}{2017}
+      \field{pages}{314}
+      \range{pages}{1}
+    \endentry
     \entry{voelkerding2009next}{article}{}
       \name{author}{3}{}{%
         {{hash=a6e9df532726cacb3b4d61e3239764d2}{%
@@ -9495,6 +9734,48 @@
       \field{year}{2011}
       \field{pages}{2006\bibrangedash 2014}
       \range{pages}{9}
+    \endentry
+    \entry{yakneen2017enabling}{article}{}
+      \name{author}{4}{}{%
+        {{hash=b35314da99a67dd5eccf5c5fea21a0a0}{%
+           family={Yakneen},
+           familyi={Y\bibinitperiod},
+           given={Sergei},
+           giveni={S\bibinitperiod}}}%
+        {{hash=33ac0d9b164c501573e9b683f79df856}{%
+           family={Waszak},
+           familyi={W\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c0d1310e5d4d58ef6c70f697f07a01f1}{%
+           family={Gertz},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2fc7c2b8495d7af2ee06f1ccc5dcdd60}{%
+           family={Korbel},
+           familyi={K\bibinitperiod},
+           given={Jan\bibnamedelima O},
+           giveni={J\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cold Spring Harbor Laboratory}%
+      }
+      \strng{namehash}{7ebf3d0b362133782e4de135aafe650f}
+      \strng{fullhash}{d77fd1f00f90d1ce7ae58deb977c4bb0}
+      \strng{bibnamehash}{7ebf3d0b362133782e4de135aafe650f}
+      \strng{authorbibnamehash}{7ebf3d0b362133782e4de135aafe650f}
+      \strng{authornamehash}{7ebf3d0b362133782e4de135aafe650f}
+      \strng{authorfullhash}{d77fd1f00f90d1ce7ae58deb977c4bb0}
+      \field{sortinit}{Y}
+      \field{sortinithash}{b8d711a035f7be9840c721c82920477e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{bioRxiv}
+      \field{title}{Enabling rapid cloud-based analysis of thousands of human genomes via Butler}
+      \field{year}{2017}
+      \field{pages}{185736}
+      \range{pages}{1}
     \endentry
     \entry{yang2013clinical}{article}{}
       \true{moreauthor}

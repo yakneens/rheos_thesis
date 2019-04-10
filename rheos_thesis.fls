@@ -342,6 +342,10 @@ INPUT ./rheos_thesis.toc
 OUTPUT rheos_thesis.toc
 INPUT ./chapters/introduction.tex
 INPUT ./chapters/introduction.tex
+INPUT ./images/embassy_butler_deployment_architecture.png
+INPUT ./images/embassy_butler_deployment_architecture.png
+INPUT ./images/rheos_high_level.png
+INPUT ./images/rheos_high_level.png
 INPUT ./chapters/background.tex
 INPUT ./chapters/background.tex
 INPUT ./images/costpergenome2015_4.jpg
@@ -1359,7 +1363,6 @@ INPUT ./_minted-rheos_thesis/15EFC0399FE0C0B9EC5B29F5B92456D7D73EE0002A44DF9B2D9
 INPUT ./_minted-rheos_thesis/15EFC0399FE0C0B9EC5B29F5B92456D7D73EE0002A44DF9B2D9BE1572E518995.pygtex
 INPUT ./_minted-rheos_thesis/15EFC0399FE0C0B9EC5B29F5B92456D7D73EE0002A44DF9B2D9BE1572E518995.pygtex
 INPUT ./images/embassy_butler_deployment_architecture.png
-INPUT ./images/embassy_butler_deployment_architecture.png
 INPUT ./images/butler_freebayes_workflow.png
 INPUT ./images/butler_freebayes_workflow.png
 OUTPUT rheos_thesis.pyg
@@ -1512,7 +1515,6 @@ INPUT ./_minted-rheos_thesis/FE2410D1E5CE06D0F3DFAE284D3A49F24EDB6D7A69951E996E2
 INPUT ./_minted-rheos_thesis/FE2410D1E5CE06D0F3DFAE284D3A49F24EDB6D7A69951E996E27037C1CB03AC9.pygtex
 INPUT ./chapters/rheos_framework.tex
 INPUT ./chapters/rheos_framework.tex
-INPUT ./images/rheos_high_level.png
 INPUT ./images/rheos_high_level.png
 INPUT ./images/stream_window_function.png
 INPUT ./images/stream_window_function.png

@@ -2501,4 +2501,67 @@
   publisher = {Manning Publications Co.},
 }
 
+@Article{quinlan2010bedtools,
+  author    = {Quinlan, Aaron R and Hall, Ira M},
+  title     = {BEDTools: a flexible suite of utilities for comparing genomic features},
+  journal   = {Bioinformatics},
+  year      = {2010},
+  volume    = {26},
+  number    = {6},
+  pages     = {841--842},
+  publisher = {Oxford University Press},
+}
+
+@Article{vivian2017toil,
+  author    = {Vivian, John and Rao, Arjun Arkal and Nothaft, Frank Austin and Ketchum, Christopher and Armstrong, Joel and Novak, Adam and Pfeil, Jacob and Narkizian, Jake and Deran, Alden D and Musselman-Brown, Audrey and others},
+  title     = {Toil enables reproducible, open source, big biomedical data analyses},
+  journal   = {Nature biotechnology},
+  year      = {2017},
+  volume    = {35},
+  number    = {4},
+  pages     = {314},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{di2017nextflow,
+  author    = {Di Tommaso, Paolo and Chatzou, Maria and Floden, Evan W and Barja, Pablo Prieto and Palumbo, Emilio and Notredame, Cedric},
+  title     = {Nextflow enables reproducible computational workflows},
+  journal   = {Nature biotechnology},
+  year      = {2017},
+  volume    = {35},
+  number    = {4},
+  pages     = {316},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{yakneen2017enabling,
+  author    = {Yakneen, Sergei and Waszak, Sebastian and Gertz, Michael and Korbel, Jan O},
+  title     = {Enabling rapid cloud-based analysis of thousands of human genomes via Butler},
+  journal   = {bioRxiv},
+  year      = {2017},
+  pages     = {185736},
+  publisher = {Cold Spring Harbor Laboratory},
+}
+
+@Article{laver2015assessing,
+  author    = {Laver, Thomas and Harrison, J and O’neill, PA and Moore, Karen and Farbos, Audrey and Paszkiewicz, Konrad and Studholme, David J},
+  title     = {Assessing the performance of the oxford nanopore technologies minion},
+  journal   = {Biomolecular detection and quantification},
+  year      = {2015},
+  volume    = {3},
+  pages     = {1--8},
+  publisher = {Elsevier},
+}
+
+@Article{norris2016nanopore,
+  author    = {Norris, Alexis L and Workman, Rachael E and Fan, Yunfan and Eshleman, James R and Timp, Winston},
+  title     = {Nanopore sequencing detects structural variants in cancer},
+  journal   = {Cancer biology \& therapy},
+  year      = {2016},
+  volume    = {17},
+  number    = {3},
+  pages     = {246--253},
+  publisher = {Taylor \& Francis},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
