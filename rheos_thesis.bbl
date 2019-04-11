@@ -3999,6 +3999,40 @@
       \field{pages}{75\bibrangedash 79}
       \range{pages}{5}
     \endentry
+    \entry{korbel2013criteria}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2fc7c2b8495d7af2ee06f1ccc5dcdd60}{%
+           family={Korbel},
+           familyi={K\bibinitperiod},
+           given={Jan\bibnamedelima O},
+           giveni={J\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=2d26bd23f3adcba50215f3ead9ff1987}{%
+           family={Campbell},
+           familyi={C\bibinitperiod},
+           given={Peter\bibnamedelima J},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{e0e79f5d8be15a7ca6a39865aaafe2b5}
+      \strng{fullhash}{e0e79f5d8be15a7ca6a39865aaafe2b5}
+      \strng{bibnamehash}{e0e79f5d8be15a7ca6a39865aaafe2b5}
+      \strng{authorbibnamehash}{e0e79f5d8be15a7ca6a39865aaafe2b5}
+      \strng{authornamehash}{e0e79f5d8be15a7ca6a39865aaafe2b5}
+      \strng{authorfullhash}{e0e79f5d8be15a7ca6a39865aaafe2b5}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cell}
+      \field{number}{6}
+      \field{title}{Criteria for inference of chromothripsis in cancer genomes}
+      \field{volume}{152}
+      \field{year}{2013}
+      \field{pages}{1226\bibrangedash 1236}
+      \range{pages}{11}
+    \endentry
     \entry{kreps2011kafka}{inproceedings}{}
       \true{moreauthor}
       \true{morelabelname}
@@ -6020,6 +6054,82 @@
       \field{volume}{9}
       \field{year}{2018}
       \field{pages}{541}
+      \range{pages}{1}
+    \endentry
+    \entry{mills2011mapping}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=4d798979e1818c2bfb6772837a4ce3a1}{%
+           family={Mills},
+           familyi={M\bibinitperiod},
+           given={Ryan\bibnamedelima E},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=5779ce109422850b8f023eefdeb61d38}{%
+           family={Walter},
+           familyi={W\bibinitperiod},
+           given={Klaudia},
+           giveni={K\bibinitperiod}}}%
+        {{hash=f41436f9d208d8d9fc97bd638f4514a0}{%
+           family={Stewart},
+           familyi={S\bibinitperiod},
+           given={Chip},
+           giveni={C\bibinitperiod}}}%
+        {{hash=24cbc40c5bc63822285892b1498416a0}{%
+           family={Handsaker},
+           familyi={H\bibinitperiod},
+           given={Robert\bibnamedelima E},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=3682e89a6a647029a7c4f1298a4fd782}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d7af71276ac5ad1e2c6267eff81b86a0}{%
+           family={Alkan},
+           familyi={A\bibinitperiod},
+           given={Can},
+           giveni={C\bibinitperiod}}}%
+        {{hash=6fe93f55fb6a6b08c7674933f05552f0}{%
+           family={Abyzov},
+           familyi={A\bibinitperiod},
+           given={Alexej},
+           giveni={A\bibinitperiod}}}%
+        {{hash=7d0b856ebb639c661bd7800a4be68e41}{%
+           family={Yoon},
+           familyi={Y\bibinitperiod},
+           given={Seungtai\bibnamedelima Chris},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=18cd3ab0fe096d31f1b59c702235c64f}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Kai},
+           giveni={K\bibinitperiod}}}%
+        {{hash=50f41637b42219d1a6c961cf943fe8b2}{%
+           family={Cheetham},
+           familyi={C\bibinitperiod},
+           given={R\bibnamedelima Keira},
+           giveni={R\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{483fc5f735027d17bfb924343f7b59ff}
+      \strng{fullhash}{07f8080f8d00e45105c156fb25227ee6}
+      \strng{bibnamehash}{483fc5f735027d17bfb924343f7b59ff}
+      \strng{authorbibnamehash}{483fc5f735027d17bfb924343f7b59ff}
+      \strng{authornamehash}{483fc5f735027d17bfb924343f7b59ff}
+      \strng{authorfullhash}{07f8080f8d00e45105c156fb25227ee6}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{number}{7332}
+      \field{title}{Mapping copy number variation by population-scale genome sequencing}
+      \field{volume}{470}
+      \field{year}{2011}
+      \field{pages}{59}
       \range{pages}{1}
     \endentry
     \entry{mohinudeen2017overview}{incollection}{}

@@ -2564,4 +2564,15 @@
   publisher = {Taylor \& Francis},
 }
 
+@Article{michael2018high,
+  author    = {Michael, Todd P and Jupe, Florian and Bemm, Felix and Motley, S Timothy and Sandoval, Justin P and Lanz, Christa and Loudet, Olivier and Weigel, Detlef and Ecker, Joseph R},
+  title     = {High contiguity Arabidopsis thaliana genome assembly with a single nanopore flow cell},
+  journal   = {Nature communications},
+  year      = {2018},
+  volume    = {9},
+  number    = {1},
+  pages     = {541},
+  publisher = {Nature Publishing Group},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

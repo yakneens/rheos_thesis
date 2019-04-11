@@ -2575,4 +2575,15 @@
   publisher = {Nature Publishing Group},
 }
 
+@Article{korbel2013criteria,
+  author    = {Korbel, Jan O and Campbell, Peter J},
+  title     = {Criteria for inference of chromothripsis in cancer genomes},
+  journal   = {Cell},
+  year      = {2013},
+  volume    = {152},
+  number    = {6},
+  pages     = {1226--1236},
+  publisher = {Elsevier},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

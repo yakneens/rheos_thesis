@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-salt \PYGZhy{}G \PYG{l+s+s1}{\PYGZsq{}roles:worker\PYGZsq{}} state.apply airflow.patch\PYGZhy{}airflow\PYGZhy{}db\PYGZhy{}conns
-\end{Verbatim}

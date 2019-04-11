@@ -27,7 +27,7 @@ Scientific analysis typically requires access to data files to run various tools
 \begin{itemize}
 \item Data stored in a third party data repository on the internet
 \item Data stored on a network accessible shared storage folder
-\item Data stored on cloud specific Block Volumes (such as Amazon's EBS, or Openstack Cinder)
+\item Data stored on cloud specific Block Volumes (such as Amazon's EBS, or OpenStack Cinder)
 \item Data stored on cloud specific Object Storage Services\autocite{factor2005object} (such as Amazon S3, or Google Cloud Storage)
 \end{itemize}
 
@@ -49,7 +49,7 @@ This approach has three key drawbacks:
 
 \subsubsection{Block-level storage}
 
-Most clouds provide a block storage service (Amazon, Google, Microsoft, Openstack, and others). Block storage is different from typical hard-drives that are available as a standard together with Virtual Machines, in that the standard hard-drives are considered "ephemeral" storage - their contents are available only for the lifetime of the VM that they are attached to. Due to the short lifetime, such storage is typically only acceptable for use as scratch-space, and not for the long-term storage of data under analysis. Block storage volumes offer an alternative, whereby a block storage device can be attached and detached to any VM within the same data center without the loss of information. Once attached, the block storage volume can be mounted as if it was normal local storage. 
+Most clouds provide a block storage service (Amazon, Google, Microsoft, OpenStack, and others). Block storage is different from typical hard-drives that are available as a standard together with Virtual Machines, in that the standard hard-drives are considered "ephemeral" storage - their contents are available only for the lifetime of the VM that they are attached to. Due to the short lifetime, such storage is typically only acceptable for use as scratch-space, and not for the long-term storage of data under analysis. Block storage volumes offer an alternative, whereby a block storage device can be attached and detached to any VM within the same data center without the loss of information. Once attached, the block storage volume can be mounted as if it was normal local storage. 
 
 For the purpose of scientific analysis on the cloud, block-storage offers an attractive option whereby a data set can be prepared and staged on a block storage volume outside the scope of a particular analysis, and can then be mounted on a VM that will perform the analysis, as well as being reusable for other analyses downstream. 
 
@@ -65,7 +65,7 @@ Block level storage is automatically available in all cloud environments where s
 
 \subsubsection{Object Storage}
 
-Most cloud products on the market today provide an object storage service. Examples of this are Amazon S3, Openstack Swift, Ceph\autocite{weil2006ceph}, and Microsoft Blob storage.  Object storage provides a highly scalable alternative to shared filesystems and block storage volumes, where each object of interest is stored in a "bucket" and can be retrieved by its identifier.  This method of access is especially attractive because data access security can be implemented on an individual object basis, something that is difficult to implement with other data access methods. Thus, scientific analyses that operate on sensitive data, such as those performed for the biomedical field with human subjects can greatly benefit from adopting this method of access for cloud-based analysis. Additional benefits of object storage include virtually limitless scalability of storage space, and low cost, relative to other storage methods.  
+Most cloud products on the market today provide an object storage service. Examples of this are Amazon S3, OpenStack Swift, Ceph\autocite{weil2006ceph}, and Microsoft Blob storage.  Object storage provides a highly scalable alternative to shared filesystems and block storage volumes, where each object of interest is stored in a "bucket" and can be retrieved by its identifier.  This method of access is especially attractive because data access security can be implemented on an individual object basis, something that is difficult to implement with other data access methods. Thus, scientific analyses that operate on sensitive data, such as those performed for the biomedical field with human subjects can greatly benefit from adopting this method of access for cloud-based analysis. Additional benefits of object storage include virtually limitless scalability of storage space, and low cost, relative to other storage methods.  
 
 A drawback of this approach is that object storage based systems do not function in the manner of POSIX compliant file systems that many are familiar with. Thus, an analysis framework that wants to support object storage as a method of data access needs to provide support for managing user credentials, retrieving data of interest by identifier from the object storage and into a scratch space available to the VM (such as ephemeral disk or block storage volume), writing intermediate analysis results back to the scratch disk, and storing the final analysis results back into object storage based on a predetermined bucket structure.
 
@@ -159,7 +159,7 @@ An effective and commonly utilized method of representing a workflow in the scie
 
 \begin{itemize}
 \item The workflow should be encoded using a language and format that is easily readable by humans.
-\item It should be possible to pass parameters to a workflow -- values that can be used at runtime to affect workflow behavior.
+\item It should be possible to pass parameters to a workflow -- values that can be used at runtime to affect workflow behaviour.
 \item A workflow state should be able to invoke any program that is installed on the machine that is running that workflow state.
 \item A workflow state should be able to interrogate the environment that it is running on i.e. check for presence/absence of certain files, communicate with a database, access URLs on the Internet.
 \item Any number of transitions should be able to enter or leave a state.
@@ -184,13 +184,13 @@ A scientific analysis typically needs to be configured and parameterized at mult
 
 It is natural to view these configuration levels as a three level hierarchy where Analysis configurations expand on and override Workflow level configurations, and Execution level configurations expand on and override Analysis level configurations.
 
-In order to successfully configure the workflow system it is necessary to be able to specify and permanently store such configurations in a format that is both human- and machine-readable. Thus, a user who is conceiving a particular analysis should be able to author a set of configurations that embody the nature and specifics of the analysis being performed. These configurations should then be easily transferrable to another individual or system instance for reproducibility purposes. Once the configuration of the system is fully specified the user should be able to launch their analysis according to this specification.
+In order to successfully configure the workflow system it is necessary to be able to specify and permanently store such configurations in a format that is both human- and machine-readable. Thus, a user who is conceiving a particular analysis should be able to author a set of configurations that embody the nature and specifics of the analysis being performed. These configurations should then be easily transferable to another individual or system instance for reproducibility purposes. Once the configuration of the system is fully specified the user should be able to launch their analysis according to this specification.
 
 At run-time, the workflow system should be able reconstruct one \emph{effective} configuration from all levels of the configuration hierarchy and apply it appropriately.
 
 \subsection {Workflow Engine} \label{sec:workflow_engine}
 
-A Workflow Engine is necessary for the set of workflow definitions to be executable on a compute cluster. This workflow engine needs to be able to fulfill the following broad set of requirements:
+A Workflow Engine is necessary for the set of workflow definitions to be executable on a compute cluster. This workflow engine needs to be able to fulfil the following broad set of requirements:
 
 \begin{itemize}
 \item Workflow parsing and translation
@@ -531,7 +531,7 @@ Since keeping the amount of new code that needed to be written to build Butler t
 \item Kibana\autocite{Kibana} (https://github.com/elastic/kibana) - for Log Even Dashboards
 \end{itemize}
 
-These products were selected based on their ability to fulfill the specified requirements as well as their overall viability as Open Source projects. Viability was generally evaluated based on the following set of criteria:
+These products were selected based on their ability to fulfil the specified requirements as well as their overall viability as Open Source projects. Viability was generally evaluated based on the following set of criteria:
 
 \begin{itemize}
 \item Number of Github stars
@@ -546,9 +546,9 @@ At the time of writing (September 2016), these metrics are evaluated as follows:
 \renewcommand{\arraystretch}{1.2} 
 \centering
 \caption{Open Source Framework Viability}
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}lrrr@{}}
 \toprule
-Product & Number of Stars & Number of Contributors & Commits in last 12 months\\
+Product & \pbox{5cm}{Number of\\ Stars} & \pbox{5cm}{Number of\\ Contributors} & \pbox{5cm}{Commits in last\\ 12 months}\\
 \midrule
 Terraform & 5611 & 638 & 4543 \\
 Consul & 7220 & 250 & 1129\\
@@ -583,7 +583,7 @@ Because of its early entrance on the cloud computing scene, the AWS Cloud by Ama
 \label{fig:cloud_market_share}
 \end{figure}
 
-Each of the top 4 cloud service providers - Amazon, Google, IBM , Microsoft, as well as smaller cloud providers that use the Openstack platform, provides not only the basic IaaS offering, but also an entire ecosystem of cloud based components - a PaaS, including networking, queues, databases, etc. Thus, it may be tempting to select one of these providers and build an entire software system that is based on a single vendor's offerings. This has the potential benefit of significantly simplifying system architecture and providing a single point of contact for troubleshooting.
+Each of the top 4 cloud service providers - Amazon, Google, IBM , Microsoft, as well as smaller cloud providers that use the OpenStack platform, provides not only the basic IaaS offering, but also an entire ecosystem of cloud based components - a PaaS, including networking, queues, databases, etc. Thus, it may be tempting to select one of these providers and build an entire software system that is based on a single vendor's offerings. This has the potential benefit of significantly simplifying system architecture and providing a single point of contact for troubleshooting.
 
 It is, however, our opinion that taking such an approach would limit the appeal of the system to a wider user base. This opinion is driven by several considerations:
 
@@ -745,10 +745,9 @@ Butler comes with a set of Terraform configuration files that define templates f
 
 Listing \ref{lst:terraform_worker} demonstrates the Butler configuration file used to create 175 identical worker VMs that differ only by their hostname. 
 
-The provider definition shows the procedure for setting up an OpenStack provider as well as demonstrating usage of variables where \mintinline{text}{user_name, tenant_name, and auth_url} are expected to come from a separate variable definition file, and  \mintinline{text}{password} is expected to come from an environment variable. 
+The provider definition shows the procedure for setting up an OpenStack provider as well as demonstrating usage of variables where \mintinline{text}{user_name, tenant_name} and \mintinline{text}{auth_url} are expected to come from a separate variable definition file, and  \mintinline{text}{password} is expected to come from an environment variable. 
 
-The resource section shows definition of an OpenStack specific VM type \mintinline{text}{openstack_compute_instance_v2}, which has attributes like 
-\mintinline{text}{image_id, flavor_name, security_groups, network}, etc. The  \mintinline{text}{connection} definition within the resource specifies how users will be able to connect to the newly created VMs. In this case it is accomplished via SSH using passwordless key-based authentication via a pass-through bastion host on the cloud.
+The resource section shows definition of an OpenStack specific VM type \mintinline{text}{openstack_compute_instance_v2}, which has attributes like \mintinline{text}{image_id,} \\\mintinline{text}{flavor_name,} \mintinline{text}{security_groups, network}, etc. The  \mintinline{text}{connection} definition within the resource specifies how users will be able to connect to the newly created VMs. In this case it is accomplished via SSH using passwordless key-based authentication via a pass-through bastion host on the cloud.
 
 Of further interest is the mechanism by which the creation of multiple instances of the same type is accomplished. The resource definition admits a \mintinline{text}{count} attribute which specifies how many instances need to be created. Furthermore, a \mintinline{text}{count.index} property keeps track of which instance is being created at run-time and can be used to provide unique hostnames to each instance as follows -   \mintinline{text}{name = "\${concat("worker-", count.index)}"}.
 
@@ -790,7 +789,7 @@ Saltstack & 6850 & 1580 & 9769 \\
 
 As can be seen from the data, all four are fairly active and stable projects, Ansible appears to be the most popular tool, and Saltstack is most actively developed, based on number of commits and contributors. Both Puppet and, Chef come from the first generation of configuration management tools having been initially released in 2005 and 2009 respectively, and suffering somewhat from having been trailblazers in the field. The largest complaint against both systems has been their unnecessary complexity and steep learning curve. Ansible and Saltstack, on the other hand, can be thought of as the second generation of configuration management systems, first released in 2012 and 2011, respectively. Both are based on simple to read and understand YAML-based configuration files, and have generally enjoyed greater adoption in the field.
 
-For Butler we selected Saltstack to fulfill configuration management duties. The chief reason for selecting Saltstack over Ansible was that Saltstack appears to perform better when managing large clusters, whereas Ansible is known to suffer from increased lag in these scenarios. Since we anticipate to operate Butler clusters with several hundred VMs at a time we settled our choice on Saltstack.
+For Butler we selected Saltstack to fulfil configuration management duties. The chief reason for selecting Saltstack over Ansible was that Saltstack appears to perform better when managing large clusters, whereas Ansible is known to suffer from increased lag in these scenarios. Since we anticipate to operate Butler clusters with several hundred VMs at a time we settled our choice on Saltstack.
 
 \subsection {Saltstack}
 
@@ -913,7 +912,7 @@ Control over the cluster is exercised from the Salt Master. The user establishes
 
 \mintinline{text}{command_expression} is an expression that determines what actual command to run on the targeted VMs. The \mintinline{text}{command_expression} can be as simple as running a shell command on the target VMs, or it can apply a particular named state via the \mintinline{text}{state.apply} command, or it can apply all matching states via the special \mintinline{text}{state.highstate} command.
 
-For example, \mintinline{sh}{salt -G 'roles:worker' state.apply airflow.patch-airflow-db-conns} applies the \mintinline{text}{airflow.patch-airflow-db-conns} state to all VMs that have the \mintinline{text}{worker} role.
+For example, \mintinline{sh}{salt -G 'roles:worker' state.apply airflow.patch-db} applies the \mintinline{text}{airflow.patch-db} state to all VMs that have the \mintinline{text}{worker} role.
 
 \subsection{Saltstack Use in Butler}
 
@@ -1044,7 +1043,7 @@ When it comes to installing new scientific algorithms for the purposes of runnin
 
 \section{Workflow System}\label{sec:design_workflow_system}
 \subsection{Workflow System Overview}
-Running scientific workflows at scale is the reason for Butler's existence. Thus, the Workflow Engine lies at the heart of the entire system. To fulfill the requirements specified in Section \ref{sec:workflow_engine} we have selected the Airflow Workflow Engine developed by Airbnb. 
+Running scientific workflows at scale is the reason for Butler's existence. Thus, the Workflow Engine lies at the heart of the entire system. To fulfil the requirements specified in Section \ref{sec:workflow_engine} we have selected the Airflow Workflow Engine developed by Airbnb. 
 
 \subsubsection {Airflow Architecture}
 
@@ -1124,7 +1123,7 @@ Because no assumptions are made about which worker will run which tasks, each wo
 \subsection{Analysis Tracker} 
 \label{sec:analysis_tracker}
 
-As described in Section \ref{sec:system_of_record} of the requirements, a System of Record is necessary to track the scientific analyses that are undertaken using the Butler system. To fulfill these requirements we have built an Analysis Tracker module into Butler. The goal of this module is to allow the user to define analyses, specify what workflows are part of these analyses, and track the status and execution of Analysis Runs - instances of running a particular workflow on a particular data sample within the context of an Analysis. To accomplish this we have established a Run Tracking Database on PostgreSQL to persist the data, we have built a tracker Python module that implements the management of these objects, and finally, we have built a set of standard workflow tasks that the users can insert into their workflows in order to report progress to the Analysis Tracker.
+As described in Section \ref{sec:system_of_record} of the requirements, a System of Record is necessary to track the scientific analyses that are undertaken using the Butler system. To fulfil these requirements we have built an Analysis Tracker module into Butler. The goal of this module is to allow the user to define analyses, specify what workflows are part of these analyses, and track the status and execution of Analysis Runs - instances of running a particular workflow on a particular data sample within the context of an Analysis. To accomplish this we have established a Run Tracking Database on PostgreSQL to persist the data, we have built a tracker Python module that implements the management of these objects, and finally, we have built a set of standard workflow tasks that the users can insert into their workflows in order to report progress to the Analysis Tracker.
 
 \subsubsection{tracker Python Module}
 
