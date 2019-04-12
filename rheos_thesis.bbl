@@ -103,6 +103,36 @@
       \field{sortinit}{}
       \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
     \endentry
+    \entry{giab_ftp}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \verb{urlraw}
+      \verb ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/NA12878/NIST\_NA12878\_HG001\_HiSeq\_300x/
+      \endverb
+      \verb{url}
+      \verb ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/NA12878/NIST%5C_NA12878%5C_HG001%5C_HiSeq%5C_300x/
+      \endverb
+    \endentry
+    \entry{1kgp_ftp}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \verb{urlraw}
+      \verb ftp://ftp.ncbi.nih.gov/1000genomes/ftp/technical/reference/phase2\_reference\_assembly\_sequence/
+      \endverb
+      \verb{url}
+      \verb ftp://ftp.ncbi.nih.gov/1000genomes/ftp/technical/reference/phase2%5C_reference%5C_assembly%5C_sequence/
+      \endverb
+    \endentry
+    \entry{giab_svs}{online}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \verb{urlraw}
+      \verb ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/technical/svclassify\_Manuscript/Supplementary\_Information/
+      \endverb
+      \verb{url}
+      \verb ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/technical/svclassify%5C_Manuscript/Supplementary%5C_Information/
+      \endverb
+    \endentry
     \entry{afgan2010galaxy}{article}{}
       \name{author}{6}{}{%
         {{hash=a90c63c8486067c2d25efd0be132b0f6}{%
@@ -10405,7 +10435,6 @@
       \range{pages}{1}
     \endentry
   \enddatalist
-  \missing{needcitation}
 \endrefsection
 \endinput
 

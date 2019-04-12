@@ -2,7 +2,7 @@ The Butler framework has been built to enable large-scale scientific analyses in
 
 \section{Deployment on EMBL/EBI Embassy Cloud}
 
-The EMBL/EBI Embassy Cloud\autocite{cook2016european} is an academic cloud computing center which runs an Openstack-based environment. The Embassy Cloud plays a key role in the PCAWG project by donating substantial storage and cloud computing capacity over the course of 3 years. The total amount of resources dedicated to the project by the Embassy Cloud is:
+The EMBL/EBI Embassy Cloud\autocite{cook2016european} is an academic cloud computing center which runs an OpenStack-based environment. The Embassy Cloud plays a key role in the PCAWG project by donating substantial storage and cloud computing capacity over the course of 3 years. The total amount of resources dedicated to the project by the Embassy Cloud is:
 
 \begin{itemize}
 \item 1 PB Isilon storage shared over NFS
@@ -25,7 +25,7 @@ These resources have been used to host one of the seven PCAWG GNOS repositories 
 
 Figure \ref{fig:embassy_architecture} shows the general high-level architecture of the Germline Working Group's tenant within the EMBL/EBI's Embassy Cloud. Because of the sensitive nature of the genetic data that is stored at Embassy there are several security mechanisms in place. The Virtual Machines are hidden behind a secure gateway and are not visible to the external network. The secure gateway maintains a hand-curated list of IP addresses that are allowed to connect to it from the Internet. Currently this list contains several IP addresses of research institutions that are part of the PCAWG project. Beyond the gateway is a bastion host - a Virtual Machine which serves as the entry-point into the cloud environment. Individual users can establish SSH sessions to the bastion host using their SSH key. From the bastion host the user can establish key-based SSH access to other Virtual Machines within the tenancy. 
 
-Authenticated Web-based access to the Openstack dashboard (Figure \ref{fig:embassy_dashboard}) provides a conventional method for the users to create and manage Virtual Machines.
+Authenticated Web-based access to the OpenStack dashboard (Figure \ref{fig:embassy_dashboard}) provides a conventional method for the users to create and manage Virtual Machines.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{embassy_dashboard}
@@ -112,7 +112,6 @@ The GATK HaplotypeCaller data set has been produced by the Broad Institute, the 
 The freebayes workflow parallelizes its work by splitting each sample by chromosome to reduce the amount of time it takes to process a single sample. Although the chromosomes have vastly different sizes (see Table \ref{tab:chromosome_sizes}), and thus individual jobs have different runtimes, when many samples are processed, there is little practical impact on when the entire batch of samples is completed.
 
 \begin{table}[H]
-\label{tab:chromosome_sizes}
 \renewcommand{\arraystretch}{1.2} 
 \centering
 \begin{tabular}{@{}lll@{}}
@@ -146,6 +145,7 @@ Y & 59,373,566\\
 \bottomrule
 \end{tabular}
 \caption{Human chromosome size distribution}
+\label{tab:chromosome_sizes}
 \end{table}
 
 Overall, most Butler workflows that carry out an analysis follow a similar structure - an Analysis Run is started, access to the sample is validated, the analysis steps are carried out (possibly with branching), and the Analysis Run is completed (see Figure \ref{fig:butler_freebayes_workflow}).
@@ -161,14 +161,11 @@ Because of the largely common structure between workflows a large degree of code
 
 A full listing of the source code for the freebayes workflow is provided in Listing \ref{lst:freebayes_workflow} and is discussed next. 
 
-
-
-
 Lines 81-127 of the source code define the workflow structure, first by declaring an instance of type \mintinline{python}{DAG}, and then by defining a sequence of workflow tasks. In this case each task is a Python callable. The loop on line 117 defines one workflow task for each chromosome in the predefined list. The order of task execution is defined by calling a task's \mintinline{python}{set_upstream()} method, such as on lines 109 and 127 of the listing. Default parallelism behaviour is specified on line 92 where the maximum number of active workflow runs is defined to be 2000, and the maximum number of active workflow tasks is defined to be 10,000. If more workflows than the maximum get scheduled, they will be queued until some workflow instances complete.
 
 The bulk of the body of the workflow definition (lines 14-78) is dedicated to the implementation of a single function - \mintinline{python}{run_freebayes(**kwargs)} which manages the invocation of the freebayes tool on a single chromosome of a sample. Line 16 gets the effective configuration dictionary (see Section \ref{sec:workflow_configuration_design}) which contains the merged configuration parameters from Workflow (Listing \ref{lst:freebayes_workflow_config}), Analysis (Listing \ref{lst:freebayes_discovery_config}), and Analysis Run (Listing \ref{lst:freebayes_discovery_run_config}) levels. 
 
-
+\begingroup
 \captionof{listing}{Workflow-level configuration for freebayes workflow.\label{lst:freebayes_workflow_config}}
 \begin{minted}
 [
@@ -201,10 +198,12 @@ baselinestretch=1.2
 	}
 }
 \end{minted}
+\endgroup
 
 The workflow-level configurations contain values that should generally be applicable to any invocation of the workflow. In exceptional cases these can be overridden at Analysis and 
 Analysis Run levels. For the freebayes workflow these settings include a list of chromosomes to call, the path to the human reference genome, and paths to various tools used within the workflow
 
+\begingroup
 \captionof{listing}{Analysis-level configuration for freebayes variant discovery analysis.\label{lst:freebayes_discovery_config}}
 \begin{minted}
 [
@@ -225,9 +224,11 @@ baselinestretch=1.2
 	}
 }
 \end{minted}
+\endgroup
 
 Since our analysis focuses on variant discovery, the Analysis-level JSON configuration file contains freebayes flags to set up discovery mode, as well as setting up a location for where to store the analysis results and which directory to use as local scratch space.
- 
+
+\begingroup
 \captionof{listing}{AnalysisRun-level configuration for a single sample in freebayes variant discovery analysis. \label{lst:freebayes_discovery_run_config}}
 \begin{minted}
 [
@@ -247,8 +248,9 @@ baselinestretch=1.2
 	}
 }
 \end{minted}
+\endgroup
 
-Listing \ref{lst:freebayes_discovery_run_config} provides an example of what an AnaysisRun-level configuration looks like. This configuration is concerned with supplying sample level configuration values, such as the sample\_id and sample\_location.
+Listing \ref{lst:freebayes_discovery_run_config} provides an example of what an AnalysisRun-level configuration looks like. This configuration is concerned with supplying sample level configuration values, such as the sample\_id and sample\_location.
 
 After all of the necessary parameters are extracted from the configuration and command invocation is set up lines 71-75 of Listing \ref{lst:freebayes_workflow} actually invoke a series of commands that perform the bulk of the analysis - calling \mintinline{shell}{freebayes} to generate the discovery call-set, followed by converting the call-set into a binary compressed format (with \mintinline{shell}{bgzip}), followed by generating an index file for record-based random access into the binary file (with \mintinline{shell}{tabix}), and followed by an \mintinline{shell}{rsync} to the shared results storage indicated in the configuration.
 
@@ -258,8 +260,9 @@ The workflow is distributed to all worker nodes in the cluster via a Saltstack s
 
 \subsubsection{AnalysisRun configurations for freebayes workflow}
 
-While each workflow only has one workflow-level configuration and possibly a few dozen analysis-level configurations, there needs to be one analysis run-level configuration generated for each sample under analysis, thus resulting in thousands of these configurations being generated for each analysis. The most effective method for accomplishing this is via a script. We utilize two databases - the Run Tracking Database (Section \ref{sec:analysis_tracker}), and the Sample Tracking Database (Section \ref{sec:pcawg_data_access}) in order to generate a list of samples for which there are no Analysis Runs present for a given Analysis yet. To generate our result-set we utilize the SQLAlchemy Object-Relational Mapping framework (see \ref{sec:available_samples}).
+While each workflow only has one workflow-level configuration and possibly a few dozen analysis-level configurations, there needs to be one analysis run-level configuration generated for each sample under analysis, thus resulting in thousands of these configurations being generated for each analysis. The most effective method for accomplishing this is via a script. We utilize two databases - the Run Tracking Database (Section \ref{sec:analysis_tracker}), and the Sample Tracking Database (Section \ref{sec:pcawg_data_access}) in order to generate a list of samples for which there are no Analysis Runs present for a given Analysis yet. To generate our result-set we utilize the SQLAlchemy Object-Relational Mapping framework (see \ref{lst:available_samples}).
 
+\begingroup
 \captionof{listing}{SQLAlchemy query to generate available samples.\label{lst:available_samples}}
 \begin{minted}
 [
@@ -281,13 +284,14 @@ available_samples = sample_session.query(PCAWGSample.index.label("index"), sampl
         filter(and_(sample_location != None, sample_id.notin_(current_runs))).\
         limit(num_runs).all()
 \end{minted}
+\endgroup
 
 The final script is wrapped in a Command Line Interface to improve the user experience. It supports the following parameters:
 
 \begin{description}
 \item [analysis\_id] - The id of the Analysis for which to generate Analysis Run configs.
 \item [num\_runs] - The number of runs to generate. The actual number of runs will be \mintinline{shell }{min(num_runs, available_runs)}
-\item [tissue\_type] - Whether to generate the Analysis Runs for tumor or normal tissue samples.
+\item [tissue\_type] - Whether to generate the Analysis Runs for tumour or normal tissue samples.
 \item [config\_location] - File path where to store the resulting Analysis Run configs.
 \end{description}
 
@@ -321,6 +325,7 @@ Although utilizing multiple variant callers for variant discovery improves the o
 
 The Filter Variants workflow has a rather simple structure. Bookended by the standard run-start and run-completion tasks is the actual filtration task. This task is implemented as an Airflow PythonOperator and invokes two commands - vcftools\autocite{danecek2011variant} and vt\autocite{tan2015unified}. vcftools is used for actual variant filtering, while vt is used for variant normalization.
 
+\begingroup
 \captionof{listing}{Butler Analysis configuration for VCF filtering.\label{lst:filtering_analysis}}
 \begin{minted}
 [
@@ -344,6 +349,7 @@ baselinestretch=1.2
 	}
 }
 \end{minted}
+\endgroup
 
 Listing \ref{lst:filtering_analysis} demonstrates the usage of vcftools' flags to achieve variant filtering for PCAWG. 
 
@@ -365,7 +371,6 @@ Once a call-set for each sample is produced and vetted it needs to be submitted 
 The Data Submission workflow (Figure \ref{fig:butler_gtupload_workflow}) follows a linear sequence of events implemented as Airflow PythonOperators. The data submission is a three step process where the first action is to prepare a sample's accompanying metadata submission, the second is to submit this metadata to a GNOS repository of choice, which generates a manifest in return, and the third step is to upload the actual data to the same repository using the manifest. See Listing \ref{lst:gtupload_workflow}
 
 In order to be able to successfully submit a sample, the sample, along with its accompanying metadata must be placed in a separate directory whose name is a Universally Unique Identifier (UUID) - this UUID will become an identifier for the submission on the GNOS server. Furthermore, the metadata file - an XML document, must be populated with descriptions of the analysis steps taken to produce the sample. We generate this file in Butler's workflow with the aid of an XML template (see Listing \ref{lst:gtupload_analysis} template declaration) and using Python's \mintinline{python}{etree} module.
-
 
 Once the submission is ready, the actual process of submission is carried out using the \mintinline{shell}{cgsubmit} tool by Annai Systems. It is important which GNOS repository a sample ends up in as not all repositories have permissions to host all samples. The \mintinline{shell}{destination_repo_mapping} dictionary in Listing \ref{lst:gtupload_analysis} maintains a mapping between a sample's project and a corresponding GNOS repository name. Listing \ref{lst:gtupload_workflow} provides a further mapping between repository names and repository URLs thus allowing \mintinline{shell}{cgsubmit} to submit each sample to its corresponding GNOS repository. The output of the metadata\_submit task is a \mintinline{shell}{manifest.xml} file which is placed in the sample's directory and contains all of the necessary information to enable the upload of the actual data.
 
@@ -398,7 +403,7 @@ After extracting the necessary configuration parameters and setting up the delly
 
 \section{Experimental Runs}
 
-Between January and October 2016 Butler has been used extensively to facilitate a number of large scale cancer genomics analyses on behalf of the Germline Working Group of the Pan Cancer Analysis of Whole Genomes Project. The input to these analyses has been a 725 TB data-set of 2834 cancer patients' sequenced DNA samples, and the outputs have been a number of call-sets identifying and genotyping various classes of germline variants in the form of VCF files. All of the computations have been performed on the EMBL/EBI Embassy Cloud - a 1500 core, 6TB of RAM, 1PB of storage, academic cloud running Openstack.
+Between January and October 2016 Butler has been used extensively to facilitate a number of large scale cancer genomics analyses on behalf of the Germline Working Group of the Pan Cancer Analysis of Whole Genomes Project. The input to these analyses has been a 725 TB data-set of 2834 cancer patients' sequenced DNA samples, and the outputs have been a number of call-sets identifying and genotyping various classes of germline variants in the form of VCF files. All of the computations have been performed on the EMBL/EBI Embassy Cloud - a 1500 core, 6TB of RAM, 1PB of storage, academic cloud running OpenStack.
 
 In this section we describe the technical details and characteristics of these experimental runs to establish a measure of Butler's effectiveness in real-life scenarios.
 
@@ -407,7 +412,7 @@ In this section we describe the technical details and characteristics of these e
 The Common Variant Genotyping analysis refers to the genotyping within the PCAWG cohort the genomic variants that occur with at least 1\% Minor Allele Frequency (MAF) within the 1000 Genomes Project's\autocite{10002012integrated} cohort. This site list consists of ~12 million variants that need to be genotyped for each patient - thus requiring genotyping at 34 billion sites.
 
 To accomplish this task we utilize the Butler freebayes workflow in genotyping mode, supplying the following configurations:
-
+\begingroup
 \captionof{listing}{Butler Freebayes Workflow analysis configuration for common variants genotyping.\label{lst:analysis_1_percent_maf}}
 \begin{minted}
 [
@@ -453,7 +458,7 @@ baselinestretch=1.2
 	}
 }
 \end{minted}
-
+\endgroup
 Figure \ref{fig:freebayes_1_percent_maf_genotyping} shows a distribution of job runtimes (in minutes) separated by chromosome. The mean runtime is highly correlated with chromosome length (and consequently number of variants), with a Pearson correlation of 0.92.
 
 \begin{figure}[H]
@@ -502,7 +507,7 @@ The analysis of Delly Structural Variant Calling has been split into two parts -
 
 \subsubsection{Deletions Genotyping}
 The deletions analysis used the following analysis configuration:
-
+\begingroup
 \captionof{listing}{Butler Delly Workflow analysis configuration for deletions genotyping.\label{lst:delly_analysis_dels}}
 \begin{minted}
 [
@@ -523,6 +528,8 @@ baselinestretch=1.2
 	
 }
 \end{minted}
+\endgroup
+
 244,889 deletions were evaluated across 5668 samples (tumour and normal) for a total of 1,388,030,852 genomic sites genotyped. Overall wall-time was 13 days, utilizing 265,200 CPU hours with 6240 CPU hours used for cluster management overhead - an overhead of 2.2\%. 
 
 Figure \ref{fig:delly_deletion_durations} shows a histogram of genotyping (sample level) jobs.
@@ -561,6 +568,7 @@ Figure \ref{fig:delly_deletion_genotyping} shows the overall cluster load during
 
 The duplications analysis used the following configuration:
 
+\begingroup
 \captionof{listing}{Butler Delly Workflow analysis configuration for duplications genotyping.\label{lst:analysis_delly_dups}}
 \begin{minted}
 [
@@ -581,6 +589,7 @@ baselinestretch=1.2
 	
 }
 \end{minted}
+\endgroup
 
 Overall 217,433 duplications were genotyped for each sample, across 5668 samples for a total of 1,232,410,244 genomic variants genotyped. The wall-time for this analysis was only 4.5 days, utilizing 151,200 CPU hours during this time, with a management overhead of 2160 hours, for a total overhead of 1.4\%. The comparatively lower cluster management overhead has been accomplished by scaling up the cluster to 1400 cores without the need for more management resources.
 
@@ -689,7 +698,7 @@ We further compared core PCAWG pipelines with Butler pipelines on the basis of u
 \label{fig:butler_analysis_uniformity}
 \end{figure}
 
-Carrying out large-scale scientific analyses in the cloud has its own distinct set of challenges from other types of scientific analyses. Throughout this work we have established four key areas of concerns that need to be met in order to facilitate the performance of such analyses by the end user - Provisioning, Configuration Management, Workflow, and Operations Management. We have built the Butler framework to utilize existing robust open-source components where possible to fulfill the detailed requirements in the four areas thus described.
+Carrying out large-scale scientific analyses in the cloud has its own distinct set of challenges from other types of scientific analyses. Throughout this work we have established four key areas of concerns that need to be met in order to facilitate the performance of such analyses by the end user - Provisioning, Configuration Management, Workflow, and Operations Management. We have built the Butler framework to utilize existing robust open-source components where possible to fulfil the detailed requirements in the four areas thus described.
 
 \section{System Design Recap}
 Butler uses the Terraform provisioning tool in order to be able to create arbitrarily complex clusters in a cloud-agnostic manner, including artefacts such as Virtual Machines, networks, and security rules. We have used this capability to create test clusters on Amazon Web Services as well as rapidly creating and destroying production clusters on the EMBL/EBI's Embassy Cloud of over 180 VMs and associated network and security infrastructure, as necessary. 
@@ -703,11 +712,3 @@ To enable provenance tracking of scientific analyses we implemented a \mintinlin
 To further facilitate workflow configurability we implemented a hierarchical configuration mechanism using JSON-formatted configuration files that are specified at three levels of granularity and resolved into an \emph{effective} configuration at runtime. The JSON configurations form part of the provenance trail for an analysis and are stored in a PostgreSQL database which has native support for this data type, including query language extensions\autocite{lerner2014forge}.
 
 Butler's Operations Management framework relies on two complementary systems - metrics, and logs. The metrics collection system is an agglomeration of tools that work together to harvest over 50 health metrics from each host and into a time-series database wherefrom a dashboarding engine presents the information in a series of dashboards. The log collection system similarly harvests application and server logs, filtering them down to extract useful information and storing it in an Elasticsearch index. Log information is then visualized in a set of separate dashboards. The two data collection and visualization systems provide the user with information at two granularity levels - the metrics system is more coarse-grained and gives a VM-level view of the health of the system, while the log system provides an application level view with a finer grained resolution of the events that are occurring at any given time. Together, these two systems allow the user to have very clear visibility into the overall system health and detect any issues, whether they be individual machine or application crashes, or wider systemic events like network bottlenecks or outages.
-
-
-
-  
-
-
-
-

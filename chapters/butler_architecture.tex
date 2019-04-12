@@ -604,13 +604,9 @@ On the other hand, supporting multiple cloud vendors has its own set of drawback
 
 Based on considerations above we have taken the path of creating a cloud-agnostic system, i.e. one that will run on any major cloud providers, public, or private.
 
-\subsection {Open Source License}
-
-We adopt an open-source GPL v3.0 license for Butler.
-
 \subsection {Overall System Design}
 
-Overall, the Butler system can be thought of as being composed of four distinct sub-systems, each of which fulfills a number of requirements from Section \ref{sec:functional_requirements}. These sub-systems are:
+Overall, the Butler system can be thought of as being composed of four distinct sub-systems, each of which fulfils a number of requirements from Section \ref{sec:functional_requirements}. These sub-systems are:
 
 \begin{description}
 \item [Cluster Lifecycle Management] - This sub-system deals with the task of creating and tearing down clusters on various clouds, including defining Virtual Machines, storage devices, network topology, and network security rules. It implements requirements from sections \ref{sec:access_to_data}, and \ref{sec:access_to_compute_capacity}.
@@ -636,7 +632,7 @@ Before any computation can happen on the cloud a cluster of Virtual Machines is 
 
 Detailed requirements for these capabilities are specified in sections \ref{sec:access_to_data}, and \ref{sec:access_to_compute_capacity}.
 
-To fulfill these requirements in a cloud agnostic manner Butler utilizes a framework called Terraform, developed by Hashicorp.
+To fulfil these requirements in a cloud agnostic manner Butler utilizes a framework called Terraform, developed by Hashicorp.
 
 \subsection{Terraform}\label{sec:terraform_design}
 
@@ -810,17 +806,17 @@ The Saltstack Data Model has four main concepts - State, Pillar, Grain, and Mine
 \paragraph{A Salt State} is simply the definition for what state some piece of infrastructure should be in. For instance, if we want some server in our cluster to be in the state of running a PostgreSQL database we need to do the following:
 
 \begin{enumerate}
-\item Create a postgres user
-\item Create a postgres directory
-\item Download the postgres-server package
-\item Install the postgres-server package
-\item Initialize the database
-\item Override default configuration settings
-\item Start the server
+  \item Create a postgres user
+  \item Create a postgres directory
+  \item Download the postgres-server package
+  \item Install the postgres-server package
+  \item Initialize the database
+  \item Override default configuration settings
+  \item Start the server
 \end{enumerate}
 
 The corresponding Salt state that accomplishes the same task looks as follows:
-
+\begingroup
 \captionof{listing} {Salt state for setting up a PostgreSQL server. \label{lst:salt_state_postgres}}
 \begin{minted}
 [
@@ -848,7 +844,6 @@ initialize_db:
     - group: postgres
     - mode: 600
     - makedirs: True
-
     
 start_server:    
   service.running:
@@ -856,6 +851,7 @@ start_server:
     - watch:
       - file: /var/lib/pgsql/9.5/data/*
 \end{minted}
+\endgroup
 
 The code for a Salt state is placed in a special file called an \emph{.sls} file. All of the state definitions that the system knows about are arranged into a folder hierarchy where the name of each folder defines the name of the state. The state definition is then located inside the folder in a file named \emph{init.sls}, as demonstrated in Figure \ref{fig:salt_state_airflow} for the Airflow Workflow engine.
 
@@ -1242,7 +1238,7 @@ Every workflow should begin by starting the corresponding Analysis Run, and fini
 
 \paragraph{The connection.py} file is also a key component of the tracker module because it provides a means to communicate with the Run Tracking Database.
 
-The Run Tracking Database is a PostgreSQL database this is set up to persist all of the Analysis related information into permanent storage in order to fulfill the System of Record requirements of Section \ref{sec:system_of_record}. Specifically, the Run Tracking Database contains a relational model that corresponds to the Python objects described above. These tables are as follows:
+The Run Tracking Database is a PostgreSQL database this is set up to persist all of the Analysis related information into permanent storage in order to fulfil the System of Record requirements of Section \ref{sec:system_of_record}. Specifically, the Run Tracking Database contains a relational model that corresponds to the Python objects described above. These tables are as follows:
 
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.2} 
@@ -1307,7 +1303,7 @@ In order to maintain a mapping between the Python objects in the tracker module 
 \subsection{Workflow Configuration} 
 \label{sec:workflow_configuration_design}
 
-In order to fulfill the workflow configuration and parametrization requirements described in the Analysis Configuration sub-section of Section \ref{sec:workflow_definitions} Butler implements a tri-level configuration mechanism, allowing the user to specify configurations at Workflow, Analysis, and Analysis Run levels. At runtime all three configuration levels are merged into one \emph{effective} configuration that applies within the execution context.
+In order to fulfil the workflow configuration and parametrization requirements described in the Analysis Configuration sub-section of Section \ref{sec:workflow_definitions} Butler implements a tri-level configuration mechanism, allowing the user to specify configurations at Workflow, Analysis, and Analysis Run levels. At runtime all three configuration levels are merged into one \emph{effective} configuration that applies within the execution context.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{effective_configuration}
@@ -1349,7 +1345,7 @@ The Butler CLI allows the user to create the various analysis management objects
 \paragraph{\mintinline{shell}{create-workflow}} - creates a new workflow and supports the following parameters:
 \begin{description}
 \item [-n, -\--workflow\_name] - The name of the workflow.
-\item [-v, -\--workfow\_version] - The version of the workflow.
+\item [-v, -\--workflow\_version] - The version of the workflow.
 \item [-c, -\--config\_file\_location] - Path to the workflow configuration JSON file.
 \end{description}
 
@@ -1518,7 +1514,7 @@ Once a connection to the Data Source is established the user can begin building 
 \label{fig:grafana_report_editing}
 \end{figure}
 
-Butler comes with a set of basic dashboards defined out-of-the-box that will aid the user in monitoring of overall system health. The most important dasbhoards are:
+Butler comes with a set of basic dashboards defined out-of-the-box that will aid the user in monitoring of overall system health. The most important dashboards are:
 
 \begin{description}
 \item [Cluster Overview] - Gives a high level overview of the health of the entire cluster, tracking metrics such as load (blended health metric), CPU utilization, Memory, Disk IOPS, Network Packet Rate, Disk Read/Write Rates, and Disk Space
@@ -1562,7 +1558,7 @@ Each Virtual Machine in the cluster runs a log shipper - Filebeat. It is respons
 \label{fig:filebeat}
 \end{figure}
 
-As shown in Figure \ref{fig:filebeat}, Filebeat consits of a set of Prospectors (see Listing \ref{lst:filebeat_prospectors})which monitor and search log directories specified in the Filebeat configuration file. Corresponding to each log file that is found by Prospectors a separate Harvester is started which is responsible for ingesting the log file and sending the information to a Spooler. The Spooler aggregates information sent from Harvesters and forwards it onto Logstash for further parsing.
+As shown in Figure \ref{fig:filebeat}, Filebeat consists of a set of Prospectors (see Listing \ref{lst:filebeat_prospectors})which monitor and search log directories specified in the Filebeat configuration file. Corresponding to each log file that is found by Prospectors a separate Harvester is started which is responsible for ingesting the log file and sending the information to a Spooler. The Spooler aggregates information sent from Harvesters and forwards it onto Logstash for further parsing.
 
 Logstash runs on a separate centralized server and is responsible for parsing the logs forwarded from Filebeat and sending the parsed information on to the Elasticsearch index. The parsing is accomplished via 3 plugins - Input Plugin, Filter Plugin, and Output Plugin (see Figure \ref{fig:logstash_pipeline}). All three plugins are configured via the logstash configuration file.
 
@@ -1579,9 +1575,9 @@ The Filter plugin specifies how to parse the log file i.e. which messages from e
 
 The output plugin then specifies how to pass the filtered messages on to the Elasticsearch engine for indexing.
 
-Elasticsearch is a general purpose scalable text indexing and search engine that supports clustering and sharding of data. Given its longterm use as a storage engine for log data and its scalability it is a great fit for Butler's log storage needs. Elasticsearch works by storing JSON formatted documents (in this case log messages) into an searchable index. 
+Elasticsearch is a general purpose scalable text indexing and search engine that supports clustering and sharding of data. Given its long term use as a storage engine for log data and its scalability it is a great fit for Butler's log storage needs. Elasticsearch works by storing JSON formatted documents (in this case log messages) into an searchable index. 
 
-Just as it is difficult to grasp and analyze performance metrics due to the number of data-points generated, it is as difficult to grasp log messages from a large cluster. We utilize a similar set of visualization tools to the ones we used for metrics, to solve this problem for server logs within Butler. The Kibana dashboarding framework allows us to create graphical dashboards that visualize log events of interest, as well as providing a web-based query interface to the Elasticsearch log messages index. Figure \ref{fig:kibana_pgsql_dashboard} shows a dashboard used in Butler for monitoring the Database Server.
+Just as it is difficult to grasp and analyse performance metrics due to the number of data-points generated, it is as difficult to grasp log messages from a large cluster. We utilize a similar set of visualization tools to the ones we used for metrics, to solve this problem for server logs within Butler. The Kibana dashboarding framework allows us to create graphical dashboards that visualize log events of interest, as well as providing a web-based query interface to the Elasticsearch log messages index. Figure \ref{fig:kibana_pgsql_dashboard} shows a dashboard used in Butler for monitoring the Database Server.
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{kibana_pgsql_dashboard}
@@ -1610,6 +1606,7 @@ Infrastructure-level issues are a wide class off issues that can represent the f
 
 Tracking of individual services is facilitated by monitoring their respective processes. There are several possibilities for doing this offered by telegraf with its \mintinline{shell}{procstat} input plugin and these are used to capture the necessary processes in Butler. See listing \ref{lst:procstat_plugin} for the variety of ways to capture a process employed within Butler. Here, a process can be targeted by capturing the name of its executable, its PID file, a grep pattern on the process name, or the user that owns the process. Capturing the process in this way will generate a set of process-specific metrics that record the process's CPU usage, memory, context switches, and others that can be used in detecting and diagnosing issues.  
 
+\begingroup
 \captionof{listing}{Butler Analysis configuration for VCF filtering.\label{lst:procstat_plugin}}
 \begin{minted}
 [
@@ -1634,6 +1631,7 @@ pattern = ".*airflow scheduler.*"
 [[inputs.procstat]]
 user = "airflow"
 \end{minted}
+\endgroup
 
 Tracking detailed metrics at the payload level beyond what is offered by procstat is, by definition, not possible to do in a completely generic fashion because every user of the framework will potentially run their own custom payloads that need to be individually instrumented with metrics. In usage scenarios where the payload is of a particularly experimental nature (such as scientific algorithms that are in early stages of development), or the analysis is performed at a large scale where the runtime is expected to be in months, and there is access to the underlying tools' source code, it may be desirable to add metrics emitting code within the individual tools that are run by the Butler framework. This is supported in Butler via the popular \mintinline{shell}{statsd}\autocite{statsd} package which has client libraries in every major programming language and allows any software to capture and emit several kinds of custom metrics in a format that is understood by a wider variety of metrics collection back-ends, including InfluxDB. The metric types that can be captured are:
 
@@ -1662,7 +1660,7 @@ $f\colon \mathbb{R^{n}} \mapsto \mathbb{R}$ - a function of $\vec{\mathbf{M_n}}$
 $op \in \{>,<, >=, <=, ==, !=\}$ - is a comparison operator\\
 $C \in R$ - is an arbitrary constant\\
 
-Thus, each rule continuously (discretized by metric sampling frequency) computes a summary statistic over a sample of $n$ most recent observations of metric of interest $M$, and compares it to a threshold value $C$, firing off an event when the comparison specified in $op$ succeeds. The full collection of rules then constitutes a full specification of the set of anomalous conditions for which automated action can be taken.
+Thus, each rule continuously (discretised by metric sampling frequency) computes a summary statistic over a sample of $n$ most recent observations of metric of interest $M$, and compares it to a threshold value $C$, firing off an event when the comparison specified in $op$ succeeds. The full collection of rules then constitutes a full specification of the set of anomalous conditions for which automated action can be taken.
 
 We implement this rule-based system in Butler by leveraging an open-source product called Kapacitor\autocite{kapacitor} which provides a rule definition and execution environment that integrates well with our metrics data store InfluxDB and provides a wide range of options for event handling, including completely custom event handlers, which we make use of to implement the automated healing functionality in Butler. Kapacitor rule definitions make use of a Domain Specific Language (DSL) called TICKscript to implement the specification of rule predicates described in \ref{eq:1}.
 
@@ -1705,7 +1703,7 @@ Butler defines a variety of rules using TICKscript that capture anomalies that a
 
 Metrics are comprehensively collected within Butler and anomaly detection signals are generated via a set of rules as previously described, but the actual automated self-healing capabilities require a separate component and no generic open source components exist that accomplish this. We thus implement a custom Self-Healing Agent within Butler. The functionality is exposed as a Python package with a CLI interface that is able to accomplish a number of healing tasks on various machines in the Butler cluster.
 
-The self-healing agent relies on the configuration management capabilities available in Butler via Saltstack in order to communicate healing instructions to other hosts. Specifically, Saltstack provides a programmatic interface through which a salt-master can be controlled. This interface is called salt-api. In addition, there exists a module called \mintinline{shell}{pepper} that allows for the salt-api to be communicated with by a remote program via openssl. Butler uses this mechanism to communicate with, and restart various failed services in an automated fashion. For instance, in the case of a failed Airflow Scheduler service (see Listing \ref{lst:self_healing_airflow_scheduler_restart}), the local telegraf metrics collector monitors the \mintinline{shell}{airflow-scheduler} service, and sends updated metrics to the monitoring-server every 10 seconds, where the data is stored in InfluxDB. A kapacitor rule runs on the monitoring-server every 10 seconds and evaluates whether the \mintinline{shell}{airflow-scheduler} is still sending data. If there is no data for longer than 3 minutes, the rule is triggered. As a result the Self-Healing Agent is requested to restart the \mintinline{shell}{airflow-scheduler} service. The agent itself does not know how to communicate with other machines in the cluster, but knows how to communicate with the salt-master. It establishes a salt-api connection to the salt-master and asks for the VM that has the tracker role to restart its \mintinline{shell}{airflow-scheduler} service. The salt-master knows about all of the VMs in the Butler cluster and issues the restart service command, placing the service back in a functioning state. A Slack notification is sent to alert a human operator that an outage has occurred and has been resolved. The total time of the outage is slightly longer than 3 minutes.
+The self-healing agent relies on the configuration management capabilities available in Butler via Saltstack in order to communicate healing instructions to other hosts. Specifically, Saltstack provides a programmatic interface through which a salt-master can be controlled. This interface is called salt-api. In addition, there exists a module called \mintinline{shell}{pepper} that allows for the salt-api to be communicated with by a remote program via openSSL. Butler uses this mechanism to communicate with, and restart various failed services in an automated fashion. For instance, in the case of a failed Airflow Scheduler service (see Listing \ref{lst:self_healing_airflow_scheduler_restart}), the local telegraf metrics collector monitors the \mintinline{shell}{airflow-scheduler} service, and sends updated metrics to the monitoring-server every 10 seconds, where the data is stored in InfluxDB. A kapacitor rule runs on the monitoring-server every 10 seconds and evaluates whether the \mintinline{shell}{airflow-scheduler} is still sending data. If there is no data for longer than 3 minutes, the rule is triggered. As a result the Self-Healing Agent is requested to restart the \mintinline{shell}{airflow-scheduler} service. The agent itself does not know how to communicate with other machines in the cluster, but knows how to communicate with the salt-master. It establishes a salt-api connection to the salt-master and asks for the VM that has the tracker role to restart its \mintinline{shell}{airflow-scheduler} service. The salt-master knows about all of the VMs in the Butler cluster and issues the restart service command, placing the service back in a functioning state. A Slack notification is sent to alert a human operator that an outage has occurred and has been resolved. The total time of the outage is slightly longer than 3 minutes.
 
 \begin{figure}[h]
     \includegraphics[scale=0.55]{butler_chronograf_alert_barchart}
@@ -1722,6 +1720,7 @@ Typically, Butler clusters are launched from a machine that is external to the c
 
 Under this scheme a public/private GPG keypair is created and the public key is imported on the machine that is holding the secret data and will perform the encryption. The private key is imported on the salt-master machine of the Butler cluster. Secret data is encrypted and stored as a string literal in a salt pillar variable that can be checked into source control, see Listing \ref{lst:gpg_encrypted_pillar}.
 
+\begingroup
 \captionof{listing} {Storing GPG encrypted data in a salt pillar variable. \label{lst:gpg_encrypted_pillar}}
 \begin{minted}
 [
@@ -1756,9 +1755,11 @@ terraform_state: /opt/eosc_pilot/deployment/embassy/terraform.tfstate
 terraform_vars: /opt/eosc_pilot/deployment/embassy/ebi_credentials.tfvars
 terraform_provider: openstack
 \end{minted}
+\endgroup
 
 When the pillar variable is targeted to the VM that runs the self-healing agent and needs to be able to execute terraform commands, the salt-master uses its copy of the private key to decrypt the file contents and deliver them to the appropriate VM as a file (see Listing \ref{lst:gpg_decrypted_pillar}) that is ready to be consumed by terraform.
 
+\begingroup
 \captionof{listing} {Retrieving contents of a GPG encrypted pillar variable and storing them in a file. \label{lst:gpg_decrypted_pillar}}
 \begin{minted}
 [
@@ -1778,6 +1779,7 @@ baselinestretch=1.2
     - mode: 600
     - makedirs: True
 \end{minted}
+\endgroup
 
 Because of the ephemeral nature of cloud-based VMs it is not advisable to simply store terraform state in a file as may be sufficient on a user's computer. Section \ref{sec:design_consul} describes Consul, which is a software package that handles Service Discovery concerns in Butler, but also provides a distributed key-value store. In order to support a more robust storage back-end for terraform state we ingest this state data into a Consul key-value store, which terraform can subsequently interact with directly. This requires setting some terraform initialization parameters to indicate a Consul back-end and a location of the terraform state file to ingest. Because the key-value store is replicated across several Consul nodes it is robust to individual VM outages and supports the deployment of several self-healing agents against one back-end as may be necessary for scalability.
 
@@ -1786,28 +1788,24 @@ Listing \ref{lst:self_healing_relaunch_vm} shows self-healing agent code excerpt
 
 \subsubsection{Self-Healing Caveats}
 
-Self-healing is a powerful concept and can play a huge role in facilitating the smooth operation of large computational clusters with minimal human intervention. It is possible though, to over-automate, ending up in a situation where rules are frequently triggered under false conditions, causing needless restarts and wasted system resources. This is due to the sheer number of different things that can go wrong in a large-scale distributed system and the relative difficuluty of expressing the resultant conditions and resolution steps in a manner that isn't prone to false positive signals and low robustness. Thus, it is imperative for the Butler user to approach self-healing as a component of the system that requires tuning, project-to-project and environment-to-environment. 
+Self-healing is a powerful concept and can play a huge role in facilitating the smooth operation of large computational clusters with minimal human intervention. It is possible though, to over-automate, ending up in a situation where rules are frequently triggered under false conditions, causing needless restarts and wasted system resources. This is due to the sheer number of different things that can go wrong in a large-scale distributed system and the relative difficulty of expressing the resultant conditions and resolution steps in a manner that isn't prone to false positive signals and low robustness. Thus, it is imperative for the Butler user to approach self-healing as a component of the system that requires tuning, project-to-project and environment-to-environment. 
 
 When deciding which aspects of the system operational behaviour to automate, the user should keep in mind the level of regularity with which particular classes of issues occur, the reliability of the metrics signal in detecting these issues, and the potential benefits of automated action versus the potential costs of acting on false-positive signals. This can require getting detailed knowledge of the operational profile of the individual algorithms that are being executed as part of a particular project in order to understand what normal and unnormal operating conditions look like so that these may be encoded as anomaly detection rules. This is most easily accomplished by careful observation and analysis of monitoring dashboards to identify important patterns. With the self-healing system it is advised to start with a small number of robust signals, and build up the rule complexity as the users' level of understanding and sophistication with the Butler framework increases in order to reap the most benefits.
 
 \subsection{Service Discovery} 
 \label{sec:design_consul}
 
+\begin{figure}[h]
+  \includegraphics[scale=0.1]{consul_architecture}
+  \centering
+  \caption {Consul high level architecture (from \url{https://www.consul.io/docs/internals/architecture.html)}.}
+  \label{fig:consul_architecture}
+  \end{figure} 
+
 The Butler framework consists of many different services that reside on a number of different servers and need to be able to communicate with each other. To accomplish this in a flexible manner we need to establish a Service Registry so that IP addresses of servers that host particular services can be looked up by service name. To accomplish this Butler uses an Open Source service discovery framework called Consul\autocite{Consul_by_HashiCorp}.
 
-Consul provides a cross-data-center distributed Service Name Registry that is available via HTTP and DNS protocols. In addition to registry capabilities Consul provides basic health checks for the underlying services, testing whether the IP and port the service is supposed to be listening on are actually reachable.
-
-\begin{figure}[h]
-\includegraphics[scale=0.1]{consul_architecture}
-\centering
-\caption {Consul high level architecture (from \url{https://www.consul.io/docs/internals/architecture.html)}.}
-\label{fig:consul_architecture}
-\end{figure} 
+Consul provides a cross-data-center distributed Service Name Registry that is available via HTTP and DNS protocols (see Figure \ref{fig:consul_architecture}). In addition to registry capabilities Consul provides basic health checks for the underlying services, testing whether the IP and port the service is supposed to be listening on are actually reachable.
 
 Each VM in the cluster runs a Consul Agent which can be run in Server and Client modes. The set of Consul Servers form a Raft cluster and provide consensus-based responses to service lookup requests from clients. When new VMs are started they need to join the Consul cluster in order to be able to perform lookups, doing so requires knowing the IP address of at least one server. In Butler we use Saltstack's configuration capabilities to convey a Consul Server's IP address to any new VM that is brought up. 
 
 Registering a service with Consul is a matter of creating a JSON formatted configuration file that declares the service (see Listing \ref{lst:consul_postgres_service}). A Consul agent running on that VM will ingest the service definition and relay it to a Consul Server which will then circulate it amongst the other servers. The service will then be available for DNS lookups. The service from Listing \ref{lst:consul_postgres_service} will have the name \mintinline{shell}{postgresql.service.consul}, for example.
-
-
-
-	

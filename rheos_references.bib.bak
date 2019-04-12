@@ -2575,4 +2575,23 @@
   publisher = {Nature Publishing Group},
 }
 
+@Article{korbel2013criteria,
+  author    = {Korbel, Jan O and Campbell, Peter J},
+  title     = {Criteria for inference of chromothripsis in cancer genomes},
+  journal   = {Cell},
+  year      = {2013},
+  volume    = {152},
+  number    = {6},
+  pages     = {1226--1236},
+  publisher = {Elsevier},
+}
+
+@Online{giab_ftp,
+  url = {ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/NA12878/NIST\_NA12878\_HG001\_HiSeq\_300x/},
+}
+
+@Online{1kgp_ftp,
+  url = {ftp://ftp.ncbi.nih.gov/1000genomes/ftp/technical/reference/phase2\_reference\_assembly\_sequence/},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
