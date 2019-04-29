@@ -18,7 +18,7 @@ The Next Generation Sequencing methodology\autocite{mardis2008next} relies on fr
 \begin{figure}[H]
 \includegraphics[scale=0.5]{costpergenome2015_4}
 \centering
-\caption {Cost of DNA sequencing\autocite{The_Cost_of_Sequencing_a_Human_Genome_2016-11-04}}
+\caption {Cost of DNA sequencing (taken from \autocite{The_Cost_of_Sequencing_a_Human_Genome_2016-11-04})}
 \label{fig:costpergenome2015_4}
 \end{figure}
 
@@ -35,13 +35,13 @@ Studying cancer genomes is more complex and expensive than studying the genomes 
 \begin{figure}[H]
 \includegraphics[scale=0.4]{nature12912-f5}
 \centering
-\caption {Sequencing sample size required by mutation rate\autocite{lawrence2014discovery}.}
+\caption {Sequencing sample size required by mutation rate (taken from \autocite{lawrence2014discovery}).}
 \label{fig:nature12912-f5}
 \end{figure}
 
 Although there is a large number of identified mutations that are implicated in cancer (2,002,811 SNV,  10,534 gene fusions, 61,299 genome rearrangements, 695,504 CNV segments in COSMIC v70; August 2014)\autocite{forbes2015cosmic}, each mutation has a low chance of being present in any given tumour. Figure \ref{fig:nature12912-f5} demonstrates the sample size required to have 90\% statistical power to identify  90\% of the variants that occur with a set frequency in tumours with varying background mutation rates. Thus, identifying 90\% of the mutations occurring with a frequency of at most 1\% in Lung Adenocarcinoma requires a sample size of at least 10,000 patients. The necessity to sequence large cohorts of patients in order to be able to comprehensively detect  cancer related genomic variants has led to the creation of several large scale cancer sequencing studies.
 
-\section{Computational Methods for Next Generation Sequencing}
+\section[Computational Methods for NGS]{Computational Methods for Next Generation Sequencing}
 Because the size of a typical genome is millions to billions of basepairs long, and current DNA sequencing technology frequently generates errors during the sequencing process, requiring multiple samples of each genomic location to be generated, the amount of data required to be examined in order to characterize even a single sample is well beyond the capabilities of any human. Thus, a multitude of computational approaches are required in order to make the task tractable for individual samples as well as cohorts, and entire populations.
 
 The task of comprehensive characterization of genomic data for an individual is typically decomposed into a series of computational steps, each with its own data representation, and typically developed by a separate research group, which are then assembled into computational pipelines and executed by workflow engines on diverse computing environments. Our goal in this section is to enumerate and describe the individual steps and to provide a survey of the key computational tools and data formats that presently form the set of best practices in this rapidly evolving branch of science. Since Rheos is designed to improve upon these best practices we identify in each section the key mathematical and algorithmic ideas that underpin each approach in order to adapt and translate them into the Rheos framework.
@@ -66,7 +66,7 @@ Structural variants (SVs) are more large scale genomic rearrangements that occur
 
 Once variants (SNPs/SNVs, Indels, and SVs) have been comprehensively called, a filtering step is necessary because callers are typically initially tuned for highest sensitivity in order to detect the most variants, thus admitting an increased number of false positive calls. Additionally, because calling of SNPs and SVs typically occurs separately by different tools there can be significant call-set overlap where the SNP caller sees a region as a group of SNPs, whereas the SV caller will see it as a single breakpoint. These overlaps need to be resolved in order to avoid redundant calls. A number of filtering approaches exist, some of which rely on heuristics such as strand bias, or read support to filter out low quality variants. Other filtering approaches rely on curated variant databases or machine learning methods in order to reduce the number of false positive calls. One popular filtering approach involves ensemble calling where several different variant calling methods are used on the same dataset and a variant is excluded unless it is called by multiple tools. These methods are typically able to reduce the false positive rate of the call-set by 5-10\% while only nominally affecting the false negative rate.
 
-When a filtered high quality call-set has been prepared it is of interest to determine which of the variants are likely to have an effect on the organism's phenotype and which variants are likely to have no consequence. This is accomplished via variant annotation. The annotation process consults a database of known genes and other genomic elements (promoters, enhancers, etc.) to determine the likely consequence of each variant based on the type of mutation that it represents i.e. a synonymous mutation (that doesn't change the underlying amino acid) is likely to have no phenotypic effect, whereas a stop gain mutation inside the coding region of a known gene may indicate a potential loss of function of that gene and may thus have a considerable effect on the observed phenotype. When annotating somatic mutations it is important to consider known cancer genes and delineate whether mutations are "passengers" or "drivers" depending on whether they are thought to be driving the carcinogenesis process by constitutively activating a cancer gene or deactivating a tumour suppressor, or they are simply acquired as part of the genomic instability that is induced by carcinogenesis. An outcome of the variant annotation process then, is a list of somatic or germline variants accompanied by a designation of the known genomic features that they fall in, along with an assigned functional impact. This is typically the last step of an NGS analysis pipeline after which the variant call-set is considered completed and can be used for any number of downstream analyses depending on the particular research question or clinical application being considered. For instance, the variants may be used as input into a Genome Wide Association Study (GWAS), a Quantitative Trait Locus (QTL) analysis, a rare variant association study, or as input into the computation of a clinical biomarker. 
+When a filtered high quality call-set has been prepared it is of interest to determine which of the variants are likely to have an effect on the organism's phenotype and which variants are likely to have no consequence. This is accomplished via variant annotation. The annotation process consults a database of known genes and other genomic elements (promoters, enhancers, etc.) to determine the likely consequence of each variant based on the type of mutation that it represents i.e. a synonymous mutation (that does not change the underlying amino acid) is likely to have no phenotypic effect, whereas a stop gain mutation inside the coding region of a known gene may indicate a potential loss of function of that gene and may thus have a considerable effect on the observed phenotype. When annotating somatic mutations it is important to consider known cancer genes and delineate whether mutations are "passengers" or "drivers" depending on whether they are thought to be driving the carcinogenesis process by constitutively activating a cancer gene or deactivating a tumour suppressor, or they are simply acquired as part of the genomic instability that is induced by carcinogenesis. An outcome of the variant annotation process then, is a list of somatic or germline variants accompanied by a designation of the known genomic features that they fall in, along with an assigned functional impact. This is typically the last step of an NGS analysis pipeline after which the variant call-set is considered completed and can be used for any number of downstream analyses depending on the particular research question or clinical application being considered. For instance, the variants may be used as input into a Genome Wide Association Study (GWAS), a Quantitative Trait Locus (QTL) analysis, a rare variant association study, or as input into the computation of a clinical biomarker. 
 
 \subsection{File Formats}
 \label{sec:bg_file_formats}
@@ -78,7 +78,7 @@ DNA sequencing studies generate large amounts of data - a single whole-genome sa
 The FASTA/FASTQ file format is a text file format developed at The Sanger Institute for representing genomic sequencing reads\autocite{cock2009sanger}. Each read in the file consists of four lines:
 
 \begin{itemize}
-    \item The first is a unique identifier (that encodes some information about the sequencing process). For example - \@HWUSI-EAS100R:6:73:941:1973\#0/1
+    \item The first is a unique identifier (that encodes some information about the sequencing process). For example - HWUSI-EAS100R:6:73:941:1973\#0/1
     \item The second is the read sequence itself: $S = \{s_i: s \in\{A,C,G,T,N\}\}$. For example - ACGTCCCGTCCCTNTCCA
     \item The third is a $+$ sign acting as a separator.
     \item The fourth is a set of per-base quality scores, represented on the Phred scale, that represent an estimate of the probability that the base has been called correctly. If the error probability is defined as $\epsilon$ then $Q_{phred} = -10\times\log_{10}(\epsilon)$ and conversely $\epsilon = 10^{\frac{-Q_{phred}}{10}}$. In the actual file Phred scores are represented with ASCII characters from !"\#\$\%\&'()*+,-./0123456789:;<=>?@ABCDEFG HIJKLMNOPQRSTUVWXYZ[\textbackslash]\^\_\`abcdefghijklmnopqrstuvwxyz\{|\}\textasciitilde ordered by increasing quality, where ! is the lowest possible quality and \textasciitilde is the highest.
@@ -504,7 +504,7 @@ Initially, algorithms for mapping sequencing reads (such as Maq\autocite{li2008m
 \begin{figure}[H]
     \includegraphics[scale=0.55]{aligner_comparison_2018}
     \centering
-    \caption {Comparison of several aligners on simulated a)long reads >1000 bp, and b) short reads 150bp.\autocite{li2018minimap2}}
+    \caption {Comparison of several aligners on simulated a)long reads >1000 bp, and b) short reads 150bp (taken from \autocite{li2018minimap2}).}
     \label{fig:aligner_comparison_2018}
 \end{figure}
 
@@ -513,7 +513,7 @@ String search is a well studied field, and many genome aligners use the equivale
 \begin{figure}[H]
     \includegraphics[scale=0.5]{suffix_tree_array_bwt}
     \centering
-    \caption {Equivalence between a Suffix Tree, Suffix Array, and the BWT matrix of the string BANANA.\autocite{langmead_teaching}}
+    \caption {Equivalence between a Suffix Tree, Suffix Array, and the BWT matrix of the string BANANA (taken from \autocite{langmead_teaching}).}
     \label{fig:suffix_tree_array_bwt}
 \end{figure}
 
@@ -524,7 +524,7 @@ A suffix \emph{trie} $T$ is a tree data structure that given a string $s=c_1,c_2
 \begin{figure}[H]
     \includegraphics[scale=0.5]{suffix_trie}
     \centering
-    \caption {Suffix trie of string $abaaba\$$.\autocite{langmead_teaching}}
+    \caption {Suffix trie of string $abaaba\$$ (taken from \autocite{langmead_teaching}).}
     \label{fig:suffix_trie}
 \end{figure}
 
@@ -533,7 +533,7 @@ Because every substring of $s$ is a prefix of some suffix of $s$, given a search
 \begin{figure}[H]
     \includegraphics[scale=0.3]{suffix_tree_1}
     \centering
-    \caption {Create suffix tree by coalescing non-branching paths into single nodes.\autocite{langmead_teaching}}
+    \caption {Create suffix tree by coalescing non-branching paths into single nodes (taken from \autocite{langmead_teaching}).}
     \label{fig:suffix_tree_1}
 \end{figure}
 
@@ -542,7 +542,7 @@ The size of the tree can be reduced by coalescing all non-branching subpaths of 
 \begin{figure}[H]
     \includegraphics[scale=0.3]{suffix_tree_2}
     \centering
-    \caption {Reduce size by replacing substrings by offsets into the original string.\autocite{langmead_teaching}}
+    \caption {Reduce size by replacing substrings by offsets into the original string (taken from \autocite{langmead_teaching}).}
     \label{fig:suffix_tree_2}
 \end{figure}
 
@@ -551,7 +551,7 @@ The size can be further reduced to $\mathcal{O}(|s|)$ by replacing string nodes 
 \begin{figure}[H]
     \includegraphics[scale=0.3]{suffix_tree_3}
     \centering
-    \caption {Aid search by storing index of substring in leaves.\autocite{langmead_teaching}}
+    \caption {Aid search by storing index of substring in leaves (taken from \autocite{langmead_teaching}).}
     \label{fig:suffix_tree_3}
 \end{figure}
 
@@ -567,7 +567,7 @@ Suffix arrays were developed by Manber and Myers\autocite{manber1993suffix} as a
 \begin{figure}[H]
     \includegraphics[scale=0.35]{bwt_bowtie}
     \centering
-    \caption {a) Creating the BWT of a string. b) All substrings with the same prefix occupy adjacent rows. c) The original string can be recovered from the BWT by using the LF rule.\autocite{langmead2009ultrafast}}
+    \caption {a) Creating the BWT of a string. b) All substrings with the same prefix occupy adjacent rows. c) The original string can be recovered from the BWT by using the LF rule (taken from \autocite{langmead2009ultrafast}).}
     \label{fig:bwt_bowtie}
 \end{figure}
 
@@ -580,7 +580,7 @@ Alternatively the BWT can be constructed from the suffix array via:
     \end{cases}
 \end{equation}, per \autocite{simpson2010efficient}
 
-The entire original string can be recovered from the BWT in the following manner. The last column is the BWT. The first column is the lexicographically sorted BWT. Find the row that starts with $\$$. The character in the last column in that row is the last character of original string $s$ ($g$ in the example above). Find the first occurrence of that character in the first column. Look up the character in the last column of that row ($c$ in the example above). This is the second-last character of $s$. Note the index of its occurrence in the last column (it's a second $c$ in the example). Find the row with the same character and the same index in the first column (second $c$ in the first column). The last character in that row is the second-last character of $s$. Repeat this process until the last character in a row is $\$$. This recovers the original string.
+The entire original string can be recovered from the BWT in the following manner. The last column is the BWT. The first column is the lexicographically sorted BWT. Find the row that starts with $\$$. The character in the last column in that row is the last character of original string $s$ ($g$ in the example above). Find the first occurrence of that character in the first column. Look up the character in the last column of that row ($c$ in the example above). This is the second-last character of $s$. Note the index of its occurrence in the last column (it is a second $c$ in the example). Find the row with the same character and the same index in the first column (second $c$ in the first column). The last character in that row is the second-last character of $s$. Repeat this process until the last character in a row is $\$$. This recovers the original string.
 
 \paragraph{Bowtie}
 
@@ -589,7 +589,7 @@ Bowtie is a popular aligner developed by Ben Langmead in 2009, with a focus on f
 \begin{figure}[H]
     \includegraphics[scale=0.5]{bowtie_pipeline}
     \centering
-    \caption Steps used by Bowtie 2 alignment.\autocite{langmead2012fast}
+    \caption {Steps used by Bowtie 2 alignment (taken from \autocite{langmead2012fast}).}
     \label{fig:bowtie_pipeline}
 \end{figure}
 
@@ -602,20 +602,20 @@ The FM index search produces sets of ranges between which each seed matches. See
 \begin{figure}[H]
     \includegraphics[scale=0.5]{bowtie_2_performance}
     \centering
-    \caption {Performance comparison of Bowtie 2 to other callers on simulated data a) 100 and 150 bp unpaired, b) 100x100 and 150x150 paired, and c) 250 and 400 long reads.\autocite{langmead2012fast}}
+    \caption {Performance comparison of Bowtie 2 to other callers on simulated data a) 100 and 150 bp unpaired, b) 100x100 and 150x150 paired, and c) 250 and 400 long reads (taken from \autocite{langmead2012fast}).}
     \label{fig:bowtie_2_performance}
 \end{figure}
 
-Bowtie uses information about paired-end reads to attempt to perform a more accurate alignment of the pairs. When the user supplies an expected DNA fragment length and read orientation and one read in a pair is fully aligned, Bowtie calculates a window of reference coordinates where the other read in the pair would be expected to reside and attempts to align the other read in that window using dynamic programming. If it's not able to produce a high quality alignment in this fashion it will attempt to align the other read using the full normal procedure. 
+Bowtie uses information about paired-end reads to attempt to perform a more accurate alignment of the pairs. When the user supplies an expected DNA fragment length and read orientation and one read in a pair is fully aligned, Bowtie calculates a window of reference coordinates where the other read in the pair would be expected to reside and attempts to align the other read in that window using dynamic programming. If it is not able to produce a high quality alignment in this fashion it will attempt to align the other read using the full normal procedure. 
 
 A performance comparison by the tool's author Ben Langmead from \autocite{langmead2012fast} is shown in Figure \ref{fig:bowtie_2_performance}. Bowtie 2 can be seen to be the same or slightly better than BWA and significantly better than Bowtie and SOAP2 on the simulated dataset.
 
 \paragraph{BWA}
 
-BWA is a tool by Heng Li that implements a series of algorithms for genome alignment based on the BWT and the FM index and described in a series of papers - \autocites{li2010fast}{li2009fast}{li2013aligning}. Although the original BWA algorithm was focused towards reads that are fewer than 50 basepairs long and is no longer relevant, the subsequent BWA-SW, and BWA-MEM algorithms remain very popular. Since BWA-MEM is seen as the ultimate successor to the previous BWA algorithms we focus our discussion on this implementation of alignment. The following common notation is adopted (see Table \ref{tab:bwa_mem_notation})
+BWA is a tool by Heng Li that implements a series of algorithms for genome alignment based on the BWT and the FM index and described in a series of papers - \autocites{li2009fast}{li2010fast}{li2013aligning}. Although the original BWA algorithm was focused towards reads that are fewer than 50 basepairs long and is no longer relevant, the subsequent BWA-SW, and BWA-MEM algorithms remain very popular. Since BWA-MEM is seen as the ultimate successor to the previous BWA algorithms we focus our discussion on this implementation of alignment. The following common notation is adopted (see Table \ref{tab:bwa_mem_notation})
 
 \begin{table}[htb!]
-\caption{BWA Common notation\autocites{li2012exploring}{li2013aligning}}
+\caption{BWA Common notation\autocites{li2013aligning}{li2012exploring}}
 \label{tab:bwa_mem_notation}
 {\begin{tabular}{lp{7cm}}
 \toprule
@@ -758,7 +758,7 @@ The seeds are extended using a banded affine gap-penalty dynamic programming ali
 \begin{figure}[H]
     \includegraphics[scale=0.5]{bwa_mem_comparison}
     \centering
-    \caption Performance of multiple aligners on simulated single-end and paired-end 101 bp reads.\autocite{li2013aligning}
+    \caption {Performance of multiple aligners on simulated single-end and paired-end 101 bp reads (taken from \autocite{li2013aligning}).}
     \label{fig:bwa_mem_comparison}
 \end{figure}
 
@@ -772,7 +772,7 @@ Given a string $T_i=a_1a_2...a_n$ where $a_i \in \Sigma = \{A,C,G,T,N\}$, a k-me
 
 \begin{figure}[h!]
     \includegraphics[scale=0.55]{k_w_minimizer}
-    \caption Examples of minimizers - a) (5,3)-minimizer, b) (6,7)-minimizer.\autocite{roberts2004reducing}
+    \caption {Examples of minimizers - a) (5,3)-minimizer, b) (6,7)-minimizer (taken from \autocite{roberts2004reducing}.}
     \label{fig:k_w_minimizer}
 \end{figure}
 
@@ -783,12 +783,12 @@ On simulated long reads (Figure \ref{fig:aligner_comparison_2018} a)), minimap2 
 \subsection{Raw Data QC} 
 \label{sec:bg_raw_data_qc}
 
-The data that is generated as part of NGS experiments can have widely varying quality, and may suffer from systematic biases introduced by the experimental protocol employed, the technology used, as well as individual events such as sample contamination\autocites{lauss2013monitoring}{aird2011analyzing}{dohm2008substantial}{cibulskis2011contest}. The effect of low quality data such as sequencing errors on downstream analysis can be quite significant, not only because it may introduce false positive variants in the final output, but also because it can produce a large number of potentially variant sites that need to be evaluated and will consume a large amount additional computational resources to eventually rule out. A wide variety of computational methods exist for examining the data after it has been generated in order to identify and fix or filter out low quality data. The most widely used tools include Picard\autocite{Picard2018toolkit}, FastQC\autocite{andrews2010fastqc}, QC Toolkit\autocite{patel2012ngs}, QC-Chain\autocite{zhou2013qc}, and FASTX-Toolkit\autocite{gordon2010fastx}. These tools evaluate data at two granularities - read-level, and sample-level. Some of these can act on sequencing data pre-alignment, while others either work post-alignment or actively make use of a built-in aligner. The QC process is generally organized into a QC pipeline (see Figure \ref{fig:qc-chain}). Furthermore, some tools, like FastQC and Picard tend to only collect various QC metrics and generate reports, leaving the filtering based on these metrics up to the user, while other tools, such as QC Toolkit and QC-Chain perform the actual filtering themselves.
+The data that is generated as part of NGS experiments can have widely varying quality, and may suffer from systematic biases introduced by the experimental protocol employed, the technology used, as well as individual events such as sample contamination\autocites{cibulskis2011contest}{dohm2008substantial}{lauss2013monitoring}{aird2011analyzing}. The effect of low quality data such as sequencing errors on downstream analysis can be quite significant, not only because it may introduce false positive variants in the final output, but also because it can produce a large number of potentially variant sites that need to be evaluated and will consume a large amount additional computational resources to eventually rule out. A wide variety of computational methods exist for examining the data after it has been generated in order to identify and fix or filter out low quality data. The most widely used tools include Picard\autocite{Picard2018toolkit}, FastQC\autocite{andrews2010fastqc}, QC Toolkit\autocite{patel2012ngs}, QC-Chain\autocite{zhou2013qc}, and FASTX-Toolkit\autocite{gordon2010fastx}. These tools evaluate data at two granularities - read-level, and sample-level. Some of these can act on sequencing data pre-alignment, while others either work post-alignment or actively make use of a built-in aligner. The QC process is generally organized into a QC pipeline (see Figure \ref{fig:qc-chain}). Furthermore, some tools, like FastQC and Picard tend to only collect various QC metrics and generate reports, leaving the filtering based on these metrics up to the user, while other tools, such as QC Toolkit and QC-Chain perform the actual filtering themselves.
 
 \begin{figure}[h!]
     \includegraphics[scale=0.85]{journal.pone.0060234.g001}
     \centering
-    \caption {The QC-Chain pipeline involves trimming low quality bases, removal of adapter sequences, removal of duplicate reads, and contamination detection.\autocite{zhou2013qc}.}
+    \caption {The QC-Chain pipeline involves trimming low quality bases, removal of adapter sequences, removal of duplicate reads, and contamination detection (taken from \autocite{zhou2013qc}).}
     \label{fig:qc-chain}
 \end{figure}
 
@@ -804,7 +804,7 @@ At individual read level the following QC measures are of interest:
 \begin{figure}[h!]
     \includegraphics[scale=0.65]{base_errors_read_position}
     \centering
-    \caption {Frequency of wrong base calls in Illumina reads based on position in the read from 5' to 3'.\autocite{dohm2008substantial}.}
+    \caption {Frequency of wrong base calls in Illumina reads based on position in the read from 5' to 3' (taken from \autocite{dohm2008substantial}).}
     \label{fig:base_errors_read_position}
 \end{figure}
 
@@ -816,7 +816,7 @@ At the sample level the following QC measures are important:
     \begin{figure}[H]
         \includegraphics[scale=0.35]{fastqc_per_base_quality}
         \centering
-        \caption {from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
+        \caption {Taken from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
         \label{fig:fastqc_per_base_quality}
     \end{figure} 
     \item [Per-read Quality Distribution] - distribution of average read qualities.
@@ -824,14 +824,14 @@ At the sample level the following QC measures are important:
     \begin{figure}[H]
         \includegraphics[scale=0.35]{fastqc_sequence_content}
         \centering
-        \caption {from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
+        \caption {Taken from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
         \label{fig:fastqc_sequence_content}
     \end{figure} 
     \item [Per-read GC Content Distribution] - distribution of average GC content per read.
     \begin{figure}[H]
         \includegraphics[scale=0.35]{fastqc_gc_content}
         \centering
-        \caption {from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
+        \caption {Taken from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
         \label{fig:fastqc_gc_content}
     \end{figure}
     
@@ -843,7 +843,7 @@ At the sample level the following QC measures are important:
     \begin{figure}[H]
         \includegraphics[scale=0.35]{fastqc_adapter_content}
         \centering
-        \caption {from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
+        \caption {Taken from https://www.bioinformatics.babraham.ac.uk/projects/fastqc.}
         \label{fig:fastqc_adapter_content}
     \end{figure} 
     
@@ -868,7 +868,7 @@ SNPs are the most common type of genomic variant, with every individual carrying
 \begin{figure}[H]
     \includegraphics[scale=0.55]{genetic_architecture_of_cancer_risk}
     \centering
-    \caption {Distribution of mutations by population frequency against phenotypic effect size.\autocite{weitzel2011genetics}.}
+    \caption {Distribution of mutations by population frequency against phenotypic effect size (taken from \autocite{weitzel2011genetics}).}
     \label{fig:genetic_architecture_of_cancer_risk}
 \end{figure}
 
@@ -886,7 +886,7 @@ These tools have been selected because they have been developed independently, a
 \begin{figure}[H]
     \includegraphics[scale=0.45]{fb_hc_st_pt}
     \centering
-    \caption {Comparison of samtools,freebayes, GATK, and platypus on three benchmark data sets - Syndip, GIAB, and PlatGen. Here FPPM - number of false positives per megabase of sequence, and FNR - false negative rate = 100xFN/(TP+FN).\autocite{li2018synthetic}.}
+    \caption {Comparison of samtools,freebayes, GATK, and platypus on three benchmark data sets - Syndip, GIAB, and PlatGen. Here FPPM - number of false positives per megabase of sequence, and FNR - false negative rate = 100xFN/(TP+FN) (taken from \autocite{li2018synthetic}).}
     \label{fig:fb_hc_st_pt}
 \end{figure}
 
@@ -915,7 +915,7 @@ Although the samtools framework could be extended to support calling multi-allel
     \end{tabular}}
 \end{table}
 
-It is additionally assumed that there are $n$ individuals being sequenced with the $i$-th individual having ploidy $m_i$ (typically 2 in practice). At a particular genomic locus, the sequence read data for the $i$-th individual is $d_i$ and the genotype is $g_i$, an integer in $[0,m_i]$, counting the number of reference alleles in the individual at that locus. Furthermore, it is assumed for simplicity that data at individual genomic loci are independent (which isn't necessarily true), as are sequencing and mapping errors between loci and individuals.
+It is additionally assumed that there are $n$ individuals being sequenced with the $i$-th individual having ploidy $m_i$ (typically 2 in practice). At a particular genomic locus, the sequence read data for the $i$-th individual is $d_i$ and the genotype is $g_i$, an integer in $[0,m_i]$, counting the number of reference alleles in the individual at that locus. Furthermore, it is assumed for simplicity that data at individual genomic loci are independent (which is not necessarily true), as are sequencing and mapping errors between loci and individuals.
 
 Because of the above independence assumptions the joint likelihood function of the data observed for all individuals factors as a product of individual likelihood functions:
 
@@ -1079,12 +1079,12 @@ Once the window is determined, the method uses a gradient descent algorithm to f
 
 \subsubsection{GATK}
 \label{sec:bg_gatk}
-The GATK\autocite{depristo2011framework} is not actually a tool that's built solely for SNP calling, but is instead a comprehensive framework for genomic data analysis that includes tools for data pre-processing and QA, SNP and indel calling, CNV calling, and SV calling, as well as post-processing and filtering. It is implemented as a Java program and the latest version makes use of the in-memory computing engine Apache Spark for efficient computation over large data sets. Here we focus on the SNP calling aspects of the framework. There are two components in the GATK that deal with SNP calling, the UnifiedGenotyper, and the HaplotypeCaller. The UnifiedGenotyper is an older component that has been superseded by the HaplotypeCaller for all practical purposes and we focus our attention on it. All of the mathematical formulas and figures, as well as some of the descriptions, in this section have been reproduced from the 2010 manuscript by McKenna et al.\autocite{mckenna2010genome}, the 2011 manuscript by DePristo et al.\autocite{depristo2011framework}, and the GATK website\autocite{gatkwebsite}
+The GATK\autocite{depristo2011framework} is not actually a tool that is built solely for SNP calling, but is instead a comprehensive framework for genomic data analysis that includes tools for data pre-processing and QA, SNP and indel calling, CNV calling, and SV calling, as well as post-processing and filtering. It is implemented as a Java program and the latest version makes use of the in-memory computing engine Apache Spark for efficient computation over large data sets. Here we focus on the SNP calling aspects of the framework. There are two components in the GATK that deal with SNP calling, the UnifiedGenotyper, and the HaplotypeCaller. The UnifiedGenotyper is an older component that has been superseded by the HaplotypeCaller for all practical purposes and we focus our attention on it. All of the mathematical formulas and figures, as well as some of the descriptions, in this section have been reproduced from the 2010 manuscript by McKenna et al.\autocite{mckenna2010genome}, the 2011 manuscript by DePristo et al.\autocite{depristo2011framework}, and the GATK website\autocite{gatkwebsite}
 
 \begin{figure}[!htb]
 \includegraphics[scale=0.22]{gatk_best_practices}
 \centering
-\caption {GATK Best Practices pipeline\autocite{gatkwebsite}}
+\caption {GATK Best Practices pipeline (taken from \autocite{gatkwebsite}).}
 \label{fig:gatk_best_practices}
 \end{figure}
 
@@ -1099,7 +1099,7 @@ The HaplotypeCaller which is the tool that is primarily used for SNP calling tak
     \item [Assign sample genotypes] - For each potentially variant site, the program applies Bayes' rule, using the likelihoods of alleles given the read data to calculate the likelihoods of each genotype per sample given the read data observed for that sample. The most likely genotype is then assigned to the sample.
 \end{description}
 
-Active regions are defined by targeting loci with high quality reads that are different from the refernce and surrounded by soft-clipped bases (bases in the read that couldn't be aligned by the alignment algorithm). The region is then smoothed by a Gaussian kernel and passed onto variant calling if its profile score exceeds a pre-defined threshold. 
+Active regions are defined by targeting loci with high quality reads that are different from the refernce and surrounded by soft-clipped bases (bases in the read that could not be aligned by the alignment algorithm). The region is then smoothed by a Gaussian kernel and passed onto variant calling if its profile score exceeds a pre-defined threshold. 
 
 For each active region the GATK performs local assembly by first building a de-Bruijn graph\autocite{compeau2011apply} using just the reference sequence for the active region. The graph is enhanced by comparing each read from the active region and creating nodes in the graph where the read differs from the graph. Edge weights between pairs of nodes are increased when a read passes through that edge. The resulting graph must meet complexity requirements based on the ratio of non-unique to unique k-mers and presence of cycles (that are a sign of repetitive sequence). When the graph does not meet complexity requirements it is automatically rebuilt with successively increased kmer sizes. If a sufficiently complex graph cannot be built, the region is discarded because the method is not able to produce a high quality variant call in this case. Once the graph is built it is refined by pruning out paths that are not supported by a sufficient number of reads. By traversing the paths in the graph and selecting those with a high aggregate weight the algorithm builds a list of possible local haplotypes within the active region. Each candidate haplotype is then re-aligned to the reference sequence using Smith-Waterman\autocite{smith1981comparison} alignment to produce a list of potential variant sites that includes SNPs and other potential variants.
 
@@ -1131,7 +1131,7 @@ Platypus\autocite{rimmer2014integrating} is a Python and C package by Rimmer et 
 \begin{figure}[H]
     \includegraphics[scale=0.45]{platypus_main_flow}
     \centering
-    \caption {Three stages of data processing in Platypus\autocite{rimmer2014integrating}}
+    \caption {Three stages of data processing in Platypus (taken from \autocite{rimmer2014integrating}).}
     \label{fig:platypus_main_flow}
     \end{figure}
 
@@ -1184,7 +1184,7 @@ Structural Variants (SVs) are medium- to large-size alterations (typically >50bp
 \begin{figure}[H]
     \includegraphics[scale=0.65]{sv_classes}
     \centering
-    \caption {Classes of structural variation.\autocite{alkan2011genome}.}
+    \caption {Classes of structural variation (taken from \autocite{alkan2011genome}).}
     \label{fig:sv_classes}
 \end{figure}
 
@@ -1201,7 +1201,7 @@ Accurate detection of SVs remains an open challenge since both sensitivity and s
 \begin{figure}[H]
     \includegraphics[scale=0.35]{sv_calling_info_sources}
     \centering
-    \caption {Sources of evidence for the presence of Structural Variants.\autocite{zhao2013computational}.}
+    \caption {Sources of evidence for the presence of Structural Variants (taken from \autocite{zhao2013computational}).}
     \label{fig:sv_calling_info_sources}
 \end{figure}
 
@@ -1216,7 +1216,7 @@ The discordantly-mapped reads component of Delly begins by computing the median 
 \begin{figure}[H]
     \includegraphics[scale=0.98]{delly_variant_classes}
     \centering
-    \caption {Variant classes detectable by Delly based on their read-pair and split-read signatures.\autocite{rausch2012delly}.}
+    \caption {Variant classes detectable by Delly based on their read-pair and split-read signatures (taken from \autocite{rausch2012delly}).}
     \label{fig:delly_variant_classes}
 \end{figure}
 
@@ -1231,7 +1231,7 @@ Lumpy\autocite{layer2014lumpy} is an SV caller developed in 2013 by R. Layer et 
 \begin{figure}[H]
     \includegraphics[scale=0.5]{lumpy_model}
     \centering
-    \caption {Lumpy calling model integrates several signals from a single sample.\autocite{layer2014lumpy}.}
+    \caption {Lumpy calling model integrates several signals from a single sample (taken from \autocite{layer2014lumpy}).}
     \label{fig:lumpy_model}
 \end{figure}
 
@@ -1250,9 +1250,9 @@ Lumpy does not perform its own split-read alignment instead relying on the resul
 SvABA\autocite{wala2018svaba} is a germline and somatic SV caller by J. Walla et al., created in 2016. SvABA is implemented in C++ and relies on genome-wide local assembly for variant detection. Internally SvABA makes use of SGA\autocite{simpson2012efficient} and BWA-MEM\autocite{li2009fast} for assembly and read mapping respectively. 
 
 \begin{figure}[H]
-    \includegraphics[scale=0.7]{svaba_method}
+    \includegraphics[scale=0.8]{svaba_method}
     \centering
-    \caption {The SvABA variant calling method\autocite{wala2018svaba}.}
+    \caption {The SvABA variant calling method (taken from \autocite{wala2018svaba}).}
     \label{fig:svaba_method}
 \end{figure}
 

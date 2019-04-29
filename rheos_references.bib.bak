@@ -2594,4 +2594,16 @@
   url = {ftp://ftp.ncbi.nih.gov/1000genomes/ftp/technical/reference/phase2\_reference\_assembly\_sequence/},
 }
 
+@Online{giab_svs,
+  url = {ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/technical/svclassify\_Manuscript/Supplementary\_Information/},
+}
+
+@Online{fastqc,
+  url = {https://www.bioinformatics.babraham.ac.uk/projects/fastqc},
+}
+
+@Online{dockerdoc,
+  url = {https://docs.docker.com/engine/docker-overview/},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

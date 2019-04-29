@@ -109,7 +109,7 @@ There exist multiple algorithms for variant discovery and each algorithm has a u
 The GATK HaplotypeCaller data set has been produced by the Broad Institute, the RTG set has been produced by Stanford University, and the Freebayes data set has been produced using a Butler workflow on the EBI Embassy Cloud.
 
 \subsubsection{The freebayes Butler workflow}
-The freebayes workflow parallelizes its work by splitting each sample by chromosome to reduce the amount of time it takes to process a single sample. Although the chromosomes have vastly different sizes (see Table \ref{tab:chromosome_sizes}), and thus individual jobs have different runtimes, when many samples are processed, there is little practical impact on when the entire batch of samples is completed.
+The freebayes workflow parallelises its work by splitting each sample by chromosome to reduce the amount of time it takes to process a single sample. Although the chromosomes have vastly different sizes (see Table \ref{tab:chromosome_sizes}), and thus individual jobs have different runtimes, when many samples are processed, there is little practical impact on when the entire batch of samples is completed.
 
 \begin{table}[H]
 \renewcommand{\arraystretch}{1.2} 

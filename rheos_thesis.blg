@@ -1,15 +1,15 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'rheos_thesis.blg'
-[48] biber-darwin:313> INFO - === Fri Apr 12, 2019, 13:09:22
-[82] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
-[228] Biber.pm:857> INFO - Found 253 citekeys in bib section 0
-[243] Biber.pm:3976> INFO - Processing section 0
-[256] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
-[268] bibtex.pm:1500> INFO - LaTeX decoding ...
-[681] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
-[2974] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[2974] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[2974] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[2974] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[3256] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
-[3367] bbl.pm:720> INFO - Output to rheos_thesis.bbl
+[61] biber-darwin:313> INFO - === Thu Apr 25, 2019, 16:43:13
+[92] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
+[212] Biber.pm:857> INFO - Found 256 citekeys in bib section 0
+[227] Biber.pm:3976> INFO - Processing section 0
+[239] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
+[249] bibtex.pm:1500> INFO - LaTeX decoding ...
+[641] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
+[2859] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2859] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2859] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[2859] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[3079] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
+[3189] bbl.pm:720> INFO - Output to rheos_thesis.bbl

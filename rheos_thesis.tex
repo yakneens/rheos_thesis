@@ -1,4 +1,4 @@
-\documentclass[12pt, twoside]{report}
+\documentclass[12pt, a4paper, twoside]{book}
 \usepackage{graphicx}
 \usepackage{grffile}
 \usepackage[a4paper,width=150mm, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry}
@@ -9,7 +9,7 @@
 \usepackage{booktabs}
 \usepackage{minted}
 \usepackage{caption}
-\usepackage[backend=biber,style=numeric,hyperref=true]{biblatex}
+\usepackage[backend=biber,style=numeric,hyperref=true, sorting=none]{biblatex}
 \usepackage[hidelinks]{hyperref}
 \addbibresource{rheos_references.bib}
 \setlength{\parindent}{1em}
@@ -20,11 +20,12 @@
 \usepackage{csquotes}
 \pagestyle{fancy}
 \fancyhead{}
-%\fancyhead[RO,LE]{Rheos}
+\fancyhead[LE]{\ifnum\value{chapter}>0 \leftmark \fi}
+\fancyhead[RO]{\ifnum\value{chapter}>0 \rightmark \fi}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
-\fancyfoot[LO,CE]{\ifnum\value{chapter}>0 Chapter \thechapter\fi}
-\fancyfoot[CO,RE]{Sergei Yakneen}
+%\fancyfoot[LO,CE]{\ifnum\value{chapter}>0 Chapter \thechapter\fi}
+%\fancyfoot[CO,RE]{Sergei Yakneen}
 \usepackage{color}
 \usepackage{tabu}
 \usepackage{longtable}
@@ -47,38 +48,46 @@
 \usepackage{pbox}
 \raggedbottom
 \title{
-	{Modern systems for large-scale genomics data processing in the cloud}\\
+	{Modern Systems for Large-scale Genomics Data Analysis in the Cloud}\\
 }
-\author{Sergei Yakneen\\ EMBL\\ Meyerhofstrasowse 1,\\ 69117 Heidelberg, Germany}
+\author{Sergei Yakneen (Hon BSc)\\ Born in Krasnoyarsk, Russia\\}
 \date{09/04/2019}
 
 
 \begin{document}
-\maketitle
+\frontmatter
+	\renewcommand{\headrulewidth}{0pt}
+	\input{chapters/title}
+	\input{chapters/other_title}
+	\input{chapters/abstract}
+	\input{chapters/abstract_de}
+	\input{chapters/acknowledgements}
+%\maketitle
+	\tableofcontents
 
-\tableofcontents
+\mainmatter
+	\renewcommand{\headrulewidth}{0.5pt}
+	\chapter{Introduction} \label{ch:introduction}
+	\input{chapters/introduction}
 
-\chapter{Introduction} \label{ch:introduction}
-\input{chapters/introduction}
+	\chapter{Background and Related Work} \label{ch:background}
+	\input{chapters/background}
+		
+	\chapter[Butler - Requirements and Architecture]{The Butler Framework - Requirements and Architecture} \label{ch:butler_architecture}
+	\input{chapters/butler_architecture}
 
-\chapter{Background and Related Work} \label{ch:background}
-\input{chapters/background}
-	 
-\chapter{The Butler Framework - Requirements and Architecture} \label{ch:butler_architecture}
-\input{chapters/butler_architecture}
+	\chapter[Butler - Implementation and Validation]{The Butler Framework - Implementation and Validation} \label{ch:butler_implementation}
+	\input{chapters/butler_implementation}
 
-\chapter{The Butler Framework - Implementation and Experimental Validation} \label{ch:butler_implementation}
-\input{chapters/butler_implementation}
+	\chapter{The Rheos Framework} \label{ch:rheos_framework}
+	\input{chapters/rheos_framework}
 
-\chapter{The Rheos Framework} \label{ch:rheos_framework}
-\input{chapters/rheos_framework}
+	\chapter{Discussion and Conclusion} \label{ch:conclusion}
+	\input{chapters/conclusion}
 
-\chapter{Discussion and Conclusion} \label{ch:conclusion}
-\input{chapters/conclusion}
-
-\label{ch:appendices}
-\input{chapters/appendices}
-
-\printbibliography
+\backmatter
+	\label{ch:appendices}
+	\input{chapters/appendices}
+	\printbibliography
 
 \end{document}

@@ -1,12 +1,20 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{p+pIndicator}{[}\PYG{n+nv}{collectd}\PYG{p+pIndicator}{]}
-  \PYG{l+lScalar+lScalarPlain}{enabled = true}
-  \PYG{l+lScalar+lScalarPlain}{bind\PYGZhy{}address = \PYGZdq{}:8096\PYGZdq{}}
-  \PYG{l+lScalar+lScalarPlain}{database = \PYGZdq{}metrics\PYGZdq{}}
-  \PYG{l+lScalar+lScalarPlain}{retention\PYGZhy{}policy = \PYGZdq{}\PYGZdq{}}
-  \PYG{l+lScalar+lScalarPlain}{batch\PYGZhy{}size = 5000}
-  \PYG{l+lScalar+lScalarPlain}{batch\PYGZhy{}pending = 10}
-  \PYG{l+lScalar+lScalarPlain}{batch\PYGZhy{}timeout = \PYGZdq{}10s\PYGZdq{}}
-  \PYG{l+lScalar+lScalarPlain}{read\PYGZhy{}buffer = 0}
-  \PYG{l+lScalar+lScalarPlain}{typesdb = \PYGZdq{}/usr/share/collectd/types.db\PYGZdq{}}
+\PYG{n+nt}{filebeat}\PYG{p}{:}
+  \PYG{c+c1}{\PYGZsh{} List of prospectors to fetch data.}
+  \PYG{n+nt}{prospectors}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}}
+      \PYG{n+nt}{paths}\PYG{p}{:}
+        \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{/var/log/airflow/*/*}
+      \PYG{n+nt}{document\PYGZus{}type}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{airflow}
+    \PYG{p+pIndicator}{\PYGZhy{}}
+      \PYG{n+nt}{paths}\PYG{p}{:}
+        \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{/var/log/messages}
+      \PYG{n+nt}{document\PYGZus{}type}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{syslog}
+    \PYG{p+pIndicator}{\PYGZhy{}}
+      \PYG{n+nt}{paths}\PYG{p}{:}
+        \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{/var/lib/pgsql/9.4/data/pg\PYGZus{}log/*.log}
+      \PYG{n+nt}{document\PYGZus{}type}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{postgres}
+  \PYG{+Error}{ }\PYG{p+pIndicator}{\PYGZhy{}}
+      \PYG{n+nt}{paths}\PYG{p}{:}
+        \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{/var/log/*.log}
 \end{Verbatim}

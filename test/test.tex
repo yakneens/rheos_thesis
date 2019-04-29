@@ -1,0 +1,31 @@
+\documentclass[12pt, twoside]{report}
+\usepackage[a4paper,width=150mm, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry}
+\usepackage[backend=biber,style=numeric,hyperref=true]{biblatex}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{amsmath}
+\raggedbottom
+
+\begin{document}
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[!ht]
+    \caption{Definition of $mapToReference()$}
+    \label{tab:op_map_read_to_reference}
+    {\begin{tabular}{l|p{12cm}}
+    \toprule
+    Inputs & \hangindent=1em$M_{raw} = \{m_i: m_i = (header, payload)\}$ where $m.payload = r = (s\_id, r\_id, b, q, f_p)$ as in. \\
+    \cline{2-2}
+    Operation & $mapToReference(r, ref\_id)$\\
+    \cline{2-2}
+    \multirow{2}{*}{Outputs} & \hangindent=1em$M_{aln} = \{m_i: m_i = (header, r)\} \text{ where } r = (s\_id, ref\_id, r\_id, b, q, f_p, rname, pos, mapq, cigar, flags)$\\
+    & \hangindent=1em $M_{unaln} = \{m_i: m_i = (header, r)\} \text{  where } r = (s\_id, r\_id, b, q, f_p, unmapped=true)$\\
+    \bottomrule
+    \end{tabular}}
+\end{table}
+\egroup
+\end{document}

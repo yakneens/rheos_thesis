@@ -1,241 +1,241 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Introduction}{6}{chapter.1}
-\contentsline {section}{\numberline {1.1}Context and Motivation}{6}{section.1.1}
-\contentsline {section}{\numberline {1.2}Challenges and Problem Statement}{7}{section.1.2}
-\contentsline {section}{\numberline {1.3}Proposed Solution}{9}{section.1.3}
-\contentsline {section}{\numberline {1.4}Thesis Outline}{15}{section.1.4}
-\contentsline {chapter}{\numberline {2}Background and Related Work}{16}{chapter.2}
-\contentsline {section}{\numberline {2.1}Genomics}{16}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}History of Genomics}{16}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Next Generation Sequencing}{18}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Cancer Genomics}{19}{subsection.2.1.3}
-\contentsline {section}{\numberline {2.2}Computational Methods for Next Generation Sequencing}{20}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}File Formats}{25}{subsection.2.2.1}
-\contentsline {subsubsection}{FASTA/FASTQ}{26}{section*.6}
-\contentsline {subsubsection}{SAM/BAM}{27}{section*.8}
-\contentsline {paragraph}{SAM Header}{27}{section*.9}
-\contentsline {paragraph}{SAM Body}{29}{section*.11}
-\contentsline {paragraph}{BAM Files}{33}{section*.15}
-\contentsline {subsubsection}{VCF Files}{33}{section*.16}
-\contentsline {paragraph}{Meta-information}{33}{section*.17}
-\contentsline {paragraph}{Header}{34}{section*.18}
-\contentsline {paragraph}{Data}{34}{section*.19}
-\contentsline {subsubsection}{Remarks}{37}{section*.22}
-\contentsline {subsection}{\numberline {2.2.2}Alignment}{38}{subsection.2.2.2}
-\contentsline {paragraph}{Suffix Tree}{40}{section*.26}
-\contentsline {paragraph}{Suffix Array}{43}{section*.31}
-\contentsline {paragraph}{The BWT}{43}{section*.32}
-\contentsline {paragraph}{Bowtie}{44}{section*.34}
-\contentsline {paragraph}{BWA}{48}{section*.37}
-\contentsline {paragraph}{Minimap2}{51}{section*.43}
-\contentsline {subsection}{\numberline {2.2.3}Raw Data QC}{53}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Germline SNP Calling}{57}{subsection.2.2.4}
-\contentsline {subsubsection}{samtools}{59}{section*.53}
-\contentsline {subsubsection}{freebayes}{62}{section*.55}
-\contentsline {subsubsection}{GATK}{64}{section*.57}
-\contentsline {subsubsection}{Platypus}{66}{section*.59}
-\contentsline {subsubsection}{Remarks}{68}{section*.61}
-\contentsline {paragraph}{Site Selection}{68}{section*.62}
-\contentsline {paragraph}{Haplotype Construction}{68}{section*.63}
-\contentsline {paragraph}{Allele Frequency Spectrum Estimation}{69}{section*.64}
-\contentsline {paragraph}{Genotyping}{69}{section*.65}
-\contentsline {subsection}{\numberline {2.2.5}Germline Structural Variant Calling}{69}{subsection.2.2.5}
-\contentsline {paragraph}{Discordantly-mapped read pairs}{70}{section*.67}
-\contentsline {paragraph}{Split-reads}{70}{section*.68}
-\contentsline {paragraph}{Read-depth}{71}{section*.69}
-\contentsline {paragraph}{Assembly-based}{71}{section*.70}
-\contentsline {subsubsection}{Delly}{72}{section*.72}
-\contentsline {subsubsection}{Lumpy}{73}{section*.74}
-\contentsline {subsubsection}{SvABA}{75}{section*.76}
-\contentsline {subsubsection}{Remarks}{76}{section*.78}
-\contentsline {section}{\numberline {2.3}High Performance , High Throughput, and Cloud Computing}{77}{section.2.3}
-\contentsline {section}{\numberline {2.4}Workflow Systems}{79}{section.2.4}
-\contentsline {chapter}{\numberline {3}The Butler Framework - Requirements and Architecture}{82}{chapter.3}
-\contentsline {section}{\numberline {3.1}Functional Requirements}{82}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Access to Data}{83}{subsection.3.1.1}
-\contentsline {subsubsection}{3rd Party Repository Data}{83}{section*.79}
-\contentsline {subsubsection}{Network Accessible Shared Storage}{83}{section*.80}
-\contentsline {subsubsection}{Block-level storage}{84}{section*.81}
-\contentsline {subsubsection}{Object Storage}{85}{section*.82}
-\contentsline {subsection}{\numberline {3.1.2}Access to Compute Capacity}{85}{subsection.3.1.2}
-\contentsline {subsubsection}{Interact With Multiple Cloud-Provider APIs}{86}{section*.83}
-\contentsline {subsubsection}{Define Hardware Configurations for VMs}{86}{section*.84}
-\contentsline {subsubsection}{Create and Destroy Virtual Machines}{87}{section*.85}
-\contentsline {subsubsection}{Define Network Topology and Security Rules}{87}{section*.86}
-\contentsline {subsection}{\numberline {3.1.3}Implementations of Scientific Algorithms}{87}{subsection.3.1.3}
-\contentsline {subsubsection}{Installation of a Binary File}{88}{section*.87}
-\contentsline {subsubsection}{Compiling From Source Code}{88}{section*.88}
-\contentsline {subsubsection}{Installation of a VM Image}{88}{section*.89}
-\contentsline {subsubsection}{Installation of a Lightweight Container}{89}{section*.90}
-\contentsline {subsection}{\numberline {3.1.4}Workflow Definitions}{89}{subsection.3.1.4}
-\contentsline {subsubsection}{Workflow Structure Definition}{90}{section*.92}
-\contentsline {subsubsection}{Deterministic Behaviour}{91}{section*.93}
-\contentsline {subsubsection}{Finite Run-Time}{91}{section*.94}
-\contentsline {subsubsection}{Analysis Configuration}{91}{section*.95}
-\contentsline {subsection}{\numberline {3.1.5}Workflow Engine}{92}{subsection.3.1.5}
-\contentsline {subsubsection}{Workflow Parsing and Translation}{92}{section*.96}
-\contentsline {subsubsection}{Workflow State Management}{93}{section*.97}
-\contentsline {subsubsection}{Workflow Scheduling}{93}{section*.98}
-\contentsline {subsubsection}{Workflow Execution}{94}{section*.99}
-\contentsline {subsection}{\numberline {3.1.6}System of Record}{95}{subsection.3.1.6}
-\contentsline {subsection}{\numberline {3.1.7}Troubleshooting Errors}{95}{subsection.3.1.7}
-\contentsline {subsubsection}{Errors Within Algorithms or Data}{96}{section*.100}
-\contentsline {subsubsection}{Errors Within the Workflow Definition}{97}{section*.101}
-\contentsline {subsubsection}{Errors Within Workflow Engine}{97}{section*.102}
-\contentsline {subsubsection}{Errors Within Virtualized Infrastructure}{97}{section*.103}
-\contentsline {subsubsection}{Errors Within Bare Metal Hardware/Software}{98}{section*.104}
-\contentsline {subsubsection}{System Monitoring}{98}{section*.105}
-\contentsline {subsubsection}{Monitoring Alarms}{99}{section*.106}
-\contentsline {subsubsection}{Management Interfaces}{100}{section*.107}
-\contentsline {subsubsection}{Log Files}{100}{section*.108}
-\contentsline {subsubsection}{Self-Healing}{101}{section*.109}
-\contentsline {section}{\numberline {3.2}Non-functional Requirements}{102}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Scalability}{102}{subsection.3.2.1}
-\contentsline {subsubsection}{Bootstrap New Installation}{103}{section*.110}
-\contentsline {subsubsection}{Scale Up Worker Fleet}{103}{section*.111}
-\contentsline {subsubsection}{Scale Down Worker Fleet}{103}{section*.112}
-\contentsline {subsubsection}{Scale Up Control VMs}{104}{section*.113}
-\contentsline {subsubsection}{Scale Down Control VMs}{104}{section*.114}
-\contentsline {subsubsection}{Destroy Cluster}{104}{section*.115}
-\contentsline {subsection}{\numberline {3.2.2}Availability}{104}{subsection.3.2.2}
-\contentsline {subsubsection}{Service Redundancy}{105}{section*.116}
-\contentsline {subsubsection}{Service Upgrades}{105}{section*.117}
-\contentsline {subsubsection}{Backup and Disaster Recovery}{106}{section*.118}
-\contentsline {subsection}{\numberline {3.2.3}Ease-of-use}{106}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Interoperability}{106}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}General Design Principles}{107}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Existing Open-Source Software}{107}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Service Orientation}{108}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Cloud Agnostic}{109}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Overall System Design}{111}{subsection.3.3.4}
-\contentsline {section}{\numberline {3.4}Cluster Lifecycle Management}{111}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Terraform}{112}{subsection.3.4.1}
-\contentsline {subsubsection}{Terraform Providers}{112}{section*.121}
-\contentsline {subsubsection}{Terraform Resources}{113}{section*.123}
-\contentsline {subsubsection}{Terraform Variables}{113}{section*.125}
-\contentsline {subsubsection}{Terraform Provisioners}{114}{section*.127}
-\contentsline {subsubsection}{Terraform Installation}{114}{section*.129}
-\contentsline {subsubsection}{Terraform Cluster Lifecycle}{115}{section*.130}
-\contentsline {subsection}{\numberline {3.4.2}Terraform Use in Butler}{115}{subsection.3.4.2}
-\contentsline {subsubsection}{Example Configurations}{115}{section*.131}
-\contentsline {section}{\numberline {3.5}Cluster Configuration Management}{116}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Saltstack}{117}{subsection.3.5.1}
-\contentsline {subsubsection}{Saltstack Architecture}{118}{section*.133}
-\contentsline {subsubsection}{Saltstack Data Model}{118}{section*.134}
-\contentsline {paragraph}{A Salt State}{118}{section*.135}
-\contentsline {paragraph}{A Salt Pillar}{120}{section*.137}
-\contentsline {paragraph}{Salt Grains}{121}{section*.139}
-\contentsline {paragraph}{The Salt Mine}{121}{section*.140}
-\contentsline {paragraph}{The Top File}{122}{section*.141}
-\contentsline {subsubsection}{Controlling Saltstack}{122}{section*.142}
-\contentsline {subsection}{\numberline {3.5.2}Saltstack Use in Butler}{122}{subsection.3.5.2}
-\contentsline {subsubsection}{Setting up the Salt Master}{124}{section*.144}
-\contentsline {subsubsection}{Setting up Other Butler Control VMs}{125}{section*.145}
-\contentsline {subsubsection}{Setting up Butler Workers}{126}{section*.146}
-\contentsline {subsubsection}{Customizing Butler Configuration}{126}{section*.147}
-\contentsline {section}{\numberline {3.6}Workflow System}{127}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Workflow System Overview}{127}{subsection.3.6.1}
-\contentsline {subsubsection}{Airflow Architecture}{127}{section*.148}
-\contentsline {subsection}{\numberline {3.6.2}Workflow Definition}{127}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Analysis Tracker}{130}{subsection.3.6.3}
-\contentsline {subsubsection}{tracker Python Module}{130}{section*.149}
-\contentsline {paragraph}{The Workflow}{132}{section*.152}
-\contentsline {paragraph}{The Analysis}{133}{section*.153}
-\contentsline {paragraph}{The AnalysisRun}{133}{section*.154}
-\contentsline {paragraph}{The workflow\_common.py}{135}{section*.156}
-\contentsline {paragraph}{The connection.py}{136}{section*.157}
-\contentsline {subsection}{\numberline {3.6.4}Workflow Configuration}{137}{subsection.3.6.4}
-\contentsline {subsubsection}{Configuration Mechanism}{138}{section*.162}
-\contentsline {subsection}{\numberline {3.6.5}Workflow Runtime Management}{139}{subsection.3.6.5}
-\contentsline {subsubsection}{Butler CLI}{139}{section*.163}
-\contentsline {paragraph}{\mintinline {shell}{create-workflow}}{139}{section*.164}
-\contentsline {paragraph}{\mintinline {shell}{create-analysis}}{139}{section*.165}
-\contentsline {paragraph}{\mintinline {shell}{launch-workflow}}{140}{section*.166}
-\contentsline {paragraph}{\mintinline {shell}{update-config}}{140}{section*.167}
-\contentsline {paragraph}{\mintinline {shell}{get-run-count}}{140}{section*.168}
-\contentsline {subsubsection}{Airflow CLI}{140}{section*.169}
-\contentsline {paragraph}{\mintinline {shell}{airflow}}{140}{section*.170}
-\contentsline {subsubsection}{Airflow Web UI}{141}{section*.171}
-\contentsline {section}{\numberline {3.7}Operational Management}{142}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}Monitoring Metric Collection}{143}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}Monitoring Visualization}{145}{subsection.3.7.2}
-\contentsline {subsection}{\numberline {3.7.3}Server Log Collection and Visualization}{148}{subsection.3.7.3}
-\contentsline {subsection}{\numberline {3.7.4}Self-Healing}{150}{subsection.3.7.4}
-\contentsline {subsubsection}{Capturing Metrics}{151}{section*.186}
-\contentsline {subsubsection}{Defining Anomalous Operating Conditions}{153}{section*.187}
-\contentsline {subsubsection}{Executing Self-Healing}{156}{section*.191}
-\contentsline {subsubsection}{Self-Healing Caveats}{159}{section*.193}
-\contentsline {subsection}{\numberline {3.7.5}Service Discovery}{160}{subsection.3.7.5}
-\contentsline {chapter}{\numberline {4}The Butler Framework - Implementation and Experimental Validation}{162}{chapter.4}
-\contentsline {section}{\numberline {4.1}Deployment on EMBL/EBI Embassy Cloud}{162}{section.4.1}
-\contentsline {subsubsection}{Embassy Cloud Architecture}{163}{section*.196}
-\contentsline {subsubsection}{Access to PCAWG Data}{164}{section*.198}
-\contentsline {subsubsection}{Butler deployment}{164}{section*.199}
-\contentsline {section}{\numberline {4.2}PCAWG Germline Analyses}{167}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Variant Discovery}{168}{subsection.4.2.1}
-\contentsline {subsubsection}{The freebayes Butler workflow}{168}{section*.202}
-\contentsline {subsubsection}{AnalysisRun configurations for freebayes workflow}{172}{section*.205}
-\contentsline {subsection}{\numberline {4.2.2}Variant Genotyping}{174}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Variant Filtration}{174}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Genotype Phasing}{175}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Data Submission}{175}{subsection.4.2.5}
-\contentsline {subsection}{\numberline {4.2.6}Structural Variant Calling}{176}{subsection.4.2.6}
-\contentsline {section}{\numberline {4.3}Experimental Runs}{177}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Freebayes Common Variant Genotyping}{177}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Freebayes Variant Genotyping}{179}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Delly Full Variant Genotyping}{182}{subsection.4.3.3}
-\contentsline {subsubsection}{Deletions Genotyping}{182}{section*.213}
-\contentsline {subsubsection}{Duplications Genotyping}{184}{section*.217}
-\contentsline {section}{\numberline {4.4}Performance Evaluation and Comparison}{186}{section.4.4}
-\contentsline {section}{\numberline {4.5}System Design Recap}{191}{section.4.5}
-\contentsline {chapter}{\numberline {5}The Rheos Framework}{193}{chapter.5}
-\contentsline {section}{\numberline {5.1}General Framework Design}{193}{section.5.1}
-\contentsline {section}{\numberline {5.2}Data Streaming Architecture}{195}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Service-Oriented Data Streaming Model}{196}{subsection.5.2.1}
-\contentsline {paragraph}{Windowing Function}{197}{section*.225}
-\contentsline {paragraph}{Decorator Function}{197}{section*.227}
-\contentsline {paragraph}{Filter Function}{198}{section*.229}
-\contentsline {paragraph}{Aggregator Function}{198}{section*.231}
-\contentsline {paragraph}{Local State Aggregator Function}{198}{section*.233}
-\contentsline {paragraph}{Persistence Function}{199}{section*.235}
-\contentsline {paragraph}{Query Function}{199}{section*.237}
-\contentsline {section}{\numberline {5.3}Domain-specific Problems}{203}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Read QC Metrics}{204}{subsection.5.3.1}
-\contentsline {paragraph}{Average Base Quality}{206}{section*.243}
-\contentsline {paragraph}{Base Quality Distribution}{206}{section*.245}
-\contentsline {paragraph}{Insert Size Distribution}{207}{section*.249}
-\contentsline {subsection}{\numberline {5.3.2}Alignment}{208}{subsection.5.3.2}
-\contentsline {paragraph}{Single read alignment to reference}{210}{section*.253}
-\contentsline {paragraph}{Read pair alignment to reference}{212}{section*.256}
-\contentsline {paragraph}{Single read alignment to multiple references}{213}{section*.258}
-\contentsline {paragraph}{Candidate haplotype alignment to reference}{214}{section*.260}
-\contentsline {paragraph}{Single read split-alignment to reference}{215}{section*.262}
-\contentsline {subsection}{\numberline {5.3.3}Simple Germline SNP Calling}{219}{subsection.5.3.3}
-\contentsline {paragraph}{The Locus Processing Service}{224}{section*.270}
-\contentsline {paragraph}{The Variant Calling Service}{225}{section*.273}
-\contentsline {subsection}{\numberline {5.3.4}Germline Structural Variant Calling}{226}{subsection.5.3.4}
-\contentsline {section}{\numberline {5.4}Rheos implementation}{233}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Rheos Service}{234}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Queueing}{238}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Partitioning}{239}{subsection.5.4.3}
-\contentsline {subsection}{\numberline {5.4.4}Deployment}{241}{subsection.5.4.4}
-\contentsline {subsection}{\numberline {5.4.5}Services of Rheos}{246}{subsection.5.4.5}
-\contentsline {subsubsection}{Read Mapping Service}{246}{section*.294}
-\contentsline {subsubsection}{Locus Processor Service}{248}{section*.297}
-\contentsline {subsubsection}{Locus Saver Service}{250}{section*.300}
-\contentsline {subsubsection}{Variant Calling Service}{250}{section*.302}
-\contentsline {subsubsection}{Insert Size Filtering Service}{251}{section*.304}
-\contentsline {subsubsection}{Insert Size Clustering Service}{251}{section*.305}
-\contentsline {section}{\numberline {5.5}Experimental Validation}{252}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Deployment}{252}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Sample Selection and Preparation}{254}{subsection.5.5.2}
-\contentsline {subsection}{\numberline {5.5.3}Germline SNP Calling}{255}{subsection.5.5.3}
-\contentsline {paragraph}{freebayes}{258}{section*.315}
-\contentsline {paragraph}{GATK 4}{259}{section*.316}
-\contentsline {subsection}{\numberline {5.5.4}Germline Deletion Calling}{261}{subsection.5.5.4}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Context and Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Challenges and Problem Statement}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Proposed Solution}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Thesis Outline}{10}{section.1.4}
+\contentsline {chapter}{\numberline {2}Background and Related Work}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Genomics}{11}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}History of Genomics}{11}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Next Generation Sequencing}{13}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Cancer Genomics}{14}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Computational Methods for NGS}{15}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}File Formats}{20}{subsection.2.2.1}
+\contentsline {subsubsection}{FASTA/FASTQ}{21}{section*.6}
+\contentsline {subsubsection}{SAM/BAM}{22}{section*.8}
+\contentsline {paragraph}{SAM Header}{22}{section*.9}
+\contentsline {paragraph}{SAM Body}{24}{section*.11}
+\contentsline {paragraph}{BAM Files}{28}{section*.15}
+\contentsline {subsubsection}{VCF Files}{28}{section*.16}
+\contentsline {paragraph}{Meta-information}{28}{section*.17}
+\contentsline {paragraph}{Header}{29}{section*.18}
+\contentsline {paragraph}{Data}{29}{section*.19}
+\contentsline {subsubsection}{Remarks}{32}{section*.22}
+\contentsline {subsection}{\numberline {2.2.2}Alignment}{33}{subsection.2.2.2}
+\contentsline {paragraph}{Suffix Tree}{35}{section*.26}
+\contentsline {paragraph}{Suffix Array}{38}{section*.31}
+\contentsline {paragraph}{The BWT}{38}{section*.32}
+\contentsline {paragraph}{Bowtie}{39}{section*.34}
+\contentsline {paragraph}{BWA}{43}{section*.37}
+\contentsline {paragraph}{Minimap2}{46}{section*.43}
+\contentsline {subsection}{\numberline {2.2.3}Raw Data QC}{48}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Germline SNP Calling}{52}{subsection.2.2.4}
+\contentsline {subsubsection}{samtools}{54}{section*.53}
+\contentsline {subsubsection}{freebayes}{57}{section*.55}
+\contentsline {subsubsection}{GATK}{59}{section*.57}
+\contentsline {subsubsection}{Platypus}{61}{section*.59}
+\contentsline {subsubsection}{Remarks}{63}{section*.61}
+\contentsline {paragraph}{Site Selection}{63}{section*.62}
+\contentsline {paragraph}{Haplotype Construction}{63}{section*.63}
+\contentsline {paragraph}{Allele Frequency Spectrum Estimation}{64}{section*.64}
+\contentsline {paragraph}{Genotyping}{64}{section*.65}
+\contentsline {subsection}{\numberline {2.2.5}Germline Structural Variant Calling}{64}{subsection.2.2.5}
+\contentsline {paragraph}{Discordantly-mapped read pairs}{65}{section*.67}
+\contentsline {paragraph}{Split-reads}{65}{section*.68}
+\contentsline {paragraph}{Read-depth}{66}{section*.69}
+\contentsline {paragraph}{Assembly-based}{66}{section*.70}
+\contentsline {subsubsection}{Delly}{67}{section*.72}
+\contentsline {subsubsection}{Lumpy}{68}{section*.74}
+\contentsline {subsubsection}{SvABA}{70}{section*.76}
+\contentsline {subsubsection}{Remarks}{71}{section*.78}
+\contentsline {section}{\numberline {2.3}High Performance , High Throughput, and Cloud Computing}{72}{section.2.3}
+\contentsline {section}{\numberline {2.4}Workflow Systems}{74}{section.2.4}
+\contentsline {chapter}{\numberline {3}Butler - Requirements and Architecture}{77}{chapter.3}
+\contentsline {section}{\numberline {3.1}Functional Requirements}{77}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Access to Data}{78}{subsection.3.1.1}
+\contentsline {subsubsection}{3rd Party Repository Data}{78}{section*.79}
+\contentsline {subsubsection}{Network Accessible Shared Storage}{78}{section*.80}
+\contentsline {subsubsection}{Block-level storage}{79}{section*.81}
+\contentsline {subsubsection}{Object Storage}{80}{section*.82}
+\contentsline {subsection}{\numberline {3.1.2}Access to Compute Capacity}{80}{subsection.3.1.2}
+\contentsline {subsubsection}{Interact With Multiple Cloud-Provider APIs}{81}{section*.83}
+\contentsline {subsubsection}{Define Hardware Configurations for VMs}{81}{section*.84}
+\contentsline {subsubsection}{Create and Destroy Virtual Machines}{82}{section*.85}
+\contentsline {subsubsection}{Define Network Topology and Security Rules}{82}{section*.86}
+\contentsline {subsection}{\numberline {3.1.3}Implementations of Scientific Algorithms}{82}{subsection.3.1.3}
+\contentsline {subsubsection}{Installation of a Binary File}{83}{section*.87}
+\contentsline {subsubsection}{Compiling From Source Code}{83}{section*.88}
+\contentsline {subsubsection}{Installation of a VM Image}{83}{section*.89}
+\contentsline {subsubsection}{Installation of a Lightweight Container}{84}{section*.90}
+\contentsline {subsection}{\numberline {3.1.4}Workflow Definitions}{84}{subsection.3.1.4}
+\contentsline {subsubsection}{Workflow Structure Definition}{85}{section*.92}
+\contentsline {subsubsection}{Deterministic Behaviour}{86}{section*.93}
+\contentsline {subsubsection}{Finite Run-Time}{86}{section*.94}
+\contentsline {subsubsection}{Analysis Configuration}{86}{section*.95}
+\contentsline {subsection}{\numberline {3.1.5}Workflow Engine}{87}{subsection.3.1.5}
+\contentsline {subsubsection}{Workflow Parsing and Translation}{87}{section*.96}
+\contentsline {subsubsection}{Workflow State Management}{88}{section*.97}
+\contentsline {subsubsection}{Workflow Scheduling}{88}{section*.98}
+\contentsline {subsubsection}{Workflow Execution}{89}{section*.99}
+\contentsline {subsection}{\numberline {3.1.6}System of Record}{90}{subsection.3.1.6}
+\contentsline {subsection}{\numberline {3.1.7}Troubleshooting Errors}{90}{subsection.3.1.7}
+\contentsline {subsubsection}{Errors Within Algorithms or Data}{91}{section*.100}
+\contentsline {subsubsection}{Errors Within the Workflow Definition}{92}{section*.101}
+\contentsline {subsubsection}{Errors Within Workflow Engine}{92}{section*.102}
+\contentsline {subsubsection}{Errors Within Virtualized Infrastructure}{92}{section*.103}
+\contentsline {subsubsection}{Errors Within Bare Metal Hardware/Software}{93}{section*.104}
+\contentsline {subsubsection}{System Monitoring}{93}{section*.105}
+\contentsline {subsubsection}{Monitoring Alarms}{94}{section*.106}
+\contentsline {subsubsection}{Management Interfaces}{95}{section*.107}
+\contentsline {subsubsection}{Log Files}{95}{section*.108}
+\contentsline {subsubsection}{Self-Healing}{96}{section*.109}
+\contentsline {section}{\numberline {3.2}Non-functional Requirements}{97}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Scalability}{97}{subsection.3.2.1}
+\contentsline {subsubsection}{Bootstrap New Installation}{98}{section*.110}
+\contentsline {subsubsection}{Scale Up Worker Fleet}{98}{section*.111}
+\contentsline {subsubsection}{Scale Down Worker Fleet}{98}{section*.112}
+\contentsline {subsubsection}{Scale Up Control VMs}{99}{section*.113}
+\contentsline {subsubsection}{Scale Down Control VMs}{99}{section*.114}
+\contentsline {subsubsection}{Destroy Cluster}{99}{section*.115}
+\contentsline {subsection}{\numberline {3.2.2}Availability}{99}{subsection.3.2.2}
+\contentsline {subsubsection}{Service Redundancy}{100}{section*.116}
+\contentsline {subsubsection}{Service Upgrades}{100}{section*.117}
+\contentsline {subsubsection}{Backup and Disaster Recovery}{101}{section*.118}
+\contentsline {subsection}{\numberline {3.2.3}Ease-of-use}{101}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Interoperability}{101}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}General Design Principles}{102}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Existing Open-Source Software}{102}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Service Orientation}{103}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Cloud Agnostic}{104}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Overall System Design}{106}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}Cluster Lifecycle Management}{106}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Terraform}{107}{subsection.3.4.1}
+\contentsline {subsubsection}{Terraform Providers}{107}{section*.121}
+\contentsline {subsubsection}{Terraform Resources}{108}{section*.123}
+\contentsline {subsubsection}{Terraform Variables}{108}{section*.125}
+\contentsline {subsubsection}{Terraform Provisioners}{109}{section*.127}
+\contentsline {subsubsection}{Terraform Installation}{109}{section*.129}
+\contentsline {subsubsection}{Terraform Cluster Lifecycle}{110}{section*.130}
+\contentsline {subsection}{\numberline {3.4.2}Terraform Use in Butler}{110}{subsection.3.4.2}
+\contentsline {subsubsection}{Example Configurations}{110}{section*.131}
+\contentsline {section}{\numberline {3.5}Cluster Configuration Management}{111}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Saltstack}{112}{subsection.3.5.1}
+\contentsline {subsubsection}{Saltstack Architecture}{113}{section*.133}
+\contentsline {subsubsection}{Saltstack Data Model}{113}{section*.134}
+\contentsline {paragraph}{A Salt State}{113}{section*.135}
+\contentsline {paragraph}{A Salt Pillar}{115}{section*.137}
+\contentsline {paragraph}{Salt Grains}{116}{section*.139}
+\contentsline {paragraph}{The Salt Mine}{116}{section*.140}
+\contentsline {paragraph}{The Top File}{117}{section*.141}
+\contentsline {subsubsection}{Controlling Saltstack}{117}{section*.142}
+\contentsline {subsection}{\numberline {3.5.2}Saltstack Use in Butler}{117}{subsection.3.5.2}
+\contentsline {subsubsection}{Setting up the Salt Master}{119}{section*.144}
+\contentsline {subsubsection}{Setting up Other Butler Control VMs}{120}{section*.145}
+\contentsline {subsubsection}{Setting up Butler Workers}{121}{section*.146}
+\contentsline {subsubsection}{Customizing Butler Configuration}{121}{section*.147}
+\contentsline {section}{\numberline {3.6}Workflow System}{122}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Workflow System Overview}{122}{subsection.3.6.1}
+\contentsline {subsubsection}{Airflow Architecture}{122}{section*.148}
+\contentsline {subsection}{\numberline {3.6.2}Workflow Definition}{122}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Analysis Tracker}{125}{subsection.3.6.3}
+\contentsline {subsubsection}{tracker Python Module}{125}{section*.149}
+\contentsline {paragraph}{The Workflow}{127}{section*.152}
+\contentsline {paragraph}{The Analysis}{128}{section*.153}
+\contentsline {paragraph}{The AnalysisRun}{128}{section*.154}
+\contentsline {paragraph}{The workflow\_common.py}{130}{section*.156}
+\contentsline {paragraph}{The connection.py}{131}{section*.157}
+\contentsline {subsection}{\numberline {3.6.4}Workflow Configuration}{132}{subsection.3.6.4}
+\contentsline {subsubsection}{Configuration Mechanism}{133}{section*.162}
+\contentsline {subsection}{\numberline {3.6.5}Workflow Runtime Management}{134}{subsection.3.6.5}
+\contentsline {subsubsection}{Butler CLI}{134}{section*.163}
+\contentsline {paragraph}{\mintinline {shell}{create-workflow}}{134}{section*.164}
+\contentsline {paragraph}{\mintinline {shell}{create-analysis}}{134}{section*.165}
+\contentsline {paragraph}{\mintinline {shell}{launch-workflow}}{135}{section*.166}
+\contentsline {paragraph}{\mintinline {shell}{update-config}}{135}{section*.167}
+\contentsline {paragraph}{\mintinline {shell}{get-run-count}}{135}{section*.168}
+\contentsline {subsubsection}{Airflow CLI}{135}{section*.169}
+\contentsline {paragraph}{\mintinline {shell}{airflow}}{135}{section*.170}
+\contentsline {subsubsection}{Airflow Web UI}{136}{section*.171}
+\contentsline {section}{\numberline {3.7}Operational Management}{137}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Monitoring Metric Collection}{138}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Monitoring Visualization}{140}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}Server Log Collection and Visualization}{143}{subsection.3.7.3}
+\contentsline {subsection}{\numberline {3.7.4}Self-Healing}{145}{subsection.3.7.4}
+\contentsline {subsubsection}{Capturing Metrics}{146}{section*.186}
+\contentsline {subsubsection}{Defining Anomalous Operating Conditions}{148}{section*.187}
+\contentsline {subsubsection}{Executing Self-Healing}{151}{section*.191}
+\contentsline {subsubsection}{Self-Healing Caveats}{154}{section*.193}
+\contentsline {subsection}{\numberline {3.7.5}Service Discovery}{155}{subsection.3.7.5}
+\contentsline {chapter}{\numberline {4}Butler - Implementation and Validation}{157}{chapter.4}
+\contentsline {section}{\numberline {4.1}Deployment on EMBL/EBI Embassy Cloud}{157}{section.4.1}
+\contentsline {subsubsection}{Embassy Cloud Architecture}{158}{section*.196}
+\contentsline {subsubsection}{Access to PCAWG Data}{159}{section*.198}
+\contentsline {subsubsection}{Butler deployment}{159}{section*.199}
+\contentsline {section}{\numberline {4.2}PCAWG Germline Analyses}{162}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Variant Discovery}{163}{subsection.4.2.1}
+\contentsline {subsubsection}{The freebayes Butler workflow}{163}{section*.202}
+\contentsline {subsubsection}{AnalysisRun configurations for freebayes workflow}{167}{section*.205}
+\contentsline {subsection}{\numberline {4.2.2}Variant Genotyping}{169}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Variant Filtration}{169}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Genotype Phasing}{170}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Data Submission}{170}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.6}Structural Variant Calling}{171}{subsection.4.2.6}
+\contentsline {section}{\numberline {4.3}Experimental Runs}{172}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Freebayes Common Variant Genotyping}{172}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Freebayes Variant Genotyping}{174}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Delly Full Variant Genotyping}{177}{subsection.4.3.3}
+\contentsline {subsubsection}{Deletions Genotyping}{177}{section*.213}
+\contentsline {subsubsection}{Duplications Genotyping}{179}{section*.217}
+\contentsline {section}{\numberline {4.4}Performance Evaluation and Comparison}{181}{section.4.4}
+\contentsline {section}{\numberline {4.5}System Design Recap}{186}{section.4.5}
+\contentsline {chapter}{\numberline {5}The Rheos Framework}{189}{chapter.5}
+\contentsline {section}{\numberline {5.1}General Framework Design}{189}{section.5.1}
+\contentsline {section}{\numberline {5.2}Data Streaming Architecture}{191}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Service-Oriented Data Streaming Model}{192}{subsection.5.2.1}
+\contentsline {paragraph}{Windowing Function}{193}{section*.225}
+\contentsline {paragraph}{Decorator Function}{193}{section*.227}
+\contentsline {paragraph}{Filter Function}{194}{section*.229}
+\contentsline {paragraph}{Aggregator Function}{194}{section*.231}
+\contentsline {paragraph}{Local State Aggregator Function}{194}{section*.233}
+\contentsline {paragraph}{Persistence Function}{195}{section*.235}
+\contentsline {paragraph}{Query Function}{195}{section*.237}
+\contentsline {section}{\numberline {5.3}Domain-specific Problems}{199}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Read QC Metrics}{200}{subsection.5.3.1}
+\contentsline {paragraph}{Average Base Quality}{202}{section*.243}
+\contentsline {paragraph}{Base Quality Distribution}{202}{section*.245}
+\contentsline {paragraph}{Insert Size Distribution}{203}{section*.249}
+\contentsline {subsection}{\numberline {5.3.2}Alignment}{204}{subsection.5.3.2}
+\contentsline {paragraph}{Single read alignment to reference}{206}{section*.253}
+\contentsline {paragraph}{Read pair alignment to reference}{208}{section*.256}
+\contentsline {paragraph}{Single read alignment to multiple references}{209}{section*.258}
+\contentsline {paragraph}{Candidate haplotype alignment to reference}{210}{section*.260}
+\contentsline {paragraph}{Single read split-alignment to reference}{211}{section*.262}
+\contentsline {subsection}{\numberline {5.3.3}Simple Germline SNP Calling}{215}{subsection.5.3.3}
+\contentsline {paragraph}{The Locus Processing Service}{220}{section*.270}
+\contentsline {paragraph}{The Variant Calling Service}{221}{section*.273}
+\contentsline {subsection}{\numberline {5.3.4}Germline Structural Variant Calling}{222}{subsection.5.3.4}
+\contentsline {section}{\numberline {5.4}Rheos implementation}{229}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Rheos Service}{230}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Queueing}{234}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Partitioning}{235}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.4}Deployment}{239}{subsection.5.4.4}
+\contentsline {subsection}{\numberline {5.4.5}Services of Rheos}{243}{subsection.5.4.5}
+\contentsline {subsubsection}{Read Mapping Service}{243}{section*.294}
+\contentsline {subsubsection}{Locus Processor Service}{245}{section*.297}
+\contentsline {subsubsection}{Locus Saver Service}{246}{section*.300}
+\contentsline {subsubsection}{Variant Calling Service}{247}{section*.302}
+\contentsline {subsubsection}{Insert Size Filtering Service}{247}{section*.304}
+\contentsline {subsubsection}{Insert Size Clustering Service}{248}{section*.305}
+\contentsline {section}{\numberline {5.5}Experimental Validation}{249}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Deployment}{249}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Sample Selection and Preparation}{251}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}Germline SNP Calling}{252}{subsection.5.5.3}
+\contentsline {paragraph}{freebayes}{256}{section*.315}
+\contentsline {paragraph}{GATK 4}{256}{section*.316}
+\contentsline {subsection}{\numberline {5.5.4}Germline Deletion Calling}{260}{subsection.5.5.4}
 \contentsline {chapter}{\numberline {6}Discussion and Conclusion}{267}{chapter.6}
 \contentsline {section}{\numberline {6.1}Butler Framework}{267}{section.6.1}
-\contentsline {section}{\numberline {6.2}Rheos Framework}{268}{section.6.2}
-\contentsline {chapter}{Appendix}{272}{section*.326}
-\contentsline {chapter}{\numberline {A}Code Listings}{272}{Appendix.1.A}
+\contentsline {section}{\numberline {6.2}Rheos Framework}{269}{section.6.2}
+\contentsline {chapter}{Appendix}{273}{section*.326}
+\contentsline {chapter}{Code Listings}{273}{Appendix*.327}

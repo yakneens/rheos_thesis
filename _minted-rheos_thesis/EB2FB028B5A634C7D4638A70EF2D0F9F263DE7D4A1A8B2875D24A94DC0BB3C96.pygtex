@@ -1,11 +1,27 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{l+lScalar+lScalarPlain}{current\PYGZus{}runs = run\PYGZus{}session.query(Configuration.config[(\PYGZdq{}sample\PYGZdq{},\PYGZdq{} sample\PYGZus{}id\PYGZdq{})].astext).\PYGZbs{}}
-        \PYG{l+lScalar+lScalarPlain}{join(AnalysisRun, AnalysisRun.config\PYGZus{}id == Configuration.config\PYGZus{}id).\PYGZbs{}}
-        \PYG{l+lScalar+lScalarPlain}{join(Analysis, Analysis.analysis\PYGZus{}id == AnalysisRun.analysis\PYGZus{}id).\PYGZbs{}}
-        \PYG{l+lScalar+lScalarPlain}{filter(and\PYGZus{}(Analysis.analysis\PYGZus{}id == analysis\PYGZus{}id, AnalysisRun.run\PYGZus{}status != tracker.model.analysis\PYGZus{}run.RUN\PYGZus{}STATUS\PYGZus{}ERROR)).all()}
+\PYG{n+nt}{pcawg\PYGZhy{}germline\PYGZhy{}clone}\PYG{p}{:}
+  \PYG{n+nt}{git.latest}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{rev}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{master}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{force\PYGZus{}reset}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{True}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{https://github.com/llevar/pcawg\PYGZhy{}germline.git}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{target}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/opt/pcawg\PYGZhy{}germline}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{submodules}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{True}
 
-\PYG{l+lScalar+lScalarPlain}{available\PYGZus{}samples = sample\PYGZus{}session.query(PCAWGSample.index.label(\PYGZdq{}index\PYGZdq{}), sample\PYGZus{}id.label(\PYGZdq{}sample\PYGZus{}id\PYGZdq{}), sample\PYGZus{}location.label(\PYGZdq{}sample\PYGZus{}location\PYGZdq{})).\PYGZbs{}}
-        \PYG{l+lScalar+lScalarPlain}{join(SampleLocation, PCAWGSample.index == SampleLocation.donor\PYGZus{}index).\PYGZbs{}}
-        \PYG{l+lScalar+lScalarPlain}{filter(and\PYGZus{}(sample\PYGZus{}location != None, sample\PYGZus{}id.notin\PYGZus{}(current\PYGZus{}runs))).\PYGZbs{}}
-        \PYG{l+lScalar+lScalarPlain}{limit(num\PYGZus{}runs).all()}
+\PYG{n+nt}{/opt/airflow/dags}\PYG{p}{:}
+  \PYG{n+nt}{file.symlink}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{target}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/opt/pcawg\PYGZhy{}germline/workflows/}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{user}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{airflow}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{group}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{airflow}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{mode}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{755}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{force}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{True}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{makedirs}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{True}
+
+\PYG{n+nt}{/tmp/pcawg\PYGZhy{}germline/scripts}\PYG{p}{:}
+  \PYG{n+nt}{file.symlink}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{target}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/opt/pcawg\PYGZhy{}germline/scripts/}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{user}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{root}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{group}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{root}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{mode}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{755}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{force}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{True}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{makedirs}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{True}
 \end{Verbatim}

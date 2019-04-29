@@ -1,6 +1,6 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{l+lScalar+lScalarPlain}{base}\PYG{p+pIndicator}{:}
-  \PYG{l+s}{\PYGZsq{}*\PYGZsq{}}\PYG{p+pIndicator}{:}
+\PYG{n+nt}{base}\PYG{p}{:}
+  \PYG{n+nt}{\PYGZsq{}*\PYGZsq{}}\PYG{p}{:}
     \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{consul}
     \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{dnsmasq}
     \PYG{p+pIndicator}{\PYGZhy{}} \PYG{l+lScalar+lScalarPlain}{collectd}
