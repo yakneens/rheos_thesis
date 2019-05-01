@@ -13,7 +13,9 @@ Running scientific analyses requires the following broad set of capabilities:
 \item A set of tools for troubleshooting error conditions
 \end{itemize}
 
-Operating such a system on the cloud necessitates an extra set of capabilities that enable users to take advantage of the scalability and elasticity offered by cloud computing, while retaining cost effectiveness and security. These capabilities include:
+Operating such a system on the cloud necessitates an extra set of capabilities that enable users to take advantage of the scalability and elasticity offered by cloud computing, while retaining cost effectiveness and security. 
+\newpage
+These capabilities include:
 \begin{itemize}
 \item Provisioning of cloud infrastructure
 \item Configuration of virtualized hardware
@@ -105,7 +107,7 @@ Because each type of analysis may require several flavours of VMs, each with a d
 Due to the dynamic nature of cloud computing clusters where Virtual Machines are frequently created and destroyed it is necessary to provide a convenient method for carrying out both of these operations on a large number of VM instances and in a cloud agnostic manner. The user should be easily able to dispose of any number of running machine instances by name, as well as being able to create any number of new machines based on the templates described in the previous section
 
 \subsubsection{Define Network Topology and Security Rules}
-While in an HPC system the network topology and security are completely specified by the IT group, it is up to the user to adequately specify both in a cloud computing environment. Thus, a user needs to be able to specify networks, traffic routing rules, and control access to resources within the network based on port, protocol, and address of the requester. This requirement is especially important when it comes to handling and managing human genomic data which is highly confidential - a typical network and security configuration that needs to be supported is one where a central network router controls access to and within the cloud tenant. Only a limited number of known IP addresses from the internet are allowed inbound access over a secured protocol. Furthermore, Virtual Machines within the cluster are completely locked down except for a limited number of ports and protocols, as necessitated by their role within the cluster.
+While in an HPC system the network topology and security are completely specified by the IT group, it is up to the user to adequately specify both in a cloud computing environment. Thus, a user needs to be able to specify networks, traffic routing rules, and control access to resources within the network based on port, protocol, and address of the requester. This requirement is especially important when it comes to handling and managing human genomic data, which is highly confidential - a typical network and security configuration that needs to be supported is one where a central network router controls access to and within the cloud tenant. Only a limited number of known IP addresses from the internet are allowed inbound access over a secured protocol. Furthermore, Virtual Machines within the cluster are completely locked down except for a limited number of ports and protocols, as necessitated by their role within the cluster.
 
 Because cloud computing clusters are frequently created and torn down it is necessary to be able to express the network and security configuration as a set of rules that can be easily re-instantiated as needed.
 
@@ -435,7 +437,7 @@ Most Control VMs (for instance those serving data stores) tend to only grow in s
 \subsubsection {Destroy Cluster}
 
 When a long period of downtime is expected it may be required to destroy all of the active VMs in order to avoid paying for underused resources. A process should exist for detaching and conserving all of the active data stores, so that they can be reattached during the next bootstrap. All the appropriate configurations that are necessary for bootstrap should also be retained. At that point it should be safe to terminate all active VMs. 
-
+\newpage
 \subsection {Availability} \label{sec:availability}
 
 Availability refers to the definition of the circumstances under which the system as a whole, or its components, are able to perform their intended duties.
@@ -528,7 +530,7 @@ Since keeping the amount of new code that needed to be written to build Butler t
 \item Grafana\autocite{Grafana.net} (https://github.com/grafana/grafana/) - for Metrics Dashboards
 \item Logstash\autocite{Logstash} (https://github.com/elastic/logstash) - for Log Harvesting
 \item Elasticsearch\autocite{Elasticsearch} (https://github.com/elastic/elasticsearch) - for Log Indexing and Aggregation
-\item Kibana\autocite{Kibana} (https://github.com/elastic/kibana) - for Log Even Dashboards
+\item Kibana\autocite{Kibana} (https://github.com/elastic/kibana) - for Log Event Dashboards
 \end{itemize}
 
 These products were selected based on their ability to fulfil the specified requirements as well as their overall viability as Open Source projects. Viability was generally evaluated based on the following set of criteria:
@@ -539,7 +541,7 @@ These products were selected based on their ability to fulfil the specified requ
 \item Number of commits in the past year
 \end{itemize}
 
-At the time of writing (September 2016), these metrics are evaluated as follows:
+At the time of writing (April 2019), these metrics are evaluated as in Table \ref{tab:open_source_framework_viability}.
 
 \begin{table}[]
 \label{tab:open_source_framework_viability}
@@ -550,18 +552,18 @@ At the time of writing (September 2016), these metrics are evaluated as follows:
 \toprule
 Product & \pbox{5cm}{Number of\\ Stars} & \pbox{5cm}{Number of\\ Contributors} & \pbox{5cm}{Commits in last\\ 12 months}\\
 \midrule
-Terraform & 5611 & 638 & 4543 \\
-Consul & 7220 & 250 & 1129\\
-Saltstack & 6850 & 1580 & 9769 \\
-Airflow & 3419 & 178 & 1394\\
-RabbitMQ  & 1964 & 63 & 1038\\
-Celery & 5224 & 462 & 854\\
-Collectd  & 1246 & 262 & 1104\\
-InfluxDB & 8773 & 237 & 2299\\
-Grafana  & 11666 & 320 & 2952\\
-Logstash & 6405 & 348 & 598\\
-Elasticsearch & 18285 & 691 & 6279\\
-Kibana  & 5957 & 146 & 3409\\
+Terraform & 16596 & 1260 & 4543 \\
+Consul & 15711 & 494 & 1129\\
+Saltstack & 9852 & 2238 & 11641 \\
+Airflow & 12056 & 780 & 1394\\
+RabbitMQ  & 5637 & 79 & 1038\\
+Celery & 12258 & 710 & 854\\
+Collectd  & 2212 & 356 & 1104\\
+InfluxDB & 16179 & 370 & 2299\\
+Grafana  & 28414 & 858 & 2952\\
+Logstash & 10090 & 397 & 598\\
+Elasticsearch & 40623 & 1197 & 6279\\
+Kibana  & 11654 & 352 & 3409\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -703,7 +705,7 @@ Terraform variables are similar to variables in any other programming context. T
 
 Users typically specify variables in a separate configuration file and then use them throughout their cluster definition. 
 
-One special case of using variables comes from specifying secret values such as passwords or secret keys that the use would not want to commit to a source repository. In this case, a variable can be referred to inside the configuration file, while being defined as an environment variable on the machine that Terraform will be executed on. The user prefixes the variable name with a special prefix -- \mintinline{sh}{TF\_VAR\_} which signals Terraform to parse the environment variable as a Terraform variable and allow appropriate substitution at runtime.
+One special case of using variables comes from specifying secret values such as passwords or secret keys that the use would not want to commit to a source repository. In this case, a variable can be referred to inside the configuration file, while being defined as an environment variable on the machine that Terraform will be executed on. The user prefixes the variable name with a special prefix -- \mintinline{sh}{TF_VAR_}, which signals Terraform to parse the environment variable as a Terraform variable and allow appropriate substitution at runtime.
 
 \subsubsection {Terraform Provisioners}
 
@@ -745,9 +747,9 @@ The provider definition shows the procedure for setting up an OpenStack provider
 
 The resource section shows definition of an OpenStack specific VM type \mintinline{text}{openstack_compute_instance_v2}, which has attributes like \mintinline{text}{image_id,} \\\mintinline{text}{flavor_name,} \mintinline{text}{security_groups, network}, etc. The  \mintinline{text}{connection} definition within the resource specifies how users will be able to connect to the newly created VMs. In this case it is accomplished via SSH using passwordless key-based authentication via a pass-through bastion host on the cloud.
 
-Of further interest is the mechanism by which the creation of multiple instances of the same type is accomplished. The resource definition admits a \mintinline{text}{count} attribute which specifies how many instances need to be created. Furthermore, a \mintinline{text}{count.index} property keeps track of which instance is being created at run-time and can be used to provide unique hostnames to each instance as follows -   \mintinline{text}{name = "\${concat("worker-", count.index)}"}.
+Of further interest is the mechanism by which the creation of multiple instances of the same type is accomplished. The resource definition admits a \mintinline{text}{count} attribute, which specifies how many instances need to be created. Furthermore, a \mintinline{text}{count.index} property keeps track of which instance is being created at run-time and can be used to provide unique hostnames to each instance as follows -   \mintinline{text}{name = "\${concat("worker-", count.index)}"}.
 
-Lastly, the \mintinline{text}{provisioner} section runs a set of commands that provide initial configuration for the new host upon first bootup. These include installing and running the Saltstack service which is used for configuration management, setting up machine roles  that determine what capabilities this VM will have in the cluster, and telling the VM what the IP address of the cluster manager is.
+Lastly, the \mintinline{text}{provisioner} section runs a set of commands that provide initial configuration for the new host upon first bootup. These include installing and running the Saltstack service, which is used for configuration management, setting up machine roles  that determine what capabilities this VM will have in the cluster, and telling the VM what the IP address of the cluster manager is.
 
 Listing \ref{lst:terraform_security_group} demonstrates the definition of a security group under OpenStack. VMs that are put into this security group will have two network security rules applied to them - opening port 22 for SSH communication between hosts, and opening ports 4505-4506 to enable Saltstack communication.
 
@@ -775,15 +777,15 @@ Each system has benefits and drawbacks and a dedicated user base. Table \ref{tab
 \toprule
 Product & Number of Stars & Number of Contributors & Commits in last 12 months\\
 \midrule
-Chef & 4417 & 474 & 1861 \\
-Puppet & 4151 & 431 & 1474\\
-Ansible & 18720 & 1469 & 3483\\
-Saltstack & 6850 & 1580 & 9769 \\
+Chef & 5771 & 563 & 1861 \\
+Puppet & 5272 & 513 & 1474\\
+Ansible & 36845 & 4359 & 7532\\
+Saltstack & 9852 & 2238 & 11641 \\
 \bottomrule
 \end{tabu}
 \end{table}
 
-As can be seen from the data, all four are fairly active and stable projects, Ansible appears to be the most popular tool, and Saltstack is most actively developed, based on number of commits and contributors. Both Puppet and, Chef come from the first generation of configuration management tools having been initially released in 2005 and 2009 respectively, and suffering somewhat from having been trailblazers in the field. The largest complaint against both systems has been their unnecessary complexity and steep learning curve. Ansible and Saltstack, on the other hand, can be thought of as the second generation of configuration management systems, first released in 2012 and 2011, respectively. Both are based on simple to read and understand YAML-based configuration files, and have generally enjoyed greater adoption in the field.
+As can be seen from the data, all four are fairly active and stable projects. Ansible is the most popular tool. Both Puppet and, Chef come from the first generation of configuration management tools having been initially released in 2005 and 2009 respectively, and suffering somewhat from having been trailblazers in the field. The largest complaint against both systems has been their unnecessary complexity and steep learning curve. Ansible and Saltstack, on the other hand, can be thought of as the second generation of configuration management systems, first released in 2012 and 2011, respectively. Both are based on simple to read and understand YAML-based configuration files, and have generally enjoyed greater adoption in the field.
 
 For Butler we selected Saltstack to fulfil configuration management duties. The chief reason for selecting Saltstack over Ansible was that Saltstack appears to perform better when managing large clusters, whereas Ansible is known to suffer from increased lag in these scenarios. Since we anticipate to operate Butler clusters with several hundred VMs at a time we settled our choice on Saltstack.
 
@@ -848,8 +850,6 @@ initialize_db:
 start_server:    
   service.running:
     - name: postgresql-9.5
-    - watch:
-      - file: /var/lib/pgsql/9.5/data/*
 \end{minted}
 \endgroup
 
@@ -946,7 +946,7 @@ breaklines=true,
 \end{minted}
 
 \begin{description}
-\item [consul] - A framework used to Service Discovery which will be described in detail in Section \ref{sec:design_consul}
+\item [consul] - A framework used for Service Discovery, which will be described in detail in Section \ref{sec:design_consul}
 \item [dnsmasq] - A local DNS server, to enable name lookups.
 \item [collectd] - A Metrics collection agent.
 \item [elastic.filebeat] - A server log harvester.
@@ -997,11 +997,11 @@ breaklines=true,
     - butler
 \end{minted}
 
-These states install and configure the Airflow Workflow engine, load available workflows, and check out and install the Butler codebase from github. The codebase is needed to run the Butler CLI which is used to set up and manage Butler analyses. Thus, most interactions the users have with Butler occur from the Tracker VM via the Butler CLI.
+These states install and configure the Airflow Workflow engine, load available workflows, and check out and install the Butler codebase from github. The codebase is needed to run the Butler CLI, which is used to set up and manage Butler analyses. Thus, most interactions the users have with Butler occur from the Tracker VM via the Butler CLI.
 
 \subsubsection {Setting up Butler Workers}
 
-While Control VMs will be quite similar from one installation of Butler to the next, the Worker VMs will differ quite a bit, depending on what types of analyses are anticipated to be performed. The base Worker VM has the \mintinline{text}{worker} role which simply allows such VMs to run workflows in principle by installing the necessary components of the workflow engine and Butler Analysis Tracker.
+While Control VMs will be quite similar from one installation of Butler to the next, the Worker VMs will differ quite a bit, depending on what types of analyses are anticipated to be performed. The base Worker VM has the \mintinline{text}{worker} role that simply allows such VMs to run workflows in principle by installing the necessary components of the workflow engine and Butler Analysis Tracker.
 
 \begin{minted}
 [
@@ -1043,16 +1043,16 @@ Running scientific workflows at scale is the reason for Butler's existence. Thus
 
 \subsubsection {Airflow Architecture}
 
-The architecture of Airbnb Airflow lends itself well to large-scale distributed processing of tasks, due to the loosely coupled nature of the system. The key component at the heart of Airflow is the Airflow Scheduler. The airflow-scheduler is a service that runs perpetually on a VM and examines the state of all running workflows. All workflow tasks that meet the preconditions for being runnable are immediately "scheduled" for execution. In the context of Airflow scheduling means depositing the task into a queue (running on a separate Queue Server VM) from which a Worker VM can eventually pick it up. The Worker VMs run an airflow-worker service which periodically polls the task queue for available tasks and when the task is runnable by a particular Worker, that Worker consumes the task message from the queue and assumes execution. In order to keep track of the status of Workers and workflow execution each Worker periodically sends heartbeat messages to the Scheduler to communicate state. The state is persisted by the Scheduler to a PostgreSQL database which runs on a DB Server VM.
+The architecture of Airbnb Airflow lends itself well to large-scale distributed processing of tasks, due to the loosely coupled nature of the system. The key component at the heart of Airflow is the Airflow Scheduler. The airflow-scheduler is a service that runs perpetually on a VM and examines the state of all running workflows. All workflow tasks that meet the preconditions for being runnable are immediately "scheduled" for execution. In the context of Airflow scheduling means depositing the task into a queue (running on a separate Queue Server VM) from which a Worker VM can eventually pick it up. The Worker VMs run an airflow-worker service that periodically polls the task queue for available tasks and when the task is runnable by a particular Worker, that Worker consumes the task message from the queue and assumes execution. In order to keep track of the status of Workers and workflow execution each Worker periodically sends heartbeat messages to the Scheduler to communicate state. The state is persisted by the Scheduler to a PostgreSQL database, which runs on a DB Server VM.
 
-Additional state information related to tracking scientific analyses is written to a separate PostgreSQL database which runs on the same DB Server.
+Additional state information related to tracking scientific analyses is written to a separate PostgreSQL database, which runs on the same DB Server.
 
 The user can communicate with and commandeer Airflow via the Airflow CLI, as well as a Web UI. The Web UI is provided via the airflow-flower, and airflow-webserver services which can run on the same VM as the Scheduler or on a separate VM, depending on system load.
  
 \subsection{Workflow Definition}
 
 Requirements for workflow definitions are specified in Section \ref{sec:workflow_definitions} of this document. Conceptually, an Airflow workflow is a Directed Acyclic Graph whose vertices represent tasks and edges indicate task sequence. In its implementation an Airflow workflow is a Python program that can use any Python language construct or library. This allows the users to create workflows of arbitrary complexity and functionality.
-
+\newpage
 When authoring workflows the user needs to create an instance of the \mintinline{python}{DAG} class
 
 \begin{minted}[breaklines=true]{python}
@@ -1073,8 +1073,8 @@ Once the \mintinline{python}{DAG} is created the user can define workflow tasks.
 
 \begin{itemize}
 \item Operators that represent actions that need to be taken.
-\item Transfer operators which represent movement of data.
-\item Sensor operators which poll the environment for a specified condition.
+\item Transfer operators that represent movement of data.
+\item Sensor operators that poll the environment for a specified condition.
 \end{itemize} 
 
 All Operators are derived from the \mintinline{python}{BaseOperator} class.
@@ -1082,7 +1082,7 @@ All Operators are derived from the \mintinline{python}{BaseOperator} class.
 \begin{minted}[breaklines=true]{python}
 class airflow.models.BaseOperator(task_id, owner='airflow', email=None, email_on_retry=True, email_on_failure=True, retries=0, retry_delay=datetime.timedelta(0, 300), retry_exponential_backoff=False, max_retry_delay=None, start_date=None, end_date=None, schedule_interval=None, depends_on_past=False, wait_for_downstream=False, dag=None, params=None, default_args=None, adhoc=False, priority_weight=1, queue='default', pool=None, sla=None, execution_timeout=None, on_failure_callback=None, on_success_callback=None, on_retry_callback=None, trigger_rule=u'all_success', resources=None, *args, **kwargs)
 \end{minted}
-
+\newpage
 An Operator can take many parameters, the most important ones are:
 
 \begin{description}
@@ -1108,7 +1108,7 @@ A large number of Operator implementations are available that simplify the creat
 \item [SSHExecuteOperator] - Execute commands on a remote host.
 \end{description}
 
-In practice we find that the \mintinline{python}{PythonOperator} is the most versatile as it provides the ability to call arbitrary Python code which can, in turn, accomplish any of the tasks of the other operators if necessary.
+In practice we find that the \mintinline{python}{PythonOperator} is the most versatile as it provides the ability to call arbitrary Python code, which can, in turn, accomplish any of the tasks of the other operators if necessary.
 
 Once tasks are defined their dependencies can be established by calling \mintinline{python}{task_2.set_upstream(task_1)} or \mintinline{python}{task_1.set_downstream(task_1)}. The \mintinline{python}{set_upstream()} and \mintinline{python}{set_downstream()} methods also accept lists of tasks for bulk assignment.
 
@@ -1125,7 +1125,7 @@ As described in Section \ref{sec:system_of_record} of the requirements, a System
 
 The layout of the tracker module can be seen in Figure \ref{fig:tracker_module_files} below:
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \includegraphics{tracker_module_files}
 \centering
 \caption {File hierarchy of the tracker module}
@@ -1136,7 +1136,7 @@ At the root of the hierarchy are the README file and the module installation scr
 
 The overall model can be seen in Figure \ref{fig:analysis_tracker_model}
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \includegraphics[width=\textwidth]{analysis_tracker_model}
 \centering
 \caption {UML model of the Analysis Tracker.}
@@ -1202,16 +1202,16 @@ The Analysis Run object implements the following methods:
 \item [\mintinline{python}{set_configuration_for_analysis_run(analysis_run_id, config_id)}] - Update the AnalysisRun configuration to configuration with ID \mintinline{python}{config_id}.
 \item [\mintinline{python}{get_analysis_run_by_id(analysis_run_id)}] - Get the Analysis Run with ID \mintinline{python}{analysis_run_id}.
 \item [\mintinline{python}{set_ready(my_run)}] - Set the status of a given analysis run to \mintinline{python}{RUN_STATUS_READY}. Only possible if the current status is not \mintinline{python}{RUN_STATUS_IN_PROGRESS}.
-\item [\mintinline{python}{set_scheduled(my_run)}] - Set the status of a given analysis run to \mintinline{python}{RUN_STATUS_SCHEDULED}. Only possible if the current status is \mintinline{python}{RUN_STATUS_READY}.
-\item [\mintinline{python}{set_in_progress(my_run)}] - Set the status of a given analysis run to \mintinline{python}{RUN_STATUS_IN_PROGRESS}. Only possible if the current status is \mintinline{python}{RUN_STATUS_SCHEDULED}.
-\item [\mintinline{python}{set_completed(my_run)}] - Set the status of a given analysis run to \mintinline{python}{RUN_STATUS_COMPLETED}. Only possible if the current status is \mintinline{python}{RUN_STATUS_IN_PROGRESS}.
+\item [\mintinline{python}{set_scheduled(my_run)}] - Set the status of a given analysis run to\\ \mintinline{python}{RUN_STATUS_SCHEDULED}. Only possible if the current status is\\ \mintinline{python}{RUN_STATUS_READY}.
+\item [\mintinline{python}{set_in_progress(my_run)}] - Set the status of a given analysis run to\\ \mintinline{python}{RUN_STATUS_IN_PROGRESS}. Only possible if the current status is\\ \mintinline{python}{RUN_STATUS_SCHEDULED}.
+\item [\mintinline{python}{set_completed(my_run)}] - Set the status of a given analysis run to\\ \mintinline{python}{RUN_STATUS_COMPLETED}. Only possible if the current status is\\ \mintinline{python}{RUN_STATUS_IN_PROGRESS}.
 \item [\mintinline{python}{set_error(my_run)}] - Set the status of a given analysis run to \mintinline{python}{RUN_STATUS_ERROR}.
 \item [\mintinline{python}{get_number_of_runs_with_status(analysis_id, run_status)}] - Returns the number of AnalysisRuns of a given status.
 \end{description}
 
 As can be seen from the description of the methods of \mintinline{python}{AnalysisRun} these objects follow a particular lifecycle that is represented by their \mintinline{python}{status} attribute. The rules that govern allowable status transitions are encoded within the series of \mintinline{python}{set_*} methods and are summarized in Figure \ref{fig:analysis_run_status_transitions}
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \includegraphics{analysis_run_status_transitions}
 \centering
 \caption {State Diagram of Analysis Run Status Transitions.}
@@ -1238,9 +1238,9 @@ Every workflow should begin by starting the corresponding Analysis Run, and fini
 
 \paragraph{The connection.py} file is also a key component of the tracker module because it provides a means to communicate with the Run Tracking Database.
 
-The Run Tracking Database is a PostgreSQL database this is set up to persist all of the Analysis related information into permanent storage in order to fulfil the System of Record requirements of Section \ref{sec:system_of_record}. Specifically, the Run Tracking Database contains a relational model that corresponds to the Python objects described above. These tables are as follows:
+The Run Tracking Database is a PostgreSQL database this is set up to persist all of the Analysis related information into permanent storage in order to fulfil the System of Record requirements of Section \ref{sec:system_of_record}. Specifically, the Run Tracking Database contains a relational model that corresponds to the Python objects described above. These database tables are described in Tables \ref{tab:workflow_table}, \ref{tab:analysis_table}, and \ref{tab:analysis_run_table}.
 
-\begin{table}[H]
+\begin{table}[h!]
 \renewcommand{\arraystretch}{1.2} 
 \centering
 \begin{tabular}{@{}lll@{}}
@@ -1256,9 +1256,10 @@ last\_updated\_date & timestamp\\
 \bottomrule
 \end{tabular}
 \caption{Database table workflow}
+\label{tab:workflow_table}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[h!]
 \renewcommand{\arraystretch}{1.2} 
 \centering
 \begin{tabular}{@{}lll@{}}
@@ -1274,9 +1275,10 @@ last\_updated\_date & timestamp\\
 \bottomrule
 \end{tabular}
 \caption{Database table analysis}
+\label{tab:analysis_table}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[h!]
 \renewcommand{\arraystretch}{1.2} 
 \centering
 \begin{tabular}{@{}lll@{}}
@@ -1296,6 +1298,7 @@ run\_error\_code & integer\\
 \bottomrule
 \end{tabular}
 \caption{Database table analysis\_run}
+\label{tab:analysis_run_table}
 \end{table}
 
 In order to maintain a mapping between the Python objects in the tracker module and the tables in the Run Tracking Database as well as to avoid getting tied to a particular SQL dialect we utilize the SQL Alchemy Object Relational Framework. This framework allows us to avoid an explicit mapping between table columns, and object fields. Instead, SQL Alchemy is able to introspect the relational schema and add the object fields as necessary that correspond to the columns. Furthermore, updates to the Python objects are automatically translated to SQL \mintinline{sql}{UPDATE} statements and executed as necessary. This framework allows us to change to a different SQL Engine if necessary, without having to change most of the code.
@@ -1404,14 +1407,14 @@ Butler provides wrappers for the \mintinline{shell}{webserver, scheduler, worker
 
 The Airflow Web UI provides an interactive dashboard that allows the user to monitor the progress of workflows and workflow tasks, as well as taking some remedial actions when tasks run into trouble.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[width=\textwidth]{airflow_web_ui_main_page}
 \centering
 \caption {The main page of the Airflow Web UI}
 \label{fig:airflow_web_ui_main_page}
 \end{figure}
 
-The main page of the Web UI features a listing of the available workflows, along with the breakdown of workflow tasks by status. In Figure \ref{fig:airflow_web_ui_main_page} we see two workflows - freebayes and delly. The delly workflow has 11374 completed tasks, 865 in-progress tasks, 1 failed task, and 1 task with a failed ancestor. The user can click on any of the task statuses to navigate to a task listing page that gives a comprehensive list of tasks along with their key attributes (see Figure \ref{fig:airflow_task_instances}.
+The main page of the Web UI features a listing of the available workflows, along with the breakdown of workflow tasks by status. In Figure \ref{fig:airflow_web_ui_main_page} we see two workflows - freebayes and delly. The delly workflow has 11374 completed tasks, 865 in-progress tasks, 1 failed task, and 1 task with a failed ancestor. The user can click on any of the task statuses to navigate to a task listing page that gives a comprehensive list of tasks along with their key attributes (see Figure \ref{fig:airflow_task_instances}).
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{airflow_task_instances}
@@ -1429,7 +1432,7 @@ Clicking on one of the task instances will bring up a graphical view of the work
 \label{fig:airflow_workflow_details}
 \end{figure}
 
-When the user clicks on a particular task instance within the workflow execution a popup window allows them to take a number of actions, such as forcing the task to be run immediately, clearing the task state (for failed tasks) so that it can be run again, or marking the task as successfully completed (possibly with all upstream and downstream tasks). These options are depicted in Figure \ref{fig:airflow_task_actions}
+When the user clicks on a particular task instance within the workflow execution a popup window allows them to take a number of actions, such as forcing the task to be run immediately, clearing the task state (for failed tasks) so that it can be run again, or marking the task as successfully completed (possibly with all upstream and downstream tasks). These options are depicted in Figure \ref{fig:airflow_task_actions}.
 
 \begin{figure}[h]
 \includegraphics[scale=0.3]{airflow_task_actions}
@@ -1455,11 +1458,11 @@ In general, the Operational Management tools fall into three categories, those t
 
 The overall health of any VM in a cloud computing cluster can be evaluated and ascertained with respect to a set of key metrics that are observable at runtime. Some metrics are general enough that they apply to all Virtual Machines, these include measurements of CPU utilization, RAM, Disk, and Network usage. Other metrics are more specific to the role that the VM is playing within the cluster. A Database Server will benefit from having the number of open DB connections, transaction rate, rollback rate, and average query runtime monitored. Other entities such as Web Servers and Queues have their own unique metrics of interest.
 
-Each VM runs a metric collection daemon called \mintinline{shell}{telegraf}\autocite{telegraf} which is an Open Source package that is able to make periodic measurements of a large number of system metrics and ship them off to a centralized Metrics Store. The definition for which metrics are collected is specified in a special configuration file. An example of such configuration is demonstrated in Listing \ref{lst:telegraf_config}. This listing provides examples of the setup for generic metrics like CPU, and memory, as well as for more special metrics, like those collected for PostgreSQL databases.
+Each VM runs a metric collection daemon called \mintinline{shell}{telegraf}\autocite{telegraf}, which is an Open Source package that is able to make periodic measurements of a large number of system metrics and ship them off to a centralized Metrics Store. The definition for which metrics are collected is specified in a special configuration file. An example of such configuration is demonstrated in Listing \ref{lst:telegraf_config}. This listing provides examples of the setup for generic metrics like CPU, and memory, as well as for more special metrics, like those collected for PostgreSQL databases.
 
-Because we are interested in observing not only the metrics as they are measured in the present, but also the dynamics of how metric values change over time, we need a mechanism for persisting the metrics values. For this purpose the Monitoring Server component of Butler ships with an instance of a database product called InfluxDB\autocite{InfluxDB} which is an Open Source database system that is optimized for recording time series data. The configuration for the \mintinline{shell}{influxdb} output plugin in Listing \ref{lst:telegraf_config} demonstrates how InfluxDB server URL is provided to Telegraf to enable metrics persistence in this centralized data store.
+Because we are interested in observing not only the metrics as they are measured in the present, but also the dynamics of how metric values change over time, we need a mechanism for persisting the metrics values. For this purpose the Monitoring Server component of Butler ships with an instance of a database product called InfluxDB\autocite{InfluxDB}, which is an Open Source database system that is optimized for recording time series data. The configuration for the \mintinline{shell}{influxdb} output plugin in Listing \ref{lst:telegraf_config} demonstrates how InfluxDB server URL is provided to Telegraf to enable metrics persistence in this centralized data store.
 
-InfluxDB is a scalable database system that can operate in a distributed manner as a Raft\autocite{ongaro2014search} cluster. Data is written into shards based on a data retention policy. The underlying engine stores the data as a Time-Structured Merge Tree (TSM) which is a customization of the Log-Structured Merge-Tree\autocite{o1996log} data structure. To the end user the data is organized as a collection of \mintinline{shell}{points}. Each point has a \mintinline{shell}{timestamp}, belongs to a \mintinline{shell}{measurement}, and records a set of \mintinline{shell}{tag_values} that correspond to a set of \mintinline{shell}{tag_keys}. A particular \mintinline{shell}{measurement} coupled with a retention policy then forms a \mintinline{shell}{series}.
+InfluxDB is a scalable database system that can operate in a distributed manner as a Raft\autocite{ongaro2014search} cluster. Data is written into shards based on a data retention policy. The underlying engine stores the data as a Time-Structured Merge Tree (TSM), which is a customization of the Log-Structured Merge-Tree\autocite{o1996log} data structure. To the end user the data is organized as a collection of \mintinline{shell}{points}. Each point has a \mintinline{shell}{timestamp}, belongs to a \mintinline{shell}{measurement}, and records a set of \mintinline{shell}{tag_values} that correspond to a set of \mintinline{shell}{tag_keys}. A particular \mintinline{shell}{measurement} coupled with a retention policy then forms a \mintinline{shell}{series}.
 
 As an example, when tracking RAM, our \mintinline{shell}{measurement} is called \mintinline{shell}{memory_value}. The set of \mintinline{shell}{tag_keys} is:
 
@@ -1486,7 +1489,7 @@ The actual \mintinline{shell}{points} corresponding to this combination of \mint
 \label{fig:influxdb_example_query}
 \end{figure}
 
-As can be seen in Figure \ref{fig:influxdb_example_query}, data is queried via an SQL-like dialect which is accessible via a Web UI or via a REST\autocite[Chapter~5]{fielding2000architectural} API.
+As can be seen in Figure \ref{fig:influxdb_example_query}, data is queried via an SQL-like dialect, which is accessible via a Web UI or via a REST\autocite[Chapter~5]{fielding2000architectural} API.
 
 \subsection{Monitoring Visualization}
 
@@ -1513,7 +1516,7 @@ Once a connection to the Data Source is established the user can begin building 
 \caption {Editing a Grafana dashboard panel.}
 \label{fig:grafana_report_editing}
 \end{figure}
-
+\newpage
 Butler comes with a set of basic dashboards defined out-of-the-box that will aid the user in monitoring of overall system health. The most important dashboards are:
 
 \begin{description}
@@ -1545,9 +1548,9 @@ Because collectd allows collecting metrics from a particular named process, and 
 \subsection{Server Log Collection and Visualization} 
 \label{sec:design_log_collection}
 
-Almost every application that runs on a computer is generating some sort of log file. On Unix-based environments most system-level applications will write to a common log known as syslog. But many other applications will write their own custom logs to their own specific locations. Messages written to a log file typically run the gamut from INFO statements that mark the normal operation of an application, all the way to ERROR which signify error conditions. Thus, a log file, potentially provides a wealth of information about both normal operation and system issues as they occur, and is typically one of the most reliable sources for information on application crashes. On the other hand, when operating a complex distributed system, such as a large scale workflow execution framework which runs on hundreds of Virtual Machines, the number and size of logs can become overwhelming to the point of ceasing to remain useful.  
+Almost every application that runs on a computer is generating some sort of log file. On Unix-based environments most system-level applications will write to a common log known as syslog. But many other applications will write their own custom logs to their own specific locations. Messages written to a log file typically run the gamut from INFO statements that mark the normal operation of an application, all the way to ERROR that signify error conditions. Thus, a log file, potentially provides a wealth of information about both normal operation and system issues as they occur, and is typically one of the most reliable sources for information on application crashes. On the other hand, when operating a complex distributed system, such as a large scale workflow execution framework, which runs on hundreds of Virtual Machines, the number and size of logs can become overwhelming to the point of ceasing to remain useful.  
 
-Because of the potentially extremely high value of the information contained in server logs, we deploy a system of log harvesting and centralized storage that enables the Virtual Machines that are part of Butler to parse the logs that are being generated locally for interesting events, and send those events to a centralized search index which is amenable to efficient querying and visualization. Although the three tools that we use to solve the centralized logging problem have been developed independently, they have since been acquired by a single company Elasticsearch BV. These three tools form what is known as the ELK stack - Elasticsearch\autocite{Elasticsearch}, Logstash\autocite{Logstash}, and Kibana\autocite{Kibana}.
+Because of the potentially extremely high value of the information contained in server logs, we deploy a system of log harvesting and centralized storage that enables the Virtual Machines that are part of Butler to parse the logs that are being generated locally for interesting events, and send those events to a centralized search index, which is amenable to efficient querying and visualization. Although the three tools that we use to solve the centralized logging problem have been developed independently, they have since been acquired by a single company Elasticsearch BV. These three tools form what is known as the ELK stack - Elasticsearch\autocite{Elasticsearch}, Logstash\autocite{Logstash}, and Kibana\autocite{Kibana}.
 
 Each Virtual Machine in the cluster runs a log shipper - Filebeat. It is responsible for finding, harvesting, and locally aggregating logs.
 
@@ -1558,7 +1561,7 @@ Each Virtual Machine in the cluster runs a log shipper - Filebeat. It is respons
 \label{fig:filebeat}
 \end{figure}
 
-As shown in Figure \ref{fig:filebeat}, Filebeat consists of a set of Prospectors (see Listing \ref{lst:filebeat_prospectors})which monitor and search log directories specified in the Filebeat configuration file. Corresponding to each log file that is found by Prospectors a separate Harvester is started which is responsible for ingesting the log file and sending the information to a Spooler. The Spooler aggregates information sent from Harvesters and forwards it onto Logstash for further parsing.
+As shown in Figure \ref{fig:filebeat}, Filebeat consists of a set of Prospectors (see Listing \ref{lst:filebeat_prospectors}), which monitor and search log directories specified in the Filebeat configuration file. Corresponding to each log file that is found by Prospectors a separate Harvester is started, which is responsible for ingesting the log file and sending the information to a Spooler. The Spooler aggregates information sent from Harvesters and forwards it onto Logstash for further parsing.
 
 Logstash runs on a separate centralized server and is responsible for parsing the logs forwarded from Filebeat and sending the parsed information on to the Elasticsearch index. The parsing is accomplished via 3 plugins - Input Plugin, Filter Plugin, and Output Plugin (see Figure \ref{fig:logstash_pipeline}). All three plugins are configured via the logstash configuration file.
 
@@ -1571,7 +1574,7 @@ Logstash runs on a separate centralized server and is responsible for parsing th
 
 The Input Plugin specifies where to listen to input data from. In the case of Butler we are expecting data to arrive in Filebeat format on port 5044.
 
-The Filter plugin specifies how to parse the log file i.e. which messages from each type of log file we are interested in. The interesting messages are identified using a series of regular expressions known as grok patterns. 
+The Filter plugin specifies how to parse the log file, i.e., which messages from each type of log file we are interested in. The interesting messages are identified using a series of regular expressions known as grok patterns. 
 
 The output plugin then specifies how to pass the filtered messages on to the Elasticsearch engine for indexing.
 
@@ -1627,13 +1630,10 @@ pid_file = "/var/run/salt-api.pid"
 
 [[inputs.procstat]]
 pattern = ".*airflow scheduler.*"
-
-[[inputs.procstat]]
-user = "airflow"
 \end{minted}
 \endgroup
 
-Tracking detailed metrics at the payload level beyond what is offered by procstat is, by definition, not possible to do in a completely generic fashion because every user of the framework will potentially run their own custom payloads that need to be individually instrumented with metrics. In usage scenarios where the payload is of a particularly experimental nature (such as scientific algorithms that are in early stages of development), or the analysis is performed at a large scale where the runtime is expected to be in months, and there is access to the underlying tools' source code, it may be desirable to add metrics emitting code within the individual tools that are run by the Butler framework. This is supported in Butler via the popular \mintinline{shell}{statsd}\autocite{statsd} package which has client libraries in every major programming language and allows any software to capture and emit several kinds of custom metrics in a format that is understood by a wider variety of metrics collection back-ends, including InfluxDB. The metric types that can be captured are:
+Tracking detailed metrics at the payload level beyond what is offered by procstat is, by definition, not possible to do in a completely generic fashion because every user of the framework will potentially run their own custom payloads that need to be individually instrumented with metrics. In usage scenarios where the payload is of a particularly experimental nature (such as scientific algorithms that are in early stages of development), or the analysis is performed at a large scale where the runtime is expected to be in months, and there is access to the underlying tools' source code, it may be desirable to add metrics emitting code within the individual tools that are run by the Butler framework. This is supported in Butler via the popular \mintinline{shell}{statsd}\autocite{statsd} package, which has client libraries in every major programming language and allows any software to capture and emit several kinds of custom metrics in a format that is understood by a wider variety of metrics collection back-ends, including InfluxDB. The metric types that can be captured are:
 
 \begin{description}
     \item [Counter] - A simple counter that allows arbitrarily incrementing and decrementing a value.
@@ -1662,7 +1662,7 @@ $C \in R$ - is an arbitrary constant\\
 
 Thus, each rule continuously (discretised by metric sampling frequency) computes a summary statistic over a sample of $n$ most recent observations of metric of interest $M$, and compares it to a threshold value $C$, firing off an event when the comparison specified in $op$ succeeds. The full collection of rules then constitutes a full specification of the set of anomalous conditions for which automated action can be taken.
 
-We implement this rule-based system in Butler by leveraging an open-source product called Kapacitor\autocite{kapacitor} which provides a rule definition and execution environment that integrates well with our metrics data store InfluxDB and provides a wide range of options for event handling, including completely custom event handlers, which we make use of to implement the automated healing functionality in Butler. Kapacitor rule definitions make use of a Domain Specific Language (DSL) called TICKscript to implement the specification of rule predicates described in \ref{eq:1}.
+We implement this rule-based system in Butler by leveraging an open-source product called Kapacitor\autocite{kapacitor}, which provides a rule definition and execution environment that integrates well with our metrics data store InfluxDB and provides a wide range of options for event handling, including completely custom event handlers, which we make use of to implement the automated healing functionality in Butler. Kapacitor rule definitions make use of a Domain Specific Language (DSL) called TICKscript to implement the specification of rule predicates described in \ref{eq:1}.
 
 TICKscript makes use of the concept of nodes and pipelines to organize rules as Directed Acyclic Graphs (DAGs) where processing flows forwards in a single direction, and never backwards. Each node describes a particular data processing stage, and the pipeline is a chain of nodes. Each invocation of a rule represents a particular path through the graph.
 
@@ -1672,23 +1672,23 @@ With the data appropriately selected we can turn our attention to specifying app
 
 A key mode of failure for the system is when a critical service fails or an entire virtual machine becomes unresponsive and unreachable. In order to capture these conditions we make use of a special type of rule within \mintinline{shell}{kapacitor} called a \emph{deadman}. This type of rule is triggered when no signal is received for a specific metric for a predefined period of time. In Listing \ref{lst:host_deadman_tick} we provide an example of a TICKscript that detects the deadman condition for an entire VM. This script uses a higher level of parametrization than the CPU utilization script of Listing \ref{lst:cpu_value_tick} where most of the parameters are specified as variables at the top of the script and the script structure is encoded below. The metric measurement that we base the rule on is called \mintinline{shell}{system} and it tracks low-level stats such as uptime for a VM. The data selection section of the script selects values from the \mintinline{shell}{system} measurement grouped by individual host that they originate from.
 
+\begin{figure}[h]
+  \includegraphics[scale=0.7]{self_healing_slack}
+  \centering
+  \caption {Self-healing alerts sent to a Slack channel.}
+  \label{fig:self_healing_slack}
+\end{figure} 
+
 The rule is triggered when no data is received for the given metric via the \mintinline{shell}{deadman(threshold, period)} node. In this case, when the rule is triggered there are several handlers that are registered to handle the resulting event. The first handler uses Slack API\autocite{slack} to post a notification message to the \emph{\#embassyalerts} Slack channel using a predefined message template with key information about the outage, such as in Figure \ref{fig:self_healing_slack}. The type of message changes depending on whether the rule condition has triggered or returned back to normal.
 
 \begin{figure}[h]
-    \includegraphics[scale=0.7]{self_healing_slack}
-    \centering
-    \caption {Self-healing alerts sent to a Slack channel.}
-    \label{fig:self_healing_slack}
+  \includegraphics[scale=0.35]{butler_chronograf_tick_list}
+  \centering
+  \caption {List of rule definitions within chronograf.}
+  \label{fig:butler_chronograf_tick_list}
 \end{figure} 
 
 The second handler invokes the actual Butler Self-Healing Agent to destroy the host that has become defunct and to launch a new VM to replace it. The details of the agent are provided in the next section. The third handler for this event actually generates a new metric that keeps track of rules that have been triggered and stores the metric in a separate measurement in InfluxDB. Since we want to have comprehensive information about when error conditions occur the \mintinline{shell}{alerts} measurement gives us a system of record for these events.
-
-\begin{figure}[h]
-    \includegraphics[scale=0.35]{butler_chronograf_tick_list}
-    \centering
-    \caption {List of rule definitions within chronograf.}
-    \label{fig:butler_chronograf_tick_list}
-\end{figure} 
 
 Butler defines a variety of rules using TICKscript that capture anomalies that are actionable out of the box, such as those that detect when a variety of services go offline, including - PostgreSQL service, Airflow Scheduler, Airflow Webserver, Airflow Worker, RabbitMQ, Nginx, Grafana, as well as when an entire worker VM goes offline. Each rule needs to be registered with kapacitor and Butler uses the standard Saltstack configuration mechanism to register these rules within the \mintinline{shell}{deploy_ticks} Salt state. There exists an open source Graphical User Interface called chronograf\autocite{chronograf} that allows for visualization and manual inspection and editing of kapacitor rules and the underlying InfluxDB metrics, and Butler makes use of this GUI, see Figures \ref{fig:butler_chronograf_tick_list}, \ref{fig:butler_chronograf_alert_history}.
 
@@ -1716,7 +1716,7 @@ Although, as described above, there are quite a few steps involved between the i
 
 For every VM a set of basic metrics is collected via telegraf, and the particular metric that is used to detect failed VMs is \mintinline{shell}{uptime}. This metric simply measures how long a particular VM has been alive for. When \mintinline{shell}{uptime} ceases to be updated for a period of time (current default is 30 minutes) the VM is declared dead and is slotted for destruction. Since within Butler all concerns related to creation and destruction of VMs are handled by terraform it is necessary to ensure that terraform can be executed by the self-healing agent and is kept up to date of the infrastructure state that may be updated elsewhere. Details of the terraform cluster lifecycle management system are described in Section \ref{sec:terraform_design}. To support automated relaunching of VMs several changes to how terraform is used are required. 
 
-Typically, Butler clusters are launched from a machine that is external to the cloud that is being deployed to. Oftentimes this happens from an individual user's computer. By default terraform creates and keeps up to date a file called \mintinline{shell}{terraform.tfstate} which contains a tree representation of the entire Butler infrastructure. This file typically does not contain sensitive information, thus, it can most frequently be simply checked into source control and checked out on the host that will run the self-healing agent. When it is desired to keep the state information private the data can be encrypted and shared in the manner described below for other private data. Not all of the terraform configuration information is non-private. In order to successfully communicate with cloud API endpoints sensitive configuration settings such as endpoint URLs, paths, and user credentials are required. Relaying this information over to the host running the self-healing agent in a secure manner is handled via passing of a GPG encrypted variable through saltstack.
+Typically, Butler clusters are launched from a machine that is external to the cloud that is being deployed to. Oftentimes this happens from an individual user's computer. By default terraform creates, and keeps up to date, a file called \mintinline{shell}{terraform.tfstate}, which contains a tree representation of the entire Butler infrastructure. This file typically does not contain sensitive information, thus, it can most frequently be simply checked into source control and checked out on the host that will run the self-healing agent. When it is desired to keep the state information private the data can be encrypted and shared in the manner described below for other private data. Not all of the terraform configuration information is non-private. In order to successfully communicate with cloud API endpoints sensitive configuration settings such as endpoint URLs, paths, and user credentials are required. Relaying this information over to the host running the self-healing agent in a secure manner is handled via passing of a GPG encrypted variable through saltstack.
 
 Under this scheme a public/private GPG keypair is created and the public key is imported on the machine that is holding the secret data and will perform the encryption. The private key is imported on the salt-master machine of the Butler cluster. Secret data is encrypted and stored as a string literal in a salt pillar variable that can be checked into source control, see Listing \ref{lst:gpg_encrypted_pillar}.
 
@@ -1806,6 +1806,6 @@ The Butler framework consists of many different services that reside on a number
 
 Consul provides a cross-data-center distributed Service Name Registry that is available via HTTP and DNS protocols (see Figure \ref{fig:consul_architecture}). In addition to registry capabilities Consul provides basic health checks for the underlying services, testing whether the IP and port the service is supposed to be listening on are actually reachable.
 
-Each VM in the cluster runs a Consul Agent which can be run in Server and Client modes. The set of Consul Servers form a Raft cluster and provide consensus-based responses to service lookup requests from clients. When new VMs are started they need to join the Consul cluster in order to be able to perform lookups, doing so requires knowing the IP address of at least one server. In Butler we use Saltstack's configuration capabilities to convey a Consul Server's IP address to any new VM that is brought up. 
+Each VM in the cluster runs a Consul Agent, which can be run in Server and Client modes. The set of Consul Servers form a Raft cluster and provide consensus-based responses to service lookup requests from clients. When new VMs are started they need to join the Consul cluster in order to be able to perform lookups, doing so requires knowing the IP address of at least one server. In Butler we use Saltstack's configuration capabilities to convey a Consul Server's IP address to any new VM that is brought up. 
 
-Registering a service with Consul is a matter of creating a JSON formatted configuration file that declares the service (see Listing \ref{lst:consul_postgres_service}). A Consul agent running on that VM will ingest the service definition and relay it to a Consul Server which will then circulate it amongst the other servers. The service will then be available for DNS lookups. The service from Listing \ref{lst:consul_postgres_service} will have the name \mintinline{shell}{postgresql.service.consul}, for example.
+Registering a service with Consul is a matter of creating a JSON formatted configuration file that declares the service (see Listing \ref{lst:consul_postgres_service}). A Consul agent running on that VM will ingest the service definition and relay it to a Consul Server, which will then circulate it amongst the other servers. The service will then be available for DNS lookups. The service from Listing \ref{lst:consul_postgres_service} will have the name \mintinline{shell}{postgresql.service.consul}, for example.

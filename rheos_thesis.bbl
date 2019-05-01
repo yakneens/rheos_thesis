@@ -162,7 +162,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Future Generation computer systems}
+      \field{journaltitle}{Future Generation Computer Systems}
       \field{number}{6}
       \field{title}{Cloud computing and emerging IT platforms: Vision, hype, and reality for delivering computing as the 5th utility}
       \field{volume}{25}
@@ -238,7 +238,7 @@
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature genetics}
+      \field{journaltitle}{Nature Genetics}
       \field{number}{5}
       \field{title}{Large-scale whole-genome sequencing of the Icelandic population}
       \field{volume}{47}
@@ -392,7 +392,7 @@
       \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature genetics}
+      \field{journaltitle}{Nature Genetics}
       \field{number}{10}
       \field{title}{The cancer genome atlas pan-cancer analysis project}
       \field{volume}{45}
@@ -610,30 +610,80 @@
       \field{pages}{149\bibrangedash 151}
       \range{pages}{3}
     \endentry
-    \entry{england2016100}{article}{}
-      \name{author}{1}{}{%
-        {{hash=9ff7645447a0028b83b92cf14aa7c2d6}{%
-           family={England},
-           familyi={E\bibinitperiod},
-           given={Genomics},
-           giveni={G\bibinitperiod}}}%
+    \entry{turnbull2018100}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=7c724677b20edab448b46ec36c7428b5}{%
+           family={Turnbull},
+           familyi={T\bibinitperiod},
+           given={Clare},
+           giveni={C\bibinitperiod}}}%
+        {{hash=f779329fd6c132e3c49efb9e9e47185c}{%
+           family={Scott},
+           familyi={S\bibinitperiod},
+           given={Richard\bibnamedelima H},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=115072102cfa4dc7d5c1e211d15fa784}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Ellen},
+           giveni={E\bibinitperiod}}}%
+        {{hash=7962ab42a6d9afcbfa6b0af4bb63b3b9}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Louise},
+           giveni={L\bibinitperiod}}}%
+        {{hash=e615ae2172094db4467e5293424ef14a}{%
+           family={Murugaesu},
+           familyi={M\bibinitperiod},
+           given={Nirupa},
+           giveni={N\bibinitperiod}}}%
+        {{hash=1c725abd12526429f273ae891502f6df}{%
+           family={Pretty},
+           familyi={P\bibinitperiod},
+           given={Freya\bibnamedelima Boardman},
+           giveni={F\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=a1cc62d1f2588fa48972d968d5130ed0}{%
+           family={Halai},
+           familyi={H\bibinitperiod},
+           given={Dina},
+           giveni={D\bibinitperiod}}}%
+        {{hash=9406df3b523e99da2b97ca763cee0b57}{%
+           family={Baple},
+           familyi={B\bibinitperiod},
+           given={Emma},
+           giveni={E\bibinitperiod}}}%
+        {{hash=936e60329a8423915b8e6926562ff8f4}{%
+           family={Craig},
+           familyi={C\bibinitperiod},
+           given={Clare},
+           giveni={C\bibinitperiod}}}%
+        {{hash=704600f41819048e1628e08d28de7d11}{%
+           family={Hamblin},
+           familyi={H\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod}}}%
       }
-      \strng{namehash}{9ff7645447a0028b83b92cf14aa7c2d6}
-      \strng{fullhash}{9ff7645447a0028b83b92cf14aa7c2d6}
-      \strng{bibnamehash}{9ff7645447a0028b83b92cf14aa7c2d6}
-      \strng{authorbibnamehash}{9ff7645447a0028b83b92cf14aa7c2d6}
-      \strng{authornamehash}{9ff7645447a0028b83b92cf14aa7c2d6}
-      \strng{authorfullhash}{9ff7645447a0028b83b92cf14aa7c2d6}
+      \list{publisher}{1}{%
+        {British Medical Journal Publishing Group}%
+      }
+      \strng{namehash}{8b7efae7ea43c1d9bea2d6b24553dde1}
+      \strng{fullhash}{381eb14e7a22fcef3e74820c4481d976}
+      \strng{bibnamehash}{8b7efae7ea43c1d9bea2d6b24553dde1}
+      \strng{authorbibnamehash}{8b7efae7ea43c1d9bea2d6b24553dde1}
+      \strng{authornamehash}{8b7efae7ea43c1d9bea2d6b24553dde1}
+      \strng{authorfullhash}{381eb14e7a22fcef3e74820c4481d976}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{The}
-      \field{title}{The 100,000 genomes project}
-      \field{volume}{100}
-      \field{year}{2016}
-      \field{pages}{1\bibrangedash 2}
-      \range{pages}{2}
+      \field{journaltitle}{BMJ}
+      \field{title}{The 100 000 Genomes Project: bringing whole genome sequencing to the NHS}
+      \field{volume}{361}
+      \field{year}{2018}
+      \field{pages}{k1687}
+      \range{pages}{-1}
     \endentry
     \entry{lee2014clinical}{article}{}
       \true{moreauthor}
@@ -703,7 +753,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Jama}
+      \field{journaltitle}{The Journal of the American Medical Association}
       \field{number}{18}
       \field{title}{Clinical exome sequencing for genetic identification of rare Mendelian disorders}
       \field{volume}{312}
@@ -848,7 +898,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of clinical oncology}
+      \field{journaltitle}{Journal of Clinical Oncology}
       \field{number}{12}
       \field{title}{American Society of Clinical Oncology provisional clinical opinion: testing for KRAS gene mutations in patients with metastatic colorectal carcinoma to predict response to anti--epidermal growth factor receptor monoclonal antibody therapy}
       \field{volume}{27}
@@ -998,7 +1048,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{PLoS biology}
+      \field{journaltitle}{PLoS Biology}
       \field{number}{7}
       \field{title}{Big data: astronomical or genomical}
       \field{volume}{13}
@@ -1074,7 +1124,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{1}
       \field{title}{The real cost of sequencing: scaling computation to keep pace with data generation}
       \field{volume}{17}
@@ -1452,7 +1502,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature reviews genetics}
+      \field{journaltitle}{Nature Reviews Genetics}
       \field{number}{1}
       \field{title}{RNA-Seq: a revolutionary tool for transcriptomics}
       \field{volume}{10}
@@ -1520,7 +1570,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of carcinogenesis}
+      \field{journaltitle}{Journal of Carcinogenesis}
       \field{title}{Applications of metabolomics in cancer research}
       \field{volume}{12}
       \field{year}{2013}
@@ -1593,7 +1643,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature genetics}
+      \field{journaltitle}{Nature Genetics}
       \field{number}{5}
       \field{title}{A framework for variation discovery and genotyping using next-generation DNA sequencing data}
       \field{volume}{43}
@@ -1669,7 +1719,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nucleic acids research}
+      \field{journaltitle}{Nucleic Acids Research}
       \field{number}{D1}
       \field{title}{The NHGRI GWAS Catalog, a curated resource of SNP-trait associations}
       \field{volume}{42}
@@ -1739,7 +1789,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Clinical chemistry}
+      \field{journaltitle}{Clinical Chemistry}
       \field{number}{4}
       \field{title}{Next-generation sequencing: from basic research to diagnostics}
       \field{volume}{55}
@@ -1822,7 +1872,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{BMC bioinformatics}
+      \field{journaltitle}{BMC Bioinformatics}
       \field{number}{11}
       \field{title}{Computational tools for copy number variation (CNV) detection using next-generation sequencing data: features and perspectives}
       \field{volume}{14}
@@ -1925,7 +1975,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{1}
       \field{title}{The ensembl variant effect predictor}
       \field{volume}{17}
@@ -2001,7 +2051,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Briefings in bioinformatics}
+      \field{journaltitle}{Briefings in Bioinformatics}
       \field{number}{5}
       \field{title}{A survey of sequence alignment algorithms for next-generation sequencing}
       \field{volume}{11}
@@ -2035,7 +2085,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature methods}
+      \field{journaltitle}{Nature Methods}
       \field{number}{4}
       \field{title}{Fast gapped-read alignment with Bowtie 2}
       \field{volume}{9}
@@ -2155,7 +2205,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome research}
+      \field{journaltitle}{Genome Research}
       \field{number}{9}
       \field{title}{The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data}
       \field{volume}{20}
@@ -2233,7 +2283,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Current protocols in bioinformatics}
+      \field{journaltitle}{Current Protocols in Bioinformatics}
       \field{title}{From FastQ data to high-confidence variant calls: the genome analysis toolkit best practices pipeline}
       \field{year}{2013}
       \field{pages}{11\bibrangedash 10}
@@ -2307,7 +2357,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature biotechnology}
+      \field{journaltitle}{Nature Biotechnology}
       \field{number}{4}
       \field{title}{Toil enables reproducible, open source, big biomedical data analyses}
       \field{volume}{35}
@@ -2361,7 +2411,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature biotechnology}
+      \field{journaltitle}{Nature Biotechnology}
       \field{number}{4}
       \field{title}{Nextflow enables reproducible computational workflows}
       \field{volume}{35}
@@ -2400,7 +2450,7 @@
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{8}
       \field{title}{Galaxy: a comprehensive approach for supporting accessible, reproducible, and transparent computational research in the life sciences}
       \field{volume}{11}
@@ -2617,7 +2667,7 @@
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome research}
+      \field{journaltitle}{Genome Research}
       \field{number}{5}
       \field{title}{Efficient storage of high throughput DNA sequencing data using reference-based compression}
       \field{volume}{21}
@@ -2853,7 +2903,7 @@
       \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{PloS one}
+      \field{journaltitle}{PloS One}
       \field{number}{2}
       \field{title}{NGS QC Toolkit: a toolkit for quality control of next generation sequencing data}
       \field{volume}{7}
@@ -2919,7 +2969,7 @@
       \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{SIAM journal on computing}
+      \field{journaltitle}{SIAM Journal on Computing}
       \field{number}{6}
       \field{title}{Maintaining stream statistics over sliding windows}
       \field{volume}{31}
@@ -3067,7 +3117,7 @@
       \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature biotechnology}
+      \field{journaltitle}{Nature Biotechnology}
       \field{number}{3}
       \field{title}{Sensitive detection of somatic point mutations in impure and heterogeneous cancer samples}
       \field{volume}{31}
@@ -3138,7 +3188,7 @@
       \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature genetics}
+      \field{journaltitle}{Nature Genetics}
       \field{number}{8}
       \field{title}{Integrating mapping-, assembly-and haplotype-based approaches for calling variants in clinical sequencing applications}
       \field{volume}{46}
@@ -3337,7 +3387,7 @@
       \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature communications}
+      \field{journaltitle}{Nature Communications}
       \field{title}{A comprehensive assessment of somatic mutation detection in cancer using whole-genome sequencing}
       \field{volume}{6}
       \field{year}{2015}
@@ -3701,7 +3751,7 @@
       \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Proceedings of the national academy of sciences}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
       \field{number}{12}
       \field{title}{DNA sequencing with chain-terminating inhibitors}
       \field{volume}{74}
@@ -3735,7 +3785,7 @@
       \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of molecular biology}
+      \field{journaltitle}{Journal of Molecular Biology}
       \field{number}{3}
       \field{title}{A rapid method for determining sequences in DNA by primed synthesis with DNA polymerase}
       \field{volume}{94}
@@ -3808,7 +3858,7 @@
       \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome research}
+      \field{journaltitle}{Genome Research}
       \field{number}{5}
       \field{title}{Velvet: algorithms for de novo short read assembly using de Bruijn graphs}
       \field{volume}{18}
@@ -3837,7 +3887,7 @@
       \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{TRENDS in Genetics}
+      \field{journaltitle}{Trends in Genetics}
       \field{number}{9}
       \field{title}{Single nucleotide polymorphisms and recombination rate in humans}
       \field{volume}{17}
@@ -4068,7 +4118,7 @@
       \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nucleic acids research}
+      \field{journaltitle}{Nucleic Acids Research}
       \field{number}{16}
       \field{title}{Substantial biases in ultra-short read data sets from high-throughput DNA sequencing}
       \field{volume}{36}
@@ -4216,7 +4266,7 @@
       \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{CA: a cancer journal for clinicians}
+      \field{journaltitle}{CA: a Cancer Journal for Clinicians}
       \field{number}{2}
       \field{title}{Global cancer statistics, 2012}
       \field{volume}{65}
@@ -4260,7 +4310,7 @@
       \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{The lancet oncology}
+      \field{journaltitle}{The Lancet Oncology}
       \field{number}{12}
       \field{title}{Economic burden of cancer across the European Union: a population-based cost analysis}
       \field{volume}{14}
@@ -4377,7 +4427,7 @@
       \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{cell}
+      \field{journaltitle}{Cell}
       \field{number}{5}
       \field{title}{Hallmarks of cancer: the next generation}
       \field{volume}{144}
@@ -4589,13 +4639,479 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nucleic acids research}
+      \field{journaltitle}{Nucleic Acids Research}
       \field{number}{D1}
       \field{title}{COSMIC: exploring the world's knowledge of somatic mutations in human cancer}
       \field{volume}{43}
       \field{year}{2015}
       \field{pages}{D805\bibrangedash D811}
       \range{pages}{-1}
+    \endentry
+    \entry{langmead2018cloud}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a8ce1a82e3e69aab1bb83e47384c8977}{%
+           family={Langmead},
+           familyi={L\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod}}}%
+        {{hash=507aea49873d25f98f21db54a6f8ca84}{%
+           family={Nellore},
+           familyi={N\bibinitperiod},
+           given={Abhinav},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{058f58bd50067c07ca86365f885ba8e3}
+      \strng{fullhash}{058f58bd50067c07ca86365f885ba8e3}
+      \strng{bibnamehash}{058f58bd50067c07ca86365f885ba8e3}
+      \strng{authorbibnamehash}{058f58bd50067c07ca86365f885ba8e3}
+      \strng{authornamehash}{058f58bd50067c07ca86365f885ba8e3}
+      \strng{authorfullhash}{058f58bd50067c07ca86365f885ba8e3}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Reviews Genetics}
+      \field{number}{4}
+      \field{title}{Cloud computing for genomic data analysis and collaboration}
+      \field{volume}{19}
+      \field{year}{2018}
+      \field{pages}{208}
+      \range{pages}{1}
+    \endentry
+    \entry{ledergerber2011base}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5ee01543fbb1a98af2a4231661d14a01}{%
+           family={Ledergerber},
+           familyi={L\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a24e9837cf0d5b9c76ce50d7ee5ff3f7}{%
+           family={Dessimoz},
+           familyi={D\bibinitperiod},
+           given={Christophe},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{1712225f0f04f4e29a23f301e693274f}
+      \strng{fullhash}{1712225f0f04f4e29a23f301e693274f}
+      \strng{bibnamehash}{1712225f0f04f4e29a23f301e693274f}
+      \strng{authorbibnamehash}{1712225f0f04f4e29a23f301e693274f}
+      \strng{authornamehash}{1712225f0f04f4e29a23f301e693274f}
+      \strng{authorfullhash}{1712225f0f04f4e29a23f301e693274f}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Briefings in bioinformatics}
+      \field{number}{5}
+      \field{title}{Base-calling for next-generation sequencing platforms}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{489\bibrangedash 497}
+      \range{pages}{9}
+    \endentry
+    \entry{andrews2010fastqc}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=e66026ce6d26f325615b05149f4d10a9}{%
+           family={Andrews},
+           familyi={A\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{fullhash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{bibnamehash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{authorbibnamehash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{authornamehash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \strng{authorfullhash}{8c37cae9b47fc326001c7ed7bac92a65}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{FastQC: a quality control tool for high throughput sequence data}
+      \field{year}{2010}
+    \endentry
+    \entry{ruffalo2011comparative}{article}{}
+      \name{author}{3}{}{%
+        {{hash=dac36ae36a80323fd664adb1df8b2554}{%
+           family={Ruffalo},
+           familyi={R\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3522c4733c064d0895ad1044165f76e4}{%
+           family={LaFramboise},
+           familyi={L\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=78e0645ece91c198c36a65c995f2577e}{%
+           family={Koyut{ü}rk},
+           familyi={K\bibinitperiod},
+           given={Mehmet},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{3d39afec947910acecb51be79bf6ff70}
+      \strng{fullhash}{3d39afec947910acecb51be79bf6ff70}
+      \strng{bibnamehash}{3d39afec947910acecb51be79bf6ff70}
+      \strng{authorbibnamehash}{3d39afec947910acecb51be79bf6ff70}
+      \strng{authornamehash}{3d39afec947910acecb51be79bf6ff70}
+      \strng{authorfullhash}{3d39afec947910acecb51be79bf6ff70}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{20}
+      \field{title}{Comparative analysis of algorithms for next-generation sequencing read alignment}
+      \field{volume}{27}
+      \field{year}{2011}
+      \field{pages}{2790\bibrangedash 2796}
+      \range{pages}{7}
+    \endentry
+    \entry{chaisson2015genetic}{article}{}
+      \name{author}{3}{}{%
+        {{hash=837f809d2eb72348130bb138c58ff20f}{%
+           family={Chaisson},
+           familyi={C\bibinitperiod},
+           given={Mark\bibnamedelima JP},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=b26e650a08971d0c7b7313837ab2544a}{%
+           family={Wilson},
+           familyi={W\bibinitperiod},
+           given={Richard\bibnamedelima K},
+           giveni={R\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=0b9756431fea4e267911a215b4240a25}{%
+           family={Eichler},
+           familyi={E\bibinitperiod},
+           given={Evan\bibnamedelima E},
+           giveni={E\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{121fc46a8cf1f2f16f75485d5a6725b4}
+      \strng{fullhash}{121fc46a8cf1f2f16f75485d5a6725b4}
+      \strng{bibnamehash}{121fc46a8cf1f2f16f75485d5a6725b4}
+      \strng{authorbibnamehash}{121fc46a8cf1f2f16f75485d5a6725b4}
+      \strng{authornamehash}{121fc46a8cf1f2f16f75485d5a6725b4}
+      \strng{authorfullhash}{121fc46a8cf1f2f16f75485d5a6725b4}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Reviews Genetics}
+      \field{number}{11}
+      \field{title}{Genetic variation and the de novo assembly of human genomes}
+      \field{volume}{16}
+      \field{year}{2015}
+      \field{pages}{627}
+      \range{pages}{1}
+    \endentry
+    \entry{de1946combinatorial}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=96f4ab7dc610f75552c6253af7d309bd}{%
+           family={De\bibnamedelima Bruijn},
+           familyi={D\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Nicolaas\bibnamedelima Govert},
+           giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{96f4ab7dc610f75552c6253af7d309bd}
+      \strng{fullhash}{96f4ab7dc610f75552c6253af7d309bd}
+      \strng{bibnamehash}{96f4ab7dc610f75552c6253af7d309bd}
+      \strng{authorbibnamehash}{96f4ab7dc610f75552c6253af7d309bd}
+      \strng{authornamehash}{96f4ab7dc610f75552c6253af7d309bd}
+      \strng{authorfullhash}{96f4ab7dc610f75552c6253af7d309bd}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proc. Koninklijke Nederlandse Academie van Wetenschappen}
+      \field{title}{A combinatorial problem}
+      \field{volume}{49}
+      \field{year}{1946}
+      \field{pages}{758\bibrangedash 764}
+      \range{pages}{7}
+    \endentry
+    \entry{barnett2011bamtools}{article}{}
+      \name{author}{5}{}{%
+        {{hash=35db6d8e845d3e33ae7dda6b7b4e56a2}{%
+           family={Barnett},
+           familyi={B\bibinitperiod},
+           given={Derek\bibnamedelima W},
+           giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=254664652d5f9fe0d151e90673aac54c}{%
+           family={Garrison},
+           familyi={G\bibinitperiod},
+           given={Erik\bibnamedelima K},
+           giveni={E\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=4d1aaca7c0ddeb02b5da1bf48b8d8af3}{%
+           family={Quinlan},
+           familyi={Q\bibinitperiod},
+           given={Aaron\bibnamedelima R},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=94549ba533d6c181ab6a8609c57cd976}{%
+           family={Str{ö}mberg},
+           familyi={S\bibinitperiod},
+           given={Michael\bibnamedelima P},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=d56851b13e9709879cded9ba2ba0dda8}{%
+           family={Marth},
+           familyi={M\bibinitperiod},
+           given={Gabor\bibnamedelima T},
+           giveni={G\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{1e9b92ac96ff3c79e5b090523f204f17}
+      \strng{fullhash}{8a16e5f3a403d5a7e0d4c8215f832bad}
+      \strng{bibnamehash}{1e9b92ac96ff3c79e5b090523f204f17}
+      \strng{authorbibnamehash}{1e9b92ac96ff3c79e5b090523f204f17}
+      \strng{authornamehash}{1e9b92ac96ff3c79e5b090523f204f17}
+      \strng{authorfullhash}{8a16e5f3a403d5a7e0d4c8215f832bad}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{12}
+      \field{title}{BamTools: a C++ API and toolkit for analyzing and managing BAM files}
+      \field{volume}{27}
+      \field{year}{2011}
+      \field{pages}{1691\bibrangedash 1692}
+      \range{pages}{2}
+    \endentry
+    \entry{wood2014whole}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=7826cb336d850be8f8c6163e233ff679}{%
+           family={Wood},
+           familyi={W\bibinitperiod},
+           given={Andrew\bibnamedelima R},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=5483f70028b589946cf2c15652c7c787}{%
+           family={Tuke},
+           familyi={T\bibinitperiod},
+           given={Marcus\bibnamedelima A},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=f4a66b594fe524a85f7a882eb2976fee}{%
+           family={Nalls},
+           familyi={N\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod}}}%
+        {{hash=75d7d64f0e4af9f062d4db2e15310176}{%
+           family={Hernandez},
+           familyi={H\bibinitperiod},
+           given={Dena},
+           giveni={D\bibinitperiod}}}%
+        {{hash=14a84436cb9ffb8f493382465a89a051}{%
+           family={Gibbs},
+           familyi={G\bibinitperiod},
+           given={J\bibnamedelima Raphael},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=cf0b02813739dc51d9f045804c5c0bd2}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Haoxiang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=128d16ff3cc48101ec7209dd0c422ae9}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Christopher\bibnamedelima S},
+           giveni={C\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=2ac7eed7db04501b1f01ec07bb552086}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Qibin},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=64edfc17e22652e1251a3b6ae580b509}{%
+           family={Shen},
+           familyi={S\bibinitperiod},
+           given={Juan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f89ce408e10e063354924f43e2929c42}{%
+           family={Jun},
+           familyi={J\bibinitperiod},
+           given={Goo},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{29939b7e5a8a7bf26337e08ac22e581d}
+      \strng{fullhash}{bcb4aba56c717295399b31bc15152555}
+      \strng{bibnamehash}{29939b7e5a8a7bf26337e08ac22e581d}
+      \strng{authorbibnamehash}{29939b7e5a8a7bf26337e08ac22e581d}
+      \strng{authornamehash}{29939b7e5a8a7bf26337e08ac22e581d}
+      \strng{authorfullhash}{bcb4aba56c717295399b31bc15152555}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Human molecular genetics}
+      \field{number}{5}
+      \field{title}{Whole-genome sequencing to understand the genetic architecture of common gene expression and biomarker phenotypes}
+      \field{volume}{24}
+      \field{year}{2014}
+      \field{pages}{1504\bibrangedash 1512}
+      \range{pages}{9}
+    \endentry
+    \entry{pereira2016somatic}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=8bebce40d040985fbc63ce6f950a592e}{%
+           family={Pereira},
+           familyi={P\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=80fe9da1f650d658d7e4241b6c3da3c3}{%
+           family={Chin},
+           familyi={C\bibinitperiod},
+           given={Suet-Feung},
+           giveni={S\bibinithyphendelim F\bibinitperiod}}}%
+        {{hash=3de8b1c61983e28c96db9f2a4684bbd0}{%
+           family={Rueda},
+           familyi={R\bibinitperiod},
+           given={Oscar\bibnamedelima M},
+           giveni={O\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=aad437eee703acc55d03b76b7f244100}{%
+           family={Vollan},
+           familyi={V\bibinitperiod},
+           given={Hans-Kristian\bibnamedelima Moen},
+           giveni={H\bibinithyphendelim K\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=30757ad39576084b1f95c4a51737d1ba}{%
+           family={Provenzano},
+           familyi={P\bibinitperiod},
+           given={Elena},
+           giveni={E\bibinitperiod}}}%
+        {{hash=9e9f645655013e36917a251968826289}{%
+           family={Bardwell},
+           familyi={B\bibinitperiod},
+           given={Helen\bibnamedelima A},
+           giveni={H\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=b57f96e686304c260e332787878c3de9}{%
+           family={Pugh},
+           familyi={P\bibinitperiod},
+           given={Michelle},
+           giveni={M\bibinitperiod}}}%
+        {{hash=11f106458119df3924ee06194e75f090}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Linda},
+           giveni={L\bibinitperiod}}}%
+        {{hash=8a55dacb122d36793a6256581ebad418}{%
+           family={Russell},
+           familyi={R\bibinitperiod},
+           given={Roslin},
+           giveni={R\bibinitperiod}}}%
+        {{hash=8494ec32b67fe243b306a38e4627a77a}{%
+           family={Sammut},
+           familyi={S\bibinitperiod},
+           given={Stephen-John},
+           giveni={S\bibinithyphendelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{8bf5703a98cfb695879a362f6211ecf1}
+      \strng{fullhash}{0d5fd9ffa8119bece323e14de322efea}
+      \strng{bibnamehash}{8bf5703a98cfb695879a362f6211ecf1}
+      \strng{authorbibnamehash}{8bf5703a98cfb695879a362f6211ecf1}
+      \strng{authornamehash}{8bf5703a98cfb695879a362f6211ecf1}
+      \strng{authorfullhash}{0d5fd9ffa8119bece323e14de322efea}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature communications}
+      \field{title}{The somatic mutation profiles of 2,433 breast cancers refine their genomic and transcriptomic landscapes}
+      \field{volume}{7}
+      \field{year}{2016}
+      \field{pages}{11479}
+      \range{pages}{1}
+    \endentry
+    \entry{hasan2015performance}{article}{}
+      \name{author}{3}{}{%
+        {{hash=5da214c485ec8f0bcc880bf838176fdc}{%
+           family={Hasan},
+           familyi={H\bibinitperiod},
+           given={Mohammad\bibnamedelima Shabbir},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=c656847a4ca0b4b89eaa7c935ee453d2}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Xiaowei},
+           giveni={X\bibinitperiod}}}%
+        {{hash=f6bbd94d210d5c7e232002a8fb243519}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Liqing},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {BioMed Central}%
+      }
+      \strng{namehash}{cc6c2d25d553fb36f6bdcfa78518cd03}
+      \strng{fullhash}{cc6c2d25d553fb36f6bdcfa78518cd03}
+      \strng{bibnamehash}{cc6c2d25d553fb36f6bdcfa78518cd03}
+      \strng{authorbibnamehash}{cc6c2d25d553fb36f6bdcfa78518cd03}
+      \strng{authornamehash}{cc6c2d25d553fb36f6bdcfa78518cd03}
+      \strng{authorfullhash}{cc6c2d25d553fb36f6bdcfa78518cd03}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Human genomics}
+      \field{number}{1}
+      \field{title}{Performance evaluation of indel calling tools using real short-read data}
+      \field{volume}{9}
+      \field{year}{2015}
+      \field{pages}{20}
+      \range{pages}{1}
+    \endentry
+    \entry{guan2016structural}{article}{}
+      \name{author}{2}{}{%
+        {{hash=eb4757908b5d1bbb75eb0d3900b6f74f}{%
+           family={Guan},
+           familyi={G\bibinitperiod},
+           given={Peiyong},
+           giveni={P\bibinitperiod}}}%
+        {{hash=4536e197bc88bc26375a0b16e86869b9}{%
+           family={Sung},
+           familyi={S\bibinitperiod},
+           given={Wing-Kin},
+           giveni={W\bibinithyphendelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{de54251de4c6fba9575a4513d91ded14}
+      \strng{fullhash}{de54251de4c6fba9575a4513d91ded14}
+      \strng{bibnamehash}{de54251de4c6fba9575a4513d91ded14}
+      \strng{authorbibnamehash}{de54251de4c6fba9575a4513d91ded14}
+      \strng{authornamehash}{de54251de4c6fba9575a4513d91ded14}
+      \strng{authorfullhash}{de54251de4c6fba9575a4513d91ded14}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Methods}
+      \field{title}{Structural variation detection using next-generation sequencing data: a comparative technical review}
+      \field{volume}{102}
+      \field{year}{2016}
+      \field{pages}{36\bibrangedash 49}
+      \range{pages}{14}
     \endentry
     \entry{korbel2013criteria}{article}{}
       \name{author}{2}{}{%
@@ -4630,6 +5146,157 @@
       \field{year}{2013}
       \field{pages}{1226\bibrangedash 1236}
       \range{pages}{11}
+    \endentry
+    \entry{visscher2012five}{article}{}
+      \name{author}{4}{}{%
+        {{hash=fe976d0cafc54e6f13f31d3da7a84e6e}{%
+           family={Visscher},
+           familyi={V\bibinitperiod},
+           given={Peter\bibnamedelima M},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=bd33d376ffe83f1ee89a184cbbdee16e}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Matthew\bibnamedelima A},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=20ad865540b3d03d30254b8bb8655e76}{%
+           family={McCarthy},
+           familyi={M\bibinitperiod},
+           given={Mark\bibnamedelima I},
+           giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=5a1cb92dc789e714fb5aaf67809119a6}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{fbf574120f2133853115013d5c3e2744}
+      \strng{fullhash}{fc4dd3e0919d35c3e2afc2ebde17b418}
+      \strng{bibnamehash}{fbf574120f2133853115013d5c3e2744}
+      \strng{authorbibnamehash}{fbf574120f2133853115013d5c3e2744}
+      \strng{authornamehash}{fbf574120f2133853115013d5c3e2744}
+      \strng{authorfullhash}{fc4dd3e0919d35c3e2afc2ebde17b418}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The American Journal of Human Genetics}
+      \field{number}{1}
+      \field{title}{Five years of GWAS discovery}
+      \field{volume}{90}
+      \field{year}{2012}
+      \field{pages}{7\bibrangedash 24}
+      \range{pages}{18}
+    \endentry
+    \entry{zeng1994precision}{article}{}
+      \name{author}{1}{}{%
+        {{hash=a064465a2756722beae83519be3fa7de}{%
+           family={Zeng},
+           familyi={Z\bibinitperiod},
+           given={Zhao-Bang},
+           giveni={Z\bibinithyphendelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Genetics Soc America}%
+      }
+      \strng{namehash}{a064465a2756722beae83519be3fa7de}
+      \strng{fullhash}{a064465a2756722beae83519be3fa7de}
+      \strng{bibnamehash}{a064465a2756722beae83519be3fa7de}
+      \strng{authorbibnamehash}{a064465a2756722beae83519be3fa7de}
+      \strng{authornamehash}{a064465a2756722beae83519be3fa7de}
+      \strng{authorfullhash}{a064465a2756722beae83519be3fa7de}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Genetics}
+      \field{number}{4}
+      \field{title}{Precision mapping of quantitative trait loci.}
+      \field{volume}{136}
+      \field{year}{1994}
+      \field{pages}{1457\bibrangedash 1468}
+      \range{pages}{12}
+    \endentry
+    \entry{lee2014rare}{article}{}
+      \name{author}{4}{}{%
+        {{hash=f8816922546aab3d052de22de1eb0cc6}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Seunggeung},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fe583da186078c09df2ee99aa07b00c2}{%
+           family={Abecasis},
+           familyi={A\bibinitperiod},
+           given={Gon{ç}alo\bibnamedelima R},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=af0e094575cc6cb8a4a322a3defb9e73}{%
+           family={Boehnke},
+           familyi={B\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=715abbf13771af0330339351e0874aa3}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Xihong},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{8eb2541ab497e054b9a582797983784b}
+      \strng{fullhash}{eac8b87bc0639db02dcaf37deba6645f}
+      \strng{bibnamehash}{8eb2541ab497e054b9a582797983784b}
+      \strng{authorbibnamehash}{8eb2541ab497e054b9a582797983784b}
+      \strng{authornamehash}{8eb2541ab497e054b9a582797983784b}
+      \strng{authorfullhash}{eac8b87bc0639db02dcaf37deba6645f}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The American Journal of Human Genetics}
+      \field{number}{1}
+      \field{title}{Rare-variant association analysis: study designs and statistical tests}
+      \field{volume}{95}
+      \field{year}{2014}
+      \field{pages}{5\bibrangedash 23}
+      \range{pages}{19}
+    \endentry
+    \entry{simon2013implementing}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6888e07ac8440b3bea794b7843c4229c}{%
+           family={Simon},
+           familyi={S\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=20eed0a827f2e6a8d09d56fcc10857b5}{%
+           family={Roychowdhury},
+           familyi={R\bibinitperiod},
+           given={Sameek},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{22de5dbd91a8558858923a0800159508}
+      \strng{fullhash}{22de5dbd91a8558858923a0800159508}
+      \strng{bibnamehash}{22de5dbd91a8558858923a0800159508}
+      \strng{authorbibnamehash}{22de5dbd91a8558858923a0800159508}
+      \strng{authornamehash}{22de5dbd91a8558858923a0800159508}
+      \strng{authorfullhash}{22de5dbd91a8558858923a0800159508}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature reviews Drug discovery}
+      \field{number}{5}
+      \field{title}{Implementing personalized cancer genomics in clinical trials}
+      \field{volume}{12}
+      \field{year}{2013}
+      \field{pages}{358}
+      \range{pages}{1}
     \endentry
     \entry{international2003international}{article}{}
       \true{moreauthor}
@@ -4703,7 +5370,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nucleic acids research}
+      \field{journaltitle}{Nucleic Acids Research}
       \field{number}{6}
       \field{title}{The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants}
       \field{volume}{38}
@@ -4771,7 +5438,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome research}
+      \field{journaltitle}{Genome Research}
       \field{title}{Mapping short DNA sequencing reads and calling variants using mapping quality scores}
       \field{year}{2008}
       \field{pages}{gr\bibrangedash 078212}
@@ -4857,7 +5524,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Annual review of genomics and human genetics}
+      \field{journaltitle}{Annual Review of Genomics and Human Genetics}
       \field{title}{Alignment of next-generation sequencing reads}
       \field{volume}{16}
       \field{year}{2015}
@@ -4890,7 +5557,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Advances in applied mathematics}
+      \field{journaltitle}{Advances in Applied Mathematics}
       \field{number}{4}
       \field{title}{Comparison of biosequences}
       \field{volume}{2}
@@ -4910,9 +5577,6 @@
            familyi={W\bibinitperiod},
            given={David\bibnamedelima J},
            giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Citeseer}%
       }
       \strng{namehash}{b76dfe3f3458be0cd0c96e8fad8d79ba}
       \strng{fullhash}{b76dfe3f3458be0cd0c96e8fad8d79ba}
@@ -4995,7 +5659,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{3}
       \field{title}{Ultrafast and memory-efficient alignment of short DNA sequences to the human genome}
       \field{volume}{10}
@@ -5158,7 +5822,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{siam Journal on Computing}
+      \field{journaltitle}{SIAM Journal on Computing}
       \field{number}{5}
       \field{title}{Suffix arrays: a new method for on-line string searches}
       \field{volume}{22}
@@ -5273,7 +5937,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{11}
       \field{title}{Searching for SNPs with cloud computing}
       \field{volume}{10}
@@ -5399,7 +6063,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genomics, proteomics \& bioinformatics}
+      \field{journaltitle}{Genomics, Proteomics \& Bioinformatics}
       \field{number}{5}
       \field{title}{PacBio sequencing and its applications}
       \field{volume}{13}
@@ -5438,7 +6102,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genomics, proteomics \& bioinformatics}
+      \field{journaltitle}{Genomics, Proteomics \& Bioinformatics}
       \field{number}{5}
       \field{title}{Oxford Nanopore MinION sequencing and genome assembly}
       \field{volume}{14}
@@ -5477,7 +6141,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{6}
       \field{title}{The advantages of SMRT sequencing}
       \field{volume}{14}
@@ -5585,7 +6249,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature methods}
+      \field{journaltitle}{Nature Methods}
       \field{number}{8}
       \field{title}{A synthetic-diploid benchmark for accurate variant-calling evaluation}
       \field{volume}{15}
@@ -5639,7 +6303,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Cancer informatics}
+      \field{journaltitle}{Cancer Informatics}
       \field{title}{Monitoring of technical variation in quantitative high-throughput datasets}
       \field{volume}{12}
       \field{year}{2013}
@@ -5707,7 +6371,7 @@
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{2}
       \field{title}{Analyzing and minimizing PCR amplification bias in Illumina sequencing libraries}
       \field{volume}{12}
@@ -5726,29 +6390,6 @@
       \field{journaltitle}{Broad Institute, GitHub repository}
       \field{title}{Picard toolkit}
       \field{year}{2018}
-    \endentry
-    \entry{andrews2010fastqc}{article}{}
-      \true{moreauthor}
-      \true{morelabelname}
-      \name{author}{1}{}{%
-        {{hash=e66026ce6d26f325615b05149f4d10a9}{%
-           family={Andrews},
-           familyi={A\bibinitperiod},
-           given={Simon},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{8c37cae9b47fc326001c7ed7bac92a65}
-      \strng{fullhash}{8c37cae9b47fc326001c7ed7bac92a65}
-      \strng{bibnamehash}{8c37cae9b47fc326001c7ed7bac92a65}
-      \strng{authorbibnamehash}{8c37cae9b47fc326001c7ed7bac92a65}
-      \strng{authornamehash}{8c37cae9b47fc326001c7ed7bac92a65}
-      \strng{authorfullhash}{8c37cae9b47fc326001c7ed7bac92a65}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{FastQC: a quality control tool for high throughput sequence data}
-      \field{year}{2010}
     \endentry
     \entry{zhou2013qc}{article}{}
       \name{author}{5}{}{%
@@ -5787,11 +6428,11 @@
       \strng{authorbibnamehash}{f849146d6423115cb5cb40d25426ca2c}
       \strng{authornamehash}{f849146d6423115cb5cb40d25426ca2c}
       \strng{authorfullhash}{0e82118bcd67183ed1f103ac07e066b1}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{PloS one}
+      \field{journaltitle}{PloS One}
       \field{number}{4}
       \field{title}{QC-Chain: fast and holistic quality control method for next-generation sequencing data}
       \field{volume}{8}
@@ -5818,11 +6459,10 @@
       \strng{authorbibnamehash}{4cf13100a31c34dbf8a7009f73cf1b4f}
       \strng{authornamehash}{4cf13100a31c34dbf8a7009f73cf1b4f}
       \strng{authorfullhash}{4cf13100a31c34dbf8a7009f73cf1b4f}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{FASTQ/A short-reads preprocessing tools (unpublished) http://hannonlab. cshl. edu/fastx\_toolkit}
       \field{title}{Fastx-toolkit}
       \field{volume}{5}
       \field{year}{2010}
@@ -5854,8 +6494,8 @@
       \strng{authorbibnamehash}{aa8c897bf6034b1cdf1db4585d47bcc7}
       \strng{authornamehash}{aa8c897bf6034b1cdf1db4585d47bcc7}
       \strng{authorfullhash}{aa8c897bf6034b1cdf1db4585d47bcc7}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
@@ -5883,8 +6523,8 @@
       \strng{authorbibnamehash}{466d90849ccf7e74e32d338b7c35491d}
       \strng{authornamehash}{466d90849ccf7e74e32d338b7c35491d}
       \strng{authorfullhash}{466d90849ccf7e74e32d338b7c35491d}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
@@ -5952,11 +6592,11 @@
       \strng{authorbibnamehash}{a6b94778f0892b9ce7f2373a6af20b2b}
       \strng{authornamehash}{a6b94778f0892b9ce7f2373a6af20b2b}
       \strng{authorfullhash}{e30b0c916c3e1ed7c529e8d2440074cb}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{BMC bioinformatics}
+      \field{journaltitle}{BMC Bioinformatics}
       \field{number}{7}
       \field{title}{Evaluating the necessity of PCR duplicate removal from next-generation sequencing data and a comparison of approaches}
       \field{volume}{17}
@@ -5986,8 +6626,8 @@
       \strng{authorbibnamehash}{33dbc145bf16e3b8210d8c73d5ce2195}
       \strng{authornamehash}{33dbc145bf16e3b8210d8c73d5ce2195}
       \strng{authorfullhash}{33dbc145bf16e3b8210d8c73d5ce2195}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Genetics}
@@ -6062,8 +6702,8 @@
       \strng{authorbibnamehash}{f3ae34ac09890ce120d4c40f9d2eb86d}
       \strng{authornamehash}{f3ae34ac09890ce120d4c40f9d2eb86d}
       \strng{authorfullhash}{d8fca23b40932d007b9ac4a141d045f9}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{PLoS One}
@@ -6093,8 +6733,8 @@
       \strng{authorbibnamehash}{b01cada81ee57adae3b839942611f7c4}
       \strng{authornamehash}{b01cada81ee57adae3b839942611f7c4}
       \strng{authorfullhash}{b01cada81ee57adae3b839942611f7c4}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature}
@@ -6121,8 +6761,8 @@
       \strng{authorbibnamehash}{86a74f3844fc3d1d0013ad98d1743f46}
       \strng{authornamehash}{86a74f3844fc3d1d0013ad98d1743f46}
       \strng{authorfullhash}{86a74f3844fc3d1d0013ad98d1743f46}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature}
@@ -6197,8 +6837,8 @@
       \strng{authorbibnamehash}{0773141130ece71fb7399b246fc9cf88}
       \strng{authornamehash}{0773141130ece71fb7399b246fc9cf88}
       \strng{authorfullhash}{bae4c1619963fde63eade9a308a44491}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature genetics}
@@ -6231,8 +6871,8 @@
       \strng{authorbibnamehash}{c2ea0472178dba1b27e07981dbf9521a}
       \strng{authornamehash}{c2ea0472178dba1b27e07981dbf9521a}
       \strng{authorfullhash}{c2ea0472178dba1b27e07981dbf9521a}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature Reviews Genetics}
@@ -6307,8 +6947,8 @@
       \strng{authorbibnamehash}{971ef49d9c643e4c26f42e8a376cd3be}
       \strng{authornamehash}{971ef49d9c643e4c26f42e8a376cd3be}
       \strng{authorfullhash}{3331eb982bc8f542fbde675b3c643446}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{New England Journal of Medicine}
@@ -6356,8 +6996,8 @@
       \strng{authorbibnamehash}{f83451fe625a59340f7612dda4f15204}
       \strng{authornamehash}{f83451fe625a59340f7612dda4f15204}
       \strng{authorfullhash}{fea6656337359dd0f3d80039bc4d787a}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{CA: a cancer journal for clinicians}
@@ -6389,7 +7029,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Annual review of biomedical engineering}
+      \field{journaltitle}{Annual Review of Biomedical Engineering}
       \field{number}{1}
       \field{title}{DNA microarray technology: devices, systems, and applications}
       \field{volume}{4}
@@ -6484,7 +7124,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature genetics}
+      \field{journaltitle}{Nature Genetics}
       \field{number}{4}
       \field{title}{A general approach to single-nucleotide polymorphism discovery}
       \field{volume}{23}
@@ -6533,7 +7173,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature genetics}
+      \field{journaltitle}{Nature Genetics}
       \field{number}{2}
       \field{title}{High-resolution haplotype structure in the human genome}
       \field{volume}{29}
@@ -6562,7 +7202,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Theoretical population biology}
+      \field{journaltitle}{Theoretical Population Biology}
       \field{number}{1}
       \field{title}{The sampling theory of selectively neutral alleles}
       \field{volume}{3}
@@ -6611,7 +7251,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature biotechnology}
+      \field{journaltitle}{Nature Biotechnology}
       \field{number}{11}
       \field{title}{How to apply de Bruijn graphs to genome assembly}
       \field{volume}{29}
@@ -6660,7 +7300,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature genetics}
+      \field{journaltitle}{Nature Genetics}
       \field{number}{2}
       \field{title}{De novo assembly and genotyping of variants using colored de Bruijn graphs}
       \field{volume}{44}
@@ -6966,7 +7606,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{6}
       \field{title}{LUMPY: a probabilistic framework for structural variant discovery}
       \field{volume}{15}
@@ -7076,7 +7716,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome research}
+      \field{journaltitle}{Genome Research}
       \field{title}{SvABA: genome-wide detection of structural variants and indels by local assembly}
       \field{year}{2018}
     \endentry
@@ -7106,7 +7746,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome research}
+      \field{journaltitle}{Genome Research}
       \field{number}{3}
       \field{title}{Efficient de novo assembly of large genomes using compressed data structures}
       \field{volume}{22}
@@ -7506,7 +8146,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nucleic acids research}
+      \field{journaltitle}{Nucleic Acids Research}
       \field{number}{D1}
       \field{title}{The european bioinformatics institute in 2016: Data growth and integration}
       \field{volume}{44}
@@ -7716,7 +8356,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Motion and time study.}
+      \field{title}{Motion and time study}
       \field{year}{1949}
     \endentry
     \entry{hollingsworth1995workflow}{article}{}
@@ -7824,7 +8464,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Distributed and parallel databases}
+      \field{journaltitle}{Distributed and Parallel Databases}
       \field{number}{1}
       \field{title}{Workflow patterns}
       \field{volume}{14}
@@ -8127,7 +8767,7 @@
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{BMC bioinformatics}
+      \field{journaltitle}{BMC Bioinformatics}
       \field{number}{12}
       \field{title}{Galaxy CloudMan: delivering cloud compute clusters}
       \field{volume}{11}
@@ -8251,8 +8891,8 @@
       \strng{authorbibnamehash}{0432b704be649bdcac0a5a491feb690f}
       \strng{authornamehash}{0432b704be649bdcac0a5a491feb690f}
       \strng{authorfullhash}{5ff4fc4c436e8cbedb333afcdb777fcf}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 7th symposium on Operating systems design and implementation}
@@ -8278,8 +8918,8 @@
       \strng{authorbibnamehash}{10d7200e2bfcc5a34efbee3b80c90f13}
       \strng{authornamehash}{10d7200e2bfcc5a34efbee3b80c90f13}
       \strng{authorfullhash}{10d7200e2bfcc5a34efbee3b80c90f13}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Linux Journal}
@@ -8307,11 +8947,11 @@
       \strng{authorbibnamehash}{ad21c2cf5acf6b0bee82cca0effcb355}
       \strng{authornamehash}{ad21c2cf5acf6b0bee82cca0effcb355}
       \strng{authorfullhash}{ad21c2cf5acf6b0bee82cca0effcb355}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Signal processing magazine}
+      \field{journaltitle}{IEEE Signal Processing Magazine}
       \field{number}{6}
       \field{title}{The expectation-maximization algorithm}
       \field{volume}{13}
@@ -8336,19 +8976,19 @@
       \strng{authorbibnamehash}{4437d12f87aa10b0c95e9e587862f7ab}
       \strng{authornamehash}{4437d12f87aa10b0c95e9e587862f7ab}
       \strng{authorfullhash}{4437d12f87aa10b0c95e9e587862f7ab}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of COMPSTAT'2010}
+      \field{booktitle}{Proceedings of COMPSTAT 2010}
       \field{title}{Large-scale machine learning with stochastic gradient descent}
       \field{year}{2010}
       \field{pages}{177\bibrangedash 186}
       \range{pages}{10}
     \endentry
     \entry{Terraform_by_HashiCorp_2016-10-31}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{Terraform by HashiCorp}
       \field{urlday}{31}
@@ -8382,8 +9022,8 @@
       \strng{authorbibnamehash}{972db70f33a56a2d71044b1f70381b78}
       \strng{authornamehash}{972db70f33a56a2d71044b1f70381b78}
       \strng{authorfullhash}{972db70f33a56a2d71044b1f70381b78}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Consul}
@@ -8402,8 +9042,8 @@
       \endverb
     \endentry
     \entry{SaltStack_2016-10-31}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{SaltStack automation for CloudOps, ITOps, and DevOps at scale}
       \field{urlday}{31}
@@ -8421,8 +9061,8 @@
       \endverb
     \endentry
     \entry{Apache_Airflow__2016-10-31}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{Apache Airflow (incubating) Documentation — Airflow Documentation}
       \field{urlday}{31}
@@ -8440,8 +9080,8 @@
       \endverb
     \endentry
     \entry{RabbitMQ_2016-10-31}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{RabbitMQ - Messaging that just works}
       \field{urlday}{31}
@@ -8459,8 +9099,8 @@
       \endverb
     \endentry
     \entry{Celery_2016-10-31}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{Homepage | Celery: Distributed Task Queue}
       \field{urlday}{31}
@@ -8478,8 +9118,8 @@
       \endverb
     \endentry
     \entry{collectd_2016-10-31}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{Start page – collectd – The system statistics collection daemon}
       \field{urlday}{31}
@@ -8500,8 +9140,8 @@
       \list{organization}{1}{%
         {InfluxData}%
       }
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{{InfluxDB} -- Time-Series Data Storage}
       \field{urlday}{12}
@@ -8532,8 +9172,8 @@
       \strng{authorbibnamehash}{0206f7d7b2f85a67b8470b5e392b55c9}
       \strng{authornamehash}{0206f7d7b2f85a67b8470b5e392b55c9}
       \strng{authorfullhash}{0206f7d7b2f85a67b8470b5e392b55c9}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Grafana.net}
@@ -8565,8 +9205,8 @@
       \strng{authorbibnamehash}{68dd96bed65e3ebf6263ef39173b11e0}
       \strng{authornamehash}{68dd96bed65e3ebf6263ef39173b11e0}
       \strng{authorfullhash}{68dd96bed65e3ebf6263ef39173b11e0}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Logstash}
@@ -8598,8 +9238,8 @@
       \strng{authorbibnamehash}{eb92d7901e7e979923d933cc44f5ebd0}
       \strng{authornamehash}{eb92d7901e7e979923d933cc44f5ebd0}
       \strng{authorfullhash}{eb92d7901e7e979923d933cc44f5ebd0}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Elasticsearch}
@@ -8618,8 +9258,8 @@
       \endverb
     \endentry
     \entry{Kibana}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{Kibana}
       \field{urlday}{13}
@@ -8637,8 +9277,8 @@
       \endverb
     \endentry
     \entry{telegraf}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \verb{urlraw}
       \verb https://www.influxdata.com/time-series-platform/telegraf/
       \endverb
@@ -8665,8 +9305,8 @@
       \strng{authorbibnamehash}{ecdcf8824e5963a927e4345e04cb1bcf}
       \strng{authornamehash}{ecdcf8824e5963a927e4345e04cb1bcf}
       \strng{authorfullhash}{ecdcf8824e5963a927e4345e04cb1bcf}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{2014 USENIX Annual Technical Conference (USENIX ATC 14)}
@@ -8707,8 +9347,8 @@
       \strng{authorbibnamehash}{6c723000426555765f1c27da3abd836d}
       \strng{authornamehash}{6c723000426555765f1c27da3abd836d}
       \strng{authorfullhash}{a1e017e3770633e1a3220a8c226c0af1}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Acta Informatica}
@@ -9004,7 +9644,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature methods}
+      \field{journaltitle}{Nature Methods}
       \field{number}{2}
       \field{title}{A linear complexity phasing method for thousands of genomes}
       \field{volume}{9}
@@ -9080,7 +9720,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Database}
+      \field{journaltitle}{Database, The Journal of Biological Databases and Curation}
       \field{title}{The Cancer Genomics Hub (CGHub): overcoming cancer through the power of torrential data}
       \field{volume}{2014}
       \field{year}{2014}
@@ -9173,7 +9813,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Software architecture}
+      \field{title}{Software Architecture}
       \field{volume}{101}
       \field{year}{1996}
     \endentry
@@ -9250,13 +9890,47 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{ACM computing surveys (CSUR)}
+      \field{journaltitle}{ACM Computing Surveys (CSUR)}
       \field{number}{2}
       \field{title}{The many faces of publish/subscribe}
       \field{volume}{35}
       \field{year}{2003}
       \field{pages}{114\bibrangedash 131}
       \range{pages}{18}
+    \endentry
+    \entry{cugola2012processing}{article}{}
+      \name{author}{2}{}{%
+        {{hash=44e80b9a48c397757a19a4ba5ae52484}{%
+           family={Cugola},
+           familyi={C\bibinitperiod},
+           given={Gianpaolo},
+           giveni={G\bibinitperiod}}}%
+        {{hash=0cb96c89d78e7f4b886e9d3427a1710f}{%
+           family={Margara},
+           familyi={M\bibinitperiod},
+           given={Alessandro},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{bc477bd041a0765d91c6ada7ffc8f495}
+      \strng{fullhash}{bc477bd041a0765d91c6ada7ffc8f495}
+      \strng{bibnamehash}{bc477bd041a0765d91c6ada7ffc8f495}
+      \strng{authorbibnamehash}{bc477bd041a0765d91c6ada7ffc8f495}
+      \strng{authornamehash}{bc477bd041a0765d91c6ada7ffc8f495}
+      \strng{authorfullhash}{bc477bd041a0765d91c6ada7ffc8f495}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM Computing Surveys (CSUR)}
+      \field{number}{3}
+      \field{title}{Processing flows of information: From data stream to complex event processing}
+      \field{volume}{44}
+      \field{year}{2012}
+      \field{pages}{15}
+      \range{pages}{1}
     \endentry
     \entry{oppenheimer2002architecture}{article}{}
       \name{author}{2}{}{%
@@ -9597,35 +10271,13 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{PloS one}
+      \field{journaltitle}{PloS One}
       \field{number}{11}
       \field{title}{Simulating next-generation sequencing datasets from empirical mutation and sequencing models}
       \field{volume}{11}
       \field{year}{2016}
       \field{pages}{e0167047}
       \range{pages}{-1}
-    \endentry
-    \entry{Li2013}{article}{}
-      \name{author}{1}{}{%
-        {{hash=466d90849ccf7e74e32d338b7c35491d}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={Heng},
-           giveni={H\bibinitperiod}}}%
-      }
-      \strng{namehash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{fullhash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{bibnamehash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{authorbibnamehash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{authornamehash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{authorfullhash}{466d90849ccf7e74e32d338b7c35491d}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:1303.3997}
-      \field{title}{Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM}
-      \field{year}{2013}
     \endentry
     \entry{myers1988optimal}{article}{}
       \name{author}{2}{}{%
@@ -9687,7 +10339,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome biology}
+      \field{journaltitle}{Genome Biology}
       \field{number}{3}
       \field{title}{Kraken: ultrafast metagenomic sequence classification using exact alignments}
       \field{volume}{15}
@@ -9731,7 +10383,7 @@
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Genome research}
+      \field{journaltitle}{Genome Research}
       \field{title}{Centrifuge: rapid and sensitive classification of metagenomic sequences}
       \field{year}{2016}
     \endentry
@@ -9752,11 +10404,11 @@
       \strng{authorbibnamehash}{615804129a6b26aa6d23b45c2c0657c0}
       \strng{authornamehash}{615804129a6b26aa6d23b45c2c0657c0}
       \strng{authorfullhash}{615804129a6b26aa6d23b45c2c0657c0}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Frontiers in genetics}
+      \field{journaltitle}{Frontiers in Genetics}
       \field{title}{Assessment of insert sizes and adapter content in fastq data from NexteraXT libraries}
       \field{volume}{5}
       \field{year}{2014}
@@ -9795,8 +10447,8 @@
       \strng{authorbibnamehash}{9e52293b01f2b1924c0a4c85d0516c5a}
       \strng{authornamehash}{9e52293b01f2b1924c0a4c85d0516c5a}
       \strng{authorfullhash}{ad74957a3be4e1d347a9297bf6b9372c}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Introduction to algorithms}
@@ -9819,8 +10471,8 @@
       \strng{authorbibnamehash}{02b2439d480906c2f443b35ff6ba2406}
       \strng{authornamehash}{02b2439d480906c2f443b35ff6ba2406}
       \strng{authorfullhash}{02b2439d480906c2f443b35ff6ba2406}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Annals of Mathematical Statistics}
@@ -9846,11 +10498,11 @@
       \strng{authorbibnamehash}{3538e72c10a2ef29e8444e94614376a0}
       \strng{authornamehash}{3538e72c10a2ef29e8444e94614376a0}
       \strng{authorfullhash}{3538e72c10a2ef29e8444e94614376a0}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{The annals of mathematical statistics}
+      \field{journaltitle}{The Annals of Mathematical Statistics}
       \field{number}{3}
       \field{title}{On estimation of a probability density function and mode}
       \field{volume}{33}
@@ -9875,10 +10527,11 @@
       \strng{authorbibnamehash}{27d2cef7ec55874407dd8b09b7f3a94b}
       \strng{authornamehash}{27d2cef7ec55874407dd8b09b7f3a94b}
       \strng{authorfullhash}{27d2cef7ec55874407dd8b09b7f3a94b}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{series}{Wiley series in probability and mathematical statistics}
       \field{title}{Clustering algorithms}
       \field{year}{1975}
     \endentry
@@ -9914,8 +10567,8 @@
       \strng{authorbibnamehash}{948c61331d3e794a11e290f69c14b114}
       \strng{authornamehash}{948c61331d3e794a11e290f69c14b114}
       \strng{authorfullhash}{6c6927144d459e31fb7171a06f8411fe}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery}
@@ -9953,8 +10606,8 @@
       \strng{authorbibnamehash}{455bc54c8e7865b943f85341b7f70cb4}
       \strng{authornamehash}{455bc54c8e7865b943f85341b7f70cb4}
       \strng{authorfullhash}{455bc54c8e7865b943f85341b7f70cb4}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computational Statistics \& Data Analysis}
@@ -10029,19 +10682,17 @@
       \strng{authorbibnamehash}{33e6a73d056c680825cc68100c018ac1}
       \strng{authornamehash}{33e6a73d056c680825cc68100c018ac1}
       \strng{authorfullhash}{46d69ade4367d8543abb1d068a4c072f}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{BioRxiv}
       \field{title}{Reproducible integration of multiple sequencing datasets to form high-confidence SNP, indel, and reference calls for five human genome reference materials}
       \field{year}{2018}
-      \field{pages}{281006}
-      \range{pages}{1}
     \endentry
     \entry{dockerdoc}{online}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \verb{urlraw}
       \verb https://docs.docker.com/engine/docker-overview/
       \endverb
@@ -10075,8 +10726,8 @@
       \strng{authorbibnamehash}{d5b1fae3546b940043bf1e642d3dacaf}
       \strng{authornamehash}{d5b1fae3546b940043bf1e642d3dacaf}
       \strng{authorfullhash}{d5b1fae3546b940043bf1e642d3dacaf}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the NetDB}
@@ -10102,8 +10753,8 @@
       \strng{authorbibnamehash}{0e48d39ed6acd37cafe2ec2c3116ef10}
       \strng{authornamehash}{0e48d39ed6acd37cafe2ec2c3116ef10}
       \strng{authorfullhash}{0e48d39ed6acd37cafe2ec2c3116ef10}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{IEEE Cloud Computing}
@@ -10137,34 +10788,6 @@
     \entry{kubernetes_microservice_components}{online}{}
       \field{sortinit}{4}
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
-    \endentry
-    \entry{Li2018}{article}{}
-      \name{author}{1}{}{%
-        {{hash=466d90849ccf7e74e32d338b7c35491d}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={Heng},
-           giveni={H\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Oxford University Press}%
-      }
-      \strng{namehash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{fullhash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{bibnamehash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{authorbibnamehash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{authornamehash}{466d90849ccf7e74e32d338b7c35491d}
-      \strng{authorfullhash}{466d90849ccf7e74e32d338b7c35491d}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Bioinformatics}
-      \field{title}{Minimap2: pairwise alignment for nucleotide sequences}
-      \field{volume}{1}
-      \field{year}{2018}
-      \field{pages}{7}
-      \range{pages}{1}
     \endentry
     \entry{carlson2013redis}{book}{}
       \name{author}{1}{}{%
@@ -10339,7 +10962,7 @@
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Biomolecular detection and quantification}
+      \field{journaltitle}{Biomolecular Detection and Quantification}
       \field{title}{Assessing the performance of the oxford nanopore technologies minion}
       \field{volume}{3}
       \field{year}{2015}
@@ -10387,7 +11010,7 @@
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Cancer biology \& therapy}
+      \field{journaltitle}{Cancer Biology \& Therapy}
       \field{number}{3}
       \field{title}{Nanopore sequencing detects structural variants in cancer}
       \field{volume}{17}
@@ -10456,7 +11079,7 @@
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature communications}
+      \field{journaltitle}{Nature Communications}
       \field{number}{1}
       \field{title}{High contiguity Arabidopsis thaliana genome assembly with a single nanopore flow cell}
       \field{volume}{9}

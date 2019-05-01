@@ -17,25 +17,27 @@
   pages={737--738},
   year={1953}
 }
-@article{sanger1977dna,
-  title={DNA sequencing with chain-terminating inhibitors},
-  author={Sanger, Frederick and Nicklen, Steven and Coulson, Alan R},
-  journal={Proceedings of the national academy of sciences},
-  volume={74},
-  number={12},
-  pages={5463--5467},
-  year={1977},
-  publisher={National Acad Sciences}
+
+@Article{sanger1977dna,
+  author    = {Sanger, Frederick and Nicklen, Steven and Coulson, Alan R},
+  title     = {DNA sequencing with chain-terminating inhibitors},
+  journal   = {Proceedings of the National Academy of Sciences},
+  year      = {1977},
+  volume    = {74},
+  number    = {12},
+  pages     = {5463--5467},
+  publisher = {National Acad Sciences},
 }
-@article{sanger1975rapid,
-  title={A rapid method for determining sequences in DNA by primed synthesis with DNA polymerase},
-  author={Sanger, Fred and Coulson, Alan R},
-  journal={Journal of molecular biology},
-  volume={94},
-  number={3},
-  pages={441IN19447--446IN20448},
-  year={1975},
-  publisher={Elsevier}
+
+@Article{sanger1975rapid,
+  author    = {Sanger, Fred and Coulson, Alan R},
+  title     = {A rapid method for determining sequences in DNA by primed synthesis with DNA polymerase},
+  journal   = {Journal of Molecular Biology},
+  year      = {1975},
+  volume    = {94},
+  number    = {3},
+  pages     = {441IN19447--446IN20448},
+  publisher = {Elsevier},
 }
 @article{pellicer2010largest,
   title={The largest eukaryotic genome of them all?},
@@ -50,7 +52,7 @@
 @article{zerbino2008velvet,
   title={Velvet: algorithms for de novo short read assembly using de Bruijn graphs},
   author={Zerbino, Daniel R and Birney, Ewan},
-  journal={Genome research},
+  journal={Genome Research},
   volume={18},
   number={5},
   pages={821--829},
@@ -70,7 +72,7 @@
 @article{nachman2001single,
   title={Single nucleotide polymorphisms and recombination rate in humans},
   author={Nachman, Michael W},
-  journal={TRENDS in Genetics},
+  journal={Trends in Genetics},
   volume={17},
   number={9},
   pages={481--485},
@@ -116,7 +118,7 @@
 @article{weinstein2013cancer,
   title={The cancer genome atlas pan-cancer analysis project},
   author={Weinstein, John N and Collisson, Eric A and Mills, Gordon B and Shaw, Kenna R Mills and Ozenberger, Brad A and Ellrott, Kyle and Shmulevich, Ilya and Sander, Chris and Stuart, Joshua M and Cancer Genome Atlas Research Network and others},
-  journal={Nature genetics},
+  journal={Nature Genetics},
   volume={45},
   number={10},
   pages={1113--1120},
@@ -163,13 +165,14 @@
   year={2012},
   publisher={Nature Research}
 }
-@article{england2016100,
-  title={The 100,000 genomes project},
-  author={England, Genomics},
-  journal={The},
-  volume={100},
-  pages={1--2},
-  year={2016}
+@article{turnbull2018100,
+  title={The 100 000 Genomes Project: bringing whole genome sequencing to the NHS},
+  author={Turnbull, Clare and Scott, Richard H and Thomas, Ellen and Jones, Louise and Murugaesu, Nirupa and Pretty, Freya Boardman and Halai, Dina and Baple, Emma and Craig, Clare and Hamblin, Angela and others},
+  journal={BMJ},
+  volume={361},
+  pages={k1687},
+  year={2018},
+  publisher={British Medical Journal Publishing Group}
 }
 @article{robinson2015integrative,
   title={Integrative clinical genomics of advanced prostate cancer},
@@ -191,25 +194,27 @@
   year={2001},
   publisher={American Association for the Advancement of Science}
 }
-@article{lee2014clinical,
-  title={Clinical exome sequencing for genetic identification of rare Mendelian disorders},
-  author={Lee, Hane and Deignan, Joshua L and Dorrani, Naghmeh and Strom, Samuel P and Kantarci, Sibel and Quintero-Rivera, Fabiola and Das, Kingshuk and Toy, Traci and Harry, Bret and Yourshaw, Michael and others},
-  journal={Jama},
-  volume={312},
-  number={18},
-  pages={1880--1887},
-  year={2014},
-  publisher={American Medical Association}
+
+@Article{lee2014clinical,
+  author    = {Lee, Hane and Deignan, Joshua L and Dorrani, Naghmeh and Strom, Samuel P and Kantarci, Sibel and Quintero-Rivera, Fabiola and Das, Kingshuk and Toy, Traci and Harry, Bret and Yourshaw, Michael and others},
+  title     = {Clinical exome sequencing for genetic identification of rare Mendelian disorders},
+  journal   = {The Journal of the American Medical Association},
+  year      = {2014},
+  volume    = {312},
+  number    = {18},
+  pages     = {1880--1887},
+  publisher = {American Medical Association},
 }
-@article{allegra2009american,
-  title={American Society of Clinical Oncology provisional clinical opinion: testing for KRAS gene mutations in patients with metastatic colorectal carcinoma to predict response to anti--epidermal growth factor receptor monoclonal antibody therapy},
-  author={Allegra, Carmen J and Jessup, J Milburn and Somerfield, Mark R and Hamilton, Stanley R and Hammond, Elizabeth H and Hayes, Daniel F and McAllister, Pamela K and Morton, Roscoe F and Schilsky, Richard L},
-  journal={Journal of clinical oncology},
-  volume={27},
-  number={12},
-  pages={2091--2096},
-  year={2009},
-  publisher={American Society of Clinical Oncology}
+
+@Article{allegra2009american,
+  author    = {Allegra, Carmen J and Jessup, J Milburn and Somerfield, Mark R and Hamilton, Stanley R and Hammond, Elizabeth H and Hayes, Daniel F and McAllister, Pamela K and Morton, Roscoe F and Schilsky, Richard L},
+  title     = {American Society of Clinical Oncology provisional clinical opinion: testing for KRAS gene mutations in patients with metastatic colorectal carcinoma to predict response to anti--epidermal growth factor receptor monoclonal antibody therapy},
+  journal   = {Journal of Clinical Oncology},
+  year      = {2009},
+  volume    = {27},
+  number    = {12},
+  pages     = {2091--2096},
+  publisher = {American Society of Clinical Oncology},
 }
 @article{pleasance2010comprehensive,
   title={A comprehensive catalogue of somatic mutations from a human cancer genome},
@@ -221,25 +226,27 @@
   year={2010},
   publisher={Europe PMC Funders}
 }
-@article{stephens2015big,
-  title={Big data: astronomical or genomical},
-  author={Stephens, Zachary D and Lee, Skylar Y and Faghri, Faraz and Campbell, Roy H and Zhai, Chengxiang and Efron, Miles J and Iyer, Ravishankar and Schatz, Michael C and Sinha, Saurabh and Robinson, Gene E},
-  journal={PLoS biology},
-  volume={13},
-  number={7},
-  pages={e1002195},
-  year={2015},
-  publisher={Public Library of Science}
+
+@Article{stephens2015big,
+  author    = {Stephens, Zachary D and Lee, Skylar Y and Faghri, Faraz and Campbell, Roy H and Zhai, Chengxiang and Efron, Miles J and Iyer, Ravishankar and Schatz, Michael C and Sinha, Saurabh and Robinson, Gene E},
+  title     = {Big data: astronomical or genomical},
+  journal   = {PLoS Biology},
+  year      = {2015},
+  volume    = {13},
+  number    = {7},
+  pages     = {e1002195},
+  publisher = {Public Library of Science},
 }
-@article{muir2016real,
-  title={The real cost of sequencing: scaling computation to keep pace with data generation},
-  author={Muir, Paul and Li, Shantao and Lou, Shaoke and Wang, Daifeng and Spakowicz, Daniel J and Salichos, Leonidas and Zhang, Jing and Weinstock, George M and Isaacs, Farren and Rozowsky, Joel and others},
-  journal={Genome biology},
-  volume={17},
-  number={1},
-  pages={53},
-  year={2016},
-  publisher={BioMed Central}
+
+@Article{muir2016real,
+  author    = {Muir, Paul and Li, Shantao and Lou, Shaoke and Wang, Daifeng and Spakowicz, Daniel J and Salichos, Leonidas and Zhang, Jing and Weinstock, George M and Isaacs, Farren and Rozowsky, Joel and others},
+  title     = {The real cost of sequencing: scaling computation to keep pace with data generation},
+  journal   = {Genome Biology},
+  year      = {2016},
+  volume    = {17},
+  number    = {1},
+  pages     = {53},
+  publisher = {BioMed Central},
 }
 @article{li2009sequence,
   title={The sequence alignment/map format and SAMtools},
@@ -271,15 +278,16 @@
   year={2017},
   publisher={BioMed Central}
 }
-@article{welter2013nhgri,
-  title={The NHGRI GWAS Catalog, a curated resource of SNP-trait associations},
-  author={Welter, Danielle and MacArthur, Jacqueline and Morales, Joannella and Burdett, Tony and Hall, Peggy and Junkins, Heather and Klemm, Alan and Flicek, Paul and Manolio, Teri and Hindorff, Lucia and others},
-  journal={Nucleic acids research},
-  volume={42},
-  number={D1},
-  pages={D1001--D1006},
-  year={2013},
-  publisher={Oxford University Press}
+
+@Article{welter2013nhgri,
+  author    = {Welter, Danielle and MacArthur, Jacqueline and Morales, Joannella and Burdett, Tony and Hall, Peggy and Junkins, Heather and Klemm, Alan and Flicek, Paul and Manolio, Teri and Hindorff, Lucia and others},
+  title     = {The NHGRI GWAS Catalog, a curated resource of SNP-trait associations},
+  journal   = {Nucleic Acids Research},
+  year      = {2013},
+  volume    = {42},
+  number    = {D1},
+  pages     = {D1001--D1006},
+  publisher = {Oxford University Press},
 }
 @article{hong2012sample,
   title={Sample size and statistical power calculation in genetic association studies},
@@ -290,15 +298,16 @@
   pages={117--122},
   year={2012}
 }
-@article{voelkerding2009next,
-  title={Next-generation sequencing: from basic research to diagnostics},
-  author={Voelkerding, Karl V and Dames, Shale A and Durtschi, Jacob D},
-  journal={Clinical chemistry},
-  volume={55},
-  number={4},
-  pages={641--658},
-  year={2009},
-  publisher={Clinical Chemistry}
+
+@Article{voelkerding2009next,
+  author    = {Voelkerding, Karl V and Dames, Shale A and Durtschi, Jacob D},
+  title     = {Next-generation sequencing: from basic research to diagnostics},
+  journal   = {Clinical Chemistry},
+  year      = {2009},
+  volume    = {55},
+  number    = {4},
+  pages     = {641--658},
+  publisher = {Clinical Chemistry},
 }
 @incollection{mohinudeen2017overview,
   title={An Overview of Next-Generation Sequencing (NGS) Technologies to Study the Molecular Diversity of Genome},
@@ -308,53 +317,58 @@
   year={2017},
   publisher={Springer}
 }
-@article{van2013fastq,
-  title={From FastQ data to high-confidence variant calls: the genome analysis toolkit best practices pipeline},
-  author={Van der Auwera, Geraldine A and Carneiro, Mauricio O and Hartl, Christopher and Poplin, Ryan and del Angel, Guillermo and Levy-Moonshine, Ami and Jordan, Tadeusz and Shakir, Khalid and Roazen, David and Thibault, Joel and others},
-  journal={Current protocols in bioinformatics},
-  pages={11--10},
-  year={2013},
-  publisher={Wiley Online Library}
+
+@Article{van2013fastq,
+  author    = {Van der Auwera, Geraldine A and Carneiro, Mauricio O and Hartl, Christopher and Poplin, Ryan and del Angel, Guillermo and Levy-Moonshine, Ami and Jordan, Tadeusz and Shakir, Khalid and Roazen, David and Thibault, Joel and others},
+  title     = {From FastQ data to high-confidence variant calls: the genome analysis toolkit best practices pipeline},
+  journal   = {Current Protocols in Bioinformatics},
+  year      = {2013},
+  pages     = {11--10},
+  publisher = {Wiley Online Library},
 }
-@article{zhao2013computational,
-  title={Computational tools for copy number variation (CNV) detection using next-generation sequencing data: features and perspectives},
-  author={Zhao, Min and Wang, Qingguo and Wang, Quan and Jia, Peilin and Zhao, Zhongming},
-  journal={BMC bioinformatics},
-  volume={14},
-  number={11},
-  pages={S1},
-  year={2013},
-  publisher={BioMed Central}
+
+@Article{zhao2013computational,
+  author    = {Zhao, Min and Wang, Qingguo and Wang, Quan and Jia, Peilin and Zhao, Zhongming},
+  title     = {Computational tools for copy number variation (CNV) detection using next-generation sequencing data: features and perspectives},
+  journal   = {BMC Bioinformatics},
+  year      = {2013},
+  volume    = {14},
+  number    = {11},
+  pages     = {S1},
+  publisher = {BioMed Central},
 }
-@article{mclaren2016ensembl,
-  title={The ensembl variant effect predictor},
-  author={McLaren, William and Gil, Laurent and Hunt, Sarah E and Riat, Harpreet Singh and Ritchie, Graham RS and Thormann, Anja and Flicek, Paul and Cunningham, Fiona},
-  journal={Genome biology},
-  volume={17},
-  number={1},
-  pages={122},
-  year={2016},
-  publisher={BioMed Central}
+
+@Article{mclaren2016ensembl,
+  author    = {McLaren, William and Gil, Laurent and Hunt, Sarah E and Riat, Harpreet Singh and Ritchie, Graham RS and Thormann, Anja and Flicek, Paul and Cunningham, Fiona},
+  title     = {The ensembl variant effect predictor},
+  journal   = {Genome Biology},
+  year      = {2016},
+  volume    = {17},
+  number    = {1},
+  pages     = {122},
+  publisher = {BioMed Central},
 }
-@article{li2010survey,
-  title={A survey of sequence alignment algorithms for next-generation sequencing},
-  author={Li, Heng and Homer, Nils},
-  journal={Briefings in bioinformatics},
-  volume={11},
-  number={5},
-  pages={473--483},
-  year={2010},
-  publisher={Oxford University Press}
+
+@Article{li2010survey,
+  author    = {Li, Heng and Homer, Nils},
+  title     = {A survey of sequence alignment algorithms for next-generation sequencing},
+  journal   = {Briefings in Bioinformatics},
+  year      = {2010},
+  volume    = {11},
+  number    = {5},
+  pages     = {473--483},
+  publisher = {Oxford University Press},
 }
-@article{langmead2012fast,
-  title={Fast gapped-read alignment with Bowtie 2},
-  author={Langmead, Ben and Salzberg, Steven L},
-  journal={Nature methods},
-  volume={9},
-  number={4},
-  pages={357--359},
-  year={2012},
-  publisher={Nature Research}
+
+@Article{langmead2012fast,
+  author    = {Langmead, Ben and Salzberg, Steven L},
+  title     = {Fast gapped-read alignment with Bowtie 2},
+  journal   = {Nature Methods},
+  year      = {2012},
+  volume    = {9},
+  number    = {4},
+  pages     = {357--359},
+  publisher = {Nature Research},
 }
 @article{papadopoulos2016tiledb,
   title={The TileDB array data storage manager},
@@ -366,15 +380,16 @@
   year={2016},
   publisher={VLDB Endowment}
 }
-@article{mckenna2010genome,
-  title={The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data},
-  author={McKenna, Aaron and Hanna, Matthew and Banks, Eric and Sivachenko, Andrey and Cibulskis, Kristian and Kernytsky, Andrew and Garimella, Kiran and Altshuler, David and Gabriel, Stacey and Daly, Mark and others},
-  journal={Genome research},
-  volume={20},
-  number={9},
-  pages={1297--1303},
-  year={2010},
-  publisher={Cold Spring Harbor Lab}
+
+@Article{mckenna2010genome,
+  author    = {McKenna, Aaron and Hanna, Matthew and Banks, Eric and Sivachenko, Andrey and Cibulskis, Kristian and Kernytsky, Andrew and Garimella, Kiran and Altshuler, David and Gabriel, Stacey and Daly, Mark and others},
+  title     = {The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data},
+  journal   = {Genome Research},
+  year      = {2010},
+  volume    = {20},
+  number    = {9},
+  pages     = {1297--1303},
+  publisher = {Cold Spring Harbor Lab},
 }
 @misc{erl2005service,
   title={Service-oriented architecture (SOA): concepts, technology, and design},
@@ -407,15 +422,16 @@
   year={1984},
   publisher={IEEE}
 }
-@article{fritz2011efficient,
-  title={Efficient storage of high throughput DNA sequencing data using reference-based compression},
-  author={Fritz, Markus Hsi-Yang and Leinonen, Rasko and Cochrane, Guy and Birney, Ewan},
-  journal={Genome research},
-  volume={21},
-  number={5},
-  pages={734--740},
-  year={2011},
-  publisher={Cold Spring Harbor Lab}
+
+@Article{fritz2011efficient,
+  author    = {Fritz, Markus Hsi-Yang and Leinonen, Rasko and Cochrane, Guy and Birney, Ewan},
+  title     = {Efficient storage of high throughput DNA sequencing data using reference-based compression},
+  journal   = {Genome Research},
+  year      = {2011},
+  volume    = {21},
+  number    = {5},
+  pages     = {734--740},
+  publisher = {Cold Spring Harbor Lab},
 }
 @book{jones2004introduction,
   title={An introduction to bioinformatics algorithms},
@@ -480,15 +496,16 @@
   year={2006},
   organization={ACM}
 }
-@article{datar2002maintaining,
-  title={Maintaining stream statistics over sliding windows},
-  author={Datar, Mayur and Gionis, Aristides and Indyk, Piotr and Motwani, Rajeev},
-  journal={SIAM journal on computing},
-  volume={31},
-  number={6},
-  pages={1794--1813},
-  year={2002},
-  publisher={SIAM}
+
+@Article{datar2002maintaining,
+  author    = {Datar, Mayur and Gionis, Aristides and Indyk, Piotr and Motwani, Rajeev},
+  title     = {Maintaining stream statistics over sliding windows},
+  journal   = {SIAM Journal on Computing},
+  year      = {2002},
+  volume    = {31},
+  number    = {6},
+  pages     = {1794--1813},
+  publisher = {SIAM},
 }
 @inproceedings{babcock2002models,
   title={Models and issues in data stream systems},
@@ -504,41 +521,27 @@
   year={2011},
   publisher={Elsevier}
 }
-@article{patel2012ngs,
-  title={NGS QC Toolkit: a toolkit for quality control of next generation sequencing data},
-  author={Patel, Ravi K and Jain, Mukesh},
-  journal={PloS one},
-  volume={7},
-  number={2},
-  pages={e30619},
-  year={2012},
-  publisher={Public Library of Science}
+
+@Article{cibulskis2013sensitive,
+  author    = {Cibulskis, Kristian and Lawrence, Michael S and Carter, Scott L and Sivachenko, Andrey and Jaffe, David and Sougnez, Carrie and Gabriel, Stacey and Meyerson, Matthew and Lander, Eric S and Getz, Gad},
+  title     = {Sensitive detection of somatic point mutations in impure and heterogeneous cancer samples},
+  journal   = {Nature Biotechnology},
+  year      = {2013},
+  volume    = {31},
+  number    = {3},
+  pages     = {213--219},
+  publisher = {Nature Research},
 }
-@article{li2013aligning,
-  title={Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM},
-  author={Li, Heng},
-  journal={arXiv preprint arXiv:1303.3997},
-  year={2013}
-}
-@article{cibulskis2013sensitive,
-  title={Sensitive detection of somatic point mutations in impure and heterogeneous cancer samples},
-  author={Cibulskis, Kristian and Lawrence, Michael S and Carter, Scott L and Sivachenko, Andrey and Jaffe, David and Sougnez, Carrie and Gabriel, Stacey and Meyerson, Matthew and Lander, Eric S and Getz, Gad},
-  journal={Nature biotechnology},
-  volume={31},
-  number={3},
-  pages={213--219},
-  year={2013},
-  publisher={Nature Research}
-}
-@article{rimmer2014integrating,
-  title={Integrating mapping-, assembly-and haplotype-based approaches for calling variants in clinical sequencing applications},
-  author={Rimmer, Andy and Phan, Hang and Mathieson, Iain and Iqbal, Zamin and Twigg, Stephen RF and Wilkie, Andrew OM and McVean, Gil and Lunter, Gerton and WGS500 Consortium and others},
-  journal={Nature genetics},
-  volume={46},
-  number={8},
-  pages={912--918},
-  year={2014},
-  publisher={Nature Research}
+
+@Article{rimmer2014integrating,
+  author    = {Rimmer, Andy and Phan, Hang and Mathieson, Iain and Iqbal, Zamin and Twigg, Stephen RF and Wilkie, Andrew OM and McVean, Gil and Lunter, Gerton and WGS500 Consortium and others},
+  title     = {Integrating mapping-, assembly-and haplotype-based approaches for calling variants in clinical sequencing applications},
+  journal   = {Nature Genetics},
+  year      = {2014},
+  volume    = {46},
+  number    = {8},
+  pages     = {912--918},
+  publisher = {Nature Research},
 }
 @book{zacks1971theory,
   title={The theory of statistical inference},
@@ -553,15 +556,16 @@
   year={2013},
   publisher={Springer Science \& Business Media}
 }
-@article{davey2011genome,
-  title={Genome-wide genetic marker discovery and genotyping using next-generation sequencing},
-  author={Davey, John W and Hohenlohe, Paul A and Etter, Paul D and Boone, Jason Q and Catchen, Julian M and Blaxter, Mark L},
-  journal={Nature reviews. Genetics},
-  volume={12},
-  number={7},
-  pages={499},
-  year={2011},
-  publisher={Nature Publishing Group}
+
+@Article{davey2011genome,
+  author    = {Davey, John W and Hohenlohe, Paul A and Etter, Paul D and Boone, Jason Q and Catchen, Julian M and Blaxter, Mark L},
+  title     = {Genome-wide genetic marker discovery and genotyping using next-generation sequencing},
+  journal   = {Nature Reviews Genetics},
+  year      = {2011},
+  volume    = {12},
+  number    = {7},
+  pages     = {499},
+  publisher = {Nature Publishing Group},
 }
 @article{whalley2017framework,
   title={Framework For Quality Assessment Of Whole Genome, Cancer Sequences},
@@ -571,14 +575,15 @@
   year={2017},
   publisher={Cold Spring Harbor Labs Journals}
 }
-@article{alioto2015comprehensive,
-  title={A comprehensive assessment of somatic mutation detection in cancer using whole-genome sequencing},
-  author={Alioto, Tyler S and Buchhalter, Ivo and Derdak, Sophia and Hutter, Barbara and Eldridge, Matthew D and Hovig, Eivind and Heisler, Lawrence E and Beck, Timothy A and Simpson, Jared T and Tonon, Laurie and others},
-  journal={Nature communications},
-  volume={6},
-  pages={10001},
-  year={2015},
-  publisher={Nature Publishing Group}
+
+@Article{alioto2015comprehensive,
+  author    = {Alioto, Tyler S and Buchhalter, Ivo and Derdak, Sophia and Hutter, Barbara and Eldridge, Matthew D and Hovig, Eivind and Heisler, Lawrence E and Beck, Timothy A and Simpson, Jared T and Tonon, Laurie and others},
+  title     = {A comprehensive assessment of somatic mutation detection in cancer using whole-genome sequencing},
+  journal   = {Nature Communications},
+  year      = {2015},
+  volume    = {6},
+  pages     = {10001},
+  publisher = {Nature Publishing Group},
 }
 @article{ewen2000identification,
   title={Identification and analysis of error types in high-throughput genotyping},
@@ -645,15 +650,15 @@
   urldate = {2016-10-31} 
 }
 
-@article{buyya2009cloud,
-  title={Cloud computing and emerging IT platforms: Vision, hype, and reality for delivering computing as the 5th utility},
-  author={Buyya, Rajkumar and Yeo, Chee Shin and Venugopal, Srikumar and Broberg, James and Brandic, Ivona},
-  journal={Future Generation computer systems},
-  volume={25},
-  number={6},
-  pages={599--616},
-  year={2009},
-  publisher={Elsevier}
+@Article{buyya2009cloud,
+  author    = {Buyya, Rajkumar and Yeo, Chee Shin and Venugopal, Srikumar and Broberg, James and Brandic, Ivona},
+  title     = {Cloud computing and emerging IT platforms: Vision, hype, and reality for delivering computing as the 5th utility},
+  journal   = {Future Generation Computer Systems},
+  year      = {2009},
+  volume    = {25},
+  number    = {6},
+  pages     = {599--616},
+  publisher = {Elsevier},
 }
 @article{knoppers2005human,
   title={Human genetic research: emerging trends in ethics},
@@ -724,15 +729,16 @@
   year={1981},
   publisher={Prentice Hall PTR}
 }
-@article{van2003workflow,
-  title={Workflow patterns},
-  author={van Der Aalst, Wil MP and Ter Hofstede, Arthur HM and Kiepuszewski, Bartek and Barros, Alistair P},
-  journal={Distributed and parallel databases},
-  volume={14},
-  number={1},
-  pages={5--51},
-  year={2003},
-  publisher={Springer}
+
+@Article{van2003workflow,
+  author    = {van Der Aalst, Wil MP and Ter Hofstede, Arthur HM and Kiepuszewski, Bartek and Barros, Alistair P},
+  title     = {Workflow patterns},
+  journal   = {Distributed and Parallel Databases},
+  year      = {2003},
+  volume    = {14},
+  number    = {1},
+  pages     = {5--51},
+  publisher = {Springer},
 }
 @article{ludascher2006scientific,
   title={Scientific workflow management and the Kepler system},
@@ -768,25 +774,27 @@
   year={2008},
   organization={IEEE}
 }
-@article{afgan2010galaxy,
-  title={Galaxy CloudMan: delivering cloud compute clusters},
-  author={Afgan, Enis and Baker, Dannon and Coraor, Nate and Chapman, Brad and Nekrutenko, Anton and Taylor, James},
-  journal={BMC bioinformatics},
-  volume={11},
-  number={12},
-  pages={1},
-  year={2010},
-  publisher={BioMed Central}
+
+@Article{afgan2010galaxy,
+  author    = {Afgan, Enis and Baker, Dannon and Coraor, Nate and Chapman, Brad and Nekrutenko, Anton and Taylor, James},
+  title     = {Galaxy CloudMan: delivering cloud compute clusters},
+  journal   = {BMC Bioinformatics},
+  year      = {2010},
+  volume    = {11},
+  number    = {12},
+  pages     = {1},
+  publisher = {BioMed Central},
 }
-@article{goecks2010galaxy,
-  title={Galaxy: a comprehensive approach for supporting accessible, reproducible, and transparent computational research in the life sciences},
-  author={Goecks, Jeremy and Nekrutenko, Anton and Taylor, James},
-  journal={Genome biology},
-  volume={11},
-  number={8},
-  pages={1},
-  year={2010},
-  publisher={BioMed Central}
+
+@Article{goecks2010galaxy,
+  author    = {Goecks, Jeremy and Nekrutenko, Anton and Taylor, James},
+  title     = {Galaxy: a comprehensive approach for supporting accessible, reproducible, and transparent computational research in the life sciences},
+  journal   = {Genome Biology},
+  year      = {2010},
+  volume    = {11},
+  number    = {8},
+  pages     = {1},
+  publisher = {BioMed Central},
 }
 @article{garrison2012haplotype,
   title={Haplotype-based variant detection from short-read sequencing},
@@ -794,15 +802,16 @@
   journal={arXiv preprint arXiv:1207.3907},
   year={2012}
 }
-@article{depristo2011framework,
-  title={A framework for variation discovery and genotyping using next-generation DNA sequencing data},
-  author={DePristo, Mark A and Banks, Eric and Poplin, Ryan and Garimella, Kiran V and Maguire, Jared R and Hartl, Christopher and Philippakis, Anthony A and Del Angel, Guillermo and Rivas, Manuel A and Hanna, Matt and others},
-  journal={Nature genetics},
-  volume={43},
-  number={5},
-  pages={491--498},
-  year={2011},
-  publisher={Nature Publishing Group}
+
+@Article{depristo2011framework,
+  author    = {DePristo, Mark A and Banks, Eric and Poplin, Ryan and Garimella, Kiran V and Maguire, Jared R and Hartl, Christopher and Philippakis, Anthony A and Del Angel, Guillermo and Rivas, Manuel A and Hanna, Matt and others},
+  title     = {A framework for variation discovery and genotyping using next-generation DNA sequencing data},
+  journal   = {Nature Genetics},
+  year      = {2011},
+  volume    = {43},
+  number    = {5},
+  pages     = {491--498},
+  publisher = {Nature Publishing Group},
 }
 @article{cleary2014joint,
   title={Joint variant and de novo mutation identification on pedigrees from high-throughput sequencing data},
@@ -814,15 +823,16 @@
   year={2014},
   publisher={Mary Ann Liebert, Inc. 140 Huguenot Street, 3rd Floor New Rochelle, NY 10801 USA}
 }
-@article{delaneau2012linear,
-  title={A linear complexity phasing method for thousands of genomes},
-  author={Delaneau, Olivier and Marchini, Jonathan and Zagury, Jean-Fran{\c{c}}ois},
-  journal={Nature methods},
-  volume={9},
-  number={2},
-  pages={179--181},
-  year={2012},
-  publisher={Nature Publishing Group}
+
+@Article{delaneau2012linear,
+  author    = {Delaneau, Olivier and Marchini, Jonathan and Zagury, Jean-Fran{\c{c}}ois},
+  title     = {A linear complexity phasing method for thousands of genomes},
+  journal   = {Nature Methods},
+  year      = {2012},
+  volume    = {9},
+  number    = {2},
+  pages     = {179--181},
+  publisher = {Nature Publishing Group},
 }
 @article{rausch2012delly,
   title={DELLY: structural variant discovery by integrated paired-end and split-read analysis},
@@ -915,15 +925,16 @@
 	Urldate = {2016-10-13},
 	Bdsk-Url-1 = {https://www.elastic.co/products/kibana}
 }
-@article{cook2016european,
-  title={The european bioinformatics institute in 2016: Data growth and integration},
-  author={Cook, Charles E and Bergman, Mary Todd and Finn, Robert D and Cochrane, Guy and Birney, Ewan and Apweiler, Rolf},
-  journal={Nucleic acids research},
-  volume={44},
-  number={D1},
-  pages={D20--D26},
-  year={2016},
-  publisher={Oxford Univ Press}
+
+@Article{cook2016european,
+  author    = {Cook, Charles E and Bergman, Mary Todd and Finn, Robert D and Cochrane, Guy and Birney, Ewan and Apweiler, Rolf},
+  title     = {The european bioinformatics institute in 2016: Data growth and integration},
+  journal   = {Nucleic Acids Research},
+  year      = {2016},
+  volume    = {44},
+  number    = {D1},
+  pages     = {D20--D26},
+  publisher = {Oxford Univ Press},
 }
 @book{copeland2008essential,
   title={Essential sqlalchemy},
@@ -947,14 +958,15 @@
   year={2015},
   publisher={Oxford Univ Press}
 }
-@article{wilks2014cancer,
-  title={The Cancer Genomics Hub (CGHub): overcoming cancer through the power of torrential data},
-  author={Wilks, Christopher and Cline, Melissa S and Weiler, Erich and Diehkans, Mark and Craft, Brian and Martin, Christy and Murphy, Daniel and Pierce, Howdy and Black, John and Nelson, Donavan and others},
-  journal={Database},
-  volume={2014},
-  pages={bau093},
-  year={2014},
-  publisher={Oxford University Press}
+
+@Article{wilks2014cancer,
+  author    = {Wilks, Christopher and Cline, Melissa S and Weiler, Erich and Diehkans, Mark and Craft, Brian and Martin, Christy and Murphy, Daniel and Pierce, Howdy and Black, John and Nelson, Donavan and others},
+  title     = {The Cancer Genomics Hub (CGHub): overcoming cancer through the power of torrential data},
+  journal   = {Database, The Journal of Biological Databases and Curation},
+  year      = {2014},
+  volume    = {2014},
+  pages     = {bau093},
+  publisher = {Oxford University Press},
 }
 @article{sudmant2015integrated,
   title={An integrated map of structural variation in 2,504 human genomes},
@@ -1008,15 +1020,16 @@
   year={2011},
   publisher={Computer Security Division, Information Technology Laboratory, National Institute of Standards and Technology Gaithersburg}
 }
-@article{chin2011cancer,
-  title={Cancer genomics: from discovery science to personalized medicine},
-  author={Chin, Lynda and Andersen, Jannik N and Futreal, P Andrew},
-  journal={Nature medicine},
-  volume={17},
-  number={3},
-  pages={297--303},
-  year={2011},
-  publisher={Nature Publishing Group}
+
+@Article{chin2011cancer,
+  author    = {Chin, Lynda and Andersen, Jannik N and Futreal, P Andrew},
+  title     = {Cancer genomics: from discovery science to personalized medicine},
+  journal   = {Nature Medicine},
+  year      = {2011},
+  volume    = {17},
+  number    = {3},
+  pages     = {297--303},
+  publisher = {Nature Publishing Group},
 }
 @article{jennings2016international,
   title={International Cancer Genome Consortium (ICGC)},
@@ -1056,15 +1069,16 @@
   year={2010},
   publisher={Nature Publishing Group}
 }
-@article{gudbjartsson2015large,
-  title={Large-scale whole-genome sequencing of the Icelandic population},
-  author={Gudbjartsson, Daniel F and Helgason, Hannes and Gudjonsson, Sigurjon A and Zink, Florian and Oddson, Asmundur and Gylfason, Arnaldur and Besenbacher, Soren and Magnusson, Gisli and Halldorsson, Bjarni V and Hjartarson, Eirikur and others},
-  journal={Nature genetics},
-  volume={47},
-  number={5},
-  pages={435--444},
-  year={2015},
-  publisher={Nature Publishing Group}
+
+@Article{gudbjartsson2015large,
+  author    = {Gudbjartsson, Daniel F and Helgason, Hannes and Gudjonsson, Sigurjon A and Zink, Florian and Oddson, Asmundur and Gylfason, Arnaldur and Besenbacher, Soren and Magnusson, Gisli and Halldorsson, Bjarni V and Hjartarson, Eirikur and others},
+  title     = {Large-scale whole-genome sequencing of the Icelandic population},
+  journal   = {Nature Genetics},
+  year      = {2015},
+  volume    = {47},
+  number    = {5},
+  pages     = {435--444},
+  publisher = {Nature Publishing Group},
 }
 @article{russell1978cray,
   title={The CRAY-1 computer system},
@@ -1110,24 +1124,26 @@
   pages={674--679},
   year={1985}
 }
-@article{kaul2000analysis,
-  title={Analysis of the genome sequence of the flowering plant Arabidopsis thaliana},
-  author={Kaul, Samir and Koo, Hean L and Jenkins, Jennifer and Rizzo, Michael and Rooney, Timothy and Tallon, Luke J and Feldblyum, Tamara and Nierman, William and Benito, Maria Ines and Lin, Xiaoying and others},
-  journal={nature},
-  volume={408},
-  number={6814},
-  pages={796--815},
-  year={2000}
+
+@Article{kaul2000analysis,
+  author  = {Kaul, Samir and Koo, Hean L and Jenkins, Jennifer and Rizzo, Michael and Rooney, Timothy and Tallon, Luke J and Feldblyum, Tamara and Nierman, William and Benito, Maria Ines and Lin, Xiaoying and others},
+  title   = {Analysis of the genome sequence of the flowering plant Arabidopsis thaliana},
+  journal = {Nature},
+  year    = {2000},
+  volume  = {408},
+  number  = {6814},
+  pages   = {796--815},
 }
-@article{sanger1982nucleotide,
-  title={Nucleotide sequence of bacteriophage $\lambda$ DNA},
-  author={Sanger, F and Coulson, Ar R and Hong, GF and Hill, DF and Petersen, GB},
-  journal={Journal of molecular biology},
-  volume={162},
-  number={4},
-  pages={729--773},
-  year={1982},
-  publisher={Elsevier}
+
+@Article{sanger1982nucleotide,
+  author    = {Sanger, F and Coulson, Ar R and Hong, GF and Hill, DF and Petersen, GB},
+  title     = {Nucleotide sequence of bacteriophage $\lambda$ DNA},
+  journal   = {Journal of Molecular Biology},
+  year      = {1982},
+  volume    = {162},
+  number    = {4},
+  pages     = {729--773},
+  publisher = {Elsevier},
 }
 @article{lander2001initial,
   title={Initial sequencing and analysis of the human genome},
@@ -1177,15 +1193,16 @@
   year={2008},
   publisher={Annual Reviews}
 }
-@article{dohm2008substantial,
-  title={Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
-  author={Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
-  journal={Nucleic acids research},
-  volume={36},
-  number={16},
-  pages={e105--e105},
-  year={2008},
-  publisher={Oxford Univ Press}
+
+@Article{dohm2008substantial,
+  author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
+  title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
+  journal   = {Nucleic Acids Research},
+  year      = {2008},
+  volume    = {36},
+  number    = {16},
+  pages     = {e105--e105},
+  publisher = {Oxford Univ Press},
 }
 @article{siegel2016cancer,
   title={Cancer statistics, 2016},
@@ -1198,35 +1215,37 @@
   publisher={Wiley Online Library}
 }
 
-@article{torre2015global,
-  title={Global cancer statistics, 2012},
-  author={Torre, Lindsey A and Bray, Freddie and Siegel, Rebecca L and Ferlay, Jacques and Lortet-Tieulent, Joannie and Jemal, Ahmedin},
-  journal={CA: a cancer journal for clinicians},
-  volume={65},
-  number={2},
-  pages={87--108},
-  year={2015},
-  publisher={Wiley Online Library}
+@Article{torre2015global,
+  author    = {Torre, Lindsey A and Bray, Freddie and Siegel, Rebecca L and Ferlay, Jacques and Lortet-Tieulent, Joannie and Jemal, Ahmedin},
+  title     = {Global cancer statistics, 2012},
+  journal   = {CA: a Cancer Journal for Clinicians},
+  year      = {2015},
+  volume    = {65},
+  number    = {2},
+  pages     = {87--108},
+  publisher = {Wiley Online Library},
 }
-@article{hanahan2011hallmarks,
-  title={Hallmarks of cancer: the next generation},
-  author={Hanahan, Douglas and Weinberg, Robert A},
-  journal={cell},
-  volume={144},
-  number={5},
-  pages={646--674},
-  year={2011},
-  publisher={Elsevier}
+
+@Article{hanahan2011hallmarks,
+  author    = {Hanahan, Douglas and Weinberg, Robert A},
+  title     = {Hallmarks of cancer: the next generation},
+  journal   = {Cell},
+  year      = {2011},
+  volume    = {144},
+  number    = {5},
+  pages     = {646--674},
+  publisher = {Elsevier},
 }
-@article{luengo2013economic,
-  title={Economic burden of cancer across the European Union: a population-based cost analysis},
-  author={Luengo-Fernandez, Ramon and Leal, Jose and Gray, Alastair and Sullivan, Richard},
-  journal={The lancet oncology},
-  volume={14},
-  number={12},
-  pages={1165--1174},
-  year={2013},
-  publisher={Elsevier}
+
+@Article{luengo2013economic,
+  author    = {Luengo-Fernandez, Ramon and Leal, Jose and Gray, Alastair and Sullivan, Richard},
+  title     = {Economic burden of cancer across the European Union: a population-based cost analysis},
+  journal   = {The Lancet Oncology},
+  year      = {2013},
+  volume    = {14},
+  number    = {12},
+  pages     = {1165--1174},
+  publisher = {Elsevier},
 }
 @article{yabroff2011economic,
   title={Economic burden of cancer in the United States: estimates, projections, and future research},
@@ -1276,15 +1295,16 @@
   year={2014},
   publisher={Nature Publishing Group}
 }
-@article{forbes2015cosmic,
-  title={COSMIC: exploring the world's knowledge of somatic mutations in human cancer},
-  author={Forbes, Simon A and Beare, David and Gunasekaran, Prasad and Leung, Kenric and Bindal, Nidhi and Boutselakis, Harry and Ding, Minjie and Bamford, Sally and Cole, Charlotte and Ward, Sari and others},
-  journal={Nucleic acids research},
-  volume={43},
-  number={D1},
-  pages={D805--D811},
-  year={2015},
-  publisher={Oxford Univ Press}
+
+@Article{forbes2015cosmic,
+  author    = {Forbes, Simon A and Beare, David and Gunasekaran, Prasad and Leung, Kenric and Bindal, Nidhi and Boutselakis, Harry and Ding, Minjie and Bamford, Sally and Cole, Charlotte and Ward, Sari and others},
+  title     = {COSMIC: exploring the world's knowledge of somatic mutations in human cancer},
+  journal   = {Nucleic Acids Research},
+  year      = {2015},
+  volume    = {43},
+  number    = {D1},
+  pages     = {D805--D811},
+  publisher = {Oxford Univ Press},
 }
 @Online{International_Cancer_Genome_Consortium_2016, 
   title = {International Cancer Genome Consortium}, 
@@ -1308,11 +1328,12 @@
   year={2004},
   publisher={Routledge}
 }
-@article{barnes1949motion,
-  title={Motion and time study.},
-  author={Barnes, Ralph M},
-  year={1949},
-  publisher={Wiley}
+
+@Article{barnes1949motion,
+  author    = {Barnes, Ralph M},
+  title     = {Motion and time study},
+  year      = {1949},
+  publisher = {Wiley},
 }
 @article{hollingsworth1995workflow,
   title={The workflow reference model},
@@ -1414,23 +1435,25 @@
   year={2006},
   organization={USENIX Association}
 }
-@article{moon1996expectation,
-  title={The expectation-maximization algorithm},
-  author={Moon, Todd K},
-  journal={IEEE Signal processing magazine},
-  volume={13},
-  number={6},
-  pages={47--60},
-  year={1996},
-  publisher={IEEE}
+
+@Article{moon1996expectation,
+  author    = {Moon, Todd K},
+  title     = {The expectation-maximization algorithm},
+  journal   = {IEEE Signal Processing Magazine},
+  year      = {1996},
+  volume    = {13},
+  number    = {6},
+  pages     = {47--60},
+  publisher = {IEEE},
 }
-@incollection{bottou2010large,
-  title={Large-scale machine learning with stochastic gradient descent},
-  author={Bottou, L{\'e}on},
-  booktitle={Proceedings of COMPSTAT'2010},
-  pages={177--186},
-  year={2010},
-  publisher={Springer}
+
+@InCollection{bottou2010large,
+  author    = {Bottou, L{\'e}on},
+  title     = {Large-scale machine learning with stochastic gradient descent},
+  booktitle = {Proceedings of COMPSTAT 2010},
+  year      = {2010},
+  publisher = {Springer},
+  pages     = {177--186},
 }
 @Online{Terraform_by_HashiCorp_2016-10-31, 
   title = {Terraform by HashiCorp}, 
@@ -1488,15 +1511,16 @@
   year={1990},
   publisher={JSTOR}
 }
-@article{wang2009rna,
-  title={RNA-Seq: a revolutionary tool for transcriptomics},
-  author={Wang, Zhong and Gerstein, Mark and Snyder, Michael},
-  journal={Nature reviews genetics},
-  volume={10},
-  number={1},
-  pages={57--63},
-  year={2009},
-  publisher={Nature Publishing Group}
+
+@Article{wang2009rna,
+  author    = {Wang, Zhong and Gerstein, Mark and Snyder, Michael},
+  title     = {RNA-Seq: a revolutionary tool for transcriptomics},
+  journal   = {Nature Reviews Genetics},
+  year      = {2009},
+  volume    = {10},
+  number    = {1},
+  pages     = {57--63},
+  publisher = {Nature Publishing Group},
 }
 @article{jones2007epigenomics,
   title={The epigenomics of cancer},
@@ -1508,13 +1532,14 @@
   year={2007},
   publisher={Elsevier}
 }
-@article{vermeersch2013applications,
-  title={Applications of metabolomics in cancer research},
-  author={Vermeersch, Kathleen A and Styczynski, Mark P},
-  journal={Journal of carcinogenesis},
-  volume={12},
-  year={2013},
-  publisher={Medknow Publications}
+
+@Article{vermeersch2013applications,
+  author    = {Vermeersch, Kathleen A and Styczynski, Mark P},
+  title     = {Applications of metabolomics in cancer research},
+  journal   = {Journal of Carcinogenesis},
+  year      = {2013},
+  volume    = {12},
+  publisher = {Medknow Publications},
 }
 
 @Book{originofspecies,
@@ -1624,7 +1649,7 @@
 @Article{heller2002dna,
   author    = {Heller, Michael J},
   title     = {DNA microarray technology: devices, systems, and applications},
-  journal   = {Annual review of biomedical engineering},
+  journal   = {Annual Review of Biomedical Engineering},
   year      = {2002},
   volume    = {4},
   number    = {1},
@@ -1636,17 +1661,6 @@
   author = {Li, Heng},
   title  = {Mathematical Notes on SAMtools Algorithms},
   year   = {2010},
-}
-
-@Article{li2018synthetic,
-  author    = {Li, Heng and Bloom, Jonathan M and Farjoun, Yossi and Fleharty, Mark and Gauthier, Laura and Neale, Benjamin and MacArthur, Daniel},
-  title     = {A synthetic-diploid benchmark for accurate variant-calling evaluation},
-  journal   = {Nature methods},
-  year      = {2018},
-  volume    = {15},
-  number    = {8},
-  pages     = {595},
-  publisher = {Nature Publishing Group},
 }
 
 @Article{li2011statistical,
@@ -1674,7 +1688,7 @@
 @Article{daly2001high,
   author    = {Daly, Mark J and Rioux, John D and Schaffner, Stephen F and Hudson, Thomas J and Lander, Eric S},
   title     = {High-resolution haplotype structure in the human genome},
-  journal   = {Nature genetics},
+  journal   = {Nature Genetics},
   year      = {2001},
   volume    = {29},
   number    = {2},
@@ -1685,7 +1699,7 @@
 @Article{marth1999general,
   author    = {Marth, Gabor T and Korf, Ian and Yandell, Mark D and Yeh, Raymond T and Gu, Zhijie and Zakeri, Hamideh and Stitziel, Nathan O and Hillier, LaDeana and Kwok, Pui-Yan and Gish, Warren R},
   title     = {A general approach to single-nucleotide polymorphism discovery},
-  journal   = {Nature genetics},
+  journal   = {Nature Genetics},
   year      = {1999},
   volume    = {23},
   number    = {4},
@@ -1696,7 +1710,7 @@
 @Article{ewens1972sampling,
   author    = {Ewens, Warren J},
   title     = {The sampling theory of selectively neutral alleles},
-  journal   = {Theoretical population biology},
+  journal   = {Theoretical Population Biology},
   year      = {1972},
   volume    = {3},
   number    = {1},
@@ -1711,7 +1725,7 @@
 @Article{compeau2011apply,
   author    = {Compeau, Phillip EC and Pevzner, Pavel A and Tesler, Glenn},
   title     = {How to apply de Bruijn graphs to genome assembly},
-  journal   = {Nature biotechnology},
+  journal   = {Nature Biotechnology},
   year      = {2011},
   volume    = {29},
   number    = {11},
@@ -1722,7 +1736,7 @@
 @Article{smith1981comparison,
   author    = {Smith, Temple F and Waterman, Michael S},
   title     = {Comparison of biosequences},
-  journal   = {Advances in applied mathematics},
+  journal   = {Advances in Applied Mathematics},
   year      = {1981},
   volume    = {2},
   number    = {4},
@@ -1733,7 +1747,7 @@
 @Article{iqbal2012novo,
   author    = {Iqbal, Zamin and Caccamo, Mario and Turner, Isaac and Flicek, Paul and McVean, Gil},
   title     = {De novo assembly and genotyping of variants using colored de Bruijn graphs},
-  journal   = {Nature genetics},
+  journal   = {Nature Genetics},
   year      = {2012},
   volume    = {44},
   number    = {2},
@@ -1777,7 +1791,7 @@
 @Article{layer2014lumpy,
   author    = {Layer, Ryan M and Chiang, Colby and Quinlan, Aaron R and Hall, Ira M},
   title     = {LUMPY: a probabilistic framework for structural variant discovery},
-  journal   = {Genome biology},
+  journal   = {Genome Biology},
   year      = {2014},
   volume    = {15},
   number    = {6},
@@ -1799,7 +1813,7 @@
 @Article{wala2018svaba,
   author    = {Wala, Jeremiah A and Bandopadhayay, Pratiti and Greenwald, Noah and O'Rourke, Ryan and Sharpe, Ted and Stewart, Chip and Schumacher, Steve and Li, Yilong and Weischenfeldt, Joachim and Yao, Xiaotong and others},
   title     = {SvABA: genome-wide detection of structural variants and indels by local assembly},
-  journal   = {Genome research},
+  journal   = {Genome Research},
   year      = {2018},
   publisher = {Cold Spring Harbor Lab},
 }
@@ -1807,7 +1821,7 @@
 @Article{simpson2012efficient,
   author    = {Simpson, Jared T and Durbin, Richard},
   title     = {Efficient de novo assembly of large genomes using compressed data structures},
-  journal   = {Genome research},
+  journal   = {Genome Research},
   year      = {2012},
   volume    = {22},
   number    = {3},
@@ -1839,7 +1853,7 @@
 
 @Book{shaw1996software,
   author    = {Shaw, Mary and Garlan, David},
-  title     = {Software architecture},
+  title     = {Software Architecture},
   year      = {1996},
   volume    = {101},
   publisher = {Prentice Hall Englewood Cliffs},
@@ -1857,7 +1871,7 @@
 @Article{eugster2003many,
   author    = {Eugster, Patrick Th and Felber, Pascal A and Guerraoui, Rachid and Kermarrec, Anne-Marie},
   title     = {The many faces of publish/subscribe},
-  journal   = {ACM computing surveys (CSUR)},
+  journal   = {ACM Computing Surveys (CSUR)},
   year      = {2003},
   volume    = {35},
   number    = {2},
@@ -1903,21 +1917,10 @@
   publisher = {Springer Science \& Business Media},
 }
 
-@Article{cock2009sanger,
-  author    = {Cock, Peter JA and Fields, Christopher J and Goto, Naohisa and Heuer, Michael L and Rice, Peter M},
-  title     = {The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants},
-  journal   = {Nucleic acids research},
-  year      = {2009},
-  volume    = {38},
-  number    = {6},
-  pages     = {1767--1771},
-  publisher = {Oxford University Press},
-}
-
 @Article{lauss2013monitoring,
   author    = {Lauss, Martin and Visne, Ilhami and Kriegner, Albert and Ringn{\'e}r, Markus and J{\"o}nsson, G{\"o}ran and H{\"o}glund, Mattias},
   title     = {Monitoring of technical variation in quantitative high-throughput datasets},
-  journal   = {Cancer informatics},
+  journal   = {Cancer Informatics},
   year      = {2013},
   volume    = {12},
   pages     = {CIN--S12862},
@@ -1927,7 +1930,7 @@
 @Article{aird2011analyzing,
   author    = {Aird, Daniel and Ross, Michael G and Chen, Wei-Sheng and Danielsson, Maxwell and Fennell, Timothy and Russ, Carsten and Jaffe, David B and Nusbaum, Chad and Gnirke, Andreas},
   title     = {Analyzing and minimizing PCR amplification bias in Illumina sequencing libraries},
-  journal   = {Genome biology},
+  journal   = {Genome Biology},
   year      = {2011},
   volume    = {12},
   number    = {2},
@@ -1935,34 +1938,11 @@
   publisher = {BioMed Central},
 }
 
-@Article{Dohm2008,
-  author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
-  title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
-  journal   = {Nucleic acids research},
-  year      = {2008},
-  volume    = {36},
-  number    = {16},
-  pages     = {e105},
-  publisher = {Oxford University Press},
-}
-
 @Article{gordon2010fastx,
-  author  = {Gordon, A and Hannon, GJ},
-  title   = {Fastx-toolkit},
-  journal = {FASTQ/A short-reads preprocessing tools (unpublished) http://hannonlab. cshl. edu/fastx\_toolkit},
-  year    = {2010},
-  volume  = {5},
-}
-
-@Article{Patel2012,
-  author    = {Patel, Ravi K and Jain, Mukesh},
-  title     = {NGS QC Toolkit: a toolkit for quality control of next generation sequencing data},
-  journal   = {PloS one},
-  year      = {2012},
-  volume    = {7},
-  number    = {2},
-  pages     = {e30619},
-  publisher = {Public Library of Science},
+  author = {Gordon, A and Hannon, GJ},
+  title  = {Fastx-toolkit},
+  year   = {2010},
+  volume = {5},
 }
 
 @Article{andrews2010fastqc,
@@ -1982,23 +1962,12 @@
 @Article{zhou2013qc,
   author    = {Zhou, Qian and Su, Xiaoquan and Wang, Anhui and Xu, Jian and Ning, Kang},
   title     = {QC-Chain: fast and holistic quality control method for next-generation sequencing data},
-  journal   = {PloS one},
+  journal   = {PloS One},
   year      = {2013},
   volume    = {8},
   number    = {4},
   pages     = {e60234},
   publisher = {Public Library of Science},
-}
-
-@Article{Dohm2008a,
-  author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
-  title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
-  journal   = {Nucleic acids research},
-  year      = {2008},
-  volume    = {36},
-  number    = {16},
-  pages     = {e105},
-  publisher = {Oxford University Press},
 }
 
 @Article{bolger2014trimmomatic,
@@ -2015,7 +1984,7 @@
 @Article{ebbert2016evaluating,
   author    = {Ebbert, Mark TW and Wadsworth, Mark E and Staley, Lyndsay A and Hoyt, Kaitlyn L and Pickett, Brandon and Miller, Justin and Duce, John and Kauwe, John SK and Ridge, Perry G},
   title     = {Evaluating the necessity of PCR duplicate removal from next-generation sequencing data and a comparison of approaches},
-  journal   = {BMC bioinformatics},
+  journal   = {BMC Bioinformatics},
   year      = {2016},
   volume    = {17},
   number    = {7},
@@ -2032,17 +2001,6 @@
   number    = {6968},
   pages     = {789},
   publisher = {Nature Publishing Group},
-}
-
-@Article{Cock2009,
-  author    = {Cock, Peter JA and Fields, Christopher J and Goto, Naohisa and Heuer, Michael L and Rice, Peter M},
-  title     = {The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants},
-  journal   = {Nucleic acids research},
-  year      = {2009},
-  volume    = {38},
-  number    = {6},
-  pages     = {1767--1771},
-  publisher = {Oxford University Press},
 }
 
 @Article{li2011tabix,
@@ -2097,7 +2055,7 @@
 @Article{stephens2016simulating,
   author    = {Stephens, Zachary D and Hudson, Matthew E and Mainzer, Liudmila S and Taschuk, Morgan and Weber, Matthew R and Iyer, Ravishankar K},
   title     = {Simulating next-generation sequencing datasets from empirical mutation and sequencing models},
-  journal   = {PloS one},
+  journal   = {PloS One},
   year      = {2016},
   volume    = {11},
   number    = {11},
@@ -2117,10 +2075,9 @@
 }
 
 @Article{burrows1994block,
-  author    = {Burrows, Michael and Wheeler, David J},
-  title     = {A block-sorting lossless data compression algorithm},
-  year      = {1994},
-  publisher = {Citeseer},
+  author = {Burrows, Michael and Wheeler, David J},
+  title  = {A block-sorting lossless data compression algorithm},
+  year   = {1994},
 }
 
 @InProceedings{ferragina2000opportunistic,
@@ -2135,7 +2092,7 @@
 @Article{li2008mapping,
   author    = {Li, Heng and Ruan, Jue and Durbin, Richard},
   title     = {Mapping short DNA sequencing reads and calling variants using mapping quality scores},
-  journal   = {Genome research},
+  journal   = {Genome Research},
   year      = {2008},
   pages     = {gr--078212},
   publisher = {Cold Spring Harbor Lab},
@@ -2155,7 +2112,7 @@
 @Article{langmead2009ultrafast,
   author    = {Langmead, Ben and Trapnell, Cole and Pop, Mihai and Salzberg, Steven L},
   title     = {Ultrafast and memory-efficient alignment of short DNA sequences to the human genome},
-  journal   = {Genome biology},
+  journal   = {Genome Biology},
   year      = {2009},
   volume    = {10},
   number    = {3},
@@ -2166,21 +2123,11 @@
 @Article{reinert2015alignment,
   author    = {Reinert, Knut and Langmead, Ben and Weese, David and Evers, Dirk J},
   title     = {Alignment of next-generation sequencing reads},
-  journal   = {Annual review of genomics and human genetics},
+  journal   = {Annual Review of Genomics and Human Genetics},
   year      = {2015},
   volume    = {16},
   pages     = {133--151},
   publisher = {Annual Reviews},
-}
-
-@Article{li2018minimap2,
-  author    = {Li, Heng},
-  title     = {Minimap2: pairwise alignment for nucleotide sequences},
-  journal   = {Bioinformatics},
-  year      = {2018},
-  volume    = {1},
-  pages     = {7},
-  publisher = {Oxford University Press},
 }
 
 @Article{zaharia2011faster,
@@ -2208,7 +2155,7 @@
 @Article{manber1993suffix,
   author    = {Manber, Udi and Myers, Gene},
   title     = {Suffix arrays: a new method for on-line string searches},
-  journal   = {siam Journal on Computing},
+  journal   = {SIAM Journal on Computing},
   year      = {1993},
   volume    = {22},
   number    = {5},
@@ -2239,7 +2186,7 @@
 @Article{Langmead2012,
   author    = {Langmead, Ben and Salzberg, Steven L},
   title     = {Fast gapped-read alignment with Bowtie 2},
-  journal   = {Nature methods},
+  journal   = {Nature Methods},
   year      = {2012},
   volume    = {9},
   number    = {4},
@@ -2250,7 +2197,7 @@
 @Article{langmead2009searching,
   author    = {Langmead, Ben and Schatz, Michael C and Lin, Jimmy and Pop, Mihai and Salzberg, Steven L},
   title     = {Searching for SNPs with cloud computing},
-  journal   = {Genome biology},
+  journal   = {Genome Biology},
   year      = {2009},
   volume    = {10},
   number    = {11},
@@ -2280,13 +2227,6 @@
   publisher = {Oxford University Press},
 }
 
-@Article{Li2013,
-  author  = {Li, Heng},
-  title   = {Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM},
-  journal = {arXiv preprint arXiv:1303.3997},
-  year    = {2013},
-}
-
 @Article{li2012exploring,
   author    = {Li, Heng},
   title     = {Exploring single-sample SNP and INDEL calling with whole-genome de novo assembly},
@@ -2301,7 +2241,7 @@
 @Article{rhoads2015pacbio,
   author    = {Rhoads, Anthony and Au, Kin Fai},
   title     = {PacBio sequencing and its applications},
-  journal   = {Genomics, proteomics \& bioinformatics},
+  journal   = {Genomics, Proteomics \& Bioinformatics},
   year      = {2015},
   volume    = {13},
   number    = {5},
@@ -2312,7 +2252,7 @@
 @Article{lu2016oxford,
   author    = {Lu, Hengyun and Giordano, Francesca and Ning, Zemin},
   title     = {Oxford Nanopore MinION sequencing and genome assembly},
-  journal   = {Genomics, proteomics \& bioinformatics},
+  journal   = {Genomics, Proteomics \& Bioinformatics},
   year      = {2016},
   volume    = {14},
   number    = {5},
@@ -2323,22 +2263,12 @@
 @Article{roberts2013advantages,
   author    = {Roberts, Richard J and Carneiro, Mauricio O and Schatz, Michael C},
   title     = {The advantages of SMRT sequencing},
-  journal   = {Genome biology},
+  journal   = {Genome Biology},
   year      = {2013},
   volume    = {14},
   number    = {6},
   pages     = {405},
   publisher = {BioMed Central},
-}
-
-@Article{Li2018,
-  author    = {Li, Heng},
-  title     = {Minimap2: pairwise alignment for nucleotide sequences},
-  journal   = {Bioinformatics},
-  year      = {2018},
-  volume    = {1},
-  pages     = {7},
-  publisher = {Oxford University Press},
 }
 
 @Article{roberts2004reducing,
@@ -2350,17 +2280,6 @@
   number    = {18},
   pages     = {3363--3369},
   publisher = {Oxford University Press},
-}
-
-@Article{Li2018a,
-  author    = {Li, Heng and Bloom, Jonathan M and Farjoun, Yossi and Fleharty, Mark and Gauthier, Laura and Neale, Benjamin and MacArthur, Daniel},
-  title     = {A synthetic-diploid benchmark for accurate variant-calling evaluation},
-  journal   = {Nature methods},
-  year      = {2018},
-  volume    = {15},
-  number    = {8},
-  pages     = {595},
-  publisher = {Nature Publishing Group},
 }
 
 @Article{myers1988optimal,
@@ -2377,7 +2296,7 @@
 @Article{kim2016centrifuge,
   author    = {Kim, Daehwan and Song, Li and Breitwieser, Florian P and Salzberg, Steven L},
   title     = {Centrifuge: rapid and sensitive classification of metagenomic sequences},
-  journal   = {Genome research},
+  journal   = {Genome Research},
   year      = {2016},
   publisher = {Cold Spring Harbor Lab},
 }
@@ -2385,7 +2304,7 @@
 @Article{wood2014kraken,
   author    = {Wood, Derrick E and Salzberg, Steven L},
   title     = {Kraken: ultrafast metagenomic sequence classification using exact alignments},
-  journal   = {Genome biology},
+  journal   = {Genome Biology},
   year      = {2014},
   volume    = {15},
   number    = {3},
@@ -2396,7 +2315,7 @@
 @Article{turner2014assessment,
   author    = {Turner, Frances Susan},
   title     = {Assessment of insert sizes and adapter content in fastq data from NexteraXT libraries},
-  journal   = {Frontiers in genetics},
+  journal   = {Frontiers in Genetics},
   year      = {2014},
   volume    = {5},
   pages     = {5},
@@ -2422,7 +2341,7 @@
 @Article{parzen1962estimation,
   author    = {Parzen, Emanuel},
   title     = {On estimation of a probability density function and mode},
-  journal   = {The annals of mathematical statistics},
+  journal   = {The Annals of Mathematical Statistics},
   year      = {1962},
   volume    = {33},
   number    = {3},
@@ -2456,6 +2375,7 @@
   author    = {Hartigan, John A},
   title     = {Clustering algorithms},
   year      = {1975},
+  series    = {Wiley series in probability and mathematical statistics},
   publisher = {Wiley},
 }
 
@@ -2464,7 +2384,6 @@
   title     = {Reproducible integration of multiple sequencing datasets to form high-confidence SNP, indel, and reference calls for five human genome reference materials},
   journal   = {BioRxiv},
   year      = {2018},
-  pages     = {281006},
   publisher = {Cold Spring Harbor Laboratory},
 }
 
@@ -2515,7 +2434,7 @@
 @Article{vivian2017toil,
   author    = {Vivian, John and Rao, Arjun Arkal and Nothaft, Frank Austin and Ketchum, Christopher and Armstrong, Joel and Novak, Adam and Pfeil, Jacob and Narkizian, Jake and Deran, Alden D and Musselman-Brown, Audrey and others},
   title     = {Toil enables reproducible, open source, big biomedical data analyses},
-  journal   = {Nature biotechnology},
+  journal   = {Nature Biotechnology},
   year      = {2017},
   volume    = {35},
   number    = {4},
@@ -2526,7 +2445,7 @@
 @Article{di2017nextflow,
   author    = {Di Tommaso, Paolo and Chatzou, Maria and Floden, Evan W and Barja, Pablo Prieto and Palumbo, Emilio and Notredame, Cedric},
   title     = {Nextflow enables reproducible computational workflows},
-  journal   = {Nature biotechnology},
+  journal   = {Nature Biotechnology},
   year      = {2017},
   volume    = {35},
   number    = {4},
@@ -2546,7 +2465,7 @@
 @Article{laver2015assessing,
   author    = {Laver, Thomas and Harrison, J and O’neill, PA and Moore, Karen and Farbos, Audrey and Paszkiewicz, Konrad and Studholme, David J},
   title     = {Assessing the performance of the oxford nanopore technologies minion},
-  journal   = {Biomolecular detection and quantification},
+  journal   = {Biomolecular Detection and Quantification},
   year      = {2015},
   volume    = {3},
   pages     = {1--8},
@@ -2556,7 +2475,7 @@
 @Article{norris2016nanopore,
   author    = {Norris, Alexis L and Workman, Rachael E and Fan, Yunfan and Eshleman, James R and Timp, Winston},
   title     = {Nanopore sequencing detects structural variants in cancer},
-  journal   = {Cancer biology \& therapy},
+  journal   = {Cancer Biology \& Therapy},
   year      = {2016},
   volume    = {17},
   number    = {3},
@@ -2567,7 +2486,7 @@
 @Article{michael2018high,
   author    = {Michael, Todd P and Jupe, Florian and Bemm, Felix and Motley, S Timothy and Sandoval, Justin P and Lanz, Christa and Loudet, Olivier and Weigel, Detlef and Ecker, Joseph R},
   title     = {High contiguity Arabidopsis thaliana genome assembly with a single nanopore flow cell},
-  journal   = {Nature communications},
+  journal   = {Nature Communications},
   year      = {2018},
   volume    = {9},
   number    = {1},
@@ -2604,6 +2523,243 @@
 
 @Online{dockerdoc,
   url = {https://docs.docker.com/engine/docker-overview/},
+}
+
+@Online{kubedoc,
+  url = {https://kubernetes.io/docs/concepts/architecture},
+}
+
+@Article{patel2012ngs,
+  author    = {Patel, Ravi K and Jain, Mukesh},
+  title     = {NGS QC Toolkit: a toolkit for quality control of next generation sequencing data},
+  journal   = {PloS One},
+  year      = {2012},
+  volume    = {7},
+  number    = {2},
+  pages     = {e30619},
+  publisher = {Public Library of Science},
+}
+
+@Article{li2013aligning,
+  author  = {Li, Heng},
+  title   = {Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM},
+  journal = {arXiv preprint arXiv:1303.3997},
+  year    = {2013},
+}
+
+@Article{li2018synthetic,
+  author    = {Li, Heng and Bloom, Jonathan M and Farjoun, Yossi and Fleharty, Mark and Gauthier, Laura and Neale, Benjamin and MacArthur, Daniel},
+  title     = {A synthetic-diploid benchmark for accurate variant-calling evaluation},
+  journal   = {Nature Methods},
+  year      = {2018},
+  volume    = {15},
+  number    = {8},
+  pages     = {595},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{cock2009sanger,
+  author    = {Cock, Peter JA and Fields, Christopher J and Goto, Naohisa and Heuer, Michael L and Rice, Peter M},
+  title     = {The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants},
+  journal   = {Nucleic Acids Research},
+  year      = {2009},
+  volume    = {38},
+  number    = {6},
+  pages     = {1767--1771},
+  publisher = {Oxford University Press},
+}
+
+@Article{Dohm2008,
+  author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
+  title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
+  journal   = {Nucleic Acids Research},
+  year      = {2008},
+  volume    = {36},
+  number    = {16},
+  pages     = {e105},
+  publisher = {Oxford University Press},
+}
+
+@Article{li2018minimap2,
+  author    = {Li, Heng},
+  title     = {Minimap2: pairwise alignment for nucleotide sequences},
+  journal   = {Bioinformatics},
+  year      = {2018},
+  volume    = {1},
+  pages     = {7},
+  publisher = {Oxford University Press},
+}
+
+@Article{dohm2008substantial,
+  author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
+  title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
+  journal   = {Nucleic acids research},
+  year      = {2008},
+  volume    = {36},
+  number    = {16},
+  pages     = {e105},
+  publisher = {Oxford University Press},
+}
+
+@Article{langmead2018cloud,
+  author    = {Langmead, Ben and Nellore, Abhinav},
+  title     = {Cloud computing for genomic data analysis and collaboration},
+  journal   = {Nature Reviews Genetics},
+  year      = {2018},
+  volume    = {19},
+  number    = {4},
+  pages     = {208},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{ledergerber2011base,
+  author    = {Ledergerber, Christian and Dessimoz, Christophe},
+  title     = {Base-calling for next-generation sequencing platforms},
+  journal   = {Briefings in bioinformatics},
+  year      = {2011},
+  volume    = {12},
+  number    = {5},
+  pages     = {489--497},
+  publisher = {Oxford University Press},
+}
+
+@Article{ruffalo2011comparative,
+  author    = {Ruffalo, Matthew and LaFramboise, Thomas and Koyut{\"u}rk, Mehmet},
+  title     = {Comparative analysis of algorithms for next-generation sequencing read alignment},
+  journal   = {Bioinformatics},
+  year      = {2011},
+  volume    = {27},
+  number    = {20},
+  pages     = {2790--2796},
+  publisher = {Oxford University Press},
+}
+
+@Article{chaisson2015genetic,
+  author    = {Chaisson, Mark JP and Wilson, Richard K and Eichler, Evan E},
+  title     = {Genetic variation and the de novo assembly of human genomes},
+  journal   = {Nature Reviews Genetics},
+  year      = {2015},
+  volume    = {16},
+  number    = {11},
+  pages     = {627},
+  publisher = {Nature Publishing Group},
+}
+
+@InProceedings{de1946combinatorial,
+  author    = {De Bruijn, Nicolaas Govert},
+  title     = {A combinatorial problem},
+  booktitle = {Proc. Koninklijke Nederlandse Academie van Wetenschappen},
+  year      = {1946},
+  volume    = {49},
+  pages     = {758--764},
+}
+
+@Article{barnett2011bamtools,
+  author    = {Barnett, Derek W and Garrison, Erik K and Quinlan, Aaron R and Str{\"o}mberg, Michael P and Marth, Gabor T},
+  title     = {BamTools: a C++ API and toolkit for analyzing and managing BAM files},
+  journal   = {Bioinformatics},
+  year      = {2011},
+  volume    = {27},
+  number    = {12},
+  pages     = {1691--1692},
+  publisher = {Oxford University Press},
+}
+
+@Article{wood2014whole,
+  author    = {Wood, Andrew R and Tuke, Marcus A and Nalls, Mike and Hernandez, Dena and Gibbs, J Raphael and Lin, Haoxiang and Xu, Christopher S and Li, Qibin and Shen, Juan and Jun, Goo and others},
+  title     = {Whole-genome sequencing to understand the genetic architecture of common gene expression and biomarker phenotypes},
+  journal   = {Human molecular genetics},
+  year      = {2014},
+  volume    = {24},
+  number    = {5},
+  pages     = {1504--1512},
+  publisher = {Oxford University Press},
+}
+
+@Article{pereira2016somatic,
+  author    = {Pereira, Bernard and Chin, Suet-Feung and Rueda, Oscar M and Vollan, Hans-Kristian Moen and Provenzano, Elena and Bardwell, Helen A and Pugh, Michelle and Jones, Linda and Russell, Roslin and Sammut, Stephen-John and others},
+  title     = {The somatic mutation profiles of 2,433 breast cancers refine their genomic and transcriptomic landscapes},
+  journal   = {Nature communications},
+  year      = {2016},
+  volume    = {7},
+  pages     = {11479},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{hasan2015performance,
+  author    = {Hasan, Mohammad Shabbir and Wu, Xiaowei and Zhang, Liqing},
+  title     = {Performance evaluation of indel calling tools using real short-read data},
+  journal   = {Human genomics},
+  year      = {2015},
+  volume    = {9},
+  number    = {1},
+  pages     = {20},
+  publisher = {BioMed Central},
+}
+
+@Article{guan2016structural,
+  author    = {Guan, Peiyong and Sung, Wing-Kin},
+  title     = {Structural variation detection using next-generation sequencing data: a comparative technical review},
+  journal   = {Methods},
+  year      = {2016},
+  volume    = {102},
+  pages     = {36--49},
+  publisher = {Elsevier},
+}
+
+@Article{van2013fastq,
+  author    = {Van der Auwera, Geraldine A and Carneiro, Mauricio O and Hartl, Christopher and Poplin, Ryan and Del Angel, Guillermo and Levy-Moonshine, Ami and Jordan, Tadeusz and Shakir, Khalid and Roazen, David and Thibault, Joel and others},
+  title     = {From FastQ data to high-confidence variant calls: the genome analysis toolkit best practices pipeline},
+  journal   = {Current protocols in bioinformatics},
+  year      = {2013},
+  volume    = {43},
+  number    = {1},
+  pages     = {11--10},
+  publisher = {Wiley Online Library},
+}
+
+@Article{mclaren2016ensembl,
+  author    = {McLaren, William and Gil, Laurent and Hunt, Sarah E and Riat, Harpreet Singh and Ritchie, Graham RS and Thormann, Anja and Flicek, Paul and Cunningham, Fiona},
+  title     = {The ensembl variant effect predictor},
+  journal   = {Genome biology},
+  year      = {2016},
+  volume    = {17},
+  number    = {1},
+  pages     = {122},
+  publisher = {BioMed Central},
+}
+
+@Article{visscher2012five,
+  author    = {Visscher, Peter M and Brown, Matthew A and McCarthy, Mark I and Yang, Jian},
+  title     = {Five years of GWAS discovery},
+  journal   = {The American Journal of Human Genetics},
+  year      = {2012},
+  volume    = {90},
+  number    = {1},
+  pages     = {7--24},
+  publisher = {Elsevier},
+}
+
+@Article{lee2014rare,
+  author    = {Lee, Seunggeung and Abecasis, Gon{\c{c}}alo R and Boehnke, Michael and Lin, Xihong},
+  title     = {Rare-variant association analysis: study designs and statistical tests},
+  journal   = {The American Journal of Human Genetics},
+  year      = {2014},
+  volume    = {95},
+  number    = {1},
+  pages     = {5--23},
+  publisher = {Elsevier},
+}
+
+@Article{zeng1994precision,
+  author    = {Zeng, Zhao-Bang},
+  title     = {Precision mapping of quantitative trait loci.},
+  journal   = {Genetics},
+  year      = {1994},
+  volume    = {136},
+  number    = {4},
+  pages     = {1457--1468},
+  publisher = {Genetics Soc America},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{[}inputs.procstat\PYG{o}{]]}
+\PYG{n+nv}{exe} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}grafana\PYGZhy{}server\PYGZdq{}}
+
+\PYG{o}{[[}inputs.procstat\PYG{o}{]]}
+\PYG{n+nv}{pid\PYGZus{}file} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}/var/run/salt\PYGZhy{}api.pid\PYGZdq{}}
+
+\PYG{o}{[[}inputs.procstat\PYG{o}{]]}
+\PYG{n+nv}{pattern} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}.*airflow scheduler.*\PYGZdq{}}
+\end{Verbatim}

@@ -14,7 +14,7 @@
 \BOOKMARK [2][-]{subsection.2.2.3}{Raw Data QC}{section.2.2}% 14
 \BOOKMARK [2][-]{subsection.2.2.4}{Germline SNP Calling}{section.2.2}% 15
 \BOOKMARK [2][-]{subsection.2.2.5}{Germline Structural Variant Calling}{section.2.2}% 16
-\BOOKMARK [1][-]{section.2.3}{High Performance , High Throughput, and Cloud Computing}{chapter.2}% 17
+\BOOKMARK [1][-]{section.2.3}{High Performance, High Throughput, and Cloud Computing}{chapter.2}% 17
 \BOOKMARK [1][-]{section.2.4}{Workflow Systems}{chapter.2}% 18
 \BOOKMARK [0][-]{chapter.3}{Butler - Requirements and Architecture}{}% 19
 \BOOKMARK [1][-]{section.3.1}{Functional Requirements}{chapter.3}% 20
@@ -67,7 +67,7 @@
 \BOOKMARK [2][-]{subsection.4.3.2}{Freebayes Variant Genotyping}{section.4.3}% 67
 \BOOKMARK [2][-]{subsection.4.3.3}{Delly Full Variant Genotyping}{section.4.3}% 68
 \BOOKMARK [1][-]{section.4.4}{Performance Evaluation and Comparison}{chapter.4}% 69
-\BOOKMARK [1][-]{section.4.5}{System Design Recap}{chapter.4}% 70
+\BOOKMARK [1][-]{section.4.5}{Butler Framework Recap}{chapter.4}% 70
 \BOOKMARK [0][-]{chapter.5}{The Rheos Framework}{}% 71
 \BOOKMARK [1][-]{section.5.1}{General Framework Design}{chapter.5}% 72
 \BOOKMARK [1][-]{section.5.2}{Data Streaming Architecture}{chapter.5}% 73
@@ -91,5 +91,5 @@
 \BOOKMARK [0][-]{chapter.6}{Discussion and Conclusion}{}% 91
 \BOOKMARK [1][-]{section.6.1}{Butler Framework}{chapter.6}% 92
 \BOOKMARK [1][-]{section.6.2}{Rheos Framework}{chapter.6}% 93
-\BOOKMARK [0][-]{section*.326}{Appendix}{}% 94
-\BOOKMARK [0][-]{Appendix*.327}{Code Listings}{}% 95
+\BOOKMARK [0][-]{section*.328}{Appendix}{}% 94
+\BOOKMARK [0][-]{Appendix*.329}{Code Listings}{}% 95

@@ -1,15 +1,19 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'rheos_thesis.blg'
-[61] biber-darwin:313> INFO - === Thu Apr 25, 2019, 16:43:13
-[92] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
-[212] Biber.pm:857> INFO - Found 256 citekeys in bib section 0
-[227] Biber.pm:3976> INFO - Processing section 0
-[239] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
-[249] bibtex.pm:1500> INFO - LaTeX decoding ...
-[641] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
-[2859] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[2859] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[2859] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[2859] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[3079] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
-[3189] bbl.pm:720> INFO - Output to rheos_thesis.bbl
+[33] biber-darwin:313> INFO - === Wed May  1, 2019, 12:28:03
+[54] Biber.pm:371> INFO - Reading 'rheos_thesis.bcf'
+[146] Biber.pm:857> INFO - Found 269 citekeys in bib section 0
+[157] Biber.pm:3976> INFO - Processing section 0
+[165] Biber.pm:4136> INFO - Looking for bibtex format file 'rheos_references.bib' for section 0
+[174] bibtex.pm:1500> INFO - LaTeX decoding ...
+[504] bibtex.pm:1316> INFO - Found BibTeX data source 'rheos_references.bib'
+[525] Utils.pm:193> WARN - Duplicate entry key: 'dohm2008substantial' in file 'rheos_references.bib', skipping ...
+[526] Utils.pm:193> WARN - Duplicate entry key: 'van2013fastq' in file 'rheos_references.bib', skipping ...
+[526] Utils.pm:193> WARN - Duplicate entry key: 'mclaren2016ensembl' in file 'rheos_references.bib', skipping ...
+[2063] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2063] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2064] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[2064] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[2209] bbl.pm:617> INFO - Writing 'rheos_thesis.bbl' with encoding 'UTF-8'
+[2292] bbl.pm:720> INFO - Output to rheos_thesis.bbl
+[2292] Biber.pm:110> INFO - WARNINGS: 3
