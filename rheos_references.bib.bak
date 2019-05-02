@@ -723,7 +723,7 @@
   journal={Cape Visions},
   year={2002}
 }
-@article{peterson1981petri,
+@Techreport{peterson1981petri,
   title={Petri net theory and the modeling of systems},
   author={Peterson, James L},
   year={1981},
@@ -1014,7 +1014,7 @@
   year={1998},
   organization={IEEE}
 }
-@article{mell2011nist,
+@Techreport{mell2011nist,
   title={The NIST definition of cloud computing},
   author={Mell, Peter and Grance, Tim},
   year={2011},
@@ -1329,13 +1329,13 @@
   publisher={Routledge}
 }
 
-@Article{barnes1949motion,
+@Techreport{barnes1949motion,
   author    = {Barnes, Ralph M},
   title     = {Motion and time study},
   year      = {1949},
   publisher = {Wiley},
 }
-@article{hollingsworth1995workflow,
+@Techreport{hollingsworth1995workflow,
   title={The workflow reference model},
   author={Hollingsworth, David},
   year={1995}
@@ -1657,7 +1657,7 @@
   publisher = {Annual Reviews 4139 El Camino Way, PO Box 10139, Palo Alto, CA 94303-0139, USA},
 }
 
-@Article{li2010mathematical,
+@Techreport{li2010mathematical,
   author = {Li, Heng},
   title  = {Mathematical Notes on SAMtools Algorithms},
   year   = {2010},
@@ -1938,14 +1938,14 @@
   publisher = {BioMed Central},
 }
 
-@Article{gordon2010fastx,
+@Techreport{gordon2010fastx,
   author = {Gordon, A and Hannon, GJ},
   title  = {Fastx-toolkit},
   year   = {2010},
   volume = {5},
 }
 
-@Article{andrews2010fastqc,
+@Techreport{andrews2010fastqc,
   author = {Andrews, Simon and others},
   title  = {FastQC: a quality control tool for high throughput sequence data},
   year   = {2010},
@@ -2074,7 +2074,7 @@
   publisher = {Taylor \& Francis Group},
 }
 
-@Article{burrows1994block,
+@Techreport{burrows1994block,
   author = {Burrows, Michael and Wheeler, David J},
   title  = {A block-sorting lossless data compression algorithm},
   year   = {1994},
@@ -2411,6 +2411,7 @@
 }
 
 @Online{kubernetes_microservice_components,
+  url = {https://thenewstack.io/myth-cloud-native-portability/},
 }
 
 @Book{carlson2013redis,
@@ -2590,7 +2591,7 @@
   publisher = {Oxford University Press},
 }
 
-@Article{dohm2008substantial,
+@Article{Dohm2008a,
   author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
   title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
   journal   = {Nucleic acids research},
@@ -2707,7 +2708,7 @@
   publisher = {Elsevier},
 }
 
-@Article{van2013fastq,
+@Article{VanderAuwera2013,
   author    = {Van der Auwera, Geraldine A and Carneiro, Mauricio O and Hartl, Christopher and Poplin, Ryan and Del Angel, Guillermo and Levy-Moonshine, Ami and Jordan, Tadeusz and Shakir, Khalid and Roazen, David and Thibault, Joel and others},
   title     = {From FastQ data to high-confidence variant calls: the genome analysis toolkit best practices pipeline},
   journal   = {Current protocols in bioinformatics},
@@ -2718,7 +2719,7 @@
   publisher = {Wiley Online Library},
 }
 
-@Article{mclaren2016ensembl,
+@Article{McLaren2016,
   author    = {McLaren, William and Gil, Laurent and Hunt, Sarah E and Riat, Harpreet Singh and Ritchie, Graham RS and Thormann, Anja and Flicek, Paul and Cunningham, Fiona},
   title     = {The ensembl variant effect predictor},
   journal   = {Genome biology},
@@ -2760,6 +2761,17 @@
   number    = {4},
   pages     = {1457--1468},
   publisher = {Genetics Soc America},
+}
+
+@Article{simon2013implementing,
+  author    = {Simon, Richard and Roychowdhury, Sameek},
+  title     = {Implementing personalized cancer genomics in clinical trials},
+  journal   = {Nature reviews Drug discovery},
+  year      = {2013},
+  volume    = {12},
+  number    = {5},
+  pages     = {358},
+  publisher = {Nature Publishing Group},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.10.18)  1 MAY 2019 12:39
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.10.18)  2 MAY 2019 10:56
  system commands enabled.
  file:line:error style messages enabled.
 **"/Users/siakhnin/Google Drive/Research/projects/Rheos/thesis/rheos_thesis.tex"
@@ -23,7 +23,7 @@ Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
 Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'.
-luaotfload | main : initialization completed in 0.115 seconds (/usr/local/texlive/2018/texmf-dist/tex/latex/base/book.cls
+luaotfload | main : initialization completed in 0.165 seconds (/usr/local/texlive/2018/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/bk12.clo
 File: bk12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
@@ -3114,11 +3114,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [104]
-<images/cloud_market_share.jpg, id=1917, 483.30562pt x 298.11375pt>
+<images/cloud_market_share.jpg, id=1917, 453.94594pt x 289.08pt>
 File: images/cloud_market_share.jpg Graphic file (type jpg)
 <use images/cloud_market_share.jpg>
 Package luatex.def Info: images/cloud_market_share.jpg  used on input line 582.
-(luatex.def)             Requested size: 426.79134pt x 263.26433pt.
+(luatex.def)             Requested size: 426.79134pt x 271.78816pt.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3141,12 +3141,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [107]
-<images/terraform_aws_provider.png, id=1949, 715.67375pt x 144.54pt>
+<images/terraform_aws_provider.png, id=1952, 715.67375pt x 144.54pt>
 File: images/terraform_aws_provider.png Graphic file (type png)
 <use images/terraform_aws_provider.png>
 Package luatex.def Info: images/terraform_aws_provider.png  used on input line 674.
 (luatex.def)             Requested size: 426.79134pt x 86.19754pt.
-<images/terraform_aws_instance.png, id=1950, 713.66624pt x 123.46124pt>
+<images/terraform_aws_instance.png, id=1953, 713.66624pt x 123.46124pt>
 File: images/terraform_aws_instance.png Graphic file (type png)
 <use images/terraform_aws_instance.png>
 Package luatex.def Info: images/terraform_aws_instance.png  used on input line 687.
@@ -3159,7 +3159,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [108<./images/terraform_aws_provider.png><./images/terraform_aws_instance.png>]
-<images/terraform_variable.png, id=1961, 715.67375pt x 125.46875pt>
+<images/terraform_variable.png, id=1964, 715.67375pt x 125.46875pt>
 File: images/terraform_variable.png Graphic file (type png)
 <use images/terraform_variable.png>
 Package luatex.def Info: images/terraform_variable.png  used on input line 700.
@@ -3167,7 +3167,7 @@ Package luatex.def Info: images/terraform_variable.png  used on input line 700.
 
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/default-pyg-prefix.pygstyle) (./_minted-rheos_thesis/default.pygstyle) (./_minted-rheos_thesis/734B5B50D82BA863AA9650E86586B02808D030EED5C5EACC62F5D6F9C5FD733C.pygtex)
-<images/terraform_provisioner.png, id=1962, 716.6775pt x 448.67625pt>
+<images/terraform_provisioner.png, id=1965, 716.6775pt x 448.67625pt>
 File: images/terraform_provisioner.png Graphic file (type png)
 <use images/terraform_provisioner.png>
 Package luatex.def Info: images/terraform_provisioner.png  used on input line 715.
@@ -3278,12 +3278,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [114]
-<images/salt_state_airflow.png, id=2019, 317.185pt x 224.84pt>
+<images/salt_state_airflow.png, id=2022, 317.185pt x 224.84pt>
 File: images/salt_state_airflow.png Graphic file (type png)
 <use images/salt_state_airflow.png>
 Package luatex.def Info: images/salt_state_airflow.png  used on input line 859.
 (luatex.def)             Requested size: 317.1842pt x 224.83945pt.
-<images/salt_pillar_hierarchy.png, id=2022, 180.675pt x 221.82875pt>
+<images/salt_pillar_hierarchy.png, id=2025, 180.675pt x 221.82875pt>
 File: images/salt_pillar_hierarchy.png Graphic file (type png)
 <use images/salt_pillar_hierarchy.png>
 Package luatex.def Info: images/salt_pillar_hierarchy.png  used on input line 872.
@@ -3344,7 +3344,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [117]
-<images/salt_states.png, id=2058, 194.7275pt x 575.14874pt>
+<images/salt_states.png, id=2061, 194.7275pt x 575.14874pt>
 File: images/salt_states.png Graphic file (type png)
 <use images/salt_states.png>
 Package luatex.def Info: images/salt_states.png  used on input line 918.
@@ -3457,7 +3457,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [124]
-<images/tracker_module_files.png, id=2102, 280.04625pt x 358.33875pt>
+<images/tracker_module_files.png, id=2105, 280.04625pt x 358.33875pt>
 File: images/tracker_module_files.png Graphic file (type png)
 <use images/tracker_module_files.png>
 Package luatex.def Info: images/tracker_module_files.png  used on input line 1129.
@@ -3481,7 +3481,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
  (./_minted-rheos_thesis/472C40A32787A0CD516474A1F51DBB7108D030EED5C5EACC62F5D6F9C5FD733C.pygtex)
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/BBEA0BE039C06263A02EDA947EB46B2F08D030EED5C5EACC62F5D6F9C5FD733C.pygtex)
-<images/analysis_tracker_model.png, id=2105, 558.085pt x 480.79625pt>
+<images/analysis_tracker_model.png, id=2108, 558.085pt x 480.79625pt>
 File: images/analysis_tracker_model.png Graphic file (type png)
 <use images/analysis_tracker_model.png>
 Package luatex.def Info: images/analysis_tracker_model.png  used on input line 1140.
@@ -3614,7 +3614,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  (./_minted-rheos_thesis/0CBA061C25C86424187F08B0344C13D14EDB6D7A69951E996E27037C1CB03AC9.pygtex)
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/278C76E5581D9B03100DE11BB04E25E94EDB6D7A69951E996E27037C1CB03AC9.pygtex)
-<images/analysis_run_status_transitions.png, id=2132, 373.395pt x 359.3425pt>
+<images/analysis_run_status_transitions.png, id=2135, 373.395pt x 359.3425pt>
 File: images/analysis_run_status_transitions.png Graphic file (type png)
 <use images/analysis_run_status_transitions.png>
 Package luatex.def Info: images/analysis_run_status_transitions.png  used on input line 1215.
@@ -3678,7 +3678,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [131]
-<images/effective_configuration.png, id=2158, 572.1375pt x 367.3725pt>
+<images/effective_configuration.png, id=2161, 572.1375pt x 367.3725pt>
 File: images/effective_configuration.png Graphic file (type png)
 <use images/effective_configuration.png>
 Package luatex.def Info: images/effective_configuration.png  used on input line 1312.
@@ -3721,7 +3721,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  (./_minted-rheos_thesis/64E231DF1261C9324B84AEC61596B0CC33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/EBF87D85A061A7765EDAE1852DF8BC5533AABC92B3F1DC44296C26B1BD7730ED.pygtex)
-<images/airflow_web_ui_main_page.png, id=2183, 564.1878pt x 155.6214pt>
+<images/airflow_web_ui_main_page.png, id=2186, 564.1878pt x 155.6214pt>
 File: images/airflow_web_ui_main_page.png Graphic file (type png)
 <use images/airflow_web_ui_main_page.png>
 Package luatex.def Info: images/airflow_web_ui_main_page.png  used on input line 1411.
@@ -3734,17 +3734,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [135<./images/airflow_web_ui_main_page.png>]
-<images/airflow_task_instances.png, id=2196, 1440.38126pt x 679.53876pt>
+<images/airflow_task_instances.png, id=2199, 1440.38126pt x 679.53876pt>
 File: images/airflow_task_instances.png Graphic file (type png)
 <use images/airflow_task_instances.png>
 Package luatex.def Info: images/airflow_task_instances.png  used on input line 1420.
 (luatex.def)             Requested size: 426.79134pt x 201.34355pt.
-<images/airflow_workflow_details.png, id=2198, 1152.305pt x 340.27126pt>
+<images/airflow_workflow_details.png, id=2201, 1152.305pt x 340.27126pt>
 File: images/airflow_workflow_details.png Graphic file (type png)
 <use images/airflow_workflow_details.png>
 Package luatex.def Info: images/airflow_workflow_details.png  used on input line 1429.
 (luatex.def)             Requested size: 426.79134pt x 126.02818pt.
-<images/airflow_task_actions.png, id=2200, 635.37375pt x 421.575pt>
+<images/airflow_task_actions.png, id=2203, 635.37375pt x 421.575pt>
 File: images/airflow_task_actions.png Graphic file (type png)
 <use images/airflow_task_actions.png>
 Package luatex.def Info: images/airflow_task_actions.png  used on input line 1438.
@@ -3760,7 +3760,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [136<./images/airflow_task_instances.png><./images/airflow_workflow_details.png>]
-<images/monitoring_server.png, id=2212, 894.34125pt x 381.425pt>
+<images/monitoring_server.png, id=2215, 894.34125pt x 381.425pt>
 File: images/monitoring_server.png Graphic file (type png)
 <use images/monitoring_server.png>
 Package luatex.def Info: images/monitoring_server.png  used on input line 1451.
@@ -3814,7 +3814,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  (./_minted-rheos_thesis/C8C6B8BBAD5930C15E4931BE6DB0B5E933AABC92B3F1DC44296C26B1BD7730ED.pygtex)
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/11217FE07B763042BFAACFB78B1D846533AABC92B3F1DC44296C26B1BD7730ED.pygtex)
-<images/influxdb_example_query.png, id=2235, 1155.31625pt x 420.57124pt>
+<images/influxdb_example_query.png, id=2238, 1155.31625pt x 420.57124pt>
 File: images/influxdb_example_query.png Graphic file (type png)
 <use images/influxdb_example_query.png>
 Package luatex.def Info: images/influxdb_example_query.png  used on input line 1486.
@@ -3827,12 +3827,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [139<./images/influxdb_example_query.png>]
-<images/grafana_data_source.png, id=2247, 444.66125pt x 676.5275pt>
+<images/grafana_data_source.png, id=2250, 444.66125pt x 676.5275pt>
 File: images/grafana_data_source.png Graphic file (type png)
 <use images/grafana_data_source.png>
 Package luatex.def Info: images/grafana_data_source.png  used on input line 1505.
 (luatex.def)             Requested size: 177.86134pt x 270.6062pt.
-<images/grafana_report_editing.png, id=2248, 777.90625pt x 559.08875pt>
+<images/grafana_report_editing.png, id=2251, 777.90625pt x 559.08875pt>
 File: images/grafana_report_editing.png Graphic file (type png)
 <use images/grafana_report_editing.png>
 Package luatex.def Info: images/grafana_report_editing.png  used on input line 1514.
@@ -3848,7 +3848,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [140<./images/grafana_data_source.png>]
-<images/grafana_cluster_overview_normal.png, id=2255, 725.5908pt x 452.892pt>
+<images/grafana_cluster_overview_normal.png, id=2258, 725.5908pt x 452.892pt>
 File: images/grafana_cluster_overview_normal.png Graphic file (type png)
 <use images/grafana_cluster_overview_normal.png>
 Package luatex.def Info: images/grafana_cluster_overview_normal.png  used on input line 1529.
@@ -3864,7 +3864,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [141<./images/grafana_report_editing.png>]
-<images/grafana_cluster_overview_issue.png, id=2265, 768.471pt x 316.5426pt>
+<images/grafana_cluster_overview_issue.png, id=2268, 768.471pt x 316.5426pt>
 File: images/grafana_cluster_overview_issue.png Graphic file (type png)
 <use images/grafana_cluster_overview_issue.png>
 Package luatex.def Info: images/grafana_cluster_overview_issue.png  used on input line 1538.
@@ -3877,7 +3877,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [142<./images/grafana_cluster_overview_normal.png><./images/grafana_cluster_overview_issue.png>]
-<images/filebeat.png, id=2278, 240.9pt x 197.538pt>
+<images/filebeat.png, id=2281, 240.9pt x 197.538pt>
 File: images/filebeat.png Graphic file (type png)
 <use images/filebeat.png>
 Package luatex.def Info: images/filebeat.png  used on input line 1558.
@@ -3893,7 +3893,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [143]
-<images/logstash_pipeline.png, id=2289, 1478.52374pt x 587.19376pt>
+<images/logstash_pipeline.png, id=2292, 1478.52374pt x 587.19376pt>
 File: images/logstash_pipeline.png Graphic file (type png)
 <use images/logstash_pipeline.png>
 Package luatex.def Info: images/logstash_pipeline.png  used on input line 1569.
@@ -3906,12 +3906,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [144<./images/filebeat.png><./images/logstash_pipeline.png>]
-<images/kibana_pgsql_dashboard.png, id=2299, 1293.83376pt x 772.8875pt>
+<images/kibana_pgsql_dashboard.png, id=2302, 1293.83376pt x 772.8875pt>
 File: images/kibana_pgsql_dashboard.png Graphic file (type png)
 <use images/kibana_pgsql_dashboard.png>
 Package luatex.def Info: images/kibana_pgsql_dashboard.png  used on input line 1586.
 (luatex.def)             Requested size: 426.79134pt x 254.94753pt.
-<images/butler_self_healing.png, id=2302, 789.4293pt x 476.982pt>
+<images/butler_self_healing.png, id=2305, 789.4293pt x 476.982pt>
 File: images/butler_self_healing.png Graphic file (type png)
 <use images/butler_self_healing.png>
 Package luatex.def Info: images/butler_self_healing.png  used on input line 1598.
@@ -3949,10 +3949,6 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [146<./images/butler_self_healing.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1657--1662
-
- []
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -3987,18 +3983,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [148]
-<images/self_healing_slack.png, id=2345, 543.02875pt x 215.80624pt>
+<images/self_healing_slack.png, id=2348, 543.02875pt x 215.80624pt>
 File: images/self_healing_slack.png Graphic file (type png)
 <use images/self_healing_slack.png>
-Package luatex.def Info: images/self_healing_slack.png  used on input line 1676.
+Package luatex.def Info: images/self_healing_slack.png  used on input line 1680.
 (luatex.def)             Requested size: 380.11752pt x 151.06332pt.
 
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/B0854EC04A20D843D9A901C943699E1C33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
-<images/butler_chronograf_tick_list.png, id=2348, 1194.4625pt x 582.175pt>
+<images/butler_chronograf_tick_list.png, id=2351, 1194.4625pt x 582.175pt>
 File: images/butler_chronograf_tick_list.png Graphic file (type png)
 <use images/butler_chronograf_tick_list.png>
-Package luatex.def Info: images/butler_chronograf_tick_list.png  used on input line 1685.
+Package luatex.def Info: images/butler_chronograf_tick_list.png  used on input line 1689.
 (luatex.def)             Requested size: 418.06813pt x 203.7643pt.
 
 \openout5 = rheos_thesis.pyg
@@ -4012,10 +4008,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [149<./images/self_healing_slack.png><./images/butler_chronograf_tick_list.png>]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/6859C24E10DEA29A6708BFA062B8AF3433AABC92B3F1DC44296C26B1BD7730ED.pygtex)
-<images/butler_chronograf_alert_history.png, id=2363, 1193.45876pt x 458.71375pt>
+<images/butler_chronograf_alert_history.png, id=2366, 1193.45876pt x 458.71375pt>
 File: images/butler_chronograf_alert_history.png Graphic file (type png)
 <use images/butler_chronograf_alert_history.png>
-Package luatex.def Info: images/butler_chronograf_alert_history.png  used on input line 1696.
+Package luatex.def Info: images/butler_chronograf_alert_history.png  used on input line 1700.
 (luatex.def)             Requested size: 417.71683pt x 160.55222pt.
 
 \openout5 = rheos_thesis.pyg
@@ -4035,10 +4031,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [150<./images/butler_chronograf_alert_history.png>]
-<images/butler_chronograf_alert_barchart.png, id=2374, 768.8725pt x 418.56375pt>
+<images/butler_chronograf_alert_barchart.png, id=2377, 768.8725pt x 418.56375pt>
 File: images/butler_chronograf_alert_barchart.png Graphic file (type png)
 <use images/butler_chronograf_alert_barchart.png>
-Package luatex.def Info: images/butler_chronograf_alert_barchart.png  used on input line 1709.
+Package luatex.def Info: images/butler_chronograf_alert_barchart.png  used on input line 1713.
 (luatex.def)             Requested size: 422.88118pt x 230.21077pt.
 
 \openout5 = rheos_thesis.pyg
@@ -4056,7 +4052,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  (./_minted-rheos_thesis/34E7880FFA016925F52FDC9A4777713033AABC92B3F1DC44296C26B1BD7730ED.pygtex)
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1724.
+(caption)                particular \caption on input line 1728.
 See the caption package documentation for explanation.
 
 
@@ -4071,7 +4067,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [152])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1763.
+(caption)                particular \caption on input line 1767.
 See the caption package documentation for explanation.
 
 
@@ -4088,10 +4084,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [153]
-<images/consul_architecture.png, id=2402, 2323.68124pt x 2409.0pt>
+<images/consul_architecture.png, id=2405, 2323.68124pt x 2409.0pt>
 File: images/consul_architecture.png Graphic file (type png)
 <use images/consul_architecture.png>
-Package luatex.def Info: images/consul_architecture.png  used on input line 1799.
+Package luatex.def Info: images/consul_architecture.png  used on input line 1803.
 (luatex.def)             Requested size: 232.38173pt x 240.91411pt.
 
 
@@ -4124,13 +4120,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Chapter 4.
 (./chapters/butler_implementation.tex
-<images/embassy_architecture.png, id=2430, 1126.2075pt x 534.99875pt>
+<images/embassy_architecture.png, id=2433, 1126.2075pt x 534.99875pt>
 File: images/embassy_architecture.png Graphic file (type png)
 <use images/embassy_architecture.png>
 Package luatex.def Info: images/embassy_architecture.png  used on input line 18.
 (luatex.def)             Requested size: 426.79134pt x 202.74652pt.
  [157]
-<images/embassy_dashboard.png, id=2438, 632.3625pt x 303.1325pt>
+<images/embassy_dashboard.png, id=2441, 632.3625pt x 303.1325pt>
 File: images/embassy_dashboard.png Graphic file (type png)
 <use images/embassy_dashboard.png>
 Package luatex.def Info: images/embassy_dashboard.png  used on input line 31.
@@ -4211,7 +4207,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [162]
-<images/butler_freebayes_workflow.png, id=2486, 343.2825pt x 716.6775pt>
+<images/butler_freebayes_workflow.png, id=2489, 343.2825pt x 716.6775pt>
 File: images/butler_freebayes_workflow.png Graphic file (type png)
 <use images/butler_freebayes_workflow.png>
 Package luatex.def Info: images/butler_freebayes_workflow.png  used on input line 154.
@@ -4302,7 +4298,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [167]
-<images/butler_filter_variants_workflow.png, id=2541, 444.66125pt x 52.195pt>
+<images/butler_filter_variants_workflow.png, id=2544, 444.66125pt x 52.195pt>
 File: images/butler_filter_variants_workflow.png Graphic file (type png)
 <use images/butler_filter_variants_workflow.png>
 Package luatex.def Info: images/butler_filter_variants_workflow.png  used on input line 320.
@@ -4323,7 +4319,7 @@ See the caption package documentation for explanation.
 
 \openout3 = rheos_thesis.pyg
 (./_minted-rheos_thesis/F7F4AD9EC402C73364988C47F8E554ED63BEBE44FD60CC478B0439FAAE7250D6.pygtex)
-<images/butler_gtupload_workflow.png, id=2557, 753.81625pt x 60.225pt>
+<images/butler_gtupload_workflow.png, id=2560, 753.81625pt x 60.225pt>
 File: images/butler_gtupload_workflow.png Graphic file (type png)
 <use images/butler_gtupload_workflow.png>
 Package luatex.def Info: images/butler_gtupload_workflow.png  used on input line 365.
@@ -4355,7 +4351,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [170]
-<images/butler_delly_workflow.png, id=2584, 584.1825pt x 49.18375pt>
+<images/butler_delly_workflow.png, id=2587, 584.1825pt x 49.18375pt>
 File: images/butler_delly_workflow.png Graphic file (type png)
 <use images/butler_delly_workflow.png>
 Package luatex.def Info: images/butler_delly_workflow.png  used on input line 393.
@@ -4375,7 +4371,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [171<./images/butler_delly_workflow.png>]
 \openout3 = rheos_thesis.pyg
  (./_minted-rheos_thesis/B531C91638DE366B76EDF1D3E9343B3D63BEBE44FD60CC478B0439FAAE7250D6.pygtex)
-<images/freebayes_1_percent_maf_genotyping.png, id=2599, 598.235pt x 670.505pt>
+<images/freebayes_1_percent_maf_genotyping.png, id=2602, 598.235pt x 670.505pt>
 File: images/freebayes_1_percent_maf_genotyping.png Graphic file (type png)
 <use images/freebayes_1_percent_maf_genotyping.png>
 Package luatex.def Info: images/freebayes_1_percent_maf_genotyping.png  used on input line 465.
@@ -4391,7 +4387,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [172]
-<images/freebayes_discovery_regenotype_task_durations.png, id=2608, 698.61pt x 402.50375pt>
+<images/freebayes_discovery_regenotype_task_durations.png, id=2611, 698.61pt x 402.50375pt>
 File: images/freebayes_discovery_regenotype_task_durations.png Graphic file (type png)
 <use images/freebayes_discovery_regenotype_task_durations.png>
 Package luatex.def Info: images/freebayes_discovery_regenotype_task_durations.png  used on input line 479.
@@ -4400,7 +4396,7 @@ Package luatex.def Info: images/freebayes_discovery_regenotype_task_durations.pn
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/freebayes_discovery_regenotype_task_duration_densities.png, id=2610, 1465.475pt x 1700.3525pt>
+<images/freebayes_discovery_regenotype_task_duration_densities.png, id=2613, 1465.475pt x 1700.3525pt>
 File: images/freebayes_discovery_regenotype_task_duration_densities.png Graphic file (type png)
 <use images/freebayes_discovery_regenotype_task_duration_densities.png>
 Package luatex.def Info: images/freebayes_discovery_regenotype_task_duration_densities.png  used on input line 488.
@@ -4415,7 +4411,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [173<./images/freebayes_1_percent_maf_genotyping.png>]
-<images/freebayes_discovery_regenotype_cluster_load.png, id=2620, 726.715pt x 791.95876pt>
+<images/freebayes_discovery_regenotype_cluster_load.png, id=2623, 726.715pt x 791.95876pt>
 File: images/freebayes_discovery_regenotype_cluster_load.png Graphic file (type png)
 <use images/freebayes_discovery_regenotype_cluster_load.png>
 Package luatex.def Info: images/freebayes_discovery_regenotype_cluster_load.png  used on input line 497.
@@ -4453,12 +4449,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [176<./images/freebayes_discovery_regenotype_cluster_load.png>]
-<images/delly_deletion_durations.png, id=2643, 935.495pt x 504.88625pt>
+<images/delly_deletion_durations.png, id=2646, 935.495pt x 504.88625pt>
 File: images/delly_deletion_durations.png Graphic file (type png)
 <use images/delly_deletion_durations.png>
 Package luatex.def Info: images/delly_deletion_durations.png  used on input line 536.
 (luatex.def)             Requested size: 426.79134pt x 230.3399pt.
-<images/delly_deletion_regenotyping.png, id=2646, 700.6175pt x 791.95876pt>
+<images/delly_deletion_regenotyping.png, id=2649, 700.6175pt x 791.95876pt>
 File: images/delly_deletion_regenotyping.png Graphic file (type png)
 <use images/delly_deletion_regenotyping.png>
 Package luatex.def Info: images/delly_deletion_regenotyping.png  used on input line 559.
@@ -4489,12 +4485,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [178<./images/delly_deletion_regenotyping.png>]
-<images/delly_duplication_durations.png, id=2664, 935.495pt x 504.88625pt>
+<images/delly_duplication_durations.png, id=2667, 935.495pt x 504.88625pt>
 File: images/delly_duplication_durations.png Graphic file (type png)
 <use images/delly_duplication_durations.png>
 Package luatex.def Info: images/delly_duplication_durations.png  used on input line 594.
 (luatex.def)             Requested size: 426.79134pt x 230.3399pt.
-<images/delly_duplication_regenotyping.png, id=2667, 705.63625pt x 789.95125pt>
+<images/delly_duplication_regenotyping.png, id=2670, 705.63625pt x 789.95125pt>
 File: images/delly_duplication_regenotyping.png Graphic file (type png)
 <use images/delly_duplication_regenotyping.png>
 Package luatex.def Info: images/delly_duplication_regenotyping.png  used on input line 617.
@@ -4517,7 +4513,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [180<./images/delly_duplication_regenotyping.png>]
-<images/butler_r_opt.png, id=2684, 521.95pt x 1166.3575pt>
+<images/butler_r_opt.png, id=2687, 521.95pt x 1166.3575pt>
 File: images/butler_r_opt.png Graphic file (type png)
 <use images/butler_r_opt.png>
 Package luatex.def Info: images/butler_r_opt.png  used on input line 671.
@@ -4537,7 +4533,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [182<./images/butler_r_opt.png>]
-<images/butler_analysis_uniformity.png, id=2699, 548.0475pt x 335.2525pt>
+<images/butler_analysis_uniformity.png, id=2702, 548.0475pt x 335.2525pt>
 File: images/butler_analysis_uniformity.png Graphic file (type png)
 <use images/butler_analysis_uniformity.png>
 Package luatex.def Info: images/butler_analysis_uniformity.png  used on input line 690.
@@ -4603,7 +4599,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [190]
-<images/stream_window_function.png, id=2771, 644.8893pt x 121.8954pt>
+<images/stream_window_function.png, id=2774, 644.8893pt x 121.8954pt>
 File: images/stream_window_function.png Graphic file (type png)
 <use images/stream_window_function.png>
 Package luatex.def Info: images/stream_window_function.png  used on input line 68.
@@ -4616,17 +4612,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [191<./images/stream_window_function.png>]
-<images/stream_decorator_function.png, id=2783, 647.2983pt x 128.6406pt>
+<images/stream_decorator_function.png, id=2786, 647.2983pt x 128.6406pt>
 File: images/stream_decorator_function.png Graphic file (type png)
 <use images/stream_decorator_function.png>
 Package luatex.def Info: images/stream_decorator_function.png  used on input line 77.
 (luatex.def)             Requested size: 388.38197pt x 77.18494pt.
-<images/stream_filter_function.png, id=2785, 641.9985pt x 179.7114pt>
+<images/stream_filter_function.png, id=2788, 641.9985pt x 179.7114pt>
 File: images/stream_filter_function.png Graphic file (type png)
 <use images/stream_filter_function.png>
 Package luatex.def Info: images/stream_filter_function.png  used on input line 86.
 (luatex.def)             Requested size: 385.20207pt x 107.82765pt.
-<images/stream_aggregator_function.png, id=2788, 688.2513pt x 172.4844pt>
+<images/stream_aggregator_function.png, id=2791, 688.2513pt x 172.4844pt>
 File: images/stream_aggregator_function.png Graphic file (type png)
 <use images/stream_aggregator_function.png>
 Package luatex.def Info: images/stream_aggregator_function.png  used on input line 95.
@@ -4639,12 +4635,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [192<./images/stream_decorator_function.png><./images/stream_filter_function.png><./images/stream_aggregator_function.png>]
-<images/stream_local_state_aggregator_function.png, id=2805, 636.4578pt x 173.2071pt>
+<images/stream_local_state_aggregator_function.png, id=2808, 636.4578pt x 173.2071pt>
 File: images/stream_local_state_aggregator_function.png Graphic file (type png)
 <use images/stream_local_state_aggregator_function.png>
 Package luatex.def Info: images/stream_local_state_aggregator_function.png  used on input line 105.
 (luatex.def)             Requested size: 381.87762pt x 103.92506pt.
-<images/stream_persistence_function.png, id=2807, 492.8814pt x 173.6889pt>
+<images/stream_persistence_function.png, id=2810, 492.8814pt x 173.6889pt>
 File: images/stream_persistence_function.png Graphic file (type png)
 <use images/stream_persistence_function.png>
 Package luatex.def Info: images/stream_persistence_function.png  used on input line 115.
@@ -4657,7 +4653,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [193<./images/stream_local_state_aggregator_function.png><./images/stream_persistence_function.png>]
-<images/stream_query_function.png, id=2819, 482.5227pt x 202.8378pt>
+<images/stream_query_function.png, id=2822, 482.5227pt x 202.8378pt>
 File: images/stream_query_function.png Graphic file (type png)
 <use images/stream_query_function.png>
 Package luatex.def Info: images/stream_query_function.png  used on input line 124.
@@ -4670,12 +4666,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [194<./images/stream_query_function.png>]
-<images/horizontal_vs_vertical_scaling.png, id=2831, 966.7317pt x 272.9397pt>
+<images/horizontal_vs_vertical_scaling.png, id=2834, 966.7317pt x 272.9397pt>
 File: images/horizontal_vs_vertical_scaling.png Graphic file (type png)
 <use images/horizontal_vs_vertical_scaling.png>
 Package luatex.def Info: images/horizontal_vs_vertical_scaling.png  used on input line 146.
 (luatex.def)             Requested size: 425.36327pt x 120.09383pt.
-<images/queue.png, id=2833, 786.5385pt x 247.8861pt>
+<images/queue.png, id=2836, 786.5385pt x 247.8861pt>
 File: images/queue.png Graphic file (type png)
 <use images/queue.png>
 Package luatex.def Info: images/queue.png  used on input line 157.
@@ -4695,7 +4691,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [196<./images/queue.png>]
-<images/ngs_flow.png, id=2855, 842.4273pt x 734.745pt>
+<images/ngs_flow.png, id=2858, 842.4273pt x 734.745pt>
 File: images/ngs_flow.png Graphic file (type png)
 <use images/ngs_flow.png>
 Package luatex.def Info: images/ngs_flow.png  used on input line 183.
@@ -4755,7 +4751,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [201]
-<images/insert_size_distribution.png, id=2920, 481.8pt x 220.6644pt>
+<images/insert_size_distribution.png, id=2923, 481.8pt x 220.6644pt>
 File: images/insert_size_distribution.png Graphic file (type png)
 <use images/insert_size_distribution.png>
 Package luatex.def Info: images/insert_size_distribution.png  used on input line 336.
@@ -4852,7 +4848,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [209]
-<images/split_reads.png, id=3035, 1270.0248pt x 414.8298pt>
+<images/split_reads.png, id=3038, 1270.0248pt x 414.8298pt>
 File: images/split_reads.png Graphic file (type png)
 <use images/split_reads.png>
 Package luatex.def Info: images/split_reads.png  used on input line 547.
@@ -4865,7 +4861,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [210<./images/split_reads.png>]
-<images/igv_split_read.png, id=3047, 1482.53876pt x 846.16125pt>
+<images/igv_split_read.png, id=3050, 1482.53876pt x 846.16125pt>
 File: images/igv_split_read.png Graphic file (type png)
 <use images/igv_split_read.png>
 Package luatex.def Info: images/igv_split_read.png  used on input line 560.
@@ -4894,7 +4890,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [212]
-<images/snps.png, id=3066, 1296.7647pt x 341.5962pt>
+<images/snps.png, id=3069, 1296.7647pt x 341.5962pt>
 File: images/snps.png Graphic file (type png)
 <use images/snps.png>
 Package luatex.def Info: images/snps.png  used on input line 617.
@@ -4947,8 +4943,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [217]
-Underfull \hbox (badness 1173) in paragraph at lines 758--759
-[]\TU/lmr/bx/n/12 The Lo-cus Pro-cess-ing Ser-vice[] \TU/lmr/m/n/12 , which is re-spon-si-ble for im-ple-ment-ing
+Underfull \hbox (badness 2409) in paragraph at lines 758--759
+[]\TU/lmr/bx/n/12 The Lo-cus Pro-cess-ing Ser-vice,[] \TU/lmr/m/n/12 which is re-spon-si-ble for im-ple-ment-ing
  []
 
 
@@ -4975,12 +4971,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [220]
-<images/sv_deletion.png, id=3155, 1444.1955pt x 419.4069pt>
+<images/sv_deletion.png, id=3158, 1444.1955pt x 419.4069pt>
 File: images/sv_deletion.png Graphic file (type png)
 <use images/sv_deletion.png>
 Package luatex.def Info: images/sv_deletion.png  used on input line 856.
 (luatex.def)             Requested size: 426.03398pt x 123.72395pt.
-<images/insert_size.jpg, id=3158, 71.5473pt x 29.42421pt>
+<images/insert_size.jpg, id=3161, 71.5473pt x 29.42421pt>
 File: images/insert_size.jpg Graphic file (type jpg)
 <use images/insert_size.jpg>
 Package luatex.def Info: images/insert_size.jpg  used on input line 865.
@@ -5015,7 +5011,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 919--920
 []|$\OML/cmm/m/it/12 callDeletions\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 region; insert[]size[]threshold;$
  []
 
-<images/interval_tree.png, id=3189, 524.96124pt x 408.52625pt>
+<images/interval_tree.png, id=3192, 524.96124pt x 408.52625pt>
 File: images/interval_tree.png Graphic file (type png)
 <use images/interval_tree.png>
 Package luatex.def Info: images/interval_tree.png  used on input line 930.
@@ -5034,13 +5030,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [225<./images/interval_tree.png>]
-<images/kde.png, id=3223, 1573.88pt x 388.45125pt>
+<images/kde.png, id=3226, 1573.88pt x 388.45125pt>
 File: images/kde.png Graphic file (type png)
 <use images/kde.png>
 Package luatex.def Info: images/kde.png  used on input line 959.
 (luatex.def)             Requested size: 424.95328pt x 104.88322pt.
 Missing character: There is no ̃ (U+0303) in font cmmi12!
-<images/deletion_read_cluster.png, id=3226, 946.2552pt x 381.5856pt>
+<images/deletion_read_cluster.png, id=3229, 946.2552pt x 381.5856pt>
 File: images/deletion_read_cluster.png Graphic file (type png)
 <use images/deletion_read_cluster.png>
 Package luatex.def Info: images/deletion_read_cluster.png  used on input line 970.
@@ -5067,10 +5063,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [228]
-<images/rheos_service_interface.png, id=3257, 736.6722pt x 460.119pt>
+<images/rheos_service_interface.png, id=3260, 736.6722pt x 460.119pt>
 File: images/rheos_service_interface.png Graphic file (type png)
 <use images/rheos_service_interface.png>
-Package luatex.def Info: images/rheos_service_interface.png  used on input line 1006.
+Package luatex.def Info: images/rheos_service_interface.png  used on input line 1013.
 (luatex.def)             Requested size: 405.17096pt x 253.06622pt.
 
 
@@ -5080,10 +5076,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [229<./images/rheos_service_interface.png>]
-<images/docker_architecture.png, id=3267, 759.83875pt x 410.53375pt>
+<images/docker_architecture.png, id=3270, 759.83875pt x 410.53375pt>
 File: images/docker_architecture.png Graphic file (type png)
 <use images/docker_architecture.png>
-Package luatex.def Info: images/docker_architecture.png  used on input line 1024.
+Package luatex.def Info: images/docker_architecture.png  used on input line 1031.
 (luatex.def)             Requested size: 417.9126pt x 225.79425pt.
 
 
@@ -5093,10 +5089,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [230<./images/docker_architecture.png>]
-<images/rheos_service_file_structure.png, id=3279, 238.8925pt x 241.90375pt>
+<images/rheos_service_file_structure.png, id=3282, 238.8925pt x 241.90375pt>
 File: images/rheos_service_file_structure.png Graphic file (type png)
 <use images/rheos_service_file_structure.png>
-Package luatex.def Info: images/rheos_service_file_structure.png  used on input line 1034.
+Package luatex.def Info: images/rheos_service_file_structure.png  used on input line 1041.
 (luatex.def)             Requested size: 238.8919pt x 241.90315pt.
 
 
@@ -5108,7 +5104,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [231<./images/rheos_service_file_structure.png>]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1043.
+(caption)                particular \caption on input line 1050.
 See the caption package documentation for explanation.
 
 
@@ -5129,10 +5125,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [232]
-<images/kafka_queue.png, id=3295, 825.0825pt x 426.393pt>
+<images/kafka_queue.png, id=3298, 825.0825pt x 426.393pt>
 File: images/kafka_queue.png Graphic file (type png)
 <use images/kafka_queue.png>
-Package luatex.def Info: images/kafka_queue.png  used on input line 1080.
+Package luatex.def Info: images/kafka_queue.png  used on input line 1087.
 (luatex.def)             Requested size: 396.0351pt x 204.6663pt.
 
 \openout5 = rheos_thesis.pyg
@@ -5146,10 +5142,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [233<./images/kafka_queue.png>]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/C516D2CC196F2F810B7C9C74E367014633AABC92B3F1DC44296C26B1BD7730ED.pygtex)
-<images/rheos_data_partitioning.png, id=3306, 783.6477pt x 510.4671pt>
+<images/rheos_data_partitioning.png, id=3309, 783.6477pt x 510.4671pt>
 File: images/rheos_data_partitioning.png Graphic file (type png)
 <use images/rheos_data_partitioning.png>
-Package luatex.def Info: images/rheos_data_partitioning.png  used on input line 1101.
+Package luatex.def Info: images/rheos_data_partitioning.png  used on input line 1108.
 (luatex.def)             Requested size: 376.14662pt x 245.02142pt.
 
 
@@ -5159,10 +5155,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [234<./images/rheos_data_partitioning.png>]
-<images/rheos_partition_boundary.png, id=3314, 756.1851pt x 325.6968pt>
+<images/rheos_partition_boundary.png, id=3317, 756.1851pt x 325.6968pt>
 File: images/rheos_partition_boundary.png Graphic file (type png)
 <use images/rheos_partition_boundary.png>
-Package luatex.def Info: images/rheos_partition_boundary.png  used on input line 1120.
+Package luatex.def Info: images/rheos_partition_boundary.png  used on input line 1127.
 (luatex.def)             Requested size: 415.90309pt x 179.13379pt.
 
 
@@ -5175,10 +5171,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/rheos_partitioner_class.png, id=3324, 443.6575pt x 234.8775pt>
+<images/rheos_partitioner_class.png, id=3327, 443.6575pt x 234.8775pt>
 File: images/rheos_partitioner_class.png Graphic file (type png)
 <use images/rheos_partitioner_class.png>
-Package luatex.def Info: images/rheos_partitioner_class.png  used on input line 1201.
+Package luatex.def Info: images/rheos_partitioner_class.png  used on input line 1208.
 (luatex.def)             Requested size: 244.01237pt x 129.18301pt.
 
 \openout5 = rheos_thesis.pyg
@@ -5195,17 +5191,17 @@ Package luatex.def Info: images/rheos_partitioner_class.png  used on input line 
  (./_minted-rheos_thesis/86AE0DDAC587781221B7DFF5D788604C4EDB6D7A69951E996E27037C1CB03AC9.pygtex)
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/88F17B2E5B52155E73D7A0D3BBF834A84EDB6D7A69951E996E27037C1CB03AC9.pygtex)
-Underfull \hbox (badness 1342) in paragraph at lines 1207--1208
+Underfull \hbox (badness 1342) in paragraph at lines 1214--1215
 \TU/lmr/m/n/12 as in-stances of [], func-tion \TU/lmr/m/sc/12 initializePartitioner$\OT1/cmr/m/n/12 ()$ \TU/lmr/m/n/12 is im-
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 1207--1208
+Underfull \hbox (badness 1776) in paragraph at lines 1214--1215
 \TU/lmr/m/n/12 ple-mented in [], func-tion \TU/lmr/m/sc/12 partitionsForInterval$\OT1/cmr/m/n/12 ()$
  []
 
 
-Underfull \hbox (badness 4595) in paragraph at lines 1207--1208
+Underfull \hbox (badness 4595) in paragraph at lines 1214--1215
 \TU/lmr/m/n/12 is im-ple-mented in [] method, and func-tion
  []
 
@@ -5223,10 +5219,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [237]
-<images/kubernetes_architecture.png, id=3343, 853.1875pt x 376.40625pt>
+<images/kubernetes_architecture.png, id=3346, 853.1875pt x 376.40625pt>
 File: images/kubernetes_architecture.png Graphic file (type png)
 <use images/kubernetes_architecture.png>
-Package luatex.def Info: images/kubernetes_architecture.png  used on input line 1216.
+Package luatex.def Info: images/kubernetes_architecture.png  used on input line 1223.
 (luatex.def)             Requested size: 409.52534pt x 180.67294pt.
 
 \openout5 = rheos_thesis.pyg
@@ -5244,18 +5240,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [238<./images/kubernetes_architecture.png>]
-<images/kubernetes_dashboard.png, id=3359, 1131.22626pt x 633.36626pt>
+<images/kubernetes_dashboard.png, id=3362, 1131.22626pt x 633.36626pt>
 File: images/kubernetes_dashboard.png Graphic file (type png)
 <use images/kubernetes_dashboard.png>
-Package luatex.def Info: images/kubernetes_dashboard.png  used on input line 1227.
+Package luatex.def Info: images/kubernetes_dashboard.png  used on input line 1234.
 (luatex.def)             Requested size: 424.2088pt x 237.51176pt.
 
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/AADA7565FFE692C11090E9A62FD0F60F33AABC92B3F1DC44296C26B1BD7730ED.pygtex)
-<images/kubernetes_service_components.png, id=3361, 770.88pt x 602.25pt>
+<images/kubernetes_service_components.png, id=3364, 770.88pt x 602.25pt>
 File: images/kubernetes_service_components.png Graphic file (type png)
 <use images/kubernetes_service_components.png>
-Package luatex.def Info: images/kubernetes_service_components.png  used on input line 1238.
+Package luatex.def Info: images/kubernetes_service_components.png  used on input line 1245.
 (luatex.def)             Requested size: 346.89279pt x 271.01pt.
 
 
@@ -5272,10 +5268,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [240<./images/kubernetes_service_components.png>]
-<images/rheos_kubernetes_configs.png, id=3381, 246.9225pt x 504.88625pt>
+<images/rheos_kubernetes_configs.png, id=3384, 246.9225pt x 504.88625pt>
 File: images/rheos_kubernetes_configs.png Graphic file (type png)
 <use images/rheos_kubernetes_configs.png>
-Package luatex.def Info: images/rheos_kubernetes_configs.png  used on input line 1262.
+Package luatex.def Info: images/rheos_kubernetes_configs.png  used on input line 1269.
 (luatex.def)             Requested size: 197.53824pt x 403.90953pt.
 
 
@@ -5291,10 +5287,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  (./_minted-rheos_thesis/9E7EE3165DA0682E32502D00B10B9C9F4EDB6D7A69951E996E27037C1CB03AC9.pygtex)
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/4900D1585E46E13DA255184A0E64824C4EDB6D7A69951E996E27037C1CB03AC9.pygtex)
-<images/partitioned_reservoir_set.png, id=3394, 966.9726pt x 607.068pt>
+<images/partitioned_reservoir_set.png, id=3397, 966.9726pt x 607.068pt>
 File: images/partitioned_reservoir_set.png Graphic file (type png)
 <use images/partitioned_reservoir_set.png>
-Package luatex.def Info: images/partitioned_reservoir_set.png  used on input line 1283.
+Package luatex.def Info: images/partitioned_reservoir_set.png  used on input line 1290.
 (luatex.def)             Requested size: 415.79012pt x 261.03415pt.
 
 \openout5 = rheos_thesis.pyg
@@ -5316,10 +5312,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [242]
-<images/rheos_read_mapping_service_classes.png, id=3403, 799.98875pt x 397.485pt>
+<images/rheos_read_mapping_service_classes.png, id=3406, 799.98875pt x 397.485pt>
 File: images/rheos_read_mapping_service_classes.png Graphic file (type png)
 <use images/rheos_read_mapping_service_classes.png>
-Package luatex.def Info: images/rheos_read_mapping_service_classes.png  used on input line 1292.
+Package luatex.def Info: images/rheos_read_mapping_service_classes.png  used on input line 1299.
 (luatex.def)             Requested size: 323.99367pt x 160.98053pt.
 
 \openout5 = rheos_thesis.pyg
@@ -5335,10 +5331,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [243<./images/partitioned_reservoir_set.png><./images/rheos_read_mapping_service_classes.png>]
-<images/rheos_locus_processor_service.png, id=3413, 893.739pt x 387.3672pt>
+<images/rheos_locus_processor_service.png, id=3416, 893.739pt x 387.3672pt>
 File: images/rheos_locus_processor_service.png Graphic file (type png)
 <use images/rheos_locus_processor_service.png>
-Package luatex.def Info: images/rheos_locus_processor_service.png  used on input line 1305.
+Package luatex.def Info: images/rheos_locus_processor_service.png  used on input line 1312.
 (luatex.def)             Requested size: 361.96231pt x 156.88286pt.
 
 \openout5 = rheos_thesis.pyg
@@ -5356,10 +5352,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [244<./images/rheos_locus_processor_service.png>]
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/E9615425E7D91757DFC755A7F59321834EDB6D7A69951E996E27037C1CB03AC9.pygtex)
-<images/locus_processor_classes.png, id=3429, 857.2025pt x 338.26375pt>
+<images/locus_processor_classes.png, id=3432, 857.2025pt x 338.26375pt>
 File: images/locus_processor_classes.png Graphic file (type png)
 <use images/locus_processor_classes.png>
-Package luatex.def Info: images/locus_processor_classes.png  used on input line 1318.
+Package luatex.def Info: images/locus_processor_classes.png  used on input line 1325.
 (luatex.def)             Requested size: 308.59267pt x 121.77484pt.
 
 \openout5 = rheos_thesis.pyg
@@ -5376,10 +5372,10 @@ Package luatex.def Info: images/locus_processor_classes.png  used on input line 
  (./_minted-rheos_thesis/6963B198D70E25E1ECA5A09A3790FBF44EDB6D7A69951E996E27037C1CB03AC9.pygtex)
 \openout5 = rheos_thesis.pyg
  (./_minted-rheos_thesis/6963B198D70E25E1ECA5A09A3790FBF44EDB6D7A69951E996E27037C1CB03AC9.pygtex)
-<images/rheos_locus_saver_service.png, id=3433, 562.5015pt x 177.0615pt>
+<images/rheos_locus_saver_service.png, id=3436, 562.5015pt x 177.0615pt>
 File: images/rheos_locus_saver_service.png Graphic file (type png)
 <use images/rheos_locus_saver_service.png>
-Package luatex.def Info: images/rheos_locus_saver_service.png  used on input line 1333.
+Package luatex.def Info: images/rheos_locus_saver_service.png  used on input line 1340.
 (luatex.def)             Requested size: 309.37677pt x 97.38411pt.
 
 
@@ -5395,10 +5391,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [245<./images/locus_processor_classes.png>]
-<images/rheos_variant_calling_service.png, id=3443, 638.8668pt x 275.1078pt>
+<images/rheos_variant_calling_service.png, id=3446, 638.8668pt x 275.1078pt>
 File: images/rheos_variant_calling_service.png Graphic file (type png)
 <use images/rheos_variant_calling_service.png>
-Package luatex.def Info: images/rheos_variant_calling_service.png  used on input line 1346.
+Package luatex.def Info: images/rheos_variant_calling_service.png  used on input line 1353.
 (luatex.def)             Requested size: 351.37782pt x 151.30975pt.
 
 
@@ -5408,10 +5404,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [246<./images/rheos_locus_saver_service.png><./images/rheos_variant_calling_service.png>]
-<images/insert_size_clusterer_class.png, id=3458, 304.13625pt x 201.75375pt>
+<images/insert_size_clusterer_class.png, id=3461, 304.13625pt x 201.75375pt>
 File: images/insert_size_clusterer_class.png Graphic file (type png)
 <use images/insert_size_clusterer_class.png>
-Package luatex.def Info: images/insert_size_clusterer_class.png  used on input line 1363.
+Package luatex.def Info: images/insert_size_clusterer_class.png  used on input line 1370.
 (luatex.def)             Requested size: 167.27545pt x 110.96489pt.
 
 \openout5 = rheos_thesis.pyg
@@ -5436,10 +5432,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [248]
-<images/rheos_deployment_containers.png, id=3475, 1498.59875pt x 807.015pt>
+<images/rheos_deployment_containers.png, id=3478, 1498.59875pt x 807.015pt>
 File: images/rheos_deployment_containers.png Graphic file (type png)
 <use images/rheos_deployment_containers.png>
-Package luatex.def Info: images/rheos_deployment_containers.png  used on input line 1414.
+Package luatex.def Info: images/rheos_deployment_containers.png  used on input line 1421.
 (luatex.def)             Requested size: 419.6048pt x 225.96266pt.
 
 
@@ -5456,13 +5452,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [250]
-<images/rheos_snp_calling_pipeline.png, id=3496, 1123.7985pt x 105.0324pt>
+<images/rheos_snp_calling_pipeline.png, id=3499, 1123.7985pt x 105.0324pt>
 File: images/rheos_snp_calling_pipeline.png Graphic file (type png)
 <use images/rheos_snp_calling_pipeline.png>
-Package luatex.def Info: images/rheos_snp_calling_pipeline.png  used on input line 1469.
+Package luatex.def Info: images/rheos_snp_calling_pipeline.png  used on input line 1476.
 (luatex.def)             Requested size: 427.04787pt x 39.91272pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1475--1487
+Underfull \hbox (badness 10000) in paragraph at lines 1482--1494
 
  []
 
@@ -5476,20 +5472,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [251<./images/rheos_snp_calling_pipeline.png>]
-<images/rheos_read_mapper_chrom20_metrics.png, id=3506, 614.295pt x 135.50626pt>
+<images/rheos_read_mapper_chrom20_metrics.png, id=3509, 614.295pt x 135.50626pt>
 File: images/rheos_read_mapper_chrom20_metrics.png Graphic file (type png)
 <use images/rheos_read_mapper_chrom20_metrics.png>
-Package luatex.def Info: images/rheos_read_mapper_chrom20_metrics.png  used on input line 1491.
+Package luatex.def Info: images/rheos_read_mapper_chrom20_metrics.png  used on input line 1498.
 (luatex.def)             Requested size: 423.864pt x 93.4994pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1497--1508
+Underfull \hbox (badness 10000) in paragraph at lines 1504--1515
 
  []
 
-<images/rheos_locus_processor_chrom20_metrics_prtrt.png, id=3508, 529.98pt x 723.70375pt>
+<images/rheos_locus_processor_chrom20_metrics_prtrt.png, id=3511, 529.98pt x 723.70375pt>
 File: images/rheos_locus_processor_chrom20_metrics_prtrt.png Graphic file (type png)
 <use images/rheos_locus_processor_chrom20_metrics_prtrt.png>
-Package luatex.def Info: images/rheos_locus_processor_chrom20_metrics_prtrt.png  used on input line 1513.
+Package luatex.def Info: images/rheos_locus_processor_chrom20_metrics_prtrt.png  used on input line 1520.
 (luatex.def)             Requested size: 397.48401pt x 542.77647pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -5501,10 +5497,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [252<./images/rheos_read_mapper_chrom20_metrics.png>]
-<images/rheos_locus_saver_chrom20_metrics.png, id=3517, 614.295pt x 667.49374pt>
+<images/rheos_locus_saver_chrom20_metrics.png, id=3520, 614.295pt x 667.49374pt>
 File: images/rheos_locus_saver_chrom20_metrics.png Graphic file (type png)
 <use images/rheos_locus_saver_chrom20_metrics.png>
-Package luatex.def Info: images/rheos_locus_saver_chrom20_metrics.png  used on input line 1532.
+Package luatex.def Info: images/rheos_locus_saver_chrom20_metrics.png  used on input line 1539.
 (luatex.def)             Requested size: 368.57983pt x 400.49934pt.
 
 
@@ -5524,10 +5520,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [254<./images/rheos_locus_saver_chrom20_metrics.png>]
-<images/rheos_variant_caller_chrom_20_metrics.png, id=3527, 614.295pt x 410.53375pt>
+<images/rheos_variant_caller_chrom_20_metrics.png, id=3530, 614.295pt x 410.53375pt>
 File: images/rheos_variant_caller_chrom_20_metrics.png Graphic file (type png)
 <use images/rheos_variant_caller_chrom_20_metrics.png>
-Package luatex.def Info: images/rheos_variant_caller_chrom_20_metrics.png  used on input line 1554.
+Package luatex.def Info: images/rheos_variant_caller_chrom_20_metrics.png  used on input line 1561.
 (luatex.def)             Requested size: 368.57983pt x 246.32214pt.
 
 
@@ -5544,10 +5540,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [256]
-<images/rheos_snp_fns_prtrt.png, id=3550, 548.0475pt x 685.56125pt>
+<images/rheos_snp_fns_prtrt.png, id=3553, 548.0475pt x 685.56125pt>
 File: images/rheos_snp_fns_prtrt.png Graphic file (type png)
 <use images/rheos_snp_fns_prtrt.png>
-Package luatex.def Info: images/rheos_snp_fns_prtrt.png  used on input line 1622.
+Package luatex.def Info: images/rheos_snp_fns_prtrt.png  used on input line 1629.
 (luatex.def)             Requested size: 383.63063pt x 479.8896pt.
 
 
@@ -5560,10 +5556,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [257]
-<images/rheos_snp_fps_prtrt.png, id=3558, 531.9875pt x 678.535pt>
+<images/rheos_snp_fps_prtrt.png, id=3561, 531.9875pt x 678.535pt>
 File: images/rheos_snp_fps_prtrt.png Graphic file (type png)
 <use images/rheos_snp_fps_prtrt.png>
-Package luatex.def Info: images/rheos_snp_fps_prtrt.png  used on input line 1639.
+Package luatex.def Info: images/rheos_snp_fps_prtrt.png  used on input line 1646.
 (luatex.def)             Requested size: 372.38872pt x 474.97125pt.
 
 
@@ -5576,10 +5572,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [258<./images/rheos_snp_fns_prtrt.png>]
-<images/rheos_sv_calling_pipeline.png, id=3565, 931.5603pt x 104.7915pt>
+<images/rheos_sv_calling_pipeline.png, id=3568, 931.5603pt x 104.7915pt>
 File: images/rheos_sv_calling_pipeline.png Graphic file (type png)
 <use images/rheos_sv_calling_pipeline.png>
-Package luatex.def Info: images/rheos_sv_calling_pipeline.png  used on input line 1652.
+Package luatex.def Info: images/rheos_sv_calling_pipeline.png  used on input line 1659.
 (luatex.def)             Requested size: 419.19826pt x 47.15573pt.
 
 
@@ -5592,10 +5588,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [259<./images/rheos_snp_fps_prtrt.png>]
-<images/insert_size_hist.png, id=3574, 645.41125pt x 487.8225pt>
+<images/insert_size_hist.png, id=3577, 645.41125pt x 487.8225pt>
 File: images/insert_size_hist.png Graphic file (type png)
 <use images/insert_size_hist.png>
-Package luatex.def Info: images/insert_size_hist.png  used on input line 1665.
+Package luatex.def Info: images/insert_size_hist.png  used on input line 1672.
 (luatex.def)             Requested size: 258.15993pt x 195.12553pt.
 
 
@@ -5608,10 +5604,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [260<./images/rheos_sv_calling_pipeline.png>]
-<images/2d_kde.png, id=3584, 587.19376pt x 460.72125pt>
+<images/2d_kde.png, id=3587, 587.19376pt x 460.72125pt>
 File: images/2d_kde.png Graphic file (type png)
 <use images/2d_kde.png>
-Package luatex.def Info: images/2d_kde.png  used on input line 1674.
+Package luatex.def Info: images/2d_kde.png  used on input line 1681.
 (luatex.def)             Requested size: 352.31897pt x 276.43488pt.
 
 
@@ -5621,10 +5617,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [261<./images/insert_size_hist.png><./images/2d_kde.png>]
-<images/rheos_delly_giab_dels_venn.png, id=3597, 3011.25pt x 3011.25pt>
+<images/rheos_delly_giab_dels_venn.png, id=3600, 3011.25pt x 3011.25pt>
 File: images/rheos_delly_giab_dels_venn.png Graphic file (type png)
 <use images/rheos_delly_giab_dels_venn.png>
-Package luatex.def Info: images/rheos_delly_giab_dels_venn.png  used on input line 1693.
+Package luatex.def Info: images/rheos_delly_giab_dels_venn.png  used on input line 1700.
 (luatex.def)             Requested size: 180.6672pt x 180.6672pt.
 
 
@@ -5634,10 +5630,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [262<./images/rheos_delly_giab_dels_venn.png>]
-<images/rheos_sv_fps_prtrt.png, id=3608, 598.235pt x 720.6925pt>
+<images/rheos_sv_fps_prtrt.png, id=3611, 598.235pt x 720.6925pt>
 File: images/rheos_sv_fps_prtrt.png Graphic file (type png)
 <use images/rheos_sv_fps_prtrt.png>
-Package luatex.def Info: images/rheos_sv_fps_prtrt.png  used on input line 1702.
+Package luatex.def Info: images/rheos_sv_fps_prtrt.png  used on input line 1709.
 (luatex.def)             Requested size: 418.76164pt x 504.48132pt.
 
 
@@ -5647,10 +5643,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [263<./images/rheos_sv_fps_prtrt.png>]
-<images/rheos_sv_fns_prtrt.png, id=3616, 432.61626pt x 672.5125pt>
+<images/rheos_sv_fns_prtrt.png, id=3619, 432.61626pt x 672.5125pt>
 File: images/rheos_sv_fns_prtrt.png Graphic file (type png)
 <use images/rheos_sv_fns_prtrt.png>
-Package luatex.def Info: images/rheos_sv_fns_prtrt.png  used on input line 1711.
+Package luatex.def Info: images/rheos_sv_fns_prtrt.png  used on input line 1718.
 (luatex.def)             Requested size: 367.72556pt x 571.63832pt.
 
 
@@ -6103,17 +6099,16 @@ Overfull \hbox (14.30574pt too wide) in paragraph at lines 93--93
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 93--93
-[]\TU/lmr/m/it/12 In-fluxDB -- Time-Series Data Stor-age\TU/lmr/m/n/12 . In-flux-Data. \TU/lmr/m/sc/12 url\TU/lmr/m/n/12 : []$\TU/lmtt/m/n/12 https : / /
- []
-
-
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
 [302]
+Underfull \hbox (badness 1454) in paragraph at lines 93--93
+[]\TU/lmr/m/it/12 In-fluxDB -- Time-Series Data Stor-age\TU/lmr/m/n/12 . In-flux-Data. \TU/lmr/m/sc/12 url\TU/lmr/m/n/12 : []$\TU/lmtt/m/n/12 https : / /
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -6135,6 +6130,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [305]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[306]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 94.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 94.
  (./rheos_thesis.aux)
@@ -6152,19 +6154,19 @@ Package logreq Info: Writing requests to 'rheos_thesis.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 51631 strings out of 494407
+ 51635 strings out of 494407
  195599,1977958 words of node,token memory allocated
- 1184 words of node memory still in use:
-   9 hlist, 2 vlist, 3 rule, 3 glue, 4 kern, 1 glyph, 85 attribute, 110 glue_spec, 85 attribute_list, 1 write, 9 pdf_action nodes
-   avail lists: 1:8,2:9505,3:438,4:356,5:2067,6:482,7:8100,8:638,9:5869,10:110,11:1863
- 47963 multiletter control sequences out of 65536+600000
+ 1292 words of node memory still in use:
+   9 hlist, 2 vlist, 3 rule, 3 glue, 4 kern, 1 glyph, 97 attribute, 110 glue_spec, 97 attribute_list, 1 write, 19 pdf_action nodes
+   avail lists: 1:9,2:9482,3:436,4:356,5:2067,6:473,7:8100,8:636,9:5869,10:110,11:1863
+ 47965 multiletter control sequences out of 65536+600000
  115 fonts using 14515559 bytes
  65i,25n,77p,2867b,2686s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rheos_thesis.pdf (321 pages, 19062705 bytes).
+Output written on rheos_thesis.pdf (322 pages, 19083565 bytes).
 
-PDF statistics: 4065 PDF objects out of 4296 (max. 8388607)
- 3372 compressed objects within 34 object streams
- 1126 named destinations out of 1200 (max. 131072)
+PDF statistics: 4092 PDF objects out of 4296 (max. 8388607)
+ 3397 compressed objects within 34 object streams
+ 1128 named destinations out of 1200 (max. 131072)
  776 words of extra memory for PDF output out of 10000 (max. 100000000)
 

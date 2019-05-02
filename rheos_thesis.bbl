@@ -3992,7 +3992,7 @@
       \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{science}
+      \field{journaltitle}{Science}
       \field{number}{5507}
       \field{title}{The sequence of the human genome}
       \field{volume}{291}
@@ -4715,7 +4715,7 @@
       \field{pages}{489\bibrangedash 497}
       \range{pages}{9}
     \endentry
-    \entry{andrews2010fastqc}{article}{}
+    \entry{andrews2010fastqc}{online}{}
       \true{moreauthor}
       \true{morelabelname}
       \name{author}{1}{}{%
@@ -4736,7 +4736,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{FastQC: a quality control tool for high throughput sequence data}
-      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+      \endverb
+      \verb{url}
+      \verb https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+      \endverb
     \endentry
     \entry{ruffalo2011comparative}{article}{}
       \name{author}{3}{}{%
@@ -5565,7 +5570,7 @@
       \field{pages}{482\bibrangedash 489}
       \range{pages}{8}
     \endentry
-    \entry{burrows1994block}{article}{}
+    \entry{burrows1994block}{report}{}
       \name{author}{2}{}{%
         {{hash=9dcc719f71cb967ace284d342601d3f8}{%
            family={Burrows},
@@ -5589,6 +5594,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{A block-sorting lossless data compression algorithm}
+      \field{type}{techreport}
       \field{year}{1994}
     \endentry
     \entry{ferragina2000opportunistic}{inproceedings}{}
@@ -5760,6 +5766,8 @@
     \entry{langmead_teaching}{online}{}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labeltitlesource}{title}
+      \field{title}{Langmead Lab teaching materials}
       \verb{urlraw}
       \verb http://www.langmead-lab.org/teaching-materials/
       \endverb
@@ -6440,7 +6448,7 @@
       \field{pages}{e60234}
       \range{pages}{-1}
     \endentry
-    \entry{gordon2010fastx}{article}{}
+    \entry{gordon2010fastx}{online}{}
       \name{author}{2}{}{%
         {{hash=a82b0947932f95fdeb7acdd5baa09b42}{%
            family={Gordon},
@@ -6464,8 +6472,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Fastx-toolkit}
-      \field{volume}{5}
-      \field{year}{2010}
+      \verb{urlraw}
+      \verb http://hannonlab.cshl.edu/fastx_toolkit/
+      \endverb
+      \verb{url}
+      \verb http://hannonlab.cshl.edu/fastx_toolkit/
+      \endverb
     \endentry
     \entry{bolger2014trimmomatic}{article}{}
       \name{author}{3}{}{%
@@ -7037,7 +7049,7 @@
       \field{pages}{129\bibrangedash 153}
       \range{pages}{25}
     \endentry
-    \entry{li2010mathematical}{article}{}
+    \entry{li2010mathematical}{online}{}
       \name{author}{1}{}{%
         {{hash=466d90849ccf7e74e32d338b7c35491d}{%
            family={Li},
@@ -7056,7 +7068,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Mathematical Notes on SAMtools Algorithms}
-      \field{year}{2010}
+      \verb{urlraw}
+      \verb http://lh3lh3.users.sourceforge.net/download/samtools.pdf
+      \endverb
+      \verb{url}
+      \verb http://lh3lh3.users.sourceforge.net/download/samtools.pdf
+      \endverb
     \endentry
     \entry{marth1999general}{article}{}
       \name{author}{10}{}{%
@@ -7213,6 +7230,8 @@
     \entry{gatkwebsite}{online}{}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labeltitlesource}{title}
+      \field{title}{GATK Documentation}
       \verb{urlraw}
       \verb https://software.broadinstitute.org/gatk/documentation
       \endverb
@@ -7999,7 +8018,7 @@
       \field{volume}{136}
       \field{year}{1992}
     \endentry
-    \entry{mell2011nist}{article}{}
+    \entry{mell2011nist}{online}{}
       \name{author}{2}{}{%
         {{hash=eac098e5805fbc204d757a7083c69ac6}{%
            family={Mell},
@@ -8028,6 +8047,12 @@
       \field{labeltitlesource}{title}
       \field{title}{The NIST definition of cloud computing}
       \field{year}{2011}
+      \verb{urlraw}
+      \verb https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf
+      \endverb
+      \verb{url}
+      \verb https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf
+      \endverb
     \endentry
     \entry{knoppers2005human}{article}{}
       \name{author}{2}{}{%
@@ -8335,7 +8360,7 @@
       \field{title}{Scientific management}
       \field{year}{2004}
     \endentry
-    \entry{barnes1949motion}{article}{}
+    \entry{barnes1949motion}{book}{}
       \name{author}{1}{}{%
         {{hash=e0d3bcfc797121b918415e0683e025b2}{%
            family={Barnes},
@@ -8359,7 +8384,7 @@
       \field{title}{Motion and time study}
       \field{year}{1949}
     \endentry
-    \entry{hollingsworth1995workflow}{article}{}
+    \entry{hollingsworth1995workflow}{online}{}
       \name{author}{1}{}{%
         {{hash=6eedae816bce2cf03b71c8e48f429968}{%
            family={Hollingsworth},
@@ -8379,6 +8404,12 @@
       \field{labeltitlesource}{title}
       \field{title}{The workflow reference model}
       \field{year}{1995}
+      \verb{urlraw}
+      \verb ftp://ftp.ufv.br/dpi/mestrado/Wkflow-BPM/The%20Workflow%20Reference%20Model.pdf
+      \endverb
+      \verb{url}
+      \verb ftp://ftp.ufv.br/dpi/mestrado/Wkflow-BPM/The%20Workflow%20Reference%20Model.pdf
+      \endverb
     \endentry
     \entry{shapiro2002technical}{article}{}
       \name{author}{1}{}{%
@@ -8402,7 +8433,7 @@
       \field{title}{A technical comparison of XPDL, BPML and BPEL4WS}
       \field{year}{2002}
     \endentry
-    \entry{peterson1981petri}{article}{}
+    \entry{peterson1981petri}{book}{}
       \name{author}{1}{}{%
         {{hash=a219aee9834ec984558f4efaec5d39a4}{%
            family={Peterson},
@@ -9276,6 +9307,16 @@
       \verb https://www.elastic.co/products/kibana
       \endverb
     \endentry
+    \entry{cloudproviders}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \verb{urlraw}
+      \verb https://www.srgresearch.com/articles/fourth-quarter-growth-cloud-services-tops-banner-year-cloud-providers
+      \endverb
+      \verb{url}
+      \verb https://www.srgresearch.com/articles/fourth-quarter-growth-cloud-services-tops-banner-year-cloud-providers
+      \endverb
+    \endentry
     \entry{telegraf}{online}{}
       \field{sortinit}{3}
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
@@ -9387,6 +9428,8 @@
     \entry{statsd}{online}{}
       \field{sortinit}{3}
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labeltitlesource}{title}
+      \field{title}{StatsD}
       \verb{urlraw}
       \verb https://github.com/etsy/statsd
       \endverb
@@ -9397,6 +9440,8 @@
     \entry{kapacitor}{online}{}
       \field{sortinit}{3}
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labeltitlesource}{title}
+      \field{title}{Kapacitor}
       \verb{urlraw}
       \verb https://github.com/influxdata/kapacitor
       \endverb
@@ -9407,6 +9452,8 @@
     \entry{slack}{online}{}
       \field{sortinit}{3}
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labeltitlesource}{title}
+      \field{title}{Slack}
       \verb{urlraw}
       \verb https://slack.com
       \endverb
@@ -9417,6 +9464,8 @@
     \entry{chronograf}{online}{}
       \field{sortinit}{3}
       \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labeltitlesource}{title}
+      \field{title}{Chronograf}
       \verb{urlraw}
       \verb https://github.com/influxdata/chronograf
       \endverb
@@ -9610,8 +9659,6 @@
       \field{journaltitle}{Bioinformatics}
       \field{title}{Unified representation of genetic variants}
       \field{year}{2015}
-      \field{pages}{btv112}
-      \range{pages}{-1}
     \endentry
     \entry{delaneau2012linear}{article}{}
       \name{author}{3}{}{%
@@ -10778,16 +10825,26 @@
     \entry{scalingkubernetes}{online}{}
       \field{sortinit}{4}
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labeltitlesource}{title}
+      \field{title}{Scaling Kubernetes to 2500 Nodes}
       \verb{urlraw}
-      \verb http://www.langmead-lab.org/teaching-materials/
+      \verb https://openai.com/blog/scaling-kubernetes-to-2500-nodes/
       \endverb
       \verb{url}
-      \verb http://www.langmead-lab.org/teaching-materials/
+      \verb https://openai.com/blog/scaling-kubernetes-to-2500-nodes/
       \endverb
     \endentry
     \entry{kubernetes_microservice_components}{online}{}
       \field{sortinit}{4}
       \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labeltitlesource}{title}
+      \field{title}{The Myth of Cloud Native Portability}
+      \verb{urlraw}
+      \verb https://thenewstack.io/myth-cloud-native-portability/
+      \endverb
+      \verb{url}
+      \verb https://thenewstack.io/myth-cloud-native-portability/
+      \endverb
     \endentry
     \entry{carlson2013redis}{book}{}
       \name{author}{1}{}{%

@@ -723,7 +723,7 @@
   journal={Cape Visions},
   year={2002}
 }
-@article{peterson1981petri,
+@Book{peterson1981petri,
   title={Petri net theory and the modeling of systems},
   author={Peterson, James L},
   year={1981},
@@ -954,7 +954,6 @@
   title={Unified representation of genetic variants},
   author={Tan, Adrian and Abecasis, Gon{\c{c}}alo R and Kang, Hyun Min},
   journal={Bioinformatics},
-  pages={btv112},
   year={2015},
   publisher={Oxford Univ Press}
 }
@@ -1014,9 +1013,10 @@
   year={1998},
   organization={IEEE}
 }
-@article{mell2011nist,
+@Online{mell2011nist,
   title={The NIST definition of cloud computing},
   author={Mell, Peter and Grance, Tim},
+  url={https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf},
   year={2011},
   publisher={Computer Security Division, Information Technology Laboratory, National Institute of Standards and Technology Gaithersburg}
 }
@@ -1158,7 +1158,7 @@
 @article{venter2001sequence,
   title={The sequence of the human genome},
   author={Venter, J Craig and Adams, Mark D and Myers, Eugene W and Li, Peter W and Mural, Richard J and Sutton, Granger G and Smith, Hamilton O and Yandell, Mark and Evans, Cheryl A and Holt, Robert A and others},
-  journal={science},
+  journal={Science},
   volume={291},
   number={5507},
   pages={1304--1351},
@@ -1329,14 +1329,15 @@
   publisher={Routledge}
 }
 
-@Article{barnes1949motion,
-  author    = {Barnes, Ralph M},
-  title     = {Motion and time study},
-  year      = {1949},
-  publisher = {Wiley},
+@Book{barnes1949motion,
+  title={Motion and time study},
+  author={Barnes, Ralph M},
+  year={1949},
+  publisher={Wiley}
 }
-@article{hollingsworth1995workflow,
+@Online{hollingsworth1995workflow,
   title={The workflow reference model},
+  url={ftp://ftp.ufv.br/dpi/mestrado/Wkflow-BPM/The%20Workflow%20Reference%20Model.pdf},
   author={Hollingsworth, David},
   year={1995}
 }
@@ -1555,18 +1556,22 @@
 }
 
 @Online{statsd,
+  title={StatsD},
   url = {https://github.com/etsy/statsd},
 }
 
 @Online{kapacitor,
+  title={Kapacitor},
   url = {https://github.com/influxdata/kapacitor},
 }
 
 @Online{slack,
+  title={Slack},
   url = {https://slack.com},
 }
 
 @Online{chronograf,
+  title={Chronograf},
   url = {https://github.com/influxdata/chronograf},
 }
 
@@ -1657,10 +1662,10 @@
   publisher = {Annual Reviews 4139 El Camino Way, PO Box 10139, Palo Alto, CA 94303-0139, USA},
 }
 
-@Article{li2010mathematical,
+@Online{li2010mathematical,
   author = {Li, Heng},
   title  = {Mathematical Notes on SAMtools Algorithms},
-  year   = {2010},
+  url   = {http://lh3lh3.users.sourceforge.net/download/samtools.pdf},
 }
 
 @Article{li2011statistical,
@@ -1719,6 +1724,7 @@
 }
 
 @Online{gatkwebsite,
+  title = {GATK Documentation},
   url = {https://software.broadinstitute.org/gatk/documentation},
 }
 
@@ -1938,17 +1944,16 @@
   publisher = {BioMed Central},
 }
 
-@Article{gordon2010fastx,
+@Online{gordon2010fastx,
   author = {Gordon, A and Hannon, GJ},
   title  = {Fastx-toolkit},
-  year   = {2010},
-  volume = {5},
+  url = {http://hannonlab.cshl.edu/fastx_toolkit/}
 }
 
-@Article{andrews2010fastqc,
+@Online{andrews2010fastqc,
   author = {Andrews, Simon and others},
   title  = {FastQC: a quality control tool for high throughput sequence data},
-  year   = {2010},
+  url = {https://www.bioinformatics.babraham.ac.uk/projects/fastqc/},
 }
 
 @Misc{Picard2018toolkit,
@@ -2074,7 +2079,7 @@
   publisher = {Taylor \& Francis Group},
 }
 
-@Article{burrows1994block,
+@Techreport{burrows1994block,
   author = {Burrows, Michael and Wheeler, David J},
   title  = {A block-sorting lossless data compression algorithm},
   year   = {1994},
@@ -2138,6 +2143,7 @@
 }
 
 @Online{langmead_teaching,
+  title={Langmead Lab teaching materials},
   url = {http://www.langmead-lab.org/teaching-materials/},
 }
 
@@ -2407,10 +2413,13 @@
 }
 
 @Online{scalingkubernetes,
-  url = {http://www.langmead-lab.org/teaching-materials/},
+  title={Scaling Kubernetes to 2500 Nodes},
+  url = {https://openai.com/blog/scaling-kubernetes-to-2500-nodes/},
 }
 
 @Online{kubernetes_microservice_components,
+  title={The Myth of Cloud Native Portability},
+  url = {https://thenewstack.io/myth-cloud-native-portability/},
 }
 
 @Book{carlson2013redis,
@@ -2590,7 +2599,7 @@
   publisher = {Oxford University Press},
 }
 
-@Article{dohm2008substantial,
+@Article{Dohm2008a,
   author    = {Dohm, Juliane C and Lottaz, Claudio and Borodina, Tatiana and Himmelbauer, Heinz},
   title     = {Substantial biases in ultra-short read data sets from high-throughput DNA sequencing},
   journal   = {Nucleic acids research},
@@ -2707,7 +2716,7 @@
   publisher = {Elsevier},
 }
 
-@Article{van2013fastq,
+@Article{VanderAuwera2013,
   author    = {Van der Auwera, Geraldine A and Carneiro, Mauricio O and Hartl, Christopher and Poplin, Ryan and Del Angel, Guillermo and Levy-Moonshine, Ami and Jordan, Tadeusz and Shakir, Khalid and Roazen, David and Thibault, Joel and others},
   title     = {From FastQ data to high-confidence variant calls: the genome analysis toolkit best practices pipeline},
   journal   = {Current protocols in bioinformatics},
@@ -2718,7 +2727,7 @@
   publisher = {Wiley Online Library},
 }
 
-@Article{mclaren2016ensembl,
+@Article{McLaren2016,
   author    = {McLaren, William and Gil, Laurent and Hunt, Sarah E and Riat, Harpreet Singh and Ritchie, Graham RS and Thormann, Anja and Flicek, Paul and Cunningham, Fiona},
   title     = {The ensembl variant effect predictor},
   journal   = {Genome biology},
@@ -2771,6 +2780,10 @@
   number    = {5},
   pages     = {358},
   publisher = {Nature Publishing Group},
+}
+
+@Online{cloudproviders,
+  url = {https://www.srgresearch.com/articles/fourth-quarter-growth-cloud-services-tops-banner-year-cloud-providers},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

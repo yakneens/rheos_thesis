@@ -212,7 +212,7 @@
 \contentsline {paragraph}{Candidate haplotype alignment to reference}{209}{section*.260}
 \contentsline {paragraph}{Single read split-alignment to reference}{210}{section*.262}
 \contentsline {subsection}{\numberline {5.3.3}Simple Germline SNP Calling}{213}{subsection.5.3.3}
-\contentsline {paragraph}{The Locus Processing Service}{218}{section*.270}
+\contentsline {paragraph}{The Locus Processing Service,}{218}{section*.270}
 \contentsline {paragraph}{The Variant Calling Service}{220}{section*.273}
 \contentsline {subsection}{\numberline {5.3.4}Germline Structural Variant Calling}{221}{subsection.5.3.4}
 \contentsline {section}{\numberline {5.4}Rheos implementation}{228}{section.5.4}

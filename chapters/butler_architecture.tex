@@ -142,7 +142,7 @@ A typical scientific analysis consists of a series of steps where a set of input
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{ng.806-F1.jpg}
 \centering
-\caption {NGS Workflow\autocite{depristo2011framework}.}
+\caption {NGS Workflow (taken from \autocite{depristo2011framework}).}
 \label{fig:ng.806-F1.jpg}
 \end{figure}
 
@@ -576,12 +576,12 @@ Another benefit of Service Orientation is the ability to independently upgrade c
 
 \subsection {Cloud Agnostic}
 
-Because of its early entrance on the cloud computing scene, the AWS Cloud by Amazon.com Inc currently enjoys a significant lead in this market segment, having over 31\% of the entire public cloud-computing market:
+Because of its early entrance on the cloud computing scene, the AWS Cloud by Amazon.com Inc currently enjoys a significant lead in this market segment, having over 30\% of the entire public cloud-computing market:
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{cloud_market_share}
 \centering
-\caption {Cloud market share by vendor}
+\caption {Cloud market share by vendor (taken from \autocite{cloudproviders})}
 \label{fig:cloud_market_share}
 \end{figure}
 
@@ -690,7 +690,7 @@ Resources represent different objects such as VMs, network routers, security gro
 \label{fig:terraform_aws_instance}
 \end{figure}
 
-Most Terraform configuration involves configuring resources.
+Most Terraform configuration tasks involve configuring resources.
 
 \subsubsection {Terraform Variables}
 
@@ -866,7 +866,7 @@ Several related states (such as those describing different installations of the 
 
 \paragraph{A Salt Pillar} is a set of key-value pairs that are stored encrypted on a Minion and constitute look-up values that are relevant for that Minion's configuration. Examples of Pillar values can be usernames and passwords, locations of certain files, etc. A State definition can refer to Pillar values when configuring a system, and two identical VMs that differ only by their Pillar values will be parametrized differently at configuration time. One example of this is setting up the same server in a QA environment vs. Production. In QA the server may point to a test data directory with especially constructed data files, for testing purposes, whereas in Production the server would point to the actual data directory with real samples.
 
-The Pillar are organized similar to States in a folder hierarchy of \emph{.sls} files. Figure \ref{fig:salt_pillar_hierarchy}
+The Pillar are organized similar to States in a folder hierarchy of \emph{.sls} files. See Figure \ref{fig:salt_pillar_hierarchy}
 
 \begin{figure}[H]
 \includegraphics{salt_pillar_hierarchy}
@@ -1654,11 +1654,15 @@ In order to perform self-healing the Butler framework needs to be able to detect
 
 given: 
 
-$M = \{M_t; t \in T\}$ - a metric time series\\
-$\vec{\mathbf{M_n}} = [M_{t-n+1} \quad M_{t-n+2} \quad ... \quad M_t]$ - a vector of n most recent observations of $M$\\
-$f\colon \mathbb{R^{n}} \mapsto \mathbb{R}$ - a function of $\vec{\mathbf{M_n}}$ that typically computes a summary statistic over a moving window of the most recent n data points, such as mean, min, max, etc.\\
-$op \in \{>,<, >=, <=, ==, !=\}$ - is a comparison operator\\
-$C \in R$ - is an arbitrary constant\\
+\begin{align*}
+  &M = \{M_t; t \in T\}\text{ - a metric time series}\\
+&\vec{\mathbf{M_n}} = [M_{t-n+1} \quad M_{t-n+2} \quad ... \quad M_t]\text{ - a vector of n most recent observations of }M\\
+&f\colon \mathbb{R^{n}} \mapsto \mathbb{R}\text{ - a function of }\vec{\mathbf{M_n}}\text{ that typically computes a summary statistic over}\\
+&\text{ a moving window of the most recent n data points, such as mean, min, max, etc.}\\
+&op \in \{>,<, >=, <=, ==, !=\}\text{ - is a comparison operator}\\
+&C \in R\text{ - is an arbitrary constant}\\
+\end{align*}
+
 
 Thus, each rule continuously (discretised by metric sampling frequency) computes a summary statistic over a sample of $n$ most recent observations of metric of interest $M$, and compares it to a threshold value $C$, firing off an event when the comparison specified in $op$ succeeds. The full collection of rules then constitutes a full specification of the set of anomalous conditions for which automated action can be taken.
 

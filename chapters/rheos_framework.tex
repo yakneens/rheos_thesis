@@ -330,7 +330,7 @@ Since the local state required for storing the quantile summaries may not fit in
 \label{ag:update_quantile_summaries_bqd}
 \end{algorithm2e}
 \newpage
-\paragraph{Insert Size Distribution} - The insert size distribution is an important metric because it is not only indicative of the overall quality of a sample's data, but it is also used by structural variant calling to find read-pairs that map abnormally far apart (indicating a deletion), or abnormally close together (indicating an insertion. 
+\paragraph{Insert Size Distribution} - The insert size distribution is an important metric because it is not only indicative of the overall quality of a sample's data, but it is also used by structural variant calling to find read-pairs that map abnormally far apart (indicating a deletion), or abnormally close together (indicating an insertion). 
 
 \begin{figure}[H]
     \includegraphics[scale=0.85]{insert_size_distribution}
@@ -483,7 +483,7 @@ In order to perform the $mapPairToReference()$ operation the service needs to ha
     S_{ij}=S_i + S_j - \min{-a\log_4P(d_{ij}),U}
 \end{equation}
 
-Here $S_i$ and $S_j$ are the alignment scores for the individual reads in the pair obtained by single-end mapping via $mapToReference(r, ref\_id)$. $d_ij$ is the insert size implied by the mapping, $P(d_{i,j})$ is the probability of observing an insert size larger than $d$ under the assumption $D \sim \mathcal{N}(\mu_{isd}, \sigma_{isd}^2)$, $a$ is a matching score, and $U$ is a thresholding constant. Thus, given a set of possible mapping locations for each read in a pair, the joint mapping that maximizes the pairing metric is chosen.
+Here $S_i$ and $S_j$ are the alignment scores for the individual reads in the pair obtained by single-end mapping via $mapToReference(r, ref\_id)$. $d_{ij}$ is the insert size implied by the mapping, $P(d_{ij})$ is the probability of observing an insert size larger than $d$ under the assumption $D \sim \mathcal{N}(\mu_{isd}, \sigma_{isd}^2)$, $a$ is a matching score, and $U$ is a thresholding constant. Thus, given a set of possible mapping locations for each read in a pair, the joint mapping that maximizes the pairing metric is chosen.
 
 $mapPairToReference()$ outputs read pairs to two output streams. If both reads are mapped successfully then they are output to the $M_{aln}$ stream. If at least one of two reads in a pair does not have a high quality mapping assigned through the paired mapping process, the pair is emitted through the $M_{unaln}$ stream.
 
@@ -578,7 +578,7 @@ Here $s\_id, ref\_id, r\_id, b, q, f_p$ are as in Equation \ref{eq:raw_read_mess
     \item[i] - ordinal number of $a_i$ in $aln$.
     \item[rname] - name of reference contig to which $a_i$ maps.
     \item[pos] - position on $rname$ where $a_i$ maps.
-    \item[offset] - offset on $r_split$ where $a_i$ begins.
+    \item[offset] - offset on $r_{split}$ where $a_i$ begins.
     \item[len] - length of $a_i$.
     \item[mapq] - mapping quality.
     \item[cigar] - CIGAR of the alignment.
@@ -718,7 +718,7 @@ Equation \ref{eq:rheos_genotype_likelihood} provides the general update rule for
 
 This equation can be used to obtain a probability estimate of any given genotype, having observed any given amount of data about a specific locus.
 
-Armed with the update rule for integrating read evidence we are ready to define a data stream operation of Local State Aggregator type that is responsible for processing a stream of aligned read pairs, updating its local state with the genetic variation evidence contained in the reads, and emitting a stream of updated genomic loci (see Fig. \ref{fig:main_body_locus}) that can be used by downstream services for variant calling.
+Armed with the update rule for integrating read evidence we are ready to define a data stream operation of Local State Aggregator type that is responsible for processing a stream of aligned read pairs, updating its local state with the genetic variation evidence contained in the reads, and emitting a stream of updated genomic loci (see Figure \ref{fig:main_body_locus}) that can be used by downstream services for variant calling.
 
 \bgroup
 \def\arraystretch{1.5}
@@ -755,7 +755,7 @@ A Locus $l$ for SNP calling represents a single genomic location for a single sa
     \item[qa] - Sum of base qualities of alternative observations at this locus.       
 \end{description}
 
-\paragraph{The Locus Processing Service}, which is responsible for implementing $updateLociFromRead()$, maintains a local data store of Locus objects, ideally in memory. When a new mapped read arrives via the input stream, the service walks along the read and for each position on the read compares it to the respective position on the reference sequence. It retrieves the Locus corresponding to this position and, depending on whether the read matches, or is different from the reference sequence, updates the Locus genotype likelihoods (and other fields) according to the update rule of Equation \ref{eq:rheos_genotype_likelihood}. Those Locus objects that have been updated, and have alternative allele observations (i.e. potential variants) are added to a list of objects that should be emitted by the service as output of $updateLociFromRead()$. Since a read alignment consists of not only matches and mismatches with respect to the reference sequence, but also encodes insertions and deletions as an array of CIGAR elements (see Section \ref{sec:bg_alignment}), and the alignment may occur on the forward or the reverse strand of DNA (requiring reverse complementing) special care needs to be taken during read processing to account for all of the possible cases of simultaneous read and reference traversal. Read processing proceeds as in the following algorithms:
+\paragraph{The Locus Processing Service,} which is responsible for implementing $updateLociFromRead()$, maintains a local data store of Locus objects, ideally in memory. When a new mapped read arrives via the input stream, the service walks along the read and for each position on the read compares it to the respective position on the reference sequence. It retrieves the Locus corresponding to this position and, depending on whether the read matches, or is different from the reference sequence, updates the Locus genotype likelihoods (and other fields) according to the update rule of Equation \ref{eq:rheos_genotype_likelihood}. Those Locus objects that have been updated, and have alternative allele observations (i.e. potential variants) are added to a list of objects that should be emitted by the service as output of $updateLociFromRead()$. Since a read alignment consists of not only matches and mismatches with respect to the reference sequence, but also encodes insertions and deletions as an array of CIGAR elements (see Section \ref{sec:bg_alignment}), and the alignment may occur on the forward or the reverse strand of DNA (requiring reverse complementing) special care needs to be taken during read processing to account for all of the possible cases of simultaneous read and reference traversal. Read processing proceeds as in the following algorithms:
 
 \begin{algorithm2e}[h]
     \DontPrintSemicolon
@@ -940,7 +940,7 @@ Invocation of $callDeletions()$ uses the data accumulated by $addReadPair()$ to 
     \item Using pair centers perform Kernel Density Estimation\autocites{rosenblatt1956remarks}{parzen1962estimation} to estimate the distribution of the location of pair centers.
     \item Using the estimated density detect regions with local maxima (clusters) that become locations for putative deletions.
     \item Using the sites of putative deletions query the Interval Tree for a list of reads that overlaps each site.
-    \item For each site and set of read overlaps call the deletion boundary to be the maximal interval that is spanned by the inner distance (see Fig. \ref{fig:insert_size}) of all overlapping read pairs.
+    \item For each site and set of read overlaps call the deletion boundary to be the maximal interval that is spanned by the inner distance (see Figure \ref{fig:insert_size}) of all overlapping read pairs.
     \item Based on the width of the deletion remove all overlapping reads whose inferred insert size is greater than $deletion\_width + insert\_size\_threshold$.
     \item Output a deletion if the number of supporting reads after filtering above is $> min\_read\_support$.
 \end{enumerate}
@@ -977,7 +977,14 @@ Given a set of read pairs $R = \{(r_1,r_2) : r=(r.pos, r.end)\}$ spanning the si
 
 Given the location and width of a putative deletion it is necessary to determine whether the deletion has sufficient support in the reads to be considered real, or may be dismissed as spurious. Many filtering strategies are possible, but the simplest relies on counting the number of read pairs that support a deletion and only retaining those that exceed a minimum threshold of $min\_read\_support$ supplied by the user. To reduce the number of false positive results we would like to remove remove from the list of reads supporting a deletion call those that are likely spurious. Since, low quality reads are already filtered by the Insert Size Filtering Service one of the few remaining sources of false positive signal are reads for which the inferred insert size is much larger than the actual deletion call that they span. These reads are either part of another, much larger, deletion, in which case they are accounted for in that deletion call, or they are spuriously mapped, as there is no other plausible reason for their large insert size. We thus, use a thresholding cutoff $insert\_size\_threshold$, supplied by the user, such that read pairs with $insert\_size > deletion\_width + insert\_size\_threshold$ are removed from the list of reads supporting a particular call. Afterwards, deletions that have read support exceeding the $min\_read\_support$ threshold are selected as called variants. 
 \newpage
-The variant quality for the deletion is taken to be $vqual = \sum_{r \in R}{r.mapq}$ i.e. the Phred-scaled probability that all of the reads that support the deletion have been mis-mapped. All of the variants that have been called are emitted in the Insert Size Clustering Service's output stream in the format $M_{del} = \{m_i: m_i = (header, payload)\}$ where $m.payload = V = \{v_i: v_i = (s\_id, contig, pos, length, vqual, R)\}$, as described in Table \ref{tab:op_insert_size_clustering}, where the header includes the query details that are being answered.
+The variant quality for the deletion is taken to be $vqual = \sum_{r \in R}{r.mapq}$ i.e. the Phred-scaled probability that all of the reads that support the deletion have been mis-mapped. All of the variants that have been called are emitted in the Insert Size Clustering Service's output stream in the format: 
+\begin{equation*}
+    M_{del} = \{m_i: m_i = (header, payload)\}
+\end{equation*} where 
+\begin{equation*}
+    m.payload = V = \{v_i: v_i = (s\_id, contig, pos, length, vqual, R)\}
+\end{equation*}
+as described in Table \ref{tab:op_insert_size_clustering}, where the header includes the query details that are being answered.
 
 
 \section{Rheos implementation}\label{sec:rheos_implementation}
@@ -1061,7 +1068,7 @@ ENTRYPOINT ["python", "read_mapper/batchy_mapper.py"]
 \end{minted}
 \endgroup
 
-The Dockerfile uses a base image of Alpine Linux with python 3.7.2 preinstalled. Several addon linux packages are installed. The service module code is copied to the \mintinline{shell}{/app} directory. \mintinline{shell}{setup.py} is run to install all of the service's dependencies, and the program entrypoint for the Docker container is set to point to the service executable.
+The Dockerfile uses a base image of Alpine Linux with Python 3.7.2 preinstalled. Several addon linux packages are installed. The service module code is copied to the \mintinline{shell}{/app} directory. \mintinline{shell}{setup.py} is run to install all of the service's dependencies, and the program entrypoint for the Docker container is set to point to the service executable.
 
 The file \mintinline{shell}{build_and_push.sh} is a shell script that is responsible for building a Docker image using the supplied Dockerfile and pushing this image to a Docker registry (hub.docker.com). Any deployment of the service can now pull down this image from the registry and instantiate new containers from it.
 
